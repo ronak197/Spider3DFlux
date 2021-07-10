@@ -1,0 +1,6315 @@
+// 20210705180003
+// https://spider3d.co.il/wp-json/wc/v3/products?status=publish&per_page=20&page=1&skip_cache=1&category=5161&on_sale=true&stock_status=instock&consumer_key=ck_be61455d30704ff30718f80b417dd41c320b0cb0&consumer_secret=cs_79c75a8e1c40acfe530e6254f3cbb61a2e01f872
+
+[
+  {
+    "id": 28692,
+    "name": "מפוח מקורי של ארטילרי, בלאוור שקט קירור שכבות למדפסת ארטילרי ג'ינייס או  sw-x1 4020",
+    "slug": "%d7%9e%d7%a4%d7%95%d7%97-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-%d7%a9%d7%9c-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-%d7%91%d7%9c%d7%90%d7%95%d7%95%d7%a8-%d7%a9%d7%a7%d7%98-%d7%a7%d7%99%d7%a8%d7%95%d7%a8",
+    "permalink": "https://www.spider3d.co.il/%D7%91%D7%9C%D7%90%D7%95%D7%95%D7%A8-%D7%9E%D7%A4%D7%95%D7%97-%D7%A9%D7%A7%D7%98-%D7%A7%D7%99%D7%A8%D7%95%D7%A8-%D7%A9%D7%9B%D7%91%D7%95%D7%AA-%D7%9C%D7%9E%D7%93%D7%A4%D7%A1%D7%AA-%D7%90%D7%A8%D7%98%D7%99%D7%9C%D7%A8%D7%99-%D7%92%D7%99%D7%A0%D7%99%D7%99%D7%A1-%D7%90%D7%95-sw-x1-4020/",
+    "date_created": "2021-03-24T20:18:15",
+    "date_created_gmt": "2021-03-24T17:18:15",
+    "date_modified": "2021-06-29T11:40:38",
+    "date_modified_gmt": "2021-06-29T08:40:38",
+    "type": "simple",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<p dir=\"rtl\" style=\"text-align: right;\"><span style=\"font-size: medium;\">מפוח אוויר בלאוור בעל מאוורר טורבו עבור מדפסת תלת מימד חיבור מהיר, </span></p>\n<p>&nbsp;</p>\n<p dir=\"rtl\" style=\"text-align: center;\">\n<p>&nbsp;</p>\n<p dir=\"rtl\"><strong> </strong></p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n",
+    "short_description": "<p dir=\"rtl\" style=\"text-align: right;\">מפוח אוויר טורבו מקורי שקט חזק עבור מדפסת תלת מימד artillery genius או עבור artillery sidewinder x1 כולל מחבר מהיר</p>\n<p dir=\"rtl\" style=\"text-align: right;\">\n",
+    "sku": "G407",
+    "price": "69",
+    "regular_price": "89",
+    "sale_price": "69",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 1,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": 0,
+    "download_expiry": 0,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": false,
+    "stock_quantity": null,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5188,
+        "name": "חלפים מקוריים Artillery Genius",
+        "slug": "spare-parts-artillery-genius"
+      },
+      {
+        "id": 5189,
+        "name": "חלפים מקוריים Artillery SideWinder",
+        "slug": "spare-parts-artillery-sw-x1"
+      },
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 28695,
+        "date_created": "2021-03-24T23:23:35",
+        "date_created_gmt": "2021-03-24T17:23:35",
+        "date_modified": "2021-03-24T23:24:01",
+        "date_modified_gmt": "2021-03-24T17:24:01",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2021/03/Artillery-Sidewinder-X1-Filament-Cooling-Fan-40-mm-09-00158-25377.jpg",
+        "name": "מפוח קירור 4020 artillery sidewinder x1",
+        "alt": "מפוח קירור 4020 artillery sidewinder x1"
+      }
+    ],
+    "attributes": [
+      {
+        "id": 81,
+        "name": "בחר V מתאים",
+        "position": 0,
+        "visible": true,
+        "variation": true,
+        "options": [
+          "12V לדוגמא לCR-10)",
+          "24V (לדוגמא: לEnder3)"
+        ]
+      },
+      {
+        "id": 0,
+        "name": "QR-Code",
+        "position": 1,
+        "visible": false,
+        "variation": false,
+        "options": [
+          "BLOWER-4020-24V-12V"
+        ]
+      }
+    ],
+    "default_attributes": [
+
+    ],
+    "variations": [
+
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 405,
+    "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>89</bdi></span></del> <ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>69</bdi></span></ins>",
+    "related_ids": [
+      26213,
+      26172,
+      26109,
+      26294,
+      26797
+    ],
+    "meta_data": [
+      {
+        "id": 1248006,
+        "key": "_fgm2wc_old_product_id",
+        "value": "1140"
+      },
+      {
+        "id": 1248007,
+        "key": "_product_attributes_values",
+        "value": {
+          "pa_": {
+            "בדיל להלחמה": {
+              "price": "25.0000",
+              "sku": "",
+              "stock": ""
+            },
+            "מלחם דגם עיפרון": {
+              "price": "50.0000",
+              "sku": "",
+              "stock": ""
+            }
+          },
+          "pa_v": {
+            "12V לדוגמא לCR-10)": {
+              "price": "0.0000",
+              "sku": "",
+              "stock": "8"
+            },
+            "24V (לדוגמא: לEnder3)": {
+              "price": "0.0000",
+              "sku": "",
+              "stock": "10"
+            }
+          }
+        }
+      },
+      {
+        "id": 1248008,
+        "key": "_min_variation_price",
+        "value": "60"
+      },
+      {
+        "id": 1248009,
+        "key": "_max_variation_price",
+        "value": "85"
+      },
+      {
+        "id": 1248010,
+        "key": "_vcv-sourceChecksum",
+        "value": "60080007145db54303f47e44cca73b77"
+      },
+      {
+        "id": 1248011,
+        "key": "vcvSourceCssFileUrl",
+        "value": ""
+      },
+      {
+        "id": 1248012,
+        "key": "_vcv-globalCssMigrated",
+        "value": "1"
+      },
+      {
+        "id": 1248013,
+        "key": "_op_barcode",
+        "value": ""
+      },
+      {
+        "id": 1248014,
+        "key": "_op_cost_price",
+        "value": ""
+      },
+      {
+        "id": 1248015,
+        "key": "_op_weight_base_pricing",
+        "value": "no"
+      },
+      {
+        "id": 1248016,
+        "key": "_product_layout",
+        "value": ""
+      },
+      {
+        "id": 1248017,
+        "key": "_product_style",
+        "value": ""
+      },
+      {
+        "id": 1248018,
+        "key": "_total_stock_quantity",
+        "value": "7"
+      },
+      {
+        "id": 1248019,
+        "key": "_accessory_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1248020,
+        "key": "_specifications_display_attributes",
+        "value": "yes"
+      },
+      {
+        "id": 1248021,
+        "key": "_specifications_attributes_title",
+        "value": ""
+      },
+      {
+        "id": 1248022,
+        "key": "_specifications",
+        "value": ""
+      },
+      {
+        "id": 1248023,
+        "key": "slide_template",
+        "value": ""
+      },
+      {
+        "id": 1248024,
+        "key": "rs_page_bg_color",
+        "value": ""
+      },
+      {
+        "id": 1248025,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1248026,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1248027,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1248028,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1248029,
+        "key": "_yoast_wpseo_newssitemap-exclude",
+        "value": "off"
+      },
+      {
+        "id": 1248030,
+        "key": "_yoast_wpseo_newssitemap-genre",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1248031,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1248032,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1248033,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1248034,
+        "key": "_woocommerce_product_gallery_slider_enabled",
+        "value": ""
+      },
+      {
+        "id": 1248035,
+        "key": "_woocommerce_product_gallery_slider_archives_enabled",
+        "value": ""
+      },
+      {
+        "id": 1248036,
+        "key": "_yst_prominent_words_version",
+        "value": "1"
+      },
+      {
+        "id": 1248037,
+        "key": "_wc_min_points_earned",
+        "value": ""
+      },
+      {
+        "id": 1248038,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1248039,
+        "key": "_openpos_product_version_0",
+        "value": "1612517429"
+      },
+      {
+        "id": 1248040,
+        "key": "__post_views_count",
+        "value": "2252"
+      },
+      {
+        "id": 1248041,
+        "key": "_op_qty_warehouse_5703",
+        "value": ""
+      },
+      {
+        "id": 1248042,
+        "key": "_custom_accessory_group_id",
+        "value": ""
+      },
+      {
+        "id": 1248043,
+        "key": "custom_accessory_choose",
+        "value": ""
+      },
+      {
+        "id": 1248044,
+        "key": "_wc_facebook_sync_enabled",
+        "value": ""
+      },
+      {
+        "id": 1248045,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5188"
+      },
+      {
+        "id": 1248046,
+        "key": "_wp_page_template",
+        "value": "default"
+      },
+      {
+        "id": 1248047,
+        "key": "lws_woorewards_social_hash",
+        "value": "17c77149a87766a972da59c1ab796ca9"
+      },
+      {
+        "id": 1248048,
+        "key": "_vi_woo_product_variation_swatches_product_attribute",
+        "value": ""
+      },
+      {
+        "id": 1248052,
+        "key": "_wc_max_points_earned",
+        "value": ""
+      },
+      {
+        "id": 1248053,
+        "key": "_yoast_wpseo_videositemap-duration",
+        "value": ""
+      },
+      {
+        "id": 1248054,
+        "key": "_yoast_wpseo_videositemap-rating",
+        "value": ""
+      },
+      {
+        "id": 1248055,
+        "key": "mpd_my_post_viewed",
+        "value": ""
+      },
+      {
+        "id": 1248056,
+        "key": "_swatch_type",
+        "value": ""
+      },
+      {
+        "id": 1248057,
+        "key": "_wp_old_date",
+        "value": ""
+      },
+      {
+        "id": 1248058,
+        "key": "_enable_watermark",
+        "value": ""
+      },
+      {
+        "id": 1248059,
+        "key": "_video_url",
+        "value": ""
+      },
+      {
+        "id": 1248060,
+        "key": "_video_image_url",
+        "value": ""
+      },
+      {
+        "id": 1248065,
+        "key": "_nab_permalink",
+        "value": "https://www.spider3d.co.il/product-cat/product/%25d7%259e%25d7%25a4%25d7%2595%25d7%2597-%25d7%2591%25d7%259c%25d7%2590%25d7%2595%25d7%2595%25d7%25a8-%25d7%2591%25d7%25a2%25d7%259c-%25d7%259e%25d7%2590%25d7%2595%25d7%2595%25d7%25a8%25d7%25a8-%25d7%2598%25d7%2595%25d7%25a8%25d7%2591%25d7%2595-%25d7%25a7%25d7%2598%25d7%259f-%25d7%25a2%25d7%2591%25d7%2595%25d7%25a8-%25d7%259e/"
+      },
+      {
+        "id": 1248066,
+        "key": "_rocket_exclude_minify_html",
+        "value": ""
+      },
+      {
+        "id": 1248073,
+        "key": "_rocket_exclude_lazyload",
+        "value": ""
+      },
+      {
+        "id": 1248074,
+        "key": "_rocket_exclude_lazyload_iframes",
+        "value": ""
+      },
+      {
+        "id": 1248083,
+        "key": "_fgm2wc_old_link_id",
+        "value": ""
+      },
+      {
+        "id": 1248084,
+        "key": "_fgm2wc_imported",
+        "value": ""
+      },
+      {
+        "id": 1248091,
+        "key": "_vi_wad_aff_url",
+        "value": ""
+      },
+      {
+        "id": 1248092,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": ""
+      },
+      {
+        "id": 1248093,
+        "key": "_vi_wad_check_alive",
+        "value": ""
+      },
+      {
+        "id": 1248094,
+        "key": "_vi_wad_aliexpress_variation_id",
+        "value": ""
+      },
+      {
+        "id": 1248095,
+        "key": "_vi_wad_aliexpress_variation_attr",
+        "value": ""
+      },
+      {
+        "id": 1248104,
+        "key": "_wp_desired_post_slug",
+        "value": ""
+      },
+      {
+        "id": 1248125,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "description": "",
+          "availability_date": "",
+          "condition": "",
+          "gtin": "",
+          "gender": "",
+          "age_group": "",
+          "color": "",
+          "size": "",
+          "size_type": "",
+          "unit_pricing_measure": "",
+          "unit_pricing_base_measure": "",
+          "multipack": "",
+          "installment": "",
+          "material": "",
+          "pattern": "",
+          "adult": "",
+          "identifier_exists": "",
+          "adwords_grouping": "",
+          "adwords_labels": "",
+          "bing_category": "",
+          "delivery_label": "",
+          "transit_time_label": "",
+          "min_handling_time": "",
+          "max_handling_time": "",
+          "energy_efficiency_class": "",
+          "min_energy_efficiency_class": "",
+          "max_energy_efficiency_class": "",
+          "energy_label_image_link": "",
+          "cost_of_goods_sold": "",
+          "included_destination": "",
+          "excluded_destination": "",
+          "consumer_notice": "",
+          "product_highlight": "",
+          "product_detail": "",
+          "consumer_datasheet": "",
+          "product_fee": "",
+          "sell_on_google_quantity": "",
+          "purchase_quantity_limit": "",
+          "google_funded_promotion_eligibility": "",
+          "return_address_label": "",
+          "return_policy_label": "",
+          "custom_label_0": "",
+          "custom_label_1": "",
+          "custom_label_2": "",
+          "custom_label_3": "",
+          "custom_label_4": "",
+          "promotion_id": "",
+          "shippingprice": "",
+          "shippingcountryprice": "",
+          "shippingcountryserviceprice": "",
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1248126,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1248127,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1248128,
+        "key": "br_labels",
+        "value": {
+          "label_from_post": "",
+          "better_position": "1",
+          "content_type": "text",
+          "text": "Label",
+          "text_before": "",
+          "text_before_nl": "",
+          "text_after": "",
+          "text_after_nl": "",
+          "image": "",
+          "img_title": "",
+          "type": "label",
+          "padding_top": "",
+          "padding_horizontal": "",
+          "border_radius": "3",
+          "border_width": "",
+          "border_color": "",
+          "image_height": "",
+          "image_width": "",
+          "color_use": "1",
+          "color": "#f16543",
+          "font_color": "#ffffff",
+          "font_size": "14",
+          "line_height": "",
+          "position": "left",
+          "zindex": "90",
+          "data": [
+
+          ],
+          "tooltip_content": "",
+          "tooltip_image": "",
+          "tooltip_theme": "dark",
+          "tooltip_position": "top",
+          "tooltip_open_delay": "0",
+          "tooltip_close_delay": "0",
+          "tooltip_open_on": "click",
+          "tooltip_close_on_click": "",
+          "tooltip_use_arrow": "",
+          "tooltip_max_width": "300",
+          "template": "",
+          "div_custom_class": "",
+          "div_custom_css": "",
+          "span_custom_class": "",
+          "span_custom_css": "",
+          "b_custom_class": "",
+          "b_custom_css": "",
+          "i1_custom_class": "",
+          "i1_custom_css": "",
+          "i2_custom_class": "",
+          "i2_custom_css": "",
+          "i3_custom_class": "",
+          "i3_custom_css": "",
+          "i4_custom_class": "",
+          "i4_custom_css": "",
+          "discount_minus": "",
+          "border_radius_units": "px",
+          "padding_units": "px",
+          "padding_top_units": "px",
+          "padding_horizontal_units": "px",
+          "margin_units": "px",
+          "line_height_units": "px",
+          "image_height_units": "px",
+          "image_width_units": "px",
+          "font_size_units": "px",
+          "top_margin": "-10",
+          "right_margin": "-10",
+          "bottom_margin": "-10",
+          "left_margin": "-10",
+          "top_padding": "15",
+          "right_padding": "15",
+          "bottom_padding": "15",
+          "left_padding": "15",
+          "line": "1",
+          "custom_image": "",
+          "font_family": "ABeeZee"
+        }
+      },
+      {
+        "id": 1248129,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1248130,
+        "key": "berocket_post_order",
+        "value": "0"
+      },
+      {
+        "id": 1248134,
+        "key": "_rocket_exclude_defer_all_js",
+        "value": ""
+      },
+      {
+        "id": 1248149,
+        "key": "somdn_dlcount",
+        "value": ""
+      },
+      {
+        "id": 1248164,
+        "key": "_alg_wc_pif_enabled_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248165,
+        "key": "_alg_wc_pif_type_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248166,
+        "key": "_alg_wc_pif_required_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248167,
+        "key": "_alg_wc_pif_title_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248168,
+        "key": "_alg_wc_pif_placeholder_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248169,
+        "key": "_alg_wc_pif_default_value_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248170,
+        "key": "_alg_wc_pif_class_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248171,
+        "key": "_alg_wc_pif_style_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248172,
+        "key": "_alg_wc_pif_required_message_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248173,
+        "key": "_alg_wc_pif_input_restrictions_min_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248174,
+        "key": "_alg_wc_pif_input_restrictions_max_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248175,
+        "key": "_alg_wc_pif_input_restrictions_step_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248176,
+        "key": "_alg_wc_pif_input_restrictions_maxlength_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248177,
+        "key": "_alg_wc_pif_input_restrictions_pattern_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248178,
+        "key": "_alg_wc_pif_type_checkbox_yes_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248179,
+        "key": "_alg_wc_pif_type_checkbox_no_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248180,
+        "key": "_alg_wc_pif_type_file_accept_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248181,
+        "key": "_alg_wc_pif_type_file_wrong_type_msg_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248182,
+        "key": "_alg_wc_pif_type_file_max_size_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248183,
+        "key": "_alg_wc_pif_type_file_max_size_msg_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248184,
+        "key": "_alg_wc_pif_type_datepicker_format_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248185,
+        "key": "_alg_wc_pif_type_datepicker_mindate_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248186,
+        "key": "_alg_wc_pif_type_datepicker_maxdate_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248187,
+        "key": "_alg_wc_pif_type_datepicker_addyear_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248188,
+        "key": "_alg_wc_pif_type_datepicker_yearrange_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248189,
+        "key": "_alg_wc_pif_type_datepicker_firstday_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248190,
+        "key": "_alg_wc_pif_type_timepicker_format_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248191,
+        "key": "_alg_wc_pif_type_timepicker_interval_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248192,
+        "key": "_alg_wc_pif_type_color_allow_typing_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248193,
+        "key": "_alg_wc_pif_type_select_options_local_1",
+        "value": ""
+      },
+      {
+        "id": 1248194,
+        "key": "_alg_wc_pif_local_total_number",
+        "value": ""
+      },
+      {
+        "id": 1248209,
+        "key": "_rocket_exclude_minify_css",
+        "value": ""
+      },
+      {
+        "id": 1248210,
+        "key": "_rocket_exclude_minify_js",
+        "value": ""
+      },
+      {
+        "id": 1248211,
+        "key": "_rocket_exclude_async_css",
+        "value": ""
+      },
+      {
+        "id": 1248212,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+      {
+        "id": 81,
+        "name": "pa_v",
+        "options": [
+          {
+            "term_id": 1591,
+            "name": "12V לדוגמא לCR-10)",
+            "slug": "bb-12vcr-10",
+            "term_group": 0,
+            "term_taxonomy_id": 1591,
+            "taxonomy": "pa_v",
+            "description": "",
+            "parent": 0,
+            "count": 3,
+            "filter": "raw",
+            "term_order": "0"
+          },
+          {
+            "term_id": 1592,
+            "name": "24V (לדוגמא: לEnder3)",
+            "slug": "b8-24vender3",
+            "term_group": 0,
+            "term_taxonomy_id": 1592,
+            "taxonomy": "pa_v",
+            "description": "",
+            "parent": 0,
+            "count": 3,
+            "filter": "raw",
+            "term_order": "0"
+          }
+        ],
+        "position": 0,
+        "visible": true,
+        "variation": true,
+        "is_visible": 1,
+        "is_variation": 1,
+        "is_taxonomy": 1,
+        "value": "",
+        "label": "בחר V מתאים"
+      },
+      {
+        "id": 0,
+        "name": "QR-Code",
+        "options": [
+
+        ],
+        "position": 1,
+        "visible": false,
+        "variation": false,
+        "is_visible": 0,
+        "is_variation": 0,
+        "is_taxonomy": 0,
+        "value": "",
+        "label": "QR-Code"
+      }
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/28692"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 27124,
+    "name": "בלוק חימום אלומיניום מקורי למדפסות תלת מימד ארטילרי Artillery Heat Block",
+    "slug": "%d7%91%d7%9c%d7%95%d7%a7-%d7%97%d7%99%d7%9e%d7%95%d7%9d-%d7%90%d7%9c%d7%95%d7%9e%d7%99%d7%a0%d7%99%d7%95%d7%9d-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-%d7%9c%d7%9e%d7%93%d7%a4%d7%a1%d7%95%d7%aa-%d7%aa%d7%9c",
+    "permalink": "https://www.spider3d.co.il/shop/%D7%AA%D7%95%D7%AA%D7%97%D7%A0%D7%99%D7%9D-sidewinder-x1%D7%92%D7%90%D7%95%D7%9F-%D7%9E%D7%A7%D7%95%D7%A8%D7%99-%D7%94%D7%97%D7%9C%D7%A4%D7%AA-%D7%93%D7%95%D7%93-%D7%91%D7%9C%D7%95%D7%A7/",
+    "date_created": "2021-02-01T12:22:57",
+    "date_created_gmt": "2021-02-01T09:22:57",
+    "date_modified": "2021-04-23T09:39:31",
+    "date_modified_gmt": "2021-04-23T06:39:31",
+    "type": "variable",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<p>במקרה ובו נהרסת לכם ההברגה או שהבלוק מפוייח ומלוכלך ובכך משפיע על איכות ההדפסה - יש להחליף את הבלוק לבלוק חדש.<br />\nזהו בלוק מקורי של חברת ארטילרי למדפסת SW-X1 / GENIUS<br />\nלתוך בלוק זה מוכנס ראש חימום, מד טמפרטורה ודיזה.<br />\n<a href=\"https://youtu.be/h2w0Hb4suWs\">אז איך מחליפים את בלוק החימום?</a></p>\n<figure style=\"width: 700px\" class=\"wp-caption aligncenter\"><img src=\"https://ae01.alicdn.com/kf/H9269aed4c2c045bda9ca2023b76e4565E.jpg\" alt=\"בלוק חימום למדפסות ארטילרי\" width=\"700\" height=\"1200\" /><figcaption class=\"wp-caption-text\">Artilery original spare parts</figcaption></figure>\n<p><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/Hc605298bdbac4f1388d0e879b30e2262u.jpg\" width=\"700\" /></p>\n",
+    "short_description": "<p>בלוק חימום אלומיניום מקורי למדפסת תלת מימד Artillery<br />\nבלוק חליפי למדפסות תלת מימד.</p>\n",
+    "sku": "4001091398793",
+    "price": "39",
+    "regular_price": "49",
+    "sale_price": "39",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 3,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": true,
+    "stock_quantity": 10,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": 5,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5188,
+        "name": "חלפים מקוריים Artillery Genius",
+        "slug": "spare-parts-artillery-genius"
+      },
+      {
+        "id": 5189,
+        "name": "חלפים מקוריים Artillery SideWinder",
+        "slug": "spare-parts-artillery-sw-x1"
+      },
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 29034,
+        "date_created": "2021-04-11T11:24:38",
+        "date_created_gmt": "2021-04-11T05:24:38",
+        "date_modified": "2021-04-11T11:26:41",
+        "date_modified_gmt": "2021-04-11T05:26:41",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2021/02/Artillery-Sidewinder-X1-Heat-Block-02-00026-25223_1.jpg",
+        "name": "Artillery-Sidewinder-X1-Heat-Block-02-00026-25223_1",
+        "alt": "HEAT BLOCK מקורי של ארטילרי"
+      },
+      {
+        "id": 29033,
+        "date_created": "2021-04-11T11:24:17",
+        "date_created_gmt": "2021-04-11T05:24:17",
+        "date_modified": "2021-04-11T11:24:17",
+        "date_modified_gmt": "2021-04-11T05:24:17",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2021/02/Artillery-Sidewinder-X1-Heat-Block-02-00026-25223.jpg",
+        "name": "Artillery-Sidewinder-X1-Heat-Block-02-00026-25223",
+        "alt": ""
+      }
+    ],
+    "attributes": [
+      {
+        "id": 148,
+        "name": "מותג",
+        "position": 0,
+        "visible": true,
+        "variation": false,
+        "options": [
+          "Artillery"
+        ]
+      },
+      {
+        "id": 0,
+        "name": "מדפסת",
+        "position": 1,
+        "visible": true,
+        "variation": true,
+        "options": [
+          "GENIUS",
+          "SW-X1"
+        ]
+      }
+    ],
+    "default_attributes": [
+      {
+        "id": 0,
+        "name": "מדפסת",
+        "option": "SW-X1"
+      }
+    ],
+    "variations": [
+      27129,
+      27130
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 43,
+    "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>49</bdi></span></del> <ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>39</bdi></span></ins>",
+    "related_ids": [
+      26340,
+      26298,
+      26244,
+      26294,
+      26687
+    ],
+    "meta_data": [
+      {
+        "id": 1186103,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": "4001091398793"
+      },
+      {
+        "id": 1186104,
+        "key": "_vi_wad_aliexpress_variation_id",
+        "value": "10000014312603744"
+      },
+      {
+        "id": 1186120,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1186202,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1186255,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1186256,
+        "key": "_op_barcode",
+        "value": ""
+      },
+      {
+        "id": 1186257,
+        "key": "_op_cost_price",
+        "value": [
+          "",
+          ""
+        ]
+      },
+      {
+        "id": 1186258,
+        "key": "_op_weight_base_pricing",
+        "value": "no"
+      },
+      {
+        "id": 1186262,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1186263,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1186264,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1186265,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1186266,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1186267,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1186268,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1186269,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1186270,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1186271,
+        "key": "__post_views_count",
+        "value": "1352"
+      },
+      {
+        "id": 1186272,
+        "key": "lws_woorewards_social_hash",
+        "value": "02656331eddec3ca8799cf6bf280d1db"
+      },
+      {
+        "id": 1186283,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1260705,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+      {
+        "id": 148,
+        "name": "pa_brand",
+        "options": [
+          {
+            "term_id": 5002,
+            "name": "Artillery",
+            "slug": "artillery",
+            "term_group": 0,
+            "term_taxonomy_id": 5002,
+            "taxonomy": "pa_brand",
+            "description": "",
+            "parent": 0,
+            "count": 4,
+            "filter": "raw",
+            "term_order": "0"
+          }
+        ],
+        "position": 0,
+        "visible": true,
+        "variation": false,
+        "is_visible": 1,
+        "is_variation": 0,
+        "is_taxonomy": 1,
+        "value": "",
+        "label": "מותג"
+      },
+      {
+        "id": 0,
+        "name": "מדפסת",
+        "options": [
+
+        ],
+        "position": 1,
+        "visible": true,
+        "variation": true,
+        "is_visible": 1,
+        "is_variation": 1,
+        "is_taxonomy": 0,
+        "value": "",
+        "label": "מדפסת"
+      }
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/27124"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 26792,
+    "name": "לוח אם למסך מגע מקורי של חברת ארטילרי Touch screen motherboard למדפסות SIDEWINDER X1 & GENIUS",
+    "slug": "%d7%9c%d7%95%d7%97-%d7%90%d7%9d-%d7%9c%d7%9e%d7%a1%d7%9a-%d7%9e%d7%92%d7%a2-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-%d7%a9%d7%9c-%d7%97%d7%91%d7%a8%d7%aa-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-touch-screen",
+    "permalink": "https://www.spider3d.co.il/shop/%D7%92%D7%99%D7%A8-%D7%9C%D7%95%D7%97-%D7%90%D7%9D-%D7%9E%D7%A7%D7%95%D7%A8%D7%99-%D7%9C%D7%9E%D7%A1%D7%9A-%D7%9E%D7%92%D7%A2-%D7%9E%D7%A7%D7%95%D7%A8%D7%99-%D7%A9%D7%9C-%D7%97%D7%91%D7%A8%D7%AA-%D7%90%D7%A8%D7%98%D7%99%D7%9C%D7%A8%D7%99-%D7%9C%D7%9E%D7%93%D7%A4%D7%A1%D7%95%D7%AA-sidewinder-x1-genius/",
+    "date_created": "2021-01-20T13:12:07",
+    "date_created_gmt": "2021-01-20T10:12:07",
+    "date_modified": "2021-04-23T09:40:20",
+    "date_modified_gmt": "2021-04-23T06:40:20",
+    "type": "simple",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<figure id=\"attachment_26793\" aria-describedby=\"caption-attachment-26793\" style=\"width: 550px\" class=\"wp-caption aligncenter\"><img class=\"size-full wp-image-26793\" src=\"https://www.spider3d.co.il/wp-content/uploads/2021/01/ezgif.com-gif-maker.jpg\" alt=\"Touch Screen Motheboard atrillery original\" width=\"550\" height=\"550\" /><figcaption id=\"caption-attachment-26793\" class=\"wp-caption-text\">Touch Screen Motheboard atrillery original</figcaption></figure>\n",
+    "short_description": "",
+    "sku": "",
+    "price": "89",
+    "regular_price": "110",
+    "sale_price": "89",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 0,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": true,
+    "stock_quantity": 10,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 26793,
+        "date_created": "2021-01-20T16:16:21",
+        "date_created_gmt": "2021-01-20T10:16:21",
+        "date_modified": "2021-01-20T16:17:11",
+        "date_modified_gmt": "2021-01-20T10:17:11",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2021/01/ezgif.com-gif-maker.jpg",
+        "name": "Touch Screen Motheboard atrillery original",
+        "alt": "Touch Screen Motheboard atrillery original"
+      }
+    ],
+    "attributes": [
+
+    ],
+    "default_attributes": [
+
+    ],
+    "variations": [
+
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 47,
+    "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>110</bdi></span></del> <ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>89</bdi></span></ins>",
+    "related_ids": [
+      26340,
+      25704,
+      26681,
+      26228,
+      26187
+    ],
+    "meta_data": [
+      {
+        "id": 1176208,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1176209,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1176210,
+        "key": "_op_barcode",
+        "value": "00000026792"
+      },
+      {
+        "id": 1176211,
+        "key": "_op_cost_price",
+        "value": ""
+      },
+      {
+        "id": 1176212,
+        "key": "_op_weight_base_pricing",
+        "value": "no"
+      },
+      {
+        "id": 1176213,
+        "key": "_op_qty_warehouse_5703",
+        "value": ""
+      },
+      {
+        "id": 1176214,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1176215,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1176216,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1176217,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1176218,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1176219,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1176220,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1176221,
+        "key": "_yoast_wpseo_content_score",
+        "value": "60"
+      },
+      {
+        "id": 1176222,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1176223,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1176224,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1176225,
+        "key": "__post_views_count",
+        "value": "1086"
+      },
+      {
+        "id": 1176226,
+        "key": "lws_woorewards_social_hash",
+        "value": "39b1d3d4f43e051d63b2328ea1352dc2"
+      },
+      {
+        "id": 1269748,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/26792"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 26748,
+    "name": "דיזה וולקנו מקורית של המותג ארטילרי עשויה פליז volcano nozzle במידות שונות",
+    "slug": "%d7%93%d7%99%d7%96%d7%94-%d7%95%d7%95%d7%9c%d7%a7%d7%a0%d7%95-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%aa-%d7%a9%d7%9c-%d7%94%d7%9e%d7%95%d7%aa%d7%92-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-%d7%a2%d7%a9",
+    "permalink": "https://www.spider3d.co.il/shop/%D7%93%D7%99%D7%96%D7%94-%D7%95%D7%95%D7%9C%D7%A7%D7%A0%D7%95-artillery-original-volcano-nozzle-%D7%9E-%D7%A4%D7%9C%D7%99%D7%96/",
+    "date_created": "2021-01-18T18:42:49",
+    "date_created_gmt": "2021-01-18T15:42:49",
+    "date_modified": "2021-06-28T13:56:54",
+    "date_modified_gmt": "2021-06-28T10:56:54",
+    "type": "variable",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<p><span style=\"font-size: medium;\">דיזה מיוחדת לאקסטרודר וולקנו<br />\n<strong>מתאימה למדפסות ארטילרי סיידוינדר X1 ו- ארטילרי ג'יניוס</strong><br />\n</span><span style=\"font-size: medium;\">ראש הדפסה וולקנו המתאים לעבודה עם חומרים עמידים בטמפרטורה גבוהה או להדפסה מהירה במיוחד<br />\n</span>דיזה וולקנו היא דיזה ייחודית, היא <strong>ארוכה וחמה לכל אורכה</strong>, כך שהחומר לא מצליח לקרר אותה כמו שקורה בדיזה הסטנדרטית.</p>\n<p><img class=\"wp-image-26759 aligncenter\" src=\"https://www.spider3d.co.il/wp-content/uploads/2021/01/דיזה-וולקנו.png\" alt=\"דיזה ארטילרי מקורי וולקנו פליז\" width=\"650\" height=\"650\" /></p>\n<p>&nbsp;</p>\n",
+    "short_description": "<p dir=\"rtl\"><span style=\"font-size: medium;\">דיזה וולקנו היא דיזה מיוחדת המתאימה לראש הדפסה &#8211; אקסטרודר מסוג <a href=\"https://www.spider3d.co.il/%D7%90%D7%A7%D7%A1%D7%98%D7%A8%D7%95%D7%93%D7%A8-Volcano-%D7%A2%D7%9D-%D7%9E%D7%90%D7%95%D7%95%D7%A8%D7%A8?ref=1\">וולקנו</a>.<br />\n</span>דיזה וולקנו הינה באורך של כ-16מ&#8221;מ ואילו קוטר הדיזה הינו במידות שונות (יש לבחור במידה הרלוונטית)<br />\nמתאים למדפסות <strong>ארטילרי</strong> <strong>Artillery</strong> ומדפסות בעלות ראש וולקנו</p>\n",
+    "sku": "AA1-1",
+    "price": "19",
+    "regular_price": "29",
+    "sale_price": "19",
+    "date_on_sale_from": "2020-02-21T00:00:00",
+    "date_on_sale_from_gmt": "2020-02-20T21:00:00",
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 50,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": 0,
+    "download_expiry": 0,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": true,
+    "stock_quantity": 21,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5188,
+        "name": "חלפים מקוריים Artillery Genius",
+        "slug": "spare-parts-artillery-genius"
+      },
+      {
+        "id": 5189,
+        "name": "חלפים מקוריים Artillery SideWinder",
+        "slug": "spare-parts-artillery-sw-x1"
+      },
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      },
+      {
+        "id": 2342,
+        "name": "שדרוגים וחלפים למדפסות",
+        "slug": "%d7%a9%d7%93%d7%a8%d7%95%d7%92%d7%99%d7%9d-%d7%95%d7%97%d7%9c%d7%a4%d7%99%d7%9d-%d7%9c%d7%9e%d7%93%d7%a4%d7%a1%d7%95%d7%aa-%d7%aa%d7%9c%d7%aa-%d7%9e%d7%99%d7%9e%d7%93"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 26759,
+        "date_created": "2021-01-18T21:50:11",
+        "date_created_gmt": "2021-01-18T15:50:11",
+        "date_modified": "2021-01-18T21:50:44",
+        "date_modified_gmt": "2021-01-18T15:50:44",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2021/01/דיזה-וולקנו.png",
+        "name": "דיזה ארטילרי מקורי וולקנו פליז",
+        "alt": "דיזה ארטילרי מקורי וולקנו פליז"
+      }
+    ],
+    "attributes": [
+      {
+        "id": 0,
+        "name": "QR-Code",
+        "position": 0,
+        "visible": false,
+        "variation": false,
+        "options": [
+          "VOLCANOZZLE"
+        ]
+      },
+      {
+        "id": 137,
+        "name": "מידת-חור",
+        "position": 1,
+        "visible": true,
+        "variation": true,
+        "options": [
+          "חור 0.2 מ\"מ",
+          "חור 0.25 מ\"מ",
+          "חור 0.3 מ\"מ",
+          "חור 0.4 מ\"מ",
+          "חור 0.5 מ\"מ",
+          "חור 0.6 מ\"מ",
+          "חור 0.8 מ\"מ",
+          "חור 1 מ\"מ"
+        ]
+      }
+    ],
+    "default_attributes": [
+      {
+        "id": 137,
+        "name": "מידת-חור",
+        "option": "%d7%97%d7%95%d7%a8-0-4-%d7%9e%d7%9e"
+      }
+    ],
+    "variations": [
+      26749,
+      26750,
+      26751,
+      26752,
+      26753,
+      26754,
+      26755
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 394,
+    "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>19</bdi></span> &ndash; <span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>29</bdi></span>",
+    "related_ids": [
+      5928,
+      6254,
+      6580,
+      6553,
+      6022
+    ],
+    "meta_data": [
+      {
+        "id": 1173286,
+        "key": "_fgm2wc_old_product_id",
+        "value": "1182"
+      },
+      {
+        "id": 1173287,
+        "key": "_product_attributes_values",
+        "value": {
+          "pa_": {
+            "0.4": {
+              "price": "0.0000",
+              "sku": "",
+              "stock": "25"
+            }
+          }
+        }
+      },
+      {
+        "id": 1173288,
+        "key": "_min_variation_price",
+        "value": "26"
+      },
+      {
+        "id": 1173289,
+        "key": "_max_variation_price",
+        "value": "26"
+      },
+      {
+        "id": 1173290,
+        "key": "_vcv-sourceChecksum",
+        "value": "60080007145db54303f47e44cca73b77"
+      },
+      {
+        "id": 1173291,
+        "key": "vcvSourceCssFileUrl",
+        "value": ""
+      },
+      {
+        "id": 1173292,
+        "key": "_vcv-globalCssMigrated",
+        "value": "1"
+      },
+      {
+        "id": 1173293,
+        "key": "slide_template",
+        "value": ""
+      },
+      {
+        "id": 1173294,
+        "key": "rs_page_bg_color",
+        "value": ""
+      },
+      {
+        "id": 1173295,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1173296,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1173297,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1173298,
+        "key": "_yoast_wpseo_newssitemap-exclude",
+        "value": "off"
+      },
+      {
+        "id": 1173299,
+        "key": "_yoast_wpseo_newssitemap-genre",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1173300,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1173301,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1173302,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1173303,
+        "key": "_woocommerce_product_gallery_slider_enabled",
+        "value": ""
+      },
+      {
+        "id": 1173304,
+        "key": "_woocommerce_product_gallery_slider_archives_enabled",
+        "value": ""
+      },
+      {
+        "id": 1173305,
+        "key": "_op_barcode",
+        "value": ""
+      },
+      {
+        "id": 1173306,
+        "key": "_op_cost_price",
+        "value": ""
+      },
+      {
+        "id": 1173307,
+        "key": "_op_weight_base_pricing",
+        "value": "no"
+      },
+      {
+        "id": 1173308,
+        "key": "_product_layout",
+        "value": ""
+      },
+      {
+        "id": 1173309,
+        "key": "_product_style",
+        "value": ""
+      },
+      {
+        "id": 1173310,
+        "key": "_total_stock_quantity",
+        "value": "24"
+      },
+      {
+        "id": 1173311,
+        "key": "_accessory_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1173312,
+        "key": "_specifications_display_attributes",
+        "value": "yes"
+      },
+      {
+        "id": 1173313,
+        "key": "_specifications_attributes_title",
+        "value": ""
+      },
+      {
+        "id": 1173314,
+        "key": "_specifications",
+        "value": ""
+      },
+      {
+        "id": 1173315,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1173316,
+        "key": "_op_qty_warehouse_5703",
+        "value": ""
+      },
+      {
+        "id": 1173317,
+        "key": "_mandatory_accessory_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1173318,
+        "key": "_optional_accessory_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1173319,
+        "key": "_vi_woo_product_variation_swatches_product_attribute",
+        "value": "{\"attribute_type\":{\"QR-Code\":\"button\"},\"attribute_profile\":{\"QR-Code\":\"vi_wpvs_button_design\"},\"attribute_color_separator\":{\"QR-Code\":[\"1\"]},\"attribute_colors\":{\"QR-Code\":[[\"\"]]},\"attribute_img_ids\":{\"QR-Code\":[\"\"]},\"attribute_display_type\":{\"QR-Code\":\"vertical\"}}"
+      },
+      {
+        "id": 1173320,
+        "key": "_yst_prominent_words_version",
+        "value": "1"
+      },
+      {
+        "id": 1173321,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1173322,
+        "key": "_custom_accessory_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1173323,
+        "key": "_custom_accessory_group_id",
+        "value": ""
+      },
+      {
+        "id": 1173324,
+        "key": "custom_accessory_choose",
+        "value": ""
+      },
+      {
+        "id": 1173325,
+        "key": "_wc_max_points_earned",
+        "value": ""
+      },
+      {
+        "id": 1173326,
+        "key": "_wc_min_points_earned",
+        "value": ""
+      },
+      {
+        "id": 1173327,
+        "key": "_openpos_product_version_0",
+        "value": "1613665952"
+      },
+      {
+        "id": 1173328,
+        "key": "__post_views_count",
+        "value": "2701"
+      },
+      {
+        "id": 1173329,
+        "key": "lws_woorewards_social_hash",
+        "value": "16b06cd80c59a00a0afb0eb2fb245781"
+      },
+      {
+        "id": 1173330,
+        "key": "_wp_page_template",
+        "value": "default"
+      },
+      {
+        "id": 1173331,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "description": "",
+          "availability_date": "",
+          "condition": "",
+          "gtin": "",
+          "gender": "",
+          "age_group": "",
+          "color": "",
+          "size": "",
+          "size_type": "",
+          "unit_pricing_measure": "",
+          "unit_pricing_base_measure": "",
+          "multipack": "",
+          "installment": "",
+          "material": "",
+          "pattern": "",
+          "adult": "",
+          "identifier_exists": "",
+          "adwords_grouping": "",
+          "adwords_labels": "",
+          "bing_category": "",
+          "delivery_label": "",
+          "transit_time_label": "",
+          "min_handling_time": "",
+          "max_handling_time": "",
+          "energy_efficiency_class": "",
+          "min_energy_efficiency_class": "",
+          "max_energy_efficiency_class": "",
+          "energy_label_image_link": "",
+          "cost_of_goods_sold": "",
+          "included_destination": "",
+          "excluded_destination": "",
+          "consumer_notice": "",
+          "product_highlight": "",
+          "product_detail": "",
+          "consumer_datasheet": "",
+          "product_fee": "",
+          "sell_on_google_quantity": "",
+          "purchase_quantity_limit": "",
+          "google_funded_promotion_eligibility": "",
+          "return_address_label": "",
+          "return_policy_label": "",
+          "custom_label_0": "",
+          "custom_label_1": "",
+          "custom_label_2": "",
+          "custom_label_3": "",
+          "custom_label_4": "",
+          "promotion_id": "",
+          "shippingprice": "",
+          "shippingcountryprice": "",
+          "shippingcountryserviceprice": "",
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1173332,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1173333,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1173334,
+        "key": "_wc_facebook_sync_enabled",
+        "value": ""
+      },
+      {
+        "id": 1173335,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1173339,
+        "key": "_yoast_wpseo_videositemap-duration",
+        "value": ""
+      },
+      {
+        "id": 1173340,
+        "key": "_yoast_wpseo_videositemap-rating",
+        "value": ""
+      },
+      {
+        "id": 1173341,
+        "key": "mpd_my_post_viewed",
+        "value": ""
+      },
+      {
+        "id": 1173342,
+        "key": "_swatch_type",
+        "value": ""
+      },
+      {
+        "id": 1173343,
+        "key": "_wp_old_date",
+        "value": ""
+      },
+      {
+        "id": 1173344,
+        "key": "_enable_watermark",
+        "value": ""
+      },
+      {
+        "id": 1173345,
+        "key": "_video_url",
+        "value": ""
+      },
+      {
+        "id": 1173346,
+        "key": "_video_image_url",
+        "value": ""
+      },
+      {
+        "id": 1173351,
+        "key": "_nab_permalink",
+        "value": "https://www.spider3d.co.il/product-cat/product/%D7%93%D7%99%D7%96%D7%94-%D7%95%D7%95%D7%9C%D7%A7%D7%A0%D7%95-%D7%A4%D7%9C%D7%99%D7%96/"
+      },
+      {
+        "id": 1173352,
+        "key": "_rocket_exclude_minify_html",
+        "value": ""
+      },
+      {
+        "id": 1173359,
+        "key": "_rocket_exclude_lazyload",
+        "value": ""
+      },
+      {
+        "id": 1173360,
+        "key": "_rocket_exclude_lazyload_iframes",
+        "value": ""
+      },
+      {
+        "id": 1173369,
+        "key": "_fgm2wc_old_link_id",
+        "value": ""
+      },
+      {
+        "id": 1173370,
+        "key": "_fgm2wc_imported",
+        "value": ""
+      },
+      {
+        "id": 1173377,
+        "key": "_vi_wad_aff_url",
+        "value": ""
+      },
+      {
+        "id": 1173378,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": ""
+      },
+      {
+        "id": 1173379,
+        "key": "_vi_wad_check_alive",
+        "value": ""
+      },
+      {
+        "id": 1173380,
+        "key": "_vi_wad_aliexpress_variation_id",
+        "value": ""
+      },
+      {
+        "id": 1173381,
+        "key": "_vi_wad_aliexpress_variation_attr",
+        "value": ""
+      },
+      {
+        "id": 1173390,
+        "key": "_wp_desired_post_slug",
+        "value": ""
+      },
+      {
+        "id": 1173411,
+        "key": "br_labels",
+        "value": {
+          "label_from_post": "",
+          "better_position": "1",
+          "content_type": "text",
+          "text": "Label",
+          "text_before": "",
+          "text_before_nl": "",
+          "text_after": "",
+          "text_after_nl": "",
+          "image": "",
+          "img_title": "",
+          "type": "label",
+          "padding_top": "",
+          "padding_horizontal": "",
+          "border_radius": "3",
+          "border_width": "",
+          "border_color": "",
+          "image_height": "",
+          "image_width": "",
+          "color_use": "1",
+          "color": "#f16543",
+          "font_color": "#ffffff",
+          "font_size": "14",
+          "line_height": "",
+          "position": "left",
+          "zindex": "90",
+          "data": [
+
+          ],
+          "tooltip_content": "",
+          "tooltip_image": "",
+          "tooltip_theme": "dark",
+          "tooltip_position": "top",
+          "tooltip_open_delay": "0",
+          "tooltip_close_delay": "0",
+          "tooltip_open_on": "click",
+          "tooltip_close_on_click": "",
+          "tooltip_use_arrow": "",
+          "tooltip_max_width": "300",
+          "template": "",
+          "div_custom_class": "",
+          "div_custom_css": "",
+          "span_custom_class": "",
+          "span_custom_css": "",
+          "b_custom_class": "",
+          "b_custom_css": "",
+          "i1_custom_class": "",
+          "i1_custom_css": "",
+          "i2_custom_class": "",
+          "i2_custom_css": "",
+          "i3_custom_class": "",
+          "i3_custom_css": "",
+          "i4_custom_class": "",
+          "i4_custom_css": "",
+          "discount_minus": "",
+          "border_radius_units": "px",
+          "padding_units": "px",
+          "padding_top_units": "px",
+          "padding_horizontal_units": "px",
+          "margin_units": "px",
+          "line_height_units": "px",
+          "image_height_units": "px",
+          "image_width_units": "px",
+          "font_size_units": "px",
+          "top_margin": "-10",
+          "right_margin": "-10",
+          "bottom_margin": "-10",
+          "left_margin": "-10",
+          "top_padding": "15",
+          "right_padding": "15",
+          "bottom_padding": "15",
+          "left_padding": "15",
+          "line": "1",
+          "custom_image": "",
+          "font_family": "ABeeZee"
+        }
+      },
+      {
+        "id": 1173412,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1173413,
+        "key": "berocket_post_order",
+        "value": "0"
+      },
+      {
+        "id": 1173417,
+        "key": "_rocket_exclude_defer_all_js",
+        "value": ""
+      },
+      {
+        "id": 1173432,
+        "key": "somdn_dlcount",
+        "value": ""
+      },
+      {
+        "id": 1173447,
+        "key": "_alg_wc_pif_enabled_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173448,
+        "key": "_alg_wc_pif_type_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173449,
+        "key": "_alg_wc_pif_required_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173450,
+        "key": "_alg_wc_pif_title_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173451,
+        "key": "_alg_wc_pif_placeholder_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173452,
+        "key": "_alg_wc_pif_default_value_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173453,
+        "key": "_alg_wc_pif_class_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173454,
+        "key": "_alg_wc_pif_style_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173455,
+        "key": "_alg_wc_pif_required_message_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173456,
+        "key": "_alg_wc_pif_input_restrictions_min_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173457,
+        "key": "_alg_wc_pif_input_restrictions_max_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173458,
+        "key": "_alg_wc_pif_input_restrictions_step_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173459,
+        "key": "_alg_wc_pif_input_restrictions_maxlength_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173460,
+        "key": "_alg_wc_pif_input_restrictions_pattern_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173461,
+        "key": "_alg_wc_pif_type_checkbox_yes_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173462,
+        "key": "_alg_wc_pif_type_checkbox_no_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173463,
+        "key": "_alg_wc_pif_type_file_accept_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173464,
+        "key": "_alg_wc_pif_type_file_wrong_type_msg_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173465,
+        "key": "_alg_wc_pif_type_file_max_size_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173466,
+        "key": "_alg_wc_pif_type_file_max_size_msg_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173467,
+        "key": "_alg_wc_pif_type_datepicker_format_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173468,
+        "key": "_alg_wc_pif_type_datepicker_mindate_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173469,
+        "key": "_alg_wc_pif_type_datepicker_maxdate_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173470,
+        "key": "_alg_wc_pif_type_datepicker_addyear_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173471,
+        "key": "_alg_wc_pif_type_datepicker_yearrange_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173472,
+        "key": "_alg_wc_pif_type_datepicker_firstday_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173473,
+        "key": "_alg_wc_pif_type_timepicker_format_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173474,
+        "key": "_alg_wc_pif_type_timepicker_interval_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173475,
+        "key": "_alg_wc_pif_type_color_allow_typing_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173476,
+        "key": "_alg_wc_pif_type_select_options_local_1",
+        "value": ""
+      },
+      {
+        "id": 1173477,
+        "key": "_alg_wc_pif_local_total_number",
+        "value": ""
+      },
+      {
+        "id": 1173492,
+        "key": "_rocket_exclude_minify_css",
+        "value": ""
+      },
+      {
+        "id": 1173493,
+        "key": "_rocket_exclude_minify_js",
+        "value": ""
+      },
+      {
+        "id": 1173494,
+        "key": "_rocket_exclude_async_css",
+        "value": ""
+      },
+      {
+        "id": 1173495,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+      {
+        "id": 0,
+        "name": "QR-Code",
+        "options": [
+
+        ],
+        "position": 0,
+        "visible": false,
+        "variation": false,
+        "is_visible": 0,
+        "is_variation": 0,
+        "is_taxonomy": 0,
+        "value": "",
+        "label": "QR-Code"
+      },
+      {
+        "id": 137,
+        "name": "pa_מידת-חור",
+        "options": [
+          {
+            "term_id": 2452,
+            "name": "חור 0.2 מ\"מ",
+            "slug": "%d7%97%d7%95%d7%a8-0-2-%d7%9e%d7%9e",
+            "term_group": 0,
+            "term_taxonomy_id": 2452,
+            "taxonomy": "pa_מידת-חור",
+            "description": "",
+            "parent": 0,
+            "count": 6,
+            "filter": "raw",
+            "term_order": "0"
+          },
+          {
+            "term_id": 5146,
+            "name": "חור 0.25 מ\"מ",
+            "slug": "%d7%97%d7%95%d7%a8-0-25-%d7%9e%d7%9e",
+            "term_group": 0,
+            "term_taxonomy_id": 5146,
+            "taxonomy": "pa_מידת-חור",
+            "description": "",
+            "parent": 0,
+            "count": 3,
+            "filter": "raw",
+            "term_order": "0"
+          },
+          {
+            "term_id": 2453,
+            "name": "חור 0.3 מ\"מ",
+            "slug": "%d7%97%d7%95%d7%a8-0-3-%d7%9e%d7%9e",
+            "term_group": 0,
+            "term_taxonomy_id": 2453,
+            "taxonomy": "pa_מידת-חור",
+            "description": "",
+            "parent": 0,
+            "count": 6,
+            "filter": "raw",
+            "term_order": "0"
+          },
+          {
+            "term_id": 2454,
+            "name": "חור 0.4 מ\"מ",
+            "slug": "%d7%97%d7%95%d7%a8-0-4-%d7%9e%d7%9e",
+            "term_group": 0,
+            "term_taxonomy_id": 2454,
+            "taxonomy": "pa_מידת-חור",
+            "description": "",
+            "parent": 0,
+            "count": 6,
+            "filter": "raw",
+            "term_order": "0"
+          },
+          {
+            "term_id": 2455,
+            "name": "חור 0.5 מ\"מ",
+            "slug": "%d7%97%d7%95%d7%a8-0-5-%d7%9e%d7%9e",
+            "term_group": 0,
+            "term_taxonomy_id": 2455,
+            "taxonomy": "pa_מידת-חור",
+            "description": "",
+            "parent": 0,
+            "count": 6,
+            "filter": "raw",
+            "term_order": "0"
+          },
+          {
+            "term_id": 2456,
+            "name": "חור 0.6 מ\"מ",
+            "slug": "%d7%97%d7%95%d7%a8-0-6-%d7%9e%d7%9e",
+            "term_group": 0,
+            "term_taxonomy_id": 2456,
+            "taxonomy": "pa_מידת-חור",
+            "description": "",
+            "parent": 0,
+            "count": 6,
+            "filter": "raw",
+            "term_order": "0"
+          },
+          {
+            "term_id": 2457,
+            "name": "חור 0.8 מ\"מ",
+            "slug": "%d7%97%d7%95%d7%a8-0-8-%d7%9e%d7%9e",
+            "term_group": 0,
+            "term_taxonomy_id": 2457,
+            "taxonomy": "pa_מידת-חור",
+            "description": "",
+            "parent": 0,
+            "count": 6,
+            "filter": "raw",
+            "term_order": "0"
+          },
+          {
+            "term_id": 2458,
+            "name": "חור 1 מ\"מ",
+            "slug": "%d7%97%d7%95%d7%a8-1-%d7%9e%d7%9e",
+            "term_group": 0,
+            "term_taxonomy_id": 2458,
+            "taxonomy": "pa_מידת-חור",
+            "description": "",
+            "parent": 0,
+            "count": 6,
+            "filter": "raw",
+            "term_order": "0"
+          }
+        ],
+        "position": 1,
+        "visible": true,
+        "variation": true,
+        "is_visible": 1,
+        "is_variation": 1,
+        "is_taxonomy": 1,
+        "value": "",
+        "label": "מידת חור"
+      }
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/26748"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 26687,
+    "name": "גיר אקסטרודר מקורי של חברת ארטילרי למדפסות SIDEWINDER X1 & GENIUS",
+    "slug": "%d7%92%d7%99%d7%a8-%d7%90%d7%a7%d7%a1%d7%98%d7%a8%d7%95%d7%93%d7%a8-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-%d7%a9%d7%9c-%d7%97%d7%91%d7%a8%d7%aa-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-%d7%9c%d7%9e%d7%93",
+    "permalink": "https://www.spider3d.co.il/shop/%D7%97%D7%9C%D7%A7%D7%99-%D7%97%D7%99%D7%9C%D7%95%D7%A3-%D7%9E%D7%A7%D7%95%D7%A8%D7%99%D7%99%D7%9D-%D7%9C%D7%90%D7%A8%D7%98%D7%99%D7%9C%D7%A8%D7%99/%D7%92%D7%99%D7%A8-%D7%90%D7%A7%D7%A1%D7%98%D7%A8%D7%95%D7%93%D7%A8-%D7%9E%D7%A7%D7%95%D7%A8%D7%99-%D7%A9%D7%9C-%D7%97%D7%91%D7%A8%D7%AA-%D7%90%D7%A8%D7%98%D7%99%D7%9C%D7%A8%D7%99-%D7%9C%D7%9E%D7%93/",
+    "date_created": "2021-01-17T15:42:46",
+    "date_created_gmt": "2021-01-17T12:42:46",
+    "date_modified": "2021-04-14T14:26:12",
+    "date_modified_gmt": "2021-04-14T11:26:12",
+    "type": "simple",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<figure id=\"attachment_26688\" aria-describedby=\"caption-attachment-26688\" style=\"width: 750px\" class=\"wp-caption aligncenter\"><img class=\"wp-image-26688\" src=\"https://www.spider3d.co.il/wp-content/uploads/2021/01/אקסטרודר-גיר-1024x1067.jpg\" alt=\"אקסטרודר גיר למדפסות ארטילרי\" width=\"750\" height=\"781\" /><figcaption id=\"caption-attachment-26688\" class=\"wp-caption-text\">אקסטרודר גיר למדפסות ארטילרי</figcaption></figure>\n<figure id=\"attachment_26689\" aria-describedby=\"caption-attachment-26689\" style=\"width: 750px\" class=\"wp-caption aligncenter\"><img class=\"wp-image-26689\" src=\"https://www.spider3d.co.il/wp-content/uploads/2021/01/אקסטרודר-גיר1-1024x765.jpg\" alt=\"אקסטרודר גיר למדפסות ארטילרי\" width=\"750\" height=\"560\" /><figcaption id=\"caption-attachment-26689\" class=\"wp-caption-text\">אקסטרודר גיר למדפסות ארטילרי</figcaption></figure>\n",
+    "short_description": "",
+    "sku": "",
+    "price": "29",
+    "regular_price": "38",
+    "sale_price": "29",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 5,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": true,
+    "stock_quantity": 7,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": 5,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 26688,
+        "date_created": "2021-01-17T18:39:02",
+        "date_created_gmt": "2021-01-17T12:39:02",
+        "date_modified": "2021-01-17T18:39:29",
+        "date_modified_gmt": "2021-01-17T12:39:29",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2021/01/אקסטרודר-גיר.jpg",
+        "name": "אקסטרודר גיר למדפסות ארטילרי",
+        "alt": "אקסטרודר גיר למדפסות ארטילרי"
+      },
+      {
+        "id": 26689,
+        "date_created": "2021-01-17T18:39:14",
+        "date_created_gmt": "2021-01-17T12:39:14",
+        "date_modified": "2021-01-17T18:39:33",
+        "date_modified_gmt": "2021-01-17T12:39:33",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2021/01/אקסטרודר-גיר1.jpg",
+        "name": "אקסטרודר גיר1",
+        "alt": "אקסטרודר גיר למדפסות ארטילרי"
+      },
+      {
+        "id": 26688,
+        "date_created": "2021-01-17T18:39:02",
+        "date_created_gmt": "2021-01-17T12:39:02",
+        "date_modified": "2021-01-17T18:39:29",
+        "date_modified_gmt": "2021-01-17T12:39:29",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2021/01/אקסטרודר-גיר.jpg",
+        "name": "אקסטרודר גיר למדפסות ארטילרי",
+        "alt": "אקסטרודר גיר למדפסות ארטילרי"
+      }
+    ],
+    "attributes": [
+
+    ],
+    "default_attributes": [
+
+    ],
+    "variations": [
+
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 48,
+    "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>38</bdi></span></del> <ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>29</bdi></span></ins>",
+    "related_ids": [
+      25676,
+      28697,
+      26187,
+      26294,
+      28692
+    ],
+    "meta_data": [
+      {
+        "id": 1171884,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1171894,
+        "key": "_woocommerce_gpf_data",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1171895,
+        "key": "_op_barcode",
+        "value": "00000026687"
+      },
+      {
+        "id": 1171896,
+        "key": "_op_cost_price",
+        "value": ""
+      },
+      {
+        "id": 1171897,
+        "key": "_op_weight_base_pricing",
+        "value": "no"
+      },
+      {
+        "id": 1171898,
+        "key": "_op_qty_warehouse_5703",
+        "value": ""
+      },
+      {
+        "id": 1171919,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1171920,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1171921,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1171922,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1171923,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1171924,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1171925,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1171926,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1171927,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1171928,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1171930,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1171932,
+        "key": "__post_views_count",
+        "value": "966"
+      },
+      {
+        "id": 1171933,
+        "key": "lws_woorewards_social_hash",
+        "value": "39b1d3d4f43e051d63b2328ea1352dc2"
+      },
+      {
+        "id": 1189581,
+        "key": "_openpos_product_version_0",
+        "value": "1613747760"
+      },
+      {
+        "id": 1264599,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": null
+    },
+    "is_purchased": false,
+    "attributesData": [
+
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/26687"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 26681,
+    "name": "מחבר ציר Z של המותג ארטילרי מקורי Z-Coupler למדפסת SIDEWINDER X1 & GENIUS",
+    "slug": "%d7%90%d7%95%d7%9d-%d7%9c%d7%a6%d7%99%d7%a8-z-%d7%a9%d7%9c-%d7%94%d7%9e%d7%95%d7%aa%d7%92-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-z-coupler-%d7%9c%d7%9e%d7%93%d7%a4",
+    "permalink": "https://www.spider3d.co.il/shop/%D7%97%D7%9C%D7%A7%D7%99-%D7%97%D7%99%D7%9C%D7%95%D7%A3-%D7%9E%D7%A7%D7%95%D7%A8%D7%99%D7%99%D7%9D-%D7%9C%D7%90%D7%A8%D7%98%D7%99%D7%9C%D7%A8%D7%99/%D7%90%D7%95%D7%9D-%D7%9C%D7%A6%D7%99%D7%A8-z-%D7%A9%D7%9C-%D7%94%D7%9E%D7%95%D7%AA%D7%92-%D7%90%D7%A8%D7%98%D7%99%D7%9C%D7%A8%D7%99-%D7%9E%D7%A7%D7%95%D7%A8%D7%99-z-coupler-%D7%9C%D7%9E%D7%93%D7%A4/",
+    "date_created": "2021-01-17T15:13:36",
+    "date_created_gmt": "2021-01-17T12:13:36",
+    "date_modified": "2021-04-23T09:44:48",
+    "date_modified_gmt": "2021-04-23T06:44:48",
+    "type": "simple",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<p>https://youtu.be/C9pFtwtN3Dc</p>\n<p>&nbsp;</p>\n",
+    "short_description": "",
+    "sku": "",
+    "price": "29",
+    "regular_price": "38",
+    "sale_price": "29",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 10,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": false,
+    "stock_quantity": null,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 26684,
+        "date_created": "2021-01-17T18:16:33",
+        "date_created_gmt": "2021-01-17T12:16:33",
+        "date_modified": "2021-01-17T18:17:15",
+        "date_modified_gmt": "2021-01-17T12:17:15",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2021/01/Artillery-Sidewinder-X1-Z-axis-Coupler-03-00603-25231.jpg",
+        "name": "Z-Coupler",
+        "alt": "Z-Coupler"
+      }
+    ],
+    "attributes": [
+
+    ],
+    "default_attributes": [
+
+    ],
+    "variations": [
+
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 49,
+    "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>38</bdi></span></del> <ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>29</bdi></span></ins>",
+    "related_ids": [
+      26792,
+      26294,
+      25676,
+      26228,
+      26244
+    ],
+    "meta_data": [
+      {
+        "id": 1171768,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1171777,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1171778,
+        "key": "_op_barcode",
+        "value": "00000026681"
+      },
+      {
+        "id": 1171779,
+        "key": "_op_cost_price",
+        "value": ""
+      },
+      {
+        "id": 1171780,
+        "key": "_op_weight_base_pricing",
+        "value": "no"
+      },
+      {
+        "id": 1171781,
+        "key": "_op_qty_warehouse_5703",
+        "value": ""
+      },
+      {
+        "id": 1171798,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1171799,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1171800,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1171801,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1171802,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1171803,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1171804,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1171805,
+        "key": "_yoast_wpseo_content_score",
+        "value": "60"
+      },
+      {
+        "id": 1171806,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1171807,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1171808,
+        "key": "__post_views_count",
+        "value": "969"
+      },
+      {
+        "id": 1171809,
+        "key": "lws_woorewards_social_hash",
+        "value": "c26402bb8fc2df6a736ef697c7727802"
+      },
+      {
+        "id": 1171931,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1253412,
+        "key": "_oembed_b87a8bf798761c4a4ab59200ce8318db",
+        "value": "<iframe title=\"Artillery 3D Sidewinder X1 Z Axis Coupler Fix\" width=\"1170\" height=\"658\" src=\"https://www.youtube.com/embed/C9pFtwtN3Dc?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+      },
+      {
+        "id": 1253413,
+        "key": "_oembed_time_b87a8bf798761c4a4ab59200ce8318db",
+        "value": "1619160053"
+      },
+      {
+        "id": 1269750,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/26681"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 26281,
+    "name": "מוספט MOSFET ארטילרי מקורי למדפסת SIDEWINDER X1 & GENIUS",
+    "slug": "%d7%9e%d7%95%d7%a1%d7%a4%d7%98-mosfet-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-%d7%9c%d7%9e%d7%93%d7%a4%d7%a1%d7%aa-sidewinder-x1-genius",
+    "permalink": "https://www.spider3d.co.il/shop/%25product_cat%25/2020artillery-3d-printer-ssr-relay/",
+    "date_created": "2020-12-28T21:04:23",
+    "date_created_gmt": "2020-12-28T18:04:23",
+    "date_modified": "2021-04-23T09:51:29",
+    "date_modified_gmt": "2021-04-23T06:51:29",
+    "type": "simple",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<div class=\"detailmodule_html\">\n<div class=\"detail-desc-decorate-richtext\">\n<div style=\"padding-left: 10px; line-height: 31px; font-family: verdana, sans-serif; font-size: 18px;\">\n<div>\n<div style=\"margin: 0px; padding: 0px; border: 0px; line-height: inherit; vertical-align: baseline;\">\n<p>חלק זה אחראי על ניהול החשמל למיטת ההדפסה, במקרה ויש לכם תקלה שהמיטה לא מתחממת, הוא החשוד העיקרי</p>\n<p class=\"h2 product-single__title\"><strong>Artillery original mosfet</strong> sidewinder x1 / genius ssr dc-ac for heated bed</p>\n<div><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H92dca9dc667d48cba4738150f63e5377C.jpg\" alt=\"8.99 SSR继电器 0.05 (2)\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H891d62cded3842d8b24d481c92d88a2e9.jpg\" alt=\"afaf\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/Hf7214bfcfd5246feab85ef0256ad89bfv.jpg\" alt=\"aasfs\" /></div>\n<div>\n<div style=\"padding: 0px; margin: 0px; , sans-serif;font-size: 14px;\"></div>\n</div>\n</div>\n</div>\n<div>\n<div style=\"margin: 0px; padding: 0px; border: 0px; line-height: inherit; vertical-align: baseline;\"></div>\n</div>\n</div>\n</div>\n</div>\n",
+    "short_description": "<p>רכיב המנהל את החשמל למיטת הדפסה, במקרה שניהול הטמפרטורה לא תקין או שהמיטה לא מתחממת זה רכיב החשוד בתקלה</p>\n",
+    "sku": "G214",
+    "price": "105",
+    "regular_price": "128",
+    "sale_price": "105",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 0,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": true,
+    "stock_quantity": 5,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 26282,
+        "date_created": "2020-12-28T23:50:30",
+        "date_created_gmt": "2020-12-28T17:50:30",
+        "date_modified": "2020-12-29T00:04:07",
+        "date_modified_gmt": "2020-12-28T18:04:07",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/2020-artillery-3D-Printer-SSR-relay.jpg",
+        "name": "מוספט MOSFET ארטילרי מקורי למדפסת SIDEWINDER X1 &#038; GENIUS",
+        "alt": "מוספט MOSFET ארטילרי מקורי למדפסת SIDEWINDER X1 & GENIUS"
+      },
+      {
+        "id": 26283,
+        "date_created": "2020-12-28T23:50:44",
+        "date_created_gmt": "2020-12-28T17:50:44",
+        "date_modified": "2020-12-29T00:04:01",
+        "date_modified_gmt": "2020-12-28T18:04:01",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/2020-artillery-3D-Printer-SSR-relay-1.jpg",
+        "name": "מוספט MOSFET ארטילרי מקורי למדפסת SIDEWINDER X1 &#038; GENIUS",
+        "alt": "מוספט MOSFET ארטילרי מקורי למדפסת SIDEWINDER X1 & GENIUS"
+      },
+      {
+        "id": 26284,
+        "date_created": "2020-12-28T23:50:56",
+        "date_created_gmt": "2020-12-28T17:50:56",
+        "date_modified": "2020-12-29T00:03:56",
+        "date_modified_gmt": "2020-12-28T18:03:56",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/2020-artillery-3D-Printer-SSR-relay-2.jpg",
+        "name": "מוספט MOSFET ארטילרי מקורי למדפסת SIDEWINDER X1 &#038; GENIUS",
+        "alt": "מוספט MOSFET ארטילרי מקורי למדפסת SIDEWINDER X1 & GENIUS"
+      }
+    ],
+    "attributes": [
+
+    ],
+    "default_attributes": [
+
+    ],
+    "variations": [
+
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 57,
+    "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>128</bdi></span></del> <ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>105</bdi></span></ins>",
+    "related_ids": [
+      7894,
+      26687,
+      28692,
+      26228,
+      25676
+    ],
+    "meta_data": [
+      {
+        "id": 1159366,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": "1005001305156015"
+      },
+      {
+        "id": 1159367,
+        "key": "_vi_wad_aliexpress_variation_id",
+        "value": "12000015652233578"
+      },
+      {
+        "id": 1159396,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1159443,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1159444,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1159446,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1159447,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1159448,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1159449,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1159450,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1159451,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1159452,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1159453,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1159454,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1159455,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1159558,
+        "key": "__post_views_count",
+        "value": "986"
+      },
+      {
+        "id": 1159559,
+        "key": "lws_woorewards_social_hash",
+        "value": "decac1d351042b0412226a06aff2abae"
+      },
+      {
+        "id": 1159851,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1167534,
+        "key": "_op_barcode",
+        "value": "00000026281"
+      },
+      {
+        "id": 1167535,
+        "key": "_op_cost_price",
+        "value": ""
+      },
+      {
+        "id": 1167536,
+        "key": "_op_weight_base_pricing",
+        "value": "no"
+      },
+      {
+        "id": 1167537,
+        "key": "_op_qty_warehouse_5703",
+        "value": ""
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/26281"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 26244,
+    "name": "דרייבר מקורי Stepper Driver כולל רדיאטור למדפסות ארטילרי Artillery Sidewinder X1 / Genius",
+    "slug": "%d7%93%d7%a8%d7%99%d7%99%d7%91%d7%a8-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-stepper-driver-%d7%9c%d7%9e%d7%93%d7%a4%d7%a1%d7%95%d7%aa-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-artillery-sidewinder-x1-geniu",
+    "permalink": "https://www.spider3d.co.il/shop/%25product_cat%25/for-artillery-sidewinder-x1-extruder-gear-with-66-teeth-stainless-steel-and-plastic-titan-aero-extruder-feeder-gear/",
+    "date_created": "2020-12-28T16:13:59",
+    "date_created_gmt": "2020-12-28T13:13:59",
+    "date_modified": "2021-06-02T12:52:05",
+    "date_modified_gmt": "2021-06-02T09:52:05",
+    "type": "variable",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<p>Artillery Sidewinder X1 / Genius Original Stepper Driver with radiator</p>\n<p><img class=\"aligncenter size-full wp-image-26271\" src=\"https://www.spider3d.co.il/wp-content/uploads/2020/12/Screenshot_1-1-wpp1609161831866.jpg\" alt=\"\" width=\"511\" height=\"478\" /> <img class=\"aligncenter size-full wp-image-26273\" src=\"https://www.spider3d.co.il/wp-content/uploads/2020/12/Screenshot_4-wpp1609162085834.jpg\" alt=\"\" width=\"480\" height=\"474\" /></p>\n",
+    "short_description": "<p><strong>דרייבר מקורי שקט</strong> של ארטילרי מתאים לכל גרסאות מדפסות Artillery Sidewinder X1 / Genius</p>\n<div id=\"gtx-trans\" style=\"position: absolute; left: 1509px; top: -9.6px;\">\n<div class=\"gtx-trans-icon\"></div>\n</div>\n",
+    "sku": "1005001271620249",
+    "price": "27",
+    "regular_price": "27",
+    "sale_price": "27",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 1,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": false,
+    "stock_quantity": null,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 26271,
+        "date_created": "2020-12-28T19:04:51",
+        "date_created_gmt": "2020-12-28T13:04:51",
+        "date_modified": "2020-12-28T19:24:06",
+        "date_modified_gmt": "2020-12-28T13:24:06",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Screenshot_1-1-wpp1609161831866.jpg",
+        "name": "Screenshot_1",
+        "alt": ""
+      },
+      {
+        "id": 26273,
+        "date_created": "2020-12-28T19:05:07",
+        "date_created_gmt": "2020-12-28T13:05:07",
+        "date_modified": "2020-12-28T19:29:14",
+        "date_modified_gmt": "2020-12-28T13:29:14",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Screenshot_4-wpp1609162085834.jpg",
+        "name": "Screenshot_4",
+        "alt": ""
+      },
+      {
+        "id": 26270,
+        "date_created": "2020-12-28T18:57:44",
+        "date_created_gmt": "2020-12-28T12:57:44",
+        "date_modified": "2020-12-28T19:22:48",
+        "date_modified_gmt": "2020-12-28T13:22:48",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Artillery-Sidewinder-X1-FS31W01-Stepper-Driver-01-00649-25378_2-wpp1609161754177.jpg",
+        "name": "דרייבר מקורי למדפסות ארטילרי Artillery Sidewinder X1 / Genius",
+        "alt": "דרייבר מקורי למדפסות ארטילרי Artillery Sidewinder X1 / Genius"
+      }
+    ],
+    "attributes": [
+      {
+        "id": 0,
+        "name": "מס-יחידות",
+        "position": 1,
+        "visible": true,
+        "variation": true,
+        "options": [
+          "1",
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "default_attributes": [
+      {
+        "id": 0,
+        "name": "מס-יחידות",
+        "option": "2"
+      }
+    ],
+    "variations": [
+      26245,
+      26246,
+      26247
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 58,
+    "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>27</bdi></span> &ndash; <span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>99</bdi></span>",
+    "related_ids": [
+      26797,
+      7894,
+      26200,
+      26748,
+      26340
+    ],
+    "meta_data": [
+      {
+        "id": 1158601,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": "1005001271620249"
+      },
+      {
+        "id": 1158693,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1159047,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1159048,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1159050,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1159051,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1159052,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1159053,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1159054,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1159055,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1159056,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1159057,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1159058,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1159059,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1159060,
+        "key": "__post_views_count",
+        "value": "1206"
+      },
+      {
+        "id": 1159061,
+        "key": "lws_woorewards_social_hash",
+        "value": "9ec15eedbcc1140d8dc4eaaefaedf1e6"
+      },
+      {
+        "id": 1159852,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1167530,
+        "key": "_op_barcode",
+        "value": ""
+      },
+      {
+        "id": 1167531,
+        "key": "_op_cost_price",
+        "value": ""
+      },
+      {
+        "id": 1167532,
+        "key": "_op_weight_base_pricing",
+        "value": "no"
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+      {
+        "id": 0,
+        "name": "מס&#039; יחידות",
+        "options": [
+
+        ],
+        "position": 1,
+        "visible": true,
+        "variation": true,
+        "is_visible": 1,
+        "is_variation": 1,
+        "is_taxonomy": 0,
+        "value": "",
+        "label": "מס&#039; יחידות"
+      }
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/26244"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 26200,
+    "name": "5 יחידות גלגלים עם מיסב ארטילרי חלקים מקוריים למדפסות Sidewinder X1 & Genius",
+    "slug": "5-%d7%99%d7%97%d7%99%d7%93%d7%95%d7%aa-%d7%92%d7%9c%d7%92%d7%9c%d7%99%d7%9d-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9e%d7%aa%d7%90%d7%99%d7%9e%d7%99",
+    "permalink": "https://www.spider3d.co.il/shop/%25product_cat%25/20205pcbearing-pulley-suitable-for-3d-printer-sidewinder-x1-and-genius/",
+    "date_created": "2020-12-28T11:13:59",
+    "date_created_gmt": "2020-12-28T08:13:59",
+    "date_modified": "2021-05-11T09:12:25",
+    "date_modified_gmt": "2021-05-11T06:12:25",
+    "type": "simple",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<div class=\"detailmodule_html\">\n<div class=\"detail-desc-decorate-richtext\">\n<div style=\"padding-left: 10px; line-height: 31px; font-family: verdana, sans-serif; font-size: 18px;\">\n<div>\n<div style=\"margin: 0px; padding: 0px; border: 0px; line-height: inherit; vertical-align: baseline;\">\n<div>5Pc bearing Pulley Suitable For 3D Printer Sidewinder X1 AND Genius<br />\n<img class=\"aligncenter\" style=\"font-size: 14px;\" src=\"https://ae01.alicdn.com/kf/H970b67e1232f429199b23a8c61809043q.jpg\" alt=\"B 副本..\" /><img class=\"aligncenter\" style=\"font-size: 14px;\" src=\"https://ae01.alicdn.com/kf/H84711ad6ce3140228a8936d393a2507aR.jpg\" alt=\"SFAF\" /></div>\n</div>\n</div>\n<div>\n<div style=\"margin: 0px; padding: 0px; border: 0px; line-height: inherit; vertical-align: baseline;\"></div>\n</div>\n</div>\n</div>\n</div>\n",
+    "short_description": "<p>סט 5 גלגלים מקוריים עם מיסב למדפסת תלת מימד ארטילרי ARTILLERY<br />\nGenius / SW-X1<br />\n<strong>מומלץ להחליף לאחר שחיקה לקבלת גימור גבוה למוצר המודפס</strong></p>\n",
+    "sku": "5pcbearingpulleya",
+    "price": "57",
+    "regular_price": "67",
+    "sale_price": "57",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 1,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": true,
+    "stock_quantity": 8,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      },
+      {
+        "id": 2342,
+        "name": "שדרוגים וחלפים למדפסות",
+        "slug": "%d7%a9%d7%93%d7%a8%d7%95%d7%92%d7%99%d7%9d-%d7%95%d7%97%d7%9c%d7%a4%d7%99%d7%9d-%d7%9c%d7%9e%d7%93%d7%a4%d7%a1%d7%95%d7%aa-%d7%aa%d7%9c%d7%aa-%d7%9e%d7%99%d7%9e%d7%93"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 26201,
+        "date_created": "2020-12-28T13:18:00",
+        "date_created_gmt": "2020-12-28T07:18:00",
+        "date_modified": "2020-12-28T13:18:00",
+        "date_modified_gmt": "2020-12-28T07:18:00",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/2020-5Pcbearing-Pulley-Suitable-For-3D-Printer-Sidewinder-X1-AND-Genius.jpg",
+        "name": "2020-5Pcbearing-Pulley-Suitable-For-3D-Printer-Sidewinder-X1-AND-Genius",
+        "alt": ""
+      },
+      {
+        "id": 26203,
+        "date_created": "2020-12-28T13:18:22",
+        "date_created_gmt": "2020-12-28T07:18:22",
+        "date_modified": "2020-12-28T13:18:22",
+        "date_modified_gmt": "2020-12-28T07:18:22",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/2020-5Pcbearing-Pulley-Suitable-For-3D-Printer-Sidewinder-X1-AND-Genius-2.jpg",
+        "name": "2020-5Pcbearing-Pulley-Suitable-For-3D-Printer-Sidewinder-X1-AND-Genius-2",
+        "alt": ""
+      },
+      {
+        "id": 26205,
+        "date_created": "2020-12-28T13:18:45",
+        "date_created_gmt": "2020-12-28T07:18:45",
+        "date_modified": "2020-12-28T13:18:45",
+        "date_modified_gmt": "2020-12-28T07:18:45",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/2020-5Pcbearing-Pulley-Suitable-For-3D-Printer-Sidewinder-X1-AND-Genius-4.jpg",
+        "name": "2020-5Pcbearing-Pulley-Suitable-For-3D-Printer-Sidewinder-X1-AND-Genius-4",
+        "alt": ""
+      }
+    ],
+    "attributes": [
+
+    ],
+    "default_attributes": [
+
+    ],
+    "variations": [
+
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 62,
+    "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>67</bdi></span></del> <ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>57</bdi></span></ins>",
+    "related_ids": [
+      6758,
+      6462,
+      6022,
+      6399,
+      6254
+    ],
+    "meta_data": [
+      {
+        "id": 1157880,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": "4001333145006"
+      },
+      {
+        "id": 1157881,
+        "key": "_vi_wad_aliexpress_variation_id",
+        "value": "10000015723359531"
+      },
+      {
+        "id": 1158143,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1158146,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1158148,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1158149,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1158151,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1158152,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1158153,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1158154,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1158155,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1158156,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1158157,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1158158,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1158159,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1158160,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1158162,
+        "key": "__post_views_count",
+        "value": "1131"
+      },
+      {
+        "id": 1158163,
+        "key": "lws_woorewards_social_hash",
+        "value": "e6633f1e677774872027f3733146e08d"
+      },
+      {
+        "id": 1167523,
+        "key": "_op_barcode",
+        "value": "00000026200"
+      },
+      {
+        "id": 1167524,
+        "key": "_op_cost_price",
+        "value": ""
+      },
+      {
+        "id": 1167525,
+        "key": "_op_weight_base_pricing",
+        "value": "no"
+      },
+      {
+        "id": 1167526,
+        "key": "_op_qty_warehouse_5703",
+        "value": ""
+      },
+      {
+        "id": 1167528,
+        "key": "_yoast_wpseo_title",
+        "value": "%%title%% %%page%% %%sep%%"
+      },
+      {
+        "id": 1167529,
+        "key": "_yoast_wpseo_metadesc",
+        "value": "סט 5 גלגלים מקוריים למדפסת תלת מימד ארטילרי ג'ינייס או sw1 Artillery , מומלץ להחליף לאחר שחיקה לקבלת גימור גבוהה למוצר המודפס"
+      },
+      {
+        "id": 1281412,
+        "key": "fb_product_group_id",
+        "value": "3593361970767745"
+      },
+      {
+        "id": 1281413,
+        "key": "_wc_facebook_sync_enabled",
+        "value": "yes"
+      },
+      {
+        "id": 1281414,
+        "key": "fb_visibility",
+        "value": "yes"
+      },
+      {
+        "id": 1281415,
+        "key": "fb_product_description",
+        "value": ""
+      },
+      {
+        "id": 1281416,
+        "key": "_wc_facebook_product_image_source",
+        "value": "product"
+      },
+      {
+        "id": 1281417,
+        "key": "_wc_facebook_commerce_enabled",
+        "value": "no"
+      },
+      {
+        "id": 1281418,
+        "key": "fb_product_item_id",
+        "value": "3593362437434365"
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/26200"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 26213,
+    "name": "ספק כח 220V מקורי של חברת ארטילרי ייעודי למדפסות תלת מימד Sidewinder X1 And Genius",
+    "slug": "%d7%a1%d7%a4%d7%a7-%d7%9b%d7%97-220v-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-%d7%a9%d7%9c-%d7%97%d7%91%d7%a8%d7%aa-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-%d7%99%d7%99%d7%a2%d7%95%d7%93%d7%99-%d7%9c%d7%9e",
+    "permalink": "https://www.spider3d.co.il/shop/%25product_cat%25/artillery-3d-printer-sidewinder-x1and-genius-dedicated-power-supply/",
+    "date_created": "2020-12-28T10:39:53",
+    "date_created_gmt": "2020-12-28T07:39:53",
+    "date_modified": "2021-06-23T11:51:56",
+    "date_modified_gmt": "2021-06-23T08:51:56",
+    "type": "simple",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<div class=\"detailmodule_html\">\n<div class=\"detail-desc-decorate-richtext\">\n<p style=\"font-family: verdana, sans-serif; font-size: inherit; font-style: inherit; font-weight: inherit; margin: 10px 0px; padding: 0px; border: 0px; line-height: inherit; vertical-align: baseline; color: red;\"><span style=\"font-size: 18px;\"><span style=\"margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-weight: inherit; line-height: inherit; vertical-align: baseline;\">  Artillery 3D Printer Sidewinder X1 And Genius Dedicated Power Supply</span></span></p>\n<div style=\"font-family: verdana, sans-serif; font-size: 18px;\"></div>\n<p><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H307aa040671c48f1b9e16134d2c68850O.jpg\" alt=\"220电源开关主图03 副本\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H70ddfe95e2e34a45b5e0ac742bed09efI.jpg\" alt=\"110电源开关主图02\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H428177073b27420ca4e099e4174d6375p.jpg\" alt=\"110电源开关主图04\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/He4211174e27a466faa400f6aaf64f65e3.jpg\" alt=\"dgsg\" /></p>\n<div style=\"padding-left: 10px; line-height: 31px; font-family: verdana, sans-serif; font-size: 18px;\">\n<div>\n<div style=\"margin: 0px; padding: 0px; border: 0px; line-height: inherit; vertical-align: baseline;\"></div>\n</div>\n<div></div>\n</div>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n</div>\n</div>\n",
+    "short_description": "",
+    "sku": "ספקכחארטילרי",
+    "price": "245",
+    "regular_price": "279",
+    "sale_price": "245",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 2,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": true,
+    "stock_quantity": 2,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 26221,
+        "date_created": "2020-12-28T13:34:05",
+        "date_created_gmt": "2020-12-28T07:34:05",
+        "date_modified": "2020-12-28T13:37:48",
+        "date_modified_gmt": "2020-12-28T07:37:48",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Artillery-3D-Printer-Sidewinder-X1And-Genius-Dedicated-Power-Supply.jpg_640x640.jpg",
+        "name": "ספק כח 220V למדפסות ג&#8217;יניוס וSW ארטילרי",
+        "alt": "ספק כח 220V למדפסות ג'יניוס וSW ארטילרי"
+      },
+      {
+        "id": 26217,
+        "date_created": "2020-12-28T13:33:05",
+        "date_created_gmt": "2020-12-28T07:33:05",
+        "date_modified": "2020-12-28T13:38:09",
+        "date_modified_gmt": "2020-12-28T07:38:09",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Artillery-3D-Printer-Sidewinder-X1And-Genius-Dedicated-Power-Supply-2.jpg",
+        "name": "ספק כח 220V למדפסות ג&#8217;יניוס וSW ארטילרי",
+        "alt": "ספק כח 220V למדפסות ג'יניוס וSW ארטילרי"
+      },
+      {
+        "id": 26218,
+        "date_created": "2020-12-28T13:33:24",
+        "date_created_gmt": "2020-12-28T07:33:24",
+        "date_modified": "2020-12-28T13:38:00",
+        "date_modified_gmt": "2020-12-28T07:38:00",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Artillery-3D-Printer-Sidewinder-X1And-Genius-Dedicated-Power-Supply-3.jpg",
+        "name": "ספק כח 220V למדפסות ג&#8217;יניוס וSW ארטילרי",
+        "alt": "ספק כח 220V למדפסות ג'יניוס וSW ארטילרי"
+      }
+    ],
+    "attributes": [
+
+    ],
+    "default_attributes": [
+
+    ],
+    "variations": [
+
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 61,
+    "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>279</bdi></span></del> <ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>245</bdi></span></ins>",
+    "related_ids": [
+      26244,
+      26187,
+      26748,
+      26801,
+      25676
+    ],
+    "meta_data": [
+      {
+        "id": 1157967,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": "1005001274907354"
+      },
+      {
+        "id": 1158025,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1158125,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1158128,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1158130,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1158131,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1158132,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1158133,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1158134,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1158135,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1158136,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1158137,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1158138,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1158139,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1158140,
+        "key": "__post_views_count",
+        "value": "1090"
+      },
+      {
+        "id": 1158141,
+        "key": "lws_woorewards_social_hash",
+        "value": "0bf41eae5c4cf796340e63586f5b5760"
+      },
+      {
+        "id": 1158145,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1180606,
+        "key": "_op_barcode",
+        "value": "00000026213"
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/26213"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 26187,
+    "name": "חיישן אנדסטופ Endstop Sensor ארטילרי מקורי כולל כבל במיוחד למדפסות תלת מימד Sidewinder X1 & Genius",
+    "slug": "%d7%97%d7%99%d7%99%d7%a9%d7%9f-%d7%90%d7%a0%d7%93%d7%a1%d7%98%d7%95%d7%a4-endstop-sensor-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-%d7%9b%d7%95%d7%9c%d7%9c-%d7%9b%d7%91",
+    "permalink": "https://www.spider3d.co.il/shop/%25product_cat%25/artillery-x-axis-endstop-sensor-x-axis-limited-switch-module-with-cable-fits-sidewinder-x1-genius-for-3d-printer/",
+    "date_created": "2020-12-28T09:57:02",
+    "date_created_gmt": "2020-12-28T06:57:02",
+    "date_modified": "2021-04-23T09:55:24",
+    "date_modified_gmt": "2021-04-23T06:55:24",
+    "type": "simple",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<p class=\"product_title entry-title\" data-fontsize=\"32\">Artillery X-Axis Endstop Sensor X-Axis Limited Switch Module with Cable fits Sidewinder X1 &amp; Genius for 3D Printer</p>\n<p>&nbsp;</p>\n<div style=\"text-align: center;\" data-type=\"imgs\">\n<p><img class=\"desimg aligncenter\" style=\"background-size: contain;\" src=\"https://ae01.alicdn.com/kf/Hd61f589a871441bdbf0f9538ee6f6d14x.jpg\" /></p>\n<p><img class=\"desimg aligncenter\" style=\"background-size: contain;\" src=\"https://ae01.alicdn.com/kf/H0898e81c94e846ac8c18517bd5795c5eG.jpg\" /></p>\n<p><img class=\"desimg aligncenter\" style=\"background-size: contain;\" src=\"https://ae01.alicdn.com/kf/Hb3b1587d9f7d43e4aea3bb7058abfcf6c.jpg\" /></p>\n</div>\n<p>&nbsp;</p>\n",
+    "short_description": "",
+    "sku": "Endstop Sensor",
+    "price": "59",
+    "regular_price": "79",
+    "sale_price": "59",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 0,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": true,
+    "stock_quantity": 20,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 26190,
+        "date_created": "2020-12-28T12:49:07",
+        "date_created_gmt": "2020-12-28T06:49:07",
+        "date_modified": "2020-12-28T12:54:58",
+        "date_modified_gmt": "2020-12-28T06:54:58",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Artillery-X-Axis-Endstop-Sensor-X-Axis-Limited-Switch-Module-with-Cable-fits-Sidewinder-X1-Genius-1.jpg",
+        "name": "Artillery-X-Axis-Endstop-Sensor-X-Axis-Limited-Switch-Module-with-Cable-fits-Sidewinder-X1-Genius-1",
+        "alt": "חיישן אנדסטופ ארטילרי מקורי Original X-Axis Endstop Sensor"
+      },
+      {
+        "id": 26191,
+        "date_created": "2020-12-28T12:49:24",
+        "date_created_gmt": "2020-12-28T06:49:24",
+        "date_modified": "2020-12-28T12:54:48",
+        "date_modified_gmt": "2020-12-28T06:54:48",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Artillery-X-Axis-Endstop-Sensor-X-Axis-Limited-Switch-Module-with-Cable-fits-Sidewinder-X1-Genius-2.jpg",
+        "name": "חיישן אנדסטופ ארטילרי מקורי Original X-Axis Endstop Sensor",
+        "alt": "חיישן אנדסטופ ארטילרי מקורי Original X-Axis Endstop Sensor"
+      },
+      {
+        "id": 26197,
+        "date_created": "2020-12-28T13:07:49",
+        "date_created_gmt": "2020-12-28T07:07:49",
+        "date_modified": "2020-12-28T13:07:49",
+        "date_modified_gmt": "2020-12-28T07:07:49",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/ezgif.com-gif-maker-1.jpg",
+        "name": "ezgif.com-gif-maker (1)",
+        "alt": ""
+      },
+      {
+        "id": 26198,
+        "date_created": "2020-12-28T13:08:02",
+        "date_created_gmt": "2020-12-28T07:08:02",
+        "date_modified": "2020-12-28T13:08:02",
+        "date_modified_gmt": "2020-12-28T07:08:02",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/ezgif.com-gif-maker.jpg",
+        "name": "ezgif.com-gif-maker",
+        "alt": ""
+      }
+    ],
+    "attributes": [
+
+    ],
+    "default_attributes": [
+
+    ],
+    "variations": [
+
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 63,
+    "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>79</bdi></span></del> <ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>59</bdi></span></ins>",
+    "related_ids": [
+      26244,
+      26801,
+      25704,
+      26748,
+      26294
+    ],
+    "meta_data": [
+      {
+        "id": 1157727,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": "4001287676855"
+      },
+      {
+        "id": 1157771,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1157826,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1157832,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1157835,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1157837,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1157838,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1157839,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1157840,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1157841,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1157842,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1157843,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1157844,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1157845,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1157846,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1157847,
+        "key": "__post_views_count",
+        "value": "1111"
+      },
+      {
+        "id": 1157848,
+        "key": "lws_woorewards_social_hash",
+        "value": "e7f992c4a39544e962b532cc6acfdbc9"
+      },
+      {
+        "id": 1180608,
+        "key": "_op_barcode",
+        "value": "00000026187"
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/26187"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 26172,
+    "name": "ראש הדפסה מלא - מנוע מקורי של חברת ארטילרי עבור מדפסות ג'ינייס סיידווינדר Sidewinder x1/ Genius",
+    "slug": "%d7%93%d7%99%d7%99%d7%a8%d7%a7%d7%98-%d7%90%d7%a7%d7%a1%d7%98%d7%a8%d7%95%d7%93%d7%a8-%d7%a1%d7%98-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-%d7%a9%d7%9c-%d7%94%d7%9e%d7%95%d7%aa%d7%92-%d7%90%d7%a8%d7%98%d7%99",
+    "permalink": "https://www.spider3d.co.il/shop/%25product_cat%25/artillery-direct-drive-extruder-sidewinder-x1-genius-3d-printer-parts-all-in-one-single-extruder-kit-for-3d-printer-kit/",
+    "date_created": "2020-12-28T09:42:15",
+    "date_created_gmt": "2020-12-28T06:42:15",
+    "date_modified": "2021-06-25T20:13:19",
+    "date_modified_gmt": "2021-06-25T17:13:19",
+    "type": "variable",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<div class=\"detailmodule_dynamic\">דיירקט אקסטרודר סט מקורי של המותג ארטילרי למדפסות תלת מימד כולל:<br />\nArtillery Direct Drive Extruder Sidewinder x1 Genius 3D Printer Parts<br />\nמכלול חשמלי</div>\n<div class=\"detailmodule_dynamic\">מאווררים</div>\n<div class=\"detailmodule_dynamic\">אקסטרודר דיירקט</div>\n<div>חיישן חום</div>\n<div>גוף חימום</div>\n<div class=\"detailmodule_dynamic\">למעשה כל מה שבתמונה</div>\n<div class=\"detailmodule_text\"><img class=\"detail-desc-decorate-image aligncenter\" src=\"//ae01.alicdn.com/kf/H675b954d30f54d9497a61ed9af4b8e29Y.jpg\" /></div>\n<div class=\"detailmodule_text\">\n<p class=\"detail-desc-decorate-content\" style=\"font-family: 'OpenSans'; color: #000; font-weight: 300; font-size: 14px; line-height: 20px; margin-bottom: 12px;\"><img class=\"detail-desc-decorate-image aligncenter\" style=\"color: #333333; font-family: Arial, 'Times New Roman', 'Bitstream Charter', Times, serif; font-size: 16px;\" src=\"//ae01.alicdn.com/kf/H23e3b535319f43ffbda01a9eca326abej.jpg\" /></p>\n</div>\n<div class=\"detailmodule_text\">\n<p class=\"detail-desc-decorate-content\" style=\"font-family: 'OpenSans'; color: #000; font-weight: 300; font-size: 14px; line-height: 20px; margin-bottom: 12px;\"><img class=\"detail-desc-decorate-image aligncenter\" style=\"color: #333333; font-family: Arial, 'Times New Roman', 'Bitstream Charter', Times, serif; font-size: 16px;\" src=\"//ae01.alicdn.com/kf/H8505fa61c4a04b289d8cc2a7a3cd5fb0X.jpg\" /></p>\n</div>\n<div class=\"detailmodule_text\">\n<p class=\"detail-desc-decorate-content\" style=\"font-family: 'OpenSans'; color: #000; font-weight: 300; font-size: 14px; line-height: 20px; margin-bottom: 12px;\"><img class=\"detail-desc-decorate-image aligncenter\" style=\"color: #333333; font-family: Arial, 'Times New Roman', 'Bitstream Charter', Times, serif; font-size: 16px;\" src=\"//ae01.alicdn.com/kf/H6660f8efee66497c8daad57f27e2528fx.jpg\" /></p>\n</div>\n<div class=\"detailmodule_text\">\n<p class=\"detail-desc-decorate-content\" style=\"font-family: 'OpenSans'; color: #000; font-weight: 300; font-size: 14px; line-height: 20px; margin-bottom: 12px;\"><img class=\"detail-desc-decorate-image aligncenter\" style=\"color: #333333; font-family: Arial, 'Times New Roman', 'Bitstream Charter', Times, serif; font-size: 16px;\" src=\"//ae01.alicdn.com/kf/H6c7c442a39ff45838a22941fa6e89ddcx.jpg\" /></p>\n</div>\n<div class=\"detailmodule_text\">\n<p class=\"detail-desc-decorate-content\" style=\"font-family: 'OpenSans'; color: #000; font-weight: 300; font-size: 14px; line-height: 20px; margin-bottom: 12px;\"><img class=\"detail-desc-decorate-image aligncenter\" style=\"color: #333333; font-family: Arial, 'Times New Roman', 'Bitstream Charter', Times, serif; font-size: 16px;\" src=\"//ae01.alicdn.com/kf/H82bd4c9e617e452a9d1d173cecf93449a.jpg\" /></p>\n</div>\n<div class=\"detailmodule_text\">\n<p class=\"detail-desc-decorate-content\" style=\"font-family: 'OpenSans'; color: #000; font-weight: 300; font-size: 14px; line-height: 20px; margin-bottom: 12px;\"><img class=\"detail-desc-decorate-image aligncenter\" style=\"color: #333333; font-family: Arial, 'Times New Roman', 'Bitstream Charter', Times, serif; font-size: 16px;\" src=\"//ae01.alicdn.com/kf/Hbfc0528915d04b0fb4d115ff951d6c265.jpg\" /><img class=\"detail-desc-decorate-image aligncenter\" style=\"color: #333333; font-family: Arial, 'Times New Roman', 'Bitstream Charter', Times, serif; font-size: 16px;\" src=\"//ae01.alicdn.com/kf/H5214f041053849e2af3394a162a9041c4.jpg\" /></p>\n</div>\n<div class=\"detailmodule_image\"></div>\n",
+    "short_description": "<p>סט מלא <strong>מקורי</strong> של חברת ארטילרי, <strong>אקטסרודר דיירקט</strong> מתאים במיוחד להדפסה <span style=\"color: #800000;\">ב<a style=\"color: #800000;\" href=\"https://www.spider3d.co.il/?s=FLEX&amp;post_type=product\"><strong>חומרים גמישים</strong></a></span><br />\nכולל כבל תואם ומחבר תואם <strong>התקנה קלה ופשוטה</strong>, חיבור 3 ברגים וזהו!<br />\n<strong>***לשימת ליבך יש <span style=\"color: #800000;\">מחיר מיוחד</span> ללקוחות שרכשו את המדפסת בספיידר תלת מימד***</strong></p>\n",
+    "sku": "4001251206447",
+    "price": "289",
+    "regular_price": "365",
+    "sale_price": "289",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 7,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": false,
+    "stock_quantity": null,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5188,
+        "name": "חלפים מקוריים Artillery Genius",
+        "slug": "spare-parts-artillery-genius"
+      },
+      {
+        "id": 5189,
+        "name": "חלפים מקוריים Artillery SideWinder",
+        "slug": "spare-parts-artillery-sw-x1"
+      },
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 26145,
+        "date_created": "2020-12-28T11:51:46",
+        "date_created_gmt": "2020-12-28T05:51:46",
+        "date_modified": "2020-12-28T12:42:04",
+        "date_modified_gmt": "2020-12-28T06:42:04",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Artillery-Direct-Drive-Extruder-Sidewinder-x1-Genius-3D-Printer-Parts-All-in-one-Single-Extruder-Kit-wpp1609137479542.jpg",
+        "name": "סט אקסטרודר דיירקט Genius / SideWinder3-x1",
+        "alt": "סט אקסטרודר דיירקט Genius / SideWinder3-x1"
+      },
+      {
+        "id": 26160,
+        "date_created": "2020-12-28T11:52:01",
+        "date_created_gmt": "2020-12-28T05:52:01",
+        "date_modified": "2020-12-28T12:41:56",
+        "date_modified_gmt": "2020-12-28T06:41:56",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Artillery-Direct-Drive-Extruder-Sidewinder-x1-Genius-3D-Printer-Parts-All-in-one-Single-Extruder-Kit-1.jpg",
+        "name": "סט אקסטרודר דיירקט Genius / SideWinder3-x1",
+        "alt": "סט אקסטרודר דיירקט Genius / SideWinder3-x1"
+      },
+      {
+        "id": 26161,
+        "date_created": "2020-12-28T11:52:20",
+        "date_created_gmt": "2020-12-28T05:52:20",
+        "date_modified": "2020-12-28T12:41:52",
+        "date_modified_gmt": "2020-12-28T06:41:52",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Artillery-Direct-Drive-Extruder-Sidewinder-x1-Genius-3D-Printer-Parts-All-in-one-Single-Extruder-Kit-2.jpg",
+        "name": "סט אקסטרודר דיירקט Genius / SideWinder3-x1",
+        "alt": "סט אקסטרודר דיירקט Genius / SideWinder3-x1"
+      },
+      {
+        "id": 26162,
+        "date_created": "2020-12-28T11:52:37",
+        "date_created_gmt": "2020-12-28T05:52:37",
+        "date_modified": "2020-12-28T12:41:47",
+        "date_modified_gmt": "2020-12-28T06:41:47",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Artillery-Direct-Drive-Extruder-Sidewinder-x1-Genius-3D-Printer-Parts-All-in-one-Single-Extruder-Kit-3.jpg",
+        "name": "סט אקסטרודר דיירקט Genius / SideWinder3-x1",
+        "alt": "סט אקסטרודר דיירקט Genius / SideWinder3-x1"
+      }
+    ],
+    "attributes": [
+      {
+        "id": 0,
+        "name": "סוג-מדפסת-וסוג-לקוח",
+        "position": 1,
+        "visible": true,
+        "variation": true,
+        "options": [
+          "GENIUS נרכשה בספיידר",
+          "GENIUS",
+          "נרכשה בספיידר SW",
+          "SW"
+        ]
+      }
+    ],
+    "default_attributes": [
+      {
+        "id": 0,
+        "name": "סוג-מדפסת-וסוג-לקוח",
+        "option": "GENIUS נרכשה בספיידר"
+      }
+    ],
+    "variations": [
+      26830,
+      26831,
+      26184,
+      26185
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 65,
+    "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>289</bdi></span> &ndash; <span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>329</bdi></span>",
+    "related_ids": [
+      26213,
+      26281,
+      26797,
+      26298,
+      25704
+    ],
+    "meta_data": [
+      {
+        "id": 1157489,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": "4001251206447"
+      },
+      {
+        "id": 1157564,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1157609,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1157698,
+        "key": "_woocommerce_gpf_data",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1157699,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1157701,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1157702,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1157703,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1157704,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1157705,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1157706,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1157707,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1157708,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1157709,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1157710,
+        "key": "__post_views_count",
+        "value": "2433"
+      },
+      {
+        "id": 1157711,
+        "key": "lws_woorewards_social_hash",
+        "value": "1f4228be77fee09a654268551f590038"
+      },
+      {
+        "id": 1157713,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1167517,
+        "key": "_op_barcode",
+        "value": ""
+      },
+      {
+        "id": 1167518,
+        "key": "_op_cost_price",
+        "value": ""
+      },
+      {
+        "id": 1167519,
+        "key": "_op_weight_base_pricing",
+        "value": "no"
+      },
+      {
+        "id": 1167521,
+        "key": "_yoast_wpseo_title",
+        "value": "%%title%% %%page%%"
+      },
+      {
+        "id": 1167522,
+        "key": "_yoast_wpseo_metadesc",
+        "value": "ראש הדפסה מקורי מלא למדפסות ארטילרי ג'ינייס / SW1, חלק חילוף למדפסת Artillery - ספיידר תלת מימד יבואן רשמי בלעדי של מדפסות תלת מימד וחלקי חילוף ארטילרי"
+      },
+      {
+        "id": 1177431,
+        "key": "_openpos_product_version_0",
+        "value": "1613404373"
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": null
+    },
+    "is_purchased": false,
+    "attributesData": [
+      {
+        "id": 0,
+        "name": "סוג מדפסת וסוג לקוח",
+        "options": [
+
+        ],
+        "position": 1,
+        "visible": true,
+        "variation": true,
+        "is_visible": 1,
+        "is_variation": 1,
+        "is_taxonomy": 0,
+        "value": "",
+        "label": "סוג מדפסת וסוג לקוח"
+      }
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/26172"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 25704,
+    "name": "משטח חימום מיטה מקורי של חברת ארטילרי כולל משטח כותנה לשמירה על החום מתאים למדפסות SW-X1 ו- Genius",
+    "slug": "%d7%9e%d7%a9%d7%98%d7%97-%d7%97%d7%99%d7%9e%d7%95%d7%9d-%d7%9e%d7%99%d7%98%d7%94-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-%d7%a9%d7%9c-%d7%97%d7%91%d7%a8%d7%aa-%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99-%d7%9b",
+    "permalink": "https://www.spider3d.co.il/shop/%25product_cat%25/2020-%D7%AA%D7%95%D7%AA%D7%97%D7%A0%D7%99%D7%9D-%D7%90%D7%A4%D7%A2%D7%94-3d-printesidewinder-x1-%D7%95-geniusr-%D7%99%D7%99%D7%A2%D7%95%D7%93%D7%99-%D7%97%D7%9E%D7%94-%D7%9E%D7%99%D7%98%D7%AA-%D7%97%D7%99%D7%9E%D7%95%D7%9D-%D7%9B%D7%95%D7%AA%D7%A0%D7%94/",
+    "date_created": "2020-12-20T13:37:38",
+    "date_created_gmt": "2020-12-20T10:37:38",
+    "date_modified": "2021-06-27T15:22:06",
+    "date_modified_gmt": "2021-06-27T12:22:06",
+    "type": "variable",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<div class=\"detailmodule_html\">\n<div class=\"detail-desc-decorate-richtext\">\n<p><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/Haa136bd975c548c19d8a629f64e58d01p.jpg\" alt=\"2\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/Hf142aaae523f442eabf9f82be109dcbf0.jpg\" alt=\"4\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H91de1981b852477a9e8070cd809a9607u.jpg\" alt=\"5\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H4640c34333d14f9083c395f03b07bf62R.jpg\" alt=\"6\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H2c41fbfc5cd843d88a2042805e6458886.jpg\" alt=\"Hbf53c9a2c9ec44d7928fffc148f6761dF\" /></p>\n<p>&nbsp;</p>\n</div>\n</div>\n",
+    "short_description": "<p>חברת ספיידר תלת מימד הינה המשווקת הבלעדית של חברת ארטילרי בישראל.<br />\nברשותינו <strong>חלקי חילוף מקוריים</strong> עבור מדפסות <a href=\"https://www.spider3d.co.il/product/%D7%90%D7%A8%D7%98%D7%99%D7%9C%D7%A8%D7%99-artillery-sw-x1/\">Artillery SW-X1</a> ועבור מדפסת <a href=\"https://www.spider3d.co.il/shop/artillery-genius-diy-3d-printer-kit-with-ultra-quiet-stepper-motor-tft-touch-screen-220220250mm-print-size/\">Artillery Genius</a></p>\n",
+    "sku": "4001305804568",
+    "price": "148",
+    "regular_price": "180",
+    "sale_price": "148",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 6,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": false,
+    "stock_quantity": null,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 25715,
+        "date_created": "2020-12-20T16:22:02",
+        "date_created_gmt": "2020-12-20T10:22:02",
+        "date_modified": "2020-12-20T16:31:34",
+        "date_modified_gmt": "2020-12-20T10:31:34",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Ha32ec2ad4e404db4bc31a92a6524ad1aP-wpp1608460250192.jpg",
+        "name": "משטח חימום מיטה מקורי למדפסות ארטילרי",
+        "alt": "משטח חימום מיטה מקורי למדפסות ארטילרי"
+      },
+      {
+        "id": 25712,
+        "date_created": "2020-12-20T16:21:25",
+        "date_created_gmt": "2020-12-20T10:21:25",
+        "date_modified": "2020-12-20T16:31:44",
+        "date_modified_gmt": "2020-12-20T10:31:44",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/2020-3D-printeSidewinder-X1-Geniusr-5.jpg",
+        "name": "משטח חימום מיטה מקורי למדפסות ארטילרי",
+        "alt": "משטח חימום מיטה מקורי למדפסות ארטילרי"
+      },
+      {
+        "id": 25714,
+        "date_created": "2020-12-20T16:21:50",
+        "date_created_gmt": "2020-12-20T10:21:50",
+        "date_modified": "2020-12-20T16:35:04",
+        "date_modified_gmt": "2020-12-20T10:35:04",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Haa136bd975c548c19d8a629f64e58d01p.jpg",
+        "name": "משטח חימום מיטה מקורי למדפסות ארטילרי",
+        "alt": "משטח חימום מיטה מקורי למדפסות ארטילרי"
+      },
+      {
+        "id": 25716,
+        "date_created": "2020-12-20T16:22:13",
+        "date_created_gmt": "2020-12-20T10:22:13",
+        "date_modified": "2020-12-20T16:35:11",
+        "date_modified_gmt": "2020-12-20T10:35:11",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Hf142aaae523f442eabf9f82be109dcbf0.jpg",
+        "name": "משטח חימום מיטה מקורי למדפסות ארטילרי",
+        "alt": "משטח חימום מיטה מקורי למדפסות ארטילרי"
+      },
+      {
+        "id": 25718,
+        "date_created": "2020-12-20T16:22:38",
+        "date_created_gmt": "2020-12-20T10:22:38",
+        "date_modified": "2020-12-20T16:35:22",
+        "date_modified_gmt": "2020-12-20T10:35:22",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/H4640c34333d14f9083c395f03b07bf62R.jpg",
+        "name": "משטח חימום מיטה מקורי למדפסות ארטילרי",
+        "alt": "משטח חימום מיטה מקורי למדפסות ארטילרי"
+      },
+      {
+        "id": 25719,
+        "date_created": "2020-12-20T16:22:53",
+        "date_created_gmt": "2020-12-20T10:22:53",
+        "date_modified": "2020-12-20T16:35:28",
+        "date_modified_gmt": "2020-12-20T10:35:28",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/H2c41fbfc5cd843d88a2042805e6458886.jpg",
+        "name": "משטח חימום מיטה מקורי למדפסות ארטילרי",
+        "alt": "משטח חימום מיטה מקורי למדפסות ארטילרי"
+      }
+    ],
+    "attributes": [
+      {
+        "id": 0,
+        "name": "סוג-לקוח",
+        "position": 1,
+        "visible": true,
+        "variation": true,
+        "options": [
+          "מיטה ל-Genius מדפסת נרכשה בספיידר",
+          "מיטה ל-SW מדפסת נרכשה בספיידר",
+          "מיטה ל-Genius מדפסת לא נרכשה בספיידר",
+          "מיטה ל-SW מדפסת לא נרכשה בספיידר"
+        ]
+      }
+    ],
+    "default_attributes": [
+      {
+        "id": 0,
+        "name": "סוג-לקוח",
+        "option": "מיטה ל-SW מדפסת נרכשה בספיידר"
+      }
+    ],
+    "variations": [
+      25724,
+      25725,
+      25726,
+      25727
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 74,
+    "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>148</bdi></span> &ndash; <span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>180</bdi></span>",
+    "related_ids": [
+      26748,
+      25676,
+      28692,
+      26172,
+      26095
+    ],
+    "meta_data": [
+      {
+        "id": 1144427,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": "4001305804568"
+      },
+      {
+        "id": 1144607,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1144636,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1144637,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1144639,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1144640,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1144641,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1144642,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1144643,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1144644,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1144645,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1144646,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1144647,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1144648,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1144667,
+        "key": "__post_views_count",
+        "value": "1392"
+      },
+      {
+        "id": 1144742,
+        "key": "lws_woorewards_social_hash",
+        "value": "0d6e04733eaf5ac9e0f57002bbed4874"
+      },
+      {
+        "id": 1144974,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      },
+      {
+        "id": 1213636,
+        "key": "_openpos_product_version_0",
+        "value": "1614018661"
+      },
+      {
+        "id": 1316697,
+        "key": "fb_product_group_id",
+        "value": "4276688135694748"
+      },
+      {
+        "id": 1316753,
+        "key": "_wc_facebook_commerce_enabled",
+        "value": "no"
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+      {
+        "id": 0,
+        "name": "סוג לקוח",
+        "options": [
+
+        ],
+        "position": 1,
+        "visible": true,
+        "variation": true,
+        "is_visible": 1,
+        "is_variation": 1,
+        "is_taxonomy": 0,
+        "value": "",
+        "label": "סוג לקוח"
+      }
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/25704"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  },
+  {
+    "id": 25676,
+    "name": "משטח הדפסה זכוכית מקורי של חברת Artillery כולל 4 ברגים מובנים למדפסות SW-X1 ו- Genius",
+    "slug": "%d7%9e%d7%a9%d7%98%d7%97-%d7%94%d7%93%d7%a4%d7%a1%d7%94-%d7%96%d7%9b%d7%95%d7%9b%d7%99%d7%aa-%d7%9e%d7%a7%d7%95%d7%a8%d7%99-%d7%a9%d7%9c-%d7%97%d7%91%d7%a8%d7%aa-artillery-%d7%9b%d7%95%d7%9c%d7%9c-4",
+    "permalink": "https://www.spider3d.co.il/shop/%25product_cat%25/2020-%D7%AA%D7%95%D7%AA%D7%97%D7%A0%D7%99%D7%9D-sidewinder-sw-x1-%D7%95%D7%92%D7%90%D7%95%D7%9F-3d-%D7%9E%D7%93%D7%A4%D7%A1%D7%AA-%D7%96%D7%9B%D7%95%D7%9B%D7%99%D7%AA-%D7%9E%D7%99%D7%98%D7%94/",
+    "date_created": "2020-12-20T13:15:42",
+    "date_created_gmt": "2020-12-20T10:15:42",
+    "date_modified": "2021-06-19T13:18:59",
+    "date_modified_gmt": "2021-06-19T10:18:59",
+    "type": "variable",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "<div class=\"detailmodule_html\">\n<div class=\"detail-desc-decorate-richtext\">\n<p><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/Hd57ca718f9e4451ab9c6c1e7359ec2809.jpg\" alt=\"Hccc0fbe0ff2340d8a68e8d4af78c5569V\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H0563155a51214885b016ed3bb5b1887fR.jpg\" alt=\"H7dfb729fb5a24a4ab47fed7712fd6e6ba\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/Hf065d53adcd940de8eee2b738e425ae1X.jpg\" alt=\"H3d5354fe9e984f72a11cd4773b328fb0n\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H6aa6dd40c1ea4d1a96bea4b1cbeaa5b8g.jpg\" alt=\"H45ffe8b98e4844a3a271714528f3f090E\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H327bbdeee78a4395b0f5ad238d944d00P.jpg\" alt=\"H009116b616c649fd9ce0ae81fe519158K\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/H921277af34774fcf9557369432930858I.jpg\" alt=\"H51f26c4d90eb442b987b61952c78e422U\" /><img class=\"aligncenter\" src=\"https://ae01.alicdn.com/kf/He9f125881ee74570a07da66ac21c7ed5H.jpg\" alt=\"Hef077fd824f7461880d2ae441af3a863m\" /></p>\n</div>\n</div>\n",
+    "short_description": "<p><strong>ספיידר תלת מימד</strong> הינה המשווקת הבלעדית של חברת ארטילרי בישראל.<br />\nברשותינו <strong>חלקי חילוף מקוריים</strong> עבור מדפסות <a href=\"https://www.spider3d.co.il/product/%D7%90%D7%A8%D7%98%D7%99%D7%9C%D7%A8%D7%99-artillery-sw-x1/\">Artillery SW-X1</a> ועבור מדפסת <a href=\"https://www.spider3d.co.il/shop/artillery-genius-diy-3d-printer-kit-with-ultra-quiet-stepper-motor-tft-touch-screen-220220250mm-print-size/\">Artillery Genius</a></p>\n",
+    "sku": "10000393441160",
+    "price": "198",
+    "regular_price": "269",
+    "sale_price": "198",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 7,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [
+
+    ],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": false,
+    "stock_quantity": null,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [
+
+    ],
+    "cross_sell_ids": [
+
+    ],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 5161,
+        "name": "חלקי חילוף מקוריים לארטילרי",
+        "slug": "%d7%97%d7%9c%d7%a7%d7%99-%d7%97%d7%99%d7%9c%d7%95%d7%a3-%d7%9e%d7%a7%d7%95%d7%a8%d7%99%d7%99%d7%9d-%d7%9c%d7%90%d7%a8%d7%98%d7%99%d7%9c%d7%a8%d7%99"
+      }
+    ],
+    "tags": [
+
+    ],
+    "images": [
+      {
+        "id": 25680,
+        "date_created": "2020-12-20T15:21:59",
+        "date_created_gmt": "2020-12-20T09:21:59",
+        "date_modified": "2020-12-29T00:40:13",
+        "date_modified_gmt": "2020-12-28T18:40:13",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/2020-Sidewinder-SW-X1-3D-1-wpp1609180787799.jpg",
+        "name": "משטח זכוכית מקורי ארטילרי",
+        "alt": "משטח זכוכית מקורי ארטילרי"
+      },
+      {
+        "id": 25680,
+        "date_created": "2020-12-20T15:21:59",
+        "date_created_gmt": "2020-12-20T09:21:59",
+        "date_modified": "2020-12-29T00:40:13",
+        "date_modified_gmt": "2020-12-28T18:40:13",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/2020-Sidewinder-SW-X1-3D-1-wpp1609180787799.jpg",
+        "name": "משטח זכוכית מקורי ארטילרי",
+        "alt": "משטח זכוכית מקורי ארטילרי"
+      },
+      {
+        "id": 25681,
+        "date_created": "2020-12-20T15:22:16",
+        "date_created_gmt": "2020-12-20T09:22:16",
+        "date_modified": "2020-12-20T16:09:58",
+        "date_modified_gmt": "2020-12-20T10:09:58",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/2020-Sidewinder-SW-X1-3D-2.jpg",
+        "name": "מזטח זכוכית מקורי ארטילרי",
+        "alt": "מזטח זכוכית מקורי ארטילרי"
+      },
+      {
+        "id": 25685,
+        "date_created": "2020-12-20T15:23:38",
+        "date_created_gmt": "2020-12-20T09:23:38",
+        "date_modified": "2020-12-20T16:09:11",
+        "date_modified_gmt": "2020-12-20T10:09:11",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/H0563155a51214885b016ed3bb5b1887fR.jpg",
+        "name": "מזטח זכוכית מקורי ארטילרי",
+        "alt": "מזטח זכוכית מקורי ארטילרי"
+      },
+      {
+        "id": 25686,
+        "date_created": "2020-12-20T15:23:52",
+        "date_created_gmt": "2020-12-20T09:23:52",
+        "date_modified": "2020-12-29T00:40:44",
+        "date_modified_gmt": "2020-12-28T18:40:44",
+        "src": "https://www.spider3d.co.il/wp-content/uploads/2020/12/Hf065d53adcd940de8eee2b738e425ae1X.jpg",
+        "name": "משטח זכוכית מקורי ארטילרי",
+        "alt": "משטח זכוכית מקורי ארטילרי"
+      }
+    ],
+    "attributes": [
+      {
+        "id": 0,
+        "name": "סוג-לקוח",
+        "position": 0,
+        "visible": true,
+        "variation": true,
+        "options": [
+          "משטח ל-Genius מדפסת נרכשה בספיידר",
+          "משטח ל-SW מדפסת נרכשה בספיידר",
+          "משטח ל-Genius מדפסת לא נרכשה בספיידר",
+          "משטח ל-SW מדפסת לא נרכשה בספיידר"
+        ]
+      }
+    ],
+    "default_attributes": [
+      {
+        "id": 0,
+        "name": "סוג-לקוח",
+        "option": "משטח ל-Genius מדפסת נרכשה בספיידר"
+      }
+    ],
+    "variations": [
+      25698,
+      25699,
+      25700,
+      25701
+    ],
+    "grouped_products": [
+
+    ],
+    "menu_order": 75,
+    "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>198</bdi></span> &ndash; <span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#8362;</span>279</bdi></span>",
+    "related_ids": [
+      26095,
+      27124,
+      26200,
+      26228,
+      26748
+    ],
+    "meta_data": [
+      {
+        "id": 1143936,
+        "key": "_vi_wad_aliexpress_product_id",
+        "value": "10000393441160"
+      },
+      {
+        "id": 1144027,
+        "key": "_last_editor_used_jetpack",
+        "value": "classic-editor"
+      },
+      {
+        "id": 1144105,
+        "key": "toolstipssynonyms",
+        "value": ""
+      },
+      {
+        "id": 1144382,
+        "key": "_woocommerce_gpf_data",
+        "value": {
+          "exclude_product": "on"
+        }
+      },
+      {
+        "id": 1144383,
+        "key": "_fbtfw_ids",
+        "value": [
+
+        ]
+      },
+      {
+        "id": 1144385,
+        "key": "lrm_auto_trigger_on",
+        "value": ""
+      },
+      {
+        "id": 1144386,
+        "key": "lrm_auto_trigger_timeout",
+        "value": ""
+      },
+      {
+        "id": 1144387,
+        "key": "lrm_auto_trigger_tab",
+        "value": ""
+      },
+      {
+        "id": 1144388,
+        "key": "_yoast_wpseo_primary_product_cat",
+        "value": "5161"
+      },
+      {
+        "id": 1144389,
+        "key": "wpseo_global_identifier_values",
+        "value": {
+          "gtin8": "",
+          "gtin12": "",
+          "gtin13": "",
+          "gtin14": "",
+          "isbn": "",
+          "mpn": ""
+        }
+      },
+      {
+        "id": 1144390,
+        "key": "_the_champ_meta",
+        "value": {
+          "sharing": 0,
+          "vertical_sharing": 0,
+          "counter": 0,
+          "vertical_counter": 0,
+          "fb_comments": 0
+        }
+      },
+      {
+        "id": 1144391,
+        "key": "_yoast_wpseo_content_score",
+        "value": "90"
+      },
+      {
+        "id": 1144392,
+        "key": "_yoast_wpseo_focuskeywords",
+        "value": ""
+      },
+      {
+        "id": 1144393,
+        "key": "_yoast_wpseo_keywordsynonyms",
+        "value": ""
+      },
+      {
+        "id": 1144394,
+        "key": "__post_views_count",
+        "value": "1541"
+      },
+      {
+        "id": 1144395,
+        "key": "lws_woorewards_social_hash",
+        "value": "0048f257cfaeac5d3dbf31f837693601"
+      },
+      {
+        "id": 1144975,
+        "key": "cwg_total_subscribers",
+        "value": "0"
+      }
+    ],
+    "stock_status": "instock",
+    "jetpack_publicize_connections": [
+
+    ],
+    "gpf_data": {
+      "description": null,
+      "availability": null,
+      "is_bundle": null,
+      "availability_date": null,
+      "condition": null,
+      "brand": null,
+      "mpn": null,
+      "product_type": null,
+      "google_product_category": null,
+      "gtin": null,
+      "gender": null,
+      "age_group": null,
+      "color": null,
+      "size": null,
+      "size_type": null,
+      "size_system": null,
+      "unit_pricing_measure": null,
+      "unit_pricing_base_measure": null,
+      "multipack": null,
+      "installment": null,
+      "material": null,
+      "pattern": null,
+      "adult": null,
+      "identifier_exists": null,
+      "adwords_grouping": null,
+      "adwords_labels": null,
+      "bing_category": null,
+      "delivery_label": null,
+      "transit_time_label": null,
+      "min_handling_time": null,
+      "max_handling_time": null,
+      "energy_efficiency_class": null,
+      "min_energy_efficiency_class": null,
+      "max_energy_efficiency_class": null,
+      "energy_label_image_link": null,
+      "cost_of_goods_sold": null,
+      "included_destination": null,
+      "excluded_destination": null,
+      "consumer_notice": null,
+      "product_highlight": null,
+      "product_detail": null,
+      "consumer_datasheet": null,
+      "product_fee": null,
+      "sell_on_google_quantity": null,
+      "purchase_quantity_limit": null,
+      "google_funded_promotion_eligibility": null,
+      "return_address_label": null,
+      "return_policy_label": null,
+      "custom_label_0": null,
+      "custom_label_1": null,
+      "custom_label_2": null,
+      "custom_label_3": null,
+      "custom_label_4": null,
+      "promotion_id": null,
+      "shippingprice": null,
+      "shippingcountryprice": null,
+      "shippingcountryserviceprice": null,
+      "exclude_product": "on"
+    },
+    "is_purchased": false,
+    "attributesData": [
+      {
+        "id": 0,
+        "name": "סוג לקוח",
+        "options": [
+
+        ],
+        "position": 0,
+        "visible": true,
+        "variation": true,
+        "is_visible": 1,
+        "is_variation": 1,
+        "is_taxonomy": 0,
+        "value": "",
+        "label": "סוג לקוח"
+      }
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products/25676"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.spider3d.co.il/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  }
+]

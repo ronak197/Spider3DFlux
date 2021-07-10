@@ -1,0 +1,147 @@
+{
+  "HorizonLayout": [
+    {
+      "layout": "logo" ,
+      "showSearch": true ,
+      "showMenu": true ,
+      "menuIcon": {
+        "name": "line_horizontal_3_decrease" ,
+        "fontFamily": "CupertinoIcons"
+      } ,
+      "image": "https://i.imgur.com/LQWSjzt.png" ,
+      "showLogo": true
+    } ,
+    {
+      "autoPlay": true ,
+      "layout": "bannerImage" ,
+      "radius": 8 ,
+      "showBackGround": true ,
+      "items": [
+        {
+          "padding": 15 ,
+          "category": 28 ,
+          "image": "https://user-images.githubusercontent.com/1459805/59846818-12672e80-938b-11e9-8184-5f7bfe66f1a2.png"
+        } ,
+        {
+          "image": "https://user-images.githubusercontent.com/1459805/60091575-1f12ca80-976f-11e9-962c-bdccff60d143.png" ,
+          "category": 29 ,
+          "padding": 15
+        } ,
+        {
+          "product": 30 ,
+          "padding": 15 ,
+          "image": "https://user-images.githubusercontent.com/1459805/60091808-a19b8a00-976f-11e9-9cc7-576ca05c2442.png"
+        }
+      ] ,
+      "isSlider": true ,
+      "showNumber": false ,
+      "design": "default"
+    } ,
+    {
+      "marginRight": 10 ,
+      "marginBottom": 0 ,
+      "height": 0.22 ,
+      "fit": "cover" ,
+      "marginTop": 0 ,
+      "isSlider": false ,
+      "marginLeft": 10 ,
+      "items": [
+        {
+          "padding": 5 ,
+          "url": "https://inspireui.com" ,
+          "image": "https://user-images.githubusercontent.com/1459805/59846820-12672e80-938b-11e9-8fa6-b331b7db331d.png"
+        }
+      ] ,
+      "layout": "bannerImage"
+    } ,
+    {
+      "isSnapping": true ,
+      "layout": "recentView" ,
+      "name": "נצפו לאחרונה"
+    }
+  ] ,
+  "Setting": {
+    "MainColor": "#D32F2F" ,
+    "ProductListLayout": "list" ,
+    "StickyHeader": true ,
+    "ProductDetail": "simpleType" ,
+    "FontFamily": "Heebo" ,
+    "ShowChat": true
+  } ,
+  "TabBar": [
+    {
+      "pos": 100 ,
+      "key": "7coj918y9l" ,
+      "layout": "home" ,
+      "icon": "assets/icons/tabs/icon-home.png"
+    } ,
+    {
+      "pos": 200 ,
+      "layout": "search" ,
+      "icon": "assets/icons/tabs/icon-search.png" ,
+      "key": "d5zwznb1ct"
+    } ,
+    {
+      "pos": 300 ,
+      "key": "m4r4y3xr0j" ,
+      "icon": "assets/icons/tabs/icon-cart2.png" ,
+      "layout": "cart"
+    } ,
+    {
+      "pos": 400 ,
+      "settings": [
+        "order" ,
+        "wishlist" ,
+        "darkTheme" ,
+        "rating" ,
+        "about"
+      ] ,
+      "layout": "profile" ,
+      "background": "https://i.imgur.com/u2GRG8B.jpeg" ,
+      "icon": "assets/icons/tabs/icon-user.png" ,
+      "key": "h7h39zynlg"
+    } ,
+    {
+      "pos": 500 ,
+      "icon": "heart" ,
+      "layout": "wishlist" ,
+      "showChat": false ,
+      "fontFamily": "CupertinoIcons" ,
+      "key": "w4s4b20uu3"
+    } ,
+    {
+      "layout": "blog" ,
+      "icon": "assets/icons/tabs/icon-heartthin.png" ,
+      "fontFamily": null ,
+      "showChat": false ,
+      "pos": 588
+    }
+  ] ,
+  "Drawer": {
+    "logo": null ,
+    "items": [
+      {
+        "type": "home" ,
+        "show": false
+      } ,
+      {
+        "show": false ,
+        "type": "blog"
+      } ,
+      {
+        "show": true ,
+        "type": "login"
+      } ,
+      {
+        "type": "category" ,
+        "show": true
+      }
+    ]
+  } ,
+  "VerticalLayout": {
+    "key": "blhrofrp7x" ,
+    "name": "המומלצים שלנו" ,
+    "isVertical": true ,
+    "layout": "menu"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "HorizonLayout": [
+    {
+      "layout": "logo",
+      "showMenu": true,
+      "showSearch": true,
+      "showLogo": true,
+      "menuIcon": {
+        "name": "line_horizontal_3_decrease",
+        "fontFamily": "CupertinoIcons"
+      },
+      "image": "https://i.imgur.com/LQWSjzt.png"
+    },
+    {
+      "layout": "bannerImage",
+      "isSlider": true,
+      "autoPlay": true,
+      "showNumber": false,
+      "design": "default",
+      "showBackGround": true,
+      "radius": 8,
+      "items": [
+        {
+          "product": 30,
+          "image": "https://i.imgur.com/84ySdG3.jpg",
+          "padding": 15.0
+        }
+      ]
+    },
+    {
+      "layout": "bannerImage",
+      "isSlider": true,
+      "autoPlay": true,
+      "showNumber": false,
+      "design": "default",
+      "showBackGround": true,
+      "radius": 8,
+      "items": [
+        {
+          "product": 30,
+          "image": "https://i.imgur.com/H0bcI9u.jpg",
+          "padding": 15.0
+        },
+        {
+          "category": 29,
+          "image": "https://i.imgur.com/H7BJGsh.jpg",
+          "padding": 15.0
+        }
+      ]
+    },
+    {
+      "name": "מוצרים מעולים",
+      "layout": "threeColumn",
+      "isSnapping": true
+    }
+  ],
+  "VerticalLayout": {
+    "key": "r09jo0owu6",
+    "layout": "menu",
+    "name": "המומלצים שלנו",
+    "isVertical": true
+  },
+  "Setting": {
+    "MainColor": "#961b1e",
+    "FontFamily": "Heebo",
+    "ProductListLayout": "list",
+    "StickyHeader": true,
+    "ProductDetail": "simpleType",
+    "ShowChat": true
+  },
+  "TabBar": [
+    {
+      "layout": "home",
+      "icon": "assets/icons/tabs/icon-home.png"
+    },
+    {
+      "layout": "search",
+      "icon": "assets/icons/tabs/icon-search.png"
+    },
+    {
+      "layout": "cart",
+      "icon": "assets/icons/tabs/icon-cart2.png"
+    },
+    {
+      "layout": "profile",
+      "icon": "assets/icons/tabs/icon-user.png",
+      "showChat": true,
+      "pos": 400 ,
+      "settings": [
+        "order" ,
+        "wishlist" ,
+        "darkTheme" ,
+        "rating" ,
+        "about"
+      ] ,
+      "background": "https://i.imgur.com/u2GRG8B.jpeg"
+    },
+    {
+      "layout": "category",
+      "categoryLayout": "card",
+      "icon": "assets/icons/tabs/icon-category.png"
+    }
+  ],
+  "Drawer": {
+    "logo": null ,
+    "items": [
+      {
+        "type": "home" ,
+        "show": false
+      } ,
+      {
+        "type": "blog" ,
+        "show": true
+      } ,
+      {
+        "type": "login" ,
+        "show": true
+      } ,
+      {
+        "show": true ,
+        "type": "category"
+      }
+    ]
+  } ,
+  "searchSuggestion": [
+    "הנה כמה מההצעות שלנו:",
+    "פילמנט PLA+",
+    "SILK",
+    "מדפסת Hornet 3D",
+    "פילמנט מחליף צבעים"
+  ],
+  "OnBoarding": {
+    "data": [
+      {
+        "title": "מתנת הצטרפות מאיתנו",
+        "image": "myCupon",
+        "desc": "קבל קופון הצטרפות ומבצעיים בלעדים נוספים לחברי האפליקציה",
+        "background": "#F2FFFC"
+      },
+      {
+        "title": "זה הזמן להתחיל",
+        "image": "fogg-order-completed.png",
+        "desc": "Waiting no more, let's see what we get!",
+        "background": "#F9F2FF"
+      }
+    ]
+  }
+}

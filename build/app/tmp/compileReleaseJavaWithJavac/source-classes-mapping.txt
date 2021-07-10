@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/biton/spider3dflux/BuildConfig.java
+ com.biton.spider3dflux.BuildConfig

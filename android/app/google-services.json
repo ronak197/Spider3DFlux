@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "349562325339",
+    "project_id": "spider3d-flux",
+    "storage_bucket": "spider3d-flux.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349562325339:android:0e4b0a598ac82c42b9f27e",
+        "android_client_info": {
+          "package_name": "com.biton.spider3dflux"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349562325339-j9bipe7012967f7bdmklmmp1ht84sq2i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.biton.spider3dflux",
+            "certificate_hash": "d087f0616fb1139bc19edc18f549f3dd3a1c1eb1"
+          }
+        },
+        {
+          "client_id": "349562325339-asf0kil5k4vgn0otr3iipip5jlovk1n4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYhY-VCCTO574wv-gANXG6-7IABbLf2QI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349562325339-asf0kil5k4vgn0otr3iipip5jlovk1n4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "349562325339-4oi8e4v540ip5n31l7vc6vv98tggnspd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.biton.spider3dflux"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

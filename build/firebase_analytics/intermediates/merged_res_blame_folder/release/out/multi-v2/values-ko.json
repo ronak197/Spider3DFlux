@@ -1,0 +1,82 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/firebase_analytics/intermediates/incremental/mergeReleaseResources/merged.dir/values-ko/values-ko.xml",
+            "map": [
+                {
+                    "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/1020c75b61145b66778f38474476a80b/jetified-play-services-basement-17.0.0/res/values-ko/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "179",
+                        "endOffsets": "426"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "105",
+                        "endColumns": "179",
+                        "endOffsets": "280"
+                    }
+                },
+                {
+                    "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/d7f2206ff27fd376094c2eda22969342/core-1.1.0/res/values-ko/values-ko.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "285",
+                        "endColumns": "100",
+                        "endOffsets": "381"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/firebase_analytics/intermediates/res/merged/release/values-ko/values-ko.xml",
+            "map": [
+                {
+                    "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/1020c75b61145b66778f38474476a80b/jetified-play-services-basement-17.0.0/res/values-ko/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "179",
+                        "endOffsets": "426"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "105",
+                        "endColumns": "179",
+                        "endOffsets": "280"
+                    }
+                },
+                {
+                    "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/d7f2206ff27fd376094c2eda22969342/core-1.1.0/res/values-ko/values-ko.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "285",
+                        "endColumns": "100",
+                        "endOffsets": "381"
+                    }
+                }
+            ]
+        }
+    ]
+}

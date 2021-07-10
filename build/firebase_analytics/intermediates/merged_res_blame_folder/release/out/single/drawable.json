@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/firebase_analytics/intermediates/res/merged/release/drawable/notification_bg.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/d7f2206ff27fd376094c2eda22969342/core-1.1.0/res/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/firebase_analytics/intermediates/res/merged/release/drawable/notification_icon_background.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/d7f2206ff27fd376094c2eda22969342/core-1.1.0/res/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/firebase_analytics/intermediates/res/merged/release/drawable/notification_bg_low.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/d7f2206ff27fd376094c2eda22969342/core-1.1.0/res/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/firebase_analytics/intermediates/res/merged/release/drawable/notification_tile_bg.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/d7f2206ff27fd376094c2eda22969342/core-1.1.0/res/drawable/notification_tile_bg.xml"
+    }
+]

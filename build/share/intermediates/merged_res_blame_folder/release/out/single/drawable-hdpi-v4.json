@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/share/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_low_pressed.9.png",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/be8e5b3dffd2a4dc03f5c968e7b8047d/core-1.3.1/res/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/share/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_normal.9.png",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/be8e5b3dffd2a4dc03f5c968e7b8047d/core-1.3.1/res/drawable-hdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/share/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_low_normal.9.png",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/be8e5b3dffd2a4dc03f5c968e7b8047d/core-1.3.1/res/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/share/intermediates/res/merged/release/drawable-hdpi-v4/notify_panel_notification_icon_bg.png",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/be8e5b3dffd2a4dc03f5c968e7b8047d/core-1.3.1/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/share/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_normal_pressed.9.png",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/be8e5b3dffd2a4dc03f5c968e7b8047d/core-1.3.1/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+    }
+]

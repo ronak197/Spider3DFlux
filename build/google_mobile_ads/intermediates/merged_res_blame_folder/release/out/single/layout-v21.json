@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/google_mobile_ads/intermediates/res/merged/release/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/92630b4fee2e1abaadb27b9633fce5d3/core-1.2.0/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/google_mobile_ads/intermediates/res/merged/release/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/92630b4fee2e1abaadb27b9633fce5d3/core-1.2.0/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/google_mobile_ads/intermediates/res/merged/release/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/92630b4fee2e1abaadb27b9633fce5d3/core-1.2.0/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/google_mobile_ads/intermediates/res/merged/release/layout-v21/notification_action.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/92630b4fee2e1abaadb27b9633fce5d3/core-1.2.0/res/layout-v21/notification_action.xml"
+    }
+]

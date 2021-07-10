@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/multi_image_picker2/intermediates/res/merged/release/interpolator-v21/mtrl_fast_out_slow_in.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/6507e461651a4ce097dc6777f1f8b6c6/material-1.0.0/res/interpolator-v21/mtrl_fast_out_slow_in.xml"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/multi_image_picker2/intermediates/res/merged/release/interpolator-v21/mtrl_fast_out_linear_in.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/6507e461651a4ce097dc6777f1f8b6c6/material-1.0.0/res/interpolator-v21/mtrl_fast_out_linear_in.xml"
+    },
+    {
+        "merged": "/Users/biton/Downloads/codecanyon-fluxstore-wooFlutter-ecommerce/build/multi_image_picker2/intermediates/res/merged/release/interpolator-v21/mtrl_linear_out_slow_in.xml",
+        "source": "/Users/biton/.gradle/caches/transforms-2/files-2.1/6507e461651a4ce097dc6777f1f8b6c6/material-1.0.0/res/interpolator-v21/mtrl_linear_out_slow_in.xml"
+    }
+]

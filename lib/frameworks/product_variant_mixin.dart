@@ -107,6 +107,7 @@ mixin ProductVariantMixin {
           : '';
     }
 
+
     var showSpiders = true;
     for (var cat in product.categories) {
       if (cat.id == '2341') {

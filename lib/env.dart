@@ -429,7 +429,7 @@ Map<String, dynamic> environment = {
     "tracking_url": "https://fluxstore.aftership.com"
   },
   "productDetail": {
-    "height": 0.4,
+    "height": 0.6,
     "marginTop": 0,
     "safeArea": false,
     "showVideo": true,

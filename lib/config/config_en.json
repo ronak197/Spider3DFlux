@@ -1,7 +1,6 @@
 {
   "HorizonLayout": [
     {
-      "layout": "logo" ,
       "showSearch": true ,
       "showMenu": true ,
       "menuIcon": {
@@ -9,86 +8,85 @@
         "fontFamily": "CupertinoIcons"
       } ,
       "image": "https://i.imgur.com/LQWSjzt.png" ,
-      "showLogo": true
+      "showLogo": true ,
+      "layout": "logo"
     } ,
     {
-      "autoPlay": true ,
       "layout": "bannerImage" ,
+      "items": [
+        {
+          "product": 25056 ,
+          "padding": 15 ,
+          "image": "https://i.imgur.com/84ySdG3.jpg"
+        }
+      ] ,
       "radius": 8 ,
+      "autoPlay": true ,
       "showBackGround": true ,
-      "items": [
-        {
-          "padding": 15 ,
-          "category": 28 ,
-          "image": "https://user-images.githubusercontent.com/1459805/59846818-12672e80-938b-11e9-8184-5f7bfe66f1a2.png"
-        } ,
-        {
-          "image": "https://user-images.githubusercontent.com/1459805/60091575-1f12ca80-976f-11e9-962c-bdccff60d143.png" ,
-          "category": 29 ,
-          "padding": 15
-        } ,
-        {
-          "product": 30 ,
-          "padding": 15 ,
-          "image": "https://user-images.githubusercontent.com/1459805/60091808-a19b8a00-976f-11e9-9cc7-576ca05c2442.png"
-        }
-      ] ,
       "isSlider": true ,
-      "showNumber": false ,
-      "design": "default"
+      "design": "default" ,
+      "showNumber": false
     } ,
     {
-      "marginRight": 10 ,
-      "marginBottom": 0 ,
-      "height": 0.22 ,
-      "fit": "cover" ,
-      "marginTop": 0 ,
-      "isSlider": false ,
-      "marginLeft": 10 ,
       "items": [
         {
-          "padding": 5 ,
-          "url": "https://inspireui.com" ,
-          "image": "https://user-images.githubusercontent.com/1459805/59846820-12672e80-938b-11e9-8fa6-b331b7db331d.png"
+          "image": "https://i.imgur.com/H0bcI9u.jpg" ,
+          "padding": 15 ,
+          "category": 4783
+        } ,
+        {
+          "padding": 15 ,
+          "category": 2352 ,
+          "image": "https://i.imgur.com/H7BJGsh.jpg"
         }
       ] ,
-      "layout": "bannerImage"
+      "autoPlay": true ,
+      "design": "default" ,
+      "showNumber": false ,
+      "layout": "bannerImage" ,
+      "showBackGround": true ,
+      "radius": 8 ,
+      "isSlider": true
     } ,
     {
-      "isSnapping": true ,
-      "layout": "recentView" ,
-      "name": "נצפו לאחרונה"
+      "name": "מדפסות מעולות" ,
+      "category": 2341 ,
+      "layout": "threeColumn" ,
+      "isSnapping": true
     }
   ] ,
   "Setting": {
-    "MainColor": "#D32F2F" ,
+    "MainColor": "#961b1e" ,
     "ProductListLayout": "list" ,
     "StickyHeader": true ,
-    "ProductDetail": "simpleType" ,
-    "FontFamily": "Heebo" ,
-    "ShowChat": true
+    "ProductDetail": "halfSizeImageType" ,
+    "ShowChat": true ,
+    "FontFamily": "Heebo"
   } ,
   "TabBar": [
     {
       "pos": 100 ,
-      "key": "7coj918y9l" ,
       "layout": "home" ,
-      "icon": "assets/icons/tabs/icon-home.png"
+      "icon": "assets/icons/tabs/icon-home.png" ,
+      "key": "9vsivuvnco"
     } ,
     {
-      "pos": 200 ,
-      "layout": "search" ,
       "icon": "assets/icons/tabs/icon-search.png" ,
-      "key": "d5zwznb1ct"
+      "layout": "search" ,
+      "key": "xgvo320p70" ,
+      "pos": 200
     } ,
     {
+      "key": "ozncg02ct5" ,
+      "layout": "cart" ,
       "pos": 300 ,
-      "key": "m4r4y3xr0j" ,
-      "icon": "assets/icons/tabs/icon-cart2.png" ,
-      "layout": "cart"
+      "icon": "assets/icons/tabs/icon-cart2.png"
     } ,
     {
       "pos": 400 ,
+      "background": "https://i.imgur.com/u2GRG8B.jpeg" ,
+      "icon": "assets/icons/tabs/icon-user.png" ,
+      "key": "2q3e2awiv6" ,
       "settings": [
         "order" ,
         "wishlist" ,
@@ -97,35 +95,31 @@
         "about"
       ] ,
       "layout": "profile" ,
-      "background": "https://i.imgur.com/u2GRG8B.jpeg" ,
-      "icon": "assets/icons/tabs/icon-user.png" ,
-      "key": "h7h39zynlg"
+      "showChat": true
     } ,
     {
+      "layout": "category",
+      "categoryLayout": "card",
+      "icon": "assets/icons/tabs/icon-category.png"
+    },
+    {
+      "showChat": false ,
       "pos": 500 ,
-      "icon": "heart" ,
-      "layout": "wishlist" ,
-      "showChat": false ,
-      "fontFamily": "CupertinoIcons" ,
-      "key": "w4s4b20uu3"
-    } ,
-    {
-      "layout": "blog" ,
-      "icon": "assets/icons/tabs/icon-heartthin.png" ,
       "fontFamily": null ,
-      "showChat": false ,
-      "pos": 588
+      "icon": "assets/icons/tabs/icon-heartthin.png" ,
+      "layout": "wishlist" ,
+      "key": "9c8n8uvss0"
     }
   ] ,
   "Drawer": {
     "logo": null ,
     "items": [
       {
-        "type": "home" ,
-        "show": false
+        "show": false ,
+        "type": "home"
       } ,
       {
-        "show": false ,
+        "show": true ,
         "type": "blog"
       } ,
       {
@@ -139,9 +133,9 @@
     ]
   } ,
   "VerticalLayout": {
-    "key": "blhrofrp7x" ,
+    "key": "705svzyqkl" ,
     "name": "המומלצים שלנו" ,
-    "isVertical": true ,
-    "layout": "menu"
+    "layout": "menu" ,
+    "isVertical": true
   }
 }

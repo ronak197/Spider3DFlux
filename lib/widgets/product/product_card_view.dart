@@ -133,29 +133,28 @@ class ProductCard extends StatelessWidget {
       maxLines: 2,
     );
 
-    /// Product Pricing
-    Widget _productPricing = Wrap(
-      crossAxisAlignment: WrapCrossAlignment.center,
-      children: <Widget>[
-        Text(
-          item.type == 'grouped'
-              ? '${S.of(context).from} ${PriceTools.getPriceProduct(item, currencyRate, currency, onSale: true)}'
-              : priceProduct == '0.0'
-                  ? S.of(context).loading
-                  : Config().isListingType
-                      ? PriceTools.getCurrencyFormatted(
-                          item.price ?? item.regularPrice ?? '0', null)!
-                      : PriceTools.getPriceProduct(item, currencyRate, currency,
-                          onSale: true)!,
-          style: Theme.of(context)
-              .textTheme
-              .headline6!
-              .copyWith(
-                fontWeight: FontWeight.w600,
-              )
-              .apply(fontSizeFactor: 0.8),
-        ),
+    /// Show Cart button
+    Widget _showCart = (showCart &&
+            !item.isEmptyProduct() &&
+            item.inStock != null &&
+            item.inStock! &&
+            item.type != 'variable')
+        ? CircleAvatar(
+            // backgroundColor: Colors.white.withOpacity(0.3),
+            backgroundColor: Colors.grey.withOpacity(0.07),
+            child: IconButton(
+                color: Theme.of(context).accentColor.withOpacity(0.5),
+                // color: Colors.black,
+                icon: const Icon(Icons.add_shopping_cart, size: 18),
+                onPressed: () => addToCart(context)),
+          )
+        : Container(width: 30, height: 30);
 
+    /// Product Pricing
+    Widget _productPricing = Column(
+      // crossAxisAlignment: WrapCrossAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
         /// Not show regular price for variant product (product.regularPrice = "").
         if (isSale && item.type != 'variable') ...[
           const SizedBox(width: 5),
@@ -174,7 +173,25 @@ class ProductCard extends StatelessWidget {
                 )
                 .apply(fontSizeFactor: 0.8),
           ),
-        ]
+        ],
+        Text(
+          item.type == 'grouped'
+              ? '${S.of(context).from} ${PriceTools.getPriceProduct(item, currencyRate, currency, onSale: true)}'
+              : priceProduct == '0.0'
+                  ? S.of(context).loading
+                  : Config().isListingType
+                      ? PriceTools.getCurrencyFormatted(
+                          item.price ?? item.regularPrice ?? '0', null)!
+                      : PriceTools.getPriceProduct(item, currencyRate, currency,
+                          onSale: true)!,
+          style: Theme.of(context)
+              .textTheme
+              .headline6!
+              .copyWith(
+                fontWeight: FontWeight.w600,
+              )
+              .apply(fontSizeFactor: 0.8),
+        ),
       ],
     );
 
@@ -205,46 +222,38 @@ class ProductCard extends StatelessWidget {
             spacing: 0.0)
         : const SizedBox();
 
-    /// Show Cart button
-    Widget _showCart = (showCart &&
-            !item.isEmptyProduct() &&
-            item.inStock != null &&
-            item.inStock! &&
-            item.type != 'variable')
-        ? IconButton(
-            icon: const Icon(Icons.add_shopping_cart, size: 18),
-            onPressed: () => addToCart(context))
-        : Container(width: 30, height: 30);
-
     /// Show Stock status & Rating
-    Widget _productStockRating = Align(
-      alignment: Alignment.bottomLeft,
-      child: Stack(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    _stockStatus,
-                    _rating,
-                    const SizedBox(height: 4),
-                  ],
+    Widget _productStockRating = Padding(
+      padding: const EdgeInsets.all(0),
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Stack(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      _stockStatus,
+                      _rating,
+                      const SizedBox(height: 4),
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(width: 10),
-            ],
-          ),
-          Positioned(
-            left: Directionality.of(context) == TextDirection.rtl ? 0 : null,
-            right: Directionality.of(context) == TextDirection.rtl ? null : 0,
-            top: -14,
-            child: _showCart,
-          )
-        ],
+                const SizedBox(width: 10),
+              ],
+            ),
+            // Positioned( // Original Cart
+            //   left: Directionality.of(context) == TextDirection.rtl ? 0 : null,
+            //   right: Directionality.of(context) == TextDirection.rtl ? null : 0,
+            //   top: -14,
+            // child: _showCart,
+            // )
+          ],
+        ),
       ),
     );
 
@@ -316,54 +325,66 @@ class ProductCard extends StatelessWidget {
       ],
     );
 
-    Widget _productInfo = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 10),
-        if (!(kProductCard['hideTitle'] ?? false)) _productTitle,
-        if (!(kProductCard['hideStore'] ?? false)) _soldByStore,
-        const SizedBox(height: 5),
-        if (!(kProductCard['hidePrice'] ?? false)) _productPricing,
-        const SizedBox(height: 2),
-        _productStockRating,
-      ],
-    );
+    Widget _productInfo = Stack(children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 10),
+          if (!(kProductCard['hideTitle'] ?? false)) _productTitle,
+          if (!(kProductCard['hideStore'] ?? false)) _soldByStore,
+          const SizedBox(height: 5),
+          if (!(kProductCard['hidePrice'] ?? false)) _productPricing,
+          const SizedBox(height: 2),
+          _productStockRating,
+        ],
+      ),
+      Positioned(
+        left: Directionality.of(context) == TextDirection.rtl ? 0 : null,
+        right: Directionality.of(context) == TextDirection.rtl ? null : 0,
+        bottom: 0,
+        // bottom: 20,
+        child: _showCart,
+      )
+    ]);
 
     return GestureDetector(
       onTap: () => _onTapProduct(context),
       behavior: HitTestBehavior.opaque,
       child: Stack(
         children: <Widget>[
-          Container(
-            constraints: BoxConstraints(maxWidth: maxWidth ?? width!),
-            width: width! - 6,
-            decoration: BoxDecoration(
-              boxShadow: [
-                if (kProductCard['boxShadow'] != null)
-                  BoxShadow(
-                    color: Colors.black12,
-                    offset: Offset(
-                      kProductCard['boxShadow']['x'] ?? 0,
-                      kProductCard['boxShadow']['y'] ?? 1,
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Container(
+              constraints: BoxConstraints(maxWidth: maxWidth ?? width!),
+              width: width! - 6,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  if (kProductCard['boxShadow'] != null)
+                    BoxShadow(
+                      color: Colors.black12,
+                      offset: Offset(
+                        kProductCard['boxShadow']['x'] ?? 0,
+                        kProductCard['boxShadow']['y'] ?? 1,
+                      ),
+                      blurRadius: kProductCard['boxShadow']['blurRadius'] ?? 2,
                     ),
-                    blurRadius: kProductCard['boxShadow']['blurRadius'] ?? 2,
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius:
+                    BorderRadius.circular(kProductCard['borderRadius'] ?? 3),
+                child: Container(
+                  color: Theme.of(context).cardColor,
+                  padding: const EdgeInsets.all(6.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      _productImage,
+                      _productInfo,
+                    ],
                   ),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius:
-                  BorderRadius.circular(kProductCard['borderRadius'] ?? 3),
-              child: Container(
-                color: Theme.of(context).cardColor,
-                padding: const EdgeInsets.all(6.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  // mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    _productImage,
-                    _productInfo,
-                  ],
                 ),
               ),
             ),
@@ -373,7 +394,7 @@ class ProductCard extends StatelessWidget {
               top: 5,
               right: 5,
               child: HeartButton(product: item, size: 18),
-            )
+            ),
         ],
       ),
     );

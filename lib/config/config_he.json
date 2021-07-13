@@ -103,10 +103,7 @@
     },
     {
       "layout": "wishlist",
-      "icon": "assets/icons/tabs/icon-home.png",
-      "fontFamily": null,
-      "showChat": false,
-      "pos": 550
+      "icon": "assets/icons/tabs/icon-home.png"
     }
   ],
   "Drawer": {

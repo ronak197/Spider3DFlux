@@ -38,16 +38,11 @@ class _StaticSplashScreenState extends BaseScreen<StaticSplashScreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        child: widget.imagePath!.startsWith('http')
-            ? ImageTools.image(
-                url: widget.imagePath,
-                fit: BoxFit.contain,
-              )
-            : Image.asset(
-                widget.imagePath!,
-                gaplessPlayback: true,
-                fit: BoxFit.contain,
-              ),
+        child: Image.asset(
+          // widget.imagePath!,
+          'assets/images/splashscreen.png',
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }

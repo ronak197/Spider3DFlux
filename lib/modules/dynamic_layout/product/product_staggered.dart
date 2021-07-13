@@ -26,6 +26,7 @@ class ProductStaggered extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
 
     return Container(
+      // color: Colors.red,
       padding: const EdgeInsets.only(left: 15.0),
       height: screenSize.height * 0.8 / (screenSize.height / width),
       child: StaggeredGridView.countBuilder(

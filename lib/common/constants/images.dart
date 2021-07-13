@@ -3,7 +3,8 @@ part of '../constants.dart';
 /// config splash screen
 
 /// This file is use for https://rive.app/ version 1
-const kSplashScreen = 'assets/images/splashscreen.flr';
+// const kSplashScreen = 'assets/images/splashscreen.flr';
+const kSplashScreen = 'assets/images/splashscreen.png';
 
 /// This file is use for rive.app/ version 2
 // const kSplashScreen = "assets/images/splashscreen.riv";

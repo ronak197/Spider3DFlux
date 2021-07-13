@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_single_quotes, lines_longer_than_80_chars final
 Map<String, dynamic> environment = {
+  // "appConfig": "https://config-fluxstore-idan054.vercel.app",
   "appConfig": "lib/config/config_he.json",
   "serverConfig": {
     "url": "https://spider3d.co.il",
@@ -34,7 +35,7 @@ Map<String, dynamic> environment = {
     "DefaultCurrency": {
       "symbol": "₪",
       "decimalDigits": 2,
-      "symbolBeforeTheNumber": false,
+      "symbolBeforeTheNumber": true,
       "currency": "ILS",
       "currencyCode": "ils",
       "smallestUnitRate": 1
@@ -429,7 +430,7 @@ Map<String, dynamic> environment = {
     "tracking_url": "https://fluxstore.aftership.com"
   },
   "productDetail": {
-    "height": 0.6,
+    "height": 0.4,
     "marginTop": 0,
     "safeArea": false,
     "showVideo": true,

@@ -24,19 +24,27 @@ class SplashScreenIndex extends StatelessWidget {
     switch (splashScreenType) {
       case SplashScreenTypeConstants.rive:
         const animationName = kAnimationName;
-        return RiveSplashScreen(
-          onSuccess: actionDone,
-          asset: imageUrl,
-          animationName: animationName,
+        return StaticSplashScreen(
+          imagePath: imageUrl,
+          onNextScreen: actionDone,
         );
+      // return RiveSplashScreen(
+      //   onSuccess: actionDone,
+      //   asset: imageUrl,
+      //   animationName: animationName,
+      // );
       case SplashScreenTypeConstants.flare:
-        return SplashScreen.navigate(
-          name: imageUrl,
-          startAnimation: kAnimationName,
-          backgroundColor: Colors.white,
-          next: actionDone,
-          until: () => Future.delayed(const Duration(seconds: 2)),
+        return StaticSplashScreen(
+          imagePath: imageUrl,
+          onNextScreen: actionDone,
         );
+      // return SplashScreen.navigate(
+      //   name: imageUrl,
+      //   startAnimation: kAnimationName,
+      //   backgroundColor: Colors.white,
+      //   next: actionDone,
+      //   until: () => Future.delayed(const Duration(seconds: 2)),
+      // );
       case SplashScreenTypeConstants.fadeIn:
       case SplashScreenTypeConstants.topDown:
       case SplashScreenTypeConstants.zoomIn:

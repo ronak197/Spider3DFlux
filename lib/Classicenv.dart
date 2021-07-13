@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_single_quotes, lines_longer_than_80_chars final
 Map<String, dynamic> environment = {
+  // "appConfig": "https://config-fluxstore-idan054.vercel.app",
   "appConfig": "lib/config/config_he.json",
   "serverConfig": {
     "url": "https://spider3d.co.il",
@@ -27,14 +28,14 @@ Map<String, dynamic> environment = {
     "hideEmptyProductListRating": true,
     "EnableShipping": true,
     "EnableSkuSearch": true,
-    "showStockStatus": false,
+    "showStockStatus": true,
     "GridCount": 3,
     "isCaching": true,
     "kIsResizeImage": false,
     "DefaultCurrency": {
       "symbol": "₪",
       "decimalDigits": 2,
-      "symbolBeforeTheNumber": false,
+      "symbolBeforeTheNumber": true,
       "currency": "ILS",
       "currencyCode": "ils",
       "smallestUnitRate": 1
@@ -54,8 +55,8 @@ Map<String, dynamic> environment = {
     "EnableAttributesLabelConfigurableProduct": ["color", "size"],
     "isMultiLanguages": false,
     "EnableApprovedReview": false,
-    "EnableSyncCartFromWebsite": true,
-    "EnableSyncCartToWebsite": true,
+    "EnableSyncCartFromWebsite": false,
+    "EnableSyncCartToWebsite": false,
     "EnableShoppingCart": true,
     "EnableFirebase": true,
     "RatioProductImage": 0.8,
@@ -63,7 +64,7 @@ Map<String, dynamic> environment = {
     "ShowCouponList": true,
     "ShowAllCoupons": true,
     "ShowExpiredCoupons": true,
-    "AlwaysShowTabBar": true,
+    "AlwaysShowTabBar": false,
     "PrivacyPoliciesPageId": 25569,
     "QueryRadiusDistance": 10
   },
@@ -177,8 +178,8 @@ Map<String, dynamic> environment = {
   },
   "firebaseDynamicLinkConfig": {
     "isEnabled": true,
-    "uriPrefix": "https://spider3dflux.page.link",
-    "link": "https://spider3d.co.il/",
+    "uriPrefix": "https://fluxstoreinspireui.page.link",
+    "link": "https://mstore.io/",
     "androidPackageName": "com.biton.spider3dflux",
     "androidAppMinimumVersion": 1,
     "iOSBundleId": "com.inspireui.mstore.flutter",
@@ -429,17 +430,17 @@ Map<String, dynamic> environment = {
     "tracking_url": "https://fluxstore.aftership.com"
   },
   "productDetail": {
-    "height": 0.6,
-    "marginTop": 0,
+    "height": 0.4074788912168983,
+    "marginTop": 0.0,
     "safeArea": false,
     "showVideo": true,
     "showBrand": true,
     "showThumbnailAtLeast": 1,
-    "layout": "simpleType",
+    "layout": "halfSizeImageType",
     "borderRadius": 3.0,
-    "enableReview": false,
+    "enableReview": true,
     "attributeImagesSize": 50.0,
-    "showSku": true,
+    "showSku": false,
     "showStockQuantity": true,
     "showProductCategories": true,
     "showProductTags": true,
@@ -480,18 +481,7 @@ Map<String, dynamic> environment = {
       "color-image": "Màu"
     }
   },
-  // "excludedCategory": 2354,
-  "excludedCategory": [
-    2342,
-    5249,
-    2343,
-    // 4939,
-    2341,
-    2352,
-    5161,
-    // 4905,
-    5188,
-  ],
+  "excludedCategory": 311, // Needs to be [311] to work ,
   "saleOffProduct": {"ShowCountDown": true, "Color": "#C7222B"},
   "notStrictVisibleVariant": true,
   "configChat": {

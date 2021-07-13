@@ -70,7 +70,9 @@ class _RelatedProductState extends State<RelatedProduct> {
                         child: Text(
                           S.of(context).youMightAlsoLike,
                           style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w600),
+                              // color: Colors.red,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                       Container(

@@ -21,13 +21,8 @@
    "radius": 8,
    "items": [
     {
-     "product": "1222",
-     "image": "ww",
-     "padding": 15.0
-    },
-    {
-     "category": "11",
-     "image": "wwww",
+     "product": "12333",
+     "image": "wwwwww",
      "padding": 15.0
     }
    ]
@@ -40,13 +35,7 @@
    "design": "default",
    "showBackGround": true,
    "radius": 8,
-   "items": [
-    {
-     "product": "3",
-     "image": "www",
-     "padding": 15.0
-    }
-   ]
+   "items": []
   },
   {
    "name": "מדפסות מעולות",

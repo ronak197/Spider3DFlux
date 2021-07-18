@@ -21,8 +21,13 @@
    "radius": 8,
    "items": [
     {
-     "product": 25056,
-     "image": "https://i.imgur.com/84ySdG3.jpg",
+     "product": "1222",
+     "image": "ww",
+     "padding": 15.0
+    },
+    {
+     "category": "11",
+     "image": "wwww",
      "padding": 15.0
     }
    ]
@@ -37,13 +42,8 @@
    "radius": 8,
    "items": [
     {
-     "category": 4783,
-     "image": "https://i.imgur.com/H0bcI9u.jpg",
-     "padding": 15.0
-    },
-    {
-     "category": 2352,
-     "image": "https://i.imgur.com/H7BJGsh.jpg",
+     "product": "3",
+     "image": "www",
      "padding": 15.0
     }
    ]

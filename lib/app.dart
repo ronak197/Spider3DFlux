@@ -83,7 +83,7 @@ class AppState extends State<App>
         );
 
         printLog(
-            '[AppState] Register Firebase or OneSignal Modules', startTime);
+            '[AppState] Register Firebase or OneSignal Moduless', startTime);
       },
     );
   }

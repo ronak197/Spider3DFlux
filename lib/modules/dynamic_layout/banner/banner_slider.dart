@@ -73,7 +73,7 @@ class _StateBannerSlider extends State<BannerSlider> {
 
     autoPlay = widget.config.autoPlay;
     _controller = PageController();
-    intervalTime = widget.config.intervalTime ?? 3;
+    intervalTime = widget.config.intervalTime ?? 5;
     autoPlayBanner();
 
     super.initState();
@@ -119,6 +119,7 @@ class _StateBannerSlider extends State<BannerSlider> {
     var showNumber = widget.config.showNumber;
     var boxFit = widget.config.fit;
 
+    // if (items.isNotEmpty) {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 5),
       child: Stack(
@@ -177,6 +178,8 @@ class _StateBannerSlider extends State<BannerSlider> {
         ],
       ),
     );
+    // } else {}
+    // return Container();
   }
 
   Widget renderBannerItem({required BannerItemConfig config, double? width}) {
@@ -302,83 +305,86 @@ class _StateBannerSlider extends State<BannerSlider> {
         }
       }
     }
-
-    return LayoutBuilder(
-      builder: (context, constraint) {
-        var _bannerPercent = bannerPercent(constraint.maxWidth)!;
-        var height =
-            screenSize.height * _bannerPercent + bannerExtraHeight + upHeight!;
-        BannerItemConfig item = items[position];
-        return FractionallySizedBox(
-          widthFactor: 1.0,
-          child: Container(
-            margin: EdgeInsets.only(
-              left: widget.config.marginLeft,
-              right: widget.config.marginRight,
-              top: widget.config.marginTop,
-              bottom: widget.config.marginBottom,
-            ),
-            child: Stack(
-              children: <Widget>[
-                if (widget.config.showBackground)
-                  Container(
-                    height: height,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 50),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.vertical(
-                          bottom: Radius.elliptical(100, 6),
-                        ),
-                        child: Stack(children: <Widget>[
-                          isBlur
-                              ? Transform.scale(
-                                  scale: 3,
-                                  child: Image.network(
+    if (items.isNotEmpty) {
+      return LayoutBuilder(
+        builder: (context, constraint) {
+          var _bannerPercent = bannerPercent(constraint.maxWidth)!;
+          var height = screenSize.height * _bannerPercent +
+              bannerExtraHeight +
+              upHeight!;
+          BannerItemConfig item = items[position];
+          return FractionallySizedBox(
+            widthFactor: 1.0,
+            child: Container(
+              margin: EdgeInsets.only(
+                left: widget.config.marginLeft,
+                right: widget.config.marginRight,
+                top: widget.config.marginTop,
+                bottom: widget.config.marginBottom,
+              ),
+              child: Stack(
+                children: <Widget>[
+                  if (widget.config.showBackground)
+                    Container(
+                      height: height,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 50),
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.vertical(
+                            bottom: Radius.elliptical(100, 6),
+                          ),
+                          child: Stack(children: <Widget>[
+                            isBlur
+                                ? Transform.scale(
+                                    scale: 3,
+                                    child: Image.network(
+                                      item.background ?? item.image,
+                                      fit: BoxFit.fill,
+                                      width: screenSize.width + upHeight,
+                                    ),
+                                  )
+                                : Image.network(
                                     item.background ?? item.image,
                                     fit: BoxFit.fill,
-                                    width: screenSize.width + upHeight,
+                                    width: constraint.maxWidth,
+                                    height: screenSize.height * _bannerPercent +
+                                        bannerExtraHeight +
+                                        upHeight,
                                   ),
-                                )
-                              : Image.network(
-                                  item.background ?? item.image,
-                                  fit: BoxFit.fill,
-                                  width: constraint.maxWidth,
-                                  height: screenSize.height * _bannerPercent +
-                                      bannerExtraHeight +
-                                      upHeight,
-                                ),
-                          ClipRect(
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(
-                                  sigmaX: isBlur ? 12 : 0,
-                                  sigmaY: isBlur ? 12 : 0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white
-                                      .withOpacity(isBlur ? 0.6 : 0.0),
+                            ClipRect(
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(
+                                    sigmaX: isBlur ? 12 : 0,
+                                    sigmaY: isBlur ? 12 : 0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white
+                                        .withOpacity(isBlur ? 0.6 : 0.0),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ]),
+                          ]),
+                        ),
                       ),
                     ),
+                  Column(
+                    children: [
+                      if (widget.config.title != null)
+                        HeaderText(config: widget.config.title!),
+                      Container(
+                        height: screenSize.height * _bannerPercent,
+                        child: renderBanner(constraint.maxWidth),
+                      )
+                    ],
                   ),
-                Column(
-                  children: [
-                    if (widget.config.title != null)
-                      HeaderText(config: widget.config.title!),
-                    Container(
-                      height: screenSize.height * _bannerPercent,
-                      child: renderBanner(constraint.maxWidth),
-                    )
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+    } else {}
+    return Container();
   }
 }

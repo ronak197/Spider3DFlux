@@ -24,18 +24,7 @@
           "product": 25056,
           "image": "https://i.imgur.com/84ySdG3.jpg",
           "padding": 15.0
-        }
-      ]
-    },
-    {
-      "layout": "bannerImage",
-      "isSlider": true,
-      "autoPlay": true,
-      "showNumber": false,
-      "design": "default",
-      "showBackGround": true,
-      "radius": 8,
-      "items": [
+        },
         {
           "category": 4783,
           "image": "https://i.imgur.com/H0bcI9u.jpg",
@@ -47,6 +36,57 @@
           "padding": 15.0
         }
       ]
+    },
+    {
+      "layout": "category",
+      "type": "icon",
+      "wrap": false,
+      "size": 1.3,
+      "radius": 50.0,
+      "hideTitle": false,
+      "items": [
+        {
+          "category": 18,
+          "image": "https://user-images.githubusercontent.com/1459805/62820029-2e679f00-bb88-11e9-80de-fdf115cfd942.png",
+          "colors": [
+            "#3CC2BF",
+            "#3E6AB5"
+          ],
+          "originalColor": false,
+          "title" : "ABC",
+          "keepDefaultTitle": false
+        },
+        {
+          "category": 24,
+          "image": "https://trello-attachments.s3.amazonaws.com/60a62a9bca5053572a669dee/48x58/a68d188ae063a20eac903fe2ca00ece5/ic_dress.png",
+          "colors": [
+            "#3E6AB5",
+            "#3E6AB5"
+          ],
+          "title" : "ABC",
+          "keepDefaultTitle": false
+        }
+      ]
+    },
+    {
+      "layout": "bannerImage",
+      "isSlider": true,
+      "autoPlay": true,
+      "showNumber": false,
+      "design": "default",
+      "showBackGround": true,
+      "radius": 8,
+      "items": []
+    },
+    {
+      "layout": "bannerImage",
+      "isSlider": true,
+      "autoPlay": true,
+      "showNumber": false,
+      "design": "default",
+      "showBackGround": true,
+      "radius": 8,
+      "items": []
     },
     {
       "name": "מדפסות מעולות",
@@ -83,20 +123,6 @@
       "icon": "assets/icons/tabs/icon-cart2.png"
     },
     {
-      "layout": "profile",
-      "icon": "assets/icons/tabs/icon-user.png",
-      "showChat": true,
-      "pos": 400 ,
-      "settings": [
-        "order" ,
-        "wishlist" ,
-        "darkTheme" ,
-        "rating" ,
-        "about"
-      ] ,
-      "background": "https://i.imgur.com/u2GRG8B.jpeg"
-    },
-    {
       "layout": "category",
       "categoryLayout": "card",
       "icon": "assets/icons/tabs/icon-category.png"
@@ -110,7 +136,11 @@
     "logo": null ,
     "items": [
       {
-        "type": "home" ,
+        "show": true ,
+        "type": "category"
+      },
+      {
+        "type": "profile" ,
         "show": false
       } ,
       {
@@ -120,10 +150,6 @@
       {
         "type": "login" ,
         "show": true
-      } ,
-      {
-        "show": true ,
-        "type": "category"
       }
     ]
   } ,

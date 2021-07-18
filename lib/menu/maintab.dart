@@ -181,7 +181,7 @@ class MainTabsState extends CustomOverlayState<MainTabs>
 
   @override
   Widget build(BuildContext context) {
-    //customTabBar();
+    customTabBar2();
     final media = MediaQuery.of(context);
     final showFloating = appSetting.tabBarConfig.showFloating;
     final isClip = appSetting.tabBarConfig.showFloatingClip;
@@ -444,24 +444,26 @@ extension TabBarMenuExtention on MainTabsState {
   void customTabBar2() {
     /// Design TabBar style
     appSetting.tabBarConfig
+      // spider red: FF961B1E | Darker Red: FF8A181B
       ..colorCart = HexColor('FE2060')
       ..colorIcon = HexColor('7A7B7F')
-      ..colorActiveIcon = HexColor('1D34C5')
+      ..colorActiveIcon = HexColor('FF8A181B') // FF961B1E Means kColorSpiderRed
       ..indicatorStyle = 'Material'
       ..showFloating = true
       ..showFloatingClip = true
       ..tabBarFloating = TabBarFloatingConfig(
-        color: HexColor('1D34C5'),
+        color: HexColor('FF961B1E'),
         elevation: 2.0,
       )
       ..tabBarIndicator = TabBarIndicatorConfig(
-        color: HexColor('1D34C5'),
+        color: HexColor('FF961B1E'),
         verticalPadding: 10,
         tabPosition: TabPosition.top,
         topLeftRadius: 0,
         topRightRadius: 0,
         bottomLeftRadius: 10,
         bottomRightRadius: 10,
+        // height: 70,
       );
   }
 

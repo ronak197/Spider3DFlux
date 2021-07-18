@@ -194,15 +194,21 @@ class AppModel with ChangeNotifier {
       }
 
       /// Load categories config for the Tabbar menu
-      /// User to sort the category Setting
-      var categoryTab = List.from(appConfig!.tabBar).firstWhere(
-          (e) => e.layout == 'category' || e.layout == 'vendors',
-          orElse: () => {});
-      if (categoryTab.categories != null) {
-        categories = List<String>.from(categoryTab.categories ?? []);
-        categoriesIcons = List<String>.from(categoryTab.images ?? []);
-      }
-      categoryLayout = categoryTab.categoryLayout;
+
+      // var categoryTab = List.from(appConfig!.tabBar).firstWhere(
+      //     (e) => e.layout == 'category' || e.layout == 'vendors',
+      //     orElse: () => {});
+      // printLog("A--------");
+      // printLog(categoryTab.categories);
+      // printLog(categoryTab.categories.runtimeType);
+      // printLog("B--------");
+      // if (categoryTab.categories != null) {
+      //   categories = List<String>.from(categoryTab.categories ?? []);
+      //   categoriesIcons = List<String>.from(categoryTab.images ?? []);
+      // }
+
+      // categoryLayout = categoryTab.categoryLayout;
+      categoryLayout = "card";
 
       /// apply App Caching if isCaching is enable
       /// not use for Fluxbuilder

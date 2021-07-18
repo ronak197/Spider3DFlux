@@ -280,16 +280,117 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Container(
-                                          height: 40.0,
+                                          height: 50.0,
                                           child: FluxImage(
                                             imageUrl: themeConfig.logo,
                                           ),
                                         ),
                                       ],
                                     ),
+                                    const SizedBox(height: 80.0),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: <Widget>[
+                                        if (kLoginSetting['showAppleLogin'] &&
+                                            isAvailableApple)
+                                          InkWell(
+                                            onTap: () => _loginApple(context),
+                                            child: Container(
+                                              padding: const EdgeInsets.all(12),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(40),
+                                                color: Colors.black87,
+                                              ),
+                                              child: const Icon(
+                                                FontAwesomeIcons.apple,
+                                                color: Colors.white,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                          ),
+                                        if (kLoginSetting['showFacebook'])
+                                          InkWell(
+                                            onTap: () =>
+                                                _loginFacebook(context),
+                                            child: Container(
+                                              padding: const EdgeInsets.all(12),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(40),
+                                                color: const Color(0xFF1873EB),
+                                              ),
+                                              child: const Icon(
+                                                FontAwesomeIcons.facebookF,
+                                                color: Colors.white,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                          ),
+                                        if (kLoginSetting['showGoogleLogin'])
+                                          InkWell(
+                                            onTap: () => _loginGoogle(context),
+                                            child: Container(
+                                              padding: const EdgeInsets.all(12),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(40),
+                                                color: const Color(0xFFEA4336),
+                                              ),
+                                              child: const Icon(
+                                                FontAwesomeIcons.google,
+                                                color: Colors.white,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                          ),
+                                        if (kLoginSetting['showSMSLogin'])
+                                          InkWell(
+                                            onTap: () => _loginSMS(context),
+                                            child: Container(
+                                              padding: const EdgeInsets.all(12),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(40),
+                                                color: Colors.lightBlue,
+                                              ),
+                                              child: const Icon(
+                                                FontAwesomeIcons.sms,
+                                                color: Colors.white,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                    Stack(
+                                      alignment: AlignmentDirectional.center,
+                                      children: <Widget>[
+                                        SizedBox(
+                                            height: 50.0,
+                                            width: 200.0,
+                                            child: Divider(
+                                                color: Colors.grey.shade300)),
+                                        Container(
+                                            height: 30,
+                                            width: 40,
+                                            color: Theme.of(context)
+                                                .backgroundColor),
+                                        if (kLoginSetting['showFacebook'] ||
+                                            kLoginSetting['showSMSLogin'] ||
+                                            kLoginSetting['showGoogleLogin'] ||
+                                            kLoginSetting['showAppleLogin'])
+                                          Text(
+                                            S.of(context).or,
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey.shade400),
+                                          )
+                                      ],
+                                    ),
                                   ],
                                 ),
-                                const SizedBox(height: 80.0),
                                 TextField(
                                   key: const Key('loginEmailField'),
                                   controller: username,
@@ -323,8 +424,8 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                     ),
                                   ),
                                   Positioned(
-                                    right: appModel.langCode == 'ar' ? null : 4,
-                                    left: appModel.langCode == 'ar' ? 4 : null,
+                                    left: appModel.langCode == 'ar' ? null : 4,
+                                    right: appModel.langCode == 'ar' ? 4 : null,
                                     bottom: 20,
                                     child: GestureDetector(
                                       onTap: () {
@@ -353,106 +454,6 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                       _login(context);
                                     }
                                   },
-                                ),
-                                Stack(
-                                  alignment: AlignmentDirectional.center,
-                                  children: <Widget>[
-                                    SizedBox(
-                                        height: 50.0,
-                                        width: 200.0,
-                                        child: Divider(
-                                            color: Colors.grey.shade300)),
-                                    Container(
-                                        height: 30,
-                                        width: 40,
-                                        color:
-                                            Theme.of(context).backgroundColor),
-                                    if (kLoginSetting['showFacebook'] ||
-                                        kLoginSetting['showSMSLogin'] ||
-                                        kLoginSetting['showGoogleLogin'] ||
-                                        kLoginSetting['showAppleLogin'])
-                                      Text(
-                                        S.of(context).or,
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.grey.shade400),
-                                      )
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: <Widget>[
-                                    if (kLoginSetting['showAppleLogin'] &&
-                                        isAvailableApple)
-                                      InkWell(
-                                        onTap: () => _loginApple(context),
-                                        child: Container(
-                                          padding: const EdgeInsets.all(12),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(40),
-                                            color: Colors.black87,
-                                          ),
-                                          child: const Icon(
-                                            FontAwesomeIcons.apple,
-                                            color: Colors.white,
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                      ),
-                                    if (kLoginSetting['showFacebook'])
-                                      InkWell(
-                                        onTap: () => _loginFacebook(context),
-                                        child: Container(
-                                          padding: const EdgeInsets.all(12),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(40),
-                                            color: const Color(0xFF4267B2),
-                                          ),
-                                          child: const Icon(
-                                            FontAwesomeIcons.facebookF,
-                                            color: Colors.white,
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                      ),
-                                    if (kLoginSetting['showGoogleLogin'])
-                                      InkWell(
-                                        onTap: () => _loginGoogle(context),
-                                        child: Container(
-                                          padding: const EdgeInsets.all(12),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(40),
-                                            color: const Color(0xFFEA4336),
-                                          ),
-                                          child: const Icon(
-                                            FontAwesomeIcons.google,
-                                            color: Colors.white,
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                      ),
-                                    if (kLoginSetting['showSMSLogin'])
-                                      InkWell(
-                                        onTap: () => _loginSMS(context),
-                                        child: Container(
-                                          padding: const EdgeInsets.all(12),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(40),
-                                            color: Colors.lightBlue,
-                                          ),
-                                          child: const Icon(
-                                            FontAwesomeIcons.sms,
-                                            color: Colors.white,
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
                                 ),
                                 const SizedBox(
                                   height: 30.0,

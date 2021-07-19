@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inspireui/inspireui.dart' show FluxImage, iconPicker;
+import 'package:inspireui/inspireui.dart' show FluxImage , iconPicker;
 import 'package:provider/provider.dart';
 
 import '../../../models/cart/cart_base.dart';
@@ -34,19 +34,43 @@ class LogoIcon extends StatelessWidget {
         horizontal: 6,
         vertical: 6,
       ),
-      onPressed: () => onTap()!,
-      child: Icon(
-        menuIcon != null
-            ? iconPicker(
-                // "assets/icons/tabs/icon-search.png",
-                menuIcon!.name!,
-                menuIcon!.fontFamily ?? 'CupertinoIcons',
-              )
-            : Icons.menu,
-        color:
-            config.iconColor ?? Theme.of(context).accentColor.withOpacity(0.9),
-        size: config.iconSize,
-      ),
+      onPressed: ()
+          // { print(menuIcon!.name!); },
+          =>
+          onTap()!,
+
+      /// My:
+      /// ===
+      child: menuIcon!.name! == 'search'
+          ? Image.asset(
+              'assets/icons/tabs/icon-search.png',
+              width: 26,
+              height: 26,
+              // fit: BoxFit.fitHeight,
+              // fit: BoxFit.fill,
+              fit: BoxFit.cover,
+              color: config.iconColor ??
+                  Theme.of(context).accentColor.withOpacity(0.9),
+            )
+          : Icon(
+              Icons.menu,
+              color: config.iconColor ??
+                  Theme.of(context).accentColor.withOpacity(0.9),
+              size: config.iconSize,
+            ),
+
+      /// Original:
+      /// ========
+      // child: Icon(
+      //   menuIcon != null
+      //       ? iconPicker(
+      //     menuIcon!.name!,
+      //     menuIcon!.fontFamily ?? 'CupertinoIcons',
+      //   )
+      //       : Icons.blur_on,
+      //   color: config.iconColor ?? Theme.of(context).accentColor.withOpacity(0.9),
+      //   size: config.iconSize,
+      // ),
     );
   }
 }

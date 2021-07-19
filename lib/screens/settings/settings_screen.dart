@@ -587,7 +587,7 @@ class _SettingScreenState extends State<SettingScreen>
                     S.of(context).settings,
                     style: const TextStyle(
                         fontSize: 18,
-                        color: Colors.white,
+                        color: Colors.green,
                         fontWeight: FontWeight.w600),
                   ),
                   background: Image.network(

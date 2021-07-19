@@ -34,17 +34,18 @@ class CategoryTextItem extends StatelessWidget {
           vertical: Helper.formatDouble(paddingX ?? 4.0)!,
         ),
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColorLight.withOpacity(0.9),
+          // color: Theme.of(context).primaryColorLight.withOpacity(0.9),
+          color: Colors.black, //.withOpacity(0.05),
           border: borderWidth != null
               ? Border(
                   bottom: BorderSide(
-                    width: borderWidth!,
-                    color: Colors.black.withOpacity(0.05),
-                  ),
+                      width: borderWidth!,
+                      color: Colors.black //.withOpacity(0.05),
+                      ),
                   right: BorderSide(
-                    width: borderWidth!,
-                    color: Colors.black.withOpacity(0.05),
-                  ),
+                      width: borderWidth!,
+                      color: Colors.black //.withOpacity(0.05),
+                      ),
                 )
               : null,
           boxShadow: [
@@ -61,7 +62,7 @@ class CategoryTextItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(radius!),
         ),
         child: Text(
-          name ?? '',
+          name ?? 'ZZZ',
           style: Theme.of(context)
               .textTheme
               .subtitle2!

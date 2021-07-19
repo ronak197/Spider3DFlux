@@ -42,8 +42,7 @@ class CategoryItemConfig {
 
   CategoryItemConfig.fromJson(dynamic json) {
     originalColor = json['originalColor'] ?? false;
-    title = json['title'];
-    title = json['description'];
+    title = json['title'] ?? json['description'];
     name = json['name'];
     showText = json['showText'];
     keepDefaultTitle = json['keepDefaultTitle'] ?? false;

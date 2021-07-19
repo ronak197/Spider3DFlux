@@ -89,6 +89,7 @@ class CategoryIconItem extends StatelessWidget {
             if (name?.isNotEmpty ?? false) ...[
               const SizedBox(height: 6),
               Text(
+                // "AAA",
                 name!,
                 style: Theme.of(context).textTheme.subtitle2,
                 maxLines: 2,

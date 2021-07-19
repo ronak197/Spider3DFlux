@@ -46,25 +46,54 @@
       "hideTitle": false,
       "items": [
         {
-          "category": 18,
-          "image": "https://user-images.githubusercontent.com/1459805/62820029-2e679f00-bb88-11e9-80de-fdf115cfd942.png",
+          "category": 24,
+          "image": "assets/icons/tabs/icon-search.png",
           "colors": [
-            "#3CC2BF",
-            "#3E6AB5"
+            "#b42525",
+            "#5a0000"
           ],
-          "originalColor": false,
-          "title" : "ABC",
-          "keepDefaultTitle": false
+          "title" : "מדפסות",
+          "keepDefaultTitle": true
         },
         {
           "category": 24,
-          "image": "https://trello-attachments.s3.amazonaws.com/60a62a9bca5053572a669dee/48x58/a68d188ae063a20eac903fe2ca00ece5/ic_dress.png",
+          "image": "assets/icons/tabs/icon-search.png",
           "colors": [
-            "#3E6AB5",
-            "#3E6AB5"
+            "#b42525",
+            "#5a0000"
           ],
-          "title" : "ABC",
-          "keepDefaultTitle": false
+          "title" : "שדרוגים",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 24,
+          "image": "assets/icons/tabs/icon-search.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "PLA+",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 24,
+          "image": "assets/icons/tabs/icon-search.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "SILK",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 24,
+          "image": "assets/icons/tabs/icon-search.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "PETG",
+          "keepDefaultTitle": true
         }
       ]
     },
@@ -89,7 +118,7 @@
       "items": []
     },
     {
-      "name": "מדפסות מומלצות",
+      "name": "מדפסות 3D מומלצות",
       "category": 2341,
       "layout": "threeColumn",
       "isSnapping": true
@@ -119,12 +148,12 @@
       "icon": "assets/icons/tabs/icon-home.png"
     },
     {
-      "layout": "search",
-      "icon": "assets/icons/tabs/icon-search.png"
-    },
-    {
       "layout": "cart",
       "icon": "assets/icons/tabs/icon-cart2.png"
+    },
+    {
+      "layout": "search",
+      "icon": "assets/icons/tabs/icon-search.png"
     },
     {
       "layout": "wishlist",

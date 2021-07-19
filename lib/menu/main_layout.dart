@@ -91,6 +91,7 @@ class _MainLayoutState extends State<MainLayout>
 
     return Center(
       child: Container(
+        // color: Colors.red,
         constraints: const BoxConstraints(maxWidth: 1400),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

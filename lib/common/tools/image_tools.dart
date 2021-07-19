@@ -17,8 +17,37 @@ import 'package:transparent_image/transparent_image.dart';
 import '../../services/index.dart' show Config;
 import '../config.dart' show kAdvanceConfig, serverConfig;
 import '../constants.dart' show kDefaultImage, kEmptyColor, kImageProxy, kIsWeb;
+import 'dart:math' as math;
+
+import 'package:flash/flash.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../common/config.dart';
+import '../../common/constants.dart';
+import '../../common/tools.dart';
+import '../../generated/l10n.dart';
+import '../../models/index.dart'
+    show AppModel, CartModel, Product, ProductVariation, RecentModel;
+import '../../routes/flux_navigate.dart';
+import '../../services/service_config.dart';
 
 enum kSize { small, medium, large }
+
+BoxDecoration myShadowDecoration() {
+  return BoxDecoration(
+    boxShadow: [
+      if (kProductCard['boxShadow'] != null)
+        const BoxShadow(
+            color: Colors.black12,
+            offset: Offset(
+              0.5,
+              0.5,
+            ),
+            blurRadius: 4),
+    ],
+  );
+}
 
 class ImageTools {
   static String prestashopImage(String url, [kSize? size = kSize.medium]) {
@@ -95,9 +124,11 @@ class ImageTools {
     bool forceWhiteBackground = false,
   }) {
     if (height == null && width == null) {
-      width = 200;
+      // width = 200;
+      width = 250;
     }
-    var ratioImage = kAdvanceConfig['RatioProductImage'] ?? 1.2;
+    // var ratioImage = kAdvanceConfig['RatioProductImage'] ?? 1.2;
+    var ratioImage = 0.3;
 
     if (url?.isEmpty ?? true) {
       return FutureBuilder<bool>(
@@ -108,14 +139,28 @@ class ImageTools {
           return AnimatedSwitcher(
             duration: const Duration(milliseconds: 500),
             child: showSkeleton
-                ? Skeleton(
-                    width: width!,
-                    height: height ?? width * ratioImage,
+                ? Container(
+                    decoration: myShadowDecoration(),
+                    child: Skeleton(
+                      cornerRadius: 5,
+                      width: width!,
+                      height: height ?? width * ratioImage,
+                      // height: height ?? width * 0.3,
+                    ),
                   )
                 : SizedBox(
                     width: width,
                     height: height ?? width! * ratioImage,
-                    child: const Icon(Icons.error_outline),
+                    // height: height ?? width! * 0.3,
+                    child: Container(
+                      decoration: myShadowDecoration(),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: Container(
+                            color: Colors.black.withOpacity(0.05),
+                            child: const Center(child: Icon(Icons.image))),
+                      ),
+                    ),
                   ),
           );
         },
@@ -126,30 +171,41 @@ class ImageTools {
       return Stack(
         children: <Widget>[
           Container(
-            width: width,
-            height: height,
-            decoration: BoxDecoration(color: Colors.black12.withOpacity(1)),
-            child: ExtendedImage.network(
-              isResize ? formatImage(url, size)! : url!,
-              width: width,
-              height: height ?? width! * ratioImage,
-              fit: fit,
-              cache: true,
-              enableLoadState: false,
-              alignment: Alignment(
-                  (offset >= -1 && offset <= 1)
-                      ? offset
-                      : (offset > 0)
-                          ? 1.0
-                          : -1.0,
-                  0.0),
+            decoration: myShadowDecoration(),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: Container(
+                width: width,
+                height: height,
+                decoration: BoxDecoration(color: Colors.black12.withOpacity(1)),
+                child: ExtendedImage.network(
+                  isResize ? formatImage(url, size)! : url!,
+                  width: width,
+                  // height: height ?? width! * ratioImage,
+                  height: height ?? width! * 0.3,
+                  fit: BoxFit.cover,
+                  cache: true,
+                  enableLoadState: false,
+                  alignment: Alignment(
+                      (offset >= -1 && offset <= 1)
+                          ? offset
+                          : (offset > 0)
+                              ? 1.0
+                              : -1.0,
+                      0.0),
+                ),
+              ),
             ),
           ),
-          Positioned.fill(
-            child: Icon(
-              Icons.play_circle_outline,
-              color: Colors.white70.withOpacity(0.5),
-              size: width == null ? 30 : width / 1.7,
+          Visibility(
+            visible: false,
+            child: Positioned.fill(
+              child: Icon(
+                Icons.play_circle_outline,
+                color: Colors.black26.withOpacity(0.5),
+                // size: width == null ? 20 : width / 1.7,
+                size: 50,
+              ),
             ),
           ),
         ],
@@ -161,6 +217,7 @@ class ImageTools {
       var imageURL = isResize ? formatImage(url, size) : url;
 
       return ConstrainedBox(
+        // constraints: BoxConstraints(maxHeight: width! * ratioImage),
         constraints: BoxConstraints(maxHeight: width! * ratioImage),
         child: FadeInImage.memoryNetwork(
           image: '$kImageProxy$imageURL',

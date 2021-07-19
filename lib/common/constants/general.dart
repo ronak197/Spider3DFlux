@@ -39,7 +39,7 @@ const ApiPageSize = 20;
 ///-----FLUXSTORE LISTING-----///
 enum BookStatus { booked, unavailable, waiting, confirmed, cancelled, error }
 
-const kSizeLeftMenu = 250.0;
+const kSizeLeftMenu = 300.0;
 
 class SettingConstants {
   static const aboutUsUrl = 'https://inspireui.com/about';

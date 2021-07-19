@@ -119,7 +119,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "כתובת אתר של באנר ל- YouTube"),
         "bengali": MessageLookupByLibrary.simpleMessage("בנגלית"),
         "billingAddress": MessageLookupByLibrary.simpleMessage("כתובת חיוב"),
-        "blog": MessageLookupByLibrary.simpleMessage("בלוג"),
+        "blog": MessageLookupByLibrary.simpleMessage("המדריכים שלנו"),
         "booked": MessageLookupByLibrary.simpleMessage("כבר הוזמן"),
         "booking": MessageLookupByLibrary.simpleMessage("הזמנה"),
         "bookingCancelled":
@@ -580,7 +580,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("שלח"),
         "sendSMSCode": MessageLookupByLibrary.simpleMessage("קבל קוד"),
         "serbian": MessageLookupByLibrary.simpleMessage("סרבית"),
-        "settings": MessageLookupByLibrary.simpleMessage("הגדרות"),
+        "settings": MessageLookupByLibrary.simpleMessage("פרופיל"),
         "share": MessageLookupByLibrary.simpleMessage("שתף"),
         "shipping": MessageLookupByLibrary.simpleMessage("משלוח"),
         "shippingAddress": MessageLookupByLibrary.simpleMessage("כתובת משלוח"),

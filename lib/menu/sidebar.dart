@@ -119,7 +119,7 @@ class _MenuBarState extends State<SideBarMenu> {
       case 'profile':
         {
           return ListTile(
-            leading: const Icon(Icons.person, size: 20),
+            leading: const Icon(Icons.person, size: 22),
             title: Text(S.of(context).settings),
             onTap: () => pushNavigation(RouteList.profile),
           );
@@ -164,7 +164,7 @@ class _MenuBarState extends State<SideBarMenu> {
       case 'blog':
         {
           return ListTile(
-              leading: const Icon(FontAwesomeIcons.wordpress, size: 20),
+              leading: const Icon(FontAwesomeIcons.graduationCap, size: 18),
               title: Text(S.of(context).blog),
               onTap: () {
                 pushNavigation(RouteList.blogs);
@@ -177,7 +177,7 @@ class _MenuBarState extends State<SideBarMenu> {
             child: Consumer<UserModel>(builder: (context, userModel, _) {
               final loggedIn = userModel.loggedIn;
               return ListTile(
-                leading: const Icon(Icons.exit_to_app, size: 20),
+                leading: const Icon(FontAwesomeIcons.doorOpen, size: 18),
                 title: loggedIn
                     ? Text(S.of(context).logout)
                     : Text(S.of(context).login),
@@ -245,7 +245,13 @@ class _MenuBarState extends State<SideBarMenu> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
-                            child: Text(currentCategory.name!.toUpperCase())),
+                            child: Text(
+                          currentCategory.name!.toUpperCase(),
+                          style: const TextStyle(
+                            // color: Theme.of(context).primaryColor,
+                            fontSize: 14,
+                          ),
+                        )),
                         const SizedBox(width: 24),
                         currentCategory.totalProduct == null
                             ? const Icon(Icons.chevron_right)
@@ -276,6 +282,7 @@ class _MenuBarState extends State<SideBarMenu> {
                   ),
                   textColor: Theme.of(context).primaryColor,
                   iconColor: Theme.of(context).primaryColor,
+                  // iconColor: Colors.green,
                   children:
                       getChildren(categories, currentCategory, childCategories)
                           as List<Widget>,
@@ -285,11 +292,13 @@ class _MenuBarState extends State<SideBarMenu> {
     }
 
     return ExpansionTile(
+      iconColor: Theme.of(context).accentColor.withOpacity(0.5),
       initiallyExpanded: true,
       expandedCrossAxisAlignment: CrossAxisAlignment.start,
       tilePadding: const EdgeInsets.only(left: 16, right: 8),
       title: Text(
-        S.of(context).byCategory.toUpperCase(),
+        "קטגוריות",
+        // S.of(context).byCategory.toUpperCase(),
         style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w600,

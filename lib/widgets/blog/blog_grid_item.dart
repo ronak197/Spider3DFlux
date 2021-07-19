@@ -30,48 +30,52 @@ class BlogGridItem extends StatelessWidget {
         RouteList.detailBlog,
         arguments: blog,
       ),
-      child: Padding(
-        padding: const EdgeInsets.only(
-          bottom: 6.0,
-          right: 16.0,
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 4,
-              child: ImageTools.image(
-                url: blog.imageFeature,
-                size: kSize.medium,
-                isVideo:
-                    Videos.getVideoLink(blog.content!) == null ? false : true,
+      child: Transform.translate(
+        offset: const Offset(40, 0),
+        child: Container(
+          // color: Colors.green,
+          padding: const EdgeInsets.all(5
+              // bottom: 6.0,
+              // left: 16.0,
               ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              flex: 7,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    blog.title ?? '',
-                    maxLines: 2,
-                    style: const TextStyle(fontSize: 15.0),
-                  ),
-                  if (blog.date != null)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5.0),
-                      child: Text(
-                        createAt,
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: Theme.of(context).accentColor,
+          child: Row(
+            children: [
+              Expanded(
+                flex: 4,
+                child: ImageTools.image(
+                  url: blog.imageFeature,
+                  size: kSize.medium,
+                  isVideo:
+                      Videos.getVideoLink(blog.content!) == null ? false : true,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                flex: 7,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      blog.title ?? '',
+                      maxLines: 2,
+                      style: const TextStyle(fontSize: 17.0),
+                    ),
+                    if (blog.date != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5.0),
+                        child: Text(
+                          createAt,
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Theme.of(context).accentColor,
+                          ),
                         ),
                       ),
-                    ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

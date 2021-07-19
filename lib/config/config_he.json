@@ -89,16 +89,20 @@
       "items": []
     },
     {
-      "name": "מדפסות מעולות",
+      "name": "מדפסות מומלצות",
       "category": 2341,
       "layout": "threeColumn",
       "isSnapping": true
+    },
+    {
+      "layout": "blog",
+      "name": "מדריכים אחרונים שלנו"
     }
   ],
   "VerticalLayout": {
     "key": "r09jo0owu6",
     "layout": "menu",
-    "name": "המומלצים שלנו",
+    "name": "מבצעים וחבילות",
     "isVertical": true
   },
   "Setting": {
@@ -157,8 +161,8 @@
         "show": true
       },
       {
-        "show": true ,
-        "type": "category"
+        "type": "category" ,
+        "show": true
       }
     ]
   } ,

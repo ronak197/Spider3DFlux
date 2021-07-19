@@ -119,12 +119,12 @@
       "icon": "assets/icons/tabs/icon-home.png"
     },
     {
-      "layout": "cart",
-      "icon": "assets/icons/tabs/icon-cart2.png"
-    },
-    {
       "layout": "search",
       "icon": "assets/icons/tabs/icon-search.png"
+    },
+    {
+      "layout": "cart",
+      "icon": "assets/icons/tabs/icon-cart2.png"
     },
     {
       "layout": "wishlist",

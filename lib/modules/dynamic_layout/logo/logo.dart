@@ -38,10 +38,11 @@ class LogoIcon extends StatelessWidget {
       child: Icon(
         menuIcon != null
             ? iconPicker(
+                // "assets/icons/tabs/icon-search.png",
                 menuIcon!.name!,
                 menuIcon!.fontFamily ?? 'CupertinoIcons',
               )
-            : Icons.blur_on,
+            : Icons.menu,
         color:
             config.iconColor ?? Theme.of(context).accentColor.withOpacity(0.9),
         size: config.iconSize,

@@ -30,10 +30,10 @@ class HeaderView extends StatelessWidget {
       color: Theme.of(context).backgroundColor,
       child: Container(
         // width: screenSize.width / (2 / (screenSize.height / screenSize.width)),
-        margin: EdgeInsets.only(top: margin),
+        // margin: EdgeInsets.only(top: margin),
         padding: EdgeInsets.only(
           left: 17.0,
-          top: margin,
+          // top: margin,
           right: 15.0,
           bottom: margin,
         ),

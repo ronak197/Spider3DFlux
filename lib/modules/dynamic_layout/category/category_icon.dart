@@ -83,7 +83,7 @@ class CategoryIcons extends StatelessWidget {
           left: config.marginLeft,
           right: config.marginRight,
           top: config.marginTop,
-          bottom: config.marginBottom,
+          bottom: config.marginBottom * 0.6,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

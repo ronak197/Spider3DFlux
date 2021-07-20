@@ -33,7 +33,7 @@ class HeaderView extends StatelessWidget {
         margin: EdgeInsets.only(top: margin),
         padding: EdgeInsets.only(
           left: 17.0,
-          top: margin,
+          top: margin * 0.0,
           right: 15.0,
           bottom: margin,
         ),

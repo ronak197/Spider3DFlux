@@ -21,44 +21,35 @@ class SplashScreenIndex extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("---------------");
+    print(splashScreenType);
+    print("---------------");
     switch (splashScreenType) {
       case SplashScreenTypeConstants.rive:
         const animationName = kAnimationName;
-        return StaticSplashScreen(
-          imagePath: imageUrl,
-          onNextScreen: actionDone,
+        return RiveSplashScreen(
+          onSuccess: actionDone,
+          asset: imageUrl,
+          animationName: animationName,
         );
-      // return RiveSplashScreen(
-      //   onSuccess: actionDone,
-      //   asset: imageUrl,
-      //   animationName: animationName,
-      // );
       case SplashScreenTypeConstants.flare:
-        return StaticSplashScreen(
-          imagePath: imageUrl,
-          onNextScreen: actionDone,
+        return SplashScreen.navigate(
+          name: imageUrl,
+          startAnimation: kAnimationName,
+          backgroundColor: Colors.white,
+          next: actionDone,
+          until: () => Future.delayed(const Duration(seconds: 2)),
         );
-      // return SplashScreen.navigate(
-      //   name: imageUrl,
-      //   startAnimation: kAnimationName,
-      //   backgroundColor: Colors.white,
-      //   next: actionDone,
-      //   until: () => Future.delayed(const Duration(seconds: 2)),
-      // );
       case SplashScreenTypeConstants.fadeIn:
       case SplashScreenTypeConstants.topDown:
       case SplashScreenTypeConstants.zoomIn:
       case SplashScreenTypeConstants.zoomOut:
-        return StaticSplashScreen(
+        return AnimatedSplash(
           imagePath: imageUrl,
-          onNextScreen: actionDone,
+          animationEffect: splashScreenType,
+          next: actionDone,
+          secondsTimeDelay: 3,
         );
-      // return AnimatedSplash(
-      //   imagePath: imageUrl,
-      //   animationEffect: splashScreenType,
-      //   next: actionDone,
-      //   secondsTimeDelay: 3,
-      // );
       case SplashScreenTypeConstants.static:
       default:
         return StaticSplashScreen(

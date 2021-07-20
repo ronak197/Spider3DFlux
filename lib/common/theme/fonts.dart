@@ -7,19 +7,19 @@ TextStyle myTextStyle() {
 
 TextTheme myTextTheme() {
   return TextTheme(
-    body1: myTextStyle(),
-    body2: myTextStyle(),
+    bodyText2: myTextStyle(),
+    bodyText1: myTextStyle(),
     button: myTextStyle(),
     caption: myTextStyle(),
-    display1: myTextStyle(),
-    display2: myTextStyle(),
-    display3: myTextStyle(),
-    display4: myTextStyle(),
-    headline: myTextStyle(),
+    headline4: myTextStyle(),
+    headline3: myTextStyle(),
+    headline2: myTextStyle(),
+    headline1: myTextStyle(),
+    headline5: myTextStyle(),
     overline: myTextStyle(),
-    subhead: myTextStyle(),
-    subtitle: myTextStyle(),
-    title: myTextStyle(),
+    subtitle1: myTextStyle(),
+    subtitle2: myTextStyle(),
+    headline6: myTextStyle(),
   );
 }
 
@@ -45,7 +45,7 @@ TextTheme kHeadlineTheme(theme, [language = 'en']) {
       return GoogleFonts.ralewayTextTheme(theme);
     default:
       // return GoogleFonts.ralewayTextTheme(theme);
-      // return GoogleFonts.heeboTextTheme(theme);
-      return myTextTheme();
+      return GoogleFonts.heeboTextTheme(theme);
+    // return myTextTheme();
   }
 }

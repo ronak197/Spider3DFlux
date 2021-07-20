@@ -219,7 +219,7 @@ class MainTabsState extends CustomOverlayState<MainTabs>
           child: WillPopScope(
             onWillPop: _handleWillPopScopeRoot,
             child: MainLayout(
-              // menu: SideBarMenu(),
+              menu: SideBarMenu(),
               content: MediaQuery(
                 data: isDesktopDisplay
                     ? media.copyWith(

@@ -15,6 +15,7 @@ class BlogNews {
   String? imageFeature;
 //  int categoryId;
 
+
   BlogNews.empty(this.id) {
     date = '';
     title = 'Loading...';

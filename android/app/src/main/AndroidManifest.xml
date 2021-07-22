@@ -10,7 +10,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:usesCleartextTraffic="true"
-        android:label="Fluxstore"
+        android:label="Spider3D"
         android:icon="@mipmap/launcher_icon">
 
         <activity

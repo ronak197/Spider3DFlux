@@ -205,16 +205,10 @@
   "OnBoarding": {
     "data": [
       {
-        "title": "מתנת הצטרפות מאיתנו",
+        "title": "משלוח חינם \nמתנת הצטרפות מאיתנו",
         "image": "myCupon",
         "desc": "",
         "background": "#F2FFFC"
-      },
-      {
-        "title": "זה הזמן להתחיל",
-        "image": "fogg-order-completed.png",
-        "desc": "Waiting no more, let's see what we get!",
-        "background": "#F9F2FF"
       }
     ]
   }

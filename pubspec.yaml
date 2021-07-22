@@ -171,6 +171,10 @@ dev_dependencies:
     sdk: flutter
   test: ^1.16.5
   flutter_launcher_icons: ^0.9.0
+  flutter_app_name:
+
+flutter_app_name:
+  name: "Spider3D"
 
 
 ## Enable To run json serializer, run:
@@ -184,6 +188,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
+  remove_alpha_ios: true
   image_path: "assets/images/app_icon.png"
 
 # For information on the generic Dart part of this file, see the

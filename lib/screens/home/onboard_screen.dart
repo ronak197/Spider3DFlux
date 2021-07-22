@@ -41,57 +41,78 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              GestureDetector(
-                onTap: () async {
-                  var prefs = await SharedPreferences.getInstance();
-                  await prefs.setBool('seen', true);
-                  await Navigator.pushReplacementNamed(
-                      context, RouteList.login);
-                },
-                child: Text(
+          child: GestureDetector(
+            onTap: () async {
+              var prefs = await SharedPreferences.getInstance();
+              await prefs.setBool('seen', true);
+              await Navigator.pushReplacementNamed(context, RouteList.login);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
                   S.of(context).signIn,
                   style: const TextStyle(
                     color: kColorSpiderRed,
                     fontSize: 20.0,
                   ),
                 ),
-              ),
-              const Text(
-                '    |    ',
-                style: TextStyle(color: kColorSpiderRed, fontSize: 20.0),
-              ),
-              GestureDetector(
-                onTap: () async {
-                  var prefs = await SharedPreferences.getInstance();
-                  await prefs.setBool('seen', true);
-                  await Navigator.pushReplacementNamed(
-                      context, RouteList.register);
-                },
-                child: Text(
-                  S.of(context).signUp,
-                  style: const TextStyle(
-                    color: kColorSpiderRed,
-                    fontSize: 20.0,
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: <Widget>[
+          //     GestureDetector(
+          //       onTap: () async {
+          //         var prefs = await SharedPreferences.getInstance();
+          //         await prefs.setBool('seen', true);
+          //         await Navigator.pushReplacementNamed(
+          //             context, RouteList.login);
+          //       },
+          //       child: Text(
+          //         S.of(context).signIn,
+          //         style: const TextStyle(
+          //           color: kColorSpiderRed,
+          //           fontSize: 20.0,
+          //         ),
+          //       ),
+          //     ),
+          //     const Text(
+          //       '    |    ',
+          //       style: TextStyle(color: kColorSpiderRed, fontSize: 20.0),
+          //     ),
+          //     GestureDetector(
+          //       onTap: () async {
+          //         var prefs = await SharedPreferences.getInstance();
+          //         await prefs.setBool('seen', true);
+          //         await Navigator.pushReplacementNamed(
+          //             context, RouteList.register);
+          //       },
+          //       child: Text(
+          //         S.of(context).signUp,
+          //         style: const TextStyle(
+          //           color: kColorSpiderRed,
+          //           fontSize: 20.0,
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ),
       ],
     );
 
     for (var i = 0; i < data.length; i++) {
       var slide = SlideWrapper(
-        title: data[i]['title'],
+        title: '', //data[i]['title'],
         description: data[i]['desc'],
+        maxLineTitle: 2,
         marginTitle: const EdgeInsets.only(
-          top: 125.0,
-          bottom: 50.0,
-        ),
+            // top: 125.0,
+            // top: 50.0,
+            // bottom: 50.0,
+            ),
         maxLineTextDescription: 2,
         styleTitle: const TextStyle(
           fontWeight: FontWeight.bold,
@@ -115,7 +136,69 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
           offset: const Offset(0, -20),
           child: Column(
             children: [
+              const SizedBox(
+                height: 20,
+              ),
               // TextField(),
+              Image.asset(
+                // data[i]['image'],
+                "assets/images/welcome_coupon.png",
+                fit: BoxFit.cover,
+              ),
+              // const SizedBox(height: 35),
+              const Text(
+                'משלוח חינם \nמתנת הצטרפות מאיתנו',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25.0,
+                  color: kGrey900,
+                ),
+              ),
+              // Desc Text:
+              const Visibility(
+                visible: true,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
+                  child: Text(
+                    'משלוח ראשון חינם ומבצעיים בלעדים נוספים לחברי האפליקציה',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 15.0),
+                  ),
+                ),
+              ),
+              TextButton(
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all(Colors.grey[700]),
+                    backgroundColor: MaterialStateProperty.all(Colors.white),
+                    // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
+                    elevation: MaterialStateProperty.all(2)),
+                onPressed: () async {
+                  // Copy Coupon
+                  var data = const ClipboardData(text: 'SpiderGift');
+                  await Clipboard.setData(data);
+                  const snackBar = SnackBar(
+                      content: Text('מעולה! הקופון SpiderGift הועתק.'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  // Go To login Screen
+                  var prefs = await SharedPreferences.getInstance();
+                  await prefs.setBool('seen', true);
+                  await Navigator.pushReplacementNamed(
+                      context, RouteList.login);
+                },
+                child: const Text(
+                  'התחבר וקבל קופון',
+                  style: TextStyle(
+                      // fontWeight: FontWeight.bold,
+                      // fontSize: 20.0,
+                      // color: kGrey900,
+                      ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               Container(
                 padding: const EdgeInsets.all(10.0),
                 color: Colors.grey[100],
@@ -124,36 +207,6 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                   style: TextStyle(color: kColorSpiderRed, fontSize: 25.0),
                 ),
               ),
-              Image.asset(
-                // data[i]['image'],
-                "assets/images/welcome_coupon.png",
-                fit: BoxFit.cover,
-              ),
-              // const SizedBox(height: 35),
-              Transform.translate(
-                offset: const Offset(0, -10),
-                child: TextButton(
-                  style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all(Colors.grey[700]),
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
-                      // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
-                      elevation: MaterialStateProperty.all(2)),
-                  onPressed: () async {
-                    var data = const ClipboardData(text: 'SpiderGift');
-                    await Clipboard.setData(data);
-                    const snackBar =
-                        SnackBar(content: Text('מעולה! הקופון הועתק.'));
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  },
-                  child: const Text('העתק קופון'),
-                ),
-              ),
-              const SizedBox(height: 5),
-              const Text(
-                'קבל קופון הצטרפות ומבצעיים בלעדים נוספים לחברי האפליקציה',
-                textAlign: TextAlign.center,
-              )
             ],
           ),
         );
@@ -286,30 +339,103 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
         );
       default:
         return Scaffold(
-          backgroundColor: Colors.white,
-          body: Stack(
-            children: [
-              Consumer<AppModel>(builder: (context, _, __) {
-                return Container(
-                  key: UniqueKey(),
-                  child: IntroSliderWrapper(
-                    slides: getSlides(_appConfig),
-                    styleSkipBtn: const TextStyle(color: kGrey900),
-                    styleDoneBtn: const TextStyle(color: kGrey900),
-                    namePrevBtn: S.of(context).prev,
-                    // isShowSkipBtn: false,
-                    nameSkipBtn: '', // S.of(context).skip,
-                    nameNextBtn: S.of(context).next,
-                    nameDoneBtn: isRequiredLogin ? '' : S.of(context).done,
-                    isShowDoneBtn: !isRequiredLogin,
-                    onDonePress: onTapDone,
+            backgroundColor: Colors.white,
+            body: Column(
+              children: [
+                const SizedBox(
+                  height: 100,
+                ),
+                // TextField(),
+                Image.asset(
+                  // data[i]['image'],
+                  "assets/images/welcome_coupon.png",
+                  fit: BoxFit.cover,
+                ),
+                // const SizedBox(height: 35),
+                const Text(
+                  'משלוח חינם \nמתנת הצטרפות מאיתנו',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25.0,
+                    color: kGrey900,
                   ),
-                );
-              }),
-              // iconLanguage(),
-            ],
-          ),
-        );
+                ),
+                // Desc Text:
+                const Visibility(
+                  visible: true,
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
+                    child: Text(
+                      'משלוח ראשון חינם ומבצעיים בלעדים נוספים לחברי האפליקציה',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 15.0),
+                    ),
+                  ),
+                ),
+                TextButton(
+                  style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all(Colors.grey[700]),
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
+                      elevation: MaterialStateProperty.all(2)),
+                  onPressed: () async {
+                    // Copy Coupon
+                    var data = const ClipboardData(text: 'SpiderGift');
+                    await Clipboard.setData(data);
+                    const snackBar = SnackBar(
+                        content: Text('מעולה! הקופון SpiderGift הועתק.'));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    // Go To login Screen
+                    var prefs = await SharedPreferences.getInstance();
+                    await prefs.setBool('seen', true);
+                    await Navigator.pushReplacementNamed(
+                        context, RouteList.login);
+                  },
+                  child: const Text(
+                    'התחבר וקבל קופון',
+                    style: TextStyle(
+                        // fontWeight: FontWeight.bold,
+                        // fontSize: 20.0,
+                        // color: kGrey900,
+                        ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10.0),
+                  color: Colors.grey[100],
+                  child: const SelectableText(
+                    'SpiderGift#',
+                    style: TextStyle(color: kColorSpiderRed, fontSize: 25.0),
+                  ),
+                ),
+              ],
+            ));
+      // return Scaffold(
+      // // backgroundColor: Colors.white,
+      // body: Consumer<AppModel>(builder: (context, _, __) {
+      //   return Container(
+      //     key: UniqueKey(),
+      //     child: IntroSliderWrapper(
+      //       slides: getSlides(_appConfig),
+      //       styleSkipBtn: const TextStyle(color: kGrey900),
+      //       styleDoneBtn: const TextStyle(color: kGrey900),
+      //       namePrevBtn: S.of(context).prev,
+      //   // isShowSkipBtn: false,
+      // nameSkipBtn: '', // S.of(context).skip,
+      // nameNextBtn: '', // S.of(context).next,
+      // nameDoneBtn: isRequiredLogin ? '' : S.of(context).done,
+      // isShowDoneBtn: !isRequiredLogin,
+      // onDonePress: onTapDone,
+      // ),
+      // );
+      // }),
+      // );
     }
   }
 }

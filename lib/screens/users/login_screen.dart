@@ -287,7 +287,16 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(height: 80.0),
+                                    const SizedBox(height: 30.0),
+                                    Text(
+                                      // 'Its rec to login as the web for full sync',
+                                      'מומלץ להתחבר בהתאם לאתר לסנכרון מיטבי',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.grey.shade400),
+                                    ),
+                                    const SizedBox(height: 50.0),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,

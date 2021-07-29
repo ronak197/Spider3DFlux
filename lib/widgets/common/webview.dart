@@ -31,7 +31,7 @@ class _WebViewState extends State<WebView> {
         elevation: 0.0,
         title: Text(widget.title ?? ''),
       ),
-      withZoom: true,
+      withZoom: false,
       withLocalStorage: true,
       initialChild: kLoadingWidget(context),
     );

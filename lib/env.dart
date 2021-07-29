@@ -502,8 +502,8 @@ Map<String, dynamic> environment = {
   },
   "smartChat": [
     {"app": "https://wa.me/972522509900", "iconData": "whatsapp"},
-    {"app": "tel:0522509900", "iconData": "phone"},
-    {"app": "http://m.me/spider3d.co.il", "iconData": "facebookMessenger"}
+    {"app": "tel:0522509900", "iconData": "phone"}
+    // {"app": "firebase", "iconData": "google"}
   ],
   "adminEmail": "info@spider3d.co.il",
   "adminName": "Eyal Spider3D",

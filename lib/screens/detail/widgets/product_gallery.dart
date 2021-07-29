@@ -59,6 +59,9 @@ class ProductGallery extends StatelessWidget {
         return Container(
           height: dimension * 0.8 + 8,
           width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -84,7 +87,7 @@ class ProductGallery extends StatelessWidget {
                         children: <Widget>[
                           Icon(
                             Icons.play_circle_outline,
-                            size: 40,
+                            size: 30,
                             color: Theme.of(context).accentColor,
                           ),
                           const SizedBox(height: 4),
@@ -112,7 +115,7 @@ class ProductGallery extends StatelessWidget {
                         height: dimension * (kIsWeb ? 1.2 : 0.9),
                         width: dimension,
                         isResize: true,
-                        fit: BoxFit.contain,
+                        fit: BoxFit.fill,
                       ),
                     ),
                   )

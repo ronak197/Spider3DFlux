@@ -139,7 +139,7 @@
     "FontFamily": "Heebo",
     "ProductListLayout": "list",
     "StickyHeader": true,
-    "ProductDetail": "halfSizeImageType",
+    "ProductDetail": "simpleType",
     "ShowChat": true
   },
   "TabBar": [
@@ -171,7 +171,7 @@
         "rating" ,
         "about"
       ] ,
-      "background": "https://i.imgur.com/u2GRG8B.jpeg"
+      "background": "https://i.imgur.com/Oz76QDp.png"
     }
   ],
   "Drawer": {

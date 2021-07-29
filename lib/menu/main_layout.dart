@@ -102,7 +102,8 @@ class _MainLayoutState extends State<MainLayout>
               duration: duration,
               alignment: Alignment.topCenter,
               padding: const EdgeInsets.only(bottom: 32),
-              color: Theme.of(context).primaryColorLight.withOpacity(0.7),
+              // color: Theme.of(context).primaryColorLight.withOpacity(0.7),
+              color: Colors.white,
               child: OverflowBox(
                 maxWidth: kSizeLeftMenu,
                 maxHeight: 1000,

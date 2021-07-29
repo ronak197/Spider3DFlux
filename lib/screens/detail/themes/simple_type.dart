@@ -139,6 +139,7 @@ class _SimpleLayoutState extends State<SimpleLayout>
                       floating: false,
                       leading: Padding(
                         padding: const EdgeInsets.all(8),
+                        // padding: const EdgeInsets.only(top: 8, left: 8,right: 8),
                         child: CircleAvatar(
                           backgroundColor: Colors.white.withOpacity(0.3),
                           child: IconButton(

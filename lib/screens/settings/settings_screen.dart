@@ -475,20 +475,25 @@ class _SettingScreenState extends State<SettingScreen>
           onTap = showRateMyApp;
           break;
         }
-      case 'privacy':
+      case 'spiders':
         {
-          icon = CupertinoIcons.doc_text;
-          title = S.of(context).agreeWithPrivacy;
+          icon = CupertinoIcons.money_dollar_circle;
+          // title = S.of(context).aboutUs;
+          title = 'קאשבק & ספיידרס';
           trailing =
               const Icon(Icons.arrow_forward_ios, size: 18, color: kGrey600);
-          onTap = () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PostScreen(
-                      pageId: kAdvanceConfig['PrivacyPoliciesPageId'],
-                      pageTitle: '${S.of(context).agreeWithPrivacy}'),
-                ),
-              );
+          onTap = () {
+            if (kIsWeb) {
+              return Tools.launchURL(SettingConstants.spidersUrl);
+            }
+            return FluxNavigate.push(
+              MaterialPageRoute(
+                builder: (context) =>
+                    WebView(url: SettingConstants.spidersUrl, title: title),
+              ),
+              forceRootNavigator: true,
+            );
+          };
           break;
         }
       case 'about':
@@ -574,8 +579,10 @@ class _SettingScreenState extends State<SettingScreen>
                 backgroundColor: Theme.of(context).primaryColor,
                 leading: IconButton(
                   icon: const Icon(
-                    Icons.blur_on,
-                    color: Colors.white70,
+                    // Icons.blur_on,
+                    Icons.menu,
+                    // color: Colors.white70,
+                    color: Colors.black87,
                   ),
                   onPressed: () => NavigateTools.onTapOpenDrawerMenu(context),
                 ),
@@ -587,7 +594,7 @@ class _SettingScreenState extends State<SettingScreen>
                     S.of(context).settings,
                     style: const TextStyle(
                         fontSize: 18,
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.w600),
                   ),
                   background: Image.network(

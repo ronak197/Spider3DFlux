@@ -42,7 +42,9 @@ enum BookStatus { booked, unavailable, waiting, confirmed, cancelled, error }
 const kSizeLeftMenu = 300.0;
 
 class SettingConstants {
-  static const aboutUsUrl = 'https://inspireui.com/about';
+  static const aboutUsUrl = 'https://www.spider3d.co.il/about/';
+  static const spidersUrl =
+      'https://www.spider3d.co.il/my-account-2/lws_woorewards/';
 }
 
 class SplashScreenTypeConstants {

@@ -501,8 +501,21 @@ Map<String, dynamic> environment = {
     "hideOnScreens": []
   },
   "smartChat": [
-    {"app": "https://wa.me/972522509900", "iconData": "whatsapp"},
-    {"app": "tel:0522509900", "iconData": "phone"}
+    {
+      "app": "mailto:spider3d@info.co.il",
+      "iconData": "mail_outline",
+      "myIsMail": true
+    },
+    {
+      "app": "https://wa.me/972522509900",
+      "iconData": "whatsapp",
+      "myIsMail": false
+    },
+    {
+      "app": "tel:0522509900",
+      "iconData": "phone",
+      "myIsMail": false
+    }, // Whatever
     // {"app": "firebase", "iconData": "google"}
   ],
   "adminEmail": "info@spider3d.co.il",

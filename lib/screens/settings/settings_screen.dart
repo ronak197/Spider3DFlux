@@ -44,6 +44,7 @@ class _SettingScreenState extends State<SettingScreen>
 
   User? get user => Provider.of<UserModel>(context, listen: false).user;
 
+  bool showSpider = false;
   final bannerHigh = 150.0;
   final RateMyApp _rateMyApp = RateMyApp(
       // rate app on store
@@ -200,6 +201,7 @@ class _SettingScreenState extends State<SettingScreen>
     IconData icon;
     String title;
     Widget trailing;
+    Widget spiderWidget = Container();
     Function() onTap;
     var isMultiVendor = kFluxStoreMV.contains(serverConfig['type']);
     switch (value) {
@@ -282,6 +284,7 @@ class _SettingScreenState extends State<SettingScreen>
                     ),
                   ),
                 ),
+                spiderWidget,
                 const Divider(
                   color: Colors.black12,
                   height: 1.0,
@@ -483,17 +486,43 @@ class _SettingScreenState extends State<SettingScreen>
           trailing =
               const Icon(Icons.arrow_forward_ios, size: 18, color: kGrey600);
           onTap = () {
-            if (kIsWeb) {
-              return Tools.launchURL(SettingConstants.spidersUrl);
-            }
-            return FluxNavigate.push(
-              MaterialPageRoute(
-                builder: (context) =>
-                    WebView(url: SettingConstants.spidersUrl, title: title),
-              ),
-              forceRootNavigator: true,
-            );
+            print(showSpider);
+            setState(() {
+              // showSpider = false;
+              showSpider = !showSpider;
+            });
+            print("showSpider:");
+            print(showSpider);
+
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => UserPointScreen(),
+            //   ),
+            // );
           };
+
+          spiderWidget = AnimatedContainer(
+            height: showSpider ? 100.0 : 20.0,
+            color: Colors.blue,
+            duration: const Duration(seconds: 1),
+            curve: Curves.fastOutSlowIn,
+            child: const FlutterLogo(size: 20),
+          );
+
+          // Opens webView (That require login again)
+          // onTap = () {
+          //   if (kIsWeb) {
+          //     return Tools.launchURL(SettingConstants.spidersUrl);
+          //   }
+          //   return FluxNavigate.push(
+          //     MaterialPageRoute(
+          //       builder: (context) =>
+          //           WebView(url: SettingConstants.spidersUrl, title: title),
+          //     ),
+          //     forceRootNavigator: true,
+          //   );
+          // };
           break;
         }
       case 'about':
@@ -547,6 +576,7 @@ class _SettingScreenState extends State<SettingScreen>
             onTap: onTap,
           ),
         ),
+        spiderWidget,
         const Divider(
           color: Colors.black12,
           height: 1.0,

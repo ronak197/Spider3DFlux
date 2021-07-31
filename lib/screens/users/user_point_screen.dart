@@ -24,6 +24,8 @@ class _StateUserPoint extends State<UserPointScreen> {
     final points = await httpGet(
         '${Config().url}/wp-json/api/flutter_user/get_points/?insecure=cool&user_id=${userModel.user!.id}'
             .toUri()!);
+    print("UserPoints:");
+    print(UserPoints.fromJson(json.decode(points.body)));
     return UserPoints.fromJson(json.decode(points.body));
   }
 

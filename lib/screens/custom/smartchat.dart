@@ -30,11 +30,11 @@ class _SmartChatState extends State<SmartChat> with WidgetsBindingObserver {
     WidgetsBinding.instance!.addObserver(this);
   }
 
-  IconButton getIconButton(
-      IconData? iconData, double iconSize, Color iconColor, String? appUrl) {
+  IconButton getIconButton(IconData? iconData, double iconSize, Color iconColor,
+      String? appUrl, bool myIsMail) {
     return IconButton(
       icon: Icon(
-        iconData,
+        myIsMail ? Icons.mail_outline : iconData,
         size: iconSize,
         color: iconColor,
       ),
@@ -129,11 +129,11 @@ class _SmartChatState extends State<SmartChat> with WidgetsBindingObserver {
         default:
           listWidget.add(
             getIconButton(
-              options[i]['iconData'],
-              35,
-              Theme.of(context).primaryColorLight,
-              options[i]['app'],
-            ),
+                options[i]['iconData'],
+                30,
+                Theme.of(context).primaryColorLight,
+                options[i]['app'],
+                options[i]['myIsMail']),
           );
       }
     }
@@ -151,10 +151,11 @@ class _SmartChatState extends State<SmartChat> with WidgetsBindingObserver {
       width: screenSize.width,
       height: screenSize.height,
       child: FabCircularMenu(
+        fabCloseIcon: const Icon(Icons.clear, color: Colors.white),
         fabOpenIcon: const Icon(Icons.chat, color: Colors.white),
         ringColor: Theme.of(context).primaryColor,
-        ringWidth: 100.0,
-        ringDiameter: 250.0,
+        ringWidth: 75.0,
+        ringDiameter: 225.0,
         fabMargin: widget.margin ?? const EdgeInsets.only(bottom: 0),
         options: list,
         child: Container(),

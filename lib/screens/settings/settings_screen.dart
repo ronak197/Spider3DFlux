@@ -395,8 +395,8 @@ class _SettingScreenState extends State<SettingScreen>
                 child: SwitchListTile(
                   secondary: Icon(
                     Provider.of<AppModel>(context).darkTheme
-                        ? CupertinoIcons.sun_min
-                        : CupertinoIcons.moon,
+                        ? CupertinoIcons.moon
+                        : CupertinoIcons.sun_min,
                     color: Theme.of(context).accentColor,
                     size: 24,
                   ),
@@ -502,12 +502,19 @@ class _SettingScreenState extends State<SettingScreen>
             // );
           };
 
-          spiderWidget = AnimatedContainer(
-            height: showSpider ? 100.0 : 20.0,
-            color: Colors.blue,
-            duration: const Duration(seconds: 1),
-            curve: Curves.fastOutSlowIn,
-            child: const FlutterLogo(size: 20),
+          spiderWidget = ClipRRect(
+            borderRadius: BorderRadius.circular(5.0),
+            child: AnimatedContainer(
+              padding: const EdgeInsets.all(10.0),
+              width: MediaQuery.of(context).size.width,
+              height: showSpider ? 70 : 0.0,
+              color: Colors.grey[200],
+              duration: const Duration(seconds: 1),
+              curve: Curves.fastOutSlowIn,
+              child: const Center(
+                  child: Text(
+                      'יש לך 30 ספיידרס ששווים 3₪ \nהקאשבק שלך יופעל אוטומטית ברכישה הבאה.')),
+            ),
           );
 
           // Opens webView (That require login again)

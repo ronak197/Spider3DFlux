@@ -130,7 +130,7 @@ class _StateMenuLayout extends State<MenuLayout> {
                           .langCode);
                 },
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
                     children: <Widget>[
                       Padding(

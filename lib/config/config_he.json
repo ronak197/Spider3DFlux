@@ -176,22 +176,14 @@
     }
   ],
   "Drawer": {
-    "logo": null ,
+    "logo": "assets/images/logo.png",
     "items": [
       {
-        "type": "profile" ,
-        "show": true
-      } ,
-      {
-        "type": "blog" ,
-        "show": true
-      } ,
-      {
-        "type": "login" ,
+        "type": "category" ,
         "show": true
       },
       {
-        "type": "category" ,
+        "type": "blog" ,
         "show": true
       }
     ]

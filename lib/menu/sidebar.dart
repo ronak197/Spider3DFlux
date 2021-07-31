@@ -45,12 +45,12 @@ class _MenuBarState extends State<SideBarMenu> {
                 children: [
                   if (drawer.logo != null)
                     Container(
-                      height: 38,
-                      margin:
-                          const EdgeInsets.only(bottom: 10, top: 10, left: 5),
+                      height: 50,
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.only(bottom: 10),
                       child: FluxImage(imageUrl: drawer.logo as String),
                     ),
-                  const Divider(),
+                  // const Divider(),
                   ...List.generate(
                     drawer.items!.length,
                     (index) {
@@ -119,6 +119,8 @@ class _MenuBarState extends State<SideBarMenu> {
       case 'profile':
         {
           return ListTile(
+            // minVerticalPadding: 0,
+            // contentPadding: const EdgeInsets.all(0),
             leading: const Icon(Icons.person, size: 22),
             title: Text(S.of(context).settings),
             onTap: () => pushNavigation(RouteList.profile),
@@ -234,7 +236,8 @@ class _MenuBarState extends State<SideBarMenu> {
                       cateName: currentCategory.name,
                     );
                   },
-                  child: Padding(
+                  child: Container(
+                    // color: Colors.green,
                     padding: const EdgeInsets.only(
                       right: 20,
                       bottom: 12,
@@ -255,7 +258,8 @@ class _MenuBarState extends State<SideBarMenu> {
                         const SizedBox(width: 24),
                         currentCategory.totalProduct == null
                             ? const Icon(Icons.chevron_right)
-                            : Padding(
+                            : Container(
+                                // color: Colors.green,
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 10),
                                 child: Text(
@@ -293,6 +297,7 @@ class _MenuBarState extends State<SideBarMenu> {
 
     return ExpansionTile(
       iconColor: Theme.of(context).accentColor.withOpacity(0.5),
+      // iconColor: Colors.green,
       initiallyExpanded: true,
       expandedCrossAxisAlignment: CrossAxisAlignment.start,
       tilePadding: const EdgeInsets.only(left: 16, right: 8),

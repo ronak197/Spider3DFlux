@@ -497,25 +497,23 @@ Map<String, dynamic> environment = {
   "notStrictVisibleVariant": true,
   "configChat": {
     "EnableSmartChat": true,
+    // "showOnScreens": ["profile", "home"],
     "showOnScreens": ["profile"],
     "hideOnScreens": []
   },
   "smartChat": [
     {
-      "app": "mailto:spider3d@info.co.il",
-      "iconData": "mail_outline",
-      "myIsMail": true
-    },
+      "app": "tel:0522509900",
+      "iconData": "phone",
+      "myIsMail": false
+    }, // Whatever
     {
       "app": "https://wa.me/972522509900",
       "iconData": "whatsapp",
       "myIsMail": false
     },
-    {
-      "app": "tel:0522509900",
-      "iconData": "phone",
-      "myIsMail": false
-    }, // Whatever
+    {"app": "mailto:spider3d@info.co.il", "iconData": "sms", "myIsMail": true}
+
     // {"app": "firebase", "iconData": "google"}
   ],
   "adminEmail": "info@spider3d.co.il",

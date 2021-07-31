@@ -30,19 +30,16 @@ class _SmartChatState extends State<SmartChat> with WidgetsBindingObserver {
     WidgetsBinding.instance!.addObserver(this);
   }
 
-  IconButton getIconButton(IconData? iconData, double iconSize, Color iconColor,
+  Widget getIconButton(IconData? iconData, double iconSize, Color iconColor,
       String? appUrl, bool myIsMail) {
-    return IconButton(
-      icon: Icon(
-        myIsMail ? Icons.mail_outline : iconData,
-        size: iconSize,
-        color: iconColor,
-      ),
-      onPressed: () async {
+    return GestureDetector(
+      onTap: () async {
         if (await canLaunch(appUrl!)) {
           if (appUrl.contains('http') && !appUrl.contains('wa.me')) {
             _openChat(appUrl);
           } else {
+            // print("my onPressed else (now whatsapp)");
+            // print(appUrl);
             await launch(appUrl);
           }
           setState(() {
@@ -71,6 +68,12 @@ class _SmartChatState extends State<SmartChat> with WidgetsBindingObserver {
           Scaffold.of(context).showSnackBar(snackBar);
         }
       },
+      child: Container(
+        // color: Colors.green,
+        // padding: const EdgeInsets.all(20.0),
+        child: Icon(myIsMail ? Icons.mail_outline : iconData,
+            size: iconSize, color: iconColor),
+      ),
     );
   }
 

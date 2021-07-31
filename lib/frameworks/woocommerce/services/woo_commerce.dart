@@ -177,12 +177,18 @@ class WooCommerce extends BaseServices {
   @override
   Future<List<Product>?> fetchProductsLayout({config, lang, userId}) async {
     try {
+      // print("part Completed: A-0");
+      print("isCaching is ${kAdvanceConfig['isCaching']}");
+
       /// Load first page from cache.
       if (kAdvanceConfig['isCaching'] &&
           configCache != null &&
           (config['page'] == 1 || config['page'] == null)) {
         var obj;
         final horizontalLayout = configCache!['HorizonLayout'] as List?;
+        print("part Completed: A-1");
+        print(horizontalLayout);
+        print("part Completed: A-1.2");
         if (horizontalLayout != null) {
           obj = horizontalLayout.firstWhere(
               (o) =>
@@ -191,7 +197,10 @@ class WooCommerce extends BaseServices {
                           o['category'] == config['category']) ||
                       (o['tag'] != null && o['tag'] == config['tag'])),
               orElse: () => null);
-          if (obj != null && obj['data'].length > 0) return obj['data'];
+          if (obj != null && obj['data'].length > 0) print("obj");
+          print(obj);
+          print('Successfully Load first page from cache.');
+          return obj['data'];
         }
 
         final verticalLayout = configCache!['VerticalLayout'];
@@ -203,6 +212,8 @@ class WooCommerce extends BaseServices {
                     verticalLayout['tag'] == config['tag']))) {
           return verticalLayout['data'];
         }
+        //
+
       }
 
       var endPoint = 'products?status=publish';
@@ -242,11 +253,12 @@ class WooCommerce extends BaseServices {
         printLog('WooCommerce Error: ' + response['message']);
         return [];
       }
-
       return ProductModel.parseProductList(response, config);
     } catch (e, trace) {
+      print('Something WentWrong Load first page');
       printLog(trace.toString());
       printLog(e.toString());
+      print('--------------');
       //This error exception is about your Rest API is not config correctly so that not return the correct JSON format, please double check the document from this link https://docs.inspireui.com/fluxstore/woocommerce-setup/
       return [];
     }

@@ -21,9 +21,9 @@ class SplashScreenIndex extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("---------------");
-    print(splashScreenType);
-    print("---------------");
+    // print("---------------");
+    // print(splashScreenType);
+    // print("---------------");
     switch (splashScreenType) {
       case SplashScreenTypeConstants.rive:
         const animationName = kAnimationName;

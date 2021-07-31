@@ -41,30 +41,59 @@
       "layout": "category",
       "type": "icon",
       "wrap": false,
-      "size": 1.3,
+      "size": 1.2,
       "radius": 50.0,
       "hideTitle": false,
       "items": [
         {
-          "category": 18,
-          "image": "https://user-images.githubusercontent.com/1459805/62820029-2e679f00-bb88-11e9-80de-fdf115cfd942.png",
+          "category": 24,
+          "image": "assets/icons/tabs/icon-search.png",
           "colors": [
-            "#3CC2BF",
-            "#3E6AB5"
+            "#b42525",
+            "#5a0000"
           ],
-          "originalColor": false,
-          "title" : "ABC",
-          "keepDefaultTitle": false
+          "title" : "מדפסות",
+          "keepDefaultTitle": true
         },
         {
           "category": 24,
-          "image": "https://trello-attachments.s3.amazonaws.com/60a62a9bca5053572a669dee/48x58/a68d188ae063a20eac903fe2ca00ece5/ic_dress.png",
+          "image": "assets/icons/tabs/icon-search.png",
           "colors": [
-            "#3E6AB5",
-            "#3E6AB5"
+            "#b42525",
+            "#5a0000"
           ],
-          "title" : "ABC",
-          "keepDefaultTitle": false
+          "title" : "שדרוגים",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 24,
+          "image": "assets/icons/tabs/icon-search.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "PLA+",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 24,
+          "image": "assets/icons/tabs/icon-search.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "SILK",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 24,
+          "image": "assets/icons/tabs/icon-search.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "PETG",
+          "keepDefaultTitle": true
         }
       ]
     },
@@ -89,16 +118,20 @@
       "items": []
     },
     {
-      "name": "מדפסות מעולות",
+      "name": "מדפסות 3D מומלצות",
       "category": 2341,
       "layout": "threeColumn",
       "isSnapping": true
+    },
+    {
+      "layout": "blog",
+      "name": "מדריכים אחרונים שלנו"
     }
   ],
   "VerticalLayout": {
     "key": "r09jo0owu6",
     "layout": "menu",
-    "name": "המומלצים שלנו",
+    "name": "מבצעים וחבילות",
     "isVertical": true
   },
   "Setting": {
@@ -106,7 +139,7 @@
     "FontFamily": "Heebo",
     "ProductListLayout": "list",
     "StickyHeader": true,
-    "ProductDetail": "halfSizeImageType",
+    "ProductDetail": "simpleType",
     "ShowChat": true
   },
   "TabBar": [
@@ -115,40 +148,42 @@
       "icon": "assets/icons/tabs/icon-home.png"
     },
     {
-      "layout": "search",
-      "icon": "assets/icons/tabs/icon-search.png"
-    },
-    {
       "layout": "cart",
       "icon": "assets/icons/tabs/icon-cart2.png"
     },
     {
-      "layout": "category",
-      "categoryLayout": "card",
-      "icon": "assets/icons/tabs/icon-category.png"
+      "layout": "search",
+      "icon": "assets/icons/tabs/icon-search.png"
     },
     {
       "layout": "wishlist",
-      "icon": "assets/icons/tabs/icon-home.png"
+      "icon": "assets/icons/tabs/icon-heartthin.png"
+    },
+    {
+      "layout": "profile",
+      "icon": "assets/icons/tabs/icon-user.png",
+      "showChat": true,
+      "pos": 400 ,
+      "settings": [
+        "order" ,
+        "wishlist" ,
+        "darkTheme" ,
+        "rating" ,
+        "spiders" ,
+        "about"
+      ] ,
+      "background": "https://i.imgur.com/Oz76QDp.png"
     }
   ],
   "Drawer": {
-    "logo": null ,
+    "logo": "assets/images/logo.png",
     "items": [
       {
-        "show": true ,
-        "type": "category"
+        "type": "category" ,
+        "show": true
       },
       {
-        "type": "profile" ,
-        "show": false
-      } ,
-      {
         "type": "blog" ,
-        "show": true
-      } ,
-      {
-        "type": "login" ,
         "show": true
       }
     ]
@@ -163,16 +198,10 @@
   "OnBoarding": {
     "data": [
       {
-        "title": "מתנת הצטרפות מאיתנו",
+        "title": "משלוח חינם \nמתנת הצטרפות מאיתנו",
         "image": "myCupon",
         "desc": "",
         "background": "#F2FFFC"
-      },
-      {
-        "title": "זה הזמן להתחיל",
-        "image": "fogg-order-completed.png",
-        "desc": "Waiting no more, let's see what we get!",
-        "background": "#F9F2FF"
       }
     ]
   }

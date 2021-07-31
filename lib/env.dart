@@ -20,6 +20,8 @@ Map<String, dynamic> environment = {
     "ios": "1469772800"
   },
   "advanceConfig": {
+    "isCaching": true,
+    "kIsResizeImage": false,
     "DefaultLanguage": "he",
     "DetailedBlogLayout": "halfSizeImageType",
     "EnablePointReward": true,
@@ -30,8 +32,6 @@ Map<String, dynamic> environment = {
     "EnableSkuSearch": true,
     "showStockStatus": false,
     "GridCount": 3,
-    "isCaching": true,
-    "kIsResizeImage": false,
     "DefaultCurrency": {
       "symbol": "₪",
       "decimalDigits": 2,

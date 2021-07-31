@@ -77,8 +77,11 @@ class ProductModel with ChangeNotifier {
   }
 
   Future<List<Product>?> fetchProductLayout(config, lang, {userId}) async {
-    return _service.api
+    var myFetchProductLayout = _service.api
         .fetchProductsLayout(config: config, lang: lang, userId: userId);
+    print("myFetchProductLayout");
+    print(myFetchProductLayout);
+    return myFetchProductLayout;
   }
 
   void fetchProductsByCategory({categoryId, categoryName, listingLocationId}) {

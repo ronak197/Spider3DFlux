@@ -246,7 +246,7 @@ class AppState extends State<App>
                 ]
               ],
               child: MaterialApp(
-                debugShowCheckedModeBanner: false,
+                // debugShowCheckedModeBanner: false,
                 locale: Locale(
                     languageCode ?? kAdvanceConfig['DefaultLanguage'], ''),
                 navigatorKey: App.fluxStoreNavigatorKey,

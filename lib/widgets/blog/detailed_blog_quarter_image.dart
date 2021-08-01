@@ -225,7 +225,7 @@ class _OneQuarterImageTypeState extends State<OneQuarterImageType> {
               ],
             ),
             Positioned(
-              bottom: 0,
+              bottom: 20,
               left: 90,
               child: AnimatedOpacity(
                 opacity: isExpandedListView ? 1.0 : 0.0,
@@ -235,15 +235,16 @@ class _OneQuarterImageTypeState extends State<OneQuarterImageType> {
                   child: Card(
                     elevation: 3,
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(right: 15),
-                            child: ImageTools.getCachedAvatar(
-                                'https://api.hello-avatar.com/adorables/${widget.item.author}.png'),
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(right: 15),
+                          //   child: ImageTools.getCachedAvatar(
+                          //       'https://api.hello-avatar.com/adorables/${widget.item.author}.png'),
+                          // ),
                           Flexible(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

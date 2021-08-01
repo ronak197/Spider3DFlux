@@ -116,7 +116,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       snap: true,
       floating: true,
       titleSpacing: 0,
-      elevation: 0,
+      elevation: 5,
       forceElevated: true,
       backgroundColor: config.color ??
           Theme.of(context).backgroundColor.withOpacity(config.opacity),

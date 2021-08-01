@@ -374,7 +374,7 @@ extension TabBarMenuExtention on MainTabsState {
     var maxHeight = kBottomNavigationBarHeight -
         getValueForScreenType(
           context: context,
-          mobile: 15,
+          mobile: 20,
           tablet: 5,
           desktop: 0,
         ) +
@@ -385,7 +385,7 @@ extension TabBarMenuExtention on MainTabsState {
       tabData: tabData,
       tabController: tabController,
       config: appSetting,
-      maxHeight: maxHeight,
+      maxHeight: maxHeight * 2,
       isShowDrawer: isShowCustomDrawer,
       totalCart:
           Provider.of<CartModel>(context, listen: true).totalCartQuantity,

@@ -40,6 +40,7 @@ class Product {
   int? ratingCount;
   List<String> images = [];
   String? imageFeature;
+  // String imageFeature;
   List<ProductAttribute>? attributes;
   Map<String?, String?> attributeSlugMap = {};
   late List<Attribute> defaultAttributes;
@@ -506,7 +507,7 @@ class Product {
       var list = <String>[];
       if (parsedJson['images'] != null && parsedJson['images'].length > 0) {
         for (var item in parsedJson['images']) {
-          if(item !=null){
+          if (item != null) {
             list.add(item);
           }
         }
@@ -649,7 +650,8 @@ class Product {
         sku = parsedJson['associations']['stock_availables'][0]['id'];
       }
       type = parsedJson['type'];
-      if (type == 'simple' && parsedJson['id_default_combination'].toString() != '0') {
+      if (type == 'simple' &&
+          parsedJson['id_default_combination'].toString() != '0') {
         type = 'variable';
       }
       if (parsedJson['quantity'] != null &&

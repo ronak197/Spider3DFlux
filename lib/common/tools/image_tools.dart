@@ -131,6 +131,8 @@ class ImageTools {
     var ratioImage = 0.3;
 
     if (url?.isEmpty ?? true) {
+      // print("image_tools: url $url use url?.isEmpty ?? true");
+
       return FutureBuilder<bool>(
         future: Future.delayed(const Duration(seconds: 10), () => false),
         initialData: true,
@@ -216,6 +218,8 @@ class ImageTools {
       /// temporary fix on CavansKit https://github.com/flutter/flutter/issues/49725
       var imageURL = isResize ? formatImage(url, size) : url;
 
+      // print("image_tools: imageURL $imageURL use kIsWeb");
+
       return ConstrainedBox(
         // constraints: BoxConstraints(maxHeight: width! * ratioImage),
         constraints: BoxConstraints(maxHeight: width! * ratioImage),
@@ -229,7 +233,32 @@ class ImageTools {
       );
     }
 
+    var imageURL = isResize ? formatImage(url, size) : url;
+
+    final my_image_based_cache_pack = CachedNetworkImage(
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: Alignment(
+        (offset >= -1 && offset <= 1)
+            ? offset
+            : (offset > 0)
+                ? 1.0
+                : -1.0,
+        0.0,
+      ),
+      imageUrl: '$kImageProxy$imageURL',
+      imageBuilder: (context, imageProvider) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+        ),
+      ),
+      placeholder: (context, url) => CircularProgressIndicator(),
+      errorWidget: (context, url, error) => Icon(Icons.error),
+    );
+
     final image = ExtendedImage.network(
+      // final original_image = ExtendedImage.network(
       isResize ? formatImage(url, size)! : url!,
       width: width,
       height: height,
@@ -252,9 +281,7 @@ class ImageTools {
                 ? const SizedBox()
                 : Skeleton(
                     width: width ?? 100,
-                    height: width != null
-                        ? width * ratioImage
-                        : 100 * ratioImage as double,
+                    height: width ?? 100 * ratioImage * 2,
                   );
             break;
           case LoadState.completed:
@@ -273,11 +300,16 @@ class ImageTools {
             );
             break;
         }
+        // print("image_tools: $url use image = ExtendedImage.network");
         return widget;
       },
     );
 
-    if (forceWhiteBackground && url!.toLowerCase().endsWith('.png')) {
+    if (forceWhiteBackground && url!.toLowerCase().endsWith('.png') ||
+        forceWhiteBackground && url!.toLowerCase().endsWith('.jpeg') ||
+        forceWhiteBackground && url!.toLowerCase().endsWith('.jpg')) {
+      // print("image_tools: $url use url!.toLowerCase()");
+
       return Container(
         color: Colors.white,
         child: image,

@@ -38,7 +38,7 @@ class _RiveSplashScreenState extends State<RiveSplashScreen> {
           });
           _controller.isActiveChanged.addListener(() {
             if (!_controller.isActive) {
-              Future.delayed(const Duration(seconds: 1))
+              Future.delayed(const Duration(seconds: 0))
                   .then((value) => widget.onSuccess());
             }
           });

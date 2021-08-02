@@ -436,23 +436,25 @@ class ProductCard extends StatelessWidget {
     //   fit: boxFit ?? BoxFit.fitWidth,
     // ),
 
-    return GestureDetector(
-      // onTap: onTapProduct,
-      onTap: () => print(item.imageFeature.toString()),
-      child: CachedNetworkImage(
-        width: width,
-        height: height,
-        fit: kCardFit,
-        imageUrl: item.imageFeature.toString(),
-        imageBuilder: (context, imageProvider) => Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
-          ),
-        ),
-        placeholder: (context, url) => CircularProgressIndicator(),
-        errorWidget: (context, url, error) => Icon(Icons.error),
-      ),
-    );
+    /// temporary fix on CavansKit https://github.com/flutter/flutter/issues/49725
+    // return GestureDetector(
+    //   // onTap: onTapProduct,
+    //   onTap: () => print(item.imageFeature.toString()),
+    //   child: CachedNetworkImage(
+    //     width: width,
+    //     height: height,
+    //     fit: kCardFit,
+    //     imageUrl:
+    //         '$kImageProxy${item.imageFeature.toString()}', // item.imageFeature.toString(),
+    //     imageBuilder: (context, imageProvider) => Container(
+    //       decoration: BoxDecoration(
+    //         image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+    //       ),
+    //     ),
+    //     placeholder: (context, url) => CircularProgressIndicator(),
+    //     errorWidget: (context, url, error) => Icon(Icons.error),
+    //   ),
+    // );
     //
     // return GestureDetector(
     // onTap: onTapProduct,

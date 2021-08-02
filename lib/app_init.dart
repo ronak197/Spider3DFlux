@@ -90,8 +90,10 @@ class _AppInitState extends BaseScreen<AppInit> {
           categoryLayout:
               Provider.of<AppModel>(context, listen: false).categoryLayout,
         );
+        printLog('[AppState] Init AppLoad Done loadInitData() 💫');
         hasLoadedData = true;
         if (hasLoadedSplash) {
+          // Navigator.of(context).pushReplacementNamed(RouteList.loginSMS);
           goToNextScreen();
         }
       });
@@ -162,8 +164,10 @@ class _AppInitState extends BaseScreen<AppInit> {
 
   void checkToShowNextScreen() {
     /// If the config was load complete then navigate to Dashboard
+    printLog('[AppState] Init AppLoad Done checkToShowNextScreen()💫');
     hasLoadedSplash = true;
     if (hasLoadedData) {
+      // Navigator.of(context).pushReplacementNamed(RouteList.blog);
       goToNextScreen();
       return;
     }

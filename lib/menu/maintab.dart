@@ -126,11 +126,17 @@ class MainTabsState extends CustomOverlayState<MainTabs>
               actions: <Widget>[
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(false),
-                  child: Text(S.of(context).no),
+                  child: Text(
+                    S.of(context).no,
+                    style: const TextStyle(color: kColorSpiderRed),
+                  ),
                 ),
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(true),
-                  child: Text(S.of(context).yes),
+                  child: Text(
+                    S.of(context).yes,
+                    style: const TextStyle(color: kColorSpiderRed),
+                  ),
                 ),
               ],
             ),

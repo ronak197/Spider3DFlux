@@ -81,7 +81,8 @@ class ImageTools {
       var ext = p.extension(url);
       String? imageURL = url;
 
-      if (ext == '.jpeg') {
+      // if (ext == '.jpeg') {
+      if (ext == '.jpeg' || ext == '.jpg' || ext == '.png') {
         imageURL = url;
       } else {
         switch (size) {
@@ -295,7 +296,7 @@ class ImageTools {
           case LoadState.failed:
             widget = Container(
               width: width,
-              height: height ?? width! * ratioImage,
+              height: height ?? width!, //\\ * ratioImage,
               color: const Color(kEmptyColor),
             );
             break;

@@ -42,6 +42,7 @@ class AppState extends State<App>
     implements NotificationDelegate, UserModelDelegate {
   AppModel? _app;
   final _product = ProductModel();
+  final _tagModel = TagModel();
   final _wishlist = WishListModel();
   final _shippingMethod = ShippingMethodModel();
   final _paymentMethod = PaymentMethodModel();
@@ -50,9 +51,8 @@ class AppState extends State<App>
   final _filterModel = FilterAttributeModel();
   final _filterTagModel = FilterTagModel();
   final _categoryModel = CategoryModel();
-  final _tagModel = TagModel();
   final _taxModel = TaxModel();
-  final _pointModel = PointModel();
+  // final _pointModel = PointModel();
   final _notificationModel = NotificationModel();
 
   /// ---------- Vendor -------------
@@ -60,11 +60,11 @@ class AppState extends State<App>
   VendorShippingMethodModel? _vendorShippingMethodModel;
 
   /// -------- Listing ------------///
-  final _listingLocationModel = ListingLocationModel();
+  // final _listingLocationModel = ListingLocationModel();
 
   CartInject cartModel = CartInject();
   bool isFirstSeen = false;
-  bool isLoggedIn = false;
+  bool isLoggedIn = true;
 
   late var firebaseAnalyticsAbs;
 
@@ -152,9 +152,9 @@ class AppState extends State<App>
           .syncCartFromWebsite(user?.cookie, cartModel.model, context);
     }
 
-    if (user?.cookie != null && (kAdvanceConfig['EnablePointReward'] ?? true)) {
-      await _pointModel.getMyPoint(user?.cookie);
-    }
+    // if (user?.cookie != null && (kAdvanceConfig['EnablePointReward'] ?? true)) {
+    //   await _pointModel.getMyPoint(user?.cookie);
+    // }
 
     /// Preload address.
     await cartModel.model.getAddress();
@@ -239,11 +239,11 @@ class AppState extends State<App>
                   ChangeNotifierProvider<VendorShippingMethodModel>(
                       create: (_) => _vendorShippingMethodModel!),
                 ],
-                Provider<PointModel>.value(value: _pointModel),
-                if (Config().isListingType) ...[
-                  ChangeNotifierProvider<ListingLocationModel>(
-                      create: (_) => _listingLocationModel)
-                ]
+                // Provider<PointModel>.value(value: _pointModel),
+                // if (Config().isListingType) ...[
+                //   ChangeNotifierProvider<ListingLocationModel>(
+                //       create: (_) => _listingLocationModel)
+                // ]
               ],
               child: MaterialApp(
                 // debugShowCheckedModeBanner: false,

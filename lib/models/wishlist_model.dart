@@ -6,6 +6,7 @@ import 'entities/product.dart';
 
 class WishListModel extends ChangeNotifier {
   WishListModel() {
+    print("XXX WishListModel() WishListModel");
     getLocalWishlist();
   }
 

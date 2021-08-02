@@ -21,6 +21,7 @@ class TagModel with ChangeNotifier {
   StreamSubscription? _subLanguageChange;
 
   TagModel() {
+    print('XXX TagModel() TagModel');
     _subLanguageChange = eventBus.on<EventChangeLanguage>().listen((event) {
       getTags();
     });

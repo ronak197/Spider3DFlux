@@ -18,6 +18,26 @@ import '../../../services/index.dart';
 import '../../../services/wordpress/blognews_api.dart';
 import '../../../services/wordpress/wordpress_api.dart';
 import 'woocommerce_api.dart';
+import 'dart:async';
+import 'dart:convert' as convert;
+import 'dart:convert';
+import 'dart:core';
+
+import 'package:flutter/foundation.dart' show compute;
+import 'package:quiver/strings.dart';
+
+import '../../../common/config.dart';
+import '../../../common/constants.dart';
+import '../../../common/tools.dart';
+import '../../../models/booking/staff_booking_model.dart';
+import '../../../models/entities/paging_response.dart';
+import '../../../models/entities/prediction.dart';
+import '../../../models/index.dart';
+import '../../../services/base_services.dart';
+import '../../../services/index.dart';
+import '../../../services/wordpress/blognews_api.dart';
+import '../../../services/wordpress/wordpress_api.dart';
+import 'woocommerce_api.dart';
 
 class WooCommerce extends BaseServices {
   Map<String, dynamic>? configCache;
@@ -1899,3 +1919,29 @@ class WooCommerce extends BaseServices {
     }
   }
 }
+
+/// My woorewards API (Source: https://plugins.longwatchstudio.com/docs/woorewards-4/api/users-points/)
+// Sample: https://spider3d.co.il/wp-json/woorewards/v1/pools?consumer_key=ck_be61455d30704ff30718f80b417dd41c320b0cb0&consumer_secret=cs_79c75a8e1c40acfe530e6254f3cbb61a2e01f872
+
+// @override
+// Future<User> loginSMS({String? token}) async {
+//   try {
+//     //var endPoint = "$url/wp-json/api/flutter_user/sms_login/?access_token=$token$isSecure";
+//     var endPoint =
+//         // ignore: prefer_single_quotes
+//         "$url/wp-json/api/flutter_user/firebase_sms_login?phone=$token$isSecure";
+//
+//     var response = await httpGet(endPoint.toUri()!);
+//
+//     var jsonDecode = convert.jsonDecode(response.body);
+//
+//     if (jsonDecode['wp_user_id'] == null || jsonDecode['cookie'] == null) {
+//       throw Exception(jsonDecode['message']);
+//     }
+//
+//     return User.fromWooJson(jsonDecode);
+//   } catch (e) {
+//     //This error exception is about your Rest API is not config correctly so that not return the correct JSON format, please double check the document from this link https://docs.inspireui.com/fluxstore/woocommerce-setup/
+//     rethrow;
+//   }
+// }

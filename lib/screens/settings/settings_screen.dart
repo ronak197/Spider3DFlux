@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/users/spider_point_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'package:rate_my_app/rate_my_app.dart';
@@ -90,32 +91,6 @@ class _SettingScreenState extends State<SettingScreen>
       // Called when the user dismissed the dialog (either by taping outside or by pressing the 'back' button).
       // actionsBuilder: (_) => [], // This one allows you to use your own buttons.
     );
-  }
-
-  Future<String> my_Woorewards(
-      {required String user_email, String? points}) async {
-    try {
-      // null safety
-      // points = points ?? ''; // if null -> ''
-      if (points == '' || points == null) points = '0';
-
-      var url =
-          'https://spider3d.co.il/wp-json/woorewards/v1/points/$user_email/_/$points?consumer_key=ck_be61455d30704ff30718f80b417dd41c320b0cb0&consumer_secret=cs_79c75a8e1c40acfe530e6254f3cbb61a2e01f872';
-      print(url);
-
-      var dio = Dio();
-      // if points = '' -> get req | ELSE -> put req
-      // final response = points == '' ? await dio.get(url) : await dio.put(url);
-      final resp = await dio.put(url);
-
-      // print(response.data);
-      // print(response.data[0]['value']);
-      return resp.data[0]['value'].toString();
-      // return resp.data[0]['value'];
-    } catch (e) {
-      //This error exception is about your Rest API is not config correctly so that not return the correct JSON format, please double check the document from this link https://docs.inspireui.com/fluxstore/woocommerce-setup/
-      rethrow;
-    }
   }
 
   @override
@@ -523,46 +498,46 @@ class _SettingScreenState extends State<SettingScreen>
             print("showSpider:");
             print(showSpider);
 
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => UserPointScreen(),
-            //   ),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SpidersPointScreen(),
+              ),
+            );
           };
 
-          spiderWidget = ClipRRect(
-            borderRadius: BorderRadius.circular(5.0),
-            child: AnimatedContainer(
-              padding: const EdgeInsets.all(10.0),
-              width: MediaQuery.of(context).size.width,
-              height: showSpider ? 70 : 0.0,
-              color: Colors.grey[200],
-              duration: const Duration(seconds: 1),
-              curve: Curves.fastOutSlowIn,
-              child: Center(
-                child: FutureBuilder<String>(
-                  future: my_Woorewards(
-                      user_email: 'eyal@kivi.co.il'), // async work
-                  builder:
-                      (BuildContext context, AsyncSnapshot<String> snapshot) {
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.waiting:
-                        return const Text('Loading....');
-                      default:
-                        if (snapshot.hasError) {
-                          return Text('Error: ${snapshot.error}');
-                        } else {
-                          return Text('Result: ${snapshot.data}');
-                        }
-                    }
-                  },
-                ),
-                // Text('${spiderPoints.toString()}')
-                // Text('יש לך 30 ספיידרס ששווים 3₪ \nהקאשבק שלך יופעל אוטומטית ברכישה הבאה.')
-              ),
-            ),
-          );
+          // spiderWidget = ClipRRect(
+          //   borderRadius: BorderRadius.circular(5.0),
+          //   child: AnimatedContainer(
+          //     padding: const EdgeInsets.all(10.0),
+          //     width: MediaQuery.of(context).size.width,
+          //     height: showSpider ? 70 : 0.0,
+          //     color: Colors.grey[200],
+          //     duration: const Duration(seconds: 1),
+          //     curve: Curves.fastOutSlowIn,
+          //     child: Center(
+          //       child: FutureBuilder<String>(
+          //         future: my_Woorewards(
+          //             user_email: 'eyal@kivi.co.il'), // async work
+          //         builder:
+          //             (BuildContext context, AsyncSnapshot<String> snapshot) {
+          //           switch (snapshot.connectionState) {
+          //             case ConnectionState.waiting:
+          //               return const Text('Loading....');
+          //             default:
+          //               if (snapshot.hasError) {
+          //                 return Text('Error: ${snapshot.error}');
+          //               } else {
+          //                 return Text('Result: ${snapshot.data}');
+          //               }
+          //           }
+          //         },
+          //       ),
+          //       // Text('${spiderPoints.toString()}')
+          //       // Text('יש לך 30 ספיידרס ששווים 3₪ \nהקאשבק שלך יופעל אוטומטית ברכישה הבאה.')
+          //     ),
+          //   ),
+          // );
 
           // Opens webView (That require login again)
           // onTap = () {

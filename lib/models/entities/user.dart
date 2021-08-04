@@ -275,7 +275,6 @@ class User {
 }
 
 class UserPoints {
-  int? spiderPoints;
   int? points;
   List<UserEvent> events = [];
 

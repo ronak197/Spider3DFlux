@@ -438,7 +438,7 @@ Map<String, dynamic> environment = {
     "showThumbnailAtLeast": 1,
     "layout": "simpleType",
     "borderRadius": 3.0,
-    "enableReview": false,
+    "enableReview": false, // Mostly empty, then not recommended.
     "attributeImagesSize": 50.0,
     "showSku": true,
     "showStockQuantity": true,

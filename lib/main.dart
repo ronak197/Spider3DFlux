@@ -10,7 +10,6 @@ import 'package:pedantic/pedantic.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'app.dart';
 import 'common/config.dart';
 import 'common/constants.dart';

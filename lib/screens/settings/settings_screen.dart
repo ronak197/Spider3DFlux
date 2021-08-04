@@ -17,6 +17,9 @@ import '../../widgets/common/webview.dart';
 import '../index.dart';
 import '../posts/post_screen.dart';
 import '../users/user_point_screen.dart';
+import 'dart:convert' as convert;
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class SettingScreen extends StatefulWidget {
   final List<dynamic>? settings;
@@ -89,9 +92,34 @@ class _SettingScreenState extends State<SettingScreen>
     );
   }
 
+  Future<String> my_Woorewards(
+      {required String user_email, String? points}) async {
+    try {
+      // null safety
+      // points = points ?? ''; // if null -> ''
+      if (points == '' || points == null) points = '0';
+
+      var url =
+          'https://spider3d.co.il/wp-json/woorewards/v1/points/$user_email/_/$points?consumer_key=ck_be61455d30704ff30718f80b417dd41c320b0cb0&consumer_secret=cs_79c75a8e1c40acfe530e6254f3cbb61a2e01f872';
+      print(url);
+
+      var dio = Dio();
+      // if points = '' -> get req | ELSE -> put req
+      // final response = points == '' ? await dio.get(url) : await dio.put(url);
+      final resp = await dio.put(url);
+
+      // print(response.data);
+      // print(response.data[0]['value']);
+      return resp.data[0]['value'].toString();
+      // return resp.data[0]['value'];
+    } catch (e) {
+      //This error exception is about your Rest API is not config correctly so that not return the correct JSON format, please double check the document from this link https://docs.inspireui.com/fluxstore/woocommerce-setup/
+      rethrow;
+    }
+  }
+
   @override
   void initState() {
-    super.initState();
     if (isMobile) {
       _rateMyApp.init().then((_) {
         // state of rating the app
@@ -100,6 +128,7 @@ class _SettingScreenState extends State<SettingScreen>
         }
       });
     }
+    super.initState();
   }
 
   /// Render the Admin Vendor Menu.
@@ -511,9 +540,27 @@ class _SettingScreenState extends State<SettingScreen>
               color: Colors.grey[200],
               duration: const Duration(seconds: 1),
               curve: Curves.fastOutSlowIn,
-              child: const Center(
-                  child: Text(
-                      'יש לך 30 ספיידרס ששווים 3₪ \nהקאשבק שלך יופעל אוטומטית ברכישה הבאה.')),
+              child: Center(
+                child: FutureBuilder<String>(
+                  future: my_Woorewards(
+                      user_email: 'eyal@kivi.co.il'), // async work
+                  builder:
+                      (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.waiting:
+                        return const Text('Loading....');
+                      default:
+                        if (snapshot.hasError) {
+                          return Text('Error: ${snapshot.error}');
+                        } else {
+                          return Text('Result: ${snapshot.data}');
+                        }
+                    }
+                  },
+                ),
+                // Text('${spiderPoints.toString()}')
+                // Text('יש לך 30 ספיידרס ששווים 3₪ \nהקאשבק שלך יופעל אוטומטית ברכישה הבאה.')
+              ),
             ),
           );
 

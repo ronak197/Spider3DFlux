@@ -202,7 +202,7 @@ class _SettingScreenState extends State<SettingScreen>
   }
 
   Widget renderItem(value) {
-    IconData icon;
+    Widget icon;
     String title;
     Widget trailing;
     Widget spiderWidget = Container();
@@ -220,7 +220,8 @@ class _SettingScreenState extends State<SettingScreen>
             color: kGrey600,
           );
           title = S.of(context).myProducts;
-          icon = CupertinoIcons.cube_box;
+          icon = Icon(CupertinoIcons.cube_box,
+              color: Theme.of(context).accentColor, size: 24);
           onTap = () => Navigator.pushNamed(context, RouteList.productSell);
           break;
         }
@@ -236,7 +237,8 @@ class _SettingScreenState extends State<SettingScreen>
             color: kGrey600,
           );
           title = S.of(context).conversations;
-          icon = CupertinoIcons.chat_bubble_2;
+          icon = Icon(CupertinoIcons.chat_bubble_2,
+              color: Theme.of(context).accentColor, size: 24);
           onTap = () => Navigator.pushNamed(context, RouteList.listChat);
           break;
         }
@@ -261,7 +263,8 @@ class _SettingScreenState extends State<SettingScreen>
           );
 
           title = S.of(context).myWishList;
-          icon = CupertinoIcons.heart;
+          icon = Icon(CupertinoIcons.heart,
+              color: Theme.of(context).accentColor, size: 24);
           onTap = () => Navigator.of(context).pushNamed(RouteList.wishlist);
           break;
         }
@@ -367,7 +370,8 @@ class _SettingScreenState extends State<SettingScreen>
         }
       case 'language':
         {
-          icon = CupertinoIcons.globe;
+          icon = Icon(CupertinoIcons.globe,
+              color: Theme.of(context).accentColor, size: 24);
           title = S.of(context).language;
           trailing = const Icon(
             Icons.arrow_forward_ios,
@@ -382,7 +386,8 @@ class _SettingScreenState extends State<SettingScreen>
           if (Config().isListingType) {
             return Container();
           }
-          icon = CupertinoIcons.money_dollar_circle;
+          icon = Icon(CupertinoIcons.money_dollar_circle,
+              color: Theme.of(context).accentColor, size: 24);
           title = S.of(context).currencies;
           trailing =
               const Icon(Icons.arrow_forward_ios, size: 18, color: kGrey600);
@@ -399,8 +404,8 @@ class _SettingScreenState extends State<SettingScreen>
                 child: SwitchListTile(
                   secondary: Icon(
                     Provider.of<AppModel>(context).darkTheme
-                        ? CupertinoIcons.moon
-                        : CupertinoIcons.sun_min,
+                        ? CupertinoIcons.sun_min
+                        : CupertinoIcons.moon,
                     color: Theme.of(context).accentColor,
                     size: 24,
                   ),
@@ -440,7 +445,8 @@ class _SettingScreenState extends State<SettingScreen>
           if (Config().isListingType) {
             return const SizedBox();
           }
-          icon = CupertinoIcons.time;
+          icon = Icon(CupertinoIcons.time,
+              color: Theme.of(context).accentColor, size: 24);
           title = S.of(context).orderHistory;
           trailing =
               const Icon(Icons.arrow_forward_ios, size: 18, color: kGrey600);
@@ -461,7 +467,8 @@ class _SettingScreenState extends State<SettingScreen>
           if (Config().isListingType) {
             return const SizedBox();
           }
-          icon = CupertinoIcons.bag_badge_plus;
+          icon = Icon(CupertinoIcons.bag_badge_plus,
+              color: Theme.of(context).accentColor, size: 24);
           title = S.of(context).myPoints;
           trailing =
               const Icon(Icons.arrow_forward_ios, size: 18, color: kGrey600);
@@ -475,7 +482,8 @@ class _SettingScreenState extends State<SettingScreen>
         }
       case 'rating':
         {
-          icon = CupertinoIcons.star;
+          icon = Icon(CupertinoIcons.star,
+              color: Theme.of(context).accentColor, size: 24);
           title = S.of(context).rateTheApp;
           trailing =
               const Icon(Icons.arrow_forward_ios, size: 18, color: kGrey600);
@@ -484,9 +492,16 @@ class _SettingScreenState extends State<SettingScreen>
         }
       case 'spiders':
         {
-          icon = CupertinoIcons.money_dollar_circle;
+          // icon = CupertinoIcons.money_dollar_circle;
+          icon = Transform.translate(
+              offset: const Offset(0, 0),
+              child: Image.asset('assets/images/spider_coin.png',
+                  color: kGrey600, height: 24, width: 24));
           // title = S.of(context).aboutUs;
           title = 'קאשבק & ספיידרס';
+          final user_email =
+              Provider.of<UserModel>(context).user!.email.toString();
+
           trailing =
               const Icon(Icons.arrow_forward_ios, size: 18, color: kGrey600);
           onTap = () {
@@ -501,7 +516,7 @@ class _SettingScreenState extends State<SettingScreen>
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => SpidersPointScreen(),
+                builder: (context) => SpidersPointScreen(userEmail: user_email),
               ),
             );
           };
@@ -556,7 +571,8 @@ class _SettingScreenState extends State<SettingScreen>
         }
       case 'about':
         {
-          icon = CupertinoIcons.info;
+          icon = Icon(CupertinoIcons.info,
+              color: Theme.of(context).accentColor, size: 24);
           title = S.of(context).aboutUs;
           trailing =
               const Icon(Icons.arrow_forward_ios, size: 18, color: kGrey600);
@@ -577,7 +593,8 @@ class _SettingScreenState extends State<SettingScreen>
         }
       default:
         {
-          icon = Icons.error;
+          icon =
+              Icon(Icons.error, color: Theme.of(context).accentColor, size: 24);
           title = S.of(context).dataEmpty;
           trailing =
               const Icon(Icons.arrow_forward_ios, size: 18, color: kGrey600);
@@ -592,11 +609,7 @@ class _SettingScreenState extends State<SettingScreen>
           margin: const EdgeInsets.only(bottom: 2.0),
           elevation: 0,
           child: ListTile(
-            leading: Icon(
-              icon,
-              color: Theme.of(context).accentColor,
-              size: 24,
-            ),
+            leading: icon,
             title: Text(
               title,
               style: const TextStyle(fontSize: 16),
@@ -691,7 +704,14 @@ class _SettingScreenState extends State<SettingScreen>
                                 ),
                               if (user != null && user.email != null)
                                 ListTile(
-                                  leading: const Icon(Icons.email),
+                                  leading:
+                                      // Icon(Icons.email),
+                                      Icon(
+                                    // Icons.email_outlined,
+                                    Icons.alternate_email,
+                                    color: Theme.of(context).accentColor,
+                                    size: 25,
+                                  ),
                                   title: Text(
                                     user.email!,
                                     style: const TextStyle(fontSize: 16),

@@ -47,7 +47,7 @@
       "items": [
         {
           "category": 2341,
-          "image": "assets/icons/tabs/spider3d/robot_printer.png",
+          "image": "assets/images/spider_cat_robot_printer.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -56,8 +56,8 @@
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/spider3d/filaments.png",
+          "category": 2352,
+          "image": "assets/images/spider_cat_filaments.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -66,8 +66,8 @@
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/spider3d/resin.png",
+          "category": 2353,
+          "image": "assets/images/spider_cat_resin.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -76,8 +76,8 @@
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/spider3d/3d_upgrades.png",
+          "category": 2342,
+          "image": "assets/images/spider_cat_upgardes.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -86,8 +86,8 @@
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/spider3d/caliber_tool.png",
+          "category": 2343,
+          "image": "assets/images/spider_cat_caliber_tool.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -96,8 +96,8 @@
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/spider3d/sales.png",
+          "category": 5249,
+          "image": "assets/images/spider_cat_sales.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -186,7 +186,7 @@
     }
   ],
   "Drawer": {
-    "logo": "assets/images/logo.png",
+    "logo": "assets/images/spider_cat_logo.png",
     "items": [
       {
         "type": "category" ,

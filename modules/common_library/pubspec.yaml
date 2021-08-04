@@ -24,20 +24,22 @@ dependencies:
   dio: 4.0.0
   logger: ^1.0.0
   intro_slider: ^2.4.3
+  share_plus: ^2.1.4
 
 # The following section is specific to Flutter.
 flutter:
+  assets:
+#    - assets/spider/
+#    - lib/assets/spider3d/spider_cat_resin.png
+    - assets/images/empty.png
+    - assets/images/
+    - assets/
+
   fonts:
     - family: Feather
       fonts:
         - asset: fonts/Feather.ttf
   # To add assets to your package, add an assets section, like this:
-  assets:
-    - assets/images/empty.png
-    - assets/images/
-    - assets/
-#    - assets/icons/
-    - assets/icons/tabs/spider3d/sales.png
 
   #
   # For details regarding assets in packages, see

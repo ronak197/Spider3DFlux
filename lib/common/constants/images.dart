@@ -1,5 +1,8 @@
 part of '../constants.dart';
 
+/// My Assets config:
+// const my_ios_coin =
+
 /// config splash screen
 
 /// This file is use for https://rive.app/ version 1

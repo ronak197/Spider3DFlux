@@ -59,31 +59,28 @@ class CategoryIconItem extends StatelessWidget {
                 width: iconSize, //| ! * 1.3,
                 height: iconSize,
                 decoration: BoxDecoration(
-                  color: !disableBackground
-                      ? itemConfig!.getBackgroundColor
-                      : null,
-                  gradient:
-                      !disableBackground ? itemConfig!.getGradientColor : null,
+                  // color: !disableBackground ? itemConfig!.getBackgroundColor : null,
+                  // color: Theme.of(context).primaryColor.withOpacity(0.00),
+                  color: Colors.black.withOpacity(0.05),
+                  // gradient: !disableBackground ? itemConfig!.getGradientColor : null,
                   boxShadow: [
                     if (boxShadow != null)
                       BoxShadow(
                         blurRadius: radius!,
-                        color: Theme.of(context).accentColor.withOpacity(0.5),
+                        color: Theme.of(context).accentColor.withOpacity(0.2),
                         offset: Offset(boxShadow!.x, boxShadow!.y),
                       )
                   ],
                   borderRadius: BorderRadius.circular(radius!),
                 ),
                 child: Container(
-                  margin: const EdgeInsets.all(12),
+                  margin: const EdgeInsets.all(0),
                   child: FluxImage(
+                    // imageUrl: 'assets/images/sales.png',
                     imageUrl: itemConfig!.image!,
-                    color: (itemConfig!.originalColor ?? true) ||
-                            (originalColor ?? true)
-                        ? null
-                        : itemConfig!.colors!.first,
-                    width: iconSize,
-                    height: iconSize,
+                    // color: (itemConfig!.originalColor ?? true) || (originalColor ?? true) ? null : itemConfig!.colors!.first,
+                    width: iconSize! * 1.3,
+                    height: iconSize! * 1.3,
                   ),
                 ),
               ),

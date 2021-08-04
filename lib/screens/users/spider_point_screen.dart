@@ -1,38 +1,15 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../common/config.dart';
-import '../../common/constants.dart';
-import '../../generated/l10n.dart';
-import '../../models/index.dart' show UserModel, UserPoints;
-import '../../services/index.dart' show Config;
-import 'package:flutter/cupertino.dart' show CupertinoIcons;
-import 'package:flutter/material.dart';
-import 'package:fstore/screens/users/spider_point_screen.dart';
-import 'package:localstorage/localstorage.dart';
-import 'package:provider/provider.dart';
-import 'package:rate_my_app/rate_my_app.dart';
-
-import '../../app.dart';
-import '../../common/config.dart';
-import '../../common/constants.dart';
-import '../../common/tools.dart';
-import '../../generated/l10n.dart';
-import '../../models/index.dart' show AppModel, User, UserModel, WishListModel;
-import '../../models/notification_model.dart';
-import '../../routes/flux_navigate.dart';
-import '../../services/index.dart';
-import '../../widgets/common/webview.dart';
-import '../index.dart';
-import '../posts/post_screen.dart';
-import '../users/user_point_screen.dart';
-import 'dart:convert' as convert;
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fstore/services/dependency_injection.dart';
+import 'package:share/share.dart';
+import '../../common/config.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SpidersPointScreen extends StatefulWidget {
+  final String userEmail;
+
+  SpidersPointScreen({required this.userEmail});
+
   @override
   _StateUserPoint createState() => _StateUserPoint();
 }
@@ -42,15 +19,15 @@ class _StateUserPoint extends State<SpidersPointScreen> {
   final pointWidth = 50;
   final borderWidth = 0.5;
 
-  // Future<UserPoints> getUserPoint() async {
-  //   final userModel = Provider.of<UserModel>(context, listen: false);
-  //   final points = await httpGet(
-  //       '${Config().url}/wp-json/api/flutter_user/get_points/?insecure=cool&user_id=${userModel.user!.id}'
-  //           .toUri()!);
-  //   print("UserPoints:");
-  //   print(UserPoints.fromJson(json.decode(points.body)));
-  //   return UserPoints.fromJson(json.decode(points.body));
-  // }
+  /*Future<UserPoints> getUserPoint() async {
+    final userModel = Provider.of<UserModel>(context, listen: false);
+    final points = await httpGet(
+        '${Config().url}/wp-json/api/flutter_user/get_points/?insecure=cool&user_id=${userModel.user!.id}'
+            .toUri()!);
+    print("UserPoints:");
+    print(UserPoints.fromJson(json.decode(points.body)));
+    return UserPoints.fromJson(json.decode(points.body));
+  }*/
 
   Future<String> my_Woorewards(
       {required String user_email, String? points}) async {
@@ -78,6 +55,64 @@ class _StateUserPoint extends State<SpidersPointScreen> {
     }
   }
 
+  Widget shareButton({icon, label}) {
+    var prefs = injector<SharedPreferences>();
+    print('isFirstShare Before click: ${prefs.getBool('isFirstShare')}');
+
+    return TextButton.icon(
+      style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all(Colors.grey[700]),
+          backgroundColor: MaterialStateProperty.all(Colors.white),
+          // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
+          elevation: MaterialStateProperty.all(2)),
+      onPressed: () {
+        bool checkFirstShare() {
+          var _isFirstShare = prefs.getBool('isFirstShare') ?? true;
+          return _isFirstShare;
+        }
+
+        const snackBar = SnackBar(
+            content: Text('תודה ששיתפת אותנו! ניתן להרוויח רק פעם אחת'));
+
+        var isFirstShare = checkFirstShare();
+        isFirstShare
+            ? {
+                my_Woorewards(user_email: widget.userEmail, points: '50'),
+                Share.share(
+                    'היי, ספיידר 3D נותנים מבצעים ומשלוח חינם מתנה ללקוחות האפליקציה! שווה ממש להצטרף \n https://rebrand.ly/Spider3D-App'),
+                print(
+                    'היי, ספיידר 3D נותנים מבצעים ומשלוח חינם מתנה ללקוחות האפליקציה! שווה ממש להצטרף \n https://rebrand.ly/Spider3D-App'),
+                print('You got 50 spiders'),
+                isFirstShare = false,
+                prefs.setBool('isFirstShare', false),
+                print('isFirstShare Before After: $isFirstShare'),
+              }
+            : {
+                Share.share(
+                    'היי, ספיידר 3D נותנים מבצעים ומשלוח חינם מתנה ללקוחות האפליקציה! שווה ממש להצטרף \n https://rebrand.ly/Spider3D-App'),
+                print(
+                    'היי, ספיידר 3D נותנים מבצעים ומשלוח חינם מתנה ללקוחות האפליקציה! שווה ממש להצטרף \n https://rebrand.ly/Spider3D-App'),
+                print('isFirstShare Before After: $isFirstShare'),
+                Future.delayed(
+                  const Duration(seconds: 2),
+                  () => ScaffoldMessenger.of(context).showSnackBar(snackBar),
+                ),
+              };
+
+        print(isFirstShare);
+      },
+      icon: Icon(icon, size: 20),
+      label: Text(
+        label,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          // fontSize: 20.0,
+          // color: kGrey900,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,16 +120,11 @@ class _StateUserPoint extends State<SpidersPointScreen> {
         appBar: AppBar(
           brightness: Theme.of(context).brightness,
           backgroundColor: Theme.of(context).primaryColorLight,
-          title: Row(
-            children: [
-              const Icon(CupertinoIcons.money_dollar_circle),
-              Text(
-                ' קאשבק & ספיידרס',
-                style: TextStyle(
-                  color: Theme.of(context).accentColor,
-                ),
-              ),
-            ],
+          title: Text(
+            ' קאשבק & ספיידרס',
+            style: TextStyle(
+              color: Theme.of(context).accentColor,
+            ),
           ),
           leading: GestureDetector(
             onTap: () {
@@ -107,7 +137,7 @@ class _StateUserPoint extends State<SpidersPointScreen> {
           ),
         ),
         body: FutureBuilder<String>(
-          future: my_Woorewards(user_email: 'eyal@kivi.co.il'),
+          future: my_Woorewards(user_email: widget.userEmail),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Align(
@@ -126,6 +156,7 @@ class _StateUserPoint extends State<SpidersPointScreen> {
                     ListTile(
                       trailing: Text(
                         // 'snapshot.data!.points.toString()',
+                        // '54321',
                         spiderPoints,
                         style: Theme.of(context).textTheme.subtitle1!.copyWith(
                               fontWeight: FontWeight.w600,
@@ -133,12 +164,31 @@ class _StateUserPoint extends State<SpidersPointScreen> {
                               fontSize: 30,
                             ),
                       ),
-                      title: const Text(
-                        'מטבעות ספיידרס:',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'מטבעות ספיידרס:',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Transform.translate(
+                              offset: const Offset(-10, -2),
+                              child: Image.asset(
+                                  'assets/images/spider_coin.png',
+                                  color: Theme.of(context).primaryColor,
+                                  height: 29,
+                                  width: 29)
+
+                              // Icon(
+                              //   CupertinoIcons.money_dollar_circle,
+                              //   size: 30,
+                              //   color: Theme.of(context).primaryColor,
+                              // ),
+                              ),
+                        ],
                       ),
                       // subtitle: Text(
                       //   'יש לך 30 ספיידרס ששווים 3₪ \nהקאשבק שלך יופעל אוטומטית ברכישה הבאה.',
@@ -234,7 +284,7 @@ class _StateUserPoint extends State<SpidersPointScreen> {
                               ],
                             ),
                             subtitle: Text(
-                              'תקבל 50 ספיידר על הזמנה',
+                              'תקבל 50 ספיידר על ההזמנה',
                               style: TextStyle(
                                 fontSize: 13,
                                 color: Theme.of(context)
@@ -246,53 +296,13 @@ class _StateUserPoint extends State<SpidersPointScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              TextButton.icon(
-                                style: ButtonStyle(
-                                    foregroundColor: MaterialStateProperty.all(
-                                        Colors.grey[700]),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.white),
-                                    // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
-                                    elevation: MaterialStateProperty.all(2)),
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.person_add,
-                                  size: 20,
-                                ),
-                                label: const Text(
-                                  'הזמן חבר',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    // fontSize: 20.0,
-                                    // color: kGrey900,
-                                  ),
-                                ),
-                              ),
+                              shareButton(
+                                  icon: Icons.person_add, label: 'הזמן חבר'),
                               const SizedBox(
                                 width: 20,
                               ),
-                              TextButton.icon(
-                                style: ButtonStyle(
-                                    foregroundColor: MaterialStateProperty.all(
-                                        Colors.grey[700]),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.white),
-                                    // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
-                                    elevation: MaterialStateProperty.all(2)),
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.share,
-                                  size: 20,
-                                ),
-                                label: const Text(
-                                  'שתף אותנו',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    // fontSize: 20.0,
-                                    // color: kGrey900,
-                                  ),
-                                ),
-                              ),
+                              shareButton(
+                                  icon: Icons.share, label: 'שתף אותנו'),
                             ],
                           ),
 

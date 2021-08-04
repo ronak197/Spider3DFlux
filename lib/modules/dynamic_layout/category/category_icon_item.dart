@@ -35,7 +35,8 @@ class CategoryIconItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTap?.call(),
       child: Container(
-        constraints: BoxConstraints(maxWidth: iconSize! * 1.2),
+        constraints:
+            BoxConstraints(maxWidth: iconSize! * 1.4), // Original = 1.2
         decoration: borderWidth != null && borderWidth != 0
             ? BoxDecoration(
                 border: Border(
@@ -55,7 +56,7 @@ class CategoryIconItem extends StatelessWidget {
           children: <Widget>[
             if (itemConfig!.image != null)
               Container(
-                width: iconSize,
+                width: iconSize, //| ! * 1.3,
                 height: iconSize,
                 decoration: BoxDecoration(
                   color: !disableBackground
@@ -94,7 +95,7 @@ class CategoryIconItem extends StatelessWidget {
                   // "AAA",
                   name!,
                   style: Theme.of(context).textTheme.subtitle2,
-                  maxLines: 2,
+                  maxLines: 1,
                   textAlign: TextAlign.center,
                 ),
               ),

@@ -46,18 +46,38 @@
       "hideTitle": false,
       "items": [
         {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "category": 2341,
+          "image": "assets/icons/tabs/spider3d/robot_printer.png",
           "colors": [
             "#b42525",
             "#5a0000"
           ],
-          "title" : "מדפסות",
+          "title" : "מדפסות 3D",
           "keepDefaultTitle": true
         },
         {
           "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "image": "assets/icons/tabs/spider3d/filaments.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "גלילים",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 24,
+          "image": "assets/icons/tabs/spider3d/resin.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "שרף",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 24,
+          "image": "assets/icons/tabs/spider3d/3d_upgrades.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -67,32 +87,22 @@
         },
         {
           "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "image": "assets/icons/tabs/spider3d/caliber_tool.png",
           "colors": [
             "#b42525",
             "#5a0000"
           ],
-          "title" : "PLA+",
+          "title" : "כלים",
           "keepDefaultTitle": true
         },
         {
           "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "image": "assets/icons/tabs/spider3d/sales.png",
           "colors": [
             "#b42525",
             "#5a0000"
           ],
-          "title" : "SILK",
-          "keepDefaultTitle": true
-        },
-        {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
-          "colors": [
-            "#b42525",
-            "#5a0000"
-          ],
-          "title" : "PETG",
+          "title" : "מבצעים",
           "keepDefaultTitle": true
         }
       ]

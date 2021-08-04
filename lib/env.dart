@@ -20,7 +20,7 @@ Map<String, dynamic> environment = {
     "ios": "1469772800"
   },
   "advanceConfig": {
-    "isCaching": true,
+    "isCaching": false,
     "kIsResizeImage": false,
     "DefaultLanguage": "he",
     "DetailedBlogLayout": "halfSizeImageType",

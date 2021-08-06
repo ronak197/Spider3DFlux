@@ -15,6 +15,7 @@ import 'package:flutter_facebook_auth_web/flutter_facebook_auth_web.dart';
 import 'package:google_sign_in_web/google_sign_in_web.dart';
 import 'package:image_picker_for_web/image_picker_for_web.dart';
 import 'package:location_web/location_web.dart';
+import 'package:share_plus_web/share_plus_web.dart';
 import 'package:shared_preferences_web/shared_preferences_web.dart';
 import 'package:uni_links_web2/uni_links_web.dart';
 import 'package:url_launcher_web/url_launcher_web.dart';
@@ -36,6 +37,7 @@ void registerPlugins(Registrar registrar) {
   GoogleSignInPlugin.registerWith(registrar);
   ImagePickerPlugin.registerWith(registrar);
   LocationWebPlugin.registerWith(registrar);
+  SharePlusPlugin.registerWith(registrar);
   SharedPreferencesPlugin.registerWith(registrar);
   UniLinksPlugin.registerWith(registrar);
   UrlLauncherPlugin.registerWith(registrar);

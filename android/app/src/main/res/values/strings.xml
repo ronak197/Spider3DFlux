@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FluxStore</string>
+    <string name="app_name">Spider3D</string>
     <string name="default_notification_channel_id">default_notification_channel_id</string>
 
     <!-- TODO 1.1 - Update Facebook Login Feature (optional) 🧩 -->

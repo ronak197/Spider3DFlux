@@ -132,84 +132,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
         slide.centerWidget = loginWidget;
         // Navigator.pushReplacementNamed(context, RouteList.login)
       } else {
-        slide.centerWidget = Transform.translate(
-          offset: const Offset(0, -20),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              // TextField(),
-              Image.asset(
-                // data[i]['image'],
-                "assets/images/welcome_coupon.png",
-                fit: BoxFit.cover,
-              ),
-              // const SizedBox(height: 35),
-              const Text(
-                'משלוח חינם \nמתנת הצטרפות מאיתנו',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25.0,
-                  color: kGrey900,
-                ),
-              ),
-              // Desc Text:
-              const Visibility(
-                visible: true,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
-                  child: Text(
-                    'משלוח ראשון חינם ומבצעיים בלעדים נוספים לחברי האפליקציה',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 15.0),
-                  ),
-                ),
-              ),
-              TextButton(
-                style: ButtonStyle(
-                    foregroundColor:
-                        MaterialStateProperty.all(Colors.grey[700]),
-                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                    // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
-                    elevation: MaterialStateProperty.all(2)),
-                onPressed: () async {
-                  // Copy Coupon
-                  var data = const ClipboardData(text: 'SpiderGift');
-                  await Clipboard.setData(data);
-                  const snackBar = SnackBar(
-                      content: Text('מעולה! הקופון SpiderGift הועתק.'));
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  // Go To login Screen
-                  var prefs = await SharedPreferences.getInstance();
-                  await prefs.setBool('seen', true);
-                  await Navigator.pushReplacementNamed(
-                      context, RouteList.login);
-                },
-                child: const Text(
-                  'התחבר וקבל קופון',
-                  style: TextStyle(
-                      // fontWeight: FontWeight.bold,
-                      // fontSize: 20.0,
-                      // color: kGrey900,
-                      ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: const EdgeInsets.all(10.0),
-                color: Colors.grey[100],
-                child: const SelectableText(
-                  'SpiderGift#',
-                  style: TextStyle(color: kColorSpiderRed, fontSize: 25.0),
-                ),
-              ),
-            ],
-          ),
-        );
+        slide.centerWidget = Container();
         // slide.pathImage = data[i]['image'];
       }
       slides.add(slide);
@@ -374,10 +297,36 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                     ),
                   ),
                 ),
+                GestureDetector(
+                  onTap: () async {
+                    // Copy Coupon
+                    var data = const ClipboardData(text: 'SpiderGift');
+                    await Clipboard.setData(data);
+                    const snackBar = SnackBar(
+                        content: Text('מעולה! הקופון SpiderGift הועתק.'));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10.0),
+                    color: Colors.grey[100],
+                    // child: const SelectableText(
+                    child: Text(
+                      'SpiderGift#',
+                      // style: TextStyle(color: kColorSpiderRed, fontSize: 20.0),
+                      style: TextStyle(color: Colors.grey[700], fontSize: 20.0),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
                 TextButton(
                   style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(
+                          kColorSpiderRed.withOpacity(0.05)),
                       foregroundColor:
-                          MaterialStateProperty.all(Colors.grey[700]),
+                          MaterialStateProperty.all(kColorSpiderRed),
+                      // MaterialStateProperty.all(Colors.grey[700]),
                       backgroundColor: MaterialStateProperty.all(Colors.white),
                       // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
                       elevation: MaterialStateProperty.all(2)),
@@ -397,21 +346,10 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                   child: const Text(
                     'התחבר וקבל קופון',
                     style: TextStyle(
-                        // fontWeight: FontWeight.bold,
-                        // fontSize: 20.0,
-                        // color: kGrey900,
-                        ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  padding: const EdgeInsets.all(10.0),
-                  color: Colors.grey[100],
-                  child: const SelectableText(
-                    'SpiderGift#',
-                    style: TextStyle(color: kColorSpiderRed, fontSize: 25.0),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                      // color: kGrey900,
+                    ),
                   ),
                 ),
               ],

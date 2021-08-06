@@ -148,6 +148,7 @@ class _AppInitState extends BaseScreen<AppInit> {
 
   void goToNextScreen() {
     if (!isFirstSeen && !kIsWeb && appConfig != null) {
+      // Hide For Testing
       if (onBoardingData.isNotEmpty) {
         Navigator.of(context).pushReplacementNamed(RouteList.onBoarding);
         return;

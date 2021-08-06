@@ -101,7 +101,8 @@ class UserModel with ChangeNotifier {
   /// Login by Facebook
   Future<void> loginFB({Function? success, Function? fail, context}) async {
     try {
-      final result = await FacebookAuth.instance.login();
+      final result = await FacebookAuth.instance
+          .login(loginBehavior: LoginBehavior.nativeWithFallback);
       switch (result.status) {
         case LoginStatus.success:
           final accessToken = await FacebookAuth.instance.accessToken;

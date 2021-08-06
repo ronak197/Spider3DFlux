@@ -50,23 +50,27 @@ class StaggerAnimation extends StatelessWidget {
         height: 50,
         alignment: FractionalOffset.center,
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          borderRadius: const BorderRadius.all(Radius.circular(25.0)),
-        ),
+            // color: Theme.of(context).primaryColor,
+            color: Colors.white,
+            borderRadius: const BorderRadius.all(Radius.circular(25.0)),
+            border: Border.all(color: Colors.grey.shade500, width: 1)),
         child: buttonSqueezeanimation.value > 75.0
             ? Text(
                 S.of(context).signIn,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  // color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                   fontSize: 16.0,
                   fontWeight: FontWeight.w300,
                   letterSpacing: 0.3,
                 ),
               )
-            : const CircularProgressIndicator(
+            : CircularProgressIndicator(
                 value: null,
                 strokeWidth: 1.0,
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                // valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                valueColor: AlwaysStoppedAnimation<Color>(
+                    Theme.of(context).primaryColor),
               ),
       ),
     );

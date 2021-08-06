@@ -280,7 +280,7 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Container(
-                                          height: 50.0,
+                                          height: 50,
                                           child: FluxImage(
                                             imageUrl: themeConfig.logo,
                                           ),
@@ -315,7 +315,7 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                               child: const Icon(
                                                 FontAwesomeIcons.apple,
                                                 color: Colors.white,
-                                                size: 24.0,
+                                                size: 26,
                                               ),
                                             ),
                                           ),
@@ -333,7 +333,7 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                               child: const Icon(
                                                 FontAwesomeIcons.facebookF,
                                                 color: Colors.white,
-                                                size: 24.0,
+                                                size: 26,
                                               ),
                                             ),
                                           ),
@@ -350,7 +350,7 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                               child: const Icon(
                                                 FontAwesomeIcons.google,
                                                 color: Colors.white,
-                                                size: 24.0,
+                                                size: 26.0,
                                               ),
                                             ),
                                           ),
@@ -367,7 +367,7 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                               child: const Icon(
                                                 FontAwesomeIcons.sms,
                                                 color: Colors.white,
-                                                size: 24.0,
+                                                size: 26,
                                               ),
                                             ),
                                           ),

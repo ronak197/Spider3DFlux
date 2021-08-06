@@ -4,7 +4,6 @@ import 'package:fstore/screens/users/spider_point_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'package:rate_my_app/rate_my_app.dart';
-
 import '../../app.dart';
 import '../../common/config.dart';
 import '../../common/constants.dart';

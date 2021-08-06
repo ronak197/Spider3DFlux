@@ -159,6 +159,9 @@ dependencies:
   flutter_calendar_carousel: 2.0.1
   animate_icons: ^2.0.0
 
+  # My
+  basic_utils: 3.4.0
+
 
 dev_dependencies:
   flutter_driver:

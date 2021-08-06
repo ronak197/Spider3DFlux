@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
 import 'package:fstore/screens/users/spider_point_screen.dart';
+import 'package:inspireui/widgets/flux_image.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'package:rate_my_app/rate_my_app.dart';
@@ -495,9 +496,15 @@ class _SettingScreenState extends State<SettingScreen>
           icon = Transform.translate(
               offset: const Offset(0, 0),
               child: Image.asset('assets/images/spider_coin.png',
-                  color: kGrey600, height: 24, width: 24));
+                  // color: kGrey600, height: 24, width: 24));
+                  color: Theme.of(context).accentColor,
+                  height: 24,
+                  width: 24));
           // title = S.of(context).aboutUs;
           title = 'קאשבק & ספיידרס';
+
+          // User? get user => Provider.of<UserModel>(context, listen: false).user;
+          // final user = Provider.of<UserModel>(context, listen: false).user;
           final user_email =
               Provider.of<UserModel>(context).user!.email.toString();
 
@@ -649,11 +656,15 @@ class _SettingScreenState extends State<SettingScreen>
               SliverAppBar(
                 backgroundColor: Theme.of(context).primaryColor,
                 leading: IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     // Icons.blur_on,
                     Icons.menu,
                     // color: Colors.white70,
-                    color: Colors.black87,
+                    // color: Colors.black87,
+                    color: Theme.of(context)
+                        .tabBarTheme
+                        .labelColor!
+                        .withOpacity(0.7),
                   ),
                   onPressed: () => NavigateTools.onTapOpenDrawerMenu(context),
                 ),
@@ -661,18 +672,26 @@ class _SettingScreenState extends State<SettingScreen>
                 floating: true,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
-                    S.of(context).settings,
-                    style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  background: Image.network(
-                    background,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                    title: Text(
+                      S.of(context).settings,
+                      style: TextStyle(
+                          fontSize: 18,
+                          // color: Colors.white,
+                          color: Theme.of(context).tabBarTheme.labelColor,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    background: Container(
+                      color: Theme.of(context).backgroundColor,
+                      child: const Center(
+                          child: FluxImage(
+                              imageUrl: 'https://i.imgur.com/LQWSjzt.png',
+                              height: 50)),
+                    )
+                    // Image.network(
+                    //   background,
+                    //   fit: BoxFit.cover,
+                    // ),
+                    ),
               ),
               SliverList(
                 delegate: SliverChildListDelegate(
@@ -695,7 +714,8 @@ class _SettingScreenState extends State<SettingScreen>
                                           backgroundImage:
                                               NetworkImage(user.picture!),
                                         )
-                                      : const Icon(Icons.face),
+                                      : Icon(Icons.face,
+                                          color: Theme.of(context).accentColor),
                                   title: Text(
                                     user.name!.replaceAll('fluxstore', ''),
                                     style: textStyle,

@@ -1,9 +1,9 @@
 import 'package:intl/intl.dart';
 import 'package:quiver/strings.dart';
-
 import '../../models/index.dart' show AddonsOption, Product;
 import '../config.dart' show kAdvanceConfig;
 import '../constants.dart' show printLog;
+import 'package:basic_utils/basic_utils.dart';
 
 class PriceTools {
   static String? getAddsOnPriceProductValue(
@@ -67,7 +67,22 @@ class PriceTools {
     return getCurrencyFormatted(price, rates, currency: currency);
   }
 
+  // My getCurrencyFormatted
   static String? getCurrencyFormatted(price, Map<String, dynamic>? rates,
+      {currency}) {
+    if (price.length == 4) {
+      price = StringUtils.addCharAtPosition(price, ',', 1, repeat: false);
+    } else if (price.length == 5) {
+      price = StringUtils.addCharAtPosition(price, ',', 2, repeat: false);
+    }
+    // price = 'less than 3';
+    price = '₪$price';
+    return price;
+  }
+
+  // Original getCurrencyFormatted
+  static String? getCurrencyFormatted_Original(
+      price, Map<String, dynamic>? rates,
       {currency}) {
     Map<String, dynamic>? defaultCurrency = kAdvanceConfig['DefaultCurrency'];
     List currencies = kAdvanceConfig['Currencies'] ?? [];

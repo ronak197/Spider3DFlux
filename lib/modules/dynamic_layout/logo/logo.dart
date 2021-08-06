@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inspireui/inspireui.dart' show FluxImage , iconPicker;
+import 'package:inspireui/inspireui.dart' show FluxImage, iconPicker;
 import 'package:provider/provider.dart';
 
 import '../../../models/cart/cart_base.dart';
@@ -75,6 +75,25 @@ class LogoIcon extends StatelessWidget {
   }
 }
 
+Widget renderLogo({myImage, myLogo}) {
+  if (myImage != null) {
+    if (myImage!.contains('http')) {
+      return FluxImage(imageUrl: myImage!, height: 50);
+    }
+    return Image.asset(
+      myImage!,
+      height: 40,
+    );
+  }
+
+  /// render from config to support dark/light theme
+  if (myLogo != null) {
+    return FluxImage(imageUrl: myLogo!, height: 40);
+  }
+
+  return Container();
+}
+
 class Logo extends StatelessWidget {
   final onSearch;
   final onTapDrawerMenu;
@@ -88,25 +107,6 @@ class Logo extends StatelessWidget {
     required this.onTapDrawerMenu,
     this.logo,
   }) : super(key: key);
-
-  Widget renderLogo() {
-    if (config.image != null) {
-      if (config.image!.contains('http')) {
-        return FluxImage(imageUrl: config.image!, height: 50);
-      }
-      return Image.asset(
-        config.image!,
-        height: 40,
-      );
-    }
-
-    /// render from config to support dark/light theme
-    if (logo != null) {
-      return FluxImage(imageUrl: logo!, height: 40);
-    }
-
-    return Container();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +150,10 @@ class Logo extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
-                              if (config.showLogo) Center(child: renderLogo()),
+                              if (config.showLogo)
+                                Center(
+                                    child: renderLogo(
+                                        myImage: config.image, myLogo: logo)),
                               if (config.showLogo && config.name != null) ...[
                                 const SizedBox(width: 5),
                                 Text(

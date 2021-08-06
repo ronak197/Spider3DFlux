@@ -1,12 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fstore/models/entities/user.dart';
+import 'package:fstore/models/user_model.dart';
 import 'package:fstore/services/dependency_injection.dart';
+import 'package:fstore/services/service_config.dart';
+import 'package:inspireui/utils/logs.dart';
+import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 import '../../common/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SpidersPointScreen extends StatefulWidget {
-  final String userEmail;
+  String userEmail;
 
   SpidersPointScreen({required this.userEmail});
 
@@ -19,15 +24,9 @@ class _StateUserPoint extends State<SpidersPointScreen> {
   final pointWidth = 50;
   final borderWidth = 0.5;
 
-  /*Future<UserPoints> getUserPoint() async {
-    final userModel = Provider.of<UserModel>(context, listen: false);
-    final points = await httpGet(
-        '${Config().url}/wp-json/api/flutter_user/get_points/?insecure=cool&user_id=${userModel.user!.id}'
-            .toUri()!);
-    print("UserPoints:");
-    print(UserPoints.fromJson(json.decode(points.body)));
-    return UserPoints.fromJson(json.decode(points.body));
-  }*/
+  User? get user => Provider.of<UserModel>(context, listen: false).user;
+  // final user = Provider.of<UserModel>(context, listen: false).user;
+  // final user_email = Provider.of<UserModel>(context).user!.email.toString();
 
   Future<String> my_Woorewards(
       {required String user_email, String? points}) async {
@@ -53,6 +52,16 @@ class _StateUserPoint extends State<SpidersPointScreen> {
       //This error exception is about your Rest API is not config correctly so that not return the correct JSON format, please double check the document from this link https://docs.inspireui.com/fluxstore/woocommerce-setup/
       rethrow;
     }
+  }
+
+  @override
+  void initState() {
+    // print('init user:');
+    // print(user!.email.toString());
+    if (widget.userEmail == 'Auto') {
+      widget.userEmail = user!.email.toString();
+    }
+    super.initState();
   }
 
   Widget shareButton({icon, label}) {
@@ -121,7 +130,7 @@ class _StateUserPoint extends State<SpidersPointScreen> {
           brightness: Theme.of(context).brightness,
           backgroundColor: Theme.of(context).primaryColorLight,
           title: Text(
-            ' קאשבק & ספיידרס',
+            'קאשבק & ספיידרס',
             style: TextStyle(
               color: Theme.of(context).accentColor,
             ),

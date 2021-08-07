@@ -619,9 +619,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
       });
       String? value;
 
-     Object? firstState = states.firstWhereOrNull(
-        (o) => o.id.toString() == address!.state.toString()
-      );
+      Object? firstState = states.firstWhereOrNull(
+          (o) => o.id.toString() == address!.state.toString());
 
       if (firstState != null) {
         value = address!.state;

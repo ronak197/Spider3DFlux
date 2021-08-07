@@ -344,7 +344,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                         context, RouteList.login);
                   },
                   child: const Text(
-                    'התחבר וקבל קופון',
+                    'התחבר והעתק קופון',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18.0,

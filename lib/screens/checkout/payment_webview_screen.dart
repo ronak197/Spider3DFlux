@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/common/config.dart';
 //import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -72,6 +73,9 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
 
    */
 
+  bool isLoading = true;
+  var _controller;
+
   @override
   Widget build(BuildContext context) {
     var checkoutMap = <dynamic, dynamic>{
@@ -92,6 +96,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
 
     return Scaffold(
       appBar: AppBar(
+        title: const Text('עמוד תשלום'),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -103,31 +108,46 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
               }
             }),
         backgroundColor: Theme.of(context).backgroundColor,
-        elevation: 0.0,
+        elevation: 3.0,
       ),
-      body: WebView(
-        javascriptMode: JavascriptMode.unrestricted,
-        initialUrl: checkoutMap['url'],
-        onPageFinished: (url) {
-          if (url.contains('/order-received/')) {
-            final items = url.split('/order-received/');
-            if (items.length > 1) {
-              final number = items[1].split('/')[0];
-              widget.onFinish!(number);
-              Navigator.of(context).pop();
-            }
-          }
-          if (url.contains('checkout/success')) {
-            widget.onFinish!('0');
-            Navigator.of(context).pop();
-          }
+      body: Stack(
+        children: [
+          WebView(
+            javascriptMode: JavascriptMode.unrestricted,
+            initialUrl: checkoutMap['url'],
+            onWebViewCreated: (controller) {
+              _controller = controller;
+            },
 
-          // shopify url final checkout
-          if (url.contains('thank_you')) {
-            widget.onFinish!('0');
-            Navigator.of(context).pop();
-          }
-        },
+            // print('_controller.getTitle()');
+            // print(_controller.getTitle());
+
+            onPageFinished: (url) {
+              setState(() {
+                isLoading = false;
+              });
+              if (url.contains('/order-received/')) {
+                final items = url.split('/order-received/');
+                if (items.length > 1) {
+                  final number = items[1].split('/')[0];
+                  widget.onFinish!(number);
+                  Navigator.of(context).pop();
+                }
+              }
+              if (url.contains('checkout/success')) {
+                widget.onFinish!('0');
+                Navigator.of(context).pop();
+              }
+
+              // shopify url final checkout
+              if (url.contains('thank_you')) {
+                widget.onFinish!('0');
+                Navigator.of(context).pop();
+              }
+            },
+          ),
+          isLoading ? Center(child: kLoadingWidget(context)) : Container()
+        ],
       ),
     );
 

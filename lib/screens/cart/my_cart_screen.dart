@@ -101,28 +101,31 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: cartModel.calculatingDiscount
-            ? null
-            : () {
-                if (kAdvanceConfig['AlwaysShowTabBar'] ?? false) {
-                  MainTabControlDelegate.getInstance().changeTab('cart');
-                  // return;
-                }
-                onCheckout(cartModel);
-              },
-        isExtended: true,
-        backgroundColor: Theme.of(context).primaryColor,
-        foregroundColor: Colors.white,
-        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        icon: const Icon(Icons.payment, size: 20),
-        label: cartModel.totalCartQuantity > 0
-            ? (isLoading
-                ? Text(S.of(context).loading.toUpperCase())
-                : Text(S.of(context).checkout.toUpperCase()))
-            : Text(
-                S.of(context).startShopping.toUpperCase(),
-              ),
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(bottom: 14),
+        child: FloatingActionButton.extended(
+          onPressed: cartModel.calculatingDiscount
+              ? null
+              : () {
+                  if (kAdvanceConfig['AlwaysShowTabBar'] ?? false) {
+                    MainTabControlDelegate.getInstance().changeTab('cart');
+                    // return;
+                  }
+                  onCheckout(cartModel);
+                },
+          isExtended: true,
+          backgroundColor: Theme.of(context).primaryColor,
+          foregroundColor: Colors.white,
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          icon: const Icon(Icons.payment, size: 20),
+          label: cartModel.totalCartQuantity > 0
+              ? (isLoading
+                  ? Text(S.of(context).loading.toUpperCase())
+                  : Text(S.of(context).checkout.toUpperCase()))
+              : Text(
+                  S.of(context).startShopping.toUpperCase(),
+                ),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: CustomScrollView(
@@ -323,7 +326,11 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
         Provider.of<AppModel>(context, listen: false).currencyRate;
     final currency = Provider.of<AppModel>(context, listen: false).currency;
 
-    if (isLoading) return;
+    // if (isLoading) return; // Originak
+    if (isLoading) {
+      const Center(child: Text('Loadinggg'));
+    }
+    ;
 
     if (kCartDetail['minAllowTotalCartValue'] != null) {
       if (kCartDetail['minAllowTotalCartValue'].toString().isNotEmpty) {

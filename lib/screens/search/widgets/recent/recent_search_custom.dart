@@ -25,14 +25,43 @@ class RecentSearchesCustom extends StatelessWidget {
     );
   }
 
+  static const ColorFilter greyscale = ColorFilter.matrix(<double>[
+    0.2126,
+    0.7152,
+    0.0722,
+    0,
+    0,
+    0.2126,
+    0.7152,
+    0.0722,
+    0,
+    0,
+    0.2126,
+    0.7152,
+    0.0722,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+  ]);
+
   Widget renderEmpty(context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Image.asset(
-          kEmptySearch,
-          width: 120,
-          height: 120,
+        ColorFiltered(
+          colorFilter: greyscale,
+          child: Image.asset(
+            // kEmptySearch,
+            // 'assets/images/spider_cat_sales.png',
+            'assets/images/spider_cat_filaments.png',
+            // 'assets/images/spider_cat_upgardes.png',
+            width: 100,
+            height: 100,
+          ),
         ),
         const SizedBox(height: 10),
         Container(

@@ -713,7 +713,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ייתכן שתאהב גם"),
         "yourAddressExistYourLocal":
             MessageLookupByLibrary.simpleMessage("הכתובת שלך קיימת במקומך"),
-        "yourBagIsEmpty": MessageLookupByLibrary.simpleMessage("העגלה שלך ריק"),
+        "yourBagIsEmpty":
+            MessageLookupByLibrary.simpleMessage("העגלה שלך ריקה"),
         "yourBookingDetail":
             MessageLookupByLibrary.simpleMessage("פרטי ההזמנה שלך"),
         "yourEarningsThisMonth":

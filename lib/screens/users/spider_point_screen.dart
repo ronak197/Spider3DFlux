@@ -325,7 +325,7 @@ class _StateUserPoint extends State<SpidersPointScreen> {
                         title: const Text('הזמנת פילמנטים וחומרי הדפסה',
                             style: TextStyle(fontSize: 16)),
                         subtitle: Text(
-                          'תקבל 1 ספיידר על כל 10₪',
+                          'תקבל 1 ספיידר על כל 1₪',
                           style: TextStyle(
                             fontSize: 13,
                             color:

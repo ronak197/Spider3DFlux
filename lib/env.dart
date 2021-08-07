@@ -374,7 +374,7 @@ Map<String, dynamic> environment = {
     "EnableCreditCard": true,
     "UpdateOrderStatus": true,
     "ShowOrderNotes": true,
-    "EnableRefundCancel": false
+    "EnableRefundCancel": true
   },
   "payments": {
     "paypal": "assets/icons/payment/paypal.png",
@@ -444,7 +444,7 @@ Map<String, dynamic> environment = {
     "showStockQuantity": true,
     "showProductCategories": true,
     "showProductTags": false,
-    "hideInvalidAttributes": false
+    "hideInvalidAttributes": true
   },
   "productVariantLayout": {
     "color": "color",

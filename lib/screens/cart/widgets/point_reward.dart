@@ -39,9 +39,9 @@ class _PointRewardState extends State<PointReward> {
     return ListenableProvider.value(
         value: pointModel,
         child: Consumer<PointModel>(builder: (context, model, child) {
-          if (model.point == null || model.point!.points == 0) {
-            return Container();
-          }
+          // if (model.point == null || model.point!.points == 0) {
+          //   return Container();
+          // }
 
           return Container(
             padding:
@@ -74,7 +74,7 @@ class _PointRewardState extends State<PointReward> {
                         onPrimary: Theme.of(context).primaryColor,
                       ),
                       onPressed: () {
-                        if(quantity <= model.point!.points!){
+                        if (quantity <= model.point!.points!) {
                           applyPoints(model.point);
                         }
                       },

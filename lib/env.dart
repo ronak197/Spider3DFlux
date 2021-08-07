@@ -443,7 +443,7 @@ Map<String, dynamic> environment = {
     "showSku": true,
     "showStockQuantity": true,
     "showProductCategories": true,
-    "showProductTags": true,
+    "showProductTags": false,
     "hideInvalidAttributes": false
   },
   "productVariantLayout": {

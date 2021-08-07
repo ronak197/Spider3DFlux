@@ -5,7 +5,6 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart' as html;
 import 'package:fstore/screens/users/spider_point_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
-
 import '../common/config.dart';
 import '../common/constants.dart';
 import '../generated/l10n.dart';
@@ -148,12 +147,39 @@ mixin ProductVariantMixin {
 
       listWidget.add(GestureDetector(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SpidersPointScreen(userEmail: 'Auto'),
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              contentPadding: const EdgeInsets.only(top: 30, bottom: 10),
+              insetPadding: const EdgeInsets.all(0),
+              content: SingleChildScrollView(
+                child: SpidersPointScreen(
+                  isFullPage: false,
+                ),
+              ),
+              actions: [
+                TextButton(
+                  style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(3),
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.grey[100])),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    'חזור',
+                    style: TextStyle(color: Theme.of(context).primaryColor),
+                  ),
+                )
+              ],
             ),
           );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => SpidersPointScreen(),
+          //   ),
+          // );
         },
         child: Row(
           children: <Widget>[

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/users/spider_point_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -226,7 +227,6 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-            PointReward(),
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
@@ -295,6 +295,9 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
                   ),
                 ),
               ),
+            ),
+            SpidersPointScreen(
+              isFullPage: false,
             )
           ],
         ),

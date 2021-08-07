@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/common/config.dart';
 import 'package:fstore/common/tools/image_tools.dart';
 import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -68,6 +69,7 @@ class _PinterestLayoutState extends State<VerticalViewLayout> {
     var rows = (_products.length / widthContent).toInt();
     if (rows * widthContent < _products.length) rows++;
 
+    var loadingPadding = 75.0;
     return Column(
       children: [
         ListView.builder(
@@ -91,7 +93,8 @@ class _PinterestLayoutState extends State<VerticalViewLayout> {
                               return ProductCard(
                                 item: _products[index * widthContent + child],
                                 showHeart: true,
-                                showCart: widget.config['layout'] != 'columns',
+                                // showCart: widget.config['layout'] != 'columns', // Original
+                                showCart: true,
                                 width: constraints.maxWidth,
                               );
                             },
@@ -104,10 +107,26 @@ class _PinterestLayoutState extends State<VerticalViewLayout> {
         VisibilityDetector(
           key: const Key('loading_vertical'),
           onVisibilityChanged: (VisibilityInfo info) => _loadProduct(),
-          child: !canLoad
-              ? const SizedBox()
+          child: canLoad
+              ? Padding(
+                  padding: EdgeInsets.only(bottom: loadingPadding),
+                  child: const Builder(
+                    builder: kLoadingWidget,
+                  ),
+                )
               : Center(
-                  child: Text(S.of(context).loading),
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        top: loadingPadding / 5,
+                        left: loadingPadding,
+                        bottom: loadingPadding,
+                        right: loadingPadding),
+                    child: Divider(
+                      thickness: 2,
+                      // height: 20,
+                      color: Theme.of(context).primaryColor.withOpacity(0.70),
+                    ),
+                  ),
                 ),
         )
       ],

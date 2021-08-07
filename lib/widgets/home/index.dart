@@ -13,6 +13,8 @@ import '../../modules/dynamic_layout/vertical/vertical.dart';
 import '../../screens/blog/models/list_blog_model.dart';
 import 'preview_overlay.dart';
 
+var myVertical_config;
+
 class HomeLayout extends StatefulWidget {
   final configs;
   final bool isPinAppBar;
@@ -184,6 +186,10 @@ class _HomeLayoutState extends State<HomeLayout> {
                   index: previewIndex,
                   config: config,
                   builder: (value) {
+                    // value = config = {key: r09jo0owu6, layout: menu, name: קטגוריות מובילות, isVertical: true, type: vertical}
+                    // print("config XXX: ");
+                    // print(config);
+                    myVertical_config = config;
                     return VerticalLayout(
                       config: value,
                       key: value['key'] != null ? Key(value['key']) : null,

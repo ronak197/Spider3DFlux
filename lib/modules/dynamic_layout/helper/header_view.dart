@@ -35,7 +35,7 @@ class HeaderView extends StatelessWidget {
           left: 17.0,
           top: margin * 0.0,
           right: 15.0,
-          bottom: margin,
+          bottom: margin * 0.5,
         ),
         child: Row(
           textBaseline: TextBaseline.alphabetic,

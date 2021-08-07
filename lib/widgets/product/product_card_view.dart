@@ -137,6 +137,8 @@ class ProductCard extends StatelessWidget {
     );
 
     /// Show Cart button
+    /// width on product page = 120, on main page = 180 (180 / 9 = 120 | 120 / 9 = 13)
+    var myRadiusBasedWidth = width == 180 ? 20.0 : 18.0;
     Widget _showCart = (showCart &&
             !item.isEmptyProduct() &&
             item.inStock != null &&
@@ -145,9 +147,12 @@ class ProductCard extends StatelessWidget {
         ? CircleAvatar(
             // backgroundColor: Colors.white.withOpacity(0.3),
             backgroundColor: Colors.grey.withOpacity(0.07),
+            // radius: 20, // Original
+            radius: myRadiusBasedWidth,
             child: IconButton(
                 color: Theme.of(context).accentColor.withOpacity(0.5),
                 // color: Colors.black,
+                // icon: Icon(Icons.add_shopping_cart, size: width! / 10 * 1.3),
                 icon: const Icon(Icons.add_shopping_cart, size: 18),
                 onPressed: () => addToCart(context)),
           )

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:fstore/modules/dynamic_layout/config/product_config.dart';
 import 'package:fstore/modules/dynamic_layout/dynamic_layout.dart';
 import 'package:fstore/modules/dynamic_layout/product/product_list.dart';
+import 'package:fstore/modules/dynamic_layout/vertical/vertical.dart';
+import 'package:fstore/widgets/home/index.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/config.dart';
@@ -50,6 +52,12 @@ class _SimpleLayoutState extends State<SimpleLayout>
       duration: const Duration(milliseconds: 450),
       value: 1.0,
     );
+
+    // myVertical_config is base MainPage config
+    // Sample: {key: r09jo0owu6, layout: menu, name: קטגוריות מובילות, isVertical: true, type: vertical}
+    myVertical_config['name'] = 'מוצרים נוספים בקטגוריה';
+    myVertical_config['layout'] = 'columns';
+    myVertical_config['category'] = product.categoryId;
   }
 
   @override
@@ -262,6 +270,10 @@ class _SimpleLayoutState extends State<SimpleLayout>
                                 config:
                                     ProductConfig.fromJson(myRecentView_config),
                                 key: UniqueKey()),
+                            VerticalLayout(
+                              config: myVertical_config,
+                              key: UniqueKey(),
+                            )
                           ],
                         ),
                       ),

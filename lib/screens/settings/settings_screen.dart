@@ -522,7 +522,7 @@ class _SettingScreenState extends State<SettingScreen>
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => SpidersPointScreen(userEmail: user_email),
+                builder: (context) => SpidersPointScreen(),
               ),
             );
           };

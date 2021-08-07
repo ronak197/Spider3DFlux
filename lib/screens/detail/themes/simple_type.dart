@@ -1,6 +1,9 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:fstore/modules/dynamic_layout/config/product_config.dart';
+import 'package:fstore/modules/dynamic_layout/dynamic_layout.dart';
+import 'package:fstore/modules/dynamic_layout/product/product_list.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/config.dart';
@@ -103,6 +106,7 @@ class _SimpleLayoutState extends State<SimpleLayout>
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final widthHeight = size.height;
+    // Map<String, dynamic> my_dict = {'name': 'Recent View', 'layout': 'recentView'},
 
     final userModel = Provider.of<UserModel>(context, listen: false);
     return Container(
@@ -132,20 +136,23 @@ class _SimpleLayoutState extends State<SimpleLayout>
                     SliverAppBar(
                       brightness: Theme.of(context).brightness,
                       backgroundColor: Theme.of(context).backgroundColor,
-                      elevation: 1.0,
+                      elevation: 1,
                       expandedHeight:
                           kIsWeb ? 0 : widthHeight * kProductDetail.height,
-                      pinned: true,
+                      pinned: false,
                       floating: false,
                       leading: Padding(
                         padding: const EdgeInsets.all(8),
                         // padding: const EdgeInsets.only(top: 8, left: 8,right: 8),
                         child: CircleAvatar(
-                          backgroundColor: Colors.white.withOpacity(0.3),
+                          backgroundColor: Colors.grey[100]!.withOpacity(0.75),
                           child: IconButton(
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.close,
-                              color: kGrey400,
+                              // color: kGrey400,
+                              color: Theme.of(context)
+                                  .accentColor
+                                  .withOpacity(0.75),
                             ),
                             onPressed: () {
                               Provider.of<ProductModel>(context, listen: false)
@@ -165,10 +172,14 @@ class _SimpleLayoutState extends State<SimpleLayout>
                         Padding(
                           padding: const EdgeInsets.all(12),
                           child: CircleAvatar(
-                            backgroundColor: Colors.white.withOpacity(0.3),
+                            backgroundColor:
+                                Colors.grey[100]!.withOpacity(0.75),
                             child: IconButton(
                               icon: const Icon(Icons.more_vert, size: 19),
-                              color: kGrey400,
+                              // color: kGrey400,
+                              color: Theme.of(context)
+                                  .accentColor
+                                  .withOpacity(0.75),
                               onPressed: () => ProductDetailScreen.showMenu(
                                   context, widget.product,
                                   isLoading: widget.isLoading),
@@ -178,7 +189,10 @@ class _SimpleLayoutState extends State<SimpleLayout>
                       ],
                       flexibleSpace: kIsWeb
                           ? Container()
-                          : _renderSelectedMedia(context, product, size),
+                          : Material(
+                              elevation: 3,
+                              child:
+                                  _renderSelectedMedia(context, product, size)),
                     ),
                     SliverList(
                       delegate: SliverChildListDelegate(
@@ -242,6 +256,12 @@ class _SimpleLayoutState extends State<SimpleLayout>
                               ),
                             ),
                             RelatedProduct(product),
+                            ProductList(
+                                // config: ProductConfig.fromJson(config),
+                                // key: config['key'] != null ? Key(config['key']) : UniqueKey()),
+                                config:
+                                    ProductConfig.fromJson(myRecentView_config),
+                                key: UniqueKey()),
                           ],
                         ),
                       ),

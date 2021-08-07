@@ -70,6 +70,7 @@ class PriceTools {
   // My getCurrencyFormatted
   static String? getCurrencyFormatted(price, Map<String, dynamic>? rates,
       {currency}) {
+    price = price.toString();
     if (price.length == 4) {
       price = StringUtils.addCharAtPosition(price, ',', 1, repeat: false);
     } else if (price.length == 5) {

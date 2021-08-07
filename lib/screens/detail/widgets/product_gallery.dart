@@ -57,7 +57,7 @@ class ProductGallery extends StatelessWidget {
       builder: (context, constraint) {
         final dimension = constraint.maxWidth * 0.2;
         return Container(
-          height: dimension * 0.8 + 8,
+          height: dimension * 1.2 + 8,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
@@ -107,15 +107,26 @@ class ProductGallery extends StatelessWidget {
                     onLongPress: () =>
                         _handleImageTap(context, index: i, fullScreen: true),
                     onTap: () => _handleImageTap(context, index: i),
-                    child: Container(
-                      padding: const EdgeInsets.only(left: 4.0, right: 8),
-                      margin: const EdgeInsets.only(left: 2, top: 4, right: 4),
-                      child: ImageTools.image(
-                        url: product!.images[i],
-                        height: dimension * (kIsWeb ? 1.2 : 0.9),
-                        width: dimension,
-                        isResize: true,
-                        fit: BoxFit.fill,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 4, right: 4, top: 6, bottom: 6),
+                      child: Material(
+                        elevation: 3,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: ImageTools.image(
+                              url: product!.images[i],
+                              height: dimension * (kIsWeb ? 1.2 : 0.9),
+                              width: dimension,
+                              isResize: true,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   )

@@ -134,6 +134,11 @@
       "isSnapping": true
     },
     {
+      "name": "נצפו לאחרונה",
+      "layout": "recentView",
+      "onMainPage": false
+    },
+    {
       "layout": "blog",
       "name": "מדריכים אחרונים שלנו"
     }
@@ -141,7 +146,7 @@
   "VerticalLayout": {
     "key": "r09jo0owu6",
     "layout": "menu",
-    "name": "מבצעים וחבילות",
+    "name": "קטגוריות מובילות",
     "isVertical": true
   },
   "Setting": {

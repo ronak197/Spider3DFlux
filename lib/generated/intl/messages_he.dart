@@ -89,7 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addingYourImage":
             MessageLookupByLibrary.simpleMessage("הוספת התמונה שלך"),
         "additionalInformation":
-            MessageLookupByLibrary.simpleMessage("מידע נוסף"),
+            MessageLookupByLibrary.simpleMessage("מידע טכני"),
         "additionalServices":
             MessageLookupByLibrary.simpleMessage("שירותים נוספים"),
         "address": MessageLookupByLibrary.simpleMessage("כתובת כתובת"),

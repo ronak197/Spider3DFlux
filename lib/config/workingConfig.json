@@ -46,18 +46,38 @@
       "hideTitle": false,
       "items": [
         {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "category": 2341,
+          "image": "assets/images/spider_cat_robot_printer.png",
           "colors": [
             "#b42525",
             "#5a0000"
           ],
-          "title" : "מדפסות",
+          "title" : "מדפסות 3D",
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "category": 2352,
+          "image": "assets/images/spider_cat_filaments.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "גלילים",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 2353,
+          "image": "assets/images/spider_cat_resin.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "שרף",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 2342,
+          "image": "assets/images/spider_cat_upgardes.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -66,33 +86,23 @@
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "category": 2343,
+          "image": "assets/images/spider_cat_caliber_tool.png",
           "colors": [
             "#b42525",
             "#5a0000"
           ],
-          "title" : "PLA+",
+          "title" : "כלים",
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "category": 5249,
+          "image": "assets/images/spider_cat_sales.png",
           "colors": [
             "#b42525",
             "#5a0000"
           ],
-          "title" : "SILK",
-          "keepDefaultTitle": true
-        },
-        {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
-          "colors": [
-            "#b42525",
-            "#5a0000"
-          ],
-          "title" : "PETG",
+          "title" : "מבצעים",
           "keepDefaultTitle": true
         }
       ]
@@ -124,6 +134,11 @@
       "isSnapping": true
     },
     {
+      "name": "נצפו לאחרונה",
+      "layout": "recentView",
+      "onMainPage": false
+    },
+    {
       "layout": "blog",
       "name": "מדריכים אחרונים שלנו"
     }
@@ -131,7 +146,7 @@
   "VerticalLayout": {
     "key": "r09jo0owu6",
     "layout": "menu",
-    "name": "מבצעים וחבילות",
+    "name": "קטגוריות מובילות",
     "isVertical": true
   },
   "Setting": {
@@ -176,7 +191,7 @@
     }
   ],
   "Drawer": {
-    "logo": "assets/images/logo.png",
+    "logo": "assets/images/spider_cat_logo.png",
     "items": [
       {
         "type": "category" ,

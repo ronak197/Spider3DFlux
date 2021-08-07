@@ -37,8 +37,12 @@ class BannerImageItem extends StatelessWidget {
     final itemWidth = width ?? screenWidth;
 
     return GestureDetector(
-      onTap: () => print(config.image.toString()),
-      // onTap(config.jsonData),
+      // onTap: () => print(config.image.toString()),
+      // onTap: () {//   config.jsonData;// },
+      onTap: () {
+        onTap(config.jsonData);
+        print(onTap(config.jsonData));
+      },
       child: Container(
         width: itemWidth,
         constraints: const BoxConstraints(minHeight: 10.0),

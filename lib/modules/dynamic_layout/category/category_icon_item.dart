@@ -61,7 +61,12 @@ class CategoryIconItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   // color: !disableBackground ? itemConfig!.getBackgroundColor : null,
                   // color: Theme.of(context).primaryColor.withOpacity(0.00),
-                  color: Colors.black.withOpacity(0.05),
+                  // color: Colors.black.withOpacity(0.05),
+                  // color: Colors.grey[100],
+                  color: Theme.of(context)
+                      .tabBarTheme
+                      .labelColor!
+                      .withOpacity(0.05),
                   // gradient: !disableBackground ? itemConfig!.getGradientColor : null,
                   boxShadow: [
                     if (boxShadow != null)

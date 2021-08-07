@@ -23,6 +23,8 @@ import 'product/product_list_large_card.dart';
 import 'product/product_list_simple.dart';
 import 'video/index.dart';
 
+var myRecentView_config;
+
 class DynamicLayout extends StatelessWidget {
   final config;
 
@@ -151,14 +153,33 @@ class DynamicLayout extends StatelessWidget {
       case 'threeColumn':
       case 'twoColumn':
       case 'staggered':
-      case 'recentView':
       case 'saleOff':
       case 'card':
       case 'listTile':
+
+        // print("config XXX Key: ");
+        // print(config['key']);
+        // print("config XXX: ");
+        // print(config);
+        // print("config XXX Type: ");
+        // print(config.runtimeType);
+
         return ProductList(
           config: ProductConfig.fromJson(config),
           key: config['key'] != null ? Key(config['key']) : UniqueKey(),
         );
+
+      case 'recentView':
+        // To set recentView on product page. (my)
+        myRecentView_config =
+            config; // Sample result: {name: Recent View, layout: recentView}
+        if (config['onMainPage']) {
+          return ProductList(
+            config: ProductConfig.fromJson(config),
+            key: config['key'] != null ? Key(config['key']) : UniqueKey(),
+          );
+        }
+        return Container(); // (if 'onMainPage' is actually false)
 
       /// new product layout stylev
       case 'largeCardHorizontalListItems':

@@ -21,7 +21,7 @@ Map<String, dynamic> environment = {
   },
   "advanceConfig": {
     "isCaching": false,
-    "kIsResizeImage": false,
+    "kIsResizeImage": true,
     "DefaultLanguage": "he",
     "DetailedBlogLayout": "halfSizeImageType",
     "EnablePointReward": true,

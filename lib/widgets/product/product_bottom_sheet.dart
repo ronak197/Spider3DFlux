@@ -308,7 +308,13 @@ class _ExpandingBottomSheetState extends State<ExpandingBottomSheet>
             AnimatedPadding(
               padding: _cartPaddingFor(numProducts), //
               duration: const Duration(milliseconds: 225),
-              child: const Icon(Icons.add_shopping_cart, size: 20),
+              // child: const Icon(Icons.add_shopping_cart, size: 20),
+              child: const Icon(
+                // Icons.shopping_cart_outlined,
+                Icons.add_shopping_cart,
+                size: 24,
+                // color: Theme.of(context).tabBarTheme.labelColor!.withOpacity(0.60),
+              ),
             ),
             if (totalCart > 0)
               Container(

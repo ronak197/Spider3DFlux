@@ -27,9 +27,9 @@ class HeartButton extends StatelessWidget {
                     .addToWishlist(product);
               },
               icon: CircleAvatar(
-                backgroundColor: Colors.white.withOpacity(0.3),
+                backgroundColor: Colors.grey[100]!.withOpacity(0.75),
                 child: Icon(FontAwesomeIcons.heart,
-                    color: Theme.of(context).accentColor.withOpacity(0.5),
+                    color: Theme.of(context).accentColor.withOpacity(0.75),
                     size: size ?? 16.0),
               ),
             );
@@ -43,7 +43,8 @@ class HeartButton extends StatelessWidget {
             icon: CircleAvatar(
               backgroundColor: Colors.red.withOpacity(0.1),
               child: Icon(FontAwesomeIcons.solidHeart,
-                  color: Colors.red[700], size: size ?? 16.0),
+                  color: Colors.red[700]!.withOpacity(0.70),
+                  size: size ?? 16.0),
             ),
           );
         },

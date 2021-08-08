@@ -448,6 +448,22 @@ class _BackdropMenuState extends State<BackdropMenu> {
                         if (tagModel.tagList?.isEmpty ?? true) {
                           return const SizedBox();
                         }
+
+                        // my tag filter
+                        // var myNewTagsList = [];
+                        // var myTagsList = tagModel.tagList;
+                        // print('--------');
+                        // // print('myTagsList $myTagsList');
+                        // print('${myTagsList!.length}');
+                        // print('${catModel.categories.}');
+                        // print('--------');
+                        // for (var tag in myTagsList) {
+                        //   // print(tag.name);
+                        //   // switch(tag.name){
+                        //   // case 'a':
+                        // }
+                        // }
+                        // myNewTagsList.add(myTagsList);
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: tagModel.isLoading

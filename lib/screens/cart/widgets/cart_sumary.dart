@@ -117,6 +117,9 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
       }
     }
     final screenSize = MediaQuery.of(context).size;
+    final totalPrice = PriceTools.getCurrencyFormatted(
+        model.getTotal()! - model.getShippingCost()!, currencyRate,
+        currency: currency);
 
     return Container(
       width: screenSize.width,
@@ -282,17 +285,23 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
                                   ),
                                 )
                               : Text(
-                                  PriceTools.getCurrencyFormatted(
-                                      model.getTotal()! -
-                                          model.getShippingCost()!,
-                                      currencyRate,
-                                      currency: currency)!,
+                                  totalPrice!,
                                   style: largeAmountStyle,
                                 ),
                         ],
                       ),
                     ],
                   ),
+                ),
+              ),
+            ),
+            Center(
+              child: Text(
+                'בקנייה זו תרוויח ${totalPrice.toString().replaceAll('.0', '').replaceAll('₪', '')} ספיידרס',
+                style: TextStyle(
+                  fontSize: 15,
+                  //    fontWeight: FontWeight.w600,
+                  color: Theme.of(context).accentColor.withOpacity(0.75),
                 ),
               ),
             ),

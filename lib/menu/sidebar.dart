@@ -48,7 +48,9 @@ class _MenuBarState extends State<SideBarMenu> {
                       height: 50,
                       alignment: Alignment.center,
                       margin: const EdgeInsets.only(bottom: 10),
-                      child: FluxImage(imageUrl: drawer.logo as String),
+                      // child: FluxImage(imageUrl: drawer.logo as String),
+                      child: const FluxImage(
+                          imageUrl: 'https://i.imgur.com/LQWSjzt.png'),
                     ),
                   // const Divider(),
                   ...List.generate(
@@ -314,6 +316,79 @@ class _MenuBarState extends State<SideBarMenu> {
     );
   }
 
+// My Replace places of values in the list (A,B,C -> B,A,C), At Least 1 value should be in list!
+  void replaceInList(List list, a, b) {
+    // Define values places
+    var list_len = list.length;
+    var a_index = list.indexOf(a);
+    var b_index = list.indexOf(b);
+
+    // Add (1) Value if not in list
+    if (a_index == -1) list.add(a); // AKA null
+    if (b_index == -1) list.add(b);
+
+    // Redefine values places
+    a_index = list.indexOf(a);
+    b_index = list.indexOf(b);
+
+    // Switch between their places
+    list.insert(a_index, b); // means .addAt
+    list.removeAt(a_index + 1);
+
+    list.insert(b_index, a); // means .addAt
+    list.removeAt(b_index + 1);
+
+    // Remove rest unnecessary value if left
+    if (list_len != list.length) list.removeAt(list.length - 1);
+  }
+
+  List<Category> setCategoriesOrder() {
+    final categories = Provider.of<CategoryModel>(context).categories;
+
+    print(
+        "ccategories X Be = $categories"); // ccategories X Be = [Category { id: 5249  name: חבילות חיסכון והוזלות}, Category { id: 2352  name: חומרי גלם להדפסה}, Category { id: 5188  name: חלפים מקוריים Artillery Genius}, Category { id: 5161  name: חלקי חילוף מקוריים לארטילרי}, Category { id: 2343  name: כלי עבודה וחומרים ל-DIY}, Category { id: 2341  name: מדפסות תלת מימד}, Category { id: 2342  name: שדרוגים וחלפים למדפסות}]
+    // print('ccategories X Be = ${categories[0].name}'); // case
+    // replaceInList(categories, categories[0],categories[1]); // Equals = replaceInList(categories, 'חבילות חיסכון והוזלות', 'חומרי גלם להדפסה');
+
+    var forIndex = 0;
+    // if (1 == 1) return categories;
+    for (var item in categories!) {
+      switch (item.name) {
+        case 'מדפסות תלת מימד':
+          replaceInList(categories, categories[forIndex], categories[0]);
+          printLog(
+              '${item.name} - category moved from $forIndex to [0] in list.');
+          forIndex++;
+          break;
+        case 'חומרי גלם להדפסה': // categories[forIndex] = 'חבילות חיסכון והוזלות'
+          replaceInList(categories, categories[forIndex], categories[1]);
+          printLog(
+              '${item.name} - category moved from $forIndex to [1] in list.');
+          // print('$forIndex');
+          forIndex++;
+          break;
+        case 'כלי עבודה וחומרים ל-DIY':
+          replaceInList(categories, categories[forIndex], categories[2]);
+          printLog(
+              '${item.name} - category moved from $forIndex to [2] in list.');
+          forIndex++;
+          break;
+        case 'שדרוגים וחלפים למדפסות':
+          replaceInList(categories, categories[forIndex], categories[3]);
+          printLog(
+              '${item.name} - category moved from $forIndex to [3] in list.');
+          forIndex++;
+          break;
+        default:
+          // print('$forIndex');
+          forIndex++;
+        // print(forIndex);
+      }
+    }
+    print("ccategories X Af = $categories");
+    return categories;
+  }
+
   List getChildren(
     List<Category> categories,
     Category currentCategory,
@@ -321,10 +396,9 @@ class _MenuBarState extends State<SideBarMenu> {
     double paddingOffset = 0.0,
   }) {
     var list = <Widget>[];
-    // print("ccategories Be = $categories");
-    // categories.sort();
-    // print("ccategories Af = $categories");
 
+    categories = setCategoriesOrder();
+    print('setCategoriesOrder Done');
     list.add(
       ListTile(
         leading: Padding(

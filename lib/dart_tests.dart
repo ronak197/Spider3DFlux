@@ -1,58 +1,63 @@
-// import 'dart:async';
-// import 'dart:convert' as convert;
-// import 'dart:convert';
-// import 'dart:core';
-//
-// import 'package:inspireui/utils/logs.dart';
-// import 'package:dio/dio.dart';
-// import 'package:dio/dio.dart';
-// import 'package:flutter/foundation.dart' as foundation;
-// import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
-// import 'package:intl/intl.dart';
+// List myList = ['A', 'B', 'C', 'D',];
+List myList = ['P1', 'P2', 'P3', 'P4'];
 
-/// My woorewards API (Source: https://plugins.longwatchstudio.com/docs/woorewards-4/api/users-points/)
+// Replace places of values in the list (A,B,C -> B,A,C), At Least 1 value should be in list!
+void replaceInList(List list, a, b) {
+  // Define values places
+  var list_len = list.length;
+  var a_index = list.indexOf(a);
+  var b_index = list.indexOf(b);
 
-// Sample: https://spider3d.co.il/wp-json/woorewards/v1/pools?consumer_key=ck_be61455d30704ff30718f80b417dd41c320b0cb0&consumer_secret=cs_79c75a8e1c40acfe530e6254f3cbb61a2e01f872
-// Show user points: [GET] /wp-json/woorewards/v1/points/<user_email>/<pool_id>
-// Add/ Subtract points: [PUT] /wp-json/woorewards/v1/points/<user_email>/<pool_id>/<points_to_add_or_subtract>
+  // Add (1) Value if not in list
+  if (a_index == -1) list.add(a); // AKA null
+  if (b_index == -1) list.add(b);
+
+  // Redefine values places
+  a_index = list.indexOf(a);
+  b_index = list.indexOf(b);
+
+  // Switch between their places
+  list.insert(a_index, b); // means .addAt
+  list.removeAt(a_index + 1);
+
+  list.insert(b_index, a); // means .addAt
+  list.removeAt(b_index + 1);
+
+  // Remove rest unnecessary value if left
+  if (list_len != list.length) list.removeAt(list.length - 1);
+}
 
 void main() {
-  if (1 == 2) {
-    print('1');
-  } else if (1 == 1) {
-    print('2');
-  }
+  // myList.insert(1, 'B');
+  // myList.insert(2, 'C');
+  // myList.insert(0, 'A');
+  // myList.insert(3, 'D');
+
+  replaceInList(myList, 'B', 'P2');
+  print(myList);
 }
+
+// void main() {
+//   // var grade = "A";
+//   for (var grade in myList) {
+//     switch (grade) {
+//       case "A":
+//         {
+//           print("Excellent");
+//         }
+//         break;
 //
-// @override
-// Future my_Woorewards({required String user_email, String? points}) async {
-//   try {
-//     points = points == null ? '' : '$points/'; // set points
-//     var url =
-//         'https://spider3d.co.il/wp-json/woorewards/v1/points/$user_email/_/$points?consumer_key=ck_be61455d30704ff30718f80b417dd41c320b0cb0&consumer_secret=cs_79c75a8e1c40acfe530e6254f3cbb61a2e01f872';
+//       case "B":
+//         {
+//           print("Good");
+//         }
+//         break;
 //
-//     // var response = await httpGet(endPoint.toUri()!);
-//     var response = await httpGet(url.toUri()!);
-//
-//     //
-//     // if (jsonDecode['wp_user_id'] == null || jsonDecode['cookie'] == null) {
-//     //   throw Exception(jsonDecode['message']);
-//     // }
-//     //
-//     // return User.fromWooJson(jsonDecode);
-//     print(url);
-//     print(response);
-//     return url;
-//   } catch (e) {
-//     //This error exception is about your Rest API is not config correctly so that not return the correct JSON format, please double check the document from this link https://docs.inspireui.com/fluxstore/woocommerce-setup/
-//     rethrow;
+//       default:
+//         // {
+//         //   print("Invalid choice");
+//         // }
+//         break;
+//     }
 //   }
-// }
-//
-// /// More examples see https://github.com/flutterchina/dio/tree/master/example
-// void lol() async {
-//   var dio = Dio();
-//   final response = await dio.get('https://google.com');
-//   print(response.data);
 // }

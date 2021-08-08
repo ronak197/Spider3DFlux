@@ -72,6 +72,8 @@ class _StateUserPoint extends State<SpidersPointScreen> {
 
     return TextButton.icon(
       style: ButtonStyle(
+          overlayColor:
+              MaterialStateProperty.all(Colors.grey[700]!.withOpacity(0.30)),
           foregroundColor: MaterialStateProperty.all(Colors.grey[700]),
           backgroundColor: MaterialStateProperty.all(Colors.white),
           // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
@@ -83,6 +85,7 @@ class _StateUserPoint extends State<SpidersPointScreen> {
         }
 
         const snackBar = SnackBar(
+            duration: Duration(seconds: 6), // default is 4
             content: Text('תודה ששיתפת אותנו! ניתן להרוויח רק פעם אחת'));
 
         var isFirstShare = checkFirstShare();
@@ -104,10 +107,7 @@ class _StateUserPoint extends State<SpidersPointScreen> {
                 print(
                     'היי, ספיידר 3D נותנים מבצעים ומשלוח חינם מתנה ללקוחות האפליקציה! שווה ממש להצטרף \n https://rebrand.ly/Spider3D-App'),
                 print('isFirstShare Before After: $isFirstShare'),
-                Future.delayed(
-                  const Duration(seconds: 2),
-                  () => ScaffoldMessenger.of(context).showSnackBar(snackBar),
-                ),
+                ScaffoldMessenger.of(context).showSnackBar(snackBar),
               };
 
         print(isFirstShare);
@@ -325,7 +325,7 @@ class _StateUserPoint extends State<SpidersPointScreen> {
                         title: const Text('הזמנת פילמנטים וחומרי הדפסה',
                             style: TextStyle(fontSize: 16)),
                         subtitle: Text(
-                          'תקבל 1 ספיידר על כל 1₪',
+                          'תקבל 1 ספיידר על כל ₪1',
                           style: TextStyle(
                             fontSize: 13,
                             color:

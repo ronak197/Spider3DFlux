@@ -123,11 +123,11 @@ class _StateMenuLayout extends State<MenuLayout> {
                 onTap: () {
                   setState(() {
                     position = index;
-                    print(myIncluded_categories);
+                    // print(categories);
                   });
                   getAllListProducts(
                       // category: categories[index], // All categories
-                      category: myIncluded_categories[index],
+                      category: categories[index],
                       lang: Provider.of<AppModel>(context, listen: false)
                           .langCode);
                 },
@@ -172,7 +172,8 @@ class _StateMenuLayout extends State<MenuLayout> {
                 if (loading) {
                   return StaggeredGridView.countBuilder(
                     crossAxisCount: 4,
-                    key: Key(categories[position].id.toString()),
+                    // key: Key(categories[position].id.toString()),
+                    key: UniqueKey(), // My
                     shrinkWrap: true,
                     controller: _controller,
                     itemCount: 4,

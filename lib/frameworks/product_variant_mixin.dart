@@ -221,6 +221,7 @@ mixin ProductVariantMixin {
                       '₪' +
                       (double.parse(product.price!) / 10)
                           .toString()
+                          .replaceAll('.00', '')
                           .replaceAll('.0', '')
                       // .replaceAll('.', '')
                       +

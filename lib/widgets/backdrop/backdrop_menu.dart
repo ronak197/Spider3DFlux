@@ -101,9 +101,10 @@ class _BackdropMenuState extends State<BackdropMenu> {
           }
 
           if (catModel.categories != null) {
-            final rootCategories = catModel.categories!
+            var rootCategories = catModel.categories!
                 .where((item) => item.parent == '0')
-                .toList();
+                .toList()
+                .skipWhile((value) => value.id == '4782');
 
             return SingleChildScrollView(
               child: Column(

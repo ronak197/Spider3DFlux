@@ -72,7 +72,8 @@ class WooCommerceAPI {
     var consumerSecret = this.consumerSecret;
 
     var token = '';
-    var url = this.url! + '/wp-json/wc/v2/' + endpoint;
+    // var url = this.url! + '/wp-json/wc/v2/' + endpoint;
+    var url = this.url! + '/wp-json/wc/v3/' + endpoint; // my
     // Default one is v3
     if (version == 3) {
       url = this.url! + '/wp-json/wc/v3/' + endpoint;

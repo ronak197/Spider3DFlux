@@ -38,7 +38,7 @@ class _ProductListLayoutState extends State<ProductFutureBuilder> {
   @override
   void initState() {
     /// only create the future once
-    _getProductLayout = getProductLayout(context);
+    _getProductLayout = getProductLayout(context); // For הפילמנטים שלנו
     super.initState();
   }
 
@@ -77,8 +77,8 @@ class _ProductListLayoutState extends State<ProductFutureBuilder> {
           widthFactor: 1.0,
           child: FutureBuilder<List<Product>?>(
             future: _getProductLayout,
-            builder: (BuildContext context,
-                AsyncSnapshot<List<Product>?> snapshot) {
+            builder:
+                (BuildContext context, AsyncSnapshot<List<Product>?> snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.none:
                 case ConnectionState.active:

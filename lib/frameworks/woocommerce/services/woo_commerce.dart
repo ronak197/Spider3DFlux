@@ -199,6 +199,11 @@ class WooCommerce extends BaseServices {
     }
   }
 
+  // Options: date, id, include, title, slug, price, popularity and rating. Default is date
+  var myOrderBy = 'title'; // Shows Esun & Spider PLA 9/10 ⭐️
+  // Options: asc and desc. Default is desc.
+  var myOrder = 'desc'; // my
+
   @override
   Future<List<Product>?> fetchProductsLayout({config, lang, userId}) async {
     try {
@@ -240,12 +245,13 @@ class WooCommerce extends BaseServices {
         //
 
       }
-
       var endPoint = 'products?status=publish';
       if (kAdvanceConfig['isMultiLanguages']) {
         endPoint += '&lang=$lang';
       }
       if (config.containsKey('category') && config['category'] != null) {
+        endPoint += '&orderby=$myOrderBy';
+        endPoint += '&order=$myOrder';
         endPoint += "&category=${config["category"]}";
       }
       if (config.containsKey('tag') && config['tag'] != null) {
@@ -382,7 +388,7 @@ class WooCommerce extends BaseServices {
       }
 
       var endPoint =
-          'products?status=publish&per_page=$ApiPageSize&page=$page&skip_cache=1';
+          'products?status=publish&per_page=$ApiPageSize&page=$page&skip_cache=0';
       if (kAdvanceConfig['isMultiLanguages']) {
         endPoint += '&lang=$lang';
       }
@@ -401,12 +407,14 @@ class WooCommerce extends BaseServices {
       if (maxPrice != null && maxPrice > 0) {
         endPoint += '&max_price=${(maxPrice as double).toInt().toString()}';
       }
-      if (orderBy != null) {
-        endPoint += '&orderby=$orderBy';
-      }
-      if (order != null) {
-        endPoint += '&order=$order';
-      }
+      // if (orderBy != null) {
+      // endPoint += '&orderby=$orderBy';
+      endPoint += '&orderby=$myOrderBy';
+      // }
+
+      // if (order != null) {
+      //   endPoint += '&order=$order';
+      endPoint += '&order=$myOrder'; // }
       if (featured != null) {
         endPoint += '&featured=$featured';
       }

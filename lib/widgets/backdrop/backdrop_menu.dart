@@ -8,6 +8,7 @@ import '../../common/tools/adaptive_tools.dart';
 import '../../generated/l10n.dart';
 import '../../models/entities/listing_location.dart';
 import '../../models/index.dart'
+// XX
     show
         AppModel,
         Category,
@@ -47,8 +48,6 @@ class _BackdropMenuState extends State<BackdropMenu> {
   String? categoryId = '-1';
   String? tagId = '-1';
   String? currentSlug;
-  FilterAttribute? myCurrentMainAttr; // AKA Class (Define for auto complete)
-  String? myPreviousSlug;
   String? listingLocationId;
   int currentSelectedAttr = -1;
 
@@ -62,8 +61,6 @@ class _BackdropMenuState extends State<BackdropMenu> {
 
   @override
   Widget build(BuildContext context) {
-    List? myActiveMainAttrList = [];
-
     final category = Provider.of<CategoryModel>(context);
     final tag = Provider.of<TagModel>(context);
     final selectLayout = Provider.of<AppModel>(context).productListLayout;
@@ -197,7 +194,8 @@ class _BackdropMenuState extends State<BackdropMenu> {
                     // Category Selection title
                     padding: const EdgeInsets.only(right: 15, top: 30),
                     child: Text(
-                      S.of(context).byCategory.toUpperCase(),
+                      // S.of(context).byCategory.toUpperCase(),
+                      'כל הקטגוריות',
                       style: Theme.of(context).textTheme.subtitle1!.copyWith(
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
@@ -216,13 +214,18 @@ class _BackdropMenuState extends State<BackdropMenu> {
                       child: TreeView(
                         parentList: [
                           for (var item in rootCategories)
+                            // if root item = spider usa pass ELSE do and add as level 2
                             Parent(
                               parent: CategoryItem(
                                 item,
                                 hasChild:
                                     hasChildren(catModel.categories, item.id),
                                 isSelected: item.id == categoryId,
-                                onTap: (category) => _onFilter(category, tagId),
+                                onTap: (category) {
+                                  _onFilter(category, tagId);
+                                  // print('categoryyy');
+                                  // print(category);
+                                },
                               ),
                               childList: ChildList(
                                 children: [
@@ -232,8 +235,11 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                       item,
                                       isParent: true,
                                       isSelected: item.id == categoryId,
-                                      onTap: (category) =>
-                                          _onFilter(category, tagId),
+                                      onTap: (category) {
+                                        _onFilter(category, tagId);
+                                        // print('categoryyy');
+                                        // print(category);
+                                      },
                                       level: 2,
                                     ),
                                   ..._getCategoryItems(
@@ -306,10 +312,6 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                     // myPreviousSlug = currentSlug;
                                     currentSlug =
                                         value.lstProductAttribute![index].slug;
-                                    myCurrentMainAttr =
-                                        value.lstProductAttribute![index];
-                                    print('myCurrentMainAttr');
-                                    print(myCurrentMainAttr!.name);
                                     value.getAttr(
                                         id: value
                                             .lstProductAttribute![index].id);
@@ -330,7 +332,8 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                   padding:
                                       const EdgeInsets.only(right: 15, top: 0),
                                   child: Text(
-                                    S.of(context).attributes.toUpperCase(),
+                                    // S.of(context).attributes.toUpperCase(),
+                                    'בחר מסנן',
                                     style: Theme.of(context)
                                         .textTheme
                                         .subtitle1!
@@ -414,60 +417,17 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                                                   .lstCurrentSelectedTerms[
                                                               index],
                                                           onSelected: (val) {
-                                                            print(value
-                                                                .lstCurrentAttr[
-                                                                    index]
-                                                                .name);
+                                                            // print(value.lstCurrentAttr[index].name);
                                                             // print(value.lstCurrentAttr);
-                                                            print(value
-                                                                .lstCurrentAttr
-                                                                .length);
+                                                            // print(value.lstCurrentAttr.length);
 
                                                             // print(value.lstCurrentSelectedTerms.length);
                                                             // for (var attr in value.lstCurrentAttr){}
 
-                                                            myActiveMainAttrList
-                                                                .add(
-                                                                    'myCurrentMainAttr!.name');
-                                                            print(
-                                                                myActiveMainAttrList);
-
-                                                            // value
-                                                            //     .updateAttributeSelectedItem(
-                                                            //         index, val);
-                                                            //
-                                                            // var forIndex = 0;
-                                                            // for (var item in value
-                                                            //     .lstCurrentAttr) {
-                                                            //   if (value
-                                                            //           .lstCurrentSelectedTerms[
-                                                            //       forIndex]) {
-                                                            //     print(
-                                                            //         'myCurrentMainAttr');
-                                                            //     print(
-                                                            //         myCurrentMainAttr!
-                                                            //             .name);
-                                                            //     myActiveMainAttrList
-                                                            //         .add(
-                                                            //             'myCurrentMainAttr!.name');
-                                                            //     return;
-                                                            //   } else {
-                                                            //     try {
-                                                            //       print('else');
-                                                            //       myActiveMainAttrList.remove(
-                                                            //           myCurrentMainAttr!
-                                                            //               .name);
-                                                            //     } catch (e) {
-                                                            //       print('e');
-                                                            //     }
-                                                            //   }
-                                                            //   ;
-                                                            //   print(
-                                                            //       myActiveMainAttrList);
-                                                            //   // print(value.lstCurrentAttr[forIndex].id);
-                                                            //
-                                                            //   forIndex++;
-                                                            // }
+                                                            // Original
+                                                            value
+                                                                .updateAttributeSelectedItem(
+                                                                    index, val);
                                                           },
                                                         ),
                                                       ),
@@ -669,12 +629,12 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  print(currentSlug); // AKA pa_brand
-                                  print(myPreviousSlug);
-                                  print(filterAttr.lstCurrentAttr);
-                                  print(filterAttr.lstCurrentAttr.length);
-                                  // print('currentSelectedTerms: ${filterAttr.lstCurrentSelectedTerms}');
-                                  //_onFilter(categoryId, tagId),
+                                  // print(currentSlug); // AKA pa_brand
+                                  // print(myPreviousSlug);
+                                  // print(filterAttr.lstCurrentAttr);
+                                  // print(filterAttr.lstCurrentAttr.length);
+
+                                  _onFilter(categoryId, tagId); // Original
                                 },
                                 child: Text(
                                   S.of(context).apply,

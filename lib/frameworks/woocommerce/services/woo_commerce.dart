@@ -154,10 +154,15 @@ class WooCommerce extends BaseServices {
           // EXCLUDE:
           // Original: 'products/categories?exclude=$kExcludedCategory&per_page=100&page=$page&hide_empty=true';
           // Example Array: 'products/categories?exclude=2354,5251&per_page=100&page=$page&hide_empty=true';
-          // Dynamic Array: 'products/categories?exclude=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
-          // INCLUDE:
-          // Example Array: 'products/categories?include=2341,2352,2343,5249,4939,2342&per_page=100&page=$page&hide_empty=true';
-          /* Dynamic Array: */ 'products/categories?include=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
+          // Dynamic Array:
+          'products/categories?exclude=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
+
+      // INCLUDE:
+      // Example Array: 'products/categories?include=2341,2352,2343,5249,4939,2342&per_page=100&page=$page&hide_empty=true';
+      // /* Dynamic Array: */ 'products/categories?include=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
+
+      // NoFilter:
+      // 'products/categories?&per_page=100&page=$page&hide_empty=true';
       if (lang != null && kAdvanceConfig['isMultiLanguages']) {
         url += '&lang=$lang';
       }

@@ -481,18 +481,31 @@ Map<String, dynamic> environment = {
       "color-image": "Màu"
     }
   },
-  // "excludedCategory": 2354,
-  "excludedCategory": [
-    2342,
-    5249,
-    2343,
+  // V V actually include (Categories ids like the web) V V
+/*  "excludedCategory": [
+    2342, 5249, 2343,
     // 4939,
-    2341,
-    2352,
-    5161,
+    2341, 2352, 5161,
     // 4905,
-    5188,
-  ],
+    5188,],*/
+
+  //   עזרה מדריכים והמלצות
+  //  2351
+  //  מותג Spider3D USA
+  //  4782
+  //  להיטים חמים
+  //  4836
+  //  חומרי גלם להדפסה
+  //  2352
+  //  PLA קל לעבודה
+  //  2354
+  //  מותג Spider3D USA
+  //  4782
+  //  מודלים להורדה חינם STL
+  // 2346
+
+  "excludedCategory": [2354, 2351, 2346],
+
   "saleOffProduct": {"ShowCountDown": true, "Color": "#C7222B"},
   "notStrictVisibleVariant": true,
   "configChat": {

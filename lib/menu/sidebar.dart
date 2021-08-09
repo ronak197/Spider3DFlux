@@ -214,7 +214,7 @@ class _MenuBarState extends State<SideBarMenu> {
   }
 
   Widget buildListCategory() {
-    final categories = Provider.of<CategoryModel>(context).categories;
+    var categories = Provider.of<CategoryModel>(context).myIncluded_categories;
     var widgets = <Widget>[];
 
     if (categories != null) {

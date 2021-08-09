@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:fstore/menu/sidebar.dart';
 import 'package:provider/provider.dart';
-
 import '../../../common/config.dart';
 import '../../../generated/l10n.dart';
 import '../../../models/index.dart'
@@ -77,7 +77,7 @@ class _StateMenuLayout extends State<MenuLayout> {
 
   List<Category>? getAllCategory() {
     final categories =
-        Provider.of<CategoryModel>(context, listen: true).categories;
+        Provider.of<CategoryModel>(context, listen: true).myIncluded_categories;
     if (categories == null) return null;
     var listCategories =
         categories.where((item) => item.parent == '0').toList();
@@ -114,7 +114,7 @@ class _StateMenuLayout extends State<MenuLayout> {
     return Column(
       children: <Widget>[
         Container(
-          height: 70,
+          height: 50,
           padding: const EdgeInsets.only(top: 15),
           child: ListView(
             scrollDirection: Axis.horizontal,
@@ -123,9 +123,11 @@ class _StateMenuLayout extends State<MenuLayout> {
                 onTap: () {
                   setState(() {
                     position = index;
+                    print(myIncluded_categories);
                   });
                   getAllListProducts(
-                      category: categories[index],
+                      // category: categories[index], // All categories
+                      category: myIncluded_categories[index],
                       lang: Provider.of<AppModel>(context, listen: false)
                           .langCode);
                 },
@@ -134,7 +136,7 @@ class _StateMenuLayout extends State<MenuLayout> {
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.only(bottom: 5),
                         child: Text(
                           categories[index].name!.toUpperCase(),
                           style: TextStyle(

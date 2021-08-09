@@ -138,7 +138,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "brand": MessageLookupByLibrary.simpleMessage("מותג"),
         "brazil": MessageLookupByLibrary.simpleMessage("פורטוגזית"),
         "buyNow": MessageLookupByLibrary.simpleMessage("קנה עכשיו"),
-        "byCategory": MessageLookupByLibrary.simpleMessage("לפי קטגוריה"),
+        "byCategory":
+            MessageLookupByLibrary.simpleMessage("לפי קטגוריה"), // original
+        // "byCategory": MessageLookupByLibrary.simpleMessage("כל הקטגרויות"),
         "byPrice": MessageLookupByLibrary.simpleMessage("לפי מחיר"),
         "byTag": MessageLookupByLibrary.simpleMessage("לפי תג"),
         "callTo": MessageLookupByLibrary.simpleMessage("התקשר אל"),

@@ -25,7 +25,7 @@ Map<String, dynamic> environment = {
     "DefaultLanguage": "he",
     "DetailedBlogLayout": "halfSizeImageType",
     "EnablePointReward": true,
-    "hideOutOfStock": false,
+    "hideOutOfStock": false, // Do Not change, cause weird stuff (:
     "EnableRating": false,
     "hideEmptyProductListRating": true,
     "EnableShipping": true,

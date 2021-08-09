@@ -200,7 +200,7 @@ class WooCommerce extends BaseServices {
   }
 
   // Options: date, id, include, title, slug, price, popularity and rating. Default is date
-  var myOrderBy = 'title'; // Shows Esun & Spider PLA 9/10 ⭐️
+  // var myOrderBy = 'date'; // Shows Esun & Spider PLA 9/10 ⭐️
   // Options: asc and desc. Default is desc.
   var myOrder = 'desc'; // my
 
@@ -250,7 +250,7 @@ class WooCommerce extends BaseServices {
         endPoint += '&lang=$lang';
       }
       if (config.containsKey('category') && config['category'] != null) {
-        endPoint += '&orderby=$myOrderBy';
+        endPoint += '&orderby=title';
         endPoint += '&order=$myOrder';
         endPoint += "&category=${config["category"]}";
       }
@@ -409,7 +409,7 @@ class WooCommerce extends BaseServices {
       }
       // if (orderBy != null) {
       // endPoint += '&orderby=$orderBy';
-      endPoint += '&orderby=$myOrderBy';
+      endPoint += '&orderby=popularity';
       // }
 
       // if (order != null) {

@@ -24,9 +24,14 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: hasChild!
-          ? null
+          ? () {
+              print(category.name);
+              print(category.id);
+            }
           : () {
-              onTap!(category.id);
+              // onTap!(category.id);
+              print(category.name);
+              print(category.id);
             },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10.0),

@@ -9,6 +9,7 @@ import 'entities/category.dart';
 class CategoryModel with ChangeNotifier {
   final Services _service = Services();
   List<Category>? categories;
+  List<Category> myIncluded_categories = [];
   Map<String?, Category> categoryList = {};
 
   bool isLoading = false;
@@ -55,6 +56,26 @@ class CategoryModel with ChangeNotifier {
     }
     this.categoryList = _categoryList;
     categories = result;
+    notifyListeners();
+
+    // My exclude categories
+    var myIncluded_ids = [
+      '2342', '5249', '2343',
+      // 4939,
+      '2341', '2352', '5161',
+      // 4905,
+      '5188',
+    ];
+    // print('categories');
+    // print(categories);
+
+    for (var cat in categories!) {
+      if (myIncluded_ids.contains(cat.id)) {
+        myIncluded_categories.add(cat);
+      }
+    }
+    // print('myIncluded_categories');
+    // print(myIncluded_categories);
     notifyListeners();
   }
 

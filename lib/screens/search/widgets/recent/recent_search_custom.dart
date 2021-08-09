@@ -6,6 +6,51 @@ import '../../../../generated/l10n.dart';
 import '../../../../models/search_model.dart';
 import 'recent_products_custom.dart';
 
+const ColorFilter invertColor = ColorFilter.matrix([
+  -1, //RED
+  0,
+  0,
+  0,
+  255, //GREEN
+  0,
+  -1,
+  0,
+  0,
+  255, //BLUE
+  0,
+  0,
+  -1,
+  0,
+  255, //ALPHA
+  0,
+  0,
+  0,
+  1,
+  0,
+]);
+const ColorFilter greyscale = ColorFilter.matrix(<double>[
+  0.2126,
+  0.7152,
+  0.0722,
+  0,
+  0,
+  0.2126,
+  0.7152,
+  0.0722,
+  0,
+  0,
+  0.2126,
+  0.7152,
+  0.0722,
+  0,
+  0,
+  0,
+  0,
+  0,
+  1,
+  0,
+]);
+
 class RecentSearchesCustom extends StatelessWidget {
   final Function? onTap;
 
@@ -24,29 +69,6 @@ class RecentSearchesCustom extends StatelessWidget {
       },
     );
   }
-
-  static const ColorFilter greyscale = ColorFilter.matrix(<double>[
-    0.2126,
-    0.7152,
-    0.0722,
-    0,
-    0,
-    0.2126,
-    0.7152,
-    0.0722,
-    0,
-    0,
-    0.2126,
-    0.7152,
-    0.0722,
-    0,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-  ]);
 
   Widget renderEmpty(context) {
     return Column(

@@ -273,7 +273,13 @@ class _BackdropState extends State<Backdrop>
       fit: StackFit.expand,
       children: <Widget>[
         Container(
-          color: Theme.of(context).primaryColor,
+          margin: const EdgeInsets.only(bottom: 35.0),
+          decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
+              )),
           child: widget.backLayer,
         ),
         PositionedTransition(

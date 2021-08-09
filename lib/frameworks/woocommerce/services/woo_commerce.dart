@@ -388,6 +388,9 @@ class WooCommerce extends BaseServices {
         endPoint += '&tag=$tagId';
       }
       if (minPrice != null) {
+        if (minPrice == '0' || minPrice == 0.0 || minPrice == 0) {
+          minPrice = 1.0;
+        } // my - To Remove 0₪ Products
         endPoint += '&min_price=${(minPrice as double).toInt().toString()}';
       }
       if (maxPrice != null && maxPrice > 0) {
@@ -416,6 +419,8 @@ class WooCommerce extends BaseServices {
       }
 
       printLog('-- fetchProductsByCategory --');
+      // endPoint = 'products?status=publish&per_page=20&page=1&skip_cache=1&category=2352&min_price=0&max_price=500&attribute=pa_brand, pa_color&attribute_term=5000, 5358,5004&user_id=649&consumer_key=ck_be61455d30704ff30718f80b417dd41c320b0cb0&consumer_secret=cs_79c75a8e1c40acfe530e6254f3cbb61a2e01f872';
+      // printLog('Endpoint is $endPoint'); // products?status=publish&per_page=20&page=1&skip_cache=1&category=5249&user_id=649
       var response = await wcApi.getAsync(endPoint, version: 3);
 
       if (response is Map && isNotBlank(response['message'])) {

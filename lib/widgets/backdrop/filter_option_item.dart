@@ -30,7 +30,7 @@ class FilterOptionItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: isValid == true
               ? selected == true
-                  ? Theme.of(context).backgroundColor
+                  ? Theme.of(context).backgroundColor.withOpacity(0.75)
                   : Colors.white.withOpacity(0.1)
               : Colors.white.withOpacity(0.1),
           borderRadius: BorderRadius.circular(6.0),
@@ -45,29 +45,34 @@ class FilterOptionItem extends StatelessWidget {
         constraints: const BoxConstraints(minWidth: 100),
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 13.0,
-            vertical: 20.0,
+            horizontal: 7.0,
+            vertical: 10.0,
           ),
-          child: Text(
-            title ?? '',
-            style: isValid == true
-                ? selected == true
-                    ? TextStyle(
-                        color: Theme.of(context).accentColor,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 1.2,
-                        fontSize: 15,
-                      )
-                    : TextStyle(
-                        color: Colors.white.withOpacity(0.7),
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 1.2,
-                        fontSize: 15,
-                      )
-                : TextStyle(
-                    color: Colors.white.withOpacity(0.7),
-                    fontWeight: FontWeight.bold,
-                  ),
+          child: Center(
+            child: Text(
+              title ?? '',
+              style: isValid == true
+                  ? selected == true
+                      ? Theme.of(context).textTheme.subtitle1!.copyWith(
+                            fontWeight: FontWeight.w700,
+                          )
+                      // TextStyle(
+                      //     color: Theme.of(context).accentColor,
+                      //     fontWeight: FontWeight.w700,
+                      //     letterSpacing: 1.2,
+                      //     fontSize: 15,
+                      //   )
+                      : TextStyle(
+                          color: Colors.white.withOpacity(0.7),
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 1.2,
+                          fontSize: 15,
+                        )
+                  : TextStyle(
+                      color: Colors.white.withOpacity(0.7),
+                      fontWeight: FontWeight.bold,
+                    ),
+            ),
           ),
         ),
       ),

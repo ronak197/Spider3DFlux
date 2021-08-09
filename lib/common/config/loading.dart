@@ -1,11 +1,12 @@
 part of '../config.dart';
 
 /// For Loading Widget
-Widget kLoadingWidget(context) {
+Widget kLoadingWidget(context, {color}) {
+  // The {} makes the color default value to null (my)
   var loadingConfig = Configurations.loadingIcon ?? {};
   var size = double.parse((loadingConfig['size'] ?? 30.0).toString());
   Widget icon;
-  var color = Theme.of(context).primaryColor;
+  color = color ?? Theme.of(context).primaryColor;
   switch (loadingConfig['type']) {
     case 'rotatingPlain':
       icon = SpinKitRotatingPlain(

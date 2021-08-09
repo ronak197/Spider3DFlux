@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/search/widgets/recent/recent_search_custom.dart';
 import 'package:provider/provider.dart';
-
 import '../../common/config.dart';
 import '../../common/constants.dart';
 import '../../common/tools.dart';
@@ -11,10 +11,11 @@ import '../../models/index.dart'
     show
         AppModel,
         Category,
-        TagModel,
         CategoryModel,
+        FilterAttribute,
         FilterAttributeModel,
-        ProductModel;
+        ProductModel,
+        TagModel;
 import '../../models/listing/listing_location_model.dart';
 import '../../services/service_config.dart';
 import '../common/tree_view.dart';
@@ -41,11 +42,13 @@ class BackdropMenu extends StatefulWidget {
 }
 
 class _BackdropMenuState extends State<BackdropMenu> {
-  double mixPrice = 0.0;
+  double minPrice = 0.0;
   double maxPrice = kMaxPriceFilter / 2;
   String? categoryId = '-1';
   String? tagId = '-1';
   String? currentSlug;
+  FilterAttribute? myCurrentMainAttr; // AKA Class (Define for auto complete)
+  String? myPreviousSlug;
   String? listingLocationId;
   int currentSelectedAttr = -1;
 
@@ -59,12 +62,18 @@ class _BackdropMenuState extends State<BackdropMenu> {
 
   @override
   Widget build(BuildContext context) {
+    List? myActiveMainAttrList = [];
+
     final category = Provider.of<CategoryModel>(context);
     final tag = Provider.of<TagModel>(context);
     final selectLayout = Provider.of<AppModel>(context).productListLayout;
     final currency = Provider.of<AppModel>(context).currency;
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final filterAttr = Provider.of<FilterAttributeModel>(context);
+    var maxPrice_str = PriceTools.getCurrencyFormatted(maxPrice, currencyRate,
+        currency: currency)!;
+    var minPrice_str = PriceTools.getCurrencyFormatted(minPrice, currencyRate,
+        currency: currency)!;
 
     late List<ListingLocation> locations;
     if (Config().isListingType) {
@@ -76,7 +85,7 @@ class _BackdropMenuState extends State<BackdropMenu> {
 
     Function _onFilter =
         (categoryId, tagId, {listingLocationId}) => widget.onFilter!(
-              minPrice: mixPrice,
+              minPrice: minPrice,
               maxPrice: maxPrice,
               categoryId: categoryId,
               tagId: tagId,
@@ -135,8 +144,10 @@ class _BackdropMenuState extends State<BackdropMenu> {
                         )
                       : const SizedBox(),
                   const SizedBox(height: 10),
+
+                  // Layout title & selection
                   Padding(
-                    padding: const EdgeInsets.only(left: 15),
+                    padding: const EdgeInsets.only(right: 15),
                     child: Text(
                       S.of(context).layout.toUpperCase(),
                       style: Theme.of(context).textTheme.subtitle1!.copyWith(
@@ -180,8 +191,11 @@ class _BackdropMenuState extends State<BackdropMenu> {
                         )
                     ],
                   ),
+
+                  // Category title & bubble
                   Padding(
-                    padding: const EdgeInsets.only(left: 15, top: 30),
+                    // Category Selection title
+                    padding: const EdgeInsets.only(right: 15, top: 30),
                     child: Text(
                       S.of(context).byCategory.toUpperCase(),
                       style: Theme.of(context).textTheme.subtitle1!.copyWith(
@@ -191,6 +205,7 @@ class _BackdropMenuState extends State<BackdropMenu> {
                     ),
                   ),
                   Padding(
+                    // Category Selection bubble
                     padding: const EdgeInsets.symmetric(
                         horizontal: 15, vertical: 10),
                     child: Container(
@@ -231,9 +246,11 @@ class _BackdropMenuState extends State<BackdropMenu> {
                       ),
                     ),
                   ),
+
+                  // location (?)
                   if (Config().isListingType)
                     Padding(
-                      padding: const EdgeInsets.only(left: 15, top: 30),
+                      padding: const EdgeInsets.only(right: 15, top: 30),
                       child: Text(
                         S.of(context).location.toUpperCase(),
                         style: Theme.of(context).textTheme.subtitle1!.copyWith(
@@ -270,66 +287,8 @@ class _BackdropMenuState extends State<BackdropMenu> {
                   if (!Config().isListingType &&
                       Config().type != ConfigType.shopify) ...[
                     const SizedBox(height: 30),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: Text(
-                        S.of(context).byPrice.toUpperCase(),
-                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          PriceTools.getCurrencyFormatted(
-                              mixPrice, currencyRate,
-                              currency: currency)!,
-                          style:
-                              Theme.of(context).textTheme.headline6!.copyWith(
-                                    color: Colors.white,
-                                  ),
-                        ),
-                        const Text(
-                          ' - ',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                        Text(
-                          PriceTools.getCurrencyFormatted(
-                              maxPrice, currencyRate,
-                              currency: currency)!,
-                          style:
-                              Theme.of(context).textTheme.headline6!.copyWith(
-                                    color: Colors.white,
-                                  ),
-                        )
-                      ],
-                    ),
-                    SliderTheme(
-                      data: const SliderThemeData(
-                        activeTrackColor: Color(kSliderActiveColor),
-                        inactiveTrackColor: Color(kSliderInactiveColor),
-                        activeTickMarkColor: Colors.white70,
-                        inactiveTickMarkColor: Colors.white,
-                        overlayColor: Colors.white12,
-                        thumbColor: Color(kSliderActiveColor),
-                        showValueIndicator: ShowValueIndicator.always,
-                      ),
-                      child: RangeSlider(
-                        min: 0.0,
-                        max: kMaxPriceFilter,
-                        divisions: kFilterDivision,
-                        values: RangeValues(mixPrice, maxPrice),
-                        onChanged: (RangeValues values) {
-                          setState(() {
-                            mixPrice = values.start;
-                            maxPrice = values.end;
-                          });
-                        },
-                      ),
-                    ),
+
+                    // Attributes title & bubbles (Not Visible)
                     ListenableProvider.value(
                       value: filterAttr,
                       child: Consumer<FilterAttributeModel>(
@@ -338,19 +297,26 @@ class _BackdropMenuState extends State<BackdropMenu> {
                             var list = List<Widget>.generate(
                               value.lstProductAttribute!.length,
                               (index) {
+                                // Main attr bubble
                                 return FilterOptionItem(
                                   enabled: !value.isLoading,
                                   onTap: () {
                                     currentSelectedAttr = index;
 
+                                    // myPreviousSlug = currentSlug;
                                     currentSlug =
                                         value.lstProductAttribute![index].slug;
+                                    myCurrentMainAttr =
+                                        value.lstProductAttribute![index];
+                                    print('myCurrentMainAttr');
+                                    print(myCurrentMainAttr!.name);
                                     value.getAttr(
                                         id: value
                                             .lstProductAttribute![index].id);
+                                    // print(value.lstProductAttribute![index].name); // List of Main attr
                                   },
-                                  title: value.lstProductAttribute![index].name!
-                                      .toUpperCase(),
+                                  title:
+                                      value.lstProductAttribute![index].name!,
                                   isValid: currentSelectedAttr != -1,
                                   selected: currentSelectedAttr == index,
                                 );
@@ -362,7 +328,7 @@ class _BackdropMenuState extends State<BackdropMenu> {
                               children: <Widget>[
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(left: 15, top: 30),
+                                      const EdgeInsets.only(right: 15, top: 0),
                                   child: Text(
                                     S.of(context).attributes.toUpperCase(),
                                     style: Theme.of(context)
@@ -391,15 +357,16 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                 value.isLoading
                                     ? Center(
                                         child: Container(
-                                          margin: const EdgeInsets.only(
-                                            top: 10.0,
-                                          ),
-                                          width: 25.0,
-                                          height: 25.0,
-                                          child:
-                                              const CircularProgressIndicator(
-                                                  strokeWidth: 2.0),
-                                        ),
+                                            margin: const EdgeInsets.only(
+                                              top: 20.0,
+                                            ),
+                                            width: 35.0,
+                                            height: 35.0,
+                                            child: kLoadingWidget(context,
+                                                color: Colors.white
+                                                    .withOpacity(0.60))
+                                            // const CircularProgressIndicator(strokeWidth: 2.0),
+                                            ),
                                       )
                                     : Container(
                                         margin: const EdgeInsets.symmetric(
@@ -414,19 +381,95 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                                       margin: const EdgeInsets
                                                               .symmetric(
                                                           horizontal: 5),
-                                                      child: FilterChip(
-                                                        label: Text(value
-                                                            .lstCurrentAttr[
-                                                                index]
-                                                            .name!),
-                                                        selected: value
-                                                                .lstCurrentSelectedTerms[
-                                                            index],
-                                                        onSelected: (val) {
-                                                          value
-                                                              .updateAttributeSelectedItem(
-                                                                  index, val);
-                                                        },
+                                                      child: Theme(
+                                                        data: ThemeData(
+                                                            canvasColor: Colors
+                                                                .transparent),
+                                                        // Sub attr bubbles
+                                                        child: FilterChip(
+                                                          backgroundColor: Theme
+                                                                  .of(context)
+                                                              .backgroundColor
+                                                              .withOpacity(
+                                                                  0.15),
+                                                          // selectedColor: Theme.of(context).backgroundColor.withOpacity(0.75),
+                                                          checkmarkColor: Colors
+                                                              .white
+                                                              .withOpacity(0.7),
+                                                          label: Text(
+                                                              value
+                                                                  .lstCurrentAttr[
+                                                                      index]
+                                                                  .name!,
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .white
+                                                                    .withOpacity(
+                                                                        0.7),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              )),
+                                                          selected: value
+                                                                  .lstCurrentSelectedTerms[
+                                                              index],
+                                                          onSelected: (val) {
+                                                            print(value
+                                                                .lstCurrentAttr[
+                                                                    index]
+                                                                .name);
+                                                            // print(value.lstCurrentAttr);
+                                                            print(value
+                                                                .lstCurrentAttr
+                                                                .length);
+
+                                                            // print(value.lstCurrentSelectedTerms.length);
+                                                            // for (var attr in value.lstCurrentAttr){}
+
+                                                            myActiveMainAttrList
+                                                                .add(
+                                                                    'myCurrentMainAttr!.name');
+                                                            print(
+                                                                myActiveMainAttrList);
+
+                                                            // value
+                                                            //     .updateAttributeSelectedItem(
+                                                            //         index, val);
+                                                            //
+                                                            // var forIndex = 0;
+                                                            // for (var item in value
+                                                            //     .lstCurrentAttr) {
+                                                            //   if (value
+                                                            //           .lstCurrentSelectedTerms[
+                                                            //       forIndex]) {
+                                                            //     print(
+                                                            //         'myCurrentMainAttr');
+                                                            //     print(
+                                                            //         myCurrentMainAttr!
+                                                            //             .name);
+                                                            //     myActiveMainAttrList
+                                                            //         .add(
+                                                            //             'myCurrentMainAttr!.name');
+                                                            //     return;
+                                                            //   } else {
+                                                            //     try {
+                                                            //       print('else');
+                                                            //       myActiveMainAttrList.remove(
+                                                            //           myCurrentMainAttr!
+                                                            //               .name);
+                                                            //     } catch (e) {
+                                                            //       print('e');
+                                                            //     }
+                                                            //   }
+                                                            //   ;
+                                                            //   print(
+                                                            //       myActiveMainAttrList);
+                                                            //   // print(value.lstCurrentAttr[forIndex].id);
+                                                            //
+                                                            //   forIndex++;
+                                                            // }
+                                                          },
+                                                        ),
                                                       ),
                                                     );
                                                   },
@@ -441,101 +484,168 @@ class _BackdropMenuState extends State<BackdropMenu> {
                       ),
                     ),
                   ],
-                  ListenableProvider.value(
-                    value: tag,
-                    child: Consumer<TagModel>(
-                      builder: (context, TagModel tagModel, _) {
-                        if (tagModel.tagList?.isEmpty ?? true) {
-                          return const SizedBox();
-                        }
 
-                        // my tag filter
-                        // var myNewTagsList = [];
-                        // var myTagsList = tagModel.tagList;
-                        // print('--------');
-                        // // print('myTagsList $myTagsList');
-                        // print('${myTagsList!.length}');
-                        // print('${catModel.categories.}');
-                        // print('--------');
-                        // for (var tag in myTagsList) {
-                        //   // print(tag.name);
-                        //   // switch(tag.name){
-                        //   // case 'a':
-                        // }
-                        // }
-                        // myNewTagsList.add(myTagsList);
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: tagModel.isLoading
-                              ? [
-                                  Center(
-                                    child: Container(
-                                      child: kLoadingWidget(context),
-                                    ),
-                                  )
-                                ]
-                              : [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: 15,
-                                      top: 30,
-                                    ),
-                                    child: Text(
-                                      S.of(context).byTag.toUpperCase(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .subtitle1!
-                                          .copyWith(
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.white,
-                                          ),
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.only(
-                                      left: 10.0,
-                                    ),
-                                    constraints: const BoxConstraints(
-                                      maxHeight: 200,
-                                    ),
-                                    child: GridView.count(
-                                      scrollDirection: Axis.horizontal,
-                                      shrinkWrap: true,
-                                      crossAxisCount: 2,
-                                      children: List.generate(
-                                        tagModel.tagList?.length ?? 0,
-                                        (index) {
-                                          final selected = tagId ==
-                                              tagModel.tagList![index].id
-                                                  .toString();
-                                          return FilterOptionItem(
-                                            enabled: !tagModel.isLoading,
-                                            selected: selected,
-                                            isValid: tagId != '-1',
-                                            title: tagModel
-                                                .tagList![index].name!
-                                                .toUpperCase(),
-                                            onTap: () {
-                                              setState(() {
-                                                if (selected) {
-                                                  tagId = null;
-                                                } else {
-                                                  tagId = tagModel
-                                                      .tagList![index].id
-                                                      .toString();
-                                                }
-                                              });
-                                            },
-                                          );
-                                        },
+                  // Tag title & bubbles (Not Visible)
+                  Visibility(
+                    visible: false,
+                    child: ListenableProvider.value(
+                      value: tag,
+                      child: Consumer<TagModel>(
+                        builder: (context, TagModel tagModel, _) {
+                          if (tagModel.tagList?.isEmpty ?? true) {
+                            return const SizedBox();
+                          }
+
+                          // my tag filter
+                          // var myNewTagsList = [];
+                          // var myTagsList = tagModel.tagList;
+                          // print('--------');
+                          // // print('myTagsList $myTagsList');
+                          // print('${myTagsList!.length}');
+                          // print('${catModel.categories.}');
+                          // print('--------');
+                          // for (var tag in myTagsList) {
+                          //   // print(tag.name);
+                          //   // switch(tag.name){
+                          //   // case 'a':
+                          // }
+                          // }
+                          // myNewTagsList.add(myTagsList);
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: tagModel.isLoading
+                                ? [
+                                    Center(
+                                      child: Container(
+                                        child: kLoadingWidget(context),
+                                      ),
+                                    )
+                                  ]
+                                : [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 15,
+                                        top: 30,
+                                      ),
+                                      child: Text(
+                                        S.of(context).byTag.toUpperCase(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .subtitle1!
+                                            .copyWith(
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.white,
+                                            ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                        );
+                                    Container(
+                                      padding: const EdgeInsets.only(
+                                        left: 10.0,
+                                      ),
+                                      constraints: const BoxConstraints(
+                                        maxHeight: 200,
+                                      ),
+                                      child: GridView.count(
+                                        scrollDirection: Axis.horizontal,
+                                        shrinkWrap: true,
+                                        crossAxisCount: 2,
+                                        children: List.generate(
+                                          tagModel.tagList?.length ?? 0,
+                                          (index) {
+                                            final selected = tagId ==
+                                                tagModel.tagList![index].id
+                                                    .toString();
+                                            return FilterOptionItem(
+                                              enabled: !tagModel.isLoading,
+                                              selected: selected,
+                                              isValid: tagId != '-1',
+                                              title: tagModel
+                                                  .tagList![index].name!
+                                                  .toUpperCase(),
+                                              onTap: () {
+                                                setState(() {
+                                                  if (selected) {
+                                                    tagId = null;
+                                                  } else {
+                                                    tagId = tagModel
+                                                        .tagList![index].id
+                                                        .toString();
+                                                  }
+                                                });
+                                              },
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+
+                  // Price title & Filter
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: Text(
+                      S.of(context).byPrice.toUpperCase(),
+                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        minPrice_str.length > 8
+                            ? minPrice_str.substring(0, 8)
+                            : minPrice_str.replaceAll('.0', ''),
+                        style: Theme.of(context).textTheme.headline6!.copyWith(
+                              color: Colors.white,
+                            ),
+                      ),
+                      const Text(
+                        ' - ',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      Text(
+                        maxPrice_str.length > 8
+                            ? maxPrice_str.substring(0, 8)
+                            : maxPrice_str.replaceAll('.0', ''),
+                        style: Theme.of(context).textTheme.headline6!.copyWith(
+                              color: Colors.white,
+                            ),
+                      )
+                    ],
+                  ),
+                  SliderTheme(
+                    data: const SliderThemeData(
+                      activeTrackColor: Color(kSliderActiveColor),
+                      inactiveTrackColor: Color(kSliderInactiveColor),
+                      activeTickMarkColor: Colors.white70,
+                      inactiveTickMarkColor: Colors.white,
+                      overlayColor: Colors.white12,
+                      thumbColor: Color(kSliderActiveColor),
+                      showValueIndicator: ShowValueIndicator.always,
+                    ),
+                    child: RangeSlider(
+                      min: 0.0,
+                      max: kMaxPriceFilter,
+                      divisions: kFilterDivision,
+                      values: RangeValues(minPrice, maxPrice),
+                      onChanged: (RangeValues values) {
+                        setState(() {
+                          minPrice = values.start;
+                          maxPrice = values.end;
+                        });
                       },
                     ),
                   ),
+
+                  // Apply Button
                   if (!Config().isListingType)
                     Padding(
                       padding: const EdgeInsets.only(
@@ -558,7 +668,14 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                     borderRadius: BorderRadius.circular(3.0),
                                   ),
                                 ),
-                                onPressed: () => _onFilter(categoryId, tagId),
+                                onPressed: () {
+                                  print(currentSlug); // AKA pa_brand
+                                  print(myPreviousSlug);
+                                  print(filterAttr.lstCurrentAttr);
+                                  print(filterAttr.lstCurrentAttr.length);
+                                  // print('currentSelectedTerms: ${filterAttr.lstCurrentSelectedTerms}');
+                                  //_onFilter(categoryId, tagId),
+                                },
                                 child: Text(
                                   S.of(context).apply,
                                   style: Theme.of(context)

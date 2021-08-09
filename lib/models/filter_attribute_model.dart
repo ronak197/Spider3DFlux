@@ -33,7 +33,7 @@ class FilterAttributeModel with ChangeNotifier {
         notifyListeners();
       }
       lstCurrentAttr = await _service.api.getSubAttributes(id: id)!;
-      // Remove duplicates item
+      // my (I comment to not Remove duplicates item)
       for (var index = 0; index < lstCurrentAttr.length; index++) {
         final currentProduct = lstCurrentAttr[index];
         final listDuplicate = lstCurrentAttr

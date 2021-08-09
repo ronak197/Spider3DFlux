@@ -142,7 +142,6 @@ class Product {
         .toList();
   }
 
-
   Product.copyWith(Product p) {
     id = p.id;
     sku = p.sku;

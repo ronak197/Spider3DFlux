@@ -31,7 +31,7 @@ class ProductListDefault extends StatelessWidget {
     var _ratioProductImage =
         Provider.of<AppModel>(context, listen: false).ratioProductImage;
 
-        // V V Save to Shared Preferences BETA
+    // V V Save to Shared Preferences BETA
 
 /*    print('products_list_default.dart products:');
     print(layout);

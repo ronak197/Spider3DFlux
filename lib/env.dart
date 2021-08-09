@@ -504,7 +504,7 @@ Map<String, dynamic> environment = {
   //  מודלים להורדה חינם STL
   // 2346
 
-  "excludedCategory": [2354, 2351, 2346],
+  "excludedCategory": [2354, 2351, 2346, 5249],
 
   "saleOffProduct": {"ShowCountDown": true, "Color": "#C7222B"},
   "notStrictVisibleVariant": true,

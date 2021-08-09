@@ -48,6 +48,8 @@ class ProductList extends StatelessWidget {
       child: ({maxWidth, products}) {
         final _durationInMilliSeconds =
             getCountDownDuration(products, _isSaleOffLayout);
+        // print('products_list.dart products:');
+        // print(products);
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

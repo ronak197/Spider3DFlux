@@ -1,10 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../models/index.dart' show AppModel;
+import '../../../models/index.dart' show AppModel, Product;
 import '../../../services/index.dart';
 import '../helper/custom_physic.dart';
 import '../helper/helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProductListDefault extends StatelessWidget {
   final width;
@@ -27,6 +30,27 @@ class ProductListDefault extends StatelessWidget {
     if (products == null) return Container();
     var _ratioProductImage =
         Provider.of<AppModel>(context, listen: false).ratioProductImage;
+
+        // V V Save to Shared Preferences BETA
+
+/*    print('products_list_default.dart products:');
+    print(layout);
+    // print(products);
+    print(json.encode(products.toString()));
+
+    getRecentView() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var _products = prefs.getString('products2_pref') ?? products.toString();
+      await prefs.setString('products2_pref', _products);
+
+      // List<Product> products_pref = json.decode(prefs.getString(_products).toString());
+      // List<Product> products_pref = json.decode('[{ id: 27469 name: פילמנט אפור Gray +PLA מהמותג eSUN איסאן }, { id: 27469 name: פילמנט אפור Gray +PLA מהמותג eSUN איסאן }, { id: 27469 name: פילמנט אפור Gray +PLA מהמותג eSUN איסאן }, { id: 27469 name: פילמנט אפור Gray +PLA מהמותג eSUN איסאן }, { id: 27469 name: פילמנט אפור Gray +PLA מהמותג eSUN איסאן }]');
+      // print(products_pref);
+      // print(products_pref.runtimeType);
+      // if (layout == 'recentView') {}
+    }*/
+
+    getRecentView();
 
     return Container(
       color: Theme.of(context).backgroundColor,

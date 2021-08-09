@@ -101,10 +101,31 @@ class _BackdropMenuState extends State<BackdropMenu> {
           }
 
           if (catModel.categories != null) {
+            // print('catModel.categories');
+            // for (var x in catModel.categories!) {
+            //   print(x);
+            //   print(x.parent);
+            // }
+
+            // My Rec Category menu change categories place (Root or Sub category)
+            catModel.categories!.forEach((element) {
+              switch (element.name) {
+                case 'מותג Spider3D USA': // .id = 4782
+                  print("'Spider USA': Root -> 'חומרי גלם להדפסה'");
+                  element.parent = '2352';
+                  break;
+
+                case 'חלקי חילוף מקוריים לארטילרי': // .id 5161
+                  print(
+                      "'חלקי חילוף מקוריים לארטילרי': Root -> 'שדרוגים וחלפים למדפסות'");
+                  element.parent = '2342';
+                  break;
+              }
+            });
+
             var rootCategories = catModel.categories!
                 .where((item) => item.parent == '0')
-                .toList()
-                .skipWhile((value) => value.id == '4782');
+                .toList();
 
             return SingleChildScrollView(
               child: Column(

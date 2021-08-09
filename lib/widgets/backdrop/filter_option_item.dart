@@ -51,6 +51,7 @@ class FilterOptionItem extends StatelessWidget {
           child: Center(
             child: Text(
               title ?? '',
+              textAlign: TextAlign.center,
               style: isValid == true
                   ? selected == true
                       ? Theme.of(context).textTheme.subtitle1!.copyWith(

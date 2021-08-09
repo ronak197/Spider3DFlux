@@ -42,6 +42,7 @@ class SimpleListView extends StatelessWidget {
     );
 
     void onTapProduct() {
+      print(item);
       if (item!.imageFeature == '') return;
       FluxNavigate.pushNamed(
         RouteList.productDetail,

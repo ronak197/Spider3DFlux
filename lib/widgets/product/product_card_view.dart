@@ -293,10 +293,10 @@ class ProductCard extends StatelessWidget {
             top: 0,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-              decoration: const BoxDecoration(
-                  color: Colors.redAccent,
-                  borderRadius:
-                      BorderRadius.only(bottomRight: Radius.circular(12))),
+              decoration: BoxDecoration(
+                  color: kColorSpiderRed.withOpacity(0.70),
+                  borderRadius: const BorderRadius.only(
+                      bottomRight: Radius.circular(12))),
               child: Text(
                 '$salePercent%',
                 style: Theme.of(context)
@@ -317,10 +317,10 @@ class ProductCard extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: const BoxDecoration(
-                  color: Colors.redAccent,
+              decoration: BoxDecoration(
+                  color: kColorSpiderRed.withOpacity(0.70),
                   borderRadius:
-                      BorderRadius.only(bottomRight: Radius.circular(8))),
+                      const BorderRadius.only(bottomRight: Radius.circular(8))),
               child: Text(
                 S.of(context).onSale,
                 style: const TextStyle(

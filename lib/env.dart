@@ -25,11 +25,11 @@ Map<String, dynamic> environment = {
     "DefaultLanguage": "he",
     "DetailedBlogLayout": "halfSizeImageType",
     "EnablePointReward": true,
-    "hideOutOfStock": false, // Do Not change, cause weird stuff (:
+    "hideOutOfStock": false, // Do not change to True, HardCoded hideOutOfStock
     "EnableRating": false,
     "hideEmptyProductListRating": true,
     "EnableShipping": true,
-    "EnableSkuSearch": true,
+    "EnableSkuSearch": false,
     "showStockStatus": false,
     "GridCount": 3,
     "DefaultCurrency": {
@@ -482,12 +482,13 @@ Map<String, dynamic> environment = {
     }
   },
   // V V actually include (Categories ids like the web) V V
-/*  "excludedCategory": [
+  "excludedCategory": [
     2342, 5249, 2343,
     // 4939,
     2341, 2352, 5161,
     // 4905,
-    5188,],*/
+    5188,
+  ],
 
   //   עזרה מדריכים והמלצות
   //  2351
@@ -504,7 +505,7 @@ Map<String, dynamic> environment = {
   //  מודלים להורדה חינם STL
   // 2346
 
-  "excludedCategory": [2354, 2351, 2346, 5249],
+  // "excludedCategory": [2354, 2351, 2346, 5249],
 
   "saleOffProduct": {"ShowCountDown": true, "Color": "#C7222B"},
   "notStrictVisibleVariant": true,

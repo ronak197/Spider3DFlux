@@ -127,6 +127,87 @@ class _BackdropMenuState extends State<BackdropMenu> {
                 .where((item) => item.parent == '0')
                 .toList();
 
+            // My Filter order
+            void replaceInList(List list, a, b) {
+              // Define values places
+              var list_len = list.length;
+              var a_index = list.indexOf(a);
+              var b_index = list.indexOf(b);
+
+              // Add (1) Value if not in list
+              if (a_index == -1) list.add(a); // AKA null
+              if (b_index == -1) list.add(b);
+
+              // Redefine values places
+              a_index = list.indexOf(a);
+              b_index = list.indexOf(b);
+
+              // Switch between their places
+              list.insert(a_index, b); // means .addAt
+              list.removeAt(a_index + 1);
+
+              list.insert(b_index, a); // means .addAt
+              list.removeAt(b_index + 1);
+
+              // Remove rest unnecessary value if left
+              if (list_len != list.length) list.removeAt(list.length - 1);
+            }
+
+            print('value.lstProductAttribute!');
+            print(filterAttr.lstProductAttribute!.length);
+            var myOrderFilters = filterAttr.lstProductAttribute;
+
+            // My Replace places of values in the list (A,B,C -> B,A,C), At Least 1 value should be in list!
+
+            var forIndex = 0;
+            // if (1 == 1) return categories;
+            for (var item in filterAttr.lstProductAttribute!) {
+              switch (item.name) {
+                case 'סוג פילמנט':
+                  replaceInList(myOrderFilters!, myOrderFilters[forIndex],
+                      myOrderFilters[0]);
+                  forIndex++;
+                  break;
+                case 'צבע':
+                  item.name = 'צבע פילמנט';
+                  replaceInList(myOrderFilters!, myOrderFilters[forIndex],
+                      myOrderFilters[2]);
+                  forIndex++;
+                  break;
+                case 'מותג':
+                  replaceInList(myOrderFilters!, myOrderFilters[forIndex],
+                      myOrderFilters[1]);
+                  forIndex++;
+                  break;
+                case 'מצב':
+                  item.name = 'מצב פילמנט';
+                  replaceInList(myOrderFilters!, myOrderFilters[forIndex],
+                      myOrderFilters[3]);
+                  forIndex++;
+                  break;
+                case 'שטח הדפסה':
+                  replaceInList(myOrderFilters!, myOrderFilters[forIndex],
+                      myOrderFilters[4]);
+                  forIndex++;
+                  break;
+                case 'מבנה גוף מדפסת':
+                  replaceInList(myOrderFilters!, myOrderFilters[forIndex],
+                      myOrderFilters[5]);
+                  forIndex++;
+                  break;
+                case 'שיטת כיול':
+                  replaceInList(myOrderFilters!, myOrderFilters[forIndex],
+                      myOrderFilters[6]);
+                  forIndex++;
+                  break;
+                default:
+                  // print('$forIndex');
+                  forIndex++;
+                // print(forIndex);
+              }
+            }
+            // filterAttr.lstProductAttribute = myOrderFilters;
+
             return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,65 +293,71 @@ class _BackdropMenuState extends State<BackdropMenu> {
                   ),
 
                   // Category title & bubble
-                  Padding(
-                    // Category Selection title
-                    padding: const EdgeInsets.only(right: 15, top: 30),
-                    child: Text(
-                      // S.of(context).byCategory.toUpperCase(),
-                      'כל הקטגוריות',
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                          ),
+                  Visibility(
+                    visible: false,
+                    child: Padding(
+                      // Category Selection title
+                      padding: const EdgeInsets.only(right: 15, top: 30),
+                      child: Text(
+                        // S.of(context).byCategory.toUpperCase(),
+                        'כל הקטגוריות',
+                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                      ),
                     ),
                   ),
-                  Padding(
-                    // Category Selection bubble
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 10),
-                    child: Container(
-                      padding: const EdgeInsets.only(top: 10.0, bottom: 10),
-                      decoration: BoxDecoration(
-                          color: Colors.white12,
-                          borderRadius: BorderRadius.circular(3.0)),
-                      child: TreeView(
-                        parentList: [
-                          for (var item in rootCategories)
-                            // if root item = spider usa pass ELSE do and add as level 2
-                            Parent(
-                              parent: CategoryItem(
-                                item,
-                                hasChild:
-                                    hasChildren(catModel.categories, item.id),
-                                isSelected: item.id == categoryId,
-                                onTap: (category) {
-                                  _onFilter(category, tagId);
-                                  // print('categoryyy');
-                                  // print(category);
-                                },
+                  Visibility(
+                    visible: false,
+                    child: Padding(
+                      // Category Selection bubble
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 10),
+                      child: Container(
+                        padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.white12,
+                            borderRadius: BorderRadius.circular(3.0)),
+                        child: TreeView(
+                          parentList: [
+                            for (var item in rootCategories)
+                              // if root item = spider usa pass ELSE do and add as level 2
+                              Parent(
+                                parent: CategoryItem(
+                                  item,
+                                  hasChild:
+                                      hasChildren(catModel.categories, item.id),
+                                  isSelected: item.id == categoryId,
+                                  onTap: (category) {
+                                    _onFilter(category, tagId);
+                                    // print('categoryyy');
+                                    // print(category);
+                                  },
+                                ),
+                                childList: ChildList(
+                                  children: [
+                                    if (hasChildren(
+                                        catModel.categories, item.id)!)
+                                      CategoryItem(
+                                        item,
+                                        isParent: true,
+                                        isSelected: item.id == categoryId,
+                                        onTap: (category) {
+                                          _onFilter(category, tagId);
+                                          // print('categoryyy');
+                                          // print(category);
+                                        },
+                                        level: 2,
+                                      ),
+                                    ..._getCategoryItems(catModel.categories!,
+                                        item.id, _onFilter,
+                                        level: 2)
+                                  ],
+                                ),
                               ),
-                              childList: ChildList(
-                                children: [
-                                  if (hasChildren(
-                                      catModel.categories, item.id)!)
-                                    CategoryItem(
-                                      item,
-                                      isParent: true,
-                                      isSelected: item.id == categoryId,
-                                      onTap: (category) {
-                                        _onFilter(category, tagId);
-                                        // print('categoryyy');
-                                        // print(category);
-                                      },
-                                      level: 2,
-                                    ),
-                                  ..._getCategoryItems(
-                                      catModel.categories!, item.id, _onFilter,
-                                      level: 2)
-                                ],
-                              ),
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -316,7 +403,7 @@ class _BackdropMenuState extends State<BackdropMenu> {
                       Config().type != ConfigType.shopify) ...[
                     const SizedBox(height: 30),
 
-                    // Attributes title & bubbles (Not Visible)
+                    // Attributes title & bubbles
                     ListenableProvider.value(
                       value: filterAttr,
                       child: Consumer<FilterAttributeModel>(
@@ -355,7 +442,7 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                       const EdgeInsets.only(right: 15, top: 0),
                                   child: Text(
                                     // S.of(context).attributes.toUpperCase(),
-                                    'בחר מסנן',
+                                    'בחר מסנן:',
                                     style: Theme.of(context)
                                         .textTheme
                                         .subtitle1!

@@ -155,11 +155,11 @@ class WooCommerce extends BaseServices {
           // Original: 'products/categories?exclude=$kExcludedCategory&per_page=100&page=$page&hide_empty=true';
           // Example Array: 'products/categories?exclude=2354,5251&per_page=100&page=$page&hide_empty=true';
           // Dynamic Array:
-          'products/categories?exclude=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
+          // 'products/categories?exclude=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
 
-      // INCLUDE:
-      // Example Array: 'products/categories?include=2341,2352,2343,5249,4939,2342&per_page=100&page=$page&hide_empty=true';
-      // /* Dynamic Array: */ 'products/categories?include=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
+          // INCLUDE:
+          // Example Array: 'products/categories?include=2341,2352,2343,5249,4939,2342&per_page=100&page=$page&hide_empty=true';
+          /* Dynamic Array: */ 'products/categories?include=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
 
       // NoFilter:
       // 'products/categories?&per_page=100&page=$page&hide_empty=true';
@@ -250,6 +250,7 @@ class WooCommerce extends BaseServices {
         endPoint += '&lang=$lang';
       }
       if (config.containsKey('category') && config['category'] != null) {
+        endPoint += '&stock_status=instock';
         endPoint += '&orderby=title';
         endPoint += '&order=$myOrder';
         endPoint += "&category=${config["category"]}";
@@ -424,9 +425,9 @@ class WooCommerce extends BaseServices {
       if (attribute != null && attributeTerm != null) {
         endPoint += '&attribute=$attribute&attribute_term=$attributeTerm';
       }
-      if (kAdvanceConfig['hideOutOfStock']) {
-        endPoint += '&stock_status=instock';
-      }
+      // if (kAdvanceConfig['hideOutOfStock']) {
+      endPoint += '&stock_status=instock';
+      // }
       if (userId != null) {
         endPoint += '&user_id=$userId';
       }
@@ -771,7 +772,7 @@ class WooCommerce extends BaseServices {
       {User? user, dynamic cursor}) async {
     try {
       var response = await wcApi.getAsync(
-          'orders?customer=${user!.id}&per_page=20&page=$cursor&order=desc&orderby=id');
+          'orders?customer=${user!.id}&per_page=100&page=$cursor&order=desc&orderby=id');
       var list = <Order>[];
       if (response is Map && isNotBlank(response['message'])) {
         throw Exception(response['message']);
@@ -792,7 +793,7 @@ class WooCommerce extends BaseServices {
       {String? userId, String? orderId}) async {
     try {
       var response = await wcApi
-          .getAsync('orders/$orderId/notes?customer=$userId&per_page=20');
+          .getAsync('orders/$orderId/notes?customer=$userId&per_page=100');
       var list = <OrderNote>[];
       if (response is Map && isNotBlank(response['message'])) {
         throw Exception(response['message']);
@@ -896,7 +897,7 @@ class WooCommerce extends BaseServices {
         endPoint += '&lang=$lang';
       }
 
-      if (categoryId != null) {
+/*      if (categoryId != null) {
         endPoint += '&category=$categoryId';
       }
 
@@ -910,7 +911,10 @@ class WooCommerce extends BaseServices {
 
       if (tag != null) {
         endPoint += '&tag=$tag';
-      }
+      }*/
+
+      endPoint += '&min_price=1';
+
       if (userId != null) {
         endPoint += '&user_id=$userId';
       }

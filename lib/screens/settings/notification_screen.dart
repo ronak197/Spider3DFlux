@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fstore/common/theme/colors.dart';
 import 'package:provider/provider.dart';
 
 import '../../generated/l10n.dart';
@@ -102,7 +103,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 secondaryBackground: Container(
                   margin: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                    color: Colors.redAccent,
+                    color: kColorSpiderRed.withOpacity(0.70),
                     borderRadius: BorderRadius.circular(6.0),
                   ),
                   alignment: Alignment.centerRight,

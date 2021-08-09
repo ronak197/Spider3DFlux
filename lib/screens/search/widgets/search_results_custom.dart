@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/models/entities/product.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -35,7 +36,7 @@ class _SearchResultsCustomState extends State<SearchResultsCustom> {
     final _userId = Provider.of<UserModel>(context, listen: false).user?.id;
     return Consumer<SearchModel>(
       builder: (_, model, __) {
-        final _products = model.products;
+        var _products = model.products;
 
         if (_products == null) {
           return kLoadingWidget(context);
@@ -46,6 +47,19 @@ class _SearchResultsCustomState extends State<SearchResultsCustom> {
             child: Text(S.of(context).noProduct),
           );
         }
+
+        // Shows Better options first.
+        print('product.namee');
+        // List<Product> tempList = [];
+        var tempList = _products;
+        var search_result = widget.name;
+        _products.forEach((element) {
+          if (element.name!.contains(search_result)) {
+            tempList.remove(element);
+            tempList.insert(0, element);
+          }
+        });
+        _products = tempList;
 
         return SmartRefresher(
           header: MaterialClassicHeader(
@@ -63,7 +77,7 @@ class _SearchResultsCustomState extends State<SearchResultsCustom> {
           child: ListView.builder(
             itemCount: _products.length,
             itemBuilder: (context, index) {
-              final product = _products[index];
+              final product = _products![index];
               return SimpleListView(item: product);
             },
           ),

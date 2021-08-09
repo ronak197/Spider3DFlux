@@ -262,8 +262,9 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
                                                       .of(context)
                                                       .clearCart
                                                       .toUpperCase(),
-                                                  style: const TextStyle(
-                                                      color: Colors.redAccent,
+                                                  style: TextStyle(
+                                                      color: kColorSpiderRed
+                                                          .withOpacity(0.70),
                                                       fontSize: 12),
                                                 ),
                                               ),

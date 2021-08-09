@@ -99,9 +99,10 @@ class _HalfImageTypeState extends State<HalfImageType> {
                               ),
                             ),
                             Row(
+                              // crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
-                                ImageTools.getCachedAvatar(
-                                    'https://api.hello-avatar.com/adorables/40/${widget.item.author}.png'),
+                                // ImageTools.getCachedAvatar('https://api.hello-avatar.com/adorables/40/${widget.item.author}.png'),
                                 Flexible(
                                   child: Column(
                                     crossAxisAlignment:

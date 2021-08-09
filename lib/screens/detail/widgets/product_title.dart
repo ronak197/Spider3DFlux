@@ -139,7 +139,7 @@ class _ProductTitleState extends BaseScreen<ProductTitle> {
                 ),
                 margin: const EdgeInsets.only(left: 4, top: 4),
                 decoration: BoxDecoration(
-                  color: Colors.red,
+                  color: kColorSpiderRed.withOpacity(0.70),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Text(

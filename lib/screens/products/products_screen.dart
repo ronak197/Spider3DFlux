@@ -247,6 +247,9 @@ class ProductsPageState extends State<ProductsScreen>
 
   Widget? renderCategoryAppbar() {
     final category = Provider.of<CategoryModel>(context);
+    print('categoryyyyyy');
+    print(category);
+
     var parentCategory = newCategoryId;
     if (category.categories != null && category.categories!.isNotEmpty) {
       parentCategory =

@@ -52,9 +52,9 @@ class ProductItemTileView extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 8),
-                          decoration: const BoxDecoration(
-                              color: Colors.redAccent,
-                              borderRadius: BorderRadius.only(
+                          decoration: BoxDecoration(
+                              color: kColorSpiderRed.withOpacity(0.70),
+                              borderRadius: const BorderRadius.only(
                                   bottomRight: Radius.circular(8))),
                           child: Text(
                             '${(100 - double.parse(item.price!) / double.parse(item.regularPrice.toString()) * 100).toInt()} %',

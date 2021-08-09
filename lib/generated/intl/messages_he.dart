@@ -559,7 +559,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "saveToWishList":
             MessageLookupByLibrary.simpleMessage("שמור ברשימת המשאלות"),
         "search": MessageLookupByLibrary.simpleMessage("חפש"),
-        "searchForItems": MessageLookupByLibrary.simpleMessage("חפש פריטים"),
+        "searchForItems": MessageLookupByLibrary.simpleMessage("חפש בקצרה"),
         "searchInput":
             MessageLookupByLibrary.simpleMessage("אנא כתוב קלט בשדה החיפוש"),
         "searchOrderId":

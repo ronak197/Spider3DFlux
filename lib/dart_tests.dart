@@ -31,10 +31,10 @@ void replaceInList(List list, a, b) {
 void main() {
   // myList.insert('A', 'B');
   // myList.insert(2, 'C');
-  // myList.insert(0, 'A');
+  myList.insert(0, 'E');
   // myList.insert(3, 'D');
 
-  replaceInList(myList, 'B', 'A');
+  // replaceInList(myList, 'B', 'A');
   print(myList);
 }
 

@@ -131,20 +131,24 @@ class _StateSearchScreen extends State<SearchScreen>
                 });
               },
             ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15, top: 8),
-                child: Container(
-                  height: 32,
-                  child: FilterSearch(
-                    onChange: (searchFilter) {
-                      _searchModel.searchByFilter(
-                        searchFilter,
-                        _searchKeyword,
-                        userId: _userId,
-                      );
-                    },
+            // My hidden filter
+            Visibility(
+              visible: false,
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 15, top: 8),
+                  child: Container(
+                    height: 32,
+                    child: FilterSearch(
+                      onChange: (searchFilter) {
+                        _searchModel.searchByFilter(
+                          searchFilter,
+                          _searchKeyword,
+                          userId: _userId,
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),

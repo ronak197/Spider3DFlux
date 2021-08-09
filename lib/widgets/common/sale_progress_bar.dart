@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/common/theme/colors.dart';
 
 import '../../common/config.dart';
 import '../../common/tools.dart';
@@ -142,11 +143,11 @@ class _FireIcon extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          const Positioned.fill(
+          Positioned.fill(
             child: Icon(
               Icons.local_fire_department_rounded,
               size: 24.0,
-              color: Colors.redAccent,
+              color: kColorSpiderRed.withOpacity(0.70),
             ),
           ),
           const Positioned.fill(

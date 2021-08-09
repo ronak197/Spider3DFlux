@@ -47,7 +47,7 @@ class WordPress {
 
   Future<List<Category>> getCategories({lang = 'en'}) async {
     try {
-      var response = await blogApi.getAsync('categories?per_page=20');
+      var response = await blogApi.getAsync('categories?per_page=100');
       var list = <Category>[];
       for (var item in response) {
         list.add(Category.fromJson(item));

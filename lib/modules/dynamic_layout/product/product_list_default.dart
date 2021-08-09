@@ -50,7 +50,7 @@ class ProductListDefault extends StatelessWidget {
       // if (layout == 'recentView') {}
     }*/
 
-    getRecentView();
+    // getRecentView();
 
     return Container(
       color: Theme.of(context).backgroundColor,

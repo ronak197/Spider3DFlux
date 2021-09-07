@@ -374,7 +374,7 @@ Map<String, dynamic> environment = {
     "EnableCreditCard": true,
     "UpdateOrderStatus": true,
     "ShowOrderNotes": true,
-    "EnableRefundCancel": true
+    "EnableRefundCancel": false
   },
   "payments": {
     "paypal": "assets/icons/payment/paypal.png",

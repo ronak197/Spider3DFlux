@@ -643,8 +643,11 @@ class _SettingScreenState extends State<SettingScreen>
     var settings = widget.settings ?? kDefaultSettings;
     var background = widget.background ?? kProfileBackground;
     const textStyle = TextStyle(fontSize: 16);
+    // final myUserModel = Provider.of<UserModel>(context, listen: false).user!.loggedIn.toString();
 
-    return Scaffold(
+    return
+        // Center(child: Text(myUserModel.user!.loggedIn.toString()));
+        Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: ListenableProvider.value(
         value: Provider.of<UserModel>(context),

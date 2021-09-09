@@ -76,20 +76,19 @@
 	<string>ca-app-pub-7432665165146018~2664444130</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>itms</string>
 		<string>fbapi</string>
-        <string>fbapi20130214</string>
-        <string>fbapi20130410</string>
-        <string>fbapi20130702</string>
-        <string>fbapi20131010</string>
-        <string>fbapi20131219</string>
-        <string>fbapi20140410</string>
-        <string>fbapi20140116</string>
-        <string>fbapi20150313</string>
-        <string>fbapi20150629</string>
-        <string>fbauth</string>
-        <string>fbauth2</string>
-        <string>fb-messenger-api20140430</string>
+		<string>fbapi20130214</string>
+		<string>fbapi20130410</string>
+		<string>fbapi20130702</string>
+		<string>fbapi20131010</string>
+		<string>fbapi20131219</string>
+		<string>fbapi20140410</string>
+		<string>fbapi20140116</string>
+		<string>fbapi20150313</string>
+		<string>fbapi20150629</string>
+		<string>fbauth</string>
+		<string>fbauth2</string>
+		<string>fb-messenger-api20140430</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -108,6 +107,8 @@
 	<string>Get your current location for delivery</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to the photo library to support Chat Features.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This identifier will be used to deliver personalized ads to you. "Ask App Not to track" will limit Advertisement network's ability to deliver relevant ads to you but will not reduce the number of ads you receive. </string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -135,23 +136,5 @@
 	<false/>
 	<key>io.flutter.embedded_views_preview</key>
 	<string>YES</string>
-	<key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fbapi20130214</string>
-        <string>fbapi20130410</string>
-        <string>fbapi20130702</string>
-        <string>fbapi20131010</string>
-        <string>fbapi20131219</string>
-        <string>fbapi20140410</string>
-        <string>fbapi20140116</string>
-        <string>fbapi20150313</string>
-        <string>fbapi20150629</string>
-        <string>fbauth</string>
-        <string>fbauth2</string>
-        <string>fb-messenger-api20140430</string>
-    </array>
-    <key>NSUserTrackingUsageDescription</key>
-    <string>This identifier will be used to deliver personalized ads to you. "Ask App Not to track" will limit Advertisement network's ability to deliver relevant ads to you but will not reduce the number of ads you receive. </string>
 </dict>
 </plist>

@@ -1,7 +1,7 @@
 #fastlane 2.168.0
 readonly github="https://github.com/vumanhsn97/fastlane" #Make sure you login in your git account. Try to test with: git clone your_url
 readonly app_identifier="com.inspireui.mstore.flutter"
-readonly signal_identifier="com.inspireui.mstore.flutter.onesignal"
+readonly signal_identifier="com.inspireui.spider3d.flutter.onesignal"
 readonly email="vumanhsn97@gmail.com" #Your apple account
 readonly version="1.9.2"
 readonly build="3003"

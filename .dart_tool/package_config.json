@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "_fe_analyzer_shared",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-21.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-22.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -15,7 +15,7 @@
     },
     {
       "name": "analyzer",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-1.5.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-1.7.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -51,13 +51,13 @@
     },
     {
       "name": "args",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "asn1lib",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/asn1lib-1.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/asn1lib-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -117,13 +117,13 @@
     },
     {
       "name": "chewie",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/chewie-1.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/chewie-1.2.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.13"
     },
     {
       "name": "cli_util",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/cli_util-0.3.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/cli_util-0.3.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -159,7 +159,7 @@
     },
     {
       "name": "convert",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/convert-3.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/convert-3.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -177,19 +177,25 @@
     },
     {
       "name": "coverage",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/coverage-1.0.2",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/coverage-1.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "credit_card_type_detector",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/credit_card_type_detector-2.0.0-nullsafety.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/credit_card_type_detector-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "credit_card_validator",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/credit_card_validator-2.0.0-nullsafety.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/credit_card_validator-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "cross_file",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/cross_file-0.3.1+5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -237,7 +243,7 @@
     },
     {
       "name": "encrypt",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/encrypt-5.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/encrypt-5.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -279,7 +285,7 @@
     },
     {
       "name": "ffi",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/ffi-1.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/ffi-1.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -297,7 +303,7 @@
     },
     {
       "name": "firebase",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.1",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -399,7 +405,7 @@
     },
     {
       "name": "flare_flutter",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flare_flutter-3.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flare_flutter-3.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -441,7 +447,7 @@
     },
     {
       "name": "flutter_cache_manager",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_cache_manager-3.0.2",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_cache_manager-3.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -459,31 +465,37 @@
     },
     {
       "name": "flutter_facebook_auth",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth-3.4.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth-3.5.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_facebook_auth_platform_interface",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth_platform_interface-2.6.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth_platform_interface-2.7.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_facebook_auth_web",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth_web-2.6.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth_web-2.6.0+2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_iconpicker",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_iconpicker-3.0.1+2",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_iconpicker-3.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.13"
+    },
+    {
+      "name": "flutter_launcher_icons",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.9.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "flutter_launcher_icons",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.9.0",
+      "name": "flutter_lints",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -501,7 +513,7 @@
     },
     {
       "name": "flutter_plugin_android_lifecycle",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.1",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -573,7 +585,7 @@
     },
     {
       "name": "flutter_widget_from_html_core",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_widget_from_html_core-0.6.1",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_widget_from_html_core-0.6.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -597,7 +609,7 @@
     },
     {
       "name": "fwfh_chewie",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/fwfh_chewie-0.6.1+2",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/fwfh_chewie-0.6.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -615,7 +627,7 @@
     },
     {
       "name": "fwfh_webview",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/fwfh_webview-0.6.0+1",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/fwfh_webview-0.6.1+2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -645,7 +657,7 @@
     },
     {
       "name": "google_maps_flutter_platform_interface",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-2.0.4",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -669,7 +681,7 @@
     },
     {
       "name": "google_sign_in_web",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.10.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.10.0+3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -723,7 +735,7 @@
     },
     {
       "name": "graphs",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/graphs-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/graphs-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -789,13 +801,13 @@
     },
     {
       "name": "image_picker_for_web",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_for_web-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_for_web-2.1.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "image_picker_platform_interface",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-2.1.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-2.4.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -825,7 +837,7 @@
     },
     {
       "name": "io",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/io-1.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/io-1.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -838,6 +850,12 @@
     {
       "name": "json_annotation",
       "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/json_annotation-4.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "lints",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/lints-1.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -861,31 +879,31 @@
     },
     {
       "name": "location_platform_interface",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/location_platform_interface-2.1.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/location_platform_interface-2.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "location_web",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/location_web-3.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/location_web-3.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "logger",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/logger-1.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/logger-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "logging",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/logging-1.0.1",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/logging-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "mask_text_input_formatter",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/mask_text_input_formatter-2.0.0-nullsafety.2",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/mask_text_input_formatter-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -927,13 +945,13 @@
     },
     {
       "name": "node_preamble",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/node_preamble-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/node_preamble-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "normalize",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/normalize-0.5.1",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/normalize-0.5.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -957,7 +975,7 @@
     },
     {
       "name": "package_config",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/package_config-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/package_config-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -999,13 +1017,13 @@
     },
     {
       "name": "path_provider_linux",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "path_provider_macos",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1017,7 +1035,7 @@
     },
     {
       "name": "path_provider_windows",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.1",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1047,9 +1065,9 @@
     },
     {
       "name": "pin_input_text_field",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/pin_input_text_field-4.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/pin_input_text_field-4.1.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.13"
     },
     {
       "name": "platform",
@@ -1059,13 +1077,13 @@
     },
     {
       "name": "plugin_platform_interface",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "pointycastle",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/pointycastle-3.2.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/pointycastle-3.3.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1089,7 +1107,7 @@
     },
     {
       "name": "pub_semver",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/pub_semver-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/pub_semver-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1161,7 +1179,7 @@
     },
     {
       "name": "share_plus_linux",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/share_plus_linux-2.0.3",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/share_plus_linux-2.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1191,19 +1209,19 @@
     },
     {
       "name": "shared_preferences",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.5",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.7",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "shared_preferences_linux",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "shared_preferences_macos",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1215,19 +1233,19 @@
     },
     {
       "name": "shared_preferences_web",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "shared_preferences_windows",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "shelf",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shelf-1.1.1",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shelf-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1239,7 +1257,7 @@
     },
     {
       "name": "shelf_static",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shelf_static-1.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/shelf_static-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1251,7 +1269,7 @@
     },
     {
       "name": "simple_animations",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-3.1.1",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-3.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1293,13 +1311,13 @@
     },
     {
       "name": "sqflite",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-2.0.0+3",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-2.0.0+4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "sqflite_common",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite_common-2.0.0+2",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite_common-2.0.1+1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1335,13 +1353,13 @@
     },
     {
       "name": "supercharged",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/supercharged-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/supercharged-2.1.0+1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "supercharged_dart",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/supercharged_dart-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/supercharged_dart-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1437,31 +1455,31 @@
     },
     {
       "name": "url_launcher_linux",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_linux-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_linux-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "url_launcher_macos",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_macos-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_macos-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "url_launcher_platform_interface",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_platform_interface-2.0.2",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_platform_interface-2.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "url_launcher_web",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_web-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_web-2.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "url_launcher_windows",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_windows-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_windows-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1485,13 +1503,13 @@
     },
     {
       "name": "video_player_platform_interface",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/video_player_platform_interface-4.1.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/video_player_platform_interface-4.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "video_player_web",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/video_player_web-2.0.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/video_player_web-2.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1509,25 +1527,31 @@
     },
     {
       "name": "wakelock",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock-0.4.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock-0.5.6",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "wakelock_macos",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_macos-0.1.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_macos-0.4.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "wakelock_platform_interface",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_platform_interface-0.2.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_platform_interface-0.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "wakelock_web",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_web-0.2.0",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_web-0.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "wakelock_windows",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_windows-0.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1563,9 +1587,9 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.0.5",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.2.9",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.13"
     },
     {
       "name": "xdg_directories",
@@ -1592,7 +1616,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-08-28T07:47:23.530228Z",
+  "generated": "2021-09-17T09:28:08.963001Z",
   "generator": "pub",
   "generatorVersion": "2.13.4"
 }

@@ -12,7 +12,7 @@ platform :ios do
 
       firebase_app_distribution(
           app: "1:412823237422:ios:8947f503f8cb2000fb40bf",
-          testers: "hieu.trantrung1204@gmail.com",
+          testers: "inspireui.build@gmail.com",
           groups: "inspireui",
           release_notes: sh("git log -1 --pretty='%s'"),
           firebase_cli_path: "/usr/local/bin/firebase",

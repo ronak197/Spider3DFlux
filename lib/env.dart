@@ -368,7 +368,7 @@ Map<String, dynamic> environment = {
     "EnableReview": true,
     "allowSearchingAddress": true,
     "GuestCheckout": true,
-    "EnableOnePageCheckout": true,
+    "EnableOnePageCheckout": false,
     "NativeOnePageCheckout": true,
     "CheckoutPageSlug": {"il": "checkout", "en": "checkout"},
     "EnableCreditCard": true,

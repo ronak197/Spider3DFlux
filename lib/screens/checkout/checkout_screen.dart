@@ -305,16 +305,9 @@ class _CheckoutState extends BaseScreen<Checkout> {
   Widget renderContent() {
     switch (tabIndex) {
       case 0:
-        return Column(
-          children: [
-            Services().widget.renderShippingMethods(context),
-          ],
-        );
-
-      // case 0:
-      //   return ShippingAddress(onNext: () {
-      //     Future.delayed(Duration.zero, goToShippingTab);
-      //   });
+        return ShippingAddress(onNext: () {
+          Future.delayed(Duration.zero, goToShippingTab);
+        });
       case 1:
         return Services().widget.renderShippingMethods(context, onBack: () {
           goToAddressTab(true);

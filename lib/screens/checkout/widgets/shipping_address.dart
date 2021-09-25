@@ -515,7 +515,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
               onSaved: (String? value) {
                 address!.street = value;
               }),
-          TextFormField(
+          // My remove Mikud.
+/*          TextFormField(
               controller: _zipController,
               autofillHints: [AutofillHints.postalCode],
               focusNode: _zipNode,
@@ -530,7 +531,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
               decoration: InputDecoration(labelText: S.of(context).zipCode),
               onSaved: (String? value) {
                 address!.zipCode = value;
-              }),
+              }),*/
           const SizedBox(height: 20),
           Row(children: [
             ButtonTheme(

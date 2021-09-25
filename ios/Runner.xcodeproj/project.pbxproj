@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0557B06CA6E0BC88C7EF98F1 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62CFBFE7E4F7CC9CD10C7F9C /* Pods_Runner.framework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		248A25BD22B8ACD00008B966 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 248A25BC22B8ACCF0008B966 /* GoogleService-Info.plist */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
@@ -16,18 +17,7 @@
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		BA40CC572469577300F2555E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA40CC562469577300F2555E /* NotificationService.swift */; };
-		BA40CC5B2469577300F2555E /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BA40CC542469577300F2555E /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BA40CC592469577300F2555E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BA40CC532469577300F2555E;
-			remoteInfo = OneSignalNotificationServiceExtension;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
@@ -38,17 +28,6 @@
 			files = (
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BAE935AC2424638F00B22193 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				BA40CC5B2469577300F2555E /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -88,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0557B06CA6E0BC88C7EF98F1 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,14 +184,12 @@
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
-				BAE935AC2424638F00B22193 /* Embed App Extensions */,
 				4E31174650239045B5A4F529 /* [CP] Embed Pods Frameworks */,
 				86E46CFC03D866697E149621 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BA40CC5A2469577300F2555E /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
@@ -349,10 +327,10 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
+			outputFileListPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -364,10 +342,10 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
+			outputFileListPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -431,14 +409,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BA40CC5A2469577300F2555E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BA40CC532469577300F2555E /* OneSignalNotificationServiceExtension */;
-			targetProxy = BA40CC592469577300F2555E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97C146FA1CF9000F007C117D /* Main.storyboard */ = {

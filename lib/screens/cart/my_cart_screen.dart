@@ -400,6 +400,7 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
     }
   }
 
+
   Future<void> doCheckout() async {
     showLoading();
 

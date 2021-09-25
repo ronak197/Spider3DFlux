@@ -215,6 +215,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
       ],
     );
 
+
     return Stack(
       children: <Widget>[
         Scaffold(

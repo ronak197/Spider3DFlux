@@ -228,8 +228,11 @@ abstract class BaseFrameworks {
 
   Widget renderShippingPaymentTitle(BuildContext context, String title) {
     return Text(
+      // '${Theme.of(context).appBarTheme.backgroundColor.toString()}',
       title,
-      style: TextStyle(fontSize: 14, color: Theme.of(context).accentColor),
+      // style: TextStyle(fontSize: 14, color: Theme.of(context).accentColor),
+      style: TextStyle(
+          fontSize: 15, color: Theme.of(context).appBarTheme.backgroundColor),
     );
   }
 

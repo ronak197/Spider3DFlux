@@ -13,6 +13,7 @@ class ShoppingCartRow extends StatelessWidget {
   ShoppingCartRow({
     required this.product,
     required this.quantity,
+    required this.my_is_review_screen,
     this.onRemove,
     this.onChangeQuantity,
     this.variation,
@@ -20,6 +21,7 @@ class ShoppingCartRow extends StatelessWidget {
     this.addonsOptions,
   });
 
+  final bool my_is_review_screen;
   final Product? product;
   final List<AddonsOption>? addonsOptions;
   final ProductVariation? variation;
@@ -77,13 +79,16 @@ class ShoppingCartRow extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                product!.name!,
-                                style: TextStyle(
-                                  color: theme.accentColor,
+                              Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: Text(
+                                  product!.name!,
+                                  style: TextStyle(
+                                    color: theme.accentColor,
+                                  ),
+                                  maxLines: my_is_review_screen ? 1 : 4,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
                               ),
                               const SizedBox(height: 7),
                               Text(

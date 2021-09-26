@@ -135,6 +135,17 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 //. ? Text(model.shippingMethod!.title ?? '')
                 ? Services().widget.renderShippingMethodInfo(context)
                 : Container(),
+/*                : Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                    child: Text(
+                      '(יש לבחור שיטת משלוח)',
+                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                            fontSize: 14,
+                            color: Theme.of(context).accentColor,
+                          ),
+                    ),
+                  ),*/
             //
 
             Padding(
@@ -327,6 +338,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
         var productId = Product.cleanProductID(key);
 
         return ShoppingCartRow(
+          my_is_review_screen:
+              true, // My adjustments for review_screen.dart only
           addonsOptions: model.productAddonsOptionsInCart[key],
           product: model.getProductById(productId),
           variation: model.getProductVariationById(key),

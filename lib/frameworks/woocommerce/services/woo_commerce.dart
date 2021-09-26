@@ -598,6 +598,11 @@ class WooCommerce extends BaseServices {
             }
           }
 
+          printLog('XXX');
+          printLog(list.first.attributes);
+          printLog(list.first.price);
+          printLog('XXX');
+
           if (response is List && response.length < 100) {
             /// No more data.
             break;
@@ -648,6 +653,10 @@ class WooCommerce extends BaseServices {
         for (var item in body) {
           list.add(ShippingMethod.fromJson(item));
         }
+        print("Body req: (shipping_methods)");
+        print(convert.jsonEncode(params));
+        print("Body resp: (shipping_methods)");
+        print(body);
       } else if (body['message'] != null) {
         throw Exception(body['message']);
       }
@@ -728,9 +737,9 @@ class WooCommerce extends BaseServices {
         for (var item in body) {
           list.add(PaymentMethod.fromJson(item));
         }
-        print("Body req:");
+        print("Body req: (payment_methods)");
         print(convert.jsonEncode(params));
-        print("Body resp:");
+        print("Body resp: (payment_methods)");
         print(body);
       } else if (body['message'] != null) {
         throw Exception(body['message']);

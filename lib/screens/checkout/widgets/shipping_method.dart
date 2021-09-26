@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/models/user_model.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_address.dart';
 import 'package:provider/provider.dart';
 import 'package:quiver/strings.dart';
@@ -23,11 +24,14 @@ class ShippingMethods extends StatefulWidget {
 }
 
 class _ShippingMethodsState extends State<ShippingMethods> {
-  int? selectedIndex;
+  // int? selectedIndex; // to do not set default
+  int? selectedIndex =
+      0; // right for 26.9.21, 0 means the "29₪ 2-3 day delivery" is default
 
   @override
   void initState() {
     super.initState();
+
     Future.delayed(
       Duration.zero,
       () async {
@@ -46,6 +50,19 @@ class _ShippingMethodsState extends State<ShippingMethods> {
               selectedIndex = index;
             });
           }
+        } else {
+          // my else add
+          printLog('(my else here to save)');
+          final cartModel = Provider.of<CartModel>(context, listen: false);
+          final userModel = Provider.of<UserModel>(context, listen: false);
+          // final token = Provider.of<UserModel>(context, listen: false).user != null
+          //.     ? Provider.of<UserModel>(context, listen: false).user!.cookie
+          //     : null;
+          await Provider.of<ShippingMethodModel>(context, listen: false)
+              .getShippingMethods(
+                  cartModel: cartModel,
+                  token:
+                      userModel.user != null ? userModel.user!.cookie : null);
         }
       },
     );
@@ -73,14 +90,14 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                 return Container(height: 100, child: kLoadingWidget(context));
               }
 
-/*              if (model.message != null) {
+              if (model.message != null) {
                 return Container(
                   height: 100,
                   child: Center(
                       child: Text(model.message!,
                           style: const TextStyle(color: kErrorRed))),
                 );
-              }*/
+              }
 
               return Column(
                 children: <Widget>[

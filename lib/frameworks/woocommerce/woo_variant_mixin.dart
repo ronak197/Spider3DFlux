@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inspireui/utils/logs.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/config.dart';
@@ -48,6 +49,10 @@ mixin WooVariantMixin on ProductVariantMixin {
           productInfo = onValue;
         }
       });
+
+      printLog('variations.length');
+      printLog(variations.length);
+      printLog(variations.first.price);
 
       if (productInfo!.defaultAttributes.isEmpty &&
           (kProductDetail.autoSelectFirstAttribute)) {

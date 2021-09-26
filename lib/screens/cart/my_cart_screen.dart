@@ -39,6 +39,8 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
         var product = model.getProductById(productId);
 
         return ShoppingCartRow(
+          my_is_review_screen:
+              false, // My adjustments for review_screen.dart only
           product: product!,
           addonsOptions: model.productAddonsOptionsInCart[key],
           variation: model.getProductVariationById(key),
@@ -399,7 +401,6 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
       _loginWithResult(context);
     }
   }
-
 
   Future<void> doCheckout() async {
     showLoading();

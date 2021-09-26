@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:inspireui/utils/logs.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/config.dart';
@@ -82,6 +83,10 @@ class _StateProductVariant extends State<ProductVariant> {
           });
           return;
         });
+
+    printLog('productVariation.length 2');
+    printLog(productVariation!.attributes);
+    printLog(productVariation!.price);
   }
 
   Future<void> getProductAddons() async {

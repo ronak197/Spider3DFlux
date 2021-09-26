@@ -274,6 +274,16 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: TextField(
+                  onChanged: (value) {
+                    printLog(value);
+                    // if (note.text.isNotEmpty) {
+                    Provider.of<CartModel>(context, listen: false)
+                        .setOrderNotes(note.text);
+                    // }
+                    // printLog(note.text);
+                    // printLog(Provider.of<CartModel>(context, listen: false).notes);
+                  },
+                  cursorColor: Colors.red[900],
                   maxLines: 2,
                   controller: note,
                   style: const TextStyle(fontSize: 13),
@@ -286,28 +296,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
             const SizedBox(
               height: 10,
             ),
-            Row(children: [
-              Expanded(
-                child: ButtonTheme(
-                  height: 45,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      onPrimary: Colors.white,
-                      primary: Theme.of(context).primaryColor,
-                    ),
-                    onPressed: () {
-                      widget.onNext!();
-                      if (note.text.isNotEmpty) {
-                        Provider.of<CartModel>(context, listen: false)
-                            .setOrderNotes(note.text);
-                      }
-                    },
-                    child: Text(S.of(context).continueToPayment.toUpperCase()),
-                  ),
-                ),
-              ),
-            ]),
+
 /*            if (kPaymentConfig['EnableShipping'] &&
                 kPaymentConfig['EnableAddress'])
               Center(
@@ -321,9 +310,6 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                               decoration: TextDecoration.underline,
                               fontSize: 15,
                               color: kGrey400))))*/
-            const SizedBox(
-              height: 25,
-            ),
           ],
         );
       },

@@ -112,20 +112,30 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
+                            scrollable: true,
+                            insetPadding: EdgeInsets.symmetric(
+                              horizontal: 24.0,
+                              // vertical: 48 * 3
+                              vertical:
+                                  MediaQuery.of(context).size.height * 0.20,
+                            ),
+                            // insetPadding: EdgeInsets.zero,
+                            // contentPadding: EdgeInsets.zero,
                             title: Text('שיטת משלוח'),
                             content: Services().widget.renderShippingMethods(
                                 context,
                                 onBack: () {},
                                 onNext: () {}),
                             // goToShippingTab(true);
-                            actions: <Widget>[
+
+/*                            actions: <Widget>[
                               TextButton(
                                 child: const Text('CANCEL'),
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
                               ),
-                            ],
+                            ],*/
                           );
                         });
                   },
@@ -140,6 +150,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               ),
             ),
             // Builder(builder: (context) => Text('${Provider.of<CartModel>(context).shippingMethod!.title}'),)
+            // ChangeNotifierProvider<CartModel>.value(
             // ChangeNotifierProvider<CartModel>.value(
             //     value: shippingMethodModel.shippingMethods,
             //     builder: (context, child) =>,

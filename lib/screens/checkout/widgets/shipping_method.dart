@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/checkout/widgets/shipping_address.dart';
 import 'package:provider/provider.dart';
 import 'package:quiver/strings.dart';
 
@@ -9,6 +10,7 @@ import '../../../generated/l10n.dart';
 import '../../../models/cart/cart_model.dart';
 import '../../../models/shipping_method_model.dart';
 import '../../../services/index.dart';
+import '../review_screen.dart';
 
 class ShippingMethods extends StatefulWidget {
   final Function? onBack;
@@ -21,7 +23,7 @@ class ShippingMethods extends StatefulWidget {
 }
 
 class _ShippingMethodsState extends State<ShippingMethods> {
-  int? selectedIndex = 0;
+  int? selectedIndex;
 
   @override
   void initState() {
@@ -58,10 +60,10 @@ class _ShippingMethodsState extends State<ShippingMethods> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
+/*        Text(
           S.of(context).shippingMethod,
           style: const TextStyle(fontSize: 16),
-        ),
+        ),*/
         const SizedBox(height: 20),
         ListenableProvider.value(
           value: shippingMethodModel,
@@ -97,6 +99,8 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                             child: Row(
                               children: <Widget>[
                                 Radio(
+                                  activeColor: kColorSpiderRed,
+                                  focusColor: kColorSpiderRed,
                                   value: i,
                                   groupValue: selectedIndex,
                                   onChanged: (dynamic i) {
@@ -112,6 +116,9 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                           .setShippingMethod(shippingMethodModel
                                                   .shippingMethods![
                                               selectedIndex!]);
+
+                                      Navigator.of(context).pop();
+                                      // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
 
                                       // widget.onNext!();
                                     }
@@ -217,3 +224,21 @@ class _ShippingMethodsState extends State<ShippingMethods> {
     );
   }
 }
+
+// Route myTransition() {
+//   return PageRouteBuilder(
+//     pageBuilder: (context, animation, secondaryAnimation) => ShippingAddress(),
+//     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//       const begin = Offset(0.0, 1.0);
+//       const end = Offset.zero;
+//       const curve = Curves.ease;
+//
+//       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+//
+//       return SlideTransition(
+//         position: animation.drive(tween),
+//         child: child,
+//       );
+//     },
+//   );
+// }

@@ -607,9 +607,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
             ]),
           ),
         ),
-        Services()
-            .widget
-            .renderShippingMethods(context, onBack: () {}, onNext: () {}),
+        // Services().widget.renderShippingMethods(context, onBack: () {}, onNext: () {}),
         ReviewScreen(onBack: () {}, onNext: () {})
       ],
     );

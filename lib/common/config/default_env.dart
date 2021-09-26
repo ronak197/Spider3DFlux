@@ -131,11 +131,11 @@ class DefaultConfig {
   static Map productCard = {};
   static String? cardFit;
   static List defaultCountryShipping = [
-    {
-      'name': 'Vietnam',
-      'iosCode': 'VN',
-      'icon': 'https://cdn.britannica.com/41/4041-004-A06CBD63/Flag-Vietnam.jpg'
-    },
+    // {
+    //   'name': 'Vietnam',
+    //   'iosCode': 'VN',
+    //   'icon': 'https://cdn.britannica.com/41/4041-004-A06CBD63/Flag-Vietnam.jpg'
+    // },
     {
       'name': 'Israel',
       'iosCode': 'IL',

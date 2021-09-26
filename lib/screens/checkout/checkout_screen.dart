@@ -215,7 +215,6 @@ class _CheckoutState extends BaseScreen<Checkout> {
       ],
     );
 
-
     return Stack(
       children: <Widget>[
         Scaffold(
@@ -280,6 +279,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
                                   key: const Key('checkOutScreenListView'),
                                   padding: const EdgeInsets.only(
                                       top: 20, bottom: 10),
+                                  // children: <Widget>[renderContent()],
                                   children: <Widget>[renderContent()],
                                 ),
                               )

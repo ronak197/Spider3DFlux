@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/checkout/widgets/shipping_method.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/config.dart';
 import '../../common/constants.dart';
 import '../../common/tools.dart';
 import '../../generated/l10n.dart';
-import '../../models/index.dart' show AppModel, CartModel, Product, TaxModel;
+import '../../models/index.dart'
+    show AppModel, CartModel, Product, ShippingMethodModel, TaxModel;
 import '../../services/index.dart';
 import '../../widgets/common/expansion_info.dart';
 import '../../widgets/product/cart_item.dart';
@@ -43,6 +45,9 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final shippingMethodModel = Provider.of<ShippingMethodModel>(context);
+    var myShippingTitle = Provider.of<CartModel>(context).shippingMethod!.title;
+
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final taxModel = Provider.of<TaxModel>(context);
 
@@ -58,7 +63,10 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                       ShippingAddressInfo(),
                     ],
                   )
-                : Container(),
+                // ?? Text(" Told ya its could be null 1")
+                : Container()
+            // ?? Text(" Told ya its could be null 2")
+            ,
             Container(
                 height: 1, decoration: const BoxDecoration(color: kGrey200)),
             Padding(
@@ -93,7 +101,51 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 ],
               ),
             ),
-            Services().widget.renderShippingMethodInfo(context),
+            Padding(
+              padding: const EdgeInsets.only(right: 15),
+              child: ButtonTheme(
+                height: 45,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    primary: Theme.of(context).primaryColorLight,
+                  ),
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text('שיטת משלוח'),
+                            content: Services().widget.renderShippingMethods(
+                                context,
+                                onBack: () {},
+                                onNext: () {}),
+                            // goToShippingTab(true);
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('CANCEL'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        });
+                  },
+                  child: Text(
+                    'בחר שיטת משלוח',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            // Builder(builder: (context) => Text('${Provider.of<CartModel>(context).shippingMethod!.title}'),)
+            Text('$myShippingTitle'),
+
+            // Services().widget.renderShippingMethodInfo(context),
             if (model.getCoupon() != '')
               Padding(
                 padding:
@@ -216,7 +268,9 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
           ],
         );
       },
-    );
+    )
+        // ?? Text(" Told ya its could be null 4")
+        ;
   }
 
   List<Widget> getProducts(CartModel model, BuildContext context) {

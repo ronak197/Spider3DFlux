@@ -241,7 +241,10 @@ class WooWidget extends BaseFrameworks
           isBuyNow: isBuyNow,
           isModal: isModal,
         ),
-        Checkout(controller: pageController, isModal: isModal),
+        // ORIGINAL
+        Checkout(controller: pageController, isModal: isModal), // ORIGINAL
+        // MY
+        // MyCheckout(controller: pageController, isModal: isModal),
       ],
     );
   }

@@ -125,6 +125,7 @@ mixin AddressMixin on CartMixin {
   }
 
   void setShippingMethod(data) {
+    printLog('setShippingMethod data: $data');
     shippingMethod = data;
   }
 }

@@ -565,7 +565,8 @@ class _QuantitySelectionState extends State<QuantitySelection> {
       },
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(width: 1.0, color: kGrey200),
+          color: kGrey200.withOpacity(0.7),
+          // border: Border.all(width: 1.0, color: kGrey200),
           borderRadius: BorderRadius.circular(3),
         ),
         height: widget.height,

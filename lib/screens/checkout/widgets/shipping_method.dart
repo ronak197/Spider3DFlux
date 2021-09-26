@@ -71,14 +71,14 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                 return Container(height: 100, child: kLoadingWidget(context));
               }
 
-              if (model.message != null) {
+/*              if (model.message != null) {
                 return Container(
                   height: 100,
                   child: Center(
                       child: Text(model.message!,
                           style: const TextStyle(color: kErrorRed))),
                 );
-              }
+              }*/
 
               return Column(
                 children: <Widget>[
@@ -103,6 +103,18 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                     setState(() {
                                       selectedIndex = i;
                                     });
+
+                                    if (shippingMethodModel
+                                            .shippingMethods?.isNotEmpty ??
+                                        false) {
+                                      Provider.of<CartModel>(context,
+                                              listen: false)
+                                          .setShippingMethod(shippingMethodModel
+                                                  .shippingMethods![
+                                              selectedIndex!]);
+
+                                      // widget.onNext!();
+                                    }
                                   },
                                 ),
                                 const SizedBox(width: 10),
@@ -155,7 +167,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
           ),
         ),
         const SizedBox(height: 20),
-        Row(
+/*        Row(
           children: [
             Expanded(
               child: ButtonTheme(
@@ -171,20 +183,21 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                         false) {
                       Provider.of<CartModel>(context, listen: false)
                           .setShippingMethod(shippingMethodModel
-                              .shippingMethods![selectedIndex!]);
-                      widget.onNext!();
+                          .shippingMethods![selectedIndex!]);
+                      // widget.onNext!();
                     }
                   },
                   child: Text(((kPaymentConfig['EnableReview'] ?? true)
-                          ? S.of(context).continueToReview
-                          : S.of(context).continueToPayment)
+                      ? S.of(context).continueToReview
+                      : S.of(context).continueToPayment)
                       .toUpperCase()),
                 ),
               ),
             ),
           ],
-        ),
-        if (kPaymentConfig['EnableAddress'])
+        ),*/
+
+/*        if (kPaymentConfig['EnableAddress'])
           Center(
             child: TextButton(
               onPressed: () {
@@ -199,7 +212,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                     color: kGrey400),
               ),
             ),
-          )
+          )*/
       ],
     );
   }

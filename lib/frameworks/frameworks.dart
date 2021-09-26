@@ -29,6 +29,14 @@ import '../services/index.dart';
 import '../widgets/common/webview.dart';
 import '../widgets/orders/tracking.dart';
 import '../widgets/product/product_card_view.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../common/config.dart';
+import '../../generated/l10n.dart';
+import '../../models/index.dart' show CartModel, Order;
+import '../../services/index.dart';
+import '../../widgets/product/product_bottom_sheet.dart';
 
 abstract class BaseFrameworks {
   bool get enableProductReview;
@@ -281,8 +289,10 @@ abstract class BaseFrameworks {
   Widget renderShippingMethodInfo(BuildContext context) {
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final model = Provider.of<CartModel>(context);
+    // final shippingMethod = Provider.of<CartModel>(context).shippingMethod;
+    // const model = null;
 
-    return kPaymentConfig['EnableShipping']
+    return kPaymentConfig['EnableShipping'] && model.shippingMethod != null
         ? Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
             child: Row(
@@ -305,7 +315,27 @@ abstract class BaseFrameworks {
               ],
             ),
           )
-        : Container();
+        : Container(
+            height: 30,
+            color: Colors.green.shade700,
+          );
+
+    // Padding(
+    //     padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+    //     child: Row(
+    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //       crossAxisAlignment: CrossAxisAlignment.center,
+    //       children: <Widget>[
+    //         Expanded(
+    //           child: Text(
+    //             'בחר שיטת משלוח',
+    //             style: TextStyle(
+    //                 fontSize: 16, color: Theme.of(context).accentColor),
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   );
   }
 
   ///render reward info in review screen

@@ -12,7 +12,7 @@ import 'mixin/opencart_mixin.dart';
 import 'mixin/shopify_mixin.dart';
 import 'mixin/vendor_mixin.dart';
 
-abstract class CartModel
+abstract class CartModel extends ChangeNotifier
     with
         CartMixin,
         AddressMixin,
@@ -22,8 +22,9 @@ abstract class CartModel
         MagentoMixin,
         ShopifyMixin,
         OpencartMixin,
-        VendorMixin,
-        ChangeNotifier {
+        VendorMixin
+// ChangeNotifier
+{
   @override
   double? getSubTotal();
 

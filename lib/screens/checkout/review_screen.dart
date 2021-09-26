@@ -45,8 +45,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final shippingMethodModel = Provider.of<ShippingMethodModel>(context);
-    var myShippingTitle = Provider.of<CartModel>(context).shippingMethod!.title;
+    // final shippingMethodModel = Provider.of<ShippingMethodModel>(context);
+    // var myShippingTitle = Provider.of<CartModel>(context).shippingMethod!.title;
 
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final taxModel = Provider.of<TaxModel>(context);
@@ -63,10 +63,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                       ShippingAddressInfo(),
                     ],
                   )
-                // ?? Text(" Told ya its could be null 1")
-                : Container()
-            // ?? Text(" Told ya its could be null 2")
-            ,
+                : Container(),
             Container(
                 height: 1, decoration: const BoxDecoration(color: kGrey200)),
             Padding(
@@ -143,9 +140,16 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               ),
             ),
             // Builder(builder: (context) => Text('${Provider.of<CartModel>(context).shippingMethod!.title}'),)
-            Text('$myShippingTitle'),
+            // ChangeNotifierProvider<CartModel>.value(
+            //     value: shippingMethodModel.shippingMethods,
+            //     builder: (context, child) =>,
+            //     ),
+            model.shippingMethod != null
+                //. ? Text(model.shippingMethod!.title ?? '')
+                ? Services().widget.renderShippingMethodInfo(context)
+                : Container(),
+            //
 
-            // Services().widget.renderShippingMethodInfo(context),
             if (model.getCoupon() != '')
               Padding(
                 padding:

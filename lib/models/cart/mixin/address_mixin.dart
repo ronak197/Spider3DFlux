@@ -10,8 +10,12 @@ import '../../entities/address.dart';
 import '../../entities/shipping_method.dart';
 import '../../entities/user.dart';
 import 'cart_mixin.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-mixin AddressMixin on CartMixin {
+// void main() => runApp(MyApp());
+
+mixin AddressMixin on CartMixin, ChangeNotifier {
   Address? address;
   ShippingMethod? shippingMethod;
 
@@ -125,7 +129,8 @@ mixin AddressMixin on CartMixin {
   }
 
   void setShippingMethod(data) {
-    printLog('setShippingMethod data: $data');
+    // printLog('setShippingMethod data: ${data.}');
     shippingMethod = data;
+    notifyListeners();
   }
 }

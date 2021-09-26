@@ -158,7 +158,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                         ),
                         i < model.shippingMethods!.length - 1
                             ? const Divider(height: 1)
-                            : Container()
+                            : Container(),
                       ],
                     )
                 ],

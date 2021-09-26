@@ -229,7 +229,7 @@ abstract class BaseFrameworks {
   Widget renderShippingPaymentTitle(BuildContext context, String title) {
     return Text(
       title,
-      style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
+      style: TextStyle(fontSize: 14, color: Theme.of(context).accentColor),
     );
   }
 
@@ -316,9 +316,9 @@ abstract class BaseFrameworks {
             ),
           )
         : Container(
-            height: 30,
-            color: Colors.green.shade700,
-          );
+            // height: 30,
+            // color: Colors.green.shade700,
+            );
 
     // Padding(
     //     padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),

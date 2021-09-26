@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
+import 'package:fstore/screens/checkout/widgets/shipping_address.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_method.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +14,7 @@ import '../../services/index.dart';
 import '../../widgets/common/expansion_info.dart';
 import '../../widgets/product/cart_item.dart';
 import '../base_screen.dart';
+import 'checkout_screen.dart';
 
 class ReviewScreen extends StatefulWidget {
   final Function? onBack;
@@ -64,6 +67,29 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     ],
                   )
                 : Container(),
+            Padding(
+              padding: const EdgeInsets.only(right: 0, bottom: 5),
+              child: ButtonTheme(
+                height: 45,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    primary: Theme.of(context).primaryColorLight,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => ShippingAddress()));
+                  },
+                  child: Text(
+                    'ערוך כתובת משלוח',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
             Container(
                 height: 1, decoration: const BoxDecoration(color: kGrey200)),
             Padding(
@@ -80,7 +106,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    S.of(context).subtotal,
+                    // S.of(context).subtotal,
+                    'סכום הזמנה',
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).accentColor,
@@ -98,6 +125,18 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 ],
               ),
             ),
+            // Builder(builder: (context) => Text('${Provider.of<CartModel>(context).shippingMethod!.title}'),)
+            // ChangeNotifierProvider<CartModel>.value(
+            // ChangeNotifierProvider<CartModel>.value(
+            //     value: shippingMethodModel.shippingMethods,
+            //     builder: (context, child) =>,
+            //     ),
+            model.shippingMethod != null
+                //. ? Text(model.shippingMethod!.title ?? '')
+                ? Services().widget.renderShippingMethodInfo(context)
+                : Container(),
+            //
+
             Padding(
               padding: const EdgeInsets.only(right: 15),
               child: ButtonTheme(
@@ -149,17 +188,6 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 ),
               ),
             ),
-            // Builder(builder: (context) => Text('${Provider.of<CartModel>(context).shippingMethod!.title}'),)
-            // ChangeNotifierProvider<CartModel>.value(
-            // ChangeNotifierProvider<CartModel>.value(
-            //     value: shippingMethodModel.shippingMethods,
-            //     builder: (context, child) =>,
-            //     ),
-            model.shippingMethod != null
-                //. ? Text(model.shippingMethod!.title ?? '')
-                ? Services().widget.renderShippingMethodInfo(context)
-                : Container(),
-            //
 
             if (model.getCoupon() != '')
               Padding(
@@ -225,25 +253,27 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               height: 6,
             ),
             Container(
+                height: 60,
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.black,
-                    width: 0.2,
+                    color: kGrey200,
+                    width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: TextField(
-                  maxLines: 5,
+                  maxLines: 2,
                   controller: note,
                   style: const TextStyle(fontSize: 13),
-                  decoration: InputDecoration(
-                      hintText: S.of(context).writeYourNote,
-                      hintStyle: const TextStyle(fontSize: 12),
+                  decoration: const InputDecoration(
+                      // hintText: S.of(context).writeYourNote,
+                      hintText: 'כתוב הערה (אופציונלי)',
+                      hintStyle: TextStyle(fontSize: 14),
                       border: InputBorder.none),
                 )),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Row(children: [
               Expanded(
@@ -267,7 +297,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 ),
               ),
             ]),
-            if (kPaymentConfig['EnableShipping'] &&
+/*            if (kPaymentConfig['EnableShipping'] &&
                 kPaymentConfig['EnableAddress'])
               Center(
                   child: TextButton(
@@ -279,7 +309,10 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                           style: const TextStyle(
                               decoration: TextDecoration.underline,
                               fontSize: 15,
-                              color: kGrey400))))
+                              color: kGrey400))))*/
+            const SizedBox(
+              height: 25,
+            ),
           ],
         );
       },

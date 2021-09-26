@@ -168,28 +168,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
               );
             }),
             const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    S.of(context).subtotal,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor.withOpacity(0.8),
-                    ),
-                  ),
-                  Text(
-                      PriceTools.getCurrencyFormatted(
-                          cartModel.getSubTotal(), currencyRate,
-                          currency: cartModel.currency)!,
-                      style: const TextStyle(fontSize: 14, color: kGrey400))
-                ],
-              ),
-            ),
-            Services().widget.renderShippingMethodInfo(context),
+            // Services().widget.renderShippingMethodInfo(context),
             if (cartModel.getCoupon() != '')
               Padding(
                 padding:
@@ -216,34 +195,35 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                   ],
                 ),
               ),
-            Services().widget.renderTaxes(taxModel, context),
-            Services().widget.renderRewardInfo(context),
+            // Services().widget.renderTaxes(taxModel, context),
+            // Services().widget.renderRewardInfo(context),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  Text(S.of(context).subtotal,
+                      // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor.withOpacity(0.8),
+                      )),
                   Text(
-                    S.of(context).total,
-                    style: TextStyle(
-                        fontSize: 16, color: Theme.of(context).accentColor),
-                  ),
-                  Text(
-                    PriceTools.getCurrencyFormatted(
-                        cartModel.getTotal(), currencyRate,
-                        currency: cartModel.currency)!,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Theme.of(context).accentColor,
-                      fontWeight: FontWeight.w600,
-                      decoration: TextDecoration.underline,
-                    ),
-                  )
+                      PriceTools.getCurrencyFormatted(
+                          cartModel.getTotal(), currencyRate,
+                          currency: cartModel.currency)!,
+                      // style: TextStyle(
+                      //   fontSize: 20,
+                      //   color: Theme.of(context).accentColor,
+                      //   fontWeight: FontWeight.w600,
+                      //   decoration: TextDecoration.underline,
+                      // ),
+                      style: const TextStyle(fontSize: 14, color: kGrey400))
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             Row(children: [
               Expanded(
                 child: ButtonTheme(
@@ -262,7 +242,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                 ),
               ),
             ]),
-            if (kPaymentConfig['EnableShipping'] ||
+/*            if (kPaymentConfig['EnableShipping'] ||
                 kPaymentConfig['EnableAddress'] ||
                 (kPaymentConfig['EnableReview'] ?? true))
               Center(
@@ -284,7 +264,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                     ),
                   ),
                 ),
-              )
+              )*/
           ],
         ));
   }

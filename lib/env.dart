@@ -20,7 +20,8 @@ Map<String, dynamic> environment = {
     "ios": "1469772800"
   },
   "advanceConfig": {
-    "isCaching": false, // Should be false to Fix - Bottom GRID on Product page "מוצרים נוספים בקטגוריה"
+    "isCaching":
+        false, // Should be false to Fix - Bottom GRID on Product page "מוצרים נוספים בקטגוריה"
     "kIsResizeImage": true,
     "DefaultLanguage": "he",
     "DetailedBlogLayout": "halfSizeImageType",

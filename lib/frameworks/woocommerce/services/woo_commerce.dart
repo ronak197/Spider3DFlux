@@ -900,7 +900,8 @@ class WooCommerce extends BaseServices {
     userId,
   }) async {
     try {
-      var endPoint = 'products?status=publish&page=$page&per_page=$ApiPageSize';
+      // var endPoint = 'products?status=publish&page=$page&per_page=$ApiPageSize'; //Original
+      var endPoint = 'products?status=publish&page=$page&per_page=100';
 
       if ((lang?.isNotEmpty ?? false) && kAdvanceConfig['isMultiLanguages']) {
         endPoint += '&lang=$lang';

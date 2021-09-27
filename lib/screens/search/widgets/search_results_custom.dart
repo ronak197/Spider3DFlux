@@ -49,17 +49,24 @@ class _SearchResultsCustomState extends State<SearchResultsCustom> {
         }
 
         // Shows Better options first.
-        print('product.namee');
+
+        // print('Original products list:');
+        // print(_products);
+
         // List<Product> tempList = [];
         var tempList = _products;
         var search_result = widget.name;
         _products.forEach((element) {
           if (element.name!.contains(search_result)) {
+            print(element.name);
             tempList.remove(element);
             tempList.insert(0, element);
           }
         });
         _products = tempList;
+
+        // print('Edited products list:');
+        // print(_products);
 
         return SmartRefresher(
           header: MaterialClassicHeader(
@@ -77,6 +84,7 @@ class _SearchResultsCustomState extends State<SearchResultsCustom> {
           child: ListView.builder(
             itemCount: _products.length,
             itemBuilder: (context, index) {
+              // final product = _products[index];
               final product = _products![index];
               return SimpleListView(item: product);
             },

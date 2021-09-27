@@ -72,9 +72,9 @@ class WooCommerceAPI {
     var consumerSecret = this.consumerSecret;
 
     var token = '';
-    // var url = this.url! + '/wp-json/wc/v2/' + endpoint;
-    var url = this.url! + '/wp-json/wc/v3/' + endpoint; // my
-    // Default one is v3
+    var url = this.url! + '/wp-json/wc/v2/' + endpoint;
+    // var url = this.url! + '/wp-json/wc/v3/' + endpoint; // my // Update! This change Mass up the variations products!
+    // Default one is v3 (mstore note)
     if (version == 3) {
       url = this.url! + '/wp-json/wc/v3/' + endpoint;
     }

@@ -121,7 +121,8 @@ class RecentSearchesCustom extends StatelessWidget {
                   onTap: model.clearKeywords,
                   child: Text(
                     S.of(context).clear,
-                    style: const TextStyle(color: Colors.green, fontSize: 13),
+                    style:
+                        const TextStyle(color: kColorSpiderRed, fontSize: 13),
                   ),
                 )
             ],

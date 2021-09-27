@@ -58,7 +58,7 @@ class _SearchResultsCustomState extends State<SearchResultsCustom> {
         var search_result = widget.name;
         _products.forEach((element) {
           if (element.name!.contains(search_result)) {
-            print(element.name);
+            // print(element.name);
             tempList.remove(element);
             tempList.insert(0, element);
           }

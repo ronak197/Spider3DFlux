@@ -26,7 +26,8 @@ Map<String, dynamic> environment = {
     "DefaultLanguage": "he",
     "DetailedBlogLayout": "halfSizeImageType",
     "EnablePointReward": true,
-    "hideOutOfStock": false, // Do not change to True, HardCoded hideOutOfStock
+    "hideOutOfStock":
+        false, // Do not change to True, HardCoded hideOutOfStock // But those items might still show (Need to fix)
     "EnableRating": false,
     "hideEmptyProductListRating": true,
     "EnableShipping": true,

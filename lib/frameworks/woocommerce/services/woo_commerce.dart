@@ -202,7 +202,8 @@ class WooCommerce extends BaseServices {
   // Options: date, id, include, title, slug, price, popularity and rating. Default is date
   // var myOrderBy = 'date'; // Shows Esun & Spider PLA 9/10 ⭐️
   // Options: asc and desc. Default is desc.
-  var myOrder = 'desc'; // my
+  var myOrderBy = 'date'; // my // Show the lasted items
+  var myOrder = 'desc'; // my // Show the lasted items
 
   @override
   Future<List<Product>?> fetchProductsLayout({config, lang, userId}) async {
@@ -251,7 +252,8 @@ class WooCommerce extends BaseServices {
       }
       if (config.containsKey('category') && config['category'] != null) {
         endPoint += '&stock_status=instock';
-        endPoint += '&orderby=title';
+        // endPoint += '&orderby=title';
+        endPoint += '&orderby=$myOrderBy';
         endPoint += '&order=$myOrder';
         endPoint += "&category=${config["category"]}";
       }
@@ -410,7 +412,8 @@ class WooCommerce extends BaseServices {
       }
       // if (orderBy != null) {
       // endPoint += '&orderby=$orderBy';
-      endPoint += '&orderby=popularity';
+      // endPoint += '&orderby=popularity';
+      endPoint += '&orderby=$myOrderBy';
       // }
 
       // if (order != null) {

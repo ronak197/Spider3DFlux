@@ -291,7 +291,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "filter": MessageLookupByLibrary.simpleMessage("מסנן"),
         "firstName": MessageLookupByLibrary.simpleMessage("שם פרטי"),
         "firstNameIsRequired":
-            MessageLookupByLibrary.simpleMessage("נדרש שדה השם הפרטי"),
+            MessageLookupByLibrary.simpleMessage("נדרש שדה השם לחשבונית"),
         "fixedCartDiscount":
             MessageLookupByLibrary.simpleMessage("הנחה קבועה לעגלה"),
         "fixedProductDiscount":
@@ -553,7 +553,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "salePrice": MessageLookupByLibrary.simpleMessage("מחיר מכירה"),
         "saveAddress": MessageLookupByLibrary.simpleMessage("שמור כתובת"),
         "saveAddressSuccess":
-            MessageLookupByLibrary.simpleMessage("הכתובת שלך קיימת במקומך"),
+            MessageLookupByLibrary.simpleMessage("הכתובת נשמרה בהצלחה"),
         "saveForLater":
             MessageLookupByLibrary.simpleMessage("לחסוך למועד מאוחר יותר"),
         "saveToWishList":
@@ -634,7 +634,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "street": MessageLookupByLibrary.simpleMessage("רחוב"),
         "street2": MessageLookupByLibrary.simpleMessage("רחוב מספר 2"),
         "streetIsRequired":
-            MessageLookupByLibrary.simpleMessage("שדה שם הרחוב נדרש"),
+            MessageLookupByLibrary.simpleMessage("שדה הרחוב נדרש"),
         "streetName": MessageLookupByLibrary.simpleMessage("שם רחוב"),
         "streetNameApartment": MessageLookupByLibrary.simpleMessage("דירה"),
         "streetNameBlock": MessageLookupByLibrary.simpleMessage("חסום"),
@@ -715,7 +715,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "youMightAlsoLike":
             MessageLookupByLibrary.simpleMessage("ייתכן שתאהב גם"),
         "yourAddressExistYourLocal":
-            MessageLookupByLibrary.simpleMessage("הכתובת שלך קיימת במקומך"),
+            MessageLookupByLibrary.simpleMessage("הכתובת שלך כבר קיימת"),
         "yourBagIsEmpty":
             MessageLookupByLibrary.simpleMessage("העגלה שלך ריקה"),
         "yourBookingDetail":

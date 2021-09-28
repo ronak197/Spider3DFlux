@@ -116,7 +116,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                   //
                   // }
 
-                  printLog(cartModel.shippingMethod!.title);
+                  // printLog(cartModel.shippingMethod!.title);
 
                   return Column(
                     children: <Widget>[

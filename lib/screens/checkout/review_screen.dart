@@ -64,8 +64,29 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final taxModel = Provider.of<TaxModel>(context);
 
-    final cartModel = Provider.of<CartModel>(context);
-    final address = cartModel.address!;
+    // final cartModel = Provider.of<CartModel>(context);
+    // final address = cartModel.address!;
+    final address = Provider.of<CartModel>(context).address;
+
+/*    var address;
+    @override
+    void initState() {
+      super.initState();
+      Future.delayed(
+        Duration.zero,
+        () async {
+          final addressValue =
+              await Provider.of<CartModel>(context, listen: false).getAddress();
+          address = addressValue;
+
+          print("addressValue:");
+          print(addressValue!.firstName);
+          print(addressValue.city);
+          // ignore: unnecessary_null_comparison
+        },
+      );
+    }
+    initState();*/
 
     return ListenableProvider.value(
       value: shippingMethodModel,
@@ -150,7 +171,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 // title: S.of(context).shippingAddress,
                 // title: 'פרטי משלוח',
                 // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
-                title: 'כתובת: ' '${address.city}, ' '${address.street!}',
+                title: 'כתובת: ' '${address!.city}, ' '${address.street!}',
+                // title: 'כתובת: ' '${address.city}, ' '${address!.street}',
                 children: <Widget>[
                   ShippingAddressInfo(),
                   Padding(
@@ -164,11 +186,14 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                           primary: Theme.of(context).primaryColorLight,
                         ),
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) => ShippingAddress()));
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                                  builder: (_) => ShippingAddress(
+                                      // isFullPage: true,
+                                      )));
                         },
                         child: Text(
-                          'ערוך כתובת משלוח',
+                          'עדכן כתובת משלוח',
                           style: TextStyle(
                             fontSize: 16,
                             color: Theme.of(context).accentColor,
@@ -517,6 +542,35 @@ class ShippingAddressInfo extends StatelessWidget {
             ),
           ),
 */
+
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 120,
+                  child: Text(
+                    S.of(context).city + ' :',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    address.city!,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: Row(
@@ -546,34 +600,7 @@ class ShippingAddressInfo extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 120,
-                  child: Text(
-                    S.of(context).city + ' :',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    address.city!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
+
           /*   FutureBuilder(
             future: Services().widget.getCountryName(context, address.country),
             builder: (context, snapshot) {

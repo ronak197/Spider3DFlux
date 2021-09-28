@@ -91,7 +91,6 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                         height: 100, child: kLoadingWidget(context));
                   }
 
-                  print(cartModel.shippingMethod!.title);
                   if (model.message != null) {
                     return Container(
                       height: 100,
@@ -116,6 +115,8 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                   //   print(oldShippingMethodTitle);
                   //
                   // }
+
+                  printLog(cartModel.shippingMethod!.title);
 
                   return Column(
                     children: <Widget>[

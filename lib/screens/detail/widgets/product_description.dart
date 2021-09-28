@@ -30,6 +30,7 @@ class ProductDescription extends StatelessWidget {
         const SizedBox(height: 15),
         if (product!.description != null && product!.description!.isNotEmpty)
           ExpansionInfo(
+            iconWidget: Container(),
             title: S.of(context).description,
             expand: false,
             children: <Widget>[
@@ -59,6 +60,7 @@ class ProductDescription extends StatelessWidget {
         ],
         if (enableReview)
           ExpansionInfo(
+            iconWidget: Container(),
             title: S.of(context).readReviews,
             children: <Widget>[
               Padding(
@@ -72,6 +74,7 @@ class ProductDescription extends StatelessWidget {
           ),
         if (product!.infors.isNotEmpty)
           ExpansionInfo(
+            iconWidget: Container(),
             expand: false,
             title: S.of(context).additionalInformation,
             children: <Widget>[

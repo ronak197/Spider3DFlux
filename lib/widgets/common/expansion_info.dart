@@ -5,11 +5,15 @@ import 'dart:math' as math; // import this
 
 class ExpansionInfo extends StatelessWidget {
   final String title;
+  Widget iconWidget;
   final bool expand;
   final List<Widget> children;
 
   ExpansionInfo(
-      {required this.title, required this.children, this.expand = false});
+      {required this.title,
+      required this.children,
+      required this.iconWidget,
+      this.expand = false});
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +31,17 @@ class ExpansionInfo extends StatelessWidget {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
-                  Transform(
-                    transform: Matrix4.rotationY(math.pi),
-                    origin: const Offset(12, 0),
-                    child: Icon(
-                      Icons.local_shipping,
-                      // color: Theme.of(context).accentColor,
-                      size: 20,
-                    ),
+                  iconWidget,
+                  const SizedBox(
+                    width: 8,
                   ),
                   Text(
                     title.toUpperCase(),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2!
@@ -57,21 +58,36 @@ class ExpansionInfo extends StatelessWidget {
       header: Flexible(
         child: Container(
             margin: const EdgeInsets.only(bottom: 2),
+            // width: 200,
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColorLight.withOpacity(0.5),
               borderRadius: BorderRadius.circular(6),
             ),
             padding: const EdgeInsets.symmetric(vertical: 13.0, horizontal: 10),
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    title.toUpperCase(),
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2!
-                        .copyWith(fontWeight: FontWeight.w600),
+                  const SizedBox(
+                    width: 5,
                   ),
+                  iconWidget,
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Container(
+                    width: 200,
+                    child: Text(
+                      title.toUpperCase(),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2!
+                          .copyWith(fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  const Spacer(),
                   Icon(
                     Icons.keyboard_arrow_right,
                     color: Theme.of(context).accentColor,

@@ -19,6 +19,7 @@ class ProductTag extends StatelessWidget {
     return ExpansionInfo(
       expand: true,
       title: S.of(context).tags,
+      iconWidget: Container(),
       children: <Widget>[
         Container(
           width: MediaQuery.of(context).size.width,

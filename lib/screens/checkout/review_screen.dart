@@ -15,6 +15,7 @@ import '../../widgets/common/expansion_info.dart';
 import '../../widgets/product/cart_item.dart';
 import '../base_screen.dart';
 import 'checkout_screen.dart';
+import 'dart:math' as math;
 
 class ReviewScreen extends StatefulWidget {
   final Function? onBack;
@@ -70,56 +71,36 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              kPaymentConfig['EnableShipping']
-                  ? ExpansionInfo(
-                      // title: S.of(context).shippingAddress,
-                      title: 'פרטי משלוח',
-                      children: <Widget>[
-                        ShippingAddressInfo(),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 0, bottom: 5),
-                          child: ButtonTheme(
-                            height: 45,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                elevation: 0.0,
-                                primary: Theme.of(context).primaryColorLight,
-                              ),
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (_) => ShippingAddress()));
-                              },
-                              child: Text(
-                                'ערוך כתובת משלוח',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Theme.of(context).accentColor,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  : Container(),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 0.0),
+                child: Text(S.of(context).orderDetail,
+                    style: const TextStyle(fontSize: 18)),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Container(
+                  height: 1, decoration: const BoxDecoration(color: kGrey200)),
+              const SizedBox(
+                height: 15,
+              ),
               ExpansionInfo(
+                iconWidget: Icon(
+                  Icons.widgets,
+                  color: Theme.of(context).accentColor,
+                  // color: Color(0xff263238), size: 20,
+                  size: 20,
+                ),
                 title: 'מוצרים בהזמנה',
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   ...getProducts(model, context),
                 ],
               ),
-              Container(
-                  height: 1, decoration: const BoxDecoration(color: kGrey200)),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: Text(S.of(context).orderDetail,
-                    style: const TextStyle(fontSize: 18)),
-              ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 0),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
@@ -131,9 +112,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                       // S.of(context).subtotal,
                       'סכום הזמנה',
                       style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
+                          fontSize: 15,
+                          color: Theme.of(context).appBarTheme.backgroundColor),
                     ),
                     Text(
                       PriceTools.getCurrencyFormatted(
@@ -153,25 +133,55 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               //     value: shippingMethodModel.shippingMethods,
               //     builder: (context, child) =>,
               //     ),
+
+              ExpansionInfo(
+                iconWidget: Transform(
+                  transform: Matrix4.rotationY(math.pi),
+                  origin: const Offset(11, 0),
+                  child: Icon(
+                    Icons.local_shipping,
+                    color: Theme.of(context).accentColor,
+                    // color: Color(0xff263238), size: 20,
+                  ),
+                ),
+                // title: S.of(context).shippingAddress,
+                // title: 'פרטי משלוח',
+                title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
+                children: <Widget>[
+                  ShippingAddressInfo(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0, bottom: 5),
+                    child: ButtonTheme(
+                      height: 45,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          elevation: 0.0,
+                          primary: Theme.of(context).primaryColorLight,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => ShippingAddress()));
+                        },
+                        child: Text(
+                          'ערוך כתובת משלוח',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Theme.of(context).accentColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
               model.shippingMethod != null
                   //. ? Text(model.shippingMethod!.title ?? '')
                   ? Services().widget.renderShippingMethodInfo(context)
                   : Container(),
-/*                : Padding(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                      child: Text(
-                        '(יש לבחור שיטת משלוח)',
-                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                              fontSize: 14,
-                              color: Theme.of(context).accentColor,
-                            ),
-                      ),
-                    ),*/
-              //
 
               Padding(
-                padding: const EdgeInsets.only(right: 15),
+                padding: const EdgeInsets.only(right: 5),
                 child: ButtonTheme(
                   height: 45,
                   child: ElevatedButton(
@@ -269,10 +279,13 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   children: <Widget>[
                     Text(
                       S.of(context).total,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Theme.of(context).accentColor,
-                      ),
+                      style:
+                          // TextStyle(fontSize: 16, color: Theme.of(context).accentColor,),
+                          TextStyle(
+                              fontSize: 15,
+                              color: Theme.of(context)
+                                  .appBarTheme
+                                  .backgroundColor),
                     ),
                     Text(
                       PriceTools.getCurrencyFormatted(
@@ -288,13 +301,16 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+
+              // Container(height: 1, decoration: const BoxDecoration(color: kGrey200)),
+
+              const SizedBox(height: 15),
               Text(
                 S.of(context).yourNote,
                 style: const TextStyle(fontSize: 18),
               ),
               const SizedBox(
-                height: 6,
+                height: 15,
               ),
               Container(
                   height: 60,

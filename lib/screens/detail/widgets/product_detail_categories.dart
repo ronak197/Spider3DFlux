@@ -17,6 +17,7 @@ class ProductDetailCategories extends StatelessWidget {
       return const SizedBox();
     }
     return ExpansionInfo(
+      iconWidget: Container(),
       expand: false,
       title: S.of(context).categories,
       children: <Widget>[

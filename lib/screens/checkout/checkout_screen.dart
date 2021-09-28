@@ -22,10 +22,9 @@ class Checkout extends StatefulWidget {
   _CheckoutState createState() => _CheckoutState();
 }
 
-Order? newOrder;
-
 class _CheckoutState extends BaseScreen<Checkout> {
   int tabIndex = 0;
+  Order? newOrder;
   bool isPayment = false;
   bool isLoading = false;
 
@@ -274,35 +273,13 @@ class _CheckoutState extends BaseScreen<Checkout> {
                           )
                         : Column(
                             children: <Widget>[
-                              //. !isPayment ? progressBar : Container(),
+                              !isPayment ? progressBar : Container(),
                               Expanded(
                                 child: ListView(
                                   key: const Key('checkOutScreenListView'),
                                   padding: const EdgeInsets.only(
                                       top: 20, bottom: 10),
-                                  children: <Widget>[
-                                    // renderContent(),
-
-                                    ReviewScreen(onBack: () {
-                                      goToShippingTab(true);
-                                    }, onNext: () {
-                                      goToPaymentTab();
-                                    }),
-
-                                    PaymentMethods(
-                                        onBack: () {
-                                          goToReviewTab(true);
-                                        },
-                                        onFinish: (order) {
-                                          setState(() {
-                                            newOrder = order;
-                                          });
-                                          Provider.of<CartModel>(context,
-                                                  listen: false)
-                                              .clearCart();
-                                        },
-                                        onLoading: setLoading)
-                                  ],
+                                  children: <Widget>[renderContent()],
                                 ),
                               )
                             ],
@@ -332,6 +309,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
           Future.delayed(Duration.zero, goToShippingTab);
         });
       case 1:
+        print('Case 1');
         return Services().widget.renderShippingMethods(context, onBack: () {
           goToAddressTab(true);
         }, onNext: () {
@@ -375,9 +353,17 @@ class _CheckoutState extends BaseScreen<Checkout> {
   /// tabIndex: 1
   void goToShippingTab([bool isGoingBack = false]) {
     if (kPaymentConfig['EnableShipping']) {
-      setState(() {
-        tabIndex = 1;
+      // return
+      Services().widget.renderShippingMethods(context, onBack: () {
+        goToAddressTab(true);
+      }, onNext: () {
+        goToReviewTab();
       });
+
+      // setState(() {
+      //   tabIndex = 1;
+      // });
+
     } else {
       if (isGoingBack) {
         goToAddressTab(isGoingBack);

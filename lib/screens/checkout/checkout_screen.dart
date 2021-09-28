@@ -221,42 +221,19 @@ class _CheckoutState extends BaseScreen<Checkout> {
         Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
           appBar: AppBar(
+            title: const Text('עמוד קופה'),
+            leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  widget.controller!.animateToPage(
+                    0,
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.easeInOut,
+                  );
+                  // Navigator.of(context).pop();
+                }),
             backgroundColor: Theme.of(context).backgroundColor,
-            title: Text(
-              S.of(context).checkout,
-              style: TextStyle(
-                color: Theme.of(context).accentColor,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            leading: Center(
-              child: GestureDetector(
-                onTap: () => widget.controller!.animateToPage(
-                  0,
-                  duration: const Duration(milliseconds: 250),
-                  curve: Curves.easeInOut,
-                ),
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Theme.of(context).accentColor,
-                  size: 20,
-                ),
-              ),
-            ),
-            actions: <Widget>[
-              if (widget.isModal != null && widget.isModal == true)
-                IconButton(
-                  icon: const Icon(Icons.close, size: 24),
-                  onPressed: () {
-                    if (Navigator.of(context).canPop()) {
-                      Navigator.popUntil(
-                          context, (Route<dynamic> route) => route.isFirst);
-                    } else {
-                      ExpandingBottomSheet.of(context, isNullOk: true)?.close();
-                    }
-                  },
-                ),
-            ],
+            elevation: 3.0,
           ),
           body: SafeArea(
             bottom: false,

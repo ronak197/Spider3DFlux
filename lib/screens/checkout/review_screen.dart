@@ -322,10 +322,10 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                           model.getTotal(), currencyRate,
                           currency: model.currency)!,
                       style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            fontSize: 20,
+                            fontSize: 18,
                             color: Theme.of(context).accentColor,
                             fontWeight: FontWeight.w600,
-                            decoration: TextDecoration.underline,
+                            // decoration: TextDecoration.underline,
                           ),
                     )
                   ],

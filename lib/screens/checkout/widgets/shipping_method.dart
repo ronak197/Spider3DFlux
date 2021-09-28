@@ -130,7 +130,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                       selectedIndex = i;
                                     });
 
-                                    if (shippingMethodModel
+                                    /*                 if (shippingMethodModel
                                             .shippingMethods?.isNotEmpty ??
                                         false) {
                                       Provider.of<CartModel>(context,
@@ -180,7 +180,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                       // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
 
                                       // widget.onNext!();
-                                    }
+                                    }*/
                                   },
                                 ),
                                 const SizedBox(width: 10),
@@ -233,7 +233,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
           ),
         ),
         const SizedBox(height: 20),
-/*        Row(
+        Row(
           children: [
             Expanded(
               child: ButtonTheme(
@@ -244,7 +244,8 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                     onPrimary: Colors.white,
                     primary: Theme.of(context).primaryColor,
                   ),
-                  onPressed: () {
+                  onPressed:
+                      /*() {
                     if (shippingMethodModel.shippingMethods?.isNotEmpty ??
                         false) {
                       Provider.of<CartModel>(context, listen: false)
@@ -252,16 +253,57 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                           .shippingMethods![selectedIndex!]);
                       // widget.onNext!();
                     }
+                  },*/
+                      () {
+                    if (shippingMethodModel.shippingMethods?.isNotEmpty ??
+                        false) {
+                      Provider.of<CartModel>(context, listen: false)
+                          .setShippingMethod(shippingMethodModel
+                              .shippingMethods![selectedIndex!]);
+
+                      Future.delayed(Duration.zero, () {
+                        final cartModel =
+                            Provider.of<CartModel>(context, listen: false);
+                        final userModel =
+                            Provider.of<UserModel>(context, listen: false);
+                        Provider.of<PaymentMethodModel>(context, listen: false)
+                            .getPaymentMethods(
+                                cartModel: cartModel,
+                                shippingMethod: cartModel.shippingMethod,
+                                token: userModel.user != null
+                                    ? userModel.user!.cookie
+                                    : null);
+
+                        if (kPaymentConfig['EnableReview'] != true) {
+                          Provider.of<TaxModel>(context, listen: false)
+                              .getTaxes(
+                                  Provider.of<CartModel>(context,
+                                      listen: false), (taxesTotal, taxes) {
+                            Provider.of<CartModel>(context, listen: false)
+                                .taxesTotal = taxesTotal;
+                            Provider.of<CartModel>(context, listen: false)
+                                .taxes = taxes;
+                            setState(() {});
+                          });
+                        }
+                      });
+
+                      Navigator.of(context).pop();
+                      // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
+
+                      // widget.onNext!();
+                    }
                   },
-                  child: Text(((kPaymentConfig['EnableReview'] ?? true)
-                      ? S.of(context).continueToReview
-                      : S.of(context).continueToPayment)
-                      .toUpperCase()),
+                  // child: Text(((kPaymentConfig['EnableReview'] ?? true)
+                  //.         ? S.of(context).continueToReview
+                  //         : S.of(context).continueToPayment)
+                  //     .toUpperCase()),
+                  child: const Text('שמור וחזור לקופה'),
                 ),
               ),
             ),
           ],
-        ),*/
+        ),
 
 /*        if (kPaymentConfig['EnableAddress'])
           Center(

@@ -11,7 +11,14 @@ import '../../../common/tools.dart';
 import '../../../generated/l10n.dart';
 import '../../../models/booking/booking_model.dart';
 import '../../../models/index.dart'
-    show AppModel, CartModel, Order, PaymentMethodModel, TaxModel, UserModel;
+    show
+        AppModel,
+        CartModel,
+        Order,
+        PaymentMethodModel,
+        ShippingMethodModel,
+        TaxModel,
+        UserModel;
 import '../../../modules/native_payment/index.dart';
 import '../../../services/index.dart';
 import '../review_screen.dart';
@@ -76,7 +83,8 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                   style: const TextStyle(fontSize: 18)),
               const SizedBox(height: 5),
               Text(
-                S.of(context).chooseYourPaymentMethod,
+                // 'בחר את שיטת התשלום שלך',
+                'ניתן לשלם במזומן באיסוף עצמי',
                 style: TextStyle(
                   fontSize: 14,
                   color: Theme.of(context).accentColor.withOpacity(0.6),
@@ -278,7 +286,10 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                             ? showSnackbar
                             : placeOrder(paymentMethodModel, cartModel);
                       },
-                      child: Text(S.of(context).placeMyOrder.toUpperCase()),
+                      child: const Text(
+                        'עבור לתשלום מאובטח',
+                        // S.of(context).placeMyOrder.toUpperCase()
+                      ),
                     ),
                   ),
                 ),

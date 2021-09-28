@@ -22,10 +22,9 @@ class Checkout extends StatefulWidget {
   _CheckoutState createState() => _CheckoutState();
 }
 
-Order? newOrder;
-
 class _CheckoutState extends BaseScreen<Checkout> {
   int tabIndex = 0;
+  Order? newOrder;
   bool isPayment = false;
   bool isLoading = false;
 
@@ -216,6 +215,9 @@ class _CheckoutState extends BaseScreen<Checkout> {
       ],
     );
 
+    Services().widget.loadShippingMethods(
+        context, Provider.of<CartModel>(context, listen: false), false);
+
     return Stack(
       children: <Widget>[
         Scaffold(
@@ -281,14 +283,31 @@ class _CheckoutState extends BaseScreen<Checkout> {
                                   padding: const EdgeInsets.only(
                                       top: 20, bottom: 10),
                                   children: <Widget>[
-                                    // renderContent(),
+                                    // renderContent()
 
+                                    // 1. Address
+                                    ShippingAddress(onNext: () {
+                                      Future.delayed(
+                                          Duration.zero, goToShippingTab);
+                                    }),
+
+                                    // 2. Shipping method
+
+                                    Services().widget.renderShippingMethods(
+                                        context, onBack: () {
+                                      goToAddressTab(true);
+                                    }, onNext: () {
+                                      goToReviewTab();
+                                    }),
+
+                                    // 3. Review screen
                                     ReviewScreen(onBack: () {
                                       goToShippingTab(true);
                                     }, onNext: () {
                                       goToPaymentTab();
                                     }),
 
+                                    // 4. payment method
                                     PaymentMethods(
                                         onBack: () {
                                           goToReviewTab(true);
@@ -301,7 +320,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
                                                   listen: false)
                                               .clearCart();
                                         },
-                                        onLoading: setLoading)
+                                        onLoading: setLoading),
                                   ],
                                 ),
                               )

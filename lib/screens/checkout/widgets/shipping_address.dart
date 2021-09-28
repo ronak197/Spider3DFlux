@@ -13,6 +13,7 @@ import '../../../models/index.dart' show Address, CartModel, Country, UserModel;
 import '../../../services/index.dart';
 import '../../../widgets/common/place_picker.dart';
 import '../choose_address_screen.dart';
+import '../review_screen.dart';
 
 class ShippingAddress extends StatefulWidget {
   final Function? onNext;
@@ -245,6 +246,10 @@ class _ShippingAddressState extends State<ShippingAddress> {
   @override
   Widget build(BuildContext context) {
     var countryName = S.of(context).country;
+
+    Provider.of<CartModel>(context, listen: false).setAddress(address);
+    _loadShipping(beforehand: false);
+
     if (_countryController.text.isNotEmpty) {
       try {
         countryName = picker.CountryPickerUtils.getCountryByIsoCode(
@@ -258,346 +263,426 @@ class _ShippingAddressState extends State<ShippingAddress> {
     if (address == null) {
       return Container(height: 100, child: kLoadingWidget(context));
     }
-    return Form(
-      key: _formKey,
-      child: AutofillGroup(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-            Widget>[
-          TextFormField(
-            initialValue: address!.firstName,
-            autofillHints: [AutofillHints.givenName],
-            decoration: InputDecoration(labelText: S.of(context).firstName),
-            textCapitalization: TextCapitalization.words,
-            textInputAction: TextInputAction.next,
-            validator: (val) {
-              return val!.isEmpty ? S.of(context).firstNameIsRequired : null;
-            },
-            onFieldSubmitted: (_) =>
-                FocusScope.of(context).requestFocus(_lastNameNode),
-            onSaved: (String? value) {
-              address!.firstName = value;
-            },
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).backgroundColor,
+        title: Text(
+          S.of(context).shippingAddress,
+          style: TextStyle(
+            color: Theme.of(context).accentColor,
+            fontWeight: FontWeight.w400,
           ),
-          TextFormField(
-              initialValue: address!.lastName,
-              autofillHints: [AutofillHints.familyName],
-              focusNode: _lastNameNode,
-              textCapitalization: TextCapitalization.words,
-              textInputAction: TextInputAction.next,
-              validator: (val) {
-                return val!.isEmpty ? S.of(context).lastNameIsRequired : null;
-              },
-              decoration: InputDecoration(labelText: S.of(context).lastName),
-              onFieldSubmitted: (_) =>
-                  FocusScope.of(context).requestFocus(_phoneNode),
-              onSaved: (String? value) {
-                address!.lastName = value;
-              }),
-          TextFormField(
-              initialValue: address!.phoneNumber,
-              autofillHints: [AutofillHints.telephoneNumber],
-              focusNode: _phoneNode,
-              decoration: InputDecoration(labelText: S.of(context).phoneNumber),
-              textInputAction: TextInputAction.next,
-              validator: (val) {
-                return val!.isEmpty ? S.of(context).phoneIsRequired : null;
-              },
-              keyboardType: TextInputType.number,
-              onFieldSubmitted: (_) =>
-                  FocusScope.of(context).requestFocus(_emailNode),
-              onSaved: (String? value) {
-                address!.phoneNumber = value;
-              }),
-          TextFormField(
-              initialValue: address!.email,
-              autofillHints: [AutofillHints.email],
-              focusNode: _emailNode,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(labelText: S.of(context).email),
-              textInputAction: TextInputAction.done,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return S.of(context).emailIsRequired;
-                }
-                return validateEmail(val);
-              },
-              onSaved: (String? value) {
-                address!.email = value;
-              }),
-          const SizedBox(height: 10.0),
-          if (kPaymentConfig['allowSearchingAddress'])
-            if (kGoogleAPIKey.isNotEmpty)
-              Row(
-                children: [
-                  Expanded(
-                    child: ButtonTheme(
-                      height: 50,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0.0,
-                          onPrimary: Theme.of(context).accentColor,
-                          primary: Theme.of(context).primaryColorLight,
+        ),
+        leading: Center(
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios),
+            color: Theme.of(context).accentColor,
+            iconSize: 20,
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Form(
+                key: _formKey,
+                child: AutofillGroup(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        TextFormField(
+                          initialValue: address!.firstName,
+                          autofillHints: [AutofillHints.givenName],
+                          decoration: InputDecoration(
+                              labelText: S.of(context).firstName),
+                          textCapitalization: TextCapitalization.words,
+                          textInputAction: TextInputAction.next,
+                          validator: (val) {
+                            return val!.isEmpty
+                                ? S.of(context).firstNameIsRequired
+                                : null;
+                          },
+                          onFieldSubmitted: (_) => FocusScope.of(context)
+                              .requestFocus(_lastNameNode),
+                          onSaved: (String? value) {
+                            address!.firstName = value;
+                          },
                         ),
-                        onPressed: () async {
-                          var result = await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => PlacePicker(
-                                kIsWeb
-                                    ? kGoogleAPIKey['web']
-                                    : isIos
-                                        ? kGoogleAPIKey['ios']
-                                        : kGoogleAPIKey['android'],
+                        TextFormField(
+                            initialValue: address!.lastName,
+                            autofillHints: [AutofillHints.familyName],
+                            focusNode: _lastNameNode,
+                            textCapitalization: TextCapitalization.words,
+                            textInputAction: TextInputAction.next,
+                            validator: (val) {
+                              return val!.isEmpty
+                                  ? S.of(context).lastNameIsRequired
+                                  : null;
+                            },
+                            decoration: InputDecoration(
+                                labelText: S.of(context).lastName),
+                            onFieldSubmitted: (_) =>
+                                FocusScope.of(context).requestFocus(_phoneNode),
+                            onSaved: (String? value) {
+                              address!.lastName = value;
+                            }),
+                        TextFormField(
+                            initialValue: address!.phoneNumber,
+                            autofillHints: [AutofillHints.telephoneNumber],
+                            focusNode: _phoneNode,
+                            decoration: InputDecoration(
+                                labelText: S.of(context).phoneNumber),
+                            textInputAction: TextInputAction.next,
+                            validator: (val) {
+                              return val!.isEmpty
+                                  ? S.of(context).phoneIsRequired
+                                  : null;
+                            },
+                            keyboardType: TextInputType.number,
+                            onFieldSubmitted: (_) =>
+                                FocusScope.of(context).requestFocus(_emailNode),
+                            onSaved: (String? value) {
+                              address!.phoneNumber = value;
+                            }),
+                        TextFormField(
+                            initialValue: address!.email,
+                            autofillHints: [AutofillHints.email],
+                            focusNode: _emailNode,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration:
+                                InputDecoration(labelText: S.of(context).email),
+                            textInputAction: TextInputAction.done,
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return S.of(context).emailIsRequired;
+                              }
+                              return validateEmail(val);
+                            },
+                            onSaved: (String? value) {
+                              address!.email = value;
+                            }),
+                        const SizedBox(height: 10.0),
+                        if (kPaymentConfig['allowSearchingAddress'])
+                          if (kGoogleAPIKey.isNotEmpty)
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: ButtonTheme(
+                                    height: 50,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        elevation: 0.0,
+                                        onPrimary:
+                                            Theme.of(context).accentColor,
+                                        primary:
+                                            Theme.of(context).primaryColorLight,
+                                      ),
+                                      onPressed: () async {
+                                        var result =
+                                            await Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => PlacePicker(
+                                              kIsWeb
+                                                  ? kGoogleAPIKey['web']
+                                                  : isIos
+                                                      ? kGoogleAPIKey['ios']
+                                                      : kGoogleAPIKey[
+                                                          'android'],
+                                            ),
+                                          ),
+                                        );
+
+                                        if (result != null) {
+                                          address!.country = result.country;
+                                          address!.street = result.street;
+                                          address!.state = result.state;
+                                          address!.city = result.city;
+                                          address!.zipCode = result.zip;
+                                          address!.mapUrl =
+                                              'https://maps.google.com/maps?q=${result.latLng.latitude},${result.latLng.longitude}&output=embed';
+
+                                          setState(() {
+                                            _cityController.text = result.city;
+                                            _stateController.text =
+                                                result.state;
+                                            _streetController.text =
+                                                result.street;
+                                            _zipController.text = result.zip;
+                                            _countryController.text =
+                                                result.country;
+                                          });
+                                          final c = Country(
+                                              id: result.country,
+                                              name: result.country);
+                                          states = await Services()
+                                              .widget
+                                              .loadStates(c);
+                                          setState(() {});
+                                        }
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          const Icon(
+                                            FontAwesomeIcons.searchLocation,
+                                            size: 18,
+                                          ),
+                                          const SizedBox(width: 10.0),
+                                          Text(S
+                                              .of(context)
+                                              .searchingAddress
+                                              .toUpperCase()),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                        const SizedBox(height: 10),
+                        ButtonTheme(
+                          height: 50,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0.0,
+                              onPrimary: Theme.of(context).accentColor,
+                              primary: Theme.of(context).primaryColorLight,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ChooseAddressScreen(updateState),
+                                ),
+                              );
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                const Icon(
+                                  FontAwesomeIcons.solidAddressBook,
+                                  size: 16,
+                                ),
+                                const SizedBox(width: 10.0),
+                                Text(
+                                  S.of(context).selectAddress.toUpperCase(),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          S.of(context).country,
+                          style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.grey),
+                        ),
+                        (countries!.length == 1)
+                            ? Text(
+                                picker.CountryPickerUtils.getCountryByIsoCode(
+                                        countries![0].code!)
+                                    .name,
+                                style: const TextStyle(fontSize: 18),
+                              )
+                            : GestureDetector(
+                                onTap: _openCountryPickerDialog,
+                                child: Column(children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Text(countryName,
+                                              style: const TextStyle(
+                                                  fontSize: 17.0)),
+                                        ),
+                                        const Icon(Icons.arrow_drop_down)
+                                      ],
+                                    ),
+                                  ),
+                                  const Divider(
+                                    height: 1,
+                                    color: kGrey900,
+                                  )
+                                ]),
+                              ),
+                        renderStateInput(),
+                        TextFormField(
+                          controller: _cityController,
+                          autofillHints: [AutofillHints.addressCity],
+                          focusNode: _cityNode,
+                          validator: (val) {
+                            return val!.isEmpty
+                                ? S.of(context).cityIsRequired
+                                : null;
+                          },
+                          decoration:
+                              InputDecoration(labelText: S.of(context).city),
+                          textInputAction: TextInputAction.next,
+                          onFieldSubmitted: (_) => FocusScope.of(context)
+                              .requestFocus(_apartmentNode),
+                          onSaved: (String? value) {
+                            address!.city = value;
+                          },
+                        ),
+                        TextFormField(
+                            controller: _apartmentController,
+                            focusNode: _apartmentNode,
+                            validator: (val) {
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                                labelText: S.of(context).streetNameApartment),
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (_) =>
+                                FocusScope.of(context).requestFocus(_blockNode),
+                            onSaved: (String? value) {
+                              address!.apartment = value;
+                            }),
+                        TextFormField(
+                            controller: _blockController,
+                            focusNode: _blockNode,
+                            validator: (val) {
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                                labelText: S.of(context).streetNameBlock),
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (_) => FocusScope.of(context)
+                                .requestFocus(_streetNode),
+                            onSaved: (String? value) {
+                              address!.block = value;
+                            }),
+                        TextFormField(
+                            controller: _streetController,
+                            autofillHints: [AutofillHints.fullStreetAddress],
+                            focusNode: _streetNode,
+                            validator: (val) {
+                              return val!.isEmpty
+                                  ? S.of(context).streetIsRequired
+                                  : null;
+                            },
+                            decoration: InputDecoration(
+                                labelText: S.of(context).streetName),
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (_) =>
+                                FocusScope.of(context).requestFocus(_zipNode),
+                            onSaved: (String? value) {
+                              address!.street = value;
+                            }),
+                        // My remove Mikud.
+/*          TextFormField(
+                        controller: _zipController,
+                        autofillHints: [AutofillHints.postalCode],
+                        focusNode: _zipNode,
+                        validator: (val) {
+                          return val!.isEmpty ? S.of(context).zipCodeIsRequired : null;
+                        },
+                        keyboardType:
+                            (kPaymentConfig['EnableAlphanumericZipCode'] ?? false)
+                                ? TextInputType.text
+                                : TextInputType.number,
+                        textInputAction: TextInputAction.done,
+                        decoration: InputDecoration(labelText: S.of(context).zipCode),
+                        onSaved: (String? value) {
+                          address!.zipCode = value;
+                        }),*/
+                        const SizedBox(height: 20),
+                        Row(children: [
+                          ButtonTheme(
+                            height: 45,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                elevation: 0.0,
+                                primary: Theme.of(context).primaryColorLight,
+                              ),
+                              onPressed: () {
+                                if (!checkToSave()) return;
+                                if (_formKey.currentState!.validate()) {
+                                  _formKey.currentState!.save();
+                                  Provider.of<CartModel>(context, listen: false)
+                                      .setAddress(address);
+                                  saveDataToLocal();
+                                }
+                              },
+                              child: Text(
+                                S.of(context).saveAddress.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Theme.of(context).accentColor,
+                                ),
                               ),
                             ),
-                          );
-
-                          if (result != null) {
-                            address!.country = result.country;
-                            address!.street = result.street;
-                            address!.state = result.state;
-                            address!.city = result.city;
-                            address!.zipCode = result.zip;
-                            address!.mapUrl =
-                                'https://maps.google.com/maps?q=${result.latLng.latitude},${result.latLng.longitude}&output=embed';
-
-                            setState(() {
-                              _cityController.text = result.city;
-                              _stateController.text = result.state;
-                              _streetController.text = result.street;
-                              _zipController.text = result.zip;
-                              _countryController.text = result.country;
-                            });
-                            final c = Country(
-                                id: result.country, name: result.country);
-                            states = await Services().widget.loadStates(c);
-                            setState(() {});
-                          }
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Icon(
-                              FontAwesomeIcons.searchLocation,
-                              size: 18,
-                            ),
-                            const SizedBox(width: 10.0),
-                            Text(S.of(context).searchingAddress.toUpperCase()),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-          const SizedBox(height: 10),
-          ButtonTheme(
-            height: 50,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                elevation: 0.0,
-                onPrimary: Theme.of(context).accentColor,
-                primary: Theme.of(context).primaryColorLight,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ChooseAddressScreen(updateState),
-                  ),
-                );
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Icon(
-                    FontAwesomeIcons.solidAddressBook,
-                    size: 16,
-                  ),
-                  const SizedBox(width: 10.0),
-                  Text(
-                    S.of(context).selectAddress.toUpperCase(),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            S.of(context).country,
-            style: const TextStyle(
-                fontSize: 12, fontWeight: FontWeight.w300, color: Colors.grey),
-          ),
-          (countries!.length == 1)
-              ? Text(
-                  picker.CountryPickerUtils.getCountryByIsoCode(
-                          countries![0].code!)
-                      .name,
-                  style: const TextStyle(fontSize: 18),
-                )
-              : GestureDetector(
-                  onTap: _openCountryPickerDialog,
-                  child: Column(children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Expanded(
-                            child: Text(countryName,
-                                style: const TextStyle(fontSize: 17.0)),
                           ),
-                          const Icon(Icons.arrow_drop_down)
-                        ],
-                      ),
-                    ),
-                    const Divider(
-                      height: 1,
-                      color: kGrey900,
-                    )
-                  ]),
+                          Container(
+                            width: 20,
+                          ),
+                          Expanded(
+                            child: ButtonTheme(
+                              height: 45,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  elevation: 0.0,
+                                  onPrimary: Colors.white,
+                                  primary: Theme.of(context).primaryColor,
+                                ),
+                                onPressed: _onNext,
+                                child: Text(
+                                    (kPaymentConfig['EnableShipping']
+                                            ? S.of(context).continueToShipping
+                                            : (kPaymentConfig['EnableReview'] ??
+                                                    true)
+                                                ? S.of(context).continueToReview
+                                                : S
+                                                    .of(context)
+                                                    .continueToPayment)
+                                        .toUpperCase(),
+                                    style: const TextStyle(fontSize: 12)),
+                              ),
+                            ),
+                          )
+                        ]),
+                      ]),
                 ),
-          renderStateInput(),
-          TextFormField(
-            controller: _cityController,
-            autofillHints: [AutofillHints.addressCity],
-            focusNode: _cityNode,
-            validator: (val) {
-              return val!.isEmpty ? S.of(context).cityIsRequired : null;
-            },
-            decoration: InputDecoration(labelText: S.of(context).city),
-            textInputAction: TextInputAction.next,
-            onFieldSubmitted: (_) =>
-                FocusScope.of(context).requestFocus(_apartmentNode),
-            onSaved: (String? value) {
-              address!.city = value;
-            },
+              ),
+              // Services().widget.renderShippingMethods(context, onBack: () {}, onNext: () {}),
+            ],
           ),
-          TextFormField(
-              controller: _apartmentController,
-              focusNode: _apartmentNode,
-              validator: (val) {
-                return null;
-              },
-              decoration:
-                  InputDecoration(labelText: S.of(context).streetNameApartment),
-              textInputAction: TextInputAction.next,
-              onFieldSubmitted: (_) =>
-                  FocusScope.of(context).requestFocus(_blockNode),
-              onSaved: (String? value) {
-                address!.apartment = value;
-              }),
-          TextFormField(
-              controller: _blockController,
-              focusNode: _blockNode,
-              validator: (val) {
-                return null;
-              },
-              decoration:
-                  InputDecoration(labelText: S.of(context).streetNameBlock),
-              textInputAction: TextInputAction.next,
-              onFieldSubmitted: (_) =>
-                  FocusScope.of(context).requestFocus(_streetNode),
-              onSaved: (String? value) {
-                address!.block = value;
-              }),
-          TextFormField(
-              controller: _streetController,
-              autofillHints: [AutofillHints.fullStreetAddress],
-              focusNode: _streetNode,
-              validator: (val) {
-                return val!.isEmpty ? S.of(context).streetIsRequired : null;
-              },
-              decoration: InputDecoration(labelText: S.of(context).streetName),
-              textInputAction: TextInputAction.next,
-              onFieldSubmitted: (_) =>
-                  FocusScope.of(context).requestFocus(_zipNode),
-              onSaved: (String? value) {
-                address!.street = value;
-              }),
-          // My remove Mikud.
-/*          TextFormField(
-              controller: _zipController,
-              autofillHints: [AutofillHints.postalCode],
-              focusNode: _zipNode,
-              validator: (val) {
-                return val!.isEmpty ? S.of(context).zipCodeIsRequired : null;
-              },
-              keyboardType:
-                  (kPaymentConfig['EnableAlphanumericZipCode'] ?? false)
-                      ? TextInputType.text
-                      : TextInputType.number,
-              textInputAction: TextInputAction.done,
-              decoration: InputDecoration(labelText: S.of(context).zipCode),
-              onSaved: (String? value) {
-                address!.zipCode = value;
-              }),*/
-          const SizedBox(height: 20),
-          Row(children: [
-            ButtonTheme(
-              height: 45,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  elevation: 0.0,
-                  primary: Theme.of(context).primaryColorLight,
-                ),
-                onPressed: () {
-                  if (!checkToSave()) return;
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    Provider.of<CartModel>(context, listen: false)
-                        .setAddress(address);
-                    saveDataToLocal();
-                  }
-                },
-                child: Text(
-                  S.of(context).saveAddress.toUpperCase(),
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Theme.of(context).accentColor,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: 20,
-            ),
-            Expanded(
-              child: ButtonTheme(
-                height: 45,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0.0,
-                    onPrimary: Colors.white,
-                    primary: Theme.of(context).primaryColor,
-                  ),
-                  onPressed: () {
-                    /// on tap to Next Button
-                    // if (_formKey.currentState!.validate()) {
-                    // _formKey.currentState!.save();
-                    // Provider.of<CartModel>(context, listen: false).setAddress(address);
-                    //
-                    // Services().widget.loadShippingMethods(
-                    //     context, Provider.of<CartModel>(context, listen: false), false);
-
-                    widget.onNext!();
-                    // }
-                  },
-                  child: Text(
-                      (kPaymentConfig['EnableShipping']
-                              ? S.of(context).continueToShipping
-                              : (kPaymentConfig['EnableReview'] ?? true)
-                                  ? S.of(context).continueToReview
-                                  : S.of(context).continueToPayment)
-                          .toUpperCase(),
-                      style: const TextStyle(fontSize: 12)),
-                ),
-              ),
-            )
-          ]),
-        ]),
+        ),
       ),
     );
+  }
+
+  /// Load Shipping beforehand
+  void _loadShipping({bool beforehand = true}) {
+    Services().widget.loadShippingMethods(
+        context, Provider.of<CartModel>(context, listen: false), beforehand);
+  }
+
+  /// on tap to Next Button
+  void _onNext() {
+    {
+      if (_formKey.currentState!.validate()) {
+        _formKey.currentState!.save();
+        Provider.of<CartModel>(context, listen: false).setAddress(address);
+        _loadShipping(beforehand: false);
+        widget.onNext!();
+      }
+    }
   }
 
   Widget renderStateInput() {

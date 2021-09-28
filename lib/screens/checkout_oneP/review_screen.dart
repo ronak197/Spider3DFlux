@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
+import 'package:fstore/screens/checkout/widgets/shipping_address.dart';
+import 'package:fstore/screens/checkout/widgets/shipping_method.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/config.dart';
 import '../../common/constants.dart';
 import '../../common/tools.dart';
 import '../../generated/l10n.dart';
-import '../../models/index.dart' show AppModel, CartModel, Product, TaxModel;
+import '../../models/index.dart'
+    show AppModel, CartModel, Product, ShippingMethodModel, TaxModel;
 import '../../services/index.dart';
 import '../../widgets/common/expansion_info.dart';
 import '../../widgets/product/cart_item.dart';
 import '../base_screen.dart';
+import 'checkout_screen.dart';
 
 class ReviewScreen extends StatefulWidget {
   final Function? onBack;
@@ -43,6 +48,9 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // final shippingMethodModel = Provider.of<ShippingMethodModel>(context);
+    // var myShippingTitle = Provider.of<CartModel>(context).shippingMethod!.title;
+
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final taxModel = Provider.of<TaxModel>(context);
 
@@ -59,6 +67,29 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     ],
                   )
                 : Container(),
+            Padding(
+              padding: const EdgeInsets.only(right: 0, bottom: 5),
+              child: ButtonTheme(
+                height: 45,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    primary: Theme.of(context).primaryColorLight,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => ShippingAddress()));
+                  },
+                  child: Text(
+                    'ערוך כתובת משלוח',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
             Container(
                 height: 1, decoration: const BoxDecoration(color: kGrey200)),
             Padding(
@@ -75,7 +106,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    S.of(context).subtotal,
+                    // S.of(context).subtotal,
+                    'סכום הזמנה',
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).accentColor,
@@ -93,7 +125,84 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 ],
               ),
             ),
-            Services().widget.renderShippingMethodInfo(context),
+            // Builder(builder: (context) => Text('${Provider.of<CartModel>(context).shippingMethod!.title}'),)
+            // ChangeNotifierProvider<CartModel>.value(
+            // ChangeNotifierProvider<CartModel>.value(
+            //     value: shippingMethodModel.shippingMethods,
+            //     builder: (context, child) =>,
+            //     ),
+            model.shippingMethod != null
+                //. ? Text(model.shippingMethod!.title ?? '')
+                ? Services().widget.renderShippingMethodInfo(context)
+                : Container(),
+/*                : Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                    child: Text(
+                      '(יש לבחור שיטת משלוח)',
+                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                            fontSize: 14,
+                            color: Theme.of(context).accentColor,
+                          ),
+                    ),
+                  ),*/
+            //
+
+            Padding(
+              padding: const EdgeInsets.only(right: 15),
+              child: ButtonTheme(
+                height: 45,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    primary: Theme.of(context).primaryColorLight,
+                  ),
+                  onPressed: () {
+                    Services().widget.loadShippingMethods(context,
+                        Provider.of<CartModel>(context, listen: false), false);
+
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            scrollable: true,
+                            insetPadding: EdgeInsets.symmetric(
+                              horizontal: 24.0,
+                              // vertical: 48 * 3
+                              vertical:
+                                  MediaQuery.of(context).size.height * 0.20,
+                            ),
+                            // insetPadding: EdgeInsets.zero,
+                            // contentPadding: EdgeInsets.zero,
+                            title: Text('שיטת משלוח'),
+                            content: Services().widget.renderShippingMethods(
+                                context,
+                                onBack: () {},
+                                onNext: () {}),
+                            // goToShippingTab(true);
+
+/*                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('CANCEL'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],*/
+                          );
+                        });
+                  },
+                  child: Text(
+                    'בחר שיטת משלוח',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
             if (model.getCoupon() != '')
               Padding(
                 padding:
@@ -158,49 +267,40 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               height: 6,
             ),
             Container(
+                height: 60,
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.black,
-                    width: 0.2,
+                    color: kGrey200,
+                    width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: TextField(
-                  maxLines: 5,
+                  onChanged: (value) {
+                    printLog(value);
+                    // if (note.text.isNotEmpty) {
+                    Provider.of<CartModel>(context, listen: false)
+                        .setOrderNotes(note.text);
+                    // }
+                    // printLog(note.text);
+                    // printLog(Provider.of<CartModel>(context, listen: false).notes);
+                  },
+                  cursorColor: Colors.red[900],
+                  maxLines: 2,
                   controller: note,
                   style: const TextStyle(fontSize: 13),
-                  decoration: InputDecoration(
-                      hintText: S.of(context).writeYourNote,
-                      hintStyle: const TextStyle(fontSize: 12),
+                  decoration: const InputDecoration(
+                      // hintText: S.of(context).writeYourNote,
+                      hintText: 'כתוב הערה (אופציונלי)',
+                      hintStyle: TextStyle(fontSize: 14),
                       border: InputBorder.none),
                 )),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
-            Row(children: [
-              Expanded(
-                child: ButtonTheme(
-                  height: 45,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      onPrimary: Colors.white,
-                      primary: Theme.of(context).primaryColor,
-                    ),
-                    onPressed: () {
-                      widget.onNext!();
-                      if (note.text.isNotEmpty) {
-                        Provider.of<CartModel>(context, listen: false)
-                            .setOrderNotes(note.text);
-                      }
-                    },
-                    child: Text(S.of(context).continueToPayment.toUpperCase()),
-                  ),
-                ),
-              ),
-            ]),
-            if (kPaymentConfig['EnableShipping'] &&
+
+/*            if (kPaymentConfig['EnableShipping'] &&
                 kPaymentConfig['EnableAddress'])
               Center(
                   child: TextButton(
@@ -212,11 +312,13 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                           style: const TextStyle(
                               decoration: TextDecoration.underline,
                               fontSize: 15,
-                              color: kGrey400))))
+                              color: kGrey400))))*/
           ],
         );
       },
-    );
+    )
+        // ?? Text(" Told ya its could be null 4")
+        ;
   }
 
   List<Widget> getProducts(CartModel model, BuildContext context) {
@@ -225,7 +327,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
         var productId = Product.cleanProductID(key);
 
         return ShoppingCartRow(
-          my_is_review_screen: true,
+          my_is_review_screen:
+              true, // My adjustments for review_screen.dart only
           addonsOptions: model.productAddonsOptionsInCart[key],
           product: model.getProductById(productId),
           variation: model.getProductVariationById(key),

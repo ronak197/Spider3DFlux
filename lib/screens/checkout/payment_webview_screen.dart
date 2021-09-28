@@ -115,22 +115,17 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
           WebView(
             javascriptMode: JavascriptMode.unrestricted,
             initialUrl: checkoutMap['url'],
-            onWebViewCreated: (controller) async {
+            onWebViewCreated: (controller) {
               _controller = controller;
-
-              await controller
-                  .evaluateJavascript('console.log("Print TEST by JS")');
             },
-            onPageFinished: (url) async {
+
+            // print('_controller.getTitle()');
+            // print(_controller.getTitle());
+
+            onPageFinished: (url) {
               setState(() {
                 isLoading = false;
               });
-
-              await _controller.evaluateJavascript(
-                  "document.getElementById('billing_first_name').value = 'שם פרטי';");
-              await _controller.evaluateJavascript(
-                  "document.getElementById('billing_last_name').value = 'שם משפחה';");
-
               if (url.contains('/order-received/')) {
                 final items = url.split('/order-received/');
                 if (items.length > 1) {

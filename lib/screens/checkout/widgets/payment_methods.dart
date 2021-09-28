@@ -68,217 +68,128 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(S.of(context).paymentMethods,
-                style: const TextStyle(fontSize: 18)),
+                style: const TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             Text(
               S.of(context).chooseYourPaymentMethod,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 12,
                 color: Theme.of(context).accentColor.withOpacity(0.6),
               ),
             ),
             const SizedBox(height: 20),
-            Consumer<CartModel>(builder: (context, cartModel, child) {
-              var oldShippingMethod = cartModel.shippingMethod;
-              if (cartModel.shippingMethod != oldShippingMethod) {
-                return Consumer<PaymentMethodModel>(
-                    builder: (context, model, child) {
-                  if (model.isLoading) {
-                    return Container(
-                        height: 100, child: kLoadingWidget(context));
-                  }
-
-                  if (model.message != null) {
-                    return Container(
-                      height: 100,
-                      child: Center(
-                          child: Text(model.message!,
-                              style: const TextStyle(color: kErrorRed))),
-                    );
-                  }
-
-                  if (selectedId == null && model.paymentMethods.isNotEmpty) {
-                    selectedId = model.paymentMethods
-                        .firstWhere((item) => item.enabled!)
-                        .id;
-                  }
-
-                  return Column(
-                    children: <Widget>[
-                      for (int i = 0; i < model.paymentMethods.length; i++)
-                        model.paymentMethods[i].enabled!
-                            ? Column(
-                                children: <Widget>[
-                                  InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selectedId = model.paymentMethods[i].id;
-                                      });
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: model.paymentMethods[i].id ==
-                                                  selectedId
-                                              ? Theme.of(context)
-                                                  .primaryColorLight
-                                              : Colors.transparent),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 15, horizontal: 10),
-                                        child: Row(
-                                          children: <Widget>[
-                                            Radio(
-                                                value:
-                                                    model.paymentMethods[i].id,
-                                                groupValue: selectedId,
-                                                onChanged: (dynamic i) {
-                                                  setState(() {
-                                                    selectedId = i;
-                                                  });
-                                                }),
-                                            const SizedBox(width: 10),
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: <Widget>[
-                                                  if (Payments[model
-                                                          .paymentMethods[i]
-                                                          .id] !=
-                                                      null)
-                                                    Image.asset(
-                                                      Payments[model
-                                                          .paymentMethods[i]
-                                                          .id],
-                                                      width: 120,
-                                                      height: 30,
-                                                    ),
-                                                  if (Payments[model
-                                                          .paymentMethods[i]
-                                                          .id] ==
-                                                      null)
-                                                    Services()
-                                                        .widget
-                                                        .renderShippingPaymentTitle(
-                                                            context,
-                                                            model
-                                                                .paymentMethods[
-                                                                    i]
-                                                                .title!),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const Divider(height: 1)
-                                ],
-                              )
-                            : Container()
-                    ],
-                  );
-                });
+            Consumer<PaymentMethodModel>(builder: (context, model, child) {
+              if (model.isLoading) {
+                return Container(height: 100, child: kLoadingWidget(context));
               }
-              return Consumer<PaymentMethodModel>(
-                  builder: (context, model, child) {
-                if (model.isLoading) {
-                  return Container(height: 100, child: kLoadingWidget(context));
-                }
 
-                if (model.message != null) {
-                  return Container(
-                    height: 100,
-                    child: Center(
-                        child: Text(model.message!,
-                            style: const TextStyle(color: kErrorRed))),
-                  );
-                }
+              if (model.message != null) {
+                return Container(
+                  height: 100,
+                  child: Center(
+                      child: Text(model.message!,
+                          style: const TextStyle(color: kErrorRed))),
+                );
+              }
 
-                if (selectedId == null && model.paymentMethods.isNotEmpty) {
-                  selectedId = model.paymentMethods
-                      .firstWhere((item) => item.enabled!)
-                      .id;
-                }
+              if (selectedId == null && model.paymentMethods.isNotEmpty) {
+                selectedId =
+                    model.paymentMethods.firstWhere((item) => item.enabled!).id;
+              }
 
-                return Column(
-                  children: <Widget>[
-                    for (int i = 0; i < model.paymentMethods.length; i++)
-                      model.paymentMethods[i].enabled!
-                          ? Column(
-                              children: <Widget>[
-                                InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      selectedId = model.paymentMethods[i].id;
-                                    });
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: model.paymentMethods[i].id ==
-                                                selectedId
-                                            ? Theme.of(context)
-                                                .primaryColorLight
-                                            : Colors.transparent),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 15, horizontal: 10),
-                                      child: Row(
-                                        children: <Widget>[
-                                          Radio(
-                                              value: model.paymentMethods[i].id,
-                                              groupValue: selectedId,
-                                              onChanged: (dynamic i) {
-                                                setState(() {
-                                                  selectedId = i;
-                                                });
-                                              }),
-                                          const SizedBox(width: 10),
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                if (Payments[model
-                                                        .paymentMethods[i]
-                                                        .id] !=
-                                                    null)
-                                                  Image.asset(
-                                                    Payments[model
-                                                        .paymentMethods[i].id],
-                                                    width: 120,
-                                                    height: 30,
-                                                  ),
-                                                if (Payments[model
-                                                        .paymentMethods[i]
-                                                        .id] ==
-                                                    null)
-                                                  Services()
-                                                      .widget
-                                                      .renderShippingPaymentTitle(
-                                                          context,
-                                                          model
-                                                              .paymentMethods[i]
-                                                              .title!),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
+              return Column(
+                children: <Widget>[
+                  for (int i = 0; i < model.paymentMethods.length; i++)
+                    model.paymentMethods[i].enabled!
+                        ? Column(
+                            children: <Widget>[
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    selectedId = model.paymentMethods[i].id;
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: model.paymentMethods[i].id ==
+                                              selectedId
+                                          ? Theme.of(context).primaryColorLight
+                                          : Colors.transparent),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 15, horizontal: 10),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                            value: model.paymentMethods[i].id,
+                                            groupValue: selectedId,
+                                            onChanged: (dynamic i) {
+                                              setState(() {
+                                                selectedId = i;
+                                              });
+                                            }),
+                                        const SizedBox(width: 10),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              if (Payments[model
+                                                      .paymentMethods[i].id] !=
+                                                  null)
+                                                Image.asset(
+                                                  Payments[model
+                                                      .paymentMethods[i].id],
+                                                  width: 120,
+                                                  height: 30,
+                                                ),
+                                              if (Payments[model
+                                                      .paymentMethods[i].id] ==
+                                                  null)
+                                                Services()
+                                                    .widget
+                                                    .renderShippingPaymentTitle(
+                                                        context,
+                                                        model.paymentMethods[i]
+                                                            .title!),
+                                            ],
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
-                                const Divider(height: 1)
-                              ],
-                            )
-                          : Container()
-                  ],
-                );
-              });
+                              ),
+                              const Divider(height: 1)
+                            ],
+                          )
+                        : Container()
+                ],
+              );
             }),
             const SizedBox(height: 20),
-            // Services().widget.renderShippingMethodInfo(context),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    S.of(context).subtotal,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).accentColor.withOpacity(0.8),
+                    ),
+                  ),
+                  Text(
+                      PriceTools.getCurrencyFormatted(
+                          cartModel.getSubTotal(), currencyRate,
+                          currency: cartModel.currency)!,
+                      style: const TextStyle(fontSize: 14, color: kGrey400))
+                ],
+              ),
+            ),
+            Services().widget.renderShippingMethodInfo(context),
             if (cartModel.getCoupon() != '')
               Padding(
                 padding:
@@ -305,60 +216,53 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                   ],
                 ),
               ),
-            // Services().widget.renderTaxes(taxModel, context),
-            // Services().widget.renderRewardInfo(context),
+            Services().widget.renderTaxes(taxModel, context),
+            Services().widget.renderRewardInfo(context),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text(S.of(context).subtotal,
-                      // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor.withOpacity(0.8),
-                      )),
                   Text(
-                      PriceTools.getCurrencyFormatted(
-                          cartModel.getTotal(), currencyRate,
-                          currency: cartModel.currency)!,
-                      // style: TextStyle(
-                      //   fontSize: 20,
-                      //   color: Theme.of(context).accentColor,
-                      //   fontWeight: FontWeight.w600,
-                      //   decoration: TextDecoration.underline,
-                      // ),
-                      style: const TextStyle(fontSize: 14, color: kGrey400))
+                    S.of(context).total,
+                    style: TextStyle(
+                        fontSize: 16, color: Theme.of(context).accentColor),
+                  ),
+                  Text(
+                    PriceTools.getCurrencyFormatted(
+                        cartModel.getTotal(), currencyRate,
+                        currency: cartModel.currency)!,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Theme.of(context).accentColor,
+                      fontWeight: FontWeight.w600,
+                      decoration: TextDecoration.underline,
+                    ),
+                  )
                 ],
               ),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 20),
             Row(children: [
               Expanded(
                 child: ButtonTheme(
                   height: 45,
-                  // Processrocces order button
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       onPrimary: Colors.white,
                       primary: Theme.of(context).primaryColor,
                     ),
-                    onPressed: () {
-                      // String? note = Provider.of<CartModel>(context, listen: false).notes ?? '';
-                      //   if (note.isNotEmpty && note != '') {Provider.of<CartModel>(context, listen: false).setOrderNotes(note);}
-
-                      isPaying || selectedId == null
-                          ? showSnackbar
-                          : placeOrder(paymentMethodModel, cartModel);
-                    },
+                    onPressed: () => isPaying || selectedId == null
+                        ? showSnackbar
+                        : placeOrder(paymentMethodModel, cartModel),
                     child: Text(S.of(context).placeMyOrder.toUpperCase()),
                   ),
                 ),
               ),
             ]),
-/*            if (kPaymentConfig['EnableShipping'] ||
+            if (kPaymentConfig['EnableShipping'] ||
                 kPaymentConfig['EnableAddress'] ||
                 (kPaymentConfig['EnableReview'] ?? true))
               Center(
@@ -380,7 +284,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                     ),
                   ),
                 ),
-              )*/
+              )
           ],
         ));
   }

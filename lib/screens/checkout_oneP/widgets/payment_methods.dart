@@ -55,6 +55,8 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
     });
   }
 
+  var oldShippingMethodTitle = 'NULL';
+
   @override
   Widget build(BuildContext context) {
     final cartModel = Provider.of<CartModel>(context);
@@ -63,134 +65,169 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
     final taxModel = Provider.of<TaxModel>(context);
 
     return ListenableProvider.value(
-        value: paymentMethodModel,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(S.of(context).paymentMethods,
-                style: const TextStyle(fontSize: 16)),
-            const SizedBox(height: 5),
-            Text(
-              S.of(context).chooseYourPaymentMethod,
-              style: TextStyle(
-                fontSize: 12,
-                color: Theme.of(context).accentColor.withOpacity(0.6),
+      value: cartModel,
+      child: ListenableProvider.value(
+          value: paymentMethodModel,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(S.of(context).paymentMethods,
+                  style: const TextStyle(fontSize: 18)),
+              const SizedBox(height: 5),
+              Text(
+                S.of(context).chooseYourPaymentMethod,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Theme.of(context).accentColor.withOpacity(0.6),
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Consumer<PaymentMethodModel>(builder: (context, model, child) {
-              if (model.isLoading) {
-                return Container(height: 100, child: kLoadingWidget(context));
-              }
+              const SizedBox(height: 20),
+              Consumer<CartModel>(builder: (context, cartModel, child) {
+                print(cartModel.shippingMethod!.title);
 
-              if (model.message != null) {
-                return Container(
-                  height: 100,
-                  child: Center(
-                      child: Text(model.message!,
-                          style: const TextStyle(color: kErrorRed))),
-                );
-              }
+                return Consumer<PaymentMethodModel>(
+                    builder: (context, model, child) {
+                  if (model.isLoading) {
+                    return Container(
+                        height: 100, child: kLoadingWidget(context));
+                  }
 
-              if (selectedId == null && model.paymentMethods.isNotEmpty) {
-                selectedId =
-                    model.paymentMethods.firstWhere((item) => item.enabled!).id;
-              }
+                  if (model.message != null) {
+                    return Container(
+                      height: 100,
+                      child: Center(
+                          child: Text(model.message!,
+                              style: const TextStyle(color: kErrorRed))),
+                    );
+                  }
 
-              return Column(
-                children: <Widget>[
-                  for (int i = 0; i < model.paymentMethods.length; i++)
-                    model.paymentMethods[i].enabled!
-                        ? Column(
-                            children: <Widget>[
-                              InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    selectedId = model.paymentMethods[i].id;
-                                  });
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: model.paymentMethods[i].id ==
-                                              selectedId
-                                          ? Theme.of(context).primaryColorLight
-                                          : Colors.transparent),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 15, horizontal: 10),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Radio(
-                                            value: model.paymentMethods[i].id,
-                                            groupValue: selectedId,
-                                            onChanged: (dynamic i) {
-                                              setState(() {
-                                                selectedId = i;
-                                              });
-                                            }),
-                                        const SizedBox(width: 10),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              if (Payments[model
-                                                      .paymentMethods[i].id] !=
-                                                  null)
-                                                Image.asset(
-                                                  Payments[model
-                                                      .paymentMethods[i].id],
-                                                  width: 120,
-                                                  height: 30,
-                                                ),
-                                              if (Payments[model
-                                                      .paymentMethods[i].id] ==
-                                                  null)
-                                                Services()
-                                                    .widget
-                                                    .renderShippingPaymentTitle(
-                                                        context,
-                                                        model.paymentMethods[i]
-                                                            .title!),
-                                            ],
-                                          ),
-                                        )
-                                      ],
+                  if (selectedId == null && model.paymentMethods.isNotEmpty) {
+                    selectedId = model.paymentMethods
+                        .firstWhere((item) => item.enabled!)
+                        .id;
+                  }
+
+                  // return ChangeNotifierProvider.value(
+                  // return ListenableProvider.value(
+
+                  // if (cartModel.shippingMethod!.title != oldShippingMethodTitle) {
+                  //   print(oldShippingMethodTitle);
+                  //   oldShippingMethodTitle = cartModel.shippingMethod!.title!;
+                  //   print(oldShippingMethodTitle);
+                  //
+                  // }
+
+                  return Column(
+                    children: <Widget>[
+                      // Text(cartModel.shippingMethod!.title ?? 'my null',),
+                      // Text(oldShippingMethodTitle //.?? 'my null',),
+                      for (int i = 0; i < model.paymentMethods.length; i++)
+                        model.paymentMethods[i].enabled!
+                            ? Column(
+                                children: <Widget>[
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedId = model.paymentMethods[i].id;
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: model.paymentMethods[i].id ==
+                                                  selectedId
+                                              ? Theme.of(context)
+                                                  .primaryColorLight
+                                              : Colors.transparent),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 15, horizontal: 10),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Radio(
+                                                value:
+                                                    model.paymentMethods[i].id,
+                                                groupValue: selectedId,
+                                                onChanged: (dynamic i) {
+                                                  setState(() {
+                                                    selectedId = i;
+                                                  });
+                                                }),
+                                            const SizedBox(width: 10),
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: <Widget>[
+                                                  if (Payments[model
+                                                          .paymentMethods[i]
+                                                          .id] !=
+                                                      null)
+                                                    Image.asset(
+                                                      Payments[model
+                                                          .paymentMethods[i]
+                                                          .id],
+                                                      width: 120,
+                                                      height: 30,
+                                                    ),
+                                                  if (Payments[model
+                                                          .paymentMethods[i]
+                                                          .id] ==
+                                                      null)
+                                                    Services()
+                                                        .widget
+                                                        .renderShippingPaymentTitle(
+                                                            context,
+                                                            model
+                                                                .paymentMethods[
+                                                                    i]
+                                                                .title!),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
-                              const Divider(height: 1)
-                            ],
-                          )
-                        : Container()
-                ],
-              );
-            }),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    S.of(context).subtotal,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor.withOpacity(0.8),
-                    ),
+                                  const Divider(height: 1)
+                                ],
+                              )
+                            : Container()
+                    ],
+                  );
+                });
+              }),
+              const SizedBox(height: 20),
+              // Services().widget.renderShippingMethodInfo(context),
+              if (cartModel.getCoupon() != '')
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        S.of(context).discount,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Theme.of(context).accentColor.withOpacity(0.8),
+                        ),
+                      ),
+                      Text(
+                        cartModel.getCoupon(),
+                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                              fontSize: 14,
+                              color: Theme.of(context)
+                                  .accentColor
+                                  .withOpacity(0.8),
+                            ),
+                      )
+                    ],
                   ),
-                  Text(
-                      PriceTools.getCurrencyFormatted(
-                          cartModel.getSubTotal(), currencyRate,
-                          currency: cartModel.currency)!,
-                      style: const TextStyle(fontSize: 14, color: kGrey400))
-                ],
-              ),
-            ),
-            Services().widget.renderShippingMethodInfo(context),
-            if (cartModel.getCoupon() != '')
+                ),
+              // Services().widget.renderTaxes(taxModel, context),
+              // Services().widget.renderRewardInfo(context),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
@@ -198,95 +235,77 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    Text(S.of(context).subtotal,
+                        // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Theme.of(context).accentColor.withOpacity(0.8),
+                        )),
                     Text(
-                      S.of(context).discount,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor.withOpacity(0.8),
-                      ),
-                    ),
-                    Text(
-                      cartModel.getCoupon(),
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            fontSize: 14,
-                            color:
-                                Theme.of(context).accentColor.withOpacity(0.8),
-                          ),
-                    )
+                        PriceTools.getCurrencyFormatted(
+                            cartModel.getTotal(), currencyRate,
+                            currency: cartModel.currency)!,
+                        // style: TextStyle(
+                        //   fontSize: 20,
+                        //   color: Theme.of(context).accentColor,
+                        //   fontWeight: FontWeight.w600,
+                        //   decoration: TextDecoration.underline,
+                        // ),
+                        style: const TextStyle(fontSize: 14, color: kGrey400))
                   ],
                 ),
               ),
-            Services().widget.renderTaxes(taxModel, context),
-            Services().widget.renderRewardInfo(context),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    S.of(context).total,
-                    style: TextStyle(
-                        fontSize: 16, color: Theme.of(context).accentColor),
-                  ),
-                  Text(
-                    PriceTools.getCurrencyFormatted(
-                        cartModel.getTotal(), currencyRate,
-                        currency: cartModel.currency)!,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Theme.of(context).accentColor,
-                      fontWeight: FontWeight.w600,
-                      decoration: TextDecoration.underline,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            Row(children: [
-              Expanded(
-                child: ButtonTheme(
-                  height: 45,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      onPrimary: Colors.white,
-                      primary: Theme.of(context).primaryColor,
-                    ),
-                    onPressed: () => isPaying || selectedId == null
-                        ? showSnackbar
-                        : placeOrder(paymentMethodModel, cartModel),
-                    child: Text(S.of(context).placeMyOrder.toUpperCase()),
-                  ),
-                ),
-              ),
-            ]),
-            if (kPaymentConfig['EnableShipping'] ||
-                kPaymentConfig['EnableAddress'] ||
-                (kPaymentConfig['EnableReview'] ?? true))
-              Center(
-                child: TextButton(
-                  onPressed: () {
-                    isPaying ? showSnackbar : widget.onBack!();
-                  },
-                  child: Text(
-                    (kPaymentConfig['EnableReview'] ?? true)
-                        ? S.of(context).goBackToReview
-                        : kPaymentConfig['EnableShipping']
-                            ? S.of(context).goBackToShipping
-                            : S.of(context).goBackToAddress,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontSize: 15,
-                      color: Theme.of(context).accentColor,
+              const SizedBox(height: 15),
+              Row(children: [
+                Expanded(
+                  child: ButtonTheme(
+                    height: 45,
+                    // Processrocces order button
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        onPrimary: Colors.white,
+                        primary: Theme.of(context).primaryColor,
+                      ),
+                      onPressed: () {
+                        // String? note = Provider.of<CartModel>(context, listen: false).notes ?? '';
+                        //   if (note.isNotEmpty && note != '') {Provider.of<CartModel>(context, listen: false).setOrderNotes(note);}
+
+                        isPaying || selectedId == null
+                            ? showSnackbar
+                            : placeOrder(paymentMethodModel, cartModel);
+                      },
+                      child: Text(S.of(context).placeMyOrder.toUpperCase()),
                     ),
                   ),
                 ),
-              )
-          ],
-        ));
+              ]),
+/*            if (kPaymentConfig['EnableShipping'] ||
+                  kPaymentConfig['EnableAddress'] ||
+                  (kPaymentConfig['EnableReview'] ?? true))
+                Center(
+                  child: TextButton(
+                    onPressed: () {
+                      isPaying ? showSnackbar : widget.onBack!();
+                    },
+                    child: Text(
+                      (kPaymentConfig['EnableReview'] ?? true)
+                          ? S.of(context).goBackToReview
+                          : kPaymentConfig['EnableShipping']
+                              ? S.of(context).goBackToShipping
+                              : S.of(context).goBackToAddress,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontSize: 15,
+                        color: Theme.of(context).accentColor,
+                      ),
+                    ),
+                  ),
+                )*/
+            ],
+          )),
+    );
   }
 
   void showSnackbar() {

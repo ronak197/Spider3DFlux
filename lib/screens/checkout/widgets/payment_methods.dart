@@ -144,6 +144,8 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                                         child: Row(
                                           children: <Widget>[
                                             Radio(
+                                                activeColor: kColorSpiderRed,
+                                                focusColor: kColorSpiderRed,
                                                 value:
                                                     model.paymentMethods[i].id,
                                                 groupValue: selectedId,

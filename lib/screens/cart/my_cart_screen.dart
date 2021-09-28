@@ -188,6 +188,8 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
                                               (screenSize.height /
                                                   screenSize.width)),
                                       child: Row(
+                                        // crossAxisAlignment: CrossAxisAlignment.,
+                                        // mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           const SizedBox(
                                             width: 25.0,
@@ -198,20 +200,28 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
                                                 .textTheme.subtitle1!
                                                 .copyWith(
                                                     fontWeight: FontWeight.w600,
+                                                    // color: Theme.of(context).primaryColor,
+                                                    // color: Colors.grey[600],
                                                     color: Theme.of(context)
-                                                        .primaryColor,
+                                                        .accentColor,
                                                     fontSize: 14),
                                           ),
                                           const SizedBox(width: 8.0),
                                           Text(
                                             '${model.totalCartQuantity} ${S.of(context).items}',
                                             style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .primaryColor),
+                                              // color: Theme.of(context).primaryColor,
+                                              // color: Colors.grey[600],
+                                              color:
+                                                  Theme.of(context).accentColor,
+                                            ),
                                           ),
                                           Expanded(
-                                            child: Align(
-                                              alignment: Alignment.centerRight,
+                                            child: Container(
+                                              padding: const EdgeInsets.only(
+                                                left: 20,
+                                              ),
+                                              alignment: Alignment.centerLeft,
                                               child: TextButton(
                                                 onPressed: () {
                                                   if (model.totalCartQuantity >

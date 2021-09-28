@@ -225,7 +225,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
         var productId = Product.cleanProductID(key);
 
         return ShoppingCartRow(
-          my_is_review_screen: true,
+          my_is_review_screen: false,
           addonsOptions: model.productAddonsOptionsInCart[key],
           product: model.getProductById(productId),
           variation: model.getProductVariationById(key),

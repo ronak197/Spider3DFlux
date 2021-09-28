@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'expansion_tile.dart';
+import 'dart:math' as math; // import this
 
 class ExpansionInfo extends StatelessWidget {
   final String title;
@@ -26,6 +27,18 @@ class ExpansionInfo extends StatelessWidget {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Transform(
+                    transform: Matrix4.rotationY(math.pi),
+                    origin: const Offset(12, 0),
+                    child: Icon(
+                      Icons.local_shipping,
+                      // color: Theme.of(context).accentColor,
+                      size: 20,
+                    ),
+                  ),
                   Text(
                     title.toUpperCase(),
                     style: Theme.of(context)

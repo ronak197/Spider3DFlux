@@ -67,10 +67,15 @@ class ShoppingCartRow extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Container(
-                        width: constraints.maxWidth * 0.25,
-                        height: constraints.maxWidth * 0.3,
-                        child: ImageTools.image(url: imageFeature),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          // color: Colors.red,
+                          width: constraints.maxWidth * 0.25,
+                          height: constraints.maxWidth * 0.3,
+                          child: ImageTools.image(
+                              url: imageFeature, fit: BoxFit.cover),
+                        ),
                       ),
                       const SizedBox(width: 16.0),
                       Expanded(
@@ -86,7 +91,8 @@ class ShoppingCartRow extends StatelessWidget {
                                   style: TextStyle(
                                     color: theme.accentColor,
                                   ),
-                                  maxLines: my_is_review_screen ? 1 : 4,
+                                  // maxLines: my_is_review_screen ? 1 : 4,
+                                  maxLines: 4,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),

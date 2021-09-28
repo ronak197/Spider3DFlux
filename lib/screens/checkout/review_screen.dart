@@ -72,34 +72,44 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
             children: <Widget>[
               kPaymentConfig['EnableShipping']
                   ? ExpansionInfo(
-                      title: S.of(context).shippingAddress,
+                      // title: S.of(context).shippingAddress,
+                      title: 'פרטי משלוח',
                       children: <Widget>[
                         ShippingAddressInfo(),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 0, bottom: 5),
+                          child: ButtonTheme(
+                            height: 45,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                elevation: 0.0,
+                                primary: Theme.of(context).primaryColorLight,
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (_) => ShippingAddress()));
+                              },
+                              child: Text(
+                                'ערוך כתובת משלוח',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Theme.of(context).accentColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     )
                   : Container(),
-              Padding(
-                padding: const EdgeInsets.only(right: 0, bottom: 5),
-                child: ButtonTheme(
-                  height: 45,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0.0,
-                      primary: Theme.of(context).primaryColorLight,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => ShippingAddress()));
-                    },
-                    child: Text(
-                      'ערוך כתובת משלוח',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
+              ExpansionInfo(
+                title: 'מוצרים בהזמנה',
+                children: <Widget>[
+                  SizedBox(
+                    height: 15,
                   ),
-                ),
+                  ...getProducts(model, context),
+                ],
               ),
               Container(
                   height: 1, decoration: const BoxDecoration(color: kGrey200)),
@@ -108,7 +118,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 child: Text(S.of(context).orderDetail,
                     style: const TextStyle(fontSize: 18)),
               ),
-              ...getProducts(model, context),
+
               const SizedBox(height: 20),
               Padding(
                 padding:

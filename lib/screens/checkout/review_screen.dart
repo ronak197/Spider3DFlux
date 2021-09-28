@@ -64,6 +64,9 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final taxModel = Provider.of<TaxModel>(context);
 
+    final cartModel = Provider.of<CartModel>(context);
+    final address = cartModel.address!;
+
     return ListenableProvider.value(
       value: shippingMethodModel,
       child: Consumer<CartModel>(
@@ -146,11 +149,13 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 ),
                 // title: S.of(context).shippingAddress,
                 // title: 'פרטי משלוח',
-                title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
+                // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
+                title: 'כתובת: ' '${address.city}, ' '${address.street!}',
                 children: <Widget>[
                   ShippingAddressInfo(),
                   Padding(
-                    padding: const EdgeInsets.only(right: 0, bottom: 5),
+                    padding:
+                        const EdgeInsets.only(right: 0, bottom: 5, top: 10),
                     child: ButtonTheme(
                       height: 45,
                       child: ElevatedButton(
@@ -462,7 +467,8 @@ class ShippingAddressInfo extends StatelessWidget {
                 Container(
                   width: 120,
                   child: Text(
-                    S.of(context).firstName + ' :',
+                    // S.of(context).firstName + ' :',
+                    'שם לחשבונית :',
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).accentColor,
@@ -481,6 +487,7 @@ class ShippingAddressInfo extends StatelessWidget {
               ],
             ),
           ),
+/*
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: Row(
@@ -509,6 +516,7 @@ class ShippingAddressInfo extends StatelessWidget {
               ],
             ),
           ),
+*/
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: Row(
@@ -518,35 +526,8 @@ class ShippingAddressInfo extends StatelessWidget {
                 Container(
                   width: 120,
                   child: Text(
-                    S.of(context).email + ' :',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    address.email!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 120,
-                  child: Text(
-                    S.of(context).streetName + ' :',
+                    // S.of(context).streetName + ' :',
+                    'רחוב, מס׳ בית :',
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).accentColor,
@@ -593,35 +574,7 @@ class ShippingAddressInfo extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 120,
-                  child: Text(
-                    S.of(context).stateProvince + ' :',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    address.state!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          FutureBuilder(
+          /*   FutureBuilder(
             future: Services().widget.getCountryName(context, address.country),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -657,7 +610,7 @@ class ShippingAddressInfo extends StatelessWidget {
                 return Container();
               }
             },
-          ),
+          ),*/
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: Row(
@@ -667,7 +620,8 @@ class ShippingAddressInfo extends StatelessWidget {
                 Container(
                   width: 120,
                   child: Text(
-                    S.of(context).phoneNumber + ' :',
+                    // S.of(context).phoneNumber + ' :',
+                    'טלפון :',
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).accentColor,
@@ -686,7 +640,36 @@ class ShippingAddressInfo extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 120,
+                  child: Text(
+                    S.of(context).email + ' :',
+                    // 'אימייל :',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    address.email!,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          // const SizedBox(height: 20),
         ],
       ),
     );

@@ -38,14 +38,17 @@ class ExpansionInfo extends StatelessWidget {
                   const SizedBox(
                     width: 8,
                   ),
-                  Text(
-                    title.toUpperCase(),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2!
-                        .copyWith(fontWeight: FontWeight.w600),
+                  Container(
+                    width: 200,
+                    child: Text(
+                      title.toUpperCase(),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2!
+                          .copyWith(fontWeight: FontWeight.w600),
+                    ),
                   ),
                   const Spacer(),
                   Icon(

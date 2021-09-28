@@ -50,7 +50,8 @@ class _ShippingMethodsState extends State<ShippingMethods> {
               selectedIndex = index;
             });
           }
-        } else {
+        }
+        /*else {
           // my else add
           printLog('(my else here to save)');
           final cartModel = Provider.of<CartModel>(context, listen: false);
@@ -63,7 +64,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                   cartModel: cartModel,
                   token:
                       userModel.user != null ? userModel.user!.cookie : null);
-        }
+        }*/
       },
     );
   }

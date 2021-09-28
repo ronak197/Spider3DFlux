@@ -84,9 +84,9 @@ class _StateProductVariant extends State<ProductVariant> {
           return;
         });
 
-    printLog('productVariation.length 2');
-    printLog(productVariation!.attributes);
-    printLog(productVariation!.price);
+    // printLog('productVariation.length 2');
+    // printLog(productVariation!.attributes);
+    // printLog(productVariation!.price);
   }
 
   Future<void> getProductAddons() async {

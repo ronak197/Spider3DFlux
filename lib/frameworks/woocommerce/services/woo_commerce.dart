@@ -251,11 +251,13 @@ class WooCommerce extends BaseServices {
         endPoint += '&lang=$lang';
       }
       if (config.containsKey('category') && config['category'] != null) {
-        endPoint += '&stock_status=instock';
         // endPoint += '&orderby=title';
         endPoint += '&orderby=$myOrderBy';
         endPoint += '&order=$myOrder';
         endPoint += "&category=${config["category"]}";
+
+        endPoint += '&min_price=1';
+        endPoint += '&stock_status=instock';
       }
       if (config.containsKey('tag') && config['tag'] != null) {
         endPoint += "&tag=${config["tag"]}";
@@ -414,6 +416,9 @@ class WooCommerce extends BaseServices {
       // endPoint += '&orderby=$orderBy';
       // endPoint += '&orderby=popularity';
       endPoint += '&orderby=$myOrderBy';
+
+      endPoint += '&min_price=1';
+      endPoint += '&stock_status=instock';
       // }
 
       // if (order != null) {
@@ -429,7 +434,6 @@ class WooCommerce extends BaseServices {
         endPoint += '&attribute=$attribute&attribute_term=$attributeTerm';
       }
       // if (kAdvanceConfig['hideOutOfStock']) {
-      endPoint += '&stock_status=instock';
       // }
       if (userId != null) {
         endPoint += '&user_id=$userId';
@@ -927,6 +931,7 @@ class WooCommerce extends BaseServices {
       }*/
 
       endPoint += '&min_price=1';
+      endPoint += '&stock_status=instock';
 
       if (userId != null) {
         endPoint += '&user_id=$userId';

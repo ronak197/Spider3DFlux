@@ -124,7 +124,8 @@ dependencies:
   universal_platform: 1.0.0-nullsafety
   uuid: 3.0.4
   vector_math: 2.1.0
-  async: 2.6.1
+#  async: 2.6.1
+  async:
   easy_debounce: 2.0.0
   devicelocale: 0.4.1
   collection: 1.15.0

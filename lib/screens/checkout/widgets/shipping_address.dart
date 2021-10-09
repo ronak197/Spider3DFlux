@@ -17,10 +17,10 @@ import '../choose_address_screen.dart';
 import '../review_screen.dart';
 
 class ShippingAddress extends StatefulWidget {
-  final Function? onNext;
   final bool isFullPage;
+  final Function onNext;
 
-  ShippingAddress({this.onNext, this.isFullPage = true});
+  ShippingAddress({required this.onNext, this.isFullPage = true});
 
   @override
   _ShippingAddressState createState() => _ShippingAddressState();
@@ -83,10 +83,6 @@ class _ShippingAddressState extends State<ShippingAddress> {
       () async {
         final addressValue =
             await Provider.of<CartModel>(context, listen: false).getAddress();
-
-        print("addressValue:");
-        print(addressValue!.firstName);
-        print(addressValue.city);
         // ignore: unnecessary_null_comparison
         if (addressValue != null) {
           setState(() {
@@ -99,7 +95,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
             _apartmentController.text = address?.apartment ?? '';
           });
         } else {
-/*          var user = Provider.of<UserModel>(context, listen: false).user;
+          var user = Provider.of<UserModel>(context, listen: false).user;
           setState(() {
             address = Address(country: kPaymentConfig['DefaultCountryISOCode']);
             if (kPaymentConfig['DefaultStateISOCode'] != null) {
@@ -112,9 +108,9 @@ class _ShippingAddressState extends State<ShippingAddress> {
               address!.lastName = user.lastName;
               address!.email = user.email;
             }
-          });*/
+          });
         }
-/*        countries = await Services().widget.loadCountries(context);
+        countries = await Services().widget.loadCountries(context);
         var country = countries!.firstWhereOrNull((element) =>
             element.id == address!.country || element.code == address!.country);
         if (country == null) {
@@ -135,7 +131,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
         states = await Services().widget.loadStates(country);
         if (mounted) {
           setState(() {});
-        }*/
+        }
       },
     );
   }
@@ -153,7 +149,6 @@ class _ShippingAddressState extends State<ShippingAddress> {
     });
   }
 
-  // yourAddressExistYourLocal
   bool checkToSave() {
     final storage = LocalStorage('address');
     var _list = <Address>[];
@@ -170,7 +165,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
         if (local.street != _streetController.text) continue;
         if (local.zipCode != _zipController.text) continue;
         if (local.state != _stateController.text) continue;
-/*        showDialog(
+        showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
@@ -188,16 +183,19 @@ class _ShippingAddressState extends State<ShippingAddress> {
               ],
             );
           },
-        );*/
+        );
+        // print('checkToSave Bool is false');
+        // return false;
+        print('checkToSave Bool false is overwrite to true //My');
         return true;
       }
     } catch (err) {
       printLog(err);
     }
+    print('checkToSave Bool is true');
     return true;
   }
 
-// youHaveBeenSaveAddressYourLocal
   Future<void> saveDataToLocal() async {
     final storage = LocalStorage('address');
     var _list = <Address?>[];
@@ -248,16 +246,12 @@ class _ShippingAddressState extends State<ShippingAddress> {
     if (valid) {
       return null;
     }
-    return 'הזן דוא״ל תקין';
+    return 'The E-mail Address must be a valid email address.';
   }
 
   @override
   Widget build(BuildContext context) {
     var countryName = S.of(context).country;
-
-    Provider.of<CartModel>(context, listen: false).setAddress(address);
-    _loadShipping(beforehand: false);
-
     if (_countryController.text.isNotEmpty) {
       try {
         countryName = picker.CountryPickerUtils.getCountryByIsoCode(
@@ -321,11 +315,11 @@ class _ShippingAddressState extends State<ShippingAddress> {
   Widget formWidget() {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(5.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: Container(
-            color: Color(0xfff1f1f1),
+            // color: Color(0xfff1f1f1),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
@@ -383,7 +377,6 @@ class _ShippingAddressState extends State<ShippingAddress> {
                                               ),
                                             ),
                                           );
-
                                           if (result != null) {
                                             address!.country = result.country;
                                             address!.street = result.street;
@@ -392,7 +385,6 @@ class _ShippingAddressState extends State<ShippingAddress> {
                                             address!.zipCode = result.zip;
                                             address!.mapUrl =
                                                 'https://maps.google.com/maps?q=${result.latLng.latitude},${result.latLng.longitude}&output=embed';
-
                                             setState(() {
                                               _cityController.text = result.city;
                                               _stateController.text = result.state;
@@ -647,7 +639,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
                                       Provider.of<CartModel>(context,
                                               listen: false)
                                           .setAddress(address);
-                                      saveDataToLocal();
+                                      await saveDataToLocal();
 
                                       var myAddress =
                                           await Provider.of<CartModel>(context,
@@ -658,9 +650,13 @@ class _ShippingAddressState extends State<ShippingAddress> {
                                       print(myAddress.city);
 
                                       // Navigator.pop(context);
+
+                                      show_details = true;
+
                                       await Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (_) => Checkout()));
+                                      // MyFadePush(Checkout()));
                                     }
                                   },
                                   child: const Text('שמור',
@@ -679,24 +675,6 @@ class _ShippingAddressState extends State<ShippingAddress> {
         ),
       ),
     );
-  }
-
-  /// Load Shipping beforehand
-  void _loadShipping({bool beforehand = true}) {
-    Services().widget.loadShippingMethods(
-        context, Provider.of<CartModel>(context, listen: false), beforehand);
-  }
-
-  /// on tap to Next Button
-  void _onNext() {
-    {
-      if (_formKey.currentState!.validate()) {
-        _formKey.currentState!.save();
-        Provider.of<CartModel>(context, listen: false).setAddress(address);
-        _loadShipping(beforehand: false);
-        widget.onNext!();
-      }
-    }
   }
 
   Widget renderStateInput() {
@@ -841,6 +819,33 @@ class _ShippingAddressState extends State<ShippingAddress> {
                 ),
               ),
       );
+}
+
+class MyFadePush<T> extends PageRoute<T> {
+  MyFadePush(this.child);
+  @override
+  // TODO: implement barrierColor
+  Color get barrierColor => Colors.white;
+
+  @override
+  String get barrierLabel => 'barrierLabel';
+
+  final Widget child;
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return FadeTransition(
+      opacity: animation,
+      child: child,
+    );
+  }
+
+  @override
+  bool get maintainState => true;
+
+  @override
+  Duration get transitionDuration => const Duration(milliseconds: 500);
 }
 
 InputDecoration greyTxtDeco(

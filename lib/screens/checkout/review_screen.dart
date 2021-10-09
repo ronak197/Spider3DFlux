@@ -9,7 +9,7 @@ import '../../common/constants.dart';
 import '../../common/tools.dart';
 import '../../generated/l10n.dart';
 import '../../models/index.dart'
-    show AppModel, CartModel, Product, ShippingMethodModel, TaxModel;
+    show Address, AppModel, CartModel, Product, ShippingMethodModel, TaxModel;
 import '../../services/index.dart';
 import '../../widgets/common/expansion_info.dart';
 import '../../widgets/product/cart_item.dart';
@@ -20,8 +20,13 @@ import 'dart:math' as math;
 class ReviewScreen extends StatefulWidget {
   final Function? onBack;
   final Function? onNext;
+  // final Address? addressDetails;
 
-  ReviewScreen({this.onBack, this.onNext});
+  ReviewScreen({
+    this.onBack,
+    this.onNext,
+    // this.addressDetails
+  });
 
   @override
   _ReviewState createState() => _ReviewState();
@@ -64,13 +69,17 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final taxModel = Provider.of<TaxModel>(context);
 
-    // final cartModel = Provider.of<CartModel>(context);
+    var cartModel = Provider.of<CartModel>(context);
     // final address = cartModel.address!;
-    final address = Provider.of<CartModel>(context).address;
+    // var address = cartModel.address; // My
+
+    // var getAddress = Provider.of<CartModel>(context, listen: false).getAddress();
 
 /*    var address;
     @override
     void initState() {
+      // print('widget.addressDetails');
+      // print(widget.addressDetails);
       super.initState();
       Future.delayed(
         Duration.zero,
@@ -86,6 +95,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
         },
       );
     }
+
     initState();*/
 
     return ListenableProvider.value(
@@ -151,59 +161,65 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   ],
                 ),
               ),
-              // Builder(builder: (context) => Text('${Provider.of<CartModel>(context).shippingMethod!.title}'),)
-              // ChangeNotifierProvider<CartModel>.value(
-              // ChangeNotifierProvider<CartModel>.value(
-              //     value: shippingMethodModel.shippingMethods,
-              //     builder: (context, child) =>,
-              //     ),
+              FutureBuilder(
+                future:
+                    Provider.of<CartModel>(context, listen: false).getAddress(),
+                // Provider.of<CartModel>(context),
+                builder: (context, snapshot) {
+                  Address address;
+                  String final_title;
+                  if (snapshot.hasData) {
+                    print('Snapshott have data.');
+                    address = snapshot.data as Address;
+                    print(address);
 
-              ExpansionInfo(
-                iconWidget: Transform(
-                  transform: Matrix4.rotationY(math.pi),
-                  origin: const Offset(11, 0),
-                  child: Icon(
-                    Icons.local_shipping,
-                    color: Theme.of(context).accentColor,
-                    // color: Color(0xff263238), size: 20,
-                  ),
-                ),
-                // title: S.of(context).shippingAddress,
-                // title: 'פרטי משלוח',
-                // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
-                title: 'כתובת: ' '${address!.city}, ' '${address.street!}',
-                // title: 'כתובת: ' '${address.city}, ' '${address!.street}',
-                children: <Widget>[
-                  ShippingAddressInfo(),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(right: 0, bottom: 5, top: 10),
-                    child: ButtonTheme(
-                      height: 45,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0.0,
-                          primary: Theme.of(context).primaryColorLight,
-                        ),
-                        onPressed: () {
-                          Navigator.of(context)
-                              .pushReplacement(MaterialPageRoute(
-                                  builder: (_) => ShippingAddress(
-                                      // isFullPage: true,
-                                      )));
-                        },
-                        child: Text(
-                          'עדכן כתובת משלוח',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Theme.of(context).accentColor,
-                          ),
-                        ),
+                    final_title =
+                        'כתובת: ' '${address.city}, ' '${address.street!}';
+                  } else {
+                    // return const Text('Snapshot currntly have no data');
+                    print('Snapshott currntly have no data..');
+                    address = snapshot.data as Address;
+                    print(address);
+
+                    final_title = 'עדכן כתובת משלוח';
+                  }
+
+                  return ExpansionInfo(
+                    iconWidget: Transform(
+                      transform: Matrix4.rotationY(math.pi),
+                      origin: const Offset(11, 0),
+                      child: Icon(
+                        Icons.local_shipping,
+                        color: Theme.of(context).accentColor,
+                        // color: Color(0xff263238), size: 20,
                       ),
                     ),
-                  ),
-                ],
+                    // title: S.of(context).shippingAddress,
+                    // title: 'פרטי משלוח',
+                    // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
+                    title: 'כתובת: ' '${address.city}, ' '${address.street!}',
+                    // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
+                    children: <Widget>[
+                      ShippingAddressInfo(),
+                    ],
+                  );
+                },
               ),
+              // ChangeNotifierProvider<CartModel>.value(
+
+              // ListenableProvider.value(
+              //   value: getAddress,
+              //   child: Consumer<CartModel>(
+              //     builder: (context, myModel, child) {
+              //       if (myModel.address != null) {
+              //         return
+              // ExpansionInfo()...
+              //       } else {
+              //         return const Text('myModel.address == null');
+              //       }
+              //     },
+              //   ),
+              // ),
 
               model.shippingMethod != null
                   //. ? Text(model.shippingMethod!.title ?? '')
@@ -211,7 +227,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   : Container(),
 
               Padding(
-                padding: const EdgeInsets.only(right: 5),
+                padding: const EdgeInsets.only(right: 10),
                 child: ButtonTheme(
                   height: 45,
                   child: ElevatedButton(
@@ -472,46 +488,57 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
   }
 }
 
-class ShippingAddressInfo extends StatelessWidget {
+var show_details = true;
+
+class ShippingAddressInfo extends StatefulWidget {
+  @override
+  State<ShippingAddressInfo> createState() => _ShippingAddressInfoState();
+}
+
+class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
   @override
   Widget build(BuildContext context) {
     final cartModel = Provider.of<CartModel>(context);
-    final address = cartModel.address!;
+    // final address = cartModel.address!;
+    var address = cartModel.address; // My
 
-    return Container(
-      color: Theme.of(context).cardColor,
-      padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 120,
-                  child: Text(
-                    // S.of(context).firstName + ' :',
-                    'שם לחשבונית :',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
+    if (show_details) {
+      print('show_details');
+      print(show_details);
+      return Container(
+        color: Theme.of(context).cardColor,
+        padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 120,
+                    child: Text(
+                      // S.of(context).firstName + ' :',
+                      'שם לחשבונית :',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Text(
-                    address.firstName!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
+                  Expanded(
+                    child: Text(
+                      address!.firstName!,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
-          ),
 /*
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
@@ -543,65 +570,65 @@ class ShippingAddressInfo extends StatelessWidget {
           ),
 */
 
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 120,
-                  child: Text(
-                    S.of(context).city + ' :',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 120,
+                    child: Text(
+                      S.of(context).city + ' :',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Text(
-                    address.city!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
+                  Expanded(
+                    child: Text(
+                      address.city!,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 120,
-                  child: Text(
-                    // S.of(context).streetName + ' :',
-                    'רחוב, מס׳ בית :',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 120,
+                    child: Text(
+                      // S.of(context).streetName + ' :',
+                      'רחוב, מס׳ בית :',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Text(
-                    address.street!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
+                  Expanded(
+                    child: Text(
+                      address.street!,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
-          ),
 
-          /*   FutureBuilder(
+            /*   FutureBuilder(
             future: Services().widget.getCountryName(context, address.country),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -638,67 +665,105 @@ class ShippingAddressInfo extends StatelessWidget {
               }
             },
           ),*/
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 120,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 120,
+                    child: Text(
+                      // S.of(context).phoneNumber + ' :',
+                      'טלפון :',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      address.phoneNumber!,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 120,
+                    child: Text(
+                      S.of(context).email + ' :',
+                      // 'אימייל :',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      address.email!,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).accentColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // const SizedBox(height: 20),
+            Container(
+              alignment: Alignment.centerRight,
+              padding: const EdgeInsets.only(right: 0, bottom: 5, top: 10),
+              child: ButtonTheme(
+                height: 45,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    primary: Theme.of(context).primaryColorLight,
+                  ),
+                  onPressed: () {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (_) => ShippingAddress(
+                    //           onNext: () {},
+                    //           isFullPage: true,
+                    //         )));
+                    setState(() {
+                      show_details = false;
+                    });
+                  },
                   child: Text(
-                    // S.of(context).phoneNumber + ' :',
-                    'טלפון :',
+                    'עדכן כתובת משלוח',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: Theme.of(context).accentColor,
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Text(
-                    address.phoneNumber!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                )
-              ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 120,
-                  child: Text(
-                    S.of(context).email + ' :',
-                    // 'אימייל :',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    address.email!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          // const SizedBox(height: 20),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    } else {
+      print('show_details');
+      print(show_details);
+      return ShippingAddress(
+        onNext: () {},
+        isFullPage: false,
+      );
+    }
   }
 }

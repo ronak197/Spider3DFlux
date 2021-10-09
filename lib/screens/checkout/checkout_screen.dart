@@ -28,9 +28,23 @@ class _CheckoutState extends BaseScreen<Checkout> {
   int tabIndex = 0;
   bool isPayment = false;
   bool isLoading = false;
+  // var getAddressDetails;
 
   @override
   void initState() {
+/*    Future.delayed(
+      Duration.zero,
+      () async {
+        final addressValue =
+            await Provider.of<CartModel>(context, listen: false).getAddress();
+        getAddressDetails = addressValue;
+
+        print('addressValue from checkout_screen.dart:');
+        print(addressValue!.firstName);
+        print(addressValue.city);
+        // ignore: unnecessary_null_comparison
+      },
+    );*/
     super.initState();
   }
 
@@ -260,7 +274,9 @@ class _CheckoutState extends BaseScreen<Checkout> {
                                   children: <Widget>[
                                     // renderContent(),
 
-                                    ReviewScreen(onBack: () {
+                                    ReviewScreen(
+                                        // addressDetails: getAddressDetails,
+                                        onBack: () {
                                       goToShippingTab(true);
                                     }, onNext: () {
                                       goToPaymentTab();

@@ -53,6 +53,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
           children: <Widget>[
             kPaymentConfig['EnableShipping']
                 ? ExpansionInfo(
+                    iconWidget: Container(),
                     title: S.of(context).shippingAddress,
                     children: <Widget>[
                       ShippingAddressInfo(),

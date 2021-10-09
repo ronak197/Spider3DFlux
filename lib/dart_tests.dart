@@ -1,64 +1,93 @@
-List myList = ['A', 'B', 'C', 'D'];
-// List myList = ['P1', 'P2', 'P3', 'P4'];
-// List myList = [Tag {"id":4781,"name":"+Pla","slug":"pla","description":"","count":10}, Tag {"id":4920,"name":"2 צבעים","slug":"2-%d7%a6%d7%91%d7%a2%d7%99%d7%9d","description":"","count":2}, Tag {"id":2563,"name":"24V","slug":"24v","description":"","count":1}, Tag {"id":4857,"name":"3d","slug":"3d","description":"","count":2}, Tag {"id":3240,"name":"3D PRINTER","slug":"3d-printer","description":"","count":3}, Tag {"id":4876,"name":"ABS","slug":"abs","description":"","count":1}, Tag {"id":4823,"name":"Artillery","slug":"artillery","description":"","count":3}, Tag {"id":2566,"name":"cr-10","slug":"cr-10","description":"","count":1}, Tag {"id":2567,"name":"cr-10s","slug":"cr-10s","description":"","count":1}, Tag {"id":2568,"name":"cr-10s pro","slug":"cr-10s-pro","description":"","count":1}, Tag {"id":4849,"name":"Creality","slug":"creality","description":"","count":7}, Tag {"id":4892,"name":"Cura","slug":"cura","description":"","count":1}, Tag {"id":3239,"name":"DIY","slug":"diy","description":"","count":3}, T;
+import 'dart:convert';
+import 'dart:core';
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart' as foundation;
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:inspireui/extensions/string_extension.dart';
+import 'package:inspireui/utils/logs.dart';
+import 'package:intl/intl.dart';
 
-// Replace places of values in the list (A,B,C -> B,A,C), At Least 1 value should be in list!
-void replaceInList(List list, a, b) {
-  // Define values places
-  var list_len = list.length;
-  var a_index = list.indexOf(a);
-  var b_index = list.indexOf(b);
+import 'models/entities/shipping_method.dart';
 
-  // Add (1) Value if not in list
-  if (a_index == -1) list.add(a); // AKA null
-  if (b_index == -1) list.add(b);
+// import '../../../common/constants.dart';
+// import 'common/constants.dart';
+// import '../../../models/index.dart';
+// import 'index.dart';
+// import 'models/entities/shipping_method.dart';
 
-  // Redefine values places
-  a_index = list.indexOf(a);
-  b_index = list.indexOf(b);
+var headers = {'Cookie': 'PHPSESSID=e203768c5e152412e8c7d566fc3fe8a6'};
+var request = httpPost(''.toUri()!,
+    // body: convert.jsonEncode(params),
+    headers: {'Content-Type': 'application/json'});
 
-  // Switch between their places
-  list.insert(a_index, b); // means .addAt
-  list.removeAt(a_index + 1);
+/*request.headers.addAll(headers);
 
-  list.insert(b_index, a); // means .addAt
-  list.removeAt(b_index + 1);
+http.StreamedResponse response = await request.send();
 
-  // Remove rest unnecessary value if left
-  if (list_len != list.length) list.removeAt(list.length - 1);
+if (response.statusCode == 200) async {
+print(await response.stream.bytesToString());
 }
-
-void main() {
-  // myList.insert('A', 'B');
-  // myList.insert(2, 'C');
-  myList.insert(0, 'E');
-  // myList.insert(3, 'D');
-
-  // replaceInList(myList, 'B', 'A');
-  print(myList);
-}
-
-// void main() {
-//   // var grade = "A";
-//   for (var grade in myList) {
-//     switch (grade) {
-//       case "A":
-//         {
-//           print("Excellent");
-//         }
-//         break;
-//
-//       case "B":
-//         {
-//           print("Good");
-//         }
-//         break;
-//
-//       default:
-//         // {
-//         //   print("Invalid choice");
-//         // }
-//         break;
-//     }
-//   }
+else {
+print(response.reasonPhrase);*/
 // }
+
+/// The default http POST that support Logging
+Future<http.Response> httpPost(Uri url,
+    {Map<String, String>? headers, Object? body}) async {
+  final startTime = DateTime.now();
+  if (enableDio) {
+    try {
+      final res = await Dio().post(url.toString(),
+          options: Options(headers: headers, responseType: ResponseType.plain),
+          data: body);
+      // printLog('POST:$url', startTime);
+      final response = http.Response(res.toString(), res.statusCode!);
+      return response;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        final response =
+            http.Response(e.response.toString(), e.response!.statusCode!);
+        return response;
+      } else {
+        // ignore: only_throw_errors
+        throw e.message;
+      }
+    }
+  } else {
+    final response = await http.post(url, headers: headers, body: body);
+    // printLog('POST:$url', startTime);
+    return response;
+  }
+}
+
+void main() async {
+  var list = <ShippingMethod>[];
+  // var url = 'https://spider3d.co.il/wp-json/api/flutter_woo/shipping_methods';
+  var url = 'https://spider3d.co.il';
+  final response =
+      await httpPost('$url/wp-json/api/flutter_woo/shipping_methods'.toUri()!,
+          // body: convert.jsonEncode(params),
+          headers: {'Content-Type': 'application/json'});
+  print('getShippingMethods A');
+  // final body = convert.jsonDecode(response.body);
+  var body = await json.decode(json.encode(response.body)); // My
+  print('getShippingMethods B');
+  print(body);
+  if (response.statusCode == 200) {
+    print('response.statusCode == 200');
+    for (var item in body) {
+      list.add(ShippingMethod.fromJson(item));
+    }
+    print("Body req: (shipping_methods)");
+    // print(convert.jsonEncode(params));
+    print("Body resp: (shipping_methods)");
+    print(body);
+  } else if (body['message'] != null) {
+    throw Exception(body['message']);
+  }
+  if (list.isEmpty) {
+    throw Exception(
+        'Your selected address is not supported by any Shipping method, please update the billing address again!');
+  }
+}

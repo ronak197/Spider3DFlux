@@ -138,27 +138,31 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      // S.of(context).subtotal,
-                      'סכום הזמנה',
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Theme.of(context).appBarTheme.backgroundColor),
-                    ),
-                    Text(
-                      PriceTools.getCurrencyFormatted(
-                          model.getSubTotal(), currencyRate,
-                          currency: model.currency)!,
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            fontSize: 14,
-                            color: Theme.of(context).accentColor,
-                          ),
-                    )
-                  ],
+                child: Visibility(
+                  visible: true,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        // S.of(context).subtotal,
+                        'סכום הזמנה',
+                        style: TextStyle(
+                            fontSize: 15,
+                            color:
+                                Theme.of(context).appBarTheme.backgroundColor),
+                      ),
+                      Text(
+                        PriceTools.getCurrencyFormatted(
+                            model.getSubTotal(), currencyRate,
+                            currency: model.currency)!,
+                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                              fontSize: 14,
+                              color: Theme.of(context).accentColor,
+                            ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               FutureBuilder(

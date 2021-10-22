@@ -218,8 +218,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  credit_card_validate:
+    dependency: "direct main"
+    description:
+      name: credit_card_validate
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
   credit_card_validator:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: credit_card_validator
       url: "https://pub.dartlang.org"
@@ -533,6 +540,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  flutter_credit_card:
+    dependency: "direct main"
+    description:
+      name: flutter_credit_card
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   flutter_driver:
     dependency: "direct dev"
     description: flutter

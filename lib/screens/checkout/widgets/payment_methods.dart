@@ -241,6 +241,72 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
               // Services().widget.renderRewardInfo(context),
               Padding(
                 padding:
+                    const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                child: cartModel.shippingMethod != null
+                    ? Container()
+/*                    Text(cartModel.shippingMethod!.title.toString(),
+                        // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Theme.of(context).accentColor.withOpacity(0.8),
+                        ))*/
+                    : GestureDetector(
+                        onTap: () {
+                          Services().widget.loadShippingMethods(
+                              context,
+                              Provider.of<CartModel>(context, listen: false),
+                              false);
+
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  scrollable: true,
+                                  insetPadding: EdgeInsets.symmetric(
+                                    horizontal: 24.0,
+                                    // vertical: 48 * 3
+                                    vertical:
+                                        MediaQuery.of(context).size.height *
+                                            0.20,
+                                  ),
+                                  // insetPadding: EdgeInsets.zero,
+                                  // contentPadding: EdgeInsets.zero,
+                                  // title: Text('שיטת משלוח'),
+                                  content: Services()
+                                      .widget
+                                      .renderShippingMethods(context,
+                                          onBack: () {}, onNext: () {}),
+
+                                  // Actually the same as above
+                                  // ShippingMethods(
+                                  //     onBack: () {}, onNext: () {})
+
+                                  // goToShippingTab(true);
+
+/*                            actions: <Widget>[
+                                TextButton(
+                                  child: const Text('CANCEL'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],*/
+                                );
+                              });
+                        },
+                        child: const Text('יש לבחור שיטת משלוח',
+
+                            // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
+                            style: TextStyle(
+                              fontSize: 14,
+                              decoration: TextDecoration.underline,
+                              // color: Theme.of(context).accentColor.withOpacity(0.8),
+                              color: kColorSpiderRed,
+                            )),
+                      ),
+              ),
+              Padding(
+                padding:
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

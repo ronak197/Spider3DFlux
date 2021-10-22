@@ -41,7 +41,8 @@ class ExpansionInfo extends StatelessWidget {
                   Container(
                     width: 200,
                     child: Text(
-                      title.toUpperCase(),
+                      // title.toUpperCase(),
+                      title,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)
@@ -81,7 +82,8 @@ class ExpansionInfo extends StatelessWidget {
                   Container(
                     width: 200,
                     child: Text(
-                      title.toUpperCase(),
+                      // title.toUpperCase(),
+                      title,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)

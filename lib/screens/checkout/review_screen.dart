@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/checkout/widgets/my_credit_card.dart';
 import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_address.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_method.dart';
 import 'package:provider/provider.dart';
+import 'package:awesome_card/awesome_card.dart';
 
 import '../../common/config.dart';
 import '../../common/constants.dart';
@@ -173,17 +175,17 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   Address address;
                   String final_title;
                   if (snapshot.hasData) {
-                    print('Snapshott have data.');
+                    // print('Snapshott have data.');
                     address = snapshot.data as Address;
-                    print(address);
+                    // print(address);
 
                     final_title =
                         'כתובת: ' '${address.city}, ' '${address.street!}';
                   } else {
                     // return const Text('Snapshot currntly have no data');
                     print('Snapshott currntly have no data..');
-                    address = snapshot.data as Address;
-                    print(address);
+                    // address = snapshot.data as Address;
+                    // print(address);
 
                     final_title = 'עדכן כתובת משלוח';
                   }
@@ -201,7 +203,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     // title: S.of(context).shippingAddress,
                     // title: 'פרטי משלוח',
                     // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
-                    title: 'כתובת: ' '${address.city}, ' '${address.street!}',
+                    title: final_title,
                     // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
                     children: <Widget>[
                       ShippingAddressInfo(),
@@ -258,7 +260,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                               ),
                               // insetPadding: EdgeInsets.zero,
                               // contentPadding: EdgeInsets.zero,
-                              title: Text('שיטת משלוח'),
+                              // title: Text('שיטת משלוח'),
                               content: Services().widget.renderShippingMethods(
                                   context,
                                   onBack: () {},
@@ -290,6 +292,24 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     ),
                   ),
                 ),
+              ),
+
+              ExpansionInfo(
+                iconWidget: Transform(
+                  transform: Matrix4.rotationY(math.pi),
+                  origin: const Offset(11, 0),
+                  child: Icon(
+                    Icons.credit_card,
+                    color: Theme.of(context).accentColor,
+                    // color: Color(0xff263238), size: 20,
+                  ),
+                ),
+                // title: S.of(context).shippingAddress,
+                // title: 'פרטי משלוח',
+                // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
+                title: 'פרטי כרטיס (2743 **** **** ****)',
+                // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
+                children: <Widget>[CreditCardInfo()],
               ),
 
               if (model.getCoupon() != '')
@@ -492,7 +512,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
   }
 }
 
-var show_details = true;
+var show_shipping_details = true;
 
 class ShippingAddressInfo extends StatefulWidget {
   @override
@@ -506,9 +526,9 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
     // final address = cartModel.address!;
     var address = cartModel.address; // My
 
-    if (show_details) {
+    if (show_shipping_details) {
       print('show_details');
-      print(show_details);
+      print(show_shipping_details);
       return Container(
         color: Theme.of(context).cardColor,
         padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
@@ -745,7 +765,7 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
                     //           isFullPage: true,
                     //         )));
                     setState(() {
-                      show_details = false;
+                      show_shipping_details = false;
                     });
                   },
                   child: Text(
@@ -763,7 +783,7 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
       );
     } else {
       print('show_details');
-      print(show_details);
+      print(show_shipping_details);
       return ShippingAddress(
         onNext: () {},
         isFullPage: false,

@@ -22,6 +22,12 @@ class User {
   bool isVender = false;
   bool? isSocial = false;
 
+  // My
+  String? cardNumber;
+  String? cardHolderName;
+  String? expiryDate;
+  String? cvv;
+
   User();
 
   String get fullName => [firstName ?? '', lastName ?? ''].join(' ');

@@ -37,6 +37,12 @@ class Billing {
   String? email;
   String? phone;
 
+  // My
+  String? cardNumber;
+  String? cardHolderName;
+  String? expiryDate;
+  String? cvv;
+
   Billing.fromJson(Map<String, dynamic> json) {
     try {
       firstName = json['first_name'];
@@ -50,6 +56,12 @@ class Billing {
       state = json['state'];
       email = json['email'];
       phone = json['phone'];
+
+      // My
+      cardNumber = json['cardNumber'];
+      cardHolderName = json['cardHolderName'];
+      expiryDate = json['expiryDate'];
+      cvv = json['cvv'];
     } catch (_) {}
   }
 }

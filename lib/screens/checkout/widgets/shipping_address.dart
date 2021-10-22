@@ -651,7 +651,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
 
                                       // Navigator.pop(context);
 
-                                      show_details = true;
+                                      show_shipping_details = true;
 
                                       await Navigator.of(context).push(
                                           MaterialPageRoute(

@@ -165,6 +165,9 @@ dependencies:
   # My
   basic_utils: 3.4.0
   page_transition: ^2.0.4
+  flutter_credit_card: ^3.0.0
+  credit_card_validator: ^2.0.0
+  credit_card_validate: ^0.0.3
 
 
 dev_dependencies:

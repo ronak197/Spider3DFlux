@@ -82,11 +82,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-/*        Text(
-          S.of(context).shippingMethod,
-          style: const TextStyle(fontSize: 16),
-        ),*/
-        const SizedBox(height: 20),
+        // const SizedBox(height: 20),
         ListenableProvider.value(
           value: shippingMethodModel,
           child: Consumer<ShippingMethodModel>(
@@ -106,6 +102,12 @@ class _ShippingMethodsState extends State<ShippingMethods> {
 
               return Column(
                 children: <Widget>[
+                  Text(
+                    // S.of(context).shippingMethod,
+                    'בחר מבין ${model.shippingMethods!.length.toString()} שיטות המשלוח ',
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                  const SizedBox(height: 10),
                   for (int i = 0; i < model.shippingMethods!.length; i++)
                     Column(
                       children: <Widget>[
@@ -117,9 +119,14 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 10),
+                                vertical: 10, horizontal: 5),
                             child: Row(
                               children: <Widget>[
+                                Text(
+                                  '${i + 1}',
+                                  style: const TextStyle(
+                                      fontSize: 14, color: kGrey400),
+                                ),
                                 Radio(
                                   activeColor: kColorSpiderRed,
                                   focusColor: kColorSpiderRed,
@@ -130,7 +137,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                       selectedIndex = i;
                                     });
 
-                                    /*                 if (shippingMethodModel
+                                    if (shippingMethodModel
                                             .shippingMethods?.isNotEmpty ??
                                         false) {
                                       Provider.of<CartModel>(context,
@@ -180,10 +187,10 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                       // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
 
                                       // widget.onNext!();
-                                    }*/
+                                    }
                                   },
                                 ),
-                                const SizedBox(width: 10),
+                                const SizedBox(width: 5),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:
@@ -194,7 +201,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                           .renderShippingPaymentTitle(context,
                                               model.shippingMethods![i].title!),
                                       const SizedBox(height: 5),
-                                      if (model.shippingMethods![i].cost! >
+/*                                      if (model.shippingMethods![i].cost! >
                                               0.0 ||
                                           !isNotBlank(model
                                               .shippingMethods![i].classCost))
@@ -214,10 +221,39 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                           model.shippingMethods![i].classCost!,
                                           style: const TextStyle(
                                               fontSize: 14, color: kGrey400),
-                                        )
+                                        )*/
                                     ],
                                   ),
-                                )
+                                ),
+                                if (model.shippingMethods![i].cost! > 0.0 ||
+                                    !isNotBlank(
+                                        model.shippingMethods![i].classCost))
+                                  Container(
+                                    // color: Colors.green,
+                                    width: 30,
+                                    // height: 20,
+                                    child: Text(
+                                      PriceTools.getCurrencyFormatted(
+                                          model.shippingMethods![i].cost,
+                                          currencyRates,
+                                          currency: currency)!,
+                                      style: const TextStyle(
+                                          fontSize: 14, color: kGrey400),
+                                    ),
+                                  ),
+                                if (model.shippingMethods![i].cost == 0.0 &&
+                                    isNotBlank(
+                                        model.shippingMethods![i].classCost))
+                                  Container(
+                                    // color: Colors.green,
+                                    width: 30,
+                                    // height: 20,
+                                    child: Text(
+                                      model.shippingMethods![i].classCost!,
+                                      style: const TextStyle(
+                                          fontSize: 14, color: kGrey400),
+                                    ),
+                                  ),
                               ],
                             ),
                           ),
@@ -233,76 +269,80 @@ class _ShippingMethodsState extends State<ShippingMethods> {
           ),
         ),
         const SizedBox(height: 20),
-        Row(
-          children: [
-            Expanded(
-              child: ButtonTheme(
-                height: 45,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    onPrimary: Colors.white,
-                    primary: Theme.of(context).primaryColor,
+        Visibility(
+          visible: false,
+          child: Row(
+            children: [
+              Expanded(
+                child: ButtonTheme(
+                  height: 45,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      onPrimary: Colors.white,
+                      primary: Theme.of(context).primaryColor,
+                    ),
+                    onPressed:
+                        /*() {
+                      if (shippingMethodModel.shippingMethods?.isNotEmpty ??
+                          false) {
+                        Provider.of<CartModel>(context, listen: false)
+                            .setShippingMethod(shippingMethodModel
+                            .shippingMethods![selectedIndex!]);
+                        // widget.onNext!();
+                      }
+                    },*/
+                        () {
+                      if (shippingMethodModel.shippingMethods?.isNotEmpty ??
+                          false) {
+                        Provider.of<CartModel>(context, listen: false)
+                            .setShippingMethod(shippingMethodModel
+                                .shippingMethods![selectedIndex!]);
+
+                        Future.delayed(Duration.zero, () {
+                          final cartModel =
+                              Provider.of<CartModel>(context, listen: false);
+                          final userModel =
+                              Provider.of<UserModel>(context, listen: false);
+                          Provider.of<PaymentMethodModel>(context,
+                                  listen: false)
+                              .getPaymentMethods(
+                                  cartModel: cartModel,
+                                  shippingMethod: cartModel.shippingMethod,
+                                  token: userModel.user != null
+                                      ? userModel.user!.cookie
+                                      : null);
+
+                          if (kPaymentConfig['EnableReview'] != true) {
+                            Provider.of<TaxModel>(context, listen: false)
+                                .getTaxes(
+                                    Provider.of<CartModel>(context,
+                                        listen: false), (taxesTotal, taxes) {
+                              Provider.of<CartModel>(context, listen: false)
+                                  .taxesTotal = taxesTotal;
+                              Provider.of<CartModel>(context, listen: false)
+                                  .taxes = taxes;
+                              setState(() {});
+                            });
+                          }
+                        });
+
+                        Navigator.of(context).pop();
+                        // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
+
+                        // widget.onNext!();
+                      }
+                    },
+                    // child: Text(((kPaymentConfig['EnableReview'] ?? true)
+                    //.         ? S.of(context).continueToReview
+                    //         : S.of(context).continueToPayment)
+                    //     .toUpperCase()),
+                    child: const Text('שמור וחזור לקופה'),
                   ),
-                  onPressed:
-                      /*() {
-                    if (shippingMethodModel.shippingMethods?.isNotEmpty ??
-                        false) {
-                      Provider.of<CartModel>(context, listen: false)
-                          .setShippingMethod(shippingMethodModel
-                          .shippingMethods![selectedIndex!]);
-                      // widget.onNext!();
-                    }
-                  },*/
-                      () {
-                    if (shippingMethodModel.shippingMethods?.isNotEmpty ??
-                        false) {
-                      Provider.of<CartModel>(context, listen: false)
-                          .setShippingMethod(shippingMethodModel
-                              .shippingMethods![selectedIndex!]);
-
-                      Future.delayed(Duration.zero, () {
-                        final cartModel =
-                            Provider.of<CartModel>(context, listen: false);
-                        final userModel =
-                            Provider.of<UserModel>(context, listen: false);
-                        Provider.of<PaymentMethodModel>(context, listen: false)
-                            .getPaymentMethods(
-                                cartModel: cartModel,
-                                shippingMethod: cartModel.shippingMethod,
-                                token: userModel.user != null
-                                    ? userModel.user!.cookie
-                                    : null);
-
-                        if (kPaymentConfig['EnableReview'] != true) {
-                          Provider.of<TaxModel>(context, listen: false)
-                              .getTaxes(
-                                  Provider.of<CartModel>(context,
-                                      listen: false), (taxesTotal, taxes) {
-                            Provider.of<CartModel>(context, listen: false)
-                                .taxesTotal = taxesTotal;
-                            Provider.of<CartModel>(context, listen: false)
-                                .taxes = taxes;
-                            setState(() {});
-                          });
-                        }
-                      });
-
-                      Navigator.of(context).pop();
-                      // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
-
-                      // widget.onNext!();
-                    }
-                  },
-                  // child: Text(((kPaymentConfig['EnableReview'] ?? true)
-                  //.         ? S.of(context).continueToReview
-                  //         : S.of(context).continueToPayment)
-                  //     .toUpperCase()),
-                  child: const Text('שמור וחזור לקופה'),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
 
 /*        if (kPaymentConfig['EnableAddress'])

@@ -59,39 +59,55 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
             }
 
             return Address(
-                firstName:
-                    user.billing != null && user.billing!.firstName!.isNotEmpty
-                        ? user.billing!.firstName
-                        : user.firstName,
-                lastName:
-                    user.billing != null && user.billing!.lastName!.isNotEmpty
-                        ? user.billing!.lastName
-                        : user.lastName,
-                email: user.billing != null && user.billing!.email!.isNotEmpty
-                    ? user.billing!.email
-                    : user.email,
-                street:
-                    user.billing != null && user.billing!.address1!.isNotEmpty
-                        ? user.billing!.address1
-                        : '',
-                country:
-                    user.billing != null && isNotBlank(user.billing!.country)
-                        ? user.billing!.country
-                        : kPaymentConfig['DefaultCountryISOCode'],
-                state: user.billing != null && user.billing!.state!.isNotEmpty
-                    ? user.billing!.state
-                    : kPaymentConfig['DefaultStateISOCode'],
-                phoneNumber:
-                    user.billing != null && user.billing!.phone!.isNotEmpty
-                        ? user.billing!.phone
-                        : '',
-                city: user.billing != null && user.billing!.city!.isNotEmpty
-                    ? user.billing!.city
-                    : '',
-                zipCode:
-                    user.billing != null && user.billing!.postCode!.isNotEmpty
-                        ? user.billing!.postCode
-                        : '');
+              firstName:
+                  user.billing != null && user.billing!.firstName!.isNotEmpty
+                      ? user.billing!.firstName
+                      : user.firstName,
+              lastName:
+                  user.billing != null && user.billing!.lastName!.isNotEmpty
+                      ? user.billing!.lastName
+                      : user.lastName,
+              email: user.billing != null && user.billing!.email!.isNotEmpty
+                  ? user.billing!.email
+                  : user.email,
+              street: user.billing != null && user.billing!.address1!.isNotEmpty
+                  ? user.billing!.address1
+                  : '',
+              country: user.billing != null && isNotBlank(user.billing!.country)
+                  ? user.billing!.country
+                  : kPaymentConfig['DefaultCountryISOCode'],
+              state: user.billing != null && user.billing!.state!.isNotEmpty
+                  ? user.billing!.state
+                  : kPaymentConfig['DefaultStateISOCode'],
+              phoneNumber:
+                  user.billing != null && user.billing!.phone!.isNotEmpty
+                      ? user.billing!.phone
+                      : '',
+              city: user.billing != null && user.billing!.city!.isNotEmpty
+                  ? user.billing!.city
+                  : '',
+              zipCode:
+                  user.billing != null && user.billing!.postCode!.isNotEmpty
+                      ? user.billing!.postCode
+                      : '',
+
+              // My
+              cardNumber:
+                  user.billing != null && user.billing!.cardNumber!.isNotEmpty
+                      ? user.billing!.cardNumber
+                      : user.cardNumber ?? '',
+              cvv: user.billing != null && user.billing!.cvv!.isNotEmpty
+                  ? user.billing!.cvv
+                  : user.cvv ?? '',
+              cardHolderName: user.billing != null &&
+                      user.billing!.cardHolderName!.isNotEmpty
+                  ? user.billing!.cardHolderName
+                  : user.cardHolderName ?? '',
+              expiryDate:
+                  user.billing != null && user.billing!.expiryDate!.isNotEmpty
+                      ? user.billing!.expiryDate
+                      : user.expiryDate ?? '',
+            );
           }
         }
       }

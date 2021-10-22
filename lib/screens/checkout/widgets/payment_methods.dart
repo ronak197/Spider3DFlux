@@ -36,6 +36,7 @@ class PaymentMethods extends StatefulWidget {
 
 class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
   String? selectedId;
+  var order_status = '';
   bool isPaying = false;
 
   @override
@@ -61,6 +62,19 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
         });
       }
     });
+
+    final paymentMethodModel = Provider.of<PaymentMethodModel>(context);
+    if (paymentMethodModel.paymentMethods.isNotEmpty) {
+      final paymentMethod = paymentMethodModel.paymentMethods
+          .firstWhere((item) => item.id == selectedId);
+
+      Provider.of<CartModel>(context, listen: false)
+          .setPaymentMethod(paymentMethod);
+
+      print('Deafult paymentMethod.title');
+      print(paymentMethod.title);
+    }
+    ;
   }
 
   var oldShippingMethodTitle = 'NULL';
@@ -130,6 +144,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                     children: <Widget>[
                       // Text(cartModel.shippingMethod!.title ?? 'my null',),
                       // Text(oldShippingMethodTitle //.?? 'my null',),
+
                       for (int i = 0; i < model.paymentMethods.length; i++)
                         model.paymentMethods[i].enabled!
                             ? Column(
@@ -162,6 +177,28 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                                                   setState(() {
                                                     selectedId = i;
                                                   });
+
+                                                  if (paymentMethodModel
+                                                      .paymentMethods
+                                                      .isNotEmpty) {
+                                                    final paymentMethod =
+                                                        paymentMethodModel
+                                                            .paymentMethods
+                                                            .firstWhere(
+                                                                (item) =>
+                                                                    item.id ==
+                                                                    selectedId);
+
+                                                    Provider.of<CartModel>(
+                                                            context,
+                                                            listen: false)
+                                                        .setPaymentMethod(
+                                                            paymentMethod);
+
+                                                    print(
+                                                        'paymentMethod.title');
+                                                    print(paymentMethod.title);
+                                                  }
                                                 }),
                                             const SizedBox(width: 10),
                                             Expanded(
@@ -333,6 +370,18 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                 ),
               ),
               const SizedBox(height: 15),
+              order_status == ''
+                  ? Container()
+                  : Text(order_status,
+
+                      // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
+                      style: TextStyle(
+                          fontSize: 18,
+                          // fontWeight: FontWeight.w500,
+                          // color: Theme.of(context).accentColor.withOpacity(0.8),
+                          color: Theme.of(context).appBarTheme.backgroundColor
+                          // .withOpacity(0.8),
+                          )),
               Row(children: [
                 Expanded(
                   child: ButtonTheme(
@@ -350,8 +399,16 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
 
                         // var cartModel = Provider.of<CartModel>(context);
                         var addressModel = cartModel.address;
+                        var shipping_details_ready = false;
+                        var shipping_method_ready = false;
+                        var payment_details_ready = false;
+                        var payment_method_ready = false;
+
+                        order_status = '';
+                        var counter = 0;
                         // if(ca){
-                        print('Checking Shipping details:');
+
+                        // print('Checking Shipping details:');
                         if (addressModel!.firstName == null ||
                             addressModel.firstName == '' &&
                                 addressModel.city == null ||
@@ -363,28 +420,87 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                                 addressModel.email == null ||
                             addressModel.email == '') {
                           print('>> Some Shipping details are missing.. <<');
+                          setState(() {
+                            counter += 1;
+                            order_status += '${counter.toString()}. ';
+                            order_status += 'יש למלא פרטי משלוח \n';
+                          });
+                          print('order_status');
+                          print(order_status);
+                        } else {
+                          shipping_details_ready = true;
                         }
 
-                        print('Checking shipping Method:');
+                        // print('Checking shipping Method:');
                         if (cartModel.shippingMethod == null ||
                             cartModel.shippingMethod!.title == null ||
                             cartModel.shippingMethod!.title == '') {
                           print('>> Select A shipping method. <<');
+                          setState(() {
+                            counter += 1;
+                            order_status += '${counter.toString()}. ';
+                            order_status += 'יש לבחור שיטת משלוח \n';
+                          });
+                          print('order_status');
+                          print(order_status);
+                        } else {
+                          shipping_method_ready = true;
                         }
 
-                        print('Payment details:');
-                        print(addressModel.cardHolderName);
-                        print(addressModel.expiryDate);
-                        print(addressModel.cardNumber);
-                        print(addressModel.cvv);
+                        // print('Payment details:');
+                        if (addressModel.cardHolderName == null ||
+                            addressModel.cardHolderName == '' &&
+                                addressModel.expiryDate == null ||
+                            addressModel.expiryDate == '' &&
+                                addressModel.cardNumber == null ||
+                            addressModel.cardNumber == '' &&
+                                addressModel.cvv == null ||
+                            addressModel.cvv == '') {
+                          print('>> Some Payment details are missing.. <<');
+                          setState(() {
+                            counter += 1;
+                            order_status += '${counter.toString()}. ';
+                            order_status += 'יש למלא פרטי אשראי \n';
+                          });
+                          print('order_status');
+                          print(order_status);
+                        } else {
+                          payment_details_ready = true;
+                        }
 
-                        print('Payment Method:');
-                        print(cartModel.paymentMethod!.title);
+                        // print(cartModel.paymentMethod);
+                        // print('Payment Method:');
+                        // print(cartModel.paymentMethod!.title);
+
+                        if (cartModel.paymentMethod == null ||
+                            cartModel.paymentMethod!.title == null ||
+                            cartModel.paymentMethod!.title == '') {
+                          print('>> Select A Payment method. <<');
+                          setState(() {
+                            counter += 1;
+                            order_status += '${counter.toString()}. ';
+                            order_status += 'יש לבחור שיטת תשלום \n';
+                          });
+                          print('order_status');
+                          print(order_status);
+                        } else {
+                          payment_method_ready = true;
+                        }
 
                         print('Order Notes:');
                         print(cartModel.notes);
 
-                        print('I have all order details!');
+                        if (shipping_details_ready &&
+                            shipping_method_ready &&
+                            payment_details_ready &&
+                            payment_method_ready) {
+                          print('Everything is ready!');
+
+                          isPaying || selectedId == null
+                              ? showSnackbar
+                              : placeOrder(paymentMethodModel, cartModel);
+                        }
+
                         // }
 
                         // isPaying || selectedId == null

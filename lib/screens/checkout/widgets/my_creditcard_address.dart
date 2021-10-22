@@ -536,7 +536,9 @@ class _CreditCardAddressState extends State<CreditCardAddress> {
                                       print(myAddress.expiryDate);
                                       print(myAddress.cvv);
 
-                                      show_creditCard_details = true;
+                                      setState(() {
+                                        show_creditCard_details = true;
+                                      });
                                     }
                                   },
                                   child: const Text('שמור',

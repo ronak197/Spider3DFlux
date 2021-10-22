@@ -348,9 +348,48 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                         // String? note = Provider.of<CartModel>(context, listen: false).notes ?? '';
                         //   if (note.isNotEmpty && note != '') {Provider.of<CartModel>(context, listen: false).setOrderNotes(note);}
 
-                        isPaying || selectedId == null
-                            ? showSnackbar
-                            : placeOrder(paymentMethodModel, cartModel);
+                        // var cartModel = Provider.of<CartModel>(context);
+                        var addressModel = cartModel.address;
+                        // if(ca){
+                        print('Checking Shipping details:');
+                        if (addressModel!.firstName == null ||
+                            addressModel.firstName == '' &&
+                                addressModel.city == null ||
+                            addressModel.city == '' &&
+                                addressModel.street == null ||
+                            addressModel.street == '' &&
+                                addressModel.phoneNumber == null ||
+                            addressModel.phoneNumber == '' &&
+                                addressModel.email == null ||
+                            addressModel.email == '') {
+                          print('>> Some Shipping details are missing.. <<');
+                        }
+
+                        print('Checking shipping Method:');
+                        if (cartModel.shippingMethod == null ||
+                            cartModel.shippingMethod!.title == null ||
+                            cartModel.shippingMethod!.title == '') {
+                          print('>> Select A shipping method. <<');
+                        }
+
+                        print('Payment details:');
+                        print(addressModel.cardHolderName);
+                        print(addressModel.expiryDate);
+                        print(addressModel.cardNumber);
+                        print(addressModel.cvv);
+
+                        print('Payment Method:');
+                        print(cartModel.paymentMethod!.title);
+
+                        print('Order Notes:');
+                        print(cartModel.notes);
+
+                        print('I have all order details!');
+                        // }
+
+                        // isPaying || selectedId == null
+                        //     ? showSnackbar
+                        //     : placeOrder(paymentMethodModel, cartModel);
                       },
                       child: const Text(
                         'עבור לתשלום מאובטח',

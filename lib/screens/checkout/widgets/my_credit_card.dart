@@ -32,10 +32,12 @@ class _CreditCardInfoState extends State<CreditCardInfo> {
   @override
   @override
   Widget build(BuildContext context) {
-    if (show_creditCard_details) {
+    var cartModel = Provider.of<CartModel>(context);
+    if (show_creditCard_details &&
+        cartModel.address!.cardNumber != null &&
+        cartModel.address!.cardHolderName != null) {
       // print('show_creditCard_details');
       // print(show_creditCard_details);
-      var cartModel = Provider.of<CartModel>(context);
 
       return ListenableProvider.value(
         value: cartModel,

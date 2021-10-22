@@ -357,7 +357,7 @@ class _CreditCardAddressState extends State<CreditCardAddress> {
                                           // textAlign: TextAlign.center,
                                           decoration: greyTxtDeco(
                                             // labelText: S.of(context).phoneNumber
-                                            labelText: 'MM / YY',
+                                            labelText: 'תוקף MM / YY',
                                           ),
                                           textInputAction: TextInputAction.next,
                                           validator: (val) {

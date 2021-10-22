@@ -177,17 +177,22 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   if (snapshot.hasData) {
                     // print('Snapshott have data.');
                     address = snapshot.data as Address;
-                    // print(address);
+                    // print(address.city);
+                    // print(address.street);
 
-                    final_title =
-                        'כתובת: ' '${address.city}, ' '${address.street!}';
+                    final_title = address.street != null &&
+                            address.city != null &&
+                            address.street != '' &&
+                            address.city != ''
+                        ? 'כתובת: ' '${address.city}, ' '${address.street!}'
+                        : 'הכנס כתובת משלוח';
                   } else {
                     // return const Text('Snapshot currntly have no data');
                     print('Snapshott currntly have no data..');
                     // address = snapshot.data as Address;
                     // print(address);
 
-                    final_title = 'עדכן כתובת משלוח';
+                    final_title = 'הכנס כתובת משלוח';
                   }
 
                   return ExpansionInfo(
@@ -527,9 +532,20 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
     // final address = cartModel.address!;
     var address = cartModel.address; // My
 
+    if (address!.firstName == null ||
+        address.city == null ||
+        address.street == null ||
+        address.phoneNumber == null ||
+        address.email == null) {
+      // print('ADDress is $address');
+      show_shipping_details = false;
+      // } else {
+      //   print('ADDress is $address ELSEE');
+    }
+
     if (show_shipping_details) {
-      print('show_details');
-      print(show_shipping_details);
+      // print('show_details');
+      // print(show_shipping_details);
       return Container(
         color: Theme.of(context).cardColor,
         padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
@@ -554,7 +570,7 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
                   ),
                   Expanded(
                     child: Text(
-                      address!.firstName!,
+                      address.firstName!,
                       style: TextStyle(
                         fontSize: 14,
                         color: Theme.of(context).accentColor,
@@ -770,7 +786,7 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
                     });
                   },
                   child: Text(
-                    'עדכן כתובת משלוח',
+                    'הכנס כתובת משלוח',
                     style: TextStyle(
                       fontSize: 16,
                       color: Theme.of(context).accentColor,
@@ -783,8 +799,8 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
         ),
       );
     } else {
-      print('show_details');
-      print(show_shipping_details);
+      // print('show_details');
+      // print(show_shipping_details);
       return ShippingAddress(
         onNext: () {},
         isFullPage: false,

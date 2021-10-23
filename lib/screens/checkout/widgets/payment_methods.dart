@@ -43,13 +43,30 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
   void initState() {
     super.initState();
 
+    final cartModel = Provider.of<CartModel>(context, listen: false);
     Future.delayed(Duration.zero, () {
-      final cartModel = Provider.of<CartModel>(context, listen: false);
       final userModel = Provider.of<UserModel>(context, listen: false);
-      Provider.of<PaymentMethodModel>(context, listen: false).getPaymentMethods(
-          cartModel: cartModel,
-          shippingMethod: cartModel.shippingMethod,
-          token: userModel.user != null ? userModel.user!.cookie : null);
+      final getPaymentMethods = Provider.of<PaymentMethodModel>(context,
+              listen: false)
+          .getPaymentMethods(
+              cartModel: cartModel,
+              shippingMethod: cartModel.shippingMethod,
+              token: userModel.user != null ? userModel.user!.cookie : null);
+
+      // My
+      // print('1 Deafult paymentMethod.title');
+      final paymentMethodModel =
+          Provider.of<PaymentMethodModel>(context, listen: false);
+      // print('2 Deafult paymentMethod.title');
+      // final paymentMethod = paymentMethodModel.paymentMethods.firstWhere((item) => item.id == selectedId);
+      final paymentMethod = paymentMethodModel.paymentMethods.first;
+      // print('3 Deafult paymentMethod.title');
+      // final paymentMethod = Provider.of<CartModel>(context, listen: false).paymentMethod;
+      Provider.of<CartModel>(context, listen: false)
+          .setPaymentMethod(paymentMethod);
+      // print('4 Deafult paymentMethod.title');
+
+      print(cartModel.paymentMethod!.title);
 
       if (kPaymentConfig['EnableReview'] != true) {
         Provider.of<TaxModel>(context, listen: false)
@@ -62,19 +79,6 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
         });
       }
     });
-
-    final paymentMethodModel = Provider.of<PaymentMethodModel>(context);
-    if (paymentMethodModel.paymentMethods.isNotEmpty) {
-      final paymentMethod = paymentMethodModel.paymentMethods
-          .firstWhere((item) => item.id == selectedId);
-
-      Provider.of<CartModel>(context, listen: false)
-          .setPaymentMethod(paymentMethod);
-
-      print('Deafult paymentMethod.title');
-      print(paymentMethod.title);
-    }
-    ;
   }
 
   var oldShippingMethodTitle = 'NULL';

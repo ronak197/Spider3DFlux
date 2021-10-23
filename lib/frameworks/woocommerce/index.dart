@@ -86,8 +86,10 @@ class WooWidget extends BaseFrameworks
       var params = Order().toJson(
           cartModel, userModel.user != null ? userModel.user!.id : null, true);
       params['token'] = userModel.user != null ? userModel.user!.cookie : null;
+
       var url = await Services().api.getCheckoutUrl(
           params, Provider.of<AppModel>(context, listen: false).langCode)!;
+      // var url = 'https://bing.com';
       loading(false);
 
       /// Navigate to Webview payment
@@ -205,6 +207,7 @@ class WooWidget extends BaseFrameworks
 
       var url = await Services().api.getCheckoutUrl(
           params, Provider.of<AppModel>(context, listen: false).langCode)!;
+      // var url = 'https://google.com';
       onLoading(false);
       await Navigator.push(
         context,

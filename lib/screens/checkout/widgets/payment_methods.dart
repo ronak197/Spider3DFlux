@@ -513,6 +513,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                             payment_method_ready) {
                           print('-------------\nEverything is ready!');
 
+                          // ORIGINAL PAYMENT REDIRECT
                           isPaying || selectedId == null
                               ? showSnackbar
                               : placeOrder(paymentMethodModel, cartModel);

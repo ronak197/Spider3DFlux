@@ -127,7 +127,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
               });
 
               await _controller.evaluateJavascript(
-                  "document.getElementById('billing_first_name').value = 'שם פרטי';");
+                  "document.getElementById('billing_first_name').value = 'שם פרטייי';");
               await _controller.evaluateJavascript(
                   "document.getElementById('billing_last_name').value = 'שם משפחה';");
 

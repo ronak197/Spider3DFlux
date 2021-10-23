@@ -126,11 +126,12 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                     );
                   }
 
-                  if (selectedId == null && model.paymentMethods.isNotEmpty) {
+                  // MY COMMENTED - DEFAULT PAYMENT OPTION
+                  /*                                if (selectedId == null && model.paymentMethods.isNotEmpty) {
                     selectedId = model.paymentMethods
                         .firstWhere((item) => item.enabled!)
                         .id;
-                  }
+                  }*/
 
                   // return ChangeNotifierProvider.value(
                   // return ListenableProvider.value(
@@ -432,6 +433,8 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                           print('order_status');
                           print(order_status);
                         } else {
+                          print('Full addressModel.toJson()');
+                          print(addressModel.toJson());
                           shipping_details_ready = true;
                         }
 
@@ -448,6 +451,8 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                           print('order_status');
                           print(order_status);
                         } else {
+                          print('cartModel.shippingMethod');
+                          print(cartModel.shippingMethod!.title);
                           shipping_method_ready = true;
                         }
 
@@ -488,17 +493,25 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                           print('order_status');
                           print(order_status);
                         } else {
+                          print('cartModel.paymentMethod');
+                          print(cartModel.paymentMethod!.title);
                           payment_method_ready = true;
                         }
 
                         print('Order Notes:');
                         print(cartModel.notes);
 
+                        print('selectedId:');
+                        print(selectedId);
+
+                        print('isPaying:');
+                        print(isPaying);
+
                         if (shipping_details_ready &&
                             shipping_method_ready &&
                             payment_details_ready &&
                             payment_method_ready) {
-                          print('Everything is ready!');
+                          print('-------------\nEverything is ready!');
 
                           isPaying || selectedId == null
                               ? showSnackbar

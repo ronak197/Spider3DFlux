@@ -12,9 +12,9 @@ import '../../../generated/l10n.dart';
 import '../../../models/index.dart' show Address, CartModel, Country, UserModel;
 import '../../../services/index.dart';
 import '../../../widgets/common/place_picker.dart';
+import '../review_screen.dart';
 import '../checkout_screen.dart';
 import '../choose_address_screen.dart';
-import '../review_screen.dart';
 
 class ShippingAddress extends StatefulWidget {
   final bool isFullPage;
@@ -246,7 +246,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
     if (valid) {
       return null;
     }
-    return 'The E-mail Address must be a valid email address.';
+    return 'הזן דוא״ל תקין';
   }
 
   @override
@@ -565,8 +565,10 @@ class _ShippingAddressState extends State<ShippingAddress> {
                                       ),
                                       textInputAction: TextInputAction.next,
                                       validator: (val) {
-                                        return val!.isEmpty
-                                            ? S.of(context).phoneIsRequired
+                                        print('val.length');
+                                        print(val!.length);
+                                        return val.length != 10
+                                            ? 'הזן טלפון תקין'
                                             : null;
                                       },
                                       keyboardType: TextInputType.number,

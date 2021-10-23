@@ -229,7 +229,7 @@ class _CreditCardAddressState extends State<CreditCardAddress> {
     if (valid) {
       return null;
     }
-    return 'The E-mail Address must be a valid email address.';
+    return 'הזן דוא״ל תקין';
   }
 
   @override

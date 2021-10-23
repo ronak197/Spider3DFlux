@@ -11,13 +11,23 @@ import '../../common/constants.dart';
 import '../../common/tools.dart';
 import '../../generated/l10n.dart';
 import '../../models/index.dart'
-    show Address, AppModel, CartModel, Product, ShippingMethodModel, TaxModel;
+    show
+        Address,
+        AppModel,
+        CartModel,
+        PaymentMethodModel,
+        Product,
+        ShippingMethodModel,
+        TaxModel,
+        UserModel;
 import '../../services/index.dart';
 import '../../widgets/common/expansion_info.dart';
 import '../../widgets/product/cart_item.dart';
 import '../base_screen.dart';
 import 'checkout_screen.dart';
 import 'dart:math' as math;
+
+var showSubButton = false;
 
 class ReviewScreen extends StatefulWidget {
   final Function? onBack;
@@ -41,6 +51,27 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
   void initState() {
     var notes = Provider.of<CartModel>(context, listen: false).notes;
     note.text = notes ?? '';
+
+    // My deafult shipping method
+    // if (shippingMethodModel.shippingMethods?.isNotEmpty ?? false) {
+
+    /*  print('0 My deafult shipping method');
+    Future.delayed(Duration.zero, () {
+      final cartModel = Provider.of<CartModel>(context, listen: false);
+      final userModel = Provider.of<UserModel>(context, listen: false);
+      print('1 My deafult shipping method');
+      final shippingMethods =
+          Provider.of<ShippingMethodModel>(context, listen: false).getShippingMethods()
+              .shippingMethods.first;
+      print(shippingMethods.title);
+
+      // Provider.of<CartModel>(context, listen: false).setShippingMethod(shippingMethodModel.shippingMethods!.first);
+
+      print('My deafult shipping method');
+      print(cartModel.shippingMethod!.title ?? 'Null..');*/
+    // });
+
+    // }
     super.initState();
   }
 
@@ -237,67 +268,13 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   ? Services().widget.renderShippingMethodInfo(context)
                   : Container(),
 
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: ButtonTheme(
-                  height: 45,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0.0,
-                      primary: Theme.of(context).primaryColorLight,
+              showSubButton
+                  ? const ChooseDeliveryButton(
+                      isBold: false,
+                    )
+                  : const SizedBox(
+                      height: 10,
                     ),
-                    onPressed: () {
-                      Services().widget.loadShippingMethods(
-                          context,
-                          Provider.of<CartModel>(context, listen: false),
-                          false);
-
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              scrollable: true,
-                              insetPadding: EdgeInsets.symmetric(
-                                horizontal: 24.0,
-                                // vertical: 48 * 3
-                                vertical:
-                                    MediaQuery.of(context).size.height * 0.20,
-                              ),
-                              // insetPadding: EdgeInsets.zero,
-                              // contentPadding: EdgeInsets.zero,
-                              // title: Text('שיטת משלוח'),
-                              content: Services().widget.renderShippingMethods(
-                                  context,
-                                  onBack: () {},
-                                  onNext: () {}),
-
-                              // Actually the same as above
-                              // ShippingMethods(
-                              //     onBack: () {}, onNext: () {})
-
-                              // goToShippingTab(true);
-
-/*                            actions: <Widget>[
-                                TextButton(
-                                  child: const Text('CANCEL'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],*/
-                            );
-                          });
-                    },
-                    child: Text(
-                      'בחר שיטת משלוח',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
 
               ExpansionInfo(
                 iconWidget: Transform(
@@ -421,6 +398,12 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               const SizedBox(
                 height: 10,
               ),
+              showSubButton
+                  ? Container()
+                  : const Center(
+                      child: ChooseDeliveryButton(
+                      isBold: true,
+                    )),
 
               Consumer<ShippingMethodModel>(
                 builder: (context, shipping_model, child) {
@@ -806,5 +789,84 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
         isFullPage: false,
       );
     }
+  }
+}
+
+class ChooseDeliveryButton extends StatefulWidget {
+  final isBold;
+
+  // const ChooseDeliveryButton({Key key}) : super(key: key);
+  const ChooseDeliveryButton({this.isBold}) : super();
+
+  @override
+  State<ChooseDeliveryButton> createState() => _ChooseDeliveryButtonState();
+}
+
+class _ChooseDeliveryButtonState extends State<ChooseDeliveryButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: ButtonTheme(
+        height: 45,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 0.0,
+            primary: Theme.of(context).primaryColorLight,
+            // primary: Theme.of(context).primaryColor,
+          ),
+          onPressed: () {
+            setState(() {
+              showSubButton = true;
+            });
+
+            Services().widget.loadShippingMethods(
+                context, Provider.of<CartModel>(context, listen: false), false);
+
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    scrollable: true,
+                    insetPadding: EdgeInsets.symmetric(
+                      horizontal: 24.0,
+                      // vertical: 48 * 3
+                      vertical: MediaQuery.of(context).size.height * 0.20,
+                    ),
+                    // insetPadding: EdgeInsets.zero,
+                    // contentPadding: EdgeInsets.zero,
+                    // title: Text('שיטת משלוח'),
+                    content: Services().widget.renderShippingMethods(context,
+                        onBack: () {}, onNext: () {}),
+
+                    // Actually the same as above
+                    // ShippingMethods(
+                    //     onBack: () {}, onNext: () {})
+
+                    // goToShippingTab(true);
+
+/*                            actions: <Widget>[
+                                TextButton(
+                                  child: const Text('CANCEL'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],*/
+                  );
+                });
+          },
+          child: Text(
+            'בחר שיטת משלוח',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: widget.isBold ? FontWeight.bold : FontWeight.normal,
+              color: Theme.of(context).accentColor,
+              // color: Theme.of(context).backgroundColor,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

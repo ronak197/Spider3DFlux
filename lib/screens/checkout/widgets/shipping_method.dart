@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:fstore/models/payment_method_model.dart';
 import 'package:fstore/models/tax_model.dart';
@@ -26,9 +28,8 @@ class ShippingMethods extends StatefulWidget {
 }
 
 class _ShippingMethodsState extends State<ShippingMethods> {
-  // int? selectedIndex; // to do not set default
-  int? selectedIndex =
-      0; // right for 26.9.21, 0 means the "29₪ 2-3 day delivery" is default
+  int? selectedIndex; // to do not set default
+  // int? selectedIndex = 0; // right for 26.9.21, 0 means the "29₪ 2-3 day delivery" is default
 
   @override
   void initState() {
@@ -48,11 +49,6 @@ class _ShippingMethodsState extends State<ShippingMethods> {
             shippingMethod != null) {
           final index = shippingMethods
               .indexWhere((element) => element.id == shippingMethod.id);
-          if (index > -1) {
-            setState(() {
-              selectedIndex = index;
-            });
-          }
         }
 
         /*else {
@@ -184,6 +180,13 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                       });
 
                                       Navigator.of(context).pop();
+
+                                      // final review_screen_scroll_controller =
+                                      //     ScrollController();
+                                      // Timer( const Duration(seconds: 1),
+                                      //   () => review_screen_scroll_controller
+                                      //       .jumpTo(review_screen_scroll_controller.position.maxScrollExtent),);
+
                                       // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
 
                                       // widget.onNext!();

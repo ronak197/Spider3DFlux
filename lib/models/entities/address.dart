@@ -20,6 +20,7 @@ class Address {
   // My
   String? cardNumber;
   String? cardHolderName;
+  String? cardHolderId;
   String? expiryDate;
   String? cvv;
 
@@ -40,6 +41,7 @@ class Address {
     // My
     this.cardNumber,
     this.cardHolderName,
+    this.cardHolderId,
     this.expiryDate,
     this.cvv,
   });
@@ -120,6 +122,7 @@ class Address {
       // My
       'cardNumber': cardNumber,
       'cardHolderName': cardHolderName,
+      'cardHolderId': cardHolderId,
       'expiryDate': expiryDate,
       'cvv': cvv,
     };
@@ -147,6 +150,7 @@ class Address {
       // My
       cardNumber = json['cardNumber'];
       cardHolderName = json['cardHolderName'];
+      cardHolderId = json['cardHolderId'];
       expiryDate = json['expiryDate'];
       cvv = json['cvv'];
     } catch (e) {

@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:fstore/common/config.dart';
 import 'package:fstore/frameworks/woocommerce/services/woo_commerce.dart';
+import 'package:fstore/models/cart/cart_base.dart';
+import 'package:provider/provider.dart';
 //import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../services/index.dart';
 import '../base_screen.dart';
 
-void main() async {
-  var url = await iCreditGetUrl(
-      buyer_name: 'IDAN TEST',
-      city: 'Gedera test',
-      street: 'Hedera',
-      email: 'idan@test.cocom',
-      phone: '0543232761',
-      total_price: 301);
-  print(url);
-  runApp(MaterialApp(home: PaymentWebview(url: url)));
-}
+// void main() async {
+//   var url = await iCreditGetUrl(
+//       buyer_name: 'IDAN TEST',
+//       city: 'Gedera test',
+//       street: 'Hedera',
+//       email: 'idan@test.cocom',
+//       phone: '0543232761',
+//       total_price: 301);
+//   print(url);
+//   runApp(MaterialApp(home: PaymentWebview(url: url)));
+// }
 
 class PaymentWebview extends StatefulWidget {
   final String? url;
@@ -91,6 +93,8 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
 
   @override
   Widget build(BuildContext context) {
+    final addressModel = Provider.of<CartModel>(context).address;
+
     var checkoutMap = <dynamic, dynamic>{
       'url': '',
       'headers': <String, String>{}
@@ -149,6 +153,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
                 isLoading = false;
               });
               print('Current url $url');
+
               if (url.contains('icredit')) {
                 await _controller.evaluateJavascript(
                     'console.log("Scrolling page to bottom..");'
@@ -157,15 +162,16 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
                     "iframe_doc = document.getElementById('frame').contentDocument;"
                     // iframe_doc.getElementsByTagName('input').cvv2.value = '1'
                     "inputs = iframe_doc.getElementsByTagName('input');"
-                    "inputs.cardNum.value = '4580000000000000';"
-                    "inputs.cvv2.value = '319';"
-                    "inputs.id.value = '325245355';"
+                    "inputs.cardNum.value = '${addressModel!.cardNumber}';" // '4580000000000000';"
+                    "inputs.cvv2.value = '${addressModel.cvv}';" // 319
+                    "inputs.id.value = '${addressModel.cardHolderId}';" // 325245355
                     // document.getElementsByTagName('select').ddlYear.value = '21' // document is iframe_doc
                     "selects = iframe_doc.getElementsByTagName('select');"
-                    "selects.ddlYear.value = '2021';"
-                    "selects.ddlMonth.value = '12';"
-                    "selects.ddlPayments.value = '3';"
+                    "selects.ddlMonth.value = '${int.parse(addressModel.expiryDate!.substring(0, 2))}';" // So 03 -> 3
+                    "selects.ddlYear.value = '20${addressModel.expiryDate!.substring(2, 4)}';" // 2021
+                    // "selects.ddlPayments.value = '1';" // תשלומים
                     "payButton = document.getElementById('cardsubmitbtn');"
+                    // "payButton.style.color = 'red';"
                     'payButton.click();'
                     //
                     );

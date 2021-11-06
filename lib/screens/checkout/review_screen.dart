@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:fstore/screens/checkout/widgets/my_credit_card.dart';
 import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_address.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_method.dart';
+import 'package:fstore/widgets/product/product_variant.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_card/awesome_card.dart';
 
@@ -52,26 +55,43 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     var notes = Provider.of<CartModel>(context, listen: false).notes;
     note.text = notes ?? '';
 
-    // My deafult shipping method
-    // if (shippingMethodModel.shippingMethods?.isNotEmpty ?? false) {
+/*    int? selectedIndex =
+        0; // right for 26.9.21, 0 means the "29₪ 2-3 day delivery" is default
+    Future.delayed(
+      Duration.zero,
+      () async {
+        print('לB My deafult shipping method');
+        final shippingMethod =
+            Provider.of<CartModel>(context, listen: false).shippingMethod;
+        final cartModel = Provider.of<CartModel>(context, listen: false);
 
-    /*  print('0 My deafult shipping method');
-    Future.delayed(Duration.zero, () {
-      final cartModel = Provider.of<CartModel>(context, listen: false);
-      final userModel = Provider.of<UserModel>(context, listen: false);
-      print('1 My deafult shipping method');
-      final shippingMethods =
-          Provider.of<ShippingMethodModel>(context, listen: false).getShippingMethods()
-              .shippingMethods.first;
-      print(shippingMethods.title);
+        Services().widget.loadShippingMethods(
+            context, Provider.of<CartModel>(context, listen: false), false);
 
-      // Provider.of<CartModel>(context, listen: false).setShippingMethod(shippingMethodModel.shippingMethods!.first);
+        print('לC My deafult shipping method');
+        final shippingMethods =
+            Provider.of<ShippingMethodModel>(context, listen: false)
+                .shippingMethods;
+        if (shippingMethods != null &&
+            shippingMethods.isNotEmpty &&
+            shippingMethod != null) {
+          final index = shippingMethods
+              .indexWhere((element) => element.id == shippingMethod.id);
+          if (index > -1) {
+            setState(() {
+              selectedIndex = index;
+            });
+          }
 
-      print('My deafult shipping method');
-      print(cartModel.shippingMethod!.title ?? 'Null..');*/
-    // });
+          print('D My deafult shipping method');
+          print(cartModel.shippingMethod!.title ?? 'Null..');
+        }
 
-    // }
+        */
+
+    // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
+
+    // widget.onNext!();
     super.initState();
   }
 
@@ -103,6 +123,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     final taxModel = Provider.of<TaxModel>(context);
 
     var cartModel = Provider.of<CartModel>(context);
+    var dropdownValue = '1';
+
     // final address = cartModel.address!;
     // var address = cartModel.address; // My
 
@@ -333,6 +355,62 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    // QuantitySelection(
+                    //   enabled: false,
+                    //   width: 60,
+                    //   height: 32,
+                    //   color: Theme.of(context).accentColor,
+                    //   limitSelectQuantity: 12,
+                    //   value: 1,
+                    //   onChanged: () {},
+                    //   useNewDesign: false,
+                    // ),
+
+                    // תשלומים
+                    /*               DropdownButton<String>(
+                      value: dropdownValue,
+                      icon: Icon(Icons.keyboard_arrow_down,
+                          size: 14,
+                          color: Theme.of(context).appBarTheme.backgroundColor),
+                      iconSize: 24,
+                      elevation: 16,
+                      style: TextStyle(
+                          fontSize: 14, color: Theme.of(context).accentColor),
+                      underline: Container(
+                        height: 32,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          color: kGrey200.withOpacity(0.7),
+                          // border: Border.all(width: 1.0, color: kGrey200),
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                      ),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownValue = newValue!;
+                        });
+                      },
+                      items: <String>[
+                        '1',
+                        '2',
+                        '3',
+                        '4',
+                        '5',
+                        // '6',
+                        // '7',
+                        // '8',
+                        // '9',
+                        // '10',
+                        // '11',
+                        // '12',
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),*/
+
                     Text(
                       S.of(context).total,
                       style:

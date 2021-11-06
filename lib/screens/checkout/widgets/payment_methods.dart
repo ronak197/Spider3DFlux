@@ -459,6 +459,8 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                         // print('Payment details:');
                         if (addressModel.cardHolderName == null ||
                             addressModel.cardHolderName == '' &&
+                                addressModel.cardHolderId == null ||
+                            addressModel.cardHolderId == '' &&
                                 addressModel.expiryDate == null ||
                             addressModel.expiryDate == '' &&
                                 addressModel.cardNumber == null ||

@@ -40,6 +40,7 @@ class Billing {
   // My
   String? cardNumber;
   String? cardHolderName;
+  String? cardHolderId;
   String? expiryDate;
   String? cvv;
 
@@ -60,6 +61,7 @@ class Billing {
       // My
       cardNumber = json['cardNumber'];
       cardHolderName = json['cardHolderName'];
+      cardHolderId = json['cardHolderId'];
       expiryDate = json['expiryDate'];
       cvv = json['cvv'];
     } catch (_) {}

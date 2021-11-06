@@ -103,6 +103,10 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
                       user.billing!.cardHolderName!.isNotEmpty
                   ? user.billing!.cardHolderName
                   : user.cardHolderName ?? '',
+              cardHolderId:
+                  user.billing != null && user.billing!.cardHolderId!.isNotEmpty
+                      ? user.billing!.cardHolderId
+                      : user.cardHolderName ?? '',
               expiryDate:
                   user.billing != null && user.billing!.expiryDate!.isNotEmpty
                       ? user.billing!.expiryDate

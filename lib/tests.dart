@@ -1,66 +1,71 @@
+/// Flutter code sample for DropdownButton
+
+// This sample shows a `DropdownButton` with a large arrow icon,
+// purple text style, and bold purple underline, whose value is one of "One",
+// "Two", "Free", or "Four".
+//
+// ![](https://flutter.github.io/assets-for-api-docs/assets/material/dropdown_button.png)
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-// void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
-class MyTestApp extends StatelessWidget {
+/// This is the main application widget.
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  static const String _title = 'Flutter Code Sample';
+
   @override
   Widget build(BuildContext context) {
-    return Provider<MyModel>(
-      //                              <--- Provider
-      create: (context) => MyModel(),
-      child:
-          Consumer<MyModel>(//                           <--- MyModel Consumer
-              builder: (context, myModel, child) {
-        return ValueListenableProvider<String>.value(
-          // <--- ValueListenableProvider
-          value: myModel.someValue,
-          child: MaterialApp(
-            home: Scaffold(
-              appBar: AppBar(title: Text('My App')),
-              body: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                      padding: const EdgeInsets.all(20),
-                      color: Colors.green[200],
-                      child: Consumer<MyModel>(
-                        //       <--- Consumer
-                        builder: (context, myModel, child) {
-                          return RaisedButton(
-                            child: Text('Do something'),
-                            onPressed: () {
-                              myModel.doSomething();
-                            },
-                          );
-                        },
-                      )),
-                  Container(
-                    padding: const EdgeInsets.all(35),
-                    color: Colors.blue[200],
-                    child: Consumer<String>(
-                      //           <--- String Consumer
-                      builder: (context, myValue, child) {
-                        return Text(myValue);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      }),
+    return MaterialApp(
+      title: _title,
+      home: Scaffold(
+        appBar: AppBar(title: const Text(_title)),
+        body: const Center(
+          child: MyStatefulWidget(),
+        ),
+      ),
     );
   }
 }
 
-class MyModel {
-  //                                             <--- MyModel
-  ValueNotifier<String> someValue =
-      ValueNotifier('Hello'); // <--- ValueNotifier
-  void doSomething() {
-    someValue.value = 'Goodbye';
-    print(someValue.value);
+/// This is the stateful widget that the main application instantiates.
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+/// This is the private State class that goes with MyStatefulWidget.
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  String dropdownValue = 'One';
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: dropdownValue,
+      icon: const Icon(Icons.arrow_downward),
+      iconSize: 24,
+      elevation: 16,
+      style: const TextStyle(color: Colors.deepPurple),
+      underline: Container(
+        height: 2,
+        color: Colors.deepPurpleAccent,
+      ),
+      onChanged: (String? newValue) {
+        setState(() {
+          dropdownValue = newValue!;
+        });
+      },
+      items: <String>['One', 'Two', 'Free', 'Four']
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
   }
 }

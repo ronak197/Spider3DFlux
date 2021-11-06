@@ -91,7 +91,7 @@ class _CreditCardInfoState extends State<CreditCardInfo> {
                           width: 120,
                           child: Text(
                             // S.of(context).firstName + ' :',
-                            'מס כרטיס :',
+                            'מס׳ תעודת זהות :',
                             style: TextStyle(
                               fontSize: 14,
                               color: Theme.of(context).accentColor,
@@ -101,7 +101,8 @@ class _CreditCardInfoState extends State<CreditCardInfo> {
                         Expanded(
                           child: Text(
                             // '**** **** **** 2743',
-                            '**** **** **** ${myCart.address!.cardNumber!.substring(12, ccLength)}',
+                            // '**** **** **** ${myCart.address!.cardNumber!.substring(12, ccLength)}',
+                            '${myCart.address!.cardHolderId}',
                             textAlign: TextAlign.right,
                             textDirection: TextDirection.ltr,
                             style: TextStyle(
@@ -154,7 +155,7 @@ class _CreditCardInfoState extends State<CreditCardInfo> {
     } else {
       // print('show_creditCard_details');
       // print(show_creditCard_details);
-      return CreditCardAddress(
+      return CreditCardForm(
         onNext: () {},
         isFullPage: false,
       );

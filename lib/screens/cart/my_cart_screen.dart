@@ -304,6 +304,7 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
                                     children:
                                         _createShoppingCartRows(model, context),
                                   ),
+                                // FlutterLogo(),
                                 if (model.totalCartQuantity > 0)
                                   ShoppingCartSummary(),
                                 if (model.totalCartQuantity == 0) EmptyCart(),

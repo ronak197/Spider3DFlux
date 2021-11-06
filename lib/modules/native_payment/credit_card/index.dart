@@ -22,6 +22,7 @@ class CreditCardPaymentState extends State<CreditCardPayment> {
   CreditCardServices services = CreditCardServices();
   String cardNumber = '';
   String cardHolderName = '';
+  String cardHolderId = '';
   String expiryDate = '';
   String cvv = '';
   bool showBack = false;
@@ -72,6 +73,7 @@ class CreditCardPaymentState extends State<CreditCardPayment> {
               height: 40,
             ),
             CreditCard(
+              // NOT My (original)
               cardNumber: cardNumber,
               cardExpiry: expiryDate,
               cardHolderName: cardHolderName,

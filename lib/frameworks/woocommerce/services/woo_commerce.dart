@@ -1994,14 +1994,19 @@ class WooCommerce extends BaseServices {
 // My
 Future<String> iCreditGetUrl(
     {buyer_name, city, street, email, phone, total_price}) async {
+  // print(buyer_name);
+  // print(city);
+
+  // var url = 'https://testicredit.rivhit.co.il/API/PaymentPageRequest.svc/GetUrl'; // Test Url
   var url =
-      'https://testicredit.rivhit.co.il/API/PaymentPageRequest.svc/GetUrl';
+      'https://icredit.rivhit.co.il/API/PaymentPageRequest.svc/GetUrl'; // Url
 
   var req = {
-    'GroupPrivateToken': 'bb8a47ab-42e0-4b7f-ba08-72d55f2d9e41',
+    'GroupPrivateToken': 'e7bc02ba-7551-4ec3-884a-3524ba958a41', // Token
+    // 'GroupPrivateToken': 'bb8a47ab-42e0-4b7f-ba08-72d55f2d9e41', // test Token
     'Items': [
       {
-        'Id': 1,
+        // 'Id': 1,
         'Quantity': 1,
         'UnitPrice': total_price,
         'Description': 'תשלום מאובטח ביישומון Spider3D'
@@ -2010,17 +2015,17 @@ Future<String> iCreditGetUrl(
     // 'FailRedirectURL': 'String content',
     // 'Order': 'Woo order number?',
 
-    'CustomerFirstName': buyer_name,
-    // 'CustomerLastName': 'String content',
-    'City': city,
-    'Address': street,
-    'EmailAddress': email,
-    'PhoneNumber': phone,
+    'CustomerFirstName': 'עידן',
+    'CustomerLastName': 'ביטו',
+    'City': '$city',
+    'Address': '$street',
+    'EmailAddress': '$email',
+    'PhoneNumber': '$phone',
 
     'MaxPayments': 12,
     'RedirectURL':
         'https://www.spider3d.co.il/%D7%AA%D7%95%D7%93%D7%94/', // spider3d.co.il/תודה
-    'DisplayPayPalButton': 'false',
+    // 'DisplayPayPalButton': 'true',
     'CreateToken': 'true'
   };
 

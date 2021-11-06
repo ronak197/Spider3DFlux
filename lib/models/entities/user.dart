@@ -25,6 +25,7 @@ class User {
   // My
   String? cardNumber;
   String? cardHolderName;
+  String? cardHolderId;
   String? expiryDate;
   String? cvv;
 

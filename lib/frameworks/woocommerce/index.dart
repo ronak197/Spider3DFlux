@@ -225,7 +225,8 @@ class WooWidget extends BaseFrameworks
           street: addressModel.street,
           email: addressModel.email,
           phone: addressModel.phoneNumber,
-          total_price: 100.18);
+          total_price:
+              Provider.of<CartModel>(context, listen: false).getTotal());
 
       onLoading(false);
       await Navigator.push(

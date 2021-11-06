@@ -441,7 +441,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "orderStatusPending": MessageLookupByLibrary.simpleMessage("ממתין ל"),
         "orderStatusPendingPayment":
             MessageLookupByLibrary.simpleMessage("תשלום בהמתנה"),
-        "orderStatusProcessing": MessageLookupByLibrary.simpleMessage("עיבוד"),
+        "orderStatusProcessing": MessageLookupByLibrary.simpleMessage("בטיפול"),
         "orderStatusRefunded": MessageLookupByLibrary.simpleMessage("הוחזר"),
         "orderSuccessMsg1": MessageLookupByLibrary.simpleMessage(
             // "אתה יכול לבדוק את מצב ההזמנה שלך באמצעות תכונת סטטוס המסירה שלנו. תקבל דוא״ל לאישור הזמנה עם פרטי ההזמנה שלך וקישור למעקב אחר התקדמותה."),

@@ -19,23 +19,23 @@ import '../review_screen.dart';
 import 'my_credit_card.dart';
 import 'package:credit_card_validator/credit_card_validator.dart';
 
-class CreditCardAddress extends StatefulWidget {
+class CreditCardForm extends StatefulWidget {
   final bool isFullPage;
   final Function onNext;
 
-  CreditCardAddress({required this.onNext, this.isFullPage = true});
+  CreditCardForm({required this.onNext, this.isFullPage = true});
 
   @override
-  _CreditCardAddressState createState() => _CreditCardAddressState();
+  _CreditCardFormState createState() => _CreditCardFormState();
 }
 
-class _CreditCardAddressState extends State<CreditCardAddress> {
+class _CreditCardFormState extends State<CreditCardForm> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _streetController = TextEditingController();
   final CreditCardValidator _ccValidator = CreditCardValidator();
 
-  final _phoneNode = FocusNode();
+  final expireMmYy = FocusNode();
   final _emailNode = FocusNode();
   final _cityNode = FocusNode();
   final _streetNode = FocusNode();
@@ -50,7 +50,7 @@ class _CreditCardAddressState extends State<CreditCardAddress> {
     _cityController.dispose();
     _streetController.dispose();
 
-    _phoneNode.dispose();
+    expireMmYy.dispose();
     _emailNode.dispose();
     _cityNode.dispose();
     _streetNode.dispose();
@@ -334,7 +334,7 @@ class _CreditCardAddressState extends State<CreditCardAddress> {
                                     },
                                     onFieldSubmitted: (_) =>
                                         FocusScope.of(context)
-                                            .requestFocus(_phoneNode),
+                                            .requestFocus(expireMmYy),
                                     onSaved: (String? value) {
                                       creditCard!.cardHolderName = value;
                                     },
@@ -353,7 +353,7 @@ class _CreditCardAddressState extends State<CreditCardAddress> {
                                             AutofillHints
                                                 .creditCardExpirationDate
                                           ],
-                                          focusNode: _phoneNode,
+                                          focusNode: expireMmYy,
                                           // textAlign: TextAlign.center,
                                           decoration: greyTxtDeco(
                                             // labelText: S.of(context).phoneNumber
@@ -451,7 +451,7 @@ class _CreditCardAddressState extends State<CreditCardAddress> {
                                     },
                                     onFieldSubmitted: (_) =>
                                         FocusScope.of(context)
-                                            .requestFocus(_phoneNode),
+                                            .requestFocus(expireMmYy),
                                     onSaved: (String? value) {
                                       creditCard!.cardNumber = value;
                                     },
@@ -508,44 +508,93 @@ class _CreditCardAddressState extends State<CreditCardAddress> {
                                 address!.zipCode = value;
                               }),*/
                             // const SizedBox(height: 20),
-                            Center(
-                              child: ButtonTheme(
-                                height: 45,
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 0.0,
-                                    onPrimary: Colors.white,
-                                    primary: Theme.of(context).primaryColor,
+
+                            Row(
+                              children: [
+                                Flexible(
+                                  flex: 10,
+                                  child: TextFormField(
+                                    // initialValue:  address!.firstName,
+                                    decoration: greyTxtDeco(
+                                        labelText: 'מס׳ תעודת זהות'),
+                                    // const InputDecoration(
+                                    // //     labelText: S.of(context).firstName
+                                    // labelText: 'שם לחשבונית'),
+                                    textCapitalization:
+                                        TextCapitalization.words,
+                                    textInputAction: TextInputAction.next,
+
+                                    /*                               validator: (val) {
+                                      var isValid = _ccValidator
+                                          .validateCCNum(val!)
+                                          .isValid;
+
+                                      // print('isValid is $isValid');
+                                      return isValid ? null : 'הזן ת.ז תקין';
+                                    },*/
+
+                                    // onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(expireMmYy),
+                                    onSaved: (String? value) {
+                                      creditCard!.cardHolderId = value;
+                                    },
                                   ),
-                                  onPressed: () async {
-                                    if (!checkToSave()) return;
-                                    if (_formKey.currentState!.validate()) {
-                                      _formKey.currentState!.save();
-                                      Provider.of<CartModel>(context,
-                                              listen: false)
-                                          .setAddress(creditCard);
-                                      await saveDataToLocal();
-
-                                      var myAddress =
-                                          await Provider.of<CartModel>(context,
-                                                  listen: false)
-                                              .getAddress();
-                                      print("The CC Details:");
-                                      print(myAddress!.cardHolderName);
-                                      print(myAddress.cardNumber);
-                                      print(myAddress.expiryDate);
-                                      print(myAddress.cvv);
-
-                                      setState(() {
-                                        show_creditCard_details = true;
-                                      });
-                                    }
-                                  },
-                                  child: const Text('שמור',
-                                      style: TextStyle(fontSize: 14)),
                                 ),
-                              ),
-                            )
+                                const Spacer(
+                                  flex: 1,
+                                ),
+                                Flexible(
+                                  flex: 4,
+                                  child: Container(
+                                    alignment: Alignment.topRight,
+                                    width: 90,
+                                    height: 40,
+                                    child: ButtonTheme(
+                                      // height: 20,
+                                      child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          elevation: 0.0,
+                                          onPrimary: Colors.white,
+                                          primary:
+                                              Theme.of(context).primaryColor,
+                                        ),
+                                        onPressed: () async {
+                                          if (!checkToSave()) return;
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            _formKey.currentState!.save();
+                                            Provider.of<CartModel>(context,
+                                                    listen: false)
+                                                .setAddress(creditCard);
+                                            await saveDataToLocal();
+
+                                            var myAddress =
+                                                await Provider.of<CartModel>(
+                                                        context,
+                                                        listen: false)
+                                                    .getAddress();
+                                            print("The CC Details:");
+                                            print(myAddress!.cardHolderName);
+                                            print(myAddress.cardHolderId);
+                                            print(myAddress.cardNumber);
+                                            print(myAddress.expiryDate);
+                                            print(myAddress.cvv);
+
+                                            setState(() {
+                                              show_creditCard_details = true;
+                                            });
+                                          }
+                                        },
+                                        child: const Text('שמור',
+                                            style: TextStyle(fontSize: 16)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            show_creditCard_details
+                                ? const Text('פרטי האשראי עודכנו, אנא המשך')
+                                : Container()
                           ]),
                     ),
                   ),

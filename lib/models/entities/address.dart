@@ -113,7 +113,8 @@ class Address {
       'state': state,
       'country': country,
       'phone': phoneNumber,
-      'postcode': zipCode,
+      // 'postcode': zipCode,
+      'postcode': '',
       'mapUrl': mapUrl,
 
       // My

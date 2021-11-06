@@ -135,6 +135,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
       value: shippingMethodModel,
       child: Consumer<CartModel>(
         builder: (context, model, child) {
+          var ccLength = model.address!.cardNumber!.length;
+
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -290,7 +292,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 // title: 'פרטי משלוח',
                 // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
                 // title: 'פרטי כרטיס (2743 **** **** ****)',
-                title: 'פרטי כרטיס',
+                title:
+                    'פרטי כרטיס: ${cartModel.address!.cardNumber!.substring(12, ccLength)} **** **** ****',
                 // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
                 children: <Widget>[CreditCardInfo()],
               ),

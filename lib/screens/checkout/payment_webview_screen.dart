@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:fstore/common/config.dart';
+import 'package:fstore/frameworks/woocommerce/services/woo_commerce.dart';
 //import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../services/index.dart';
 import '../base_screen.dart';
+
+void main() async {
+  var url = await iCreditGetUrl(
+      buyer_name: 'IDAN TEST',
+      city: 'Gedera test',
+      street: 'Hedera',
+      email: 'idan@test.cocom',
+      phone: '0543232761',
+      total_price: 301);
+  print(url);
+  runApp(MaterialApp(home: PaymentWebview(url: url)));
+}
 
 class PaymentWebview extends StatefulWidget {
   final String? url;
@@ -120,32 +133,50 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
 
               await controller
                   .evaluateJavascript('console.log("Print TEST by JS")');
+
+              /*        await _controller.evaluateJavascript(
+                  'var mainNodeList = document.getElementsByName("cardNum");'
+                  'var mainArray = Array.from(mainNodeList);'
+                  'mainNodeList.forEach(item => item.value = "C");'
+                  'mainNodeList.forEach(item => console.log(item));'
+                  'console.log("document.body");'
+                  'console.log(document.body);'
+                  'console.log("----------");'
+                  'console.log(mainArray);');*/
             },
             onPageFinished: (url) async {
               setState(() {
                 isLoading = false;
               });
-
-              await _controller.evaluateJavascript(
-                  "document.getElementById('billing_first_name').value = 'שם פרטייי';");
-              await _controller.evaluateJavascript(
-                  "document.getElementById('billing_last_name').value = 'שם משפחה';");
-
-              if (url.contains('/order-received/')) {
-                final items = url.split('/order-received/');
-                if (items.length > 1) {
-                  final number = items[1].split('/')[0];
-                  widget.onFinish!(number);
-                  Navigator.of(context).pop();
-                }
+              print('Current url $url');
+              if (url.contains('icredit')) {
+                await _controller.evaluateJavascript(
+                    'console.log("Scrolling page to bottom..");'
+                    'window.scrollTo(0,document.body.scrollHeight);'
+                    //
+                    "iframe_doc = document.getElementById('frame').contentDocument;"
+                    // iframe_doc.getElementsByTagName('input').cvv2.value = '1'
+                    "inputs = iframe_doc.getElementsByTagName('input');"
+                    "inputs.cardNum.value = '4580000000000000';"
+                    "inputs.cvv2.value = '319';"
+                    "inputs.id.value = '325245355';"
+                    // document.getElementsByTagName('select').ddlYear.value = '21' // document is iframe_doc
+                    "selects = iframe_doc.getElementsByTagName('select');"
+                    "selects.ddlYear.value = '2021';"
+                    "selects.ddlMonth.value = '12';"
+                    "selects.ddlPayments.value = '3';"
+                    "payButton = document.getElementById('cardsubmitbtn');"
+                    'payButton.click();'
+                    //
+                    );
               }
-              if (url.contains('checkout/success')) {
-                widget.onFinish!('0');
-                Navigator.of(context).pop();
-              }
 
-              // shopify url final checkout
-              if (url.contains('thank_you')) {
+              // Redirect when success = https://www.spider3d.co.il/תודה/ - https://www.spider3d.co.il/%D7%AA%D7%95%D7%93%D7%94/
+
+              if (url.contains('%D7%AA%D7%95%D7%93%D7%94') ||
+                  url.contains('spider3d') ||
+                  url.contains('תודה')) {
+                print('Payment done succefully! Redirect..');
                 widget.onFinish!('0');
                 Navigator.of(context).pop();
               }

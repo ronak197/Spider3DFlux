@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fstore/frameworks/woocommerce/services/woo_commerce.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +23,7 @@ import '../../models/index.dart'
         ListCountry,
         Order,
         PaymentMethod,
+        PaymentMethodModel,
         Product,
         ProductVariation,
         ShippingMethodModel,
@@ -205,9 +208,25 @@ class WooWidget extends BaseFrameworks
     try {
       onLoading!(true);
 
-      var url = await Services().api.getCheckoutUrl(
-          params, Provider.of<AppModel>(context, listen: false).langCode)!;
       // var url = 'https://google.com';
+
+      // Original
+      // var url = await Services().api.getCheckoutUrl(params, Provider.of<AppModel>(context, listen: false).langCode)!;
+
+      // My
+      // final addressModel = Provider.of<CartModel>(context).address;
+      final addressModel =
+          Provider.of<CartModel>(context, listen: false).address;
+      // final paymentMethodModel = Provider.of<PaymentMethodModel>(context);
+      // final order_details = provider.of<
+      var url = await iCreditGetUrl(
+          buyer_name: addressModel!.firstName,
+          city: addressModel.city,
+          street: addressModel.street,
+          email: addressModel.email,
+          phone: addressModel.phoneNumber,
+          total_price: 100.18);
+
       onLoading(false);
       await Navigator.push(
         context,

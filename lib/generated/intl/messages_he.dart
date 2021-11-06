@@ -444,7 +444,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "orderStatusProcessing": MessageLookupByLibrary.simpleMessage("עיבוד"),
         "orderStatusRefunded": MessageLookupByLibrary.simpleMessage("הוחזר"),
         "orderSuccessMsg1": MessageLookupByLibrary.simpleMessage(
-            "אתה יכול לבדוק את מצב ההזמנה שלך באמצעות תכונת סטטוס המסירה שלנו. תקבל דוא״ל לאישור הזמנה עם פרטי ההזמנה שלך וקישור למעקב אחר התקדמותה."),
+            // "אתה יכול לבדוק את מצב ההזמנה שלך באמצעות תכונת סטטוס המסירה שלנו. תקבל דוא״ל לאישור הזמנה עם פרטי ההזמנה שלך וקישור למעקב אחר התקדמותה."),
+            "לחץ למעקב אחר ההזמנה או הכנס ל״היסטוריית הזמנות״ בעמוד הפרופיל"),
         "orderSuccessMsg2": MessageLookupByLibrary.simpleMessage(
             "אתה יכול להיכנס לחשבונך באמצעות דואר אלקטרוני וסיסמה שהוגדרו קודם. בחשבונך תוכל לערוך את נתוני הפרופיל שלך, לבדוק היסטוריית עסקאות, לערוך מנוי לניוזלטר."),
         "orderSuccessTitle1":

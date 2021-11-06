@@ -84,13 +84,13 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
         ),
         const SizedBox(height: 15),
         Text(
-          S.of(context).orderSuccessMsg1,
+          'למעקב אחר ההזמנה הכנס ל״היסטוריית הזמנות״ בעמוד הפרופיל',
           style: TextStyle(
               color: Theme.of(context).accentColor, height: 1.4, fontSize: 14),
         ),
         if (userModel.user != null)
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: Row(children: [
               Expanded(
                 child: ButtonTheme(
@@ -117,19 +117,8 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
               ),
             ]),
           ),
-        const SizedBox(height: 40),
-        Text(
-          S.of(context).orderSuccessTitle2,
-          style: TextStyle(fontSize: 18, color: Theme.of(context).accentColor),
-        ),
-        const SizedBox(height: 10),
-        Text(
-          S.of(context).orderSuccessMsg2,
-          style: TextStyle(
-              color: Theme.of(context).accentColor, height: 1.4, fontSize: 14),
-        ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30),
+          padding: const EdgeInsets.symmetric(vertical: 0),
           child: Row(
             children: [
               Expanded(
@@ -157,7 +146,13 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
               ),
             ],
           ),
-        )
+        ),
+        const SizedBox(height: 15),
+        Text(
+          '(להזמנה נוספת יש להכנס לאפליקציה מחדש)',
+          style: TextStyle(
+              color: Theme.of(context).accentColor, height: 1.4, fontSize: 14),
+        ),
       ],
     );
   }

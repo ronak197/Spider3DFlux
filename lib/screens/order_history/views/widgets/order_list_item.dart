@@ -63,7 +63,8 @@ class OrderListItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (order.lineItems.isNotEmpty && order.lineItems[0].featuredImage != null)
+                        if (order.lineItems.isNotEmpty &&
+                            order.lineItems[0].featuredImage != null)
                           Stack(
                             children: [
                               const SizedBox(width: 92, height: 86),
@@ -154,13 +155,11 @@ class OrderListItem extends StatelessWidget {
                                 // Display empty box if Order Address is null
                                 order.billing != null
                                     ? Text(
-                                        '${order.billing?.firstName} | ${order.billing?.city}, ${order.billing?.country}',
+                                        '${order.billing?.street} | ${order.billing?.city}',
                                         style: const TextStyle(fontSize: 14.0),
                                       )
                                     : Container(),
-                                const Expanded(
-                                  child: SizedBox(height: 1),
-                                ),
+                                // const Expanded(child: SizedBox(height: 1),),
                                 Row(
                                   children: [
                                     Expanded(
@@ -176,17 +175,6 @@ class OrderListItem extends StatelessWidget {
                                                   .withOpacity(0.8),
                                             ),
                                       ),
-                                    ),
-                                    Text(
-                                      S.of(context).orderNo + '${order.number}',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .copyWith(
-                                            color: Theme.of(context)
-                                                .accentColor
-                                                .withOpacity(0.8),
-                                          ),
                                     ),
                                   ],
                                 ),
@@ -236,10 +224,9 @@ class OrderListItem extends StatelessWidget {
                                 order.total, null),
                           ),
                           OrderStatusWidget(
-                            title: S.of(context).tax,
-                            detail: PriceTools.getCurrencyFormatted(
-                                order.totalTax, null),
-                          ),
+                              title: 'מס׳ הזמנה', detail: '#${order.number}'
+                              // PriceTools.getCurrencyFormatted(order.totalTax, null),
+                              ),
                           OrderStatusWidget(
                             title: S.of(context).Qty,
                             detail: order.quantity.toString(),

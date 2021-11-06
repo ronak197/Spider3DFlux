@@ -74,6 +74,7 @@ class PaypalServices {
 
   Future<String?> executePayment(url, payerId, accessToken) async {
     try {
+      print(' try executePayment..');
       var response = await httpPost(url,
           body: convert.jsonEncode({'payer_id': payerId}),
           headers: {
@@ -84,6 +85,7 @@ class PaypalServices {
       final body = convert.jsonDecode(response.body);
 
       if (response.statusCode == 200) {
+        print('executePayment: 200');
         return body['id'];
       }
       return null;

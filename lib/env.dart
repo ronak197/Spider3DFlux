@@ -393,11 +393,11 @@ Map<String, dynamic> environment = {
     "enableManualCapture": false
   },
   "paypalConfig": {
-    "clientId":
-        "ASlpjFreiGp3gggRKo6YzXMyGM6-NwndBAQ707k6z3-WkSSMTPDfEFmNmky6dBX00lik8wKdToWiJj5w",
+    "clientId": // For paypal account - efrat@spider3d.co.il
+        "AZhAgZskAgesstBYMWrNTkmPYE_o_LGE9PXJJTiTdPnSNMx37GudMCZQ21UgHvF35kK67VvyQwvmwn8_",
     "secret":
-        "ECbFREri7NFj64FI_9WzS6A0Az2DqNLrVokBo0ZBu4enHZKMKOvX45v9Y1NBPKFr6QJv2KaSp5vk5A1G",
-    "production": false,
+        "EJZdFh_QAlI7oPVTGmXabSp6bpXcjZvcPg6KY7ajQi3qkfQqetsoS0gwtVz2caYDWYyKdKguUl-SNcHh",
+    "production": true,
     "paymentMethodId": "paypal",
     "enabled": true
   },

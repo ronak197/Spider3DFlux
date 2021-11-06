@@ -165,6 +165,7 @@ class PaypalPaymentState extends State<PaypalPayment> {
           initialUrl: checkoutUrl,
           javascriptMode: JavascriptMode.unrestricted,
           navigationDelegate: (NavigationRequest request) {
+            print('Syohooo A');
             if (request.url.startsWith('http://return.example.com')) {
               final uri = Uri.parse(request.url);
               final payerID = uri.queryParameters['PayerID'];
@@ -172,9 +173,13 @@ class PaypalPaymentState extends State<PaypalPayment> {
                 services
                     .executePayment(executeUrl, payerID, accessToken)
                     .then((id) {
+                  // print('id: $id');
+                  // widget.onFinish!('0');
                   widget.onFinish!(id);
                 });
               }
+              print('B');
+              widget.onFinish!('0');
               Navigator.of(context).pop();
             }
             if (request.url.startsWith('http://cancel.example.com')) {

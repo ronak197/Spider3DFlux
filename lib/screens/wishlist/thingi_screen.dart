@@ -126,6 +126,7 @@ class _ThingiPageState extends State<ThingiPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 3,
         backgroundColor: Theme.of(context).backgroundColor,
         toolbarHeight: 55.0, // double
         title: Row(
@@ -301,6 +302,7 @@ class CardGrid extends StatelessWidget {
           width: double.infinity,
           height: 500,
           decoration: BoxDecoration(
+            color: Theme.of(context).backgroundColor.withOpacity(0.8),
             boxShadow: <BoxShadow>[
               BoxShadow(
                 offset: const Offset(-1.0, 1.5),
@@ -313,24 +315,26 @@ class CardGrid extends StatelessWidget {
                   image_url,
                 ),
                 fit: BoxFit.cover),
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
           ),
           child: Container(
-            alignment: Alignment.bottomCenter,
-            padding: const EdgeInsets.only(left: 10, bottom: 5),
+            alignment: Alignment.bottomLeft,
+            padding: const EdgeInsets.only(left: 5, bottom: 5, right: 5),
             child: Text(
               title,
               maxLines: 2,
+              textAlign: TextAlign.left,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
+              style: TextStyle(
+                  height: 1.25, // line spacing
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                   shadows: <Shadow>[
                     Shadow(
                       offset: Offset(-1.0, 1.5),
-                      blurRadius: 5.0,
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      blurRadius: 4.0,
+                      color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.8),
                     ),
                   ]),
             ),

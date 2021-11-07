@@ -121,7 +121,7 @@ class _ThingiPageState extends State<ThingiPage> {
   var showSearch = false;
   var searchController = TextEditingController();
   var setFeedBy = _setFeedByPopular();
-
+//
   @override
   Widget build(BuildContext context) {
     return Scaffold(

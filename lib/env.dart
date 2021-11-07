@@ -393,13 +393,12 @@ Map<String, dynamic> environment = {
     "enableManualCapture": false
   },
   "paypalConfig": {
-    "clientId": // For paypal account - efrat@spider3d.co.il
-        "AZhAgZskAgesstBYMWrNTkmPYE_o_LGE9PXJJTiTdPnSNMx37GudMCZQ21UgHvF35kK67VvyQwvmwn8_",
-    "secret":
-        "EJZdFh_QAlI7oPVTGmXabSp6bpXcjZvcPg6KY7ajQi3qkfQqetsoS0gwtVz2caYDWYyKdKguUl-SNcHh",
+    // Not in use! Current use is webView based paymentMethods of spider3d.co.il
+    "clientId": "",
+    "secret": "",
     "production": true,
     "paymentMethodId": "paypal",
-    "enabled": true
+    "enabled": false
   },
   "razorpayConfig": {
     "keyId": "rzp_test_SDo2WKBNQXDk5Y",

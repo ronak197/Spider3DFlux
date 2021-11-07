@@ -368,48 +368,48 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
                     // תשלומים
                     /*               DropdownButton<String>(
-                      value: dropdownValue,
-                      icon: Icon(Icons.keyboard_arrow_down,
-                          size: 14,
-                          color: Theme.of(context).appBarTheme.backgroundColor),
-                      iconSize: 24,
-                      elevation: 16,
-                      style: TextStyle(
-                          fontSize: 14, color: Theme.of(context).accentColor),
-                      underline: Container(
-                        height: 32,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          color: kGrey200.withOpacity(0.7),
-                          // border: Border.all(width: 1.0, color: kGrey200),
-                          borderRadius: BorderRadius.circular(3),
-                        ),
-                      ),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownValue = newValue!;
-                        });
-                      },
-                      items: <String>[
-                        '1',
-                        '2',
-                        '3',
-                        '4',
-                        '5',
-                        // '6',
-                        // '7',
-                        // '8',
-                        // '9',
-                        // '10',
-                        // '11',
-                        // '12',
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    ),*/
+                          value: dropdownValue,
+                          icon: Icon(Icons.keyboard_arrow_down,
+                              size: 14,
+                              color: Theme.of(context).appBarTheme.backgroundColor),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(
+                              fontSize: 14, color: Theme.of(context).accentColor),
+                          underline: Container(
+                            height: 32,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: kGrey200.withOpacity(0.7),
+                              // border: Border.all(width: 1.0, color: kGrey200),
+                              borderRadius: BorderRadius.circular(3),
+                            ),
+                          ),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropdownValue = newValue!;
+                            });
+                          },
+                          items: <String>[
+                            '1',
+                            '2',
+                            '3',
+                            '4',
+                            '5',
+                            // '6',
+                            // '7',
+                            // '8',
+                            // '9',
+                            // '10',
+                            // '11',
+                            // '12',
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),*/
 
                     Text(
                       S.of(context).total,
@@ -500,11 +500,11 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   }
 
 /*                  Future.delayed(const Duration(seconds: 1), () {
-                    is_payment_loading = false;
-                    setState(() {
-                      is_payment_loading = false;
-                    });
-                  });*/
+                        is_payment_loading = false;
+                        setState(() {
+                          is_payment_loading = false;
+                        });
+                      });*/
 
                   // OverLay (Stack) Loading while PaymentMethods is set - could be better
                   Future.delayed(const Duration(seconds: 3)).then((_) {
@@ -544,18 +544,18 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               )
 
 /*            if (kPaymentConfig['EnableShipping'] &&
-                  kPaymentConfig['EnableAddress'])
-                Center(
-                    child: TextButton(
-                        onPressed: () {
-                          widget.onBack!();
-                        },
-                        child: Text(S.of(context).goBackToShipping,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                decoration: TextDecoration.underline,
-                                fontSize: 15,
-                                color: kGrey400))))*/
+                      kPaymentConfig['EnableAddress'])
+                    Center(
+                        child: TextButton(
+                            onPressed: () {
+                              widget.onBack!();
+                            },
+                            child: Text(S.of(context).goBackToShipping,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    fontSize: 15,
+                                    color: kGrey400))))*/
             ],
           );
         },

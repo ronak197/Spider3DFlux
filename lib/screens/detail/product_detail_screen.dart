@@ -48,7 +48,7 @@ class ProductDetailScreen extends StatefulWidget {
                           return ImageGalery(images: product?.images, index: 0);
                         });
                   }),
-              if (!isLoading && product != null)
+/*              if (!isLoading && product != null)
                 ListTile(
                     title: Text(S.of(context).saveToWishList,
                         textAlign: TextAlign.center),
@@ -56,7 +56,7 @@ class ProductDetailScreen extends StatefulWidget {
                       Provider.of<WishListModel>(context, listen: false)
                           .addToWishlist(product);
                       Navigator.of(context).pop();
-                    }),
+                    }),*/
 
               /// Share feature not supported in Strapi.
               if (!Config().isStrapi)
@@ -82,6 +82,10 @@ class ProductDetailScreen extends StatefulWidget {
                 onTap: () {
                   Navigator.of(context).pop();
                 },
+              ),
+              Container(
+                height: 30,
+                // decoration: const BoxDecoration(color: kGrey200),
               ),
             ],
           );

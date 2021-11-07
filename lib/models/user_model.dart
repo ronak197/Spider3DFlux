@@ -99,10 +99,15 @@ class UserModel with ChangeNotifier {
   }
 
   /// Login by Facebook
+  var firstTry = true;
   Future<void> loginFB({Function? success, Function? fail, context}) async {
+    print('firstTry? $firstTry');
     try {
-      final result = await FacebookAuth.instance
-          .login(loginBehavior: LoginBehavior.nativeWithFallback);
+      final result = firstTry // my
+          ? await FacebookAuth.instance
+              .login(loginBehavior: LoginBehavior.nativeWithFallback)
+          : await FacebookAuth.instance
+              .login(loginBehavior: LoginBehavior.webViewOnly);
       switch (result.status) {
         case LoginStatus.success:
           final accessToken = await FacebookAuth.instance.accessToken;
@@ -115,9 +120,11 @@ class UserModel with ChangeNotifier {
           success!(user);
           break;
         case LoginStatus.cancelled:
+          firstTry = false;
           fail!(S.of(context).loginCanceled);
           break;
         default:
+          firstTry = false;
           fail!(S.of(context).loginCanceled);
           break;
       }

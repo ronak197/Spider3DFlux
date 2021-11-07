@@ -108,7 +108,8 @@ class AppState extends State<App>
       );
     }
     return buildLightTheme(appModel.langCode, fontFamily).copyWith(
-      primaryColor: HexColor(appModel.mainColor),
+      // primaryColor: HexColor(appModel.mainColor),
+      primaryColor: kColorSpiderRed,
     );
   }
 

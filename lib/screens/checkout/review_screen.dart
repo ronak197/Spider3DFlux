@@ -157,7 +157,11 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
       value: shippingMethodModel,
       child: Consumer<CartModel>(
         builder: (context, model, child) {
-          var ccLength = model.address!.cardNumber!.length;
+          var ccLength = cartModel.address != null
+              ? model.address!.cardNumber!.length
+              : 16;
+          // var ccLength = model.address!.cardNumber!.length;
+          // var ccLength = 16;
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -314,8 +318,9 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 // title: 'פרטי משלוח',
                 // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
                 // title: 'פרטי כרטיס (2743 **** **** ****)',
-                title:
-                    'פרטי כרטיס: ${cartModel.address!.cardNumber!.substring(12, ccLength)} **** **** ****',
+                title: cartModel.address != null
+                    ? 'פרטי כרטיס: ${cartModel.address!.cardNumber!.substring(12, ccLength)} **** **** ****'
+                    : 'הכנס פרטי אשראי',
                 // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
                 children: <Widget>[CreditCardInfo()],
               ),
@@ -596,7 +601,17 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
     // final address = cartModel.address!;
     var address = cartModel.address; // My
 
-    if (address!.firstName == null ||
+    try {
+      // Check if theres adress
+      print(cartModel.address!.firstName);
+      print(cartModel.address!.city);
+    } catch (e) {
+      setState(() {
+        show_shipping_details = false;
+      });
+    }
+
+    /*if (address.firstName == null ||
         address.city == null ||
         address.street == null ||
         address.phoneNumber == null ||
@@ -605,7 +620,7 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
       show_shipping_details = false;
       // } else {
       //   print('ADDress is $address ELSEE');
-    }
+    }*/
 
     if (show_shipping_details) {
       // print('show_details');
@@ -634,7 +649,7 @@ class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
                   ),
                   Expanded(
                     child: Text(
-                      address.firstName!,
+                      address!.firstName!,
                       style: TextStyle(
                         fontSize: 14,
                         color: Theme.of(context).accentColor,
@@ -886,45 +901,50 @@ class ChooseDeliveryButton extends StatefulWidget {
 class _ChooseDeliveryButtonState extends State<ChooseDeliveryButton> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: ButtonTheme(
-        height: 45,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            elevation: 0.0,
-            primary: Theme.of(context).primaryColorLight,
-            // primary: Theme.of(context).primaryColor,
-          ),
-          onPressed: () {
-            setState(() {
-              showSubButton = true;
-            });
+    var cartModel = Provider.of<CartModel>(context);
 
-            Services().widget.loadShippingMethods(
-                context, Provider.of<CartModel>(context, listen: false), false);
+    return cartModel.address != null
+        ? Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: ButtonTheme(
+              height: 45,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  elevation: 0.0,
+                  primary: Theme.of(context).primaryColorLight,
+                  // primary: Theme.of(context).primaryColor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    showSubButton = true;
+                  });
 
-            showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    scrollable: true,
-                    insetPadding: EdgeInsets.symmetric(
-                      horizontal: 24.0,
-                      // vertical: 48 * 3
-                      vertical: MediaQuery.of(context).size.height * 0.20,
-                    ),
-                    // insetPadding: EdgeInsets.zero,
-                    // contentPadding: EdgeInsets.zero,
-                    // title: Text('שיטת משלוח'),
-                    content: Services().widget.renderShippingMethods(context,
-                        onBack: () {}, onNext: () {}),
+                  Services().widget.loadShippingMethods(context,
+                      Provider.of<CartModel>(context, listen: false), false);
 
-                    // Actually the same as above
-                    // ShippingMethods(
-                    //     onBack: () {}, onNext: () {})
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          scrollable: true,
+                          insetPadding: EdgeInsets.symmetric(
+                            horizontal: 24.0,
+                            // vertical: 48 * 3
+                            vertical: MediaQuery.of(context).size.height * 0.20,
+                          ),
+                          // insetPadding: EdgeInsets.zero,
+                          // contentPadding: EdgeInsets.zero,
+                          // title: Text('שיטת משלוח'),
+                          content: Services().widget.renderShippingMethods(
+                              context,
+                              onBack: () {},
+                              onNext: () {}),
 
-                    // goToShippingTab(true);
+                          // Actually the same as above
+                          // ShippingMethods(
+                          //     onBack: () {}, onNext: () {})
+
+                          // goToShippingTab(true);
 
 /*                            actions: <Widget>[
                                 TextButton(
@@ -934,20 +954,22 @@ class _ChooseDeliveryButtonState extends State<ChooseDeliveryButton> {
                                   },
                                 ),
                               ],*/
-                  );
-                });
-          },
-          child: Text(
-            'בחר שיטת משלוח',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: widget.isBold ? FontWeight.bold : FontWeight.normal,
-              color: Theme.of(context).accentColor,
-              // color: Theme.of(context).backgroundColor,
+                        );
+                      });
+                },
+                child: Text(
+                  'בחר שיטת משלוח',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight:
+                        widget.isBold ? FontWeight.bold : FontWeight.normal,
+                    color: Theme.of(context).accentColor,
+                    // color: Theme.of(context).backgroundColor,
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          )
+        : Container();
   }
 }

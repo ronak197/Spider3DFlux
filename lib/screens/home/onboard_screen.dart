@@ -291,7 +291,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                     padding:
                         EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
                     child: Text(
-                      'משלוח ראשון חינם ומבצעיים בלעדים נוספים לחברי האפליקציה',
+                      'משלוח ראשון חינם ומבצעים בלעדיים נוספים לחברי האפליקציה',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 15.0),
                     ),

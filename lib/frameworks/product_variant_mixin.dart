@@ -145,97 +145,99 @@ mixin ProductVariantMixin {
         const SizedBox(height: 5.0),
       );
 
-      listWidget.add(GestureDetector(
-        onTap: () {
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              contentPadding: const EdgeInsets.only(top: 30, bottom: 10),
-              insetPadding: const EdgeInsets.all(0),
-              content: SingleChildScrollView(
-                child: SpidersPointScreen(
-                  isFullPage: false,
+/*      listWidget.add(widget(
+        child: GestureDetector(
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                contentPadding: const EdgeInsets.only(top: 30, bottom: 10),
+                insetPadding: const EdgeInsets.all(0),
+                content: SingleChildScrollView(
+                  child: SpidersPointScreen(
+                    isFullPage: false,
+                  ),
                 ),
-              ),
-              actions: [
-                TextButton(
-                  style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(3),
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.grey[100])),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                    'חזור',
-                    style: TextStyle(color: Theme.of(context).primaryColor),
-                  ),
-                )
-              ],
-            ),
-          );
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => SpidersPointScreen(),
-          //   ),
-          // );
-        },
-        child: Row(
-          children: <Widget>[
-            if (kProductDetail.showSku && showSpiders == true) ...[
-              Text(
-                // '${S.of(context).sku}: ',
-                'על מוצר זה תרוויח: ',
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
-              const SizedBox(
-                width: 3,
-              ),
-              Image.asset('assets/images/spider_coin.png',
-                  // color: kGrey600, height: 24, width: 24));
-                  color: Theme.of(context).primaryColor,
-                  // color: Theme.of(context).accentColor,
-                  height: 22,
-                  width: 22),
-              const SizedBox(
-                width: 3,
-              ),
-              Text(
-                // product.sku!,
-                (double.parse(product.price!) / 10)
-                        .toString()
-                        .replaceAll('.', '') +
-                    ' ספיידרס',
-                style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.w600,
+                actions: [
+                  TextButton(
+                    style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(3),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.grey[100])),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      'חזור',
+                      style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
+                  )
+                ],
               ),
-              const SizedBox(
-                width: 3,
-              ),
-              Text(
+            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => SpidersPointScreen(),
+            //   ),
+            // );
+          },
+          child: Row(
+            children: <Widget>[
+              if (kProductDetail.showSku && showSpiders == true) ...[
+                Text(
+                  // '${S.of(context).sku}: ',
+                  'על מוצר זה תרוויח: ',
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+                const SizedBox(
+                  width: 3,
+                ),
+                Image.asset('assets/images/spider_coin.png',
+                    // color: kGrey600, height: 24, width: 24));
+                    color: Theme.of(context).primaryColor,
+                    // color: Theme.of(context).accentColor,
+                    height: 22,
+                    width: 22),
+                const SizedBox(
+                  width: 3,
+                ),
+                Text(
                   // product.sku!,
-                  '(' +
-                      '₪' +
-                      (double.parse(product.price!) / 10)
+                  (double.parse(product.price!) / 10)
                           .toString()
-                          .replaceAll('.00', '')
-                          .replaceAll('.0', '')
-                      // .replaceAll('.', '')
-                      +
-                      ')',
-                  style: Theme.of(context).textTheme.subtitle2
-                  //| !.copyWith(
-                  //       color: Theme.of(context).primaryColor,
-                  //       fontWeight: FontWeight.w500,
-                  //     ),
-                  ),
+                          .replaceAll('.', '') +
+                      ' ספיידרס',
+                  style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+                const SizedBox(
+                  width: 3,
+                ),
+                Text(
+                    // product.sku!,
+                    '(' +
+                        '₪' +
+                        (double.parse(product.price!) / 10)
+                            .toString()
+                            .replaceAll('.00', '')
+                            .replaceAll('.0', '')
+                        // .replaceAll('.', '')
+                        +
+                        ')',
+                    style: Theme.of(context).textTheme.subtitle2
+                    //| !.copyWith(
+                    //       color: Theme.of(context).primaryColor,
+                    //       fontWeight: FontWeight.w500,
+                    //     ),
+                    ),
+              ],
             ],
-          ],
+          ),
         ),
-      ));
+      ));*/
 
       listWidget.add(
         const SizedBox(height: 5.0),

@@ -344,6 +344,7 @@ class _BackdropState extends State<Backdrop>
     const _appBarCategoryHeight = 50.0;
     var appBar = AppBar(
       brightness: Brightness.light,
+      backgroundColor: kColorSpiderRed,
       elevation: 0.0,
       titleSpacing: 0.0,
       bottom: Config().isListingType

@@ -16,7 +16,7 @@ class BlogGridItem extends StatelessWidget {
     var myLocale = Localizations.localeOf(context);
     var dateFormat;
 
-    if (myLocale == const Locale('ku', '')) {
+    if (myLocale == const Locale('il', '')) {
       dateFormat = DateFormat(DateFormat.YEAR_MONTH_DAY, 'en');
     } else {
       dateFormat = DateFormat(DateFormat.YEAR_MONTH_DAY);
@@ -64,7 +64,7 @@ class BlogGridItem extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 5.0),
                         child: Text(
-                          createAt,
+                          blog.date ?? '',
                           style: TextStyle(
                             fontSize: 11,
                             color: Theme.of(context).accentColor,

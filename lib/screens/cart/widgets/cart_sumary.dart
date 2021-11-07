@@ -295,7 +295,7 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
                 ),
               ),
             ),
-            Center(
+/*            Center(
               child: Text(
                 'בקנייה זו תרוויח ${totalPrice.toString().replaceAll('.0', '').replaceAll('₪', '')} ספיידרס',
                 style: TextStyle(
@@ -307,7 +307,7 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
             ),
             SpidersPointScreen(
               isFullPage: false,
-            )
+            )*/
           ],
         ),
       ),

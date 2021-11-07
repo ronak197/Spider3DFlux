@@ -172,7 +172,7 @@
     },
     {
       "layout": "wishlist",
-      "icon": "assets/icons/tabs/icon-heartthin.png"
+      "icon": "assets/icons/tabs/icon-thingi.png"
     },
     {
       "layout": "profile",
@@ -181,10 +181,8 @@
       "pos": 400 ,
       "settings": [
         "order" ,
-        "wishlist" ,
         "darkTheme" ,
         "rating" ,
-        "spiders" ,
         "about"
       ] ,
       "background": "https://i.imgur.com/Oz76QDp.png"

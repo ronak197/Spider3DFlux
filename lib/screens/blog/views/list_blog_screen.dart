@@ -21,6 +21,7 @@ class _ListBlogScreenState extends BaseScreen<ListBlogScreen> {
     return Scaffold(
       appBar: !kIsWeb
           ? AppBar(
+              backgroundColor: kColorSpiderRed,
               elevation: 0.1,
               title: Text(
                 S.of(context).blog,

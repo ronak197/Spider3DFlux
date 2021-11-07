@@ -135,7 +135,19 @@ class _ForgotPasswordState extends State<ForgotPasswordScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 50.0,
+                    height: 5.0,
+                  ),
+                  const Text(
+                    'יש לבדוק את האימייל',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w300,
+                      // letterSpacing: 0.3,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 45.0,
                   ),
                 ],
               ),

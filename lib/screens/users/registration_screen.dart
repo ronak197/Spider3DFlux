@@ -134,7 +134,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         fail: _snackBar,
         isVendor: isVendor,
       );
-
     }
     return null;
   }

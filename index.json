@@ -46,18 +46,18 @@
       "hideTitle": false,
       "items": [
         {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "category": 2341,
+          "image": "assets/images/spider_cat_robot_printer.png",
           "colors": [
             "#b42525",
             "#5a0000"
           ],
-          "title" : "מדפסות",
+          "title" : "מדפסות 3D",
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "category": 2352,
+          "image": "assets/images/spider_cat_filaments.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -66,8 +66,8 @@
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "category": 2353,
+          "image": "assets/images/spider_cat_resin.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -76,8 +76,8 @@
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "category": 2342,
+          "image": "assets/images/spider_cat_upgardes.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -86,8 +86,8 @@
           "keepDefaultTitle": true
         },
         {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+          "category": 2343,
+          "image": "assets/images/spider_cat_caliber_tool.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -95,9 +95,9 @@
           "title" : "כלים",
           "keepDefaultTitle": true
         },
-          {
-          "category": 24,
-          "image": "assets/icons/tabs/icon-search.png",
+        {
+          "category": 5249,
+          "image": "assets/images/spider_cat_sales.png",
           "colors": [
             "#b42525",
             "#5a0000"
@@ -128,10 +128,15 @@
       "items": []
     },
     {
-      "name": "מדפסות 3D מומלצות",
-      "category": 2341,
+      "name": "הפילמנטים שלנו",
+      "category": 4780,
       "layout": "threeColumn",
       "isSnapping": true
+    },
+    {
+      "name": "נצפו לאחרונה",
+      "layout": "recentView",
+      "onMainPage": false
     },
     {
       "layout": "blog",
@@ -141,7 +146,7 @@
   "VerticalLayout": {
     "key": "r09jo0owu6",
     "layout": "menu",
-    "name": "מבצעים וחבילות",
+    "name": "קטגוריות מובילות",
     "isVertical": true
   },
   "Setting": {
@@ -176,38 +181,30 @@
       "pos": 400 ,
       "settings": [
         "order" ,
-        "wishlist" ,
         "darkTheme" ,
         "rating" ,
+        "spiders" ,
         "about"
       ] ,
       "background": "https://i.imgur.com/Oz76QDp.png"
     }
   ],
   "Drawer": {
-    "logo": null ,
+    "logo": "assets/images/spider_cat_logo.png",
     "items": [
       {
-        "type": "profile" ,
-        "show": true
-      } ,
-      {
-        "type": "blog" ,
-        "show": true
-      } ,
-      {
-        "type": "login" ,
+        "type": "category" ,
         "show": true
       },
       {
-        "type": "category" ,
+        "type": "blog" ,
         "show": true
       }
     ]
   } ,
   "searchSuggestion": [
     "הנה כמה מההצעות שלנו:",
-    "פילמנט PLA+",
+    "PLA+",
     "SILK",
     "מדפסת Hornet 3D",
     "פילמנט מחליף צבעים"

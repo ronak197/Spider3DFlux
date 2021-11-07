@@ -168,6 +168,7 @@ dependencies:
   flutter_credit_card: ^3.0.0
   credit_card_validator: ^2.0.0
   credit_card_validate: ^0.0.3
+  translator: ^0.1.7
 
 
 dev_dependencies:

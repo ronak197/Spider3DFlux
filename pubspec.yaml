@@ -85,7 +85,7 @@ dependencies:
   # PUSH NOTIFICATION
   firebase_messaging: 10.0.0
   notification_permissions: 0.5.0
-  onesignal_flutter: 3.0.0-beta3
+  onesignal_flutter: 3.2.4
 
   # PAYMENTS
   awesome_card: 1.1.5

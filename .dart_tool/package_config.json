@@ -987,7 +987,7 @@
     },
     {
       "name": "onesignal_flutter",
-      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/onesignal_flutter-3.0.0-beta3",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/onesignal_flutter-3.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1646,7 +1646,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-11-07T02:59:18.391866Z",
+  "generated": "2021-11-07T16:54:12.976366Z",
   "generator": "pub",
   "generatorVersion": "2.14.3"
 }

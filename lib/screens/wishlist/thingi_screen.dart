@@ -72,7 +72,7 @@ class Constants {
 
 Future<Map<String, dynamic>> _setFeedByPopular() async {
   print('setFeedByPopular:');
-  showLoading = true;
+  // showLoading = true;
 
   final response = await http.get(Uri.parse(Constants.defaultFeed));
   if (response.statusCode == 200) {
@@ -80,7 +80,7 @@ Future<Map<String, dynamic>> _setFeedByPopular() async {
     List<dynamic> postList = jsonDecode(response.body);
     Map<String, dynamic> postDictionary = {'hits': postList};
 
-    showLoading = false;
+    // showLoading = false;
     return postDictionary;
   } else {
     // throw Exception('Failed to get news');

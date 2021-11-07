@@ -145,6 +145,7 @@ class _ForgotPasswordState extends State<ForgotPasswordScreen> {
                       fontWeight: FontWeight.w300,
                       // letterSpacing: 0.3,
                     ),
+                    // Just a cleaner version without build folder
                   ),
                   const SizedBox(
                     height: 45.0,

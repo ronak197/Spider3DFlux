@@ -56,19 +56,14 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
               token: userModel.user != null ? userModel.user!.cookie : null);
 
       // My
-      // print('1 Deafult paymentMethod.title');
-      final paymentMethodModel =
-          Provider.of<PaymentMethodModel>(context, listen: false);
-      // print('2 Deafult paymentMethod.title');
-      // final paymentMethod = paymentMethodModel.paymentMethods.firstWhere((item) => item.id == selectedId);
-      final paymentMethod = paymentMethodModel.paymentMethods.first;
-      // print('3 Deafult paymentMethod.title');
-      // final paymentMethod = Provider.of<CartModel>(context, listen: false).paymentMethod;
-      Provider.of<CartModel>(context, listen: false)
-          .setPaymentMethod(paymentMethod);
+      // final paymentMethodModel = Provider.of<PaymentMethodModel>(context, listen: false);
+
+      // final paymentMethod = paymentMethodModel.paymentMethods.first;
+      // Provider.of<CartModel>(context, listen: false).setPaymentMethod(paymentMethod);
       // print('4 Deafult paymentMethod.title');
 
-      print(cartModel.paymentMethod!.title);
+      print(cartModel.paymentMethod?.title ??
+          'Null = cartModel.paymentMethod?.title');
 
       if (kPaymentConfig['EnableReview'] != true) {
         Provider.of<TaxModel>(context, listen: false)
@@ -84,6 +79,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
   }
 
   var oldShippingMethodTitle = 'NULL';
+  // var isFirstGetPaymentMethods = true;
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +144,25 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                       // }
 
                       // printLog(cartModel.shippingMethod!.title);
+
+                      // print('P Payment methods:');
+                      /*                model.paymentMethods.map((item) {
+                        print('STart it.');
+                        if (item.title == 'PayPal') {
+                          model.paymentMethods.remove(item);
+                        } else {
+                          print(item.title);
+                        }
+                      });*/
+                      for (int i = 0; i < model.paymentMethods.length; i++) {
+                        var item = model.paymentMethods[i];
+                        if (item.title == 'PayPal') {
+                          model.paymentMethods.remove(item);
+                          // } else {
+                          // print(item.title);
+                          // }
+                        }
+                      }
 
                       return Column(
                         children: <Widget>[
@@ -537,9 +552,8 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                                 showCheckoutLoading = true;
                               });
 
-                              isPaying || selectedId == null
-                                  ? showSnackbar
-                                  : placeOrder(paymentMethodModel, cartModel);
+                              // isPaying || selectedId == null ? showSnackbar :
+                              placeOrder(paymentMethodModel, cartModel);
                             }
 
                             // }

@@ -647,7 +647,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
                                           await Provider.of<CartModel>(context,
                                                   listen: false)
                                               .getAddress();
-                                      print("myAddress:");
+                                      print('myAddress:');
                                       print(myAddress!.firstName);
                                       print(myAddress.city);
 
@@ -655,8 +655,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
 
                                       show_shipping_details = true;
 
-                                      await Navigator.of(context).push(
-                                          MaterialPageRoute(
+                                      await Navigator.of(context)
+                                          .pushReplacement(MaterialPageRoute(
                                               builder: (_) => Checkout()));
                                       // MyFadePush(Checkout()));
                                     }

@@ -582,6 +582,12 @@ class _CreditCardFormState extends State<CreditCardForm> {
                                             setState(() {
                                               show_creditCard_details = true;
                                             });
+
+                                            await Navigator.of(context)
+                                                .pushReplacement(
+                                                    MaterialPageRoute(
+                                                        builder: (_) =>
+                                                            Checkout()));
                                           }
                                         },
                                         child: const Text('שמור',
@@ -592,9 +598,10 @@ class _CreditCardFormState extends State<CreditCardForm> {
                                 ),
                               ],
                             ),
-                            show_creditCard_details
+                            /*        show_creditCard_details
                                 ? const Text('פרטי האשראי עודכנו, אנא המשך')
-                                : Container()
+                                : Container()*/
+                            //
                           ]),
                     ),
                   ),

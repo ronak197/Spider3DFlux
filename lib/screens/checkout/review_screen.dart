@@ -157,12 +157,6 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
       value: shippingMethodModel,
       child: Consumer<CartModel>(
         builder: (context, model, child) {
-          var ccLength = cartModel.address != null
-              ? model.address!.cardNumber!.length
-              : 16;
-          // var ccLength = model.address!.cardNumber!.length;
-          // var ccLength = 16;
-
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -318,8 +312,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 // title: 'פרטי משלוח',
                 // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
                 // title: 'פרטי כרטיס (2743 **** **** ****)',
-                title: cartModel.address != null
-                    ? 'פרטי כרטיס: ${cartModel.address!.cardNumber!.substring(12, ccLength)} **** **** ****'
+                title: cartModel.address?.cardNumber != null
+                    ? 'פרטי כרטיס: ${cartModel.address?.cardNumber?.substring(12, 16)} **** **** ****'
                     : 'הכנס פרטי אשראי',
                 // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
                 children: <Widget>[CreditCardInfo()],
@@ -903,48 +897,47 @@ class _ChooseDeliveryButtonState extends State<ChooseDeliveryButton> {
   Widget build(BuildContext context) {
     var cartModel = Provider.of<CartModel>(context);
 
-    return cartModel.address != null
-        ? Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: ButtonTheme(
-              height: 45,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  elevation: 0.0,
-                  primary: Theme.of(context).primaryColorLight,
-                  // primary: Theme.of(context).primaryColor,
-                ),
-                onPressed: () {
-                  setState(() {
-                    showSubButton = true;
-                  });
+    return
+        // cartModel.address != null ?
+        Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: ButtonTheme(
+        height: 45,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 0.0,
+            primary: Theme.of(context).primaryColorLight,
+            // primary: Theme.of(context).primaryColor,
+          ),
+          onPressed: () {
+            setState(() {
+              showSubButton = true;
+            });
 
-                  Services().widget.loadShippingMethods(context,
-                      Provider.of<CartModel>(context, listen: false), false);
+            Services().widget.loadShippingMethods(
+                context, Provider.of<CartModel>(context, listen: false), false);
 
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          scrollable: true,
-                          insetPadding: EdgeInsets.symmetric(
-                            horizontal: 24.0,
-                            // vertical: 48 * 3
-                            vertical: MediaQuery.of(context).size.height * 0.20,
-                          ),
-                          // insetPadding: EdgeInsets.zero,
-                          // contentPadding: EdgeInsets.zero,
-                          // title: Text('שיטת משלוח'),
-                          content: Services().widget.renderShippingMethods(
-                              context,
-                              onBack: () {},
-                              onNext: () {}),
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    scrollable: true,
+                    insetPadding: EdgeInsets.symmetric(
+                      horizontal: 24.0,
+                      // vertical: 48 * 3
+                      vertical: MediaQuery.of(context).size.height * 0.20,
+                    ),
+                    // insetPadding: EdgeInsets.zero,
+                    // contentPadding: EdgeInsets.zero,
+                    // title: Text('שיטת משלוח'),
+                    content: Services().widget.renderShippingMethods(context,
+                        onBack: () {}, onNext: () {}),
 
-                          // Actually the same as above
-                          // ShippingMethods(
-                          //     onBack: () {}, onNext: () {})
+                    // Actually the same as above
+                    // ShippingMethods(
+                    //     onBack: () {}, onNext: () {})
 
-                          // goToShippingTab(true);
+                    // goToShippingTab(true);
 
 /*                            actions: <Widget>[
                                 TextButton(
@@ -954,22 +947,22 @@ class _ChooseDeliveryButtonState extends State<ChooseDeliveryButton> {
                                   },
                                 ),
                               ],*/
-                        );
-                      });
-                },
-                child: Text(
-                  'בחר שיטת משלוח',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight:
-                        widget.isBold ? FontWeight.bold : FontWeight.normal,
-                    color: Theme.of(context).accentColor,
-                    // color: Theme.of(context).backgroundColor,
-                  ),
-                ),
-              ),
+                  );
+                });
+          },
+          child: Text(
+            'בחר שיטת משלוח',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: widget.isBold ? FontWeight.bold : FontWeight.normal,
+              color: Theme.of(context).accentColor,
+              // color: Theme.of(context).backgroundColor,
             ),
-          )
-        : Container();
+          ),
+        ),
+      ),
+    )
+        // : Container()
+        ;
   }
 }

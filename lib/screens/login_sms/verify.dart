@@ -180,6 +180,7 @@ class _VerifyCodeState extends State<VerifyCode>
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
+        backgroundColor: kColorSpiderRed,
         brightness: Theme.of(context).brightness,
         title: Text(
           S.of(context).verifySMSCode,

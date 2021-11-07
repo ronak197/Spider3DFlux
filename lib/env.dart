@@ -25,7 +25,7 @@ Map<String, dynamic> environment = {
     "kIsResizeImage": true,
     "DefaultLanguage": "he",
     "DetailedBlogLayout": "halfSizeImageType",
-    "EnablePointReward": true,
+    "EnablePointReward": false,
     "hideOutOfStock":
         false, // Do not change to True, HardCoded hideOutOfStock // But those items might still show (Need to fix)
     "EnableRating": false,

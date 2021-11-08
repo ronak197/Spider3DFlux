@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes, lines_longer_than_80_chars final
 Map<String, dynamic> environment = {
-  // "appConfig": "https://config-fluxstore-idan054.vercel.app",
-  "appConfig": "lib/config/config_he.json",
+  "appConfig": "https://config-fluxstore-idan054.vercel.app",
+  // "appConfig": "lib/config/config_he.json",
   "serverConfig": {
     "url": "https://spider3d.co.il",
     "consumerSecret": "cs_79c75a8e1c40acfe530e6254f3cbb61a2e01f872",

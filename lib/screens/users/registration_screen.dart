@@ -76,13 +76,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   void _snackBar(String text) {
+    if (text.length > 250) {
+      text = 'מעולה! יש לחזור למסך הראשי ולהתחבר';
+    } // When "fail"
     if (mounted) {
       final snackBar = SnackBar(
         content: Text('$text'),
         duration: const Duration(seconds: 10),
         action: SnackBarAction(
-          label: S.of(context).close,
+          label: text == 'מעולה! יש לחזור למסך הראשי ולהתחבר'
+              ? 'חזור'
+              : S.of(context).close,
+          // label: 'מעולה! יש לחזור למסך הראשי ולהתחבר',
           onPressed: () {
+            text == 'מעולה! יש לחזור למסך הראשי ולהתחבר'
+                ? Navigator.pop(context)
+                : null;
             // Some code to undo the change.
           },
         ),
@@ -100,16 +109,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     String? password,
     bool? isVendor,
   }) async {
-    if (firstName == null ||
-        lastName == null ||
-        emailAddress == null ||
-        password == null ||
-        (showPhoneNumberWhenRegister &&
-            requirePhoneNumberWhenRegister &&
-            phoneNumber == null)) {
+    if (
+        // firstName == null ||
+        //     lastName == null ||
+        emailAddress == null || password == null
+        // (showPhoneNumberWhenRegister &&
+        //     requirePhoneNumberWhenRegister &&
+        //     phoneNumber == null)
+        ) {
       _snackBar(S.of(context).pleaseInputFillAllFields);
-    } else if (isChecked == false) {
-      _snackBar(S.of(context).pleaseAgreeTerms);
+      // } else if (isChecked == false) {
+      //   _snackBar(S.of(context).pleaseAgreeTerms);
     } else {
       final emailValid = RegExp(
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
@@ -166,7 +176,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          const SizedBox(height: 10.0),
+                          const SizedBox(height: 180.0),
                           Center(
                             child: FluxImage(
                               imageUrl: themeConfig.logo,
@@ -177,7 +187,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           const SizedBox(
                             height: 30.0,
                           ),
-                          CustomTextField(
+/*                          CustomTextField(
                             key: const Key('registerFirstNameField'),
                             autofillHints: [AutofillHints.givenName],
                             onChanged: (value) => firstName = value,
@@ -204,7 +214,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               labelText: S.of(context).lastName,
                               hintText: S.of(context).enterYourLastName,
                             ),
-                          ),
+                          ),*/
                           if (showPhoneNumberWhenRegister)
                             const SizedBox(height: 20.0),
                           if (showPhoneNumberWhenRegister)
@@ -252,7 +262,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               Provider.of<AppModel>(context, listen: false)
                                       .vendorType ==
                                   VendorType.multi)
-                            Row(
+/*                            Row(
                               children: <Widget>[
                                 Checkbox(
                                   value: isVendor,
@@ -347,8 +357,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 ),
                               ],
                             ),
-                          ),
-                          const SizedBox(height: 10.0),
+                          ),*/
+                            const SizedBox(height: 10.0),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16.0),
                             child: Material(
@@ -362,8 +372,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     ? null
                                     : () async {
                                         await _submitRegister(
-                                          firstName: firstName,
-                                          lastName: lastName,
+                                          firstName: firstName ?? '',
+                                          lastName: lastName ?? '',
                                           phoneNumber: phoneNumber,
                                           emailAddress: emailAddress,
                                           password: password,

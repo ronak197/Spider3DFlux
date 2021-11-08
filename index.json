@@ -160,30 +160,29 @@
   "TabBar": [
     {
       "layout": "home",
-      "icon": "assets/icons/tabs/icon-home.png"
+      "icon": "assets/icons/tabs/icon-thingi.png"
     },
     {
       "layout": "cart",
-      "icon": "assets/icons/tabs/icon-cart2.png"
+      "icon": "assets/icons/tabs/icon-thingi.png"
     },
     {
       "layout": "search",
-      "icon": "assets/icons/tabs/icon-search.png"
+      "icon": "assets/icons/tabs/icon-thingi.png"
     },
     {
       "layout": "wishlist",
-      "icon": "assets/icons/tabs/icon-heartthin.png"
+      "icon": "assets/icons/tabs/icon-thingi.png"
     },
     {
       "layout": "profile",
-      "icon": "assets/icons/tabs/icon-user.png",
+      "icon": "assets/icons/tabs/icon-thingi.png",
       "showChat": true,
       "pos": 400 ,
       "settings": [
         "order" ,
         "darkTheme" ,
         "rating" ,
-        "spiders" ,
         "about"
       ] ,
       "background": "https://i.imgur.com/Oz76QDp.png"

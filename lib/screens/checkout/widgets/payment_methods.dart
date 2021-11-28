@@ -363,7 +363,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                                     );
                                   });
                             },
-                            child: const Text('יש לבחור שיטת משלוח',
+                            child: const Text('בחר שיטת משלוח',
 
                                 // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
                                 style: TextStyle(
@@ -460,7 +460,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                               setState(() {
                                 counter += 1;
                                 order_status += '${counter.toString()}. ';
-                                order_status += 'יש למלא פרטי משלוח \n';
+                                order_status += 'הזן פרטי משלוח \n';
                               });
                               print('order_status');
                               print(order_status);
@@ -478,7 +478,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                               setState(() {
                                 counter += 1;
                                 order_status += '${counter.toString()}. ';
-                                order_status += 'יש לבחור שיטת משלוח \n';
+                                order_status += 'בחר שיטת משלוח \n';
                               });
                               print('order_status');
                               print(order_status);
@@ -503,7 +503,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                               setState(() {
                                 counter += 1;
                                 order_status += '${counter.toString()}. ';
-                                order_status += 'יש למלא פרטי אשראי \n';
+                                order_status += 'הזן פרטי אשראי \n';
                               });
                               print('order_status');
                               print(order_status);
@@ -522,7 +522,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                               setState(() {
                                 counter += 1;
                                 order_status += '${counter.toString()}. ';
-                                order_status += 'יש לבחור שיטת תשלום \n';
+                                order_status += 'בחר אמצעי תשלום \n';
                               });
                               print('order_status');
                               print(order_status);

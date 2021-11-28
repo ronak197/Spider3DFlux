@@ -47,7 +47,7 @@
 			<string>firebaseDynamicLink</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.inspireui.mstore.flutter</string>
+				<string>com.biton.spider3dflux</string>
 			</array>
 		</dict>
 	</array>

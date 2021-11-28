@@ -79,7 +79,8 @@ class _RelatedProductState extends State<RelatedProduct> {
                           height: constraint.maxWidth * 0.7,
                           child: ListView(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
-                            cacheExtent: MediaQuery.of(context).size.width,
+                            // cacheExtent: MediaQuery.of(context).size.width,
+                            cacheExtent: 1500,
                             scrollDirection: Axis.horizontal,
                             children: [
                               for (var item in snapshot.data!)

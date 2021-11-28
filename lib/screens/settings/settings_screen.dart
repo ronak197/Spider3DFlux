@@ -21,6 +21,7 @@ import '../users/user_point_screen.dart';
 import 'dart:convert' as convert;
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingScreen extends StatefulWidget {
   final List<dynamic>? settings;
@@ -814,19 +815,28 @@ class _SettingScreenState extends State<SettingScreen>
                                   margin: const EdgeInsets.only(bottom: 2.0),
                                   elevation: 0,
                                   child: ListTile(
-                                    onTap: () {
-                                      Provider.of<UserModel>(context,
+                                    onTap: () async {
+                                      await Provider.of<UserModel>(context,
                                               listen: false)
                                           .logout();
                                       if (kLoginSetting['IsRequiredLogin'] ??
                                           false) {
-                                        Navigator.of(App.fluxStoreNavigatorKey
+                                        await Navigator.of(App
+                                                .fluxStoreNavigatorKey
                                                 .currentContext!)
                                             .pushNamedAndRemoveUntil(
                                           RouteList.login,
                                           (route) => false,
                                         );
                                       }
+
+                                      // My show / clear all SharedPreferences data
+                                      var prefs =
+                                          await SharedPreferences.getInstance();
+                                      print(
+                                          'loadInitData - prefs.getKeys ${prefs.getKeys()}');
+                                      // await prefs.clear(); // remove all ces.getInstance() data
+                                      await prefs.remove('loggedIn');
                                     },
                                     leading: Icon(
                                       Icons.logout,

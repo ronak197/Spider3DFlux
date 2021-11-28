@@ -187,13 +187,16 @@ class _ProductListState extends State<ProductList> {
     double? widthContent,
     required List<Product> products,
   }) {
+    //
+    var item_limit = products.length < 6 ? products.length : 6; // my max is 6
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         childAspectRatio: childAspectRatio,
       ),
-      cacheExtent: 500.0,
-      itemCount: products.length,
+      // cacheExtent: 300.0,
+      cacheExtent: 1500.0,
+      itemCount: item_limit,
       itemBuilder: (context, i) {
         return Services().widget.renderProductCardView(
               item: products[i],

@@ -207,10 +207,10 @@ class _ThingiPageState extends State<ThingiPage> {
               future: setFeedBy,
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.hasData) {
-                  print(snapshot.data);
+                  // print(snapshot.data);
                   List<dynamic> thing_details = snapshot.data['hits'];
-                  print('thing_details');
-                  print(thing_details);
+                  // print('thing_details');
+                  // print(thing_details);
                   return GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(

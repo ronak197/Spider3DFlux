@@ -264,12 +264,12 @@ class _SimpleLayoutState extends State<SimpleLayout>
                               ),
                             ),
                             RelatedProduct(product),
-                            ProductList(
+                            /*                           ProductList( // נצפו לאחרונה
                                 // config: ProductConfig.fromJson(config),
                                 // key: config['key'] != null ? Key(config['key']) : UniqueKey()),
                                 config:
                                     ProductConfig.fromJson(myRecentView_config),
-                                key: UniqueKey()),
+                                key: UniqueKey()),*/
                             VerticalLayout(
                               config: myVertical_config,
                               key: UniqueKey(),

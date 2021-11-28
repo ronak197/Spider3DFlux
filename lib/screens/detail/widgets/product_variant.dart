@@ -154,6 +154,13 @@ class _StateProductVariant extends State<ProductVariant> {
 
   /// Add to Cart & Buy Now function
   void addToCart([bool buyNow = false, bool inStock = false]) {
+    // productVariation?.sku ==
+
+    print('addToCart - buyNow $buyNow');
+    print('addToCart - inStock $inStock');
+    print('addToCart - quantity $quantity');
+    print('addToCart - productVariation.toJson ${productVariation?.toJson()}');
+    print('addToCart - product $product');
     services.widget.addToCart(context, product, quantity, productVariation,
         mapAttribute!, buyNow, inStock);
   }

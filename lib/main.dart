@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart' as foundation;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
 import 'package:inspireui/utils/logs.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +24,9 @@ import 'services/services.dart';
 
 void main() {
   printLog('[main] ===== START main.dart =======');
+
   WidgetsFlutterBinding.ensureInitialized();
+
   Configurations().setConfigurationValues(environment);
   Provider.debugCheckInvalidValueType = null;
   var languageCode =
@@ -74,7 +77,6 @@ void main() {
 
     ResponsiveSizingConfig.instance.setCustomBreakpoints(
         const ScreenBreakpoints(desktop: 900, tablet: 600, watch: 100));
-
     runApp(App(languageCode: languageCode));
   }, (e, stack) {
     printLog(e);

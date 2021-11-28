@@ -7,6 +7,7 @@ import 'product_attribute.dart';
 class ProductVariation {
   String? id;
   String? sku;
+  // String? sku ?? 'Mynull_sku';
   String? price;
   String? regularPrice;
   String? salePrice;
@@ -66,12 +67,12 @@ class ProductVariation {
 
     final dateSaleFrom = getCustomAttribute(
         parsedJson['custom_attributes'], 'special_from_date');
-    final dateSaleTo = getCustomAttribute(
-        parsedJson['custom_attributes'], 'special_to_date');
+    final dateSaleTo =
+        getCustomAttribute(parsedJson['custom_attributes'], 'special_to_date');
     onSale = false;
     var pPrice = parsedJson['price'];
-    var pSalePrice = getCustomAttribute(
-        parsedJson['custom_attributes'], 'special_price');
+    var pSalePrice =
+        getCustomAttribute(parsedJson['custom_attributes'], 'special_price');
     if (dateSaleFrom != null || dateSaleTo != null) {
       final now = DateTime.now();
       if (dateSaleFrom != null && dateSaleTo != null) {
@@ -90,7 +91,8 @@ class ProductVariation {
     } else if (pSalePrice != null &&
         dateSaleFrom == null &&
         dateSaleTo == null) {
-      onSale = double.parse("${parsedJson["price"]}") > double.parse('$pSalePrice');
+      onSale =
+          double.parse("${parsedJson["price"]}") > double.parse('$pSalePrice');
       pPrice = pSalePrice;
     }
 
@@ -101,14 +103,14 @@ class ProductVariation {
     inStock = parsedJson['status'] == 1;
 
     final imageUrl =
-    getCustomAttribute(parsedJson['custom_attributes'], 'image');
+        getCustomAttribute(parsedJson['custom_attributes'], 'image');
     imageFeature = imageUrl != null
         ? getProductImageUrlByName(Config().url, imageUrl)
         : product.imageFeature;
 
     var attributeList = <Attribute>[];
     List attributesConfig =
-    kAdvanceConfig['EnableAttributesConfigurableProduct'];
+        kAdvanceConfig['EnableAttributesConfigurableProduct'];
     attributesConfig.forEach((element) {
       final item = getCustomAttribute(parsedJson['custom_attributes'], element);
       if (item != null) {

@@ -41,7 +41,8 @@ class CommonScaffold extends StatelessWidget {
           backgroundColor: Theme.of(context).backgroundColor,
           child: CustomScrollView(
             controller: controller,
-            cacheExtent: 2000.0,
+            // cacheExtent: 2000.0,
+            cacheExtent: 1500.0,
             slivers: [
               CupertinoSliverNavigationBar(
                 heroTag: 'key-$title',
@@ -73,7 +74,8 @@ class CommonScaffold extends StatelessWidget {
           onRefresh: onRefresh,
           child: CustomScrollView(
             controller: controller,
-            cacheExtent: 2000.0,
+            // cacheExtent: 2000.0,
+            cacheExtent: 1500.0,
             slivers: [
               CupertinoSliverNavigationBar(
                 heroTag: 'key-$title',

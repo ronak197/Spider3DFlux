@@ -134,7 +134,8 @@ class _BlogListBackdropState extends State<BlogListBackdrop> {
           crossAxisCount: 1,
           childAspectRatio: 0.5,
         ),
-        cacheExtent: 500.0,
+        // cacheExtent: 300.0,
+        cacheExtent: 1500.0,
         itemCount: blogsList.length,
         itemBuilder: (context, i) {
           return BlogCard(

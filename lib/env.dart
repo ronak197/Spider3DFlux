@@ -4,9 +4,9 @@ Map<String, dynamic> environment = {
   // "appConfig": "lib/config/config_he.json",
   "serverConfig": {
     "url": "https://spider3d.co.il",
-    "consumerSecret": "cs_79c75a8e1c40acfe530e6254f3cbb61a2e01f872",
+    "consumerSecret": "cs_828fd108ff909e5aff0be3be11d3df07503a3a87",
     "type": "woo",
-    "consumerKey": "ck_be61455d30704ff30718f80b417dd41c320b0cb0"
+    "consumerKey": "ck_41073388529656e637ba4c497237a3f0f34bd2a9"
   },
   "defaultDarkTheme": false,
   "loginSMSConstants": {
@@ -27,12 +27,12 @@ Map<String, dynamic> environment = {
     "DetailedBlogLayout": "halfSizeImageType",
     "EnablePointReward": false,
     "hideOutOfStock":
-        false, // Do not change to True, HardCoded hideOutOfStock // But those items might still show (Need to fix)
+        false, //// Do not change to True, HardCoded hideOutOfStock // But those items might still show (Need to fix)
     "EnableRating": false,
     "hideEmptyProductListRating": true,
     "EnableShipping": true,
     "EnableSkuSearch": false,
-    "showStockStatus": false,
+    "showStockStatus": true,
     "GridCount": 3,
     "DefaultCurrency": {
       "symbol": "₪",
@@ -184,7 +184,7 @@ Map<String, dynamic> environment = {
     "link": "https://spider3d.co.il/",
     "androidPackageName": "com.biton.spider3dflux",
     "androidAppMinimumVersion": 1,
-    "iOSBundleId": "com.inspireui.mstore.flutter",
+    "iOSBundleId": "com.biton.spider3dflux",
     "iOSAppMinimumVersion": "1.0.1",
     "iOSAppStoreId": "1469772800"
   },

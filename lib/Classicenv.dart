@@ -182,7 +182,7 @@ Map<String, dynamic> environment = {
     "link": "https://mstore.io/",
     "androidPackageName": "com.biton.spider3dflux",
     "androidAppMinimumVersion": 1,
-    "iOSBundleId": "com.inspireui.mstore.flutter",
+    "iOSBundleId": "com.biton.spider3dflux",
     "iOSAppMinimumVersion": "1.0.1",
     "iOSAppStoreId": "1469772800"
   },

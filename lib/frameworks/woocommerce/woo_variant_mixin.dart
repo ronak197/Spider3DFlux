@@ -128,6 +128,9 @@ mixin WooVariantMixin on ProductVariantMixin {
         ? isValidProductVariation(variations!, mapAttribute)
         : true;
 
+    print('couldBePurchased - isAvailable $isAvailable');
+    print('couldBePurchased - isValidProductVariant $isValidProductVariant');
+
     return isValidProductVariant &&
         isPurchased(productVariation, product, mapAttribute!, isAvailable);
   }

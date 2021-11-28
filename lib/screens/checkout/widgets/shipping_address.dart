@@ -661,7 +661,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
                                       // MyFadePush(Checkout()));
                                     }
                                   },
-                                  child: const Text('שמור',
+                                  child: const Text('המשך',
                                       style: TextStyle(fontSize: 14)),
                                 ),
                               ),

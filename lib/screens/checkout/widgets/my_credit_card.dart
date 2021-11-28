@@ -34,8 +34,8 @@ class _CreditCardInfoState extends State<CreditCardInfo> {
   Widget build(BuildContext context) {
     var cartModel = Provider.of<CartModel>(context);
     if (show_creditCard_details &&
-        cartModel.address!.cardNumber != null &&
-        cartModel.address!.cardHolderName != null) {
+        cartModel.address?.cardNumber != null &&
+        cartModel.address?.cardHolderName != null) {
       // print('show_creditCard_details');
       // print(show_creditCard_details);
 

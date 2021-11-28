@@ -181,7 +181,7 @@ Map<String, dynamic> environment = {
     "link": "https://spider3d.co.il/",
     "androidPackageName": "com.biton.spider3dflux",
     "androidAppMinimumVersion": 1,
-    "iOSBundleId": "com.inspireui.mstore.flutter",
+    "iOSBundleId": "com.biton.spider3dflux",
     "iOSAppMinimumVersion": "1.0.1",
     "iOSAppStoreId": "1469772800"
   },

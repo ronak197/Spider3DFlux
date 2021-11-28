@@ -590,8 +590,8 @@ class _CreditCardFormState extends State<CreditCardForm> {
                                                             Checkout()));
                                           }
                                         },
-                                        child: const Text('שמור',
-                                            style: TextStyle(fontSize: 16)),
+                                        child: const Text('המשך',
+                                            style: TextStyle(fontSize: 14)),
                                       ),
                                     ),
                                   ),

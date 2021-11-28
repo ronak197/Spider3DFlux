@@ -248,8 +248,8 @@ mixin ProductVariantMixin {
           children: <Widget>[
             if (kAdvanceConfig['showStockStatus']) ...[
               Text(
-                // '${S.of(context).availability}: ',
-                '${product.categories}: ',
+                '${S.of(context).availability}: ',
+                // '${product.categories}: ',
                 style: Theme.of(context).textTheme.subtitle2,
               ),
               // ignore: unnecessary_null_comparison

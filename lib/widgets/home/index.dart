@@ -165,7 +165,8 @@ class _HomeLayoutState extends State<HomeLayout> {
     };
 
     return CustomScrollView(
-      cacheExtent: 2000.0,
+      // cacheExtent: 2000.0,
+      cacheExtent: 1500.0,
       slivers: [
         if (widget.isShowAppbar) renderAppBar(),
         CupertinoSliverRefreshControl(

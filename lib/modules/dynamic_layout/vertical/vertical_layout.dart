@@ -66,17 +66,21 @@ class _PinterestLayoutState extends State<VerticalViewLayout> {
       widthContent = isTablet ? 3 : 2; //two columns
     }
     // ignore: division_optimization
-    var rows = (_products.length / widthContent).toInt();
+    // var rows = (_products.length / widthContent).toInt(); // my comment
+    var rows = 2;
     if (rows * widthContent < _products.length) rows++;
 
     var loadingPadding = 75.0;
+    // var item_limit = _products.length < 6 ? _products.length : 6; // my max is 6
+    var item_limit = _products.length; // my max is 6
     return Column(
       children: [
         ListView.builder(
+            // cacheExtent: 1500500,
             cacheExtent: 1500,
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: _products.length,
+            itemCount: item_limit,
             itemBuilder: (context, index) {
               if (widget.config['layout'] == 'list') {
                 return SimpleListView(
@@ -87,7 +91,8 @@ class _PinterestLayoutState extends State<VerticalViewLayout> {
               return Row(
                 children: List.generate(widthContent, (child) {
                   return Expanded(
-                    child: index * widthContent + child < _products.length
+                    // child: index * widthContent + child < _products.length
+                    child: index * widthContent + child < item_limit
                         ? LayoutBuilder(
                             builder: (context, constraints) {
                               return ProductCard(
@@ -104,31 +109,48 @@ class _PinterestLayoutState extends State<VerticalViewLayout> {
                 }),
               );
             }),
-        VisibilityDetector(
+
+/*        VisibilityDetector(
           key: const Key('loading_vertical'),
           onVisibilityChanged: (VisibilityInfo info) => _loadProduct(),
-          child: canLoad
+          child: // Vertival limit to 6 by Var item_limit
+*/ /*          canLoad
               ? Padding(
                   padding: EdgeInsets.only(bottom: loadingPadding),
                   child: const Builder(
                     builder: kLoadingWidget,
                   ),
                 )
-              : Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        top: loadingPadding / 5,
-                        left: loadingPadding,
-                        bottom: loadingPadding,
-                        right: loadingPadding),
-                    child: Divider(
-                      thickness: 2,
-                      // height: 20,
-                      color: Theme.of(context).primaryColor.withOpacity(0.70),
-                    ),
-                  ),
-                ),
-        )
+              : */ /*
+              Center(
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: loadingPadding / 5,
+                  left: loadingPadding,
+                  bottom: loadingPadding,
+                  right: loadingPadding),
+              child: Divider(
+                thickness: 2,
+                // height: 20,
+                color: Theme.of(context).primaryColor.withOpacity(0.70),
+              ),
+            ),
+          ),
+        )*/
+        Center(
+          child: Padding(
+            padding: EdgeInsets.only(
+                top: loadingPadding / 5,
+                left: loadingPadding,
+                bottom: loadingPadding,
+                right: loadingPadding),
+            child: Divider(
+              thickness: 1.5,
+              // height: 20,
+              color: Theme.of(context).primaryColor.withOpacity(0.60),
+            ),
+          ),
+        ),
       ],
     );
   }

@@ -102,7 +102,7 @@ class DefaultConfig {
     'androidPackageName': 'com.biton.spider3dflux',
     'androidAppMinimumVersion': 1,
     //----------* iOS Setting *----------//
-    'iOSBundleId': 'com.inspireui.mstore.flutter',
+    'iOSBundleId': 'com.biton.spider3dflux',
     'iOSAppMinimumVersion': '1.0.1',
     'iOSAppStoreId': '1469772800'
   };

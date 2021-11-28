@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_single_quotes, lines_longer_than_80_chars final
 Map<String, dynamic> environment = {
-  "appConfig": "https://config-fluxstore-idan054.vercel.app",
+  // "appConfig": "https://config-fluxstore-idan054.vercel.app",
   // "appConfig": "lib/config/config_he.json",
+  "appConfig": "lib/config/config_en.json",
   "serverConfig": {
     "url": "https://spider3d.co.il",
     "consumerSecret": "cs_828fd108ff909e5aff0be3be11d3df07503a3a87",
@@ -23,7 +24,8 @@ Map<String, dynamic> environment = {
     "isCaching":
         false, // Should be false to Fix - Bottom GRID on Product page "מוצרים נוספים בקטגוריה"
     "kIsResizeImage": true,
-    "DefaultLanguage": "he",
+    // "DefaultLanguage": "he",
+    "DefaultLanguage": "en",
     "DetailedBlogLayout": "halfSizeImageType",
     "EnablePointReward": false,
     "hideOutOfStock":
@@ -31,7 +33,7 @@ Map<String, dynamic> environment = {
     "EnableRating": false,
     "hideEmptyProductListRating": true,
     "EnableShipping": true,
-    "EnableSkuSearch": false,
+    "EnableSkuSearch": true,
     "showStockStatus": true,
     "GridCount": 3,
     "DefaultCurrency": {

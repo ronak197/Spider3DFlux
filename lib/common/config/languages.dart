@@ -7,15 +7,15 @@ List<Map<String, dynamic>> getLanguages([context]) {
   List listLang = List<Map<String, dynamic>>.from(Configurations.languagesInfo);
   if (context != null) {
     listLang.forEach((element) {
-      return element.update(
-          'name', (String nameLang) => getLanguageByContext(context, element['code']));
+      return element.update('name',
+          (String nameLang) => getLanguageByContext(context, element['code']));
     });
   }
   return listLang as List<Map<String, dynamic>>;
 }
 
 /// For Vendor Admin
-List<String> unsupportedLanguages = ['ku'];
+List<String> unsupportedLanguages = ['ku', 'zh', 'hi'];
 
 String getLanguageByContext(BuildContext context, String code) {
   switch (code) {

@@ -1,141 +1,222 @@
 {
   "HorizonLayout": [
     {
-      "showSearch": true ,
-      "showMenu": true ,
+      "layout": "logo",
+      "showMenu": true,
+      "showSearch": true,
+      "showLogo": true,
       "menuIcon": {
-        "name": "line_horizontal_3_decrease" ,
+        "name": "line_horizontal_3_decrease",
         "fontFamily": "CupertinoIcons"
-      } ,
-      "image": "https://i.imgur.com/LQWSjzt.png" ,
-      "showLogo": true ,
-      "layout": "logo"
-    } ,
-    {
-      "layout": "bannerImage" ,
-      "items": [
-        {
-          "product": 25056 ,
-          "padding": 15 ,
-          "image": "https://i.imgur.com/84ySdG3.jpg"
-        }
-      ] ,
-      "radius": 8 ,
-      "autoPlay": true ,
-      "showBackGround": true ,
-      "isSlider": true ,
-      "design": "default" ,
-      "showNumber": false
-    } ,
-    {
-      "items": [
-        {
-          "image": "https://i.imgur.com/H0bcI9u.jpg" ,
-          "padding": 15 ,
-          "category": 4783
-        } ,
-        {
-          "padding": 15 ,
-          "category": 2352 ,
-          "image": "https://i.imgur.com/H7BJGsh.jpg"
-        }
-      ] ,
-      "autoPlay": true ,
-      "design": "default" ,
-      "showNumber": false ,
-      "layout": "bannerImage" ,
-      "showBackGround": true ,
-      "radius": 8 ,
-      "isSlider": true
-    } ,
-    {
-      "name": "מדפסות מעולות" ,
-      "category": 2341 ,
-      "layout": "threeColumn" ,
-      "isSnapping": true
-    }
-  ] ,
-  "Setting": {
-    "MainColor": "#961b1e" ,
-    "ProductListLayout": "list" ,
-    "StickyHeader": true ,
-    "ProductDetail": "halfSizeImageType" ,
-    "ShowChat": true ,
-    "FontFamily": "Heebo"
-  } ,
-  "TabBar": [
-    {
-      "pos": 100 ,
-      "layout": "home" ,
-      "icon": "assets/icons/tabs/icon-home.png" ,
-      "key": "9vsivuvnco"
-    } ,
-    {
-      "icon": "assets/icons/tabs/icon-search.png" ,
-      "layout": "search" ,
-      "key": "xgvo320p70" ,
-      "pos": 200
-    } ,
-    {
-      "key": "ozncg02ct5" ,
-      "layout": "cart" ,
-      "pos": 300 ,
-      "icon": "assets/icons/tabs/icon-cart2.png"
-    } ,
-    {
-      "pos": 400 ,
-      "background": "https://i.imgur.com/u2GRG8B.jpeg" ,
-      "icon": "assets/icons/tabs/icon-user.png" ,
-      "key": "2q3e2awiv6" ,
-      "settings": [
-        "order" ,
-        "wishlist" ,
-        "darkTheme" ,
-        "rating" ,
-        "about"
-      ] ,
-      "layout": "profile" ,
-      "showChat": true
-    } ,
-    {
-      "layout": "category",
-      "categoryLayout": "card",
-      "icon": "assets/icons/tabs/icon-category.png"
+      },
+      "image": "https://i.imgur.com/LQWSjzt.png"
     },
     {
-      "showChat": false ,
-      "pos": 500 ,
-      "fontFamily": null ,
-      "icon": "assets/icons/tabs/icon-heartthin.png" ,
-      "layout": "wishlist" ,
-      "key": "9c8n8uvss0"
+      "layout": "bannerImage",
+      "isSlider": true,
+      "autoPlay": true,
+      "showNumber": false,
+      "design": "default",
+      "showBackGround": true,
+      "radius": 8,
+      "items": [
+        {
+          "product": 25056,
+          "image": "https://i.imgur.com/84ySdG3.jpg",
+          "padding": 15.0
+        },
+        {
+          "category": 4783,
+          "image": "https://i.imgur.com/H0bcI9u.jpg",
+          "padding": 15.0
+        },
+        {
+          "category": 2352,
+          "image": "https://i.imgur.com/H7BJGsh.jpg",
+          "padding": 15.0
+        }
+      ]
+    },
+    {
+      "layout": "category",
+      "type": "icon",
+      "wrap": false,
+      "size": 1.2,
+      "radius": 50.0,
+      "hideTitle": false,
+      "items": [
+        {
+          "category": 2341,
+          "image": "assets/images/spider_cat_robot_printer.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "מדפסות 3D",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 2352,
+          "image": "assets/images/spider_cat_filaments.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "גלילים",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 2353,
+          "image": "assets/images/spider_cat_resin.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "שרף",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 2342,
+          "image": "assets/images/spider_cat_upgardes.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "שדרוגים",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 2343,
+          "image": "assets/images/spider_cat_caliber_tool.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "כלים",
+          "keepDefaultTitle": true
+        },
+        {
+          "category": 5249,
+          "image": "assets/images/spider_cat_sales.png",
+          "colors": [
+            "#b42525",
+            "#5a0000"
+          ],
+          "title" : "מבצעים",
+          "keepDefaultTitle": true
+        }
+      ]
+    },
+    {
+      "layout": "bannerImage",
+      "isSlider": true,
+      "autoPlay": true,
+      "showNumber": false,
+      "design": "default",
+      "showBackGround": true,
+      "radius": 8,
+      "items": []
+    },
+    {
+      "layout": "bannerImage",
+      "isSlider": true,
+      "autoPlay": true,
+      "showNumber": false,
+      "design": "default",
+      "showBackGround": true,
+      "radius": 8,
+      "items": []
+    },
+    {
+      "name": "הפילמנטים שלנו",
+      "category": 4780,
+      "layout": "threeColumn",
+      "isSnapping": true
+    },
+    {
+      "name": "נצפו לאחרונה",
+      "layout": "recentView",
+      "onMainPage": false
+    },
+    {
+      "layout": "blog",
+      "name": "מדריכים אחרונים שלנו"
     }
-  ] ,
+  ],
+  "VerticalLayout": {
+    "key": "r09jo0owu6",
+    "layout": "menu",
+    "name": "קטגוריות מובילות",
+    "isVertical": true
+  },
+  "Setting": {
+    "MainColor": "#961b1e",
+    "FontFamily": "Heebo",
+    "ProductListLayout": "list",
+    "StickyHeader": true,
+    "ProductDetail": "simpleType",
+    "ShowChat": true
+  },
+  "TabBar": [
+    {
+      "layout": "home",
+      "icon": "assets/icons/tabs/icon-home.png"
+    },
+    {
+      "layout": "cart",
+      "icon": "assets/icons/tabs/icon-cart2.png"
+    },
+    {
+      "layout": "search",
+      "icon": "assets/icons/tabs/icon-search.png"
+    },
+    {
+      "layout": "wishlist",
+      "icon": "assets/icons/tabs/icon-thingi.png"
+    },
+    {
+      "layout": "profile",
+      "icon": "assets/icons/tabs/icon-user.png",
+      "showChat": true,
+      "pos": 400 ,
+      "settings": [
+        "order" ,
+        "darkTheme" ,
+        "rating" ,
+        "language",
+        "about"
+      ] ,
+      "background": "https://i.imgur.com/Oz76QDp.png"
+    }
+  ],
   "Drawer": {
-    "logo": null ,
+    "logo": "assets/images/spider_cat_logo.png",
     "items": [
       {
-        "show": false ,
-        "type": "home"
-      } ,
-      {
-        "show": true ,
-        "type": "blog"
-      } ,
-      {
-        "show": true ,
-        "type": "login"
-      } ,
-      {
         "type": "category" ,
+        "show": true
+      },
+      {
+        "type": "blog" ,
         "show": true
       }
     ]
   } ,
-  "VerticalLayout": {
-    "key": "705svzyqkl" ,
-    "name": "המומלצים שלנו" ,
-    "layout": "menu" ,
-    "isVertical": true
+  "searchSuggestion": [
+    "הנה כמה מההצעות שלנו:",
+    "PLA+",
+    "SILK",
+    "מדפסת Hornet 3D",
+    "פילמנט מחליף צבעים"
+  ],
+  "OnBoarding": {
+    "data": [
+      {
+        "title": "משלוח חינם \nמתנת הצטרפות מאיתנו",
+        "image": "myCupon",
+        "desc": "",
+        "background": "#F2FFFC"
+      }
+    ]
   }
 }

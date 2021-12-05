@@ -34,6 +34,8 @@ import 'dart:convert' as convert;
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+// Product_varinat_mixing.dart - fluxStore-spider3d
+
 mixin ProductVariantMixin {
   ProductVariation? updateVariation(
     List<ProductVariation> variations,
@@ -92,6 +94,14 @@ mixin ProductVariantMixin {
 
     var isValidAttribute = false;
     try {
+      // My Map to make those List equals (Bug fix on the App)
+      product.attributes!.map((e) {
+        print(e.name);
+        mapAttribute.removeWhere((key, value) => key != e.name);
+      });
+      // print(mapAttribute.length);
+      // print(product.attributes!.length);
+
       if (product.attributes!.length == mapAttribute.length &&
           (product.attributes!.length == mapAttribute.length ||
               product.type != 'variable')) {
@@ -99,7 +109,14 @@ mixin ProductVariantMixin {
       }
     } catch (_) {}
 
-    return inStock && isValidAttribute && isAvailable;
+    print('isPurchased - inStock - $inStock - VariationTest');
+    print('isPurchased - isValidAttribute - $isValidAttribute - VariationTest');
+    print('isPurchased - isAvailable - $isAvailable - VariationTest');
+    return inStock && isAvailable
+        // && isValidAttribute
+        /// My Commented to fix some variables products unAvailable to buy
+        /// Product example: "MK8 3d printer nozzle" (or mk10 43USD)
+        ;
   }
 
   List<Widget> makeProductTitleWidget(BuildContext context,
@@ -428,7 +445,11 @@ mixin ProductVariantMixin {
         children: <Widget>[
           Expanded(
             child: GestureDetector(
-              onTap: () => addToCart(true, inStock),
+              onTap: () {
+                print(
+                    'buyOrOutOfStockButton - isAvailable - $isAvailable - VariationTest');
+                addToCart(true, inStock);
+              },
               child: buyOrOutOfStockButton,
             ),
           ),

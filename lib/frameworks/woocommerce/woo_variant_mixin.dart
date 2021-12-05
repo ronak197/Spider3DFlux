@@ -115,6 +115,7 @@ mixin WooVariantMixin on ProductVariantMixin {
     return;
   }
 
+  // ------
   bool couldBePurchased(
     List<ProductVariation>? variations,
     ProductVariation? productVariation,
@@ -123,17 +124,22 @@ mixin WooVariantMixin on ProductVariantMixin {
   ) {
     final isAvailable =
         productVariation != null ? productVariation.id != null : true;
+    print('couldBePurchased - isAvailable - $isAvailable - VariationTest');
 
     final isValidProductVariant = productVariation != null
         ? isValidProductVariation(variations!, mapAttribute)
         : true;
+    print(
+        'couldBePurchased - isValidProductVariant - $isValidProductVariant - VariationTest');
 
-    print('couldBePurchased - isAvailable $isAvailable');
-    print('couldBePurchased - isValidProductVariant $isValidProductVariant');
-
-    return isValidProductVariant &&
+    final _isPurchased =
         isPurchased(productVariation, product, mapAttribute!, isAvailable);
+    // const _isPurchased = true;
+    print('couldBePurchased - _isPurchased - $_isPurchased - VariationTest');
+
+    return isValidProductVariant && _isPurchased;
   }
+  // ------
 
   /// Return true if mapAttribute match with any of variations.
   bool isValidProductVariation(

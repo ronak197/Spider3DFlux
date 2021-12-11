@@ -20,6 +20,7 @@ Map<String, dynamic> environment = {
     "android": "com.biton.spider3dflux",
     "ios": "1469772800"
   },
+
   "advanceConfig": {
     "isCaching":
         true, // Should be false to Fix - Bottom GRID on Product page "מוצרים נוספים בקטגוריה"

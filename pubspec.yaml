@@ -169,6 +169,10 @@ dependencies:
   credit_card_validator: ^2.0.0
   credit_card_validate: ^0.0.3
   translator: ^0.1.7
+  html:
+  web_scraper: ^0.1.4
+  chaleno: ^0.0.5
+  puppeteer: ^2.5.0
 
 
 dev_dependencies:

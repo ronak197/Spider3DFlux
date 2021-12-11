@@ -103,7 +103,7 @@ mixin WooVariantMixin on ProductVariantMixin {
 
       if (variation == null) {
         /// Clear default attributes if it's invalid.
-        // mapAttribute.clear();
+        mapAttribute.clear();
       }
     }
 

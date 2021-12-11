@@ -3,6 +3,7 @@ import 'dart:convert' as convert;
 import 'dart:convert';
 import 'dart:core';
 import 'package:dio/dio.dart';
+import 'package:fstore/services/https.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart' show compute;
 import 'package:quiver/strings.dart';
@@ -394,7 +395,8 @@ class WooCommerce extends BaseServices {
       }
 
       var endPoint =
-          'products?status=publish&per_page=$ApiPageSize&page=$page&skip_cache=0';
+          // 'products?status=publish&per_page=$ApiPageSize&page=$page&skip_cache=0'; // Original. 0 is False
+          'products?status=publish&per_page=$ApiPageSize&page=$page&skip_cache=1';
       if (kAdvanceConfig['isMultiLanguages']) {
         endPoint += '&lang=$lang';
       }
@@ -481,7 +483,7 @@ class WooCommerce extends BaseServices {
           // ignore: prefer_single_quotes
           "&access_token=$token$isSecure";
 
-      var response = await httpGet(endPoint.toUri()!);
+      var response = await httpCache(endPoint.toUri()!);
 
       var jsonDecode = convert.jsonDecode(response.body);
 
@@ -504,7 +506,7 @@ class WooCommerce extends BaseServices {
           // ignore: prefer_single_quotes
           "$url/wp-json/api/flutter_user/firebase_sms_login?phone=$token$isSecure";
 
-      var response = await httpGet(endPoint.toUri()!);
+      var response = await httpCache(endPoint.toUri()!);
 
       var jsonDecode = convert.jsonDecode(response.body);
 
@@ -983,7 +985,7 @@ class WooCommerce extends BaseServices {
   Future<User?> getUserInfo(cookie) async {
     try {
       var base64Str = EncodeUtils.encodeCookie(cookie);
-      final response = await httpGet(
+      final response = await httpCache(
           '$url/wp-json/api/flutter_user/get_currentuserinfo?token=$base64Str&$isSecure'
               .toUri()!);
       final body = convert.jsonDecode(response.body);
@@ -1145,7 +1147,7 @@ class WooCommerce extends BaseServices {
 
   @override
   Future<AfterShip> getAllTracking() async {
-    final data = await httpGet(
+    final data = await httpCache(
         'https://api.aftership.com/v4/trackings'.toUri()!,
         headers: {'aftership-api-key': afterShip['api']});
     return AfterShip.fromJson(json.decode(data.body));
@@ -1261,7 +1263,7 @@ class WooCommerce extends BaseServices {
                   '&access_token=$token$isSecure'
               .toUri()!;
 
-      var response = await httpGet(endPoint);
+      var response = await httpCache(endPoint);
 
       var jsonDecode = convert.jsonDecode(response.body);
 
@@ -1421,7 +1423,7 @@ class WooCommerce extends BaseServices {
   @override
   Future<Map<String, dynamic>?> getCurrencyRate() async {
     try {
-      final response = await httpGet(
+      final response = await httpCache(
           '$url/wp-json/api/flutter_user/get_currency_rates'.toUri()!);
       var body = convert.jsonDecode(response.body);
       if (response.statusCode == 200 && body != null && body is Map) {
@@ -1443,8 +1445,8 @@ class WooCommerce extends BaseServices {
   @override
   Future getCountries() async {
     try {
-      final response =
-          await httpGet('$url/wp-json/api/flutter_user/get_countries'.toUri()!);
+      final response = await httpCache(
+          '$url/wp-json/api/flutter_user/get_countries'.toUri()!);
       var body = convert.jsonDecode(response.body);
       return body;
     } catch (err) {
@@ -1455,7 +1457,7 @@ class WooCommerce extends BaseServices {
   @override
   Future getStatesByCountryId(countryId) async {
     try {
-      final response = await httpGet(
+      final response = await httpCache(
           '$url/wp-json/api/flutter_user/get_states?country_code=$countryId'
               .toUri()!);
       var body = convert.jsonDecode(response.body);
@@ -1469,7 +1471,7 @@ class WooCommerce extends BaseServices {
   Future<List<dynamic>?>? getCartInfo(String? token) async {
     try {
       var base64Str = EncodeUtils.encodeCookie(token!);
-      final response = await httpGet(
+      final response = await httpCache(
           '$url/wp-json/api/flutter_woo/cart?token=$base64Str'.toUri()!);
       final body = convert.jsonDecode(response.body);
       if (response.statusCode == 200) {
@@ -1632,7 +1634,7 @@ class WooCommerce extends BaseServices {
       {required User user, dynamic cursor = 1}) async {
     try {
       var base64Str = EncodeUtils.encodeCookie(user.cookie!);
-      final response = await httpGet(
+      final response = await httpCache(
           '$url/wp-json/wc/v2/flutter/vendor-orders?page=$cursor&per_page=25&token=$base64Str'
               .toUri()!);
       printLog(
@@ -1724,7 +1726,7 @@ class WooCommerce extends BaseServices {
   Future<Point?> getMyPoint(String? token) async {
     try {
       var base64Str = EncodeUtils.encodeCookie(token!);
-      final response = await httpGet(
+      final response = await httpCache(
           '$url/wp-json/api/flutter_woo/points?token=$base64Str'.toUri()!);
       final body = convert.jsonDecode(response.body);
       if (response.statusCode == 200) {
@@ -1770,7 +1772,7 @@ class WooCommerce extends BaseServices {
       if (lat != 0 || long != 0) {
         urlReq += '&isGetLocate=true&lat=$lat&long=$long';
       }
-      final response = await httpGet(urlReq.toUri()!);
+      final response = await httpCache(urlReq.toUri()!);
       if (response.statusCode == 200) {
         for (var item in convert.jsonDecode(response.body)) {
           var product = Product.fromListingJson(item);
@@ -1778,7 +1780,7 @@ class WooCommerce extends BaseServices {
           for (var item in product.images) {
             if (!item.contains('http')) {
               var res =
-                  await httpGet('$url/wp-json/wp/v2/media/$item'.toUri()!);
+                  await httpCache('$url/wp-json/wp/v2/media/$item'.toUri()!);
               _gallery.add(convert.jsonDecode(res.body)['source_url']);
             } else {
               _gallery.add(item);
@@ -1824,7 +1826,7 @@ class WooCommerce extends BaseServices {
     final urlAPI = wcApi.getOAuthURLExternal(
         '$url/wp-json/api/flutter_booking/get_staffs?product_id=$idProduct');
 
-    final response = await httpGet(urlAPI.toUri()!);
+    final response = await httpCache(urlAPI.toUri()!);
 
     var body = convert.jsonDecode(response.body);
     if (response.statusCode == 200) {
@@ -1854,7 +1856,7 @@ class WooCommerce extends BaseServices {
       urlAPI += '&staff_ids=$idStaff';
     }
 
-    final response = await httpGet(urlAPI.toUri()!);
+    final response = await httpCache(urlAPI.toUri()!);
     if (response.body.isNotEmpty) {
       final listSlot = <String>[];
       final result = convert.jsonDecode(response.body);
@@ -1885,7 +1887,7 @@ class WooCommerce extends BaseServices {
           '&fields=geometry&key=${isIos ? kGoogleAPIKey['ios'] : kGoogleAPIKey['android']}'
           '&sessiontoken=$sessionToken';
 
-      var response = await httpGet(endpoint.toUri()!);
+      var response = await httpCache(endpoint.toUri()!);
       var result = convert.jsonDecode(response.body);
       var lat = result['result']['geometry']['location']['lat'].toString();
       var long = result['result']['geometry']['location']['lng'].toString();
@@ -1906,7 +1908,7 @@ class WooCommerce extends BaseServices {
           'input=$term&key=${isIos ? kGoogleAPIKey['ios'] : kGoogleAPIKey['android']}'
           '&sessiontoken=$sessionToken';
 
-      var response = await httpGet(endpoint.toUri()!);
+      var response = await httpCache(endpoint.toUri()!);
       var result = convert.jsonDecode(response.body);
       var list = <Prediction>[];
       for (var item in result['predictions']) {
@@ -1930,7 +1932,7 @@ class WooCommerce extends BaseServices {
       //   param += '&categories=$categories';
       // }
       final response =
-          await httpGet('$blogUrl/wp-json/wp/v2/posts?$param'.toUri()!);
+          await httpCache('$blogUrl/wp-json/wp/v2/posts?$param'.toUri()!);
 
       if (response.statusCode != 200) {
         return const PagingResponse();
@@ -1947,7 +1949,7 @@ class WooCommerce extends BaseServices {
   @override
   Future<Product?> getProductByPermalink(String productPermalink) async {
     try {
-      final response = await httpGet(
+      final response = await httpCache(
           '$url/wp-json/api/flutter_woo/products/dynamic?url=$productPermalink'
               .toUri()!);
 
@@ -1976,7 +1978,7 @@ class WooCommerce extends BaseServices {
 //         // ignore: prefer_single_quotes
 //         "$url/wp-json/api/flutter_user/firebase_sms_login?phone=$token$isSecure";
 //
-//     var response = await httpGet(endPoint.toUri()!);
+//     var response = await httpCache(endPoint.toUri()!);
 //
 //     var jsonDecode = convert.jsonDecode(response.body);
 //

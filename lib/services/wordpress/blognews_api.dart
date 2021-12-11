@@ -6,6 +6,8 @@ import 'dart:io' show HttpHeaders;
 import 'package:http/http.dart' as http;
 import 'package:inspireui/extensions.dart';
 
+import '../https.dart';
+
 class QueryString {
   static Map parse(String query) {
     var search = RegExp('([^&=]+)=?([^&]*)');
@@ -51,7 +53,7 @@ class BlogNewsApi {
   Future<dynamic> getAsync(String endPoint) async {
     final url = _getOAuthURL('GET', endPoint)!;
 
-    final response = await http.get(url);
+    final response = await httpCache(url);
     return json.decode(response.body);
   }
 

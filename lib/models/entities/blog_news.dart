@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fstore/services/https.dart';
 import 'package:html_unescape/html_unescape.dart';
 
 import '../../common/constants.dart';
@@ -14,7 +15,6 @@ class BlogNews {
   String? slug;
   String? imageFeature;
 //  int categoryId;
-
 
   BlogNews.empty(this.id) {
     date = '';
@@ -37,7 +37,7 @@ class BlogNews {
   // Most of the API still needs acess key (like https://spider3d.co.il/wp-json/wc/v2/products/attributes?consumer_key=ck_be61455d30704ff30718f80b417dd41c320b0cb0&consumer_secret=cs_79c75a8e1c40acfe530e6254f3cbb61a2e01f872)
   static Future<dynamic> getBlogs({url, page = 1}) async {
     final response =
-        await httpGet('$url/wp-json/wp/v2/posts?page=$page'.toUri()!);
+        await httpCache('$url/wp-json/wp/v2/posts?page=$page'.toUri()!);
     return json.decode(response.body);
   }
 

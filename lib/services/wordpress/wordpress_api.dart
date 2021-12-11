@@ -6,6 +6,7 @@ import 'dart:io' show HttpHeaders;
 import 'package:http/http.dart' as http;
 
 import '../../common/constants.dart';
+import '../https.dart';
 
 class QueryString {
   static Map parse(String query) {
@@ -50,7 +51,7 @@ class WordPressApi {
   Future<dynamic> getAsync(String endPoint) async {
     final url = _getOAuthURL('GET', endPoint)!;
 
-    final response = await httpGet(url);
+    final response = await httpCache(url);
     return json.decode(response.body);
   }
 

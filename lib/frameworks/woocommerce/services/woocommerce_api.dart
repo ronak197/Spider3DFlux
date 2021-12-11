@@ -7,6 +7,7 @@ import 'dart:io' show HttpClient, HttpHeaders, X509Certificate;
 import 'dart:math';
 
 import 'package:crypto/crypto.dart' as crypto;
+import 'package:fstore/services/https.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 
@@ -173,7 +174,8 @@ class WooCommerceAPI {
     return client.send(request);
   }
 
-  Future<dynamic> getAsync(String endPoint, {int version = 2}) async {
+// Old Ver
+/*  Future<dynamic> getAsync(String endPoint, {int version = 2}) async {
     try {
       final url = _getOAuthURL('GET', endPoint, version);
       var response;
@@ -189,7 +191,7 @@ class WooCommerceAPI {
         var myClient = IOClient(httpClient);
         response = await myClient.get(url!);
       } else {
-        response = await httpGet(url!);
+        response = await httpCache(url!);
       }
 
       printLog('[woo_api] GET:$url', startTime);
@@ -199,6 +201,26 @@ class WooCommerceAPI {
       //   throw Exception('--------Tracing networking-----');
       // }
 
+      return json.decode(response.body);
+    } catch (e, trace) {
+      printLog(trace);
+    }
+  }*/
+
+// New Ver (Mannual Migrate)
+  Future<dynamic> getAsync(
+    String endPoint, {
+    int version = 2,
+    bool enableDio = false,
+    bool refreshCache = false,
+  }) async {
+    try {
+      final url = _getOAuthURL('GET', endPoint, version);
+      var response = await httpCache(url!, refreshCache: refreshCache);
+      // /// Debug purpose to trace which request is not correctly
+      // if (endPoint.contains('products/tags')) {
+      //   throw Exception('--------Tracing networking-----');
+      // }
       return json.decode(response.body);
     } catch (e, trace) {
       printLog(trace);

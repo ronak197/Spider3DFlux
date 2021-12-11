@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fstore/services/https.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:intl/intl.dart';
 
@@ -142,7 +143,7 @@ class Blog {
         param += '&categories=$categories';
       }
       final response =
-          await httpGet('$url/wp-json/wp/v2/posts?$param'.toUri()!);
+          await httpCache('$url/wp-json/wp/v2/posts?$param'.toUri()!);
 
       if (response.statusCode != 200) {
         return [];
@@ -155,7 +156,7 @@ class Blog {
 
   static Future<dynamic> getBlog({url, id}) async {
     final response =
-        await httpGet('$url/wp-json/wp/v2/posts/$id?_embed'.toUri()!);
+        await httpCache('$url/wp-json/wp/v2/posts/$id?_embed'.toUri()!);
     return jsonDecode(response.body);
   }
 

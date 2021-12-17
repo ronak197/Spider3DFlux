@@ -48,57 +48,78 @@ class _FirestorePageState extends State<FirestorePage> {
         height: 100,
       ),
       const TextButton(
-        onPressed: addUser,
+        onPressed: addTokens,
         child: Text(
-          "Add User",
+          'Add Tokens',
         ),
       ),
       ElevatedButton(
           onPressed: () async {
-            await getUser();
+            await getThingiToken();
           },
-          child: const Text('Get'))
+          child: const Text('get Thingi Token')),
+      Text('get token $selectedToken (Hot restart to update) \n+1 users_usage')
     ])));
   }
 }
 
 CollectionReference thingi = FirebaseFirestore.instance.collection('thingi');
+String? selectedToken;
 
-Future<void> getUser() async {
+Future<String?> getThingiToken() async {
+// 1. Looking for token with users (usage) Less than 10
+// 2. Found: Notify and add + 1 to users (usage), return  selectedToken
+// 2. Not found: Notify, return  selectedToken as null
+
+  String? id;
+  String token;
+  int users_usage = 0;
   var _users = await thingi.get();
   print(_users.docs.length);
-  print(_users.docs.first.data());
-  print(_users.docs.first.get('full_name'));
+  // print(_users.docs.first.data());
+  for (var user in _users.docs) {
+    // print(user.data());
+    id = user.id;
+    token = user.get('Token');
+    users_usage = user.get('users_usage');
+    print(
+        '--------------\nusers_usage: $users_usage | Token: $token | doc id: $id');
+    if (users_usage < 10) {
+      selectedToken = token;
+      await thingi
+          .doc(id)
+          .update({'users_usage': users_usage + 1})
+          .then((value) => print('users_usage ++'))
+          .catchError((error) => print('Failed to update user: $error'));
+
+      print(
+          '${users_usage + 1} / 10 selectedToken: $selectedToken (Success) \n--------------');
+      return selectedToken;
+    }
+  }
+  print('selectedToken = $selectedToken (Full)');
+  return selectedToken;
 }
 
-Future<void> addUser() {
-  // Call the user's CollectionReference to add a new user
-  return thingi
-      .add({
-        'full_name': 'xxx', // John Doe
-        'company': 'company', // Stokes and Sons
-        'age': 'age' // 42
-      })
-      .then((value) => print("User Added"))
-      .catchError((error) => print("Failed to add user: $error"));
+List tokens = ['x', 'y', 'z'];
+void addTokens() {
+  var forIndex = 0;
+  for (var _token in tokens) {
+    forIndex++;
+    // print(_token);
+    // print(forIndex);
+    addCustom(_token, forIndex);
+  }
 }
 
-Future<void> updateUser() {
-  return thingi
-      .doc('ABC123')
-      .update({'info.address.zipcode': 90210})
-      .then((value) => print("User Updated"))
-      .catchError((error) => print("Failed to update user: $error"));
-}
-
-Future<void> addCustomUser() {
+Future<void> addCustom(token, index) {
   return thingi
       // existing document in 'users' collection: "ABC123"
-      .doc('ABC123')
+      .doc('Token $index')
       .set(
-    {'full_name': "Mary Jane", 'age': 16},
+    {'Token': '$token', 'users_usage': 1},
     SetOptions(merge: true),
   ).then((value) {
-    print("'full_name' & 'age' merged with existing data!");
+    print('Token $index Added');
   }).catchError((error) => print("Failed to merge data: $error"));
 }

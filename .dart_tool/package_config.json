@@ -374,6 +374,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "firebase_database",
+      "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-7.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "firebase_dynamic_links",
       "rootUri": "file:///Users/biton/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_dynamic_links-2.0.4",
       "packageUri": "lib/",
@@ -1664,7 +1670,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-12-11T20:35:02.841724Z",
+  "generated": "2021-12-17T12:55:29.200612Z",
   "generator": "pub",
   "generatorVersion": "2.14.3"
 }

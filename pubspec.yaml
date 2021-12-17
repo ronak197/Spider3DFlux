@@ -39,13 +39,14 @@ dependencies:
   share: 2.0.1
 
   # FIREBASE PACKAGES
-  firebase_core: 1.2.0
+  firebase_core:
   firebase_analytics: 8.1.0
   firebase_auth: 1.2.0
   cloud_firestore: 1.0.7
   firebase_remote_config: 0.10.0
   firebase_dynamic_links: 2.0.4
   firestore_ui: 1.20.0
+  firebase_database:
 
   # STATE MANAGEMENT
   provider: 5.0.0
@@ -173,6 +174,7 @@ dependencies:
   web_scraper: ^0.1.4
   chaleno: ^0.0.5
   puppeteer: ^2.5.0
+
 
 
 dev_dependencies:

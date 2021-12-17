@@ -12,10 +12,11 @@ void main() async {
   var token;
   var token_list = [];
   // var i = Random().nextInt(2021);
-  var i = 200;
+  var i = 300; // Start From: 300 (U can also check it by looking for
+  // the highest number here with CTRL F -> https://www.thingiverse.com/developers/my-apps)
   token = await get_token(i);
 
-  while (i < 300) {
+  while (i < 600) {
     // print('Wait 3 sec');
     await Future.delayed(const Duration(seconds: 0), () async {
       print('Start request $i..');

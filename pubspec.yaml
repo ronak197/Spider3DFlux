@@ -190,7 +190,6 @@ dependencies:
   # Save Thumbnails - Regenerate Thumbnails Plugin - No
 
 
-
 dev_dependencies:
   flutter_driver:
     sdk: flutter

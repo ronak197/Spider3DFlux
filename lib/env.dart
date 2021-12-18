@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_single_quotes, lines_longer_than_80_chars final
 Map<String, dynamic> environment = {
+  // >>> Control Panel: https://spider3d-admin.herokuapp.com/
   "appConfig": "https://config-fluxstore-idan054.vercel.app",
   // "appConfig": "lib/config/config_he.json",
+
   "serverConfig": {
     "url": "https://spider3d.co.il",
     "consumerSecret": "cs_828fd108ff909e5aff0be3be11d3df07503a3a87",

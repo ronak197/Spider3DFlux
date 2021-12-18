@@ -1,222 +1,206 @@
 {
-  "HorizonLayout": [
-    {
-      "layout": "logo",
-      "showMenu": true,
-      "showSearch": true,
-      "showLogo": true,
-      "menuIcon": {
-        "name": "line_horizontal_3_decrease",
-        "fontFamily": "CupertinoIcons"
-      },
-      "image": "https://i.imgur.com/LQWSjzt.png"
-    },
-    {
-      "layout": "bannerImage",
-      "isSlider": true,
-      "autoPlay": true,
-      "showNumber": false,
-      "design": "default",
-      "showBackGround": true,
-      "radius": 8,
-      "items": [
-        {
-          "product": 25056,
-          "image": "https://i.imgur.com/84ySdG3.jpg",
-          "padding": 15.0
-        },
-        {
-          "category": 4783,
-          "image": "https://i.imgur.com/H0bcI9u.jpg",
-          "padding": 15.0
-        },
-        {
-          "category": 2352,
-          "image": "https://i.imgur.com/H7BJGsh.jpg",
-          "padding": 15.0
-        }
-      ]
-    },
-    {
-      "layout": "category",
-      "type": "icon",
-      "wrap": false,
-      "size": 1.2,
-      "radius": 50.0,
-      "hideTitle": false,
-      "items": [
-        {
-          "category": 2341,
-          "image": "assets/images/spider_cat_robot_printer.png",
-          "colors": [
-            "#b42525",
-            "#5a0000"
-          ],
-          "title" : "מדפסות 3D",
-          "keepDefaultTitle": true
-        },
-        {
-          "category": 2352,
-          "image": "assets/images/spider_cat_filaments.png",
-          "colors": [
-            "#b42525",
-            "#5a0000"
-          ],
-          "title" : "גלילים",
-          "keepDefaultTitle": true
-        },
-        {
-          "category": 2353,
-          "image": "assets/images/spider_cat_resin.png",
-          "colors": [
-            "#b42525",
-            "#5a0000"
-          ],
-          "title" : "שרף",
-          "keepDefaultTitle": true
-        },
-        {
-          "category": 2342,
-          "image": "assets/images/spider_cat_upgardes.png",
-          "colors": [
-            "#b42525",
-            "#5a0000"
-          ],
-          "title" : "שדרוגים",
-          "keepDefaultTitle": true
-        },
-        {
-          "category": 2343,
-          "image": "assets/images/spider_cat_caliber_tool.png",
-          "colors": [
-            "#b42525",
-            "#5a0000"
-          ],
-          "title" : "כלים",
-          "keepDefaultTitle": true
-        },
-        {
-          "category": 5249,
-          "image": "assets/images/spider_cat_sales.png",
-          "colors": [
-            "#b42525",
-            "#5a0000"
-          ],
-          "title" : "מבצעים",
-          "keepDefaultTitle": true
-        }
-      ]
-    },
-    {
-      "layout": "bannerImage",
-      "isSlider": true,
-      "autoPlay": true,
-      "showNumber": false,
-      "design": "default",
-      "showBackGround": true,
-      "radius": 8,
-      "items": []
-    },
-    {
-      "layout": "bannerImage",
-      "isSlider": true,
-      "autoPlay": true,
-      "showNumber": false,
-      "design": "default",
-      "showBackGround": true,
-      "radius": 8,
-      "items": []
-    },
-    {
-      "name": "הפילמנטים שלנו",
-      "category": 4780,
-      "layout": "threeColumn",
-      "isSnapping": true
-    },
-    {
-      "name": "נצפו לאחרונה",
-      "layout": "recentView",
-      "onMainPage": false
-    },
-    {
-      "layout": "blog",
-      "name": "מדריכים אחרונים שלנו"
-    }
-  ],
-  "VerticalLayout": {
-    "key": "r09jo0owu6",
-    "layout": "menu",
-    "name": "קטגוריות מובילות",
-    "isVertical": true
+ "HorizonLayout": [
+  {
+   "layout": "logo",
+   "showMenu": true,
+   "showSearch": true,
+   "showLogo": true,
+   "menuIcon": {
+    "name": "line_horizontal_3_decrease",
+    "fontFamily": "CupertinoIcons"
+   },
+   "image": "https://i.imgur.com/LQWSjzt.png"
   },
-  "Setting": {
-    "MainColor": "#961b1e",
-    "FontFamily": "Heebo",
-    "ProductListLayout": "list",
-    "StickyHeader": true,
-    "ProductDetail": "simpleType",
-    "ShowChat": true
+  {
+   "layout": "bannerImage",
+   "isSlider": true,
+   "autoPlay": true,
+   "showNumber": false,
+   "design": "default",
+   "showBackGround": true,
+   "radius": 8,
+   "items": []
   },
-  "TabBar": [
+  {
+   "layout": "category",
+   "type": "icon",
+   "wrap": false,
+   "size": 1.2,
+   "radius": 50.0,
+   "hideTitle": false,
+   "items": [
     {
-      "layout": "home",
-      "icon": "assets/icons/tabs/icon-home.png"
+     "category": 2341,
+     "image": "assets/images/spider_cat_robot_printer.png",
+     "colors": [
+      "#b42525",
+      "#5a0000"
+     ],
+     "title": "מדפסות 3D",
+     "keepDefaultTitle": true
     },
     {
-      "layout": "cart",
-      "icon": "assets/icons/tabs/icon-cart2.png"
+     "category": 2352,
+     "image": "assets/images/spider_cat_filaments.png",
+     "colors": [
+      "#b42525",
+      "#5a0000"
+     ],
+     "title": "גלילים",
+     "keepDefaultTitle": true
     },
     {
-      "layout": "search",
-      "icon": "assets/icons/tabs/icon-search.png"
+     "category": 2353,
+     "image": "assets/images/spider_cat_resin.png",
+     "colors": [
+      "#b42525",
+      "#5a0000"
+     ],
+     "title": "שרף",
+     "keepDefaultTitle": true
     },
     {
-      "layout": "wishlist",
-      "icon": "assets/icons/tabs/icon-thingi.png"
+     "category": 2342,
+     "image": "assets/images/spider_cat_upgardes.png",
+     "colors": [
+      "#b42525",
+      "#5a0000"
+     ],
+     "title": "שדרוגים",
+     "keepDefaultTitle": true
     },
     {
-      "layout": "profile",
-      "icon": "assets/icons/tabs/icon-user.png",
-      "showChat": true,
-      "pos": 400 ,
-      "settings": [
-        "order" ,
-        "darkTheme" ,
-        "rating" ,
-        "language",
-        "about"
-      ] ,
-      "background": "https://i.imgur.com/Oz76QDp.png"
+     "category": 2343,
+     "image": "assets/images/spider_cat_caliber_tool.png",
+     "colors": [
+      "#b42525",
+      "#5a0000"
+     ],
+     "title": "כלים",
+     "keepDefaultTitle": true
+    },
+    {
+     "category": 5249,
+     "image": "assets/images/spider_cat_sales.png",
+     "colors": [
+      "#b42525",
+      "#5a0000"
+     ],
+     "title": "מבצעים",
+     "keepDefaultTitle": true
     }
-  ],
-  "Drawer": {
-    "logo": "assets/images/spider_cat_logo.png",
-    "items": [
-      {
-        "type": "category" ,
-        "show": true
-      },
-      {
-        "type": "blog" ,
-        "show": true
-      }
-    ]
-  } ,
-  "searchSuggestion": [
-    "הנה כמה מההצעות שלנו:",
-    "PLA+",
-    "SILK",
-    "מדפסת Hornet 3D",
-    "פילמנט מחליף צבעים"
-  ],
-  "OnBoarding": {
-    "data": [
-      {
-        "title": "משלוח חינם \nמתנת הצטרפות מאיתנו",
-        "image": "myCupon",
-        "desc": "",
-        "background": "#F2FFFC"
-      }
-    ]
+   ]
+  },
+  {
+   "layout": "bannerImage",
+   "isSlider": true,
+   "autoPlay": true,
+   "showNumber": false,
+   "design": "default",
+   "showBackGround": true,
+   "radius": 8,
+   "items": []
+  },
+  {
+   "layout": "bannerImage",
+   "isSlider": true,
+   "autoPlay": true,
+   "showNumber": false,
+   "design": "default",
+   "showBackGround": true,
+   "radius": 8,
+   "items": []
+  },
+  {
+   "name": "הפילמנטים שלנו",
+   "category": 4780,
+   "layout": "threeColumn",
+   "isSnapping": true
+  },
+  {
+   "name": "נצפו לאחרונה",
+   "layout": "recentView",
+   "onMainPage": false
+  },
+  {
+   "layout": "blog",
+   "name": "מדריכים אחרונים שלנו"
   }
+ ],
+ "VerticalLayout": {
+  "key": "r09jo0owu6",
+  "layout": "menu",
+  "name": "קטגוריות מובילות",
+  "isVertical": true
+ },
+ "Setting": {
+  "MainColor": "#961b1e",
+  "FontFamily": "Heebo",
+  "ProductListLayout": "list",
+  "StickyHeader": true,
+  "ProductDetail": "simpleType",
+  "ShowChat": true
+ },
+ "TabBar": [
+  {
+   "layout": "home",
+   "icon": "assets/icons/tabs/icon-home.png"
+  },
+  {
+   "layout": "cart",
+   "icon": "assets/icons/tabs/icon-cart2.png"
+  },
+  {
+   "layout": "search",
+   "icon": "assets/icons/tabs/icon-search.png"
+  },
+  {
+   "layout": "wishlist",
+   "icon": "assets/icons/tabs/icon-thingi.png"
+  },
+  {
+   "layout": "profile",
+   "icon": "assets/icons/tabs/icon-user.png",
+   "showChat": true,
+   "pos": 400,
+   "settings": [
+    "order",
+    "darkTheme",
+    "rating",
+    "language",
+    "about"
+   ],
+   "background": "https://i.imgur.com/Oz76QDp.png"
+  }
+ ],
+ "Drawer": {
+  "logo": "assets/images/spider_cat_logo.png",
+  "items": [
+   {
+    "type": "category",
+    "show": true
+   },
+   {
+    "type": "blog",
+    "show": true
+   }
+  ]
+ },
+ "searchSuggestion": [
+  "הנה כמה מההצעות שלנו:",
+  "PLA+",
+  "SILK",
+  "מדפסת Hornet 3D",
+  "פילמנט מחליף צבעים"
+ ],
+ "OnBoarding": {
+  "data": [
+   {
+    "title": "משלוח חינם \nמתנת הצטרפות מאיתנו",
+    "image": "myCupon",
+    "desc": "",
+    "background": "#F2FFFC"
+   }
+  ]
+ }
 }

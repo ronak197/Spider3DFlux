@@ -465,7 +465,7 @@ abstract class BaseFrameworks {
       item: item,
       width: width,
       maxWidth: maxWidth,
-      height: height,
+      height: height, // ?? 50 * 1.5, // My multiplication
       showCart: showCart,
       showHeart: showHeart,
       showProgressBar: showProgressBar,

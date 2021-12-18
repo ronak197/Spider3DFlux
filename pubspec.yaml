@@ -99,9 +99,9 @@ dependencies:
   # FILES, IMAGES
   file_picker: 3.0.1
   cached_network_image: 3.0.0
+  extended_image: 4.1.0
   image: 3.0.2
   transparent_image: 2.0.0
-  extended_image: 4.1.0
   image_picker: 0.7.5+2
   flutter_native_image: 0.0.6
   multi_image_picker2: 5.0.0
@@ -175,6 +175,19 @@ dependencies:
   web_scraper: ^0.1.4
   chaleno: ^0.0.5
   puppeteer: ^2.5.0
+
+  # Cache Type - Location - in use? (effective)
+  # ================================
+  # Save Api Requests - https.dart - YES (very effective)
+  # Flutter package - cached_network_image: 3.0.0 - Yes (Unknown efficiency)
+  # Flutter package -  extended_image: 4.1.0 - YES (Unknown efficiency)
+  # appConfig (Json/Web) - 'isCaching' env.dart - YES (effective well)
+
+  # Wordpress:
+  # ---------
+  # Home page - MStore API Plugin - YES (very effective)
+  # Save Api Requests- WP Rest Cache Plugin - YES (effective well)
+  # Save Thumbnails - Regenerate Thumbnails Plugin - No
 
 
 

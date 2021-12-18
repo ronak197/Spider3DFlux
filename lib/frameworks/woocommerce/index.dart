@@ -328,6 +328,7 @@ class WooWidget extends BaseFrameworks
   Future<void> onLoadedAppConfig(String? lang, Function callback) async {
     /// Get the config from Caching
     if (kAdvanceConfig['isCaching']) {
+      // if (1 == 2) {
       final configCache = await Services().api.getHomeCache(lang);
       if (configCache != null) {
         callback(configCache);

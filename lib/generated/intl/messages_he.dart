@@ -508,10 +508,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("משוך כדי לטעון יותר"),
         "rate": MessageLookupByLibrary.simpleMessage("ציון"),
         "rateTheApp": MessageLookupByLibrary.simpleMessage("דרג את האפליקציה"),
-        "rateThisApp":
-            MessageLookupByLibrary.simpleMessage("דרג את האפליקציה הזו"),
+        "rateThisApp": MessageLookupByLibrary.simpleMessage("פרגן לנו דירוג"),
         "rateThisAppDescription": MessageLookupByLibrary.simpleMessage(
-            "אנחנו בספיידר תלת מימד השקענו אלפי שעות להקמת אפליקציה מעולה לשימוש.\nבבקשה הקדש דקה ודרג אותנו"),
+            "אנחנו עושים עבורכם מאמצים רבים לשירות הטוב ביותר, נשמח אם תפרגנו ב5 כוכבים"),
         "rating": MessageLookupByLibrary.simpleMessage("דֵרוּג"),
         "ratingFirst": MessageLookupByLibrary.simpleMessage(
             "אנא דרג לפני שתשלח את התגובה שלך"),

@@ -135,7 +135,7 @@ class ImageTools {
       // print("image_tools: url $url use url?.isEmpty ?? true");
 
       return FutureBuilder<bool>(
-        future: Future.delayed(const Duration(seconds: 10), () => false),
+        future: Future.delayed(const Duration(seconds: 0), () => false),
         initialData: true,
         builder: (context, snapshot) {
           final showSkeleton = snapshot.data!;
@@ -353,7 +353,9 @@ class ImageTools {
       List<dynamic> images) async {
     var base64 = StringBuffer();
     for (final image in images) {
-      base64..write(await compressImage(image))..write(',');
+      base64
+        ..write(await compressImage(image))
+        ..write(',');
     }
     return base64.toString();
   }

@@ -159,29 +159,10 @@ class ProductCard extends StatelessWidget {
         : Container(width: 30, height: 30);
 
     /// Product Pricing
-    Widget _productPricing = Column(
+    Widget _productPricing = Row(
       // crossAxisAlignment: WrapCrossAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        /// Not show regular price for variant product (product.regularPrice = "").
-        if (isSale && item.type != 'variable') ...[
-          const SizedBox(width: 5),
-          Text(
-            item.type == 'grouped'
-                ? ''
-                : PriceTools.getPriceProduct(item, currencyRate, currency,
-                    onSale: false)!,
-            style: Theme.of(context)
-                .textTheme
-                .caption!
-                .copyWith(
-                  fontWeight: FontWeight.w300,
-                  color: Theme.of(context).accentColor.withOpacity(0.6),
-                  decoration: TextDecoration.lineThrough,
-                )
-                .apply(fontSizeFactor: 0.8),
-          ),
-        ],
         Text(
           item.type == 'grouped'
               ? '${S.of(context).from} ${PriceTools.getPriceProduct(item, currencyRate, currency, onSale: true)}'
@@ -200,6 +181,28 @@ class ProductCard extends StatelessWidget {
               )
               .apply(fontSizeFactor: 0.8),
         ),
+
+        /// Not show regular price for variant product (product.regularPrice = "").
+        if (isSale && item.type != 'variable') ...[
+          const SizedBox(width: 5),
+          Text(
+            item.type == 'grouped'
+                ? ''
+                : PriceTools.getPriceProduct(item, currencyRate, currency,
+                    onSale: false)!,
+            style: Theme.of(context)
+                .textTheme
+                .caption!
+                .copyWith(
+                  // fontSize: 16,
+                  fontWeight: FontWeight.w300,
+                  color: Theme.of(context).accentColor.withOpacity(0.6),
+                  decoration: TextDecoration.lineThrough,
+                )
+                .apply(fontSizeFactor: 0.8),
+            // .apply(fontSizeFactor: 0.83),
+          ),
+        ],
       ],
     );
 
@@ -344,6 +347,7 @@ class ProductCard extends StatelessWidget {
           if (!(kProductCard['hidePrice'] ?? false)) _productPricing,
           const SizedBox(height: 2),
           _productStockRating,
+          // const SizedBox(height: 2),
         ],
       ),
       Positioned(
@@ -364,6 +368,7 @@ class ProductCard extends StatelessWidget {
             padding: const EdgeInsets.all(4.0),
             child: Container(
               constraints: BoxConstraints(maxWidth: maxWidth ?? width!),
+              // constraints: const BoxConstraints(maxHeight: 600),
               width: width! - 6,
               decoration: BoxDecoration(
                 boxShadow: [
@@ -382,6 +387,7 @@ class ProductCard extends StatelessWidget {
                 borderRadius:
                     BorderRadius.circular(kProductCard['borderRadius'] ?? 3),
                 child: Container(
+                  // height: 500,
                   color: Theme.of(context).cardColor,
                   padding: const EdgeInsets.all(6.0),
                   child: Column(

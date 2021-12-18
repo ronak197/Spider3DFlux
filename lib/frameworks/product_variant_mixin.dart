@@ -283,9 +283,8 @@ mixin ProductVariantMixin {
                           ? '${S.of(context).inStock}$stockQuantity'
                           : S.of(context).outOfStock,
                       style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                            color: inStock
-                                ? Theme.of(context).primaryColor
-                                : const Color(0xFFe74c3c),
+                            // color: inStock ? Theme.of(context).primaryColor : const Color(0xFFe74c3c),
+                            color: inStock ? kColorInStock : kColorOutOfStock,
                             fontWeight: FontWeight.w600,
                           ),
                     )

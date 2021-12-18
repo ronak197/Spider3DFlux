@@ -188,7 +188,8 @@ class _ProductListState extends State<ProductList> {
     required List<Product> products,
   }) {
     //
-    var item_limit = products.length < 6 ? products.length : 6; // my max is 6
+    // var item_limit = products.length < 6 ? products.length : 6; // my max is 6 limit
+    var item_limit = products.length;
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,

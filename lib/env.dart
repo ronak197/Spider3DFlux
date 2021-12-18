@@ -434,9 +434,10 @@ Map<String, dynamic> environment = {
     "tracking_url": "https://fluxstore.aftership.com"
   },
   "productDetail": {
-    // "height": 0.4,
-    "height": 1,
-    "marginTop": 1,
+    "height": 0.4,
+    // "height": 1,
+    "marginTop": 0,
+    // "marginTop": 1,
     "safeArea": false,
     "showVideo": true,
     "showBrand": true,
@@ -541,6 +542,7 @@ Map<String, dynamic> environment = {
     "VendorRegister": true,
     "DisableVendorShipping": false,
     "ShowAllVendorMarkers": true,
+    "DisableNativeStoreManagement": false,
     "DisableNativeStoreManagement": false,
     "dokan": "my-account?vendor_admin=true",
     "wcfm": "store-manager?vendor_admin=true"

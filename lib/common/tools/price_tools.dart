@@ -70,7 +70,9 @@ class PriceTools {
   // My getCurrencyFormatted
   static String? getCurrencyFormatted(price, Map<String, dynamic>? rates,
       {currency}) {
-    // printLog('Original price: $price');
+    if (price.toString().contains('.90')) price = double.parse(price) + 1;
+    price = price.toString().replaceAll('.90', '');
+    price = price.toString().replaceAll('.9', '');
     price = price.toString().replaceAll('.00', '');
     price = price.toString().replaceAll('.0', '');
     if (price.length == 4) {

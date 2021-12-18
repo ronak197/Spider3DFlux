@@ -149,7 +149,8 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
   }
 
   void setShippingMethod(data) {
-    // printLog('setShippingMethod data: ${data.}');
+    // printLog('setShippingMethod data: ${data.runtimeType}');
+    // printLog('setShippingMethod data: ${data}');
     shippingMethod = data;
     notifyListeners();
   }

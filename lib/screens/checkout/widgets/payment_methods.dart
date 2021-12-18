@@ -407,17 +407,24 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                   const SizedBox(height: 15),
                   order_status == ''
                       ? Container()
-                      : Text(order_status,
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            color: kColorSpiderRed.withOpacity(0.85),
+                            padding: const EdgeInsets.only(
+                                right: 12, bottom: 0, top: 18, left: 12),
+                            child: Text(order_status,
 
-                          // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
-                          style: TextStyle(
-                              fontSize: 18,
-                              // fontWeight: FontWeight.w500,
-                              // color: Theme.of(context).accentColor.withOpacity(0.8),
-                              color:
-                                  Theme.of(context).appBarTheme.backgroundColor
-                              // .withOpacity(0.8),
-                              )),
+                                // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    // color: Theme.of(context).accentColor.withOpacity(0.8),
+                                    color: Theme.of(context).backgroundColor
+                                    // .withOpacity(0.8),
+                                    )),
+                          ),
+                        ),
                   Row(children: [
                     Expanded(
                       child: ButtonTheme(
@@ -484,6 +491,8 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                               print(order_status);
                             } else {
                               print('cartModel.shippingMethod');
+                              print(cartModel.shippingMethod.runtimeType);
+                              print(cartModel.shippingMethod.runtimeType);
                               print(cartModel.shippingMethod!.title);
                               shipping_method_ready = true;
                             }

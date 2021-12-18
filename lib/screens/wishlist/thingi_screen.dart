@@ -9,6 +9,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,12 +17,12 @@ import 'package:fstore/common/config.dart';
 import 'dart:convert';
 // import 'package:dart_random_choice/dart_random_choice.dart';
 import 'package:fstore/common/constants.dart';
-import 'package:fstore/screens/wishlist/thingi_api.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:translator/translator.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// This is the main application widget.
 class ThingiPage extends StatefulWidget {
@@ -32,6 +33,8 @@ class ThingiPage extends StatefulWidget {
   @override
   State<ThingiPage> createState() => _ThingiPageState();
 }
+
+// var thingiToken = '76a96e8a8905232b8f9d1645eeada242';
 
 var showLoading = false;
 
@@ -51,9 +54,10 @@ var categoriesList = [
   'toys-and-games',
 ];
 var randomCategory = categoriesList[Random().nextInt(categoriesList.length)];
-var thingiToken = '76a96e8a8905232b8f9d1645eeada242';
 
 class Constants {
+  static String? thingiToken;
+
   //https://api.thingiverse.com/popular/?access_token=$thingiToken
   static String defaultFeed =
       'https://api.thingiverse.com/$randomHome/?access_token=$thingiToken';
@@ -71,7 +75,8 @@ class Constants {
 }
 
 Future<Map<String, dynamic>> _setFeedByPopular() async {
-  print('setFeedByPopular:');
+  print('_setFeedByPopular:');
+  print('thingiToken ${Constants.thingiToken}');
   // showLoading = true;
 
   final response = await http.get(Uri.parse(Constants.defaultFeed));
@@ -90,6 +95,8 @@ Future<Map<String, dynamic>> _setFeedByPopular() async {
 
 Future<Map<String, dynamic>> _setFeedByKeyword(String keyword) async {
   showLoading = true;
+  print('_setFeedByKeyword:');
+  print('thingiToken ${Constants.thingiToken}');
 
   /// קטע זה מאפשר את יכולת החיפוש
   final response = await http.get(Uri.parse(Constants.feedByKeyword(keyword)));
@@ -106,6 +113,9 @@ Future<Map<String, dynamic>> _setFeedByCategory() async {
   showLoading = true;
   randomCategory = categoriesList[Random().nextInt(categoriesList.length)];
 
+  print('_setFeedByCategory:');
+  print('thingiToken ${Constants.thingiToken}');
+
   final response = await http.get(Uri.parse(Constants.feedByCategory()));
   if (response.statusCode == 200) {
     // print(response.body);
@@ -121,6 +131,7 @@ class _ThingiPageState extends State<ThingiPage> {
   var showSearch = false;
   var searchController = TextEditingController();
   var setFeedBy = _setFeedByPopular();
+
 //
   @override
   Widget build(BuildContext context) {

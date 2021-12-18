@@ -34,7 +34,7 @@ Map<String, dynamic> environment = {
     "EnableRating": false,
     "hideEmptyProductListRating": true,
     "EnableShipping": true,
-    "EnableSkuSearch": true,
+    "EnableSkuSearch": false,
     "showStockStatus": true,
     "GridCount": 3,
     "DefaultCurrency": {

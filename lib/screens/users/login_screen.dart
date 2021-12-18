@@ -290,11 +290,13 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                     const SizedBox(height: 30.0),
                                     Text(
                                       // 'Its rec to login as the web for full sync',
-                                      'מומלץ להתחבר בהתאם לאתר לסנכרון מיטבי',
+                                      // 'מומלץ להתחבר בהתאם לאתר לסנכרון מיטבי',
+                                      'התחברות מהירה',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.grey.shade400),
+                                          fontSize: 24,
+                                          // color: Colors.grey.shade400
+                                          color: Colors.grey.shade700),
                                     ),
                                     const SizedBox(height: 50.0),
                                     Row(
@@ -473,14 +475,15 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
-                                        Text(S.of(context).dontHaveAccount),
+                                        // Text(S.of(context).dontHaveAccount),
                                         GestureDetector(
                                           onTap: () {
                                             Navigator.of(context)
                                                 .pushNamed(RouteList.register);
                                           },
                                           child: Text(
-                                            ' ${S.of(context).signup}',
+                                            // ' ${S.of(context).signup}',
+                                            'הרשמה רגילה',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Theme.of(context)

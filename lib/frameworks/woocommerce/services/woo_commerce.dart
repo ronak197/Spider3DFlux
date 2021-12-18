@@ -210,7 +210,7 @@ class WooCommerce extends BaseServices {
   @override
   Future<List<Product>?> fetchProductsLayout({config, lang, userId}) async {
     try {
-      // print("part Completed: A-0");
+      print("part Completed: A-0");
       print("isCaching is ${kAdvanceConfig['isCaching']}");
 
       /// Load first page from cache.
@@ -223,6 +223,7 @@ class WooCommerce extends BaseServices {
         print(horizontalLayout);
         print("part Completed: A-1.2");
         if (horizontalLayout != null) {
+          print("part Completed: A-1.3A");
           obj = horizontalLayout.firstWhere(
               (o) =>
                   o['layout'] == config['layout'] &&
@@ -230,12 +231,19 @@ class WooCommerce extends BaseServices {
                           o['category'] == config['category']) ||
                       (o['tag'] != null && o['tag'] == config['tag'])),
               orElse: () => null);
-          if (obj != null && obj['data'].length > 0) print("obj");
-          print(obj);
-          print('Successfully Load first page from cache.');
-          return obj['data'];
+          if (obj != null && obj['data'].length > 0) {
+            print('Successfully Load first page from cache.');
+            print("My obj['data'] ${obj?['data']}");
+            return obj?['data'];
+          } else {
+            // when null
+            print(obj); // null
+            print("My obj['data'] ${obj?['data']} - My Not using cache..");
+          }
+          ;
+          //
         }
-
+        print("part Completed: A-1.3B");
         final verticalLayout = configCache!['VerticalLayout'];
         if (verticalLayout != null &&
             verticalLayout['layout'] == config['layout'] &&

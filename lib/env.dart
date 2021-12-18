@@ -2,7 +2,6 @@
 Map<String, dynamic> environment = {
   "appConfig": "https://config-fluxstore-idan054.vercel.app",
   // "appConfig": "lib/config/config_he.json",
-  // "appConfig": "lib/config/config_he_cache.json",
   "serverConfig": {
     "url": "https://spider3d.co.il",
     "consumerSecret": "cs_828fd108ff909e5aff0be3be11d3df07503a3a87",
@@ -22,8 +21,7 @@ Map<String, dynamic> environment = {
   },
 
   "advanceConfig": {
-    "isCaching":
-        true, // Should be false to Fix - Bottom GRID on Product page "מוצרים נוספים בקטגוריה"
+    "isCaching": true, // (Fixed)
     "kIsResizeImage": true,
     // "DefaultLanguage": "he",
     "DefaultLanguage": "he",

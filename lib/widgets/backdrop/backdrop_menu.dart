@@ -109,15 +109,21 @@ class _BackdropMenuState extends State<BackdropMenu> {
 
             // My Rec Category menu change categories place (Root or Sub category)
             catModel.categories!.forEach((element) {
-              switch (element.name) {
-                case 'מותג Spider3D USA': // .id = 4782
+              switch (element.id) {
+                /*                case 'מותג Spider3D USA': // .id = 4782
                   print("'Spider USA': Root -> 'חומרי גלם להדפסה'");
                   element.parent = '2352';
-                  break;
+                  break;*/
 
-                case 'חלקי חילוף מקוריים לארטילרי': // .id 5161
+                case '5161': // 'חלקי חילוף מקוריים לארטילרי': // .id 5161
                   print(
                       "'חלקי חילוף מקוריים לארטילרי': Root -> 'שדרוגים וחלפים למדפסות'");
+                  element.parent = '2342';
+                  break;
+
+                case '5467': // .id 5467 --- חלפים ושדרוגים ל-ENDER-3
+                  print(
+                      "'חלקי חילוף מקוריים לארטילרי': Root -> 'חלפים ושדרוגים ל-ENDER-3'");
                   element.parent = '2342';
                   break;
               }

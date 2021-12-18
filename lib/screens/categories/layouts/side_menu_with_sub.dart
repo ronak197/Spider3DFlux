@@ -221,7 +221,7 @@ class _StateGridSubCategory extends State<GridSubCategory> {
                   );
                 },
               )..insertAll(
-                  0,
+                  0, // categories.length - 1, // At the end
                   [
                     if (widget.parentCategoryImage != null &&
                         widget.parentCategoryImage!.isNotEmpty)

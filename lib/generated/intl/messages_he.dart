@@ -197,7 +197,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "country": MessageLookupByLibrary.simpleMessage("מדינה"),
         "countryIsRequired":
             MessageLookupByLibrary.simpleMessage("שדה המדינה נדרש"),
-        "couponCode": MessageLookupByLibrary.simpleMessage("קוד קופון"),
+        "couponCode": MessageLookupByLibrary.simpleMessage("קוד קופון   "),
         "couponHasBeenSavedSuccessfully":
             MessageLookupByLibrary.simpleMessage("הקופון נשמר בהצלחה."),
         "couponInvalid":

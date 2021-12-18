@@ -23,7 +23,7 @@ Map<String, dynamic> environment = {
   },
 
   "advanceConfig": {
-    "isCaching": true, // (Fixed)
+    "isCaching": false, // (Fixed)
     "kIsResizeImage": true,
     // "DefaultLanguage": "he",
     "DefaultLanguage": "he",
@@ -67,7 +67,7 @@ Map<String, dynamic> environment = {
     "RatioProductImage": 0.8,
     "EnableCouponCode": true,
     "ShowCouponList": true,
-    "ShowAllCoupons": true,
+    "ShowAllCoupons": false,
     "ShowExpiredCoupons": true,
     "AlwaysShowTabBar": true,
     "PrivacyPoliciesPageId": 25569,
@@ -466,7 +466,7 @@ Map<String, dynamic> environment = {
     "allowMultiple": false,
     "fileUploadSizeLimit": 5.0
   },
-  "cartDetail": {"minAllowTotalCartValue": 0, "maxAllowQuantity": 10},
+  "cartDetail": {"minAllowTotalCartValue": 0, "maxAllowQuantity": 100},
   "productVariantLanguage": {
     "en": {
       "color": "Color",
@@ -491,6 +491,7 @@ Map<String, dynamic> environment = {
   "excludedCategory": [
     2342, 5249, 2343,
     // 4939,
+    5467,
     2341, 2352, 5161,
     // 4905,
     5188,

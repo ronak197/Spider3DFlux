@@ -103,11 +103,11 @@ class CouponItem extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 4.0, right: 16),
+                  padding: const EdgeInsets.only(top: 4.0, right: 8),
                   child: Text(
                     _getCouponDescription(context, coupon),
                     style: const TextStyle(
-                      fontSize: 10.0,
+                      fontSize: 12.0,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -143,14 +143,13 @@ class CouponItem extends StatelessWidget {
                     const SizedBox(width: 8.0),
                   ],
                 ),
-                const Align(
+/*                const Align(
                   alignment: Alignment.bottomRight,
                   child: Padding(
                     padding: EdgeInsets.only(bottom: 16, right: 16),
-                    child: Text('This is demo data',
-                        style: TextStyle(fontSize: 8)),
+                    child: Text('This is demo data', style: TextStyle(fontSize: 8)),
                   ),
-                )
+                )*/
               ],
             ),
           ),
@@ -308,7 +307,8 @@ class CouponIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: size,
+      // height: size,
+      height: size! * 1.1,
       width: size! * 1.1,
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -390,7 +390,8 @@ String _getCouponTypeTitle(
     return trans?.discount ?? 'Discount';
   }
   if (coupon.isFixedCartDiscount) {
-    return trans?.fixedCartDiscount ?? 'Fixed Cart Discount';
+    // return trans?.fixedCartDiscount ?? 'Fixed Cart Discount';
+    return trans?.fixedCartDiscount ?? 'סכום:';
   }
   if (coupon.isFixedProductDiscount) {
     return trans?.fixedProductDiscount ?? 'Fixed Product Discount';

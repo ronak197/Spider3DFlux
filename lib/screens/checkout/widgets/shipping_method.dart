@@ -194,7 +194,8 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                   },
                                 ),
                                 const SizedBox(width: 5),
-                                Expanded(
+                                Container(
+                                  width: 150,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,

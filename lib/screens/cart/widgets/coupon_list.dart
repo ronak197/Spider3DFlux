@@ -81,7 +81,8 @@ class _CouponListState extends BaseScreen<CouponList> {
     final bool showExpiredCoupons =
         kAdvanceConfig['ShowExpiredCoupons'] ?? false;
 
-    final searchQuery = _couponTextController.text.toLowerCase();
+    // final searchQuery = _couponTextController.text.toLowerCase();
+    final searchQuery = '${_couponTextController.text}App'.toLowerCase(); // My
 
     coupons.retainWhere((c) {
       var shouldKeep = true;
@@ -152,8 +153,8 @@ class _CouponListState extends BaseScreen<CouponList> {
             color: Theme.of(context).primaryColorLight,
             borderRadius: BorderRadius.circular(20),
           ),
-          padding: const EdgeInsets.only(left: 24),
-          margin: const EdgeInsets.only(right: 24.0),
+          padding: const EdgeInsets.only(right: 24),
+          margin: const EdgeInsets.only(left: 24.0),
           child: TextField(
             onChanged: (_) {
               _displayCoupons(context);
@@ -164,7 +165,7 @@ class _CouponListState extends BaseScreen<CouponList> {
                 showCupertinoDialog(
                   context: context,
                   builder: (ctx) => CupertinoAlertDialog(
-                    title: const Text('Notice'),
+                    title: const Text('שים לב'),
                     content: Text(S.of(context).couponInvalid),
                     actions: [
                       CupertinoDialogAction(

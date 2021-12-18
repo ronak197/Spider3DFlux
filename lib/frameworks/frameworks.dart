@@ -232,7 +232,7 @@ abstract class BaseFrameworks {
       title,
       // style: TextStyle(fontSize: 14, color: Theme.of(context).accentColor),
       style: TextStyle(
-          fontSize: 15, color: Theme.of(context).appBarTheme.backgroundColor),
+          fontSize: 14, color: Theme.of(context).appBarTheme.backgroundColor),
     );
   }
 

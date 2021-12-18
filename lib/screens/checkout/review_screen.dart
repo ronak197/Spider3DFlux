@@ -942,7 +942,7 @@ class _ChooseDeliveryButtonState extends State<ChooseDeliveryButton> {
                     return AlertDialog(
                       scrollable: true,
                       insetPadding: EdgeInsets.symmetric(
-                        horizontal: 24.0,
+                        horizontal: 2.0,
                         // vertical: 48 * 3
                         vertical: MediaQuery.of(context).size.height * 0.20,
                       ),

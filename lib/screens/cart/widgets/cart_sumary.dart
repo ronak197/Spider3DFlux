@@ -50,8 +50,11 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
   void showError(String message) {
     setState(() => _loading = false);
     final snackBar = SnackBar(
-      content: Text(S.of(context).warning(message)),
-      duration: const Duration(seconds: 30),
+      // padding: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.only(bottom: 5),
+      // content: Text(S.of(context).warning(message)),
+      content: const Text('סליחה, הקופון נגמר או שאינו מתאים להזמנה'),
+      duration: const Duration(seconds: 7),
       action: SnackBarAction(
         label: S.of(context).close,
         onPressed: () {},
@@ -153,8 +156,12 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
                                         coupons: coupons,
                                         onSelect: (String couponCode) {
                                           setState(() {
-                                            couponController.text = couponCode;
+                                            // couponController.text = '${couponCode}App';
+                                            couponController.text =
+                                                '$couponCode';
                                           });
+                                          print(
+                                              'couponController ${couponController.text}');
                                           checkCoupon(couponController.text);
                                         },
                                       ),

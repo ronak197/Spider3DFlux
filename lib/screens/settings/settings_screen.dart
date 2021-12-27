@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
 import 'package:fstore/screens/users/spider_point_screen.dart';
+import 'package:fstore/screens/wishlist/thingi_screen.dart';
 import 'package:inspireui/widgets/flux_image.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
@@ -660,6 +661,7 @@ class _SettingScreenState extends State<SettingScreen>
               SliverAppBar(
                 backgroundColor: Theme.of(context).primaryColor,
                 leading: IconButton(
+                  tooltip: 'thingiToken ${Constants.thingiToken}',
                   icon: Icon(
                     // Icons.blur_on,
                     Icons.menu,

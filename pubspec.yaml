@@ -124,13 +124,14 @@ dependencies:
   timeago: 3.0.2
   universal_platform: 1.0.0-nullsafety
   uuid: 3.0.4
-  vector_math: 2.1.0
+#  vector_math: 2.1.0
+  vector_math:
 #  async: 2.6.1
   async:
   easy_debounce: 2.0.0
   devicelocale: 0.4.1
   collection: 1.15.0
-  visibility_detector: 0.2.0
+  visibility_detector: 0.2.2
   rate_my_app: 1.1.0+1
   package_info: 2.0.0
 

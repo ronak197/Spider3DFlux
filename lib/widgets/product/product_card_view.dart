@@ -155,6 +155,7 @@ class ProductCard extends StatelessWidget {
                 // icon: Icon(Icons.add_shopping_cart, size: width! / 10 * 1.3),
                 icon: const Icon(Icons.add_shopping_cart, size: 18),
                 onPressed: () => addToCart(context)),
+
           )
         : Container(width: 30, height: 30);
 

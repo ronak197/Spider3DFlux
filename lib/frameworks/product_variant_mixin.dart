@@ -456,7 +456,13 @@ mixin ProductVariantMixin {
           if (isAvailable && inStock && !isExternal)
             Expanded(
               child: GestureDetector(
-                onTap: () => addToCart(false, inStock),
+                onTap: () {
+                  try {
+                    addToCart(false, inStock);
+                  } catch (e, trace) {
+                    print('addToCart() Error catched: e: $e \n trace: $trace');
+                  }
+                },
                 child: Container(
                   height: 44,
                   decoration: BoxDecoration(
@@ -486,129 +492,141 @@ mixin ProductVariantMixin {
       ProductVariation? productVariation, Map<String?, String?> mapAttribute,
       [bool buyNow = false, bool inStock = false]) {
     /// Out of stock || Variable product but not select any variant.
-    if (!inStock || (product.type == 'variable' && mapAttribute.isEmpty)) {
-      return;
-    }
+    try {
+      print('Start my try addToCart()');
+      if (!inStock || (product.type == 'variable' && mapAttribute.isEmpty)) {
+        return;
+      }
 
-    final cartModel = Provider.of<CartModel>(context, listen: false);
-    if (product.type == 'external') {
-      openWebView(context, product);
-      return;
-    }
+      final cartModel = Provider.of<CartModel>(context, listen: false);
+      if (product.type == 'external') {
+        openWebView(context, product);
+        return;
+      }
 
-    final _mapAttribute = Map<String, String>.from(mapAttribute);
-    productVariation =
-        Provider.of<ProductModel>(context, listen: false).productVariation;
-    var message = cartModel.addProductToCart(
-        context: context,
-        product: product,
-        quantity: quantity,
-        variation: productVariation,
-        options: _mapAttribute);
+      // final _mapAttribute = Map<String, String>.from(mapAttribute); // original
+      print('mapAttr: ${mapAttribute.keys.toList()}');
+      var cleanedAttrMap = Map<String?,String?>.from(mapAttribute);
+      cleanedAttrMap.removeWhere((key, value) => value == null);
+      cleanedAttrMap =  cleanedAttrMap.map((key, value) => MapEntry(key?.replaceAll(' ', ''), value));
+      print('cleanedAttrMap: $cleanedAttrMap');
 
-    if (message.isNotEmpty) {
-      showFlash(
-        context: context,
-        duration: const Duration(seconds: 3),
-        builder: (context, controller) {
-          return Flash(
-            borderRadius: BorderRadius.circular(3.0),
-            backgroundColor: Theme.of(context).errorColor,
-            controller: controller,
-            style: FlashStyle.floating,
-            position: FlashPosition.top,
-            horizontalDismissDirection: HorizontalDismissDirection.horizontal,
-            child: FlashBar(
-              icon: const Icon(
-                Icons.check,
-                color: Colors.white,
-              ),
-              message: Text(
-                message,
-                style: const TextStyle(
+      final _mapAttribute = Map<String, String>.from(cleanedAttrMap);
+      productVariation =
+          Provider.of<ProductModel>(context, listen: false).productVariation;
+      var message = cartModel.addProductToCart(
+          context: context,
+          product: product,
+          quantity: quantity,
+          variation: productVariation,
+          options: _mapAttribute);
+
+      if (message.isNotEmpty) {
+        showFlash(
+          context: context,
+          duration: const Duration(seconds: 3),
+          builder: (context, controller) {
+            return Flash(
+              borderRadius: BorderRadius.circular(3.0),
+              backgroundColor: Theme.of(context).errorColor,
+              controller: controller,
+              style: FlashStyle.floating,
+              position: FlashPosition.top,
+              horizontalDismissDirection: HorizontalDismissDirection.horizontal,
+              child: FlashBar(
+                icon: const Icon(
+                  Icons.check,
                   color: Colors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w700,
+                ),
+                message: Text(
+                  message,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
-            ),
+            );
+          },
+        );
+      } else {
+        if (buyNow) {
+          Navigator.of(context).pushNamed(
+            RouteList.cart,
+            arguments: CartScreenArgument(isModal: true, isBuyNow: true),
           );
-        },
-      );
-    } else {
-      if (buyNow) {
-        Navigator.of(context).pushNamed(
-          RouteList.cart,
-          arguments: CartScreenArgument(isModal: true, isBuyNow: true),
+        }
+        showFlash(
+          context: context,
+          duration: const Duration(seconds: 3),
+          builder: (context, controller) {
+            return Flash(
+              borderRadius: BorderRadius.circular(3.0),
+              backgroundColor: Theme.of(context).primaryColor,
+              controller: controller,
+              style: FlashStyle.floating,
+              position: FlashPosition.top,
+              horizontalDismissDirection: HorizontalDismissDirection.horizontal,
+              child: FlashBar(
+                icon: const Icon(
+                  Icons.check,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  product.name!,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15.0,
+                  ),
+                ),
+                message: Text(
+                  S.of(context).addToCartSucessfully,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.0,
+                  ),
+                ),
+              ),
+            );
+          },
         );
       }
-      showFlash(
-        context: context,
-        duration: const Duration(seconds: 3),
-        builder: (context, controller) {
-          return Flash(
-            borderRadius: BorderRadius.circular(3.0),
-            backgroundColor: Theme.of(context).primaryColor,
-            controller: controller,
-            style: FlashStyle.floating,
-            position: FlashPosition.top,
-            horizontalDismissDirection: HorizontalDismissDirection.horizontal,
-            child: FlashBar(
-              icon: const Icon(
-                Icons.check,
-                color: Colors.white,
-              ),
-              title: Text(
-                product.name!,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15.0,
-                ),
-              ),
-              message: Text(
-                S.of(context).addToCartSucessfully,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 15.0,
-                ),
-              ),
-            ),
-          );
-        },
-      );
+    } catch (e, trace) {
+      print('addToCart() Error caught: e: $e \n trace: $trace');
     }
   }
+}
 
-  /// Support Affiliate product
-  void openWebView(BuildContext context, Product product) {
-    if (product.affiliateUrl == null || product.affiliateUrl!.isEmpty) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return Scaffold(
-          appBar: AppBar(
-            leading: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Icon(Icons.arrow_back_ios),
-            ),
+/// Support Affiliate product
+void openWebView(BuildContext context, Product product) {
+  if (product.affiliateUrl == null || product.affiliateUrl!.isEmpty) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return Scaffold(
+        appBar: AppBar(
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Icon(Icons.arrow_back_ios),
           ),
-          body: Center(
-            child: Text(S.of(context).notFound),
-          ),
-        );
-      }));
-      return;
-    }
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => WebView(
-          url: product.affiliateUrl,
-          title: product.name,
         ),
-      ),
-    );
+        body: Center(
+          child: Text(S.of(context).notFound),
+        ),
+      );
+    }));
+    return;
   }
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => WebView(
+        url: product.affiliateUrl,
+        title: product.name,
+      ),
+    ),
+  );
 }

@@ -530,6 +530,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_mailer",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_mailer-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_native_image",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_native_image-0.0.6",
       "packageUri": "lib/",
@@ -928,6 +934,12 @@
     {
       "name": "logging",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/logging-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "mailer",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/mailer-5.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1670,7 +1682,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-12-27T10:25:49.216953Z",
+  "generated": "2021-12-27T14:42:48.875972Z",
   "generator": "pub",
   "generatorVersion": "2.15.1"
 }

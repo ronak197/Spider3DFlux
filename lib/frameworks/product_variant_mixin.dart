@@ -3,6 +3,7 @@ import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart' as html;
 import 'package:fstore/screens/users/spider_point_screen.dart';
+import 'package:fstore/services/my_sendErrorEmail.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 import '../common/config.dart';
@@ -504,14 +505,17 @@ mixin ProductVariantMixin {
         return;
       }
 
+      // final _mapAttribute = null;
       // final _mapAttribute = Map<String, String>.from(mapAttribute); // original
+      //
       print('mapAttr: ${mapAttribute.keys.toList()}');
-      var cleanedAttrMap = Map<String?,String?>.from(mapAttribute);
+      var cleanedAttrMap = Map<String?, String?>.from(mapAttribute);
       cleanedAttrMap.removeWhere((key, value) => value == null);
-      cleanedAttrMap =  cleanedAttrMap.map((key, value) => MapEntry(key?.replaceAll(' ', ''), value));
+      cleanedAttrMap = cleanedAttrMap.map((key, value) =>
+          MapEntry(key?.replaceAll(' ', ''), value));
       print('cleanedAttrMap: $cleanedAttrMap');
-
       final _mapAttribute = Map<String, String>.from(cleanedAttrMap);
+
       productVariation =
           Provider.of<ProductModel>(context, listen: false).productVariation;
       var message = cartModel.addProductToCart(
@@ -594,6 +598,19 @@ mixin ProductVariantMixin {
         );
       }
     } catch (e, trace) {
+      print('addToCart() Error caught, Sending Email with full details..');
+      const snackBar = SnackBar(
+          duration: Duration(seconds: 6),
+          content: Text(
+              'אופס! לא ניתן להוסיף מוצר זה לעגלה... השגיאה התקבלה אצלנו ותטופל. אנא נסה שוב מחר!'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      sendErrorMail(
+          product_name: product.name,
+          product_id: product.id,
+          product_link: product.permalink,
+          err_details: e.toString(),
+          err_trace: trace.toString());
+
       print('addToCart() Error caught: e: $e \n trace: $trace');
     }
   }

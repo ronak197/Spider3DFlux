@@ -141,7 +141,9 @@ void main() async {
 
     ResponsiveSizingConfig.instance.setCustomBreakpoints(
         const ScreenBreakpoints(desktop: 900, tablet: 600, watch: 100));
-    runApp(App(languageCode: languageCode));
+    runApp(
+        App(languageCode: languageCode)
+    );
   }, (e, stack) {
     printLog(e);
     printLog(stack);

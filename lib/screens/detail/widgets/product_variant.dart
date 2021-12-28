@@ -270,9 +270,12 @@ class _StateProductVariant extends State<ProductVariant> {
     final isVariationLoading =
         productVariation == null && (variations?.isEmpty ?? true);
 
+    print('productType: ${product.type}');
+
     return Column(
       children: <Widget>[
         ...getProductTitleWidget(),
+        if (isVariationLoading && product.type == 'variable') kLoadingWidget(context),
         if (!isVariationLoading) ...getProductAttributeWidget(),
         ...getProductAddonsWidget(),
         ...getBuyButtonWidget(),

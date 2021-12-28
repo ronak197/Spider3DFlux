@@ -665,7 +665,7 @@ class _SettingScreenState extends State<SettingScreen>
                   icon: Icon(
                     // Icons.blur_on,
                     Icons.menu,
-                    // color: Colors.white70,
+                    // color: Colors.wh11ite70,
                     // color: Colors.black87,
                     color: Theme.of(context)
                         .tabBarTheme

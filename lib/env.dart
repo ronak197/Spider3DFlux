@@ -23,7 +23,7 @@ Map<String, dynamic> environment = {
   },
 
   "advanceConfig": {
-    "isCaching": false, // (Fixed)
+    "isCaching": true, // (Fixed)
     "kIsResizeImage": true,
     // "DefaultLanguage": "he",
     "DefaultLanguage": "he",

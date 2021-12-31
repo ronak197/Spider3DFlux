@@ -506,11 +506,15 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                       });*/
 
                   // OverLay (Stack) Loading while PaymentMethods is set - could be better
-                  Future.delayed(const Duration(seconds: 3)).then((_) {
-                    setState(() {
-                      is_payment_loading = false;
-                      // is_payment_loading != is_payment_loading;
-                    });
+                  Future.delayed(const Duration(seconds: 2)).then((_) {
+                    try {
+                      setState(() {
+                        is_payment_loading = false;
+                        // is_payment_loading != is_payment_loading;
+                      });
+                    } catch (e, trace) {
+                      print('my trace: $trace');
+                    }
                     // print(is_payment_loading);
                   });
                   return Stack(

@@ -36,7 +36,7 @@ class PaymentMethods extends StatefulWidget {
 }
 
 class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
-  String? selectedId;
+  String? radioSelectionId;
   var order_status = '';
   bool isPaying = false;
   var showCheckoutLoading = false;
@@ -176,7 +176,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                                       InkWell(
                                         onTap: () {
                                           setState(() {
-                                            selectedId =
+                                            radioSelectionId =
                                                 model.paymentMethods[i].id;
                                           });
                                         },
@@ -184,7 +184,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                                           decoration: BoxDecoration(
                                               color:
                                                   model.paymentMethods[i].id ==
-                                                          selectedId
+                                                          radioSelectionId
                                                       ? Theme.of(context)
                                                           .primaryColorLight
                                                       : Colors.transparent),
@@ -199,10 +199,10 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                                                     focusColor: kColorSpiderRed,
                                                     value: model
                                                         .paymentMethods[i].id,
-                                                    groupValue: selectedId,
+                                                    groupValue: radioSelectionId,
                                                     onChanged: (dynamic i) {
                                                       setState(() {
-                                                        selectedId = i;
+                                                        radioSelectionId = i;
                                                       });
 
                                                       if (paymentMethodModel
@@ -213,7 +213,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                                                                 .paymentMethods
                                                                 .firstWhere((item) =>
                                                                     item.id ==
-                                                                    selectedId);
+                                                                    radioSelectionId);
 
                                                         Provider.of<CartModel>(
                                                                 context,
@@ -441,7 +441,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                             //   if (note.isNotEmpty && note != '') {Provider.of<CartModel>(context, listen: false).setOrderNotes(note);}
 
                             // var cartModel = Provider.of<CartModel>(context);
-                            var addressModel = cartModel.address;
+                             var addressModel = cartModel.address;
                             var shipping_details_ready = false;
                             var shipping_method_ready = false;
                             var payment_details_ready = false;
@@ -524,20 +524,61 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                             // print('Payment Method:');
                             // print(cartModel.paymentMethod!.title);
 
+                             // If Radio button Selected on screen but not on cartModel.paymentMethod
+                            if (cartModel.paymentMethod == null ||
+                            cartModel.paymentMethod?.title == null ||
+                            cartModel.paymentMethod?.title == '' &&
+                            radioSelectionId != null ||
+                            radioSelectionId != ''
+                            ) {
+                              print('Bug Fix! radioSelectionId is $radioSelectionId But cartModel.paymentMethod is null!');
+                                if (paymentMethodModel
+                                    .paymentMethods
+                                    .isNotEmpty) {
+                                final paymentMethod =
+                                paymentMethodModel
+                                    .paymentMethods
+                                    .firstWhere((item) =>
+                                item.id ==
+                                radioSelectionId);
+
+                                Provider.of<CartModel>(
+                                context,
+                                listen: false)
+                                    .setPaymentMethod(
+                                paymentMethod);
+
+                                print('Bug Fixed:');
+                                print('cartModel.paymentMethod');
+                                print(cartModel.paymentMethod?.title);
+
+                                } }
+
                             if (cartModel.paymentMethod == null ||
                                 cartModel.paymentMethod!.title == null ||
-                                cartModel.paymentMethod!.title == '') {
+                                cartModel.paymentMethod!.title == '' ||
+                                radioSelectionId == null ||
+                                radioSelectionId == ''
+                            ) {
                               print('>> Select A Payment method. <<');
                               setState(() {
                                 counter += 1;
                                 order_status += '${counter.toString()}. ';
                                 order_status += 'בחר אמצעי תשלום \n';
                               });
+                              print('cartModel.paymentMethod');
+                              print(cartModel.paymentMethod?.title);
+
+                              print('radioSelectionId');
+                              print(radioSelectionId);
+
                               print('order_status');
                               print(order_status);
+
                             } else {
                               print('cartModel.paymentMethod');
-                              print(cartModel.paymentMethod!.title);
+                              print(cartModel.paymentMethod?.title);
+
                               payment_method_ready = true;
                             }
 
@@ -545,7 +586,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
                             print(cartModel.notes);
 
                             print('selectedId:');
-                            print(selectedId);
+                            print(radioSelectionId);
 
                             print('isPaying:');
                             print(isPaying);
@@ -622,7 +663,7 @@ class _PaymentMethodsState extends State<PaymentMethods> with RazorDelegate {
     isPaying = true;
     if (paymentMethodModel.paymentMethods.isNotEmpty) {
       final paymentMethod = paymentMethodModel.paymentMethods
-          .firstWhere((item) => item.id == selectedId);
+          .firstWhere((item) => item.id == radioSelectionId);
 
       Provider.of<CartModel>(context, listen: false)
           .setPaymentMethod(paymentMethod);

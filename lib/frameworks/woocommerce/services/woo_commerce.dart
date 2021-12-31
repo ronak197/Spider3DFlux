@@ -852,16 +852,21 @@ class WooCommerce extends BaseServices {
       if (transactionId != null) {
         params['transaction_id'] = transactionId;
       }
-      // print('paramss');
-      // print(params);
-      // print('paramss as body');
-      // print(convert.jsonEncode(params));
+      print('paramss');
+      print(params);
+      print('paramss as body');
+      print(convert.jsonEncode(params));
+
+      var base64Str = EncodeUtils.encodeCookie(user.user!.cookie!);
+
 
       final response = await httpPost(
-          '$url/wp-json/api/flutter_order/create'.toUri()!,
+          '$url/wp-json/api/flutter_order/create?token=$base64Str&BOOP=lol'.toUri()!,
+          // '$url/wp-json/api/flutter_order/create'.toUri()!,
           body: convert.jsonEncode(params),
           headers: {
             'User-Cookie': user.user != null ? user.user!.cookie! : '',
+            // 'User-Cookie': 'token=c3hhfDE2MzYxMDgxMTd8bG02cWtvMWY5WnhneEhMUmJhWEpMNE9RWERJVUZNZUlJWVJIMjEzS1BhQXwwYjhjZGVkZjU2MWZlOTljYmRlMGNmMjMxZGVjY2Y4NmI0OTA4OTA4ZTRlNzA2OTA4ZjIyMTAxNTBiNmI5NmNk',
             'Content-Type': 'application/json'
           });
       var body = convert.jsonDecode(response.body);
@@ -872,7 +877,8 @@ class WooCommerce extends BaseServices {
         }
         return Order.fromJson(body);
       } else {
-        throw Exception(body['message']);
+        // throw Exception('XXX ${body['message']}');
+        throw Exception('\nאירעה שגיאה, בבקשה התנתק והתחבר מחדש לחשבון.');
       }
     } catch (e) {
       //This error exception is about your Rest API is not config correctly so that not return the correct JSON format, please double check the document from this link https://docs.inspireui.com/fluxstore/woocommerce-setup/
@@ -1479,6 +1485,7 @@ class WooCommerce extends BaseServices {
   Future<List<dynamic>?>? getCartInfo(String? token) async {
     try {
       var base64Str = EncodeUtils.encodeCookie(token!);
+
       final response = await httpCache(
           '$url/wp-json/api/flutter_woo/cart?token=$base64Str'.toUri()!);
       final body = convert.jsonDecode(response.body);

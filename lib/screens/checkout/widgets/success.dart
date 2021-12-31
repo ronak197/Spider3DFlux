@@ -9,6 +9,7 @@ import '../../../models/index.dart' show Order, UserModel, PointModel;
 import '../../../routes/flux_navigate.dart';
 import '../../../services/index.dart';
 import '../../base_screen.dart';
+import '../checkout_screen.dart';
 
 class OrderedSuccess extends StatefulWidget {
   final Order? order;
@@ -102,12 +103,25 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
                       onPrimary: Colors.white,
                     ),
                     onPressed: () {
+                      setState(() {
+                        newOrder = null;
+                      });
+                      widget.controller!.animateToPage(
+                        0,
+                        duration: const Duration(milliseconds: 150),
+                        curve: Curves.easeInOut,
+                      );
+
                       final user =
                           Provider.of<UserModel>(context, listen: false).user;
                       FluxNavigate.pushNamed(
                         RouteList.orders,
                         arguments: user,
                       );
+
+                      setState(() {
+                        newOrder = null;
+                      });
                     },
                     child: Text(
                       S.of(context).showAllMyOrdered.toUpperCase(),
@@ -129,6 +143,15 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
                       shape: const RoundedRectangleBorder(),
                     ),
                     onPressed: () {
+                      setState(() {
+                        newOrder = null;
+                      });
+                      widget.controller!.animateToPage(
+                        0,
+                        duration: const Duration(milliseconds: 150),
+                        curve: Curves.easeInOut,
+                      );
+
                       if (widget.isModal != null && widget.isModal == true) {
                         Navigator.of(context)
                             .popUntil((route) => route.isFirst);
@@ -136,6 +159,9 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
                         MainTabControlDelegate.getInstance()
                             .changeTab(RouteList.home.replaceFirst('/', ''));
                       }
+
+
+
                     },
                     child: Text(
                       S.of(context).backToShop.toUpperCase(),
@@ -148,11 +174,7 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
           ),
         ),
         const SizedBox(height: 15),
-        Text(
-          '(להזמנה נוספת יש להכנס לאפליקציה מחדש)',
-          style: TextStyle(
-              color: Theme.of(context).accentColor, height: 1.4, fontSize: 14),
-        ),
+
       ],
     );
   }

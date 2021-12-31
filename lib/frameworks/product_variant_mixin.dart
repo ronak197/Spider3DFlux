@@ -281,7 +281,8 @@ mixin ProductVariantMixin {
                     )
                   : Text(
                       inStock
-                          ? '${S.of(context).inStock}$stockQuantity'
+                          // ? '${S.of(context).inStock}$stockQuantity'
+                          ? '${S.of(context).inStock}'
                           : S.of(context).outOfStock,
                       style: Theme.of(context).textTheme.subtitle2!.copyWith(
                             // color: inStock ? Theme.of(context).primaryColor : const Color(0xFFe74c3c),

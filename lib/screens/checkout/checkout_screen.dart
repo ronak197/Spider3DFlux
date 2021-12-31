@@ -239,9 +239,13 @@ class _CheckoutState extends BaseScreen<Checkout> {
             leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
+                  setState(() {
+                    // my comment: while newOrder is not null > set to null (otherwise do nothing)
+                    newOrder != null ? newOrder = null : null;
+                  });
                   widget.controller!.animateToPage(
                     0,
-                    duration: const Duration(milliseconds: 250),
+                    duration: const Duration(milliseconds: 150),
                     curve: Curves.easeInOut,
                   );
                   // Navigator.of(context).pop();

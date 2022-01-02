@@ -45,18 +45,35 @@ class BackdropMenu extends StatefulWidget {
 class _BackdropMenuState extends State<BackdropMenu> {
   double minPrice = 0.0;
   double maxPrice = kMaxPriceFilter / 2;
+
+  // double maxPrice = myMaxPriceFilter / 2;
   String? categoryId = '-1';
   String? tagId = '-1';
   String? currentSlug;
   String? listingLocationId;
   int currentSelectedAttr = -1;
+  bool isPrintersCategory = false;
 
   @override
   void initState() {
-    super.initState();
     categoryId = widget.categoryId;
+    setState(() {
+      // kMaxPriceFilter = 1000.0;
+      if (categoryId == '2341') {
+        isPrintersCategory = true;
+        kMaxPriceFilter = 10000.0;
+        maxPrice = kMaxPriceFilter / 2;
+      }
+      print('kMaxPriceFilter $kMaxPriceFilter');
+      print('maxPrice $maxPrice');
+      print('categoryId $categoryId');
+      print('categoryId ${categoryId.runtimeType}');
+    });
+    // print('myMaxPriceFilter $myMaxPriceFilter');
+    // print('maxPrice $maxPrice');
     tagId = widget.tagId;
     listingLocationId = widget.listingLocationId;
+    super.initState();
   }
 
   @override
@@ -109,21 +126,15 @@ class _BackdropMenuState extends State<BackdropMenu> {
 
             // My Rec Category menu change categories place (Root or Sub category)
             catModel.categories!.forEach((element) {
-              switch (element.id) {
-                /*                case 'מותג Spider3D USA': // .id = 4782
+              switch (element.name) {
+                case 'מותג Spider3D USA': // .id = 4782
                   print("'Spider USA': Root -> 'חומרי גלם להדפסה'");
                   element.parent = '2352';
-                  break;*/
-
-                case '5161': // 'חלקי חילוף מקוריים לארטילרי': // .id 5161
-                  print(
-                      "'חלקי חילוף מקוריים לארטילרי': Root -> 'שדרוגים וחלפים למדפסות'");
-                  element.parent = '2342';
                   break;
 
-                case '5467': // .id 5467 --- חלפים ושדרוגים ל-ENDER-3
+                case 'חלקי חילוף מקוריים לארטילרי': // .id 5161
                   print(
-                      "'חלקי חילוף מקוריים לארטילרי': Root -> 'חלפים ושדרוגים ל-ENDER-3'");
+                      "'חלקי חילוף מקוריים לארטילרי': Root -> 'שדרוגים וחלפים למדפסות'");
                   element.parent = '2342';
                   break;
               }
@@ -159,8 +170,8 @@ class _BackdropMenuState extends State<BackdropMenu> {
               if (list_len != list.length) list.removeAt(list.length - 1);
             }
 
-            print('value.lstProductAttribute!');
-            print(filterAttr.lstProductAttribute!.length);
+            // print('value.lstProductAttribute!');
+            // print(filterAttr.lstProductAttribute!.length);
             var myOrderFilters = filterAttr.lstProductAttribute;
 
             // My Replace places of values in the list (A,B,C -> B,A,C), At Least 1 value should be in list!
@@ -212,6 +223,7 @@ class _BackdropMenuState extends State<BackdropMenu> {
                 // print(forIndex);
               }
             }
+            // myOrderFilters = myOrderFilters?.sublist(0,forIndex);
             // filterAttr.lstProductAttribute = myOrderFilters;
 
             return SingleChildScrollView(
@@ -252,51 +264,51 @@ class _BackdropMenuState extends State<BackdropMenu> {
                   const SizedBox(height: 10),
 
                   // Layout title & selection
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: Text(
-                      S.of(context).layout.toUpperCase(),
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                          ),
-                    ),
-                  ),
-                  const SizedBox(height: 5.0),
-                  Wrap(
-                    children: <Widget>[
-                      const SizedBox(width: 8),
-                      for (var item in kProductListLayout)
-                        Tooltip(
-                          message: item['layout']!,
-                          child: GestureDetector(
-                            onTap: () =>
-                                Provider.of<AppModel>(context, listen: false)
-                                    .updateProductListLayout(item['layout']),
-                            child: Container(
-                              width: 50,
-                              height: 46,
-                              margin: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 4),
-                              decoration: BoxDecoration(
-                                  color: selectLayout == item['layout']
-                                      ? Theme.of(context).backgroundColor
-                                      : Colors.white.withOpacity(0.1),
-                                  borderRadius: BorderRadius.circular(9.0)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Image.asset(
-                                  item['image']!,
-                                  color: selectLayout == item['layout']
-                                      ? Theme.of(context).accentColor
-                                      : Colors.white.withOpacity(0.3),
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                    ],
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 15),
+                  //   child: Text(
+                  //     S.of(context).layout.toUpperCase(),
+                  //     style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                  //           fontWeight: FontWeight.w700,
+                  //           color: Colors.white,
+                  //         ),
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 5.0),
+                  // Wrap(
+                  //   children: <Widget>[
+                  //     const SizedBox(width: 8),
+                  //     for (var item in kProductListLayout)
+                  //       Tooltip(
+                  //         message: item['layout']!,
+                  //         child: GestureDetector(
+                  //           onTap: () =>
+                  //               Provider.of<AppModel>(context, listen: false)
+                  //                   .updateProductListLayout(item['layout']),
+                  //           child: Container(
+                  //             width: 50,
+                  //             height: 46,
+                  //             margin: const EdgeInsets.symmetric(
+                  //                 horizontal: 8, vertical: 4),
+                  //             decoration: BoxDecoration(
+                  //                 color: selectLayout == item['layout']
+                  //                     ? Theme.of(context).backgroundColor
+                  //                     : Colors.white.withOpacity(0.1),
+                  //                 borderRadius: BorderRadius.circular(9.0)),
+                  //             child: Padding(
+                  //               padding: const EdgeInsets.all(10.0),
+                  //               child: Image.asset(
+                  //                 item['image']!,
+                  //                 color: selectLayout == item['layout']
+                  //                     ? Theme.of(context).accentColor
+                  //                     : Colors.white.withOpacity(0.3),
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       )
+                  //   ],
+                  // ),
 
                   // Category title & bubble
                   Visibility(
@@ -414,6 +426,70 @@ class _BackdropMenuState extends State<BackdropMenu> {
                       value: filterAttr,
                       child: Consumer<FilterAttributeModel>(
                         builder: (context, value, child) {
+                          var newLstProductAttributes =
+                              List.of(filterAttr.lstProductAttribute!);
+                          var lstProductAttribute =
+                              List.of(filterAttr.lstProductAttribute!);
+
+                          var mustBeAddedCount = 0;
+                          var forIndex = 0;
+                          for (var item in lstProductAttribute) {
+                            // print('// ${item.name} = ${item.id}');
+                            // I/flutter (16098): // A1 סוג חומר הדפסה = 118
+                            // I/flutter (16098): // שיטת הדפסה = 172
+                            // I/flutter (16098): // צבעים = 7
+                            // I/flutter (16098): // תצורה = 166
+                            // I/flutter (16098): // קוטר חומר = 168
+                            // I/flutter (16098): // מותג- = 148
+                            // I/flutter (16098): // שיטת כיול = 125
+                            //   switch (item.name?.trim()) {
+                            switch (item.id) {
+                              case 118: // 'A1 סוג חומר הדפסה':
+                                newLstProductAttributes[0] =
+                                    lstProductAttribute[forIndex];
+                                mustBeAddedCount++;
+                                break;
+                              case 7: // צבעים = 7
+                                newLstProductAttributes[2] =
+                                    lstProductAttribute[forIndex];
+                                mustBeAddedCount++;
+                                break;
+                              case 168: // 'קוטר חומר':
+                                newLstProductAttributes[4] =
+                                    lstProductAttribute[forIndex];
+                                mustBeAddedCount++;
+                                break;
+                              case 148: // 'מותג-':
+                                newLstProductAttributes[5] =
+                                    lstProductAttribute[forIndex];
+                                mustBeAddedCount++;
+                                break;
+                              case 172: // 'שיטת הדפסה':
+                                newLstProductAttributes[1] =
+                                    lstProductAttribute[forIndex];
+                                mustBeAddedCount++;
+                                break;
+                              case 166: // תצורה = 166
+                                newLstProductAttributes[3] =
+                                    lstProductAttribute[forIndex];
+                                mustBeAddedCount++;
+                                break;
+                              case 125: // 'שיטת כיול':
+                                newLstProductAttributes[6] =
+                                    lstProductAttribute[forIndex];
+                                mustBeAddedCount++;
+                                break;
+                              default:
+                                break;
+                            }
+                            forIndex++;
+                          }
+                          newLstProductAttributes.removeRange(
+                              mustBeAddedCount, newLstProductAttributes.length);
+
+                          value.lstProductAttribute =
+                              List.of(newLstProductAttributes);
+
                           if (value.lstProductAttribute != null) {
                             var list = List<Widget>.generate(
                               value.lstProductAttribute!.length,
@@ -448,7 +524,7 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                       const EdgeInsets.only(right: 15, top: 0),
                                   child: Text(
                                     // S.of(context).attributes.toUpperCase(),
-                                    'בחר מסנן:',
+                                    'בחר שיטת סינון:',
                                     style: Theme.of(context)
                                         .textTheme
                                         .subtitle1!
@@ -467,8 +543,10 @@ class _BackdropMenuState extends State<BackdropMenu> {
                                   ),
                                   child: GridView.count(
                                     scrollDirection: Axis.horizontal,
-                                    shrinkWrap: true,
+                                    // shrinkWrap: true,
                                     crossAxisCount: 2,
+                                    // semanticChildCount: 2,
+                                    // crossAxisSpacing: 10,
                                     children: list,
                                   ),
                                 ),
@@ -709,6 +787,9 @@ class _BackdropMenuState extends State<BackdropMenu> {
                     child: RangeSlider(
                       min: 0.0,
                       max: kMaxPriceFilter,
+                      // max: myMaxPriceFilter,
+                      // inactiveColor: Colors.grey,
+                      // activeColor: Colors.blue,
                       divisions: kFilterDivision,
                       values: RangeValues(minPrice, maxPrice),
                       onChanged: (RangeValues values) {

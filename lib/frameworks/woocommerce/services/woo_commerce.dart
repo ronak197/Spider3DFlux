@@ -1,3 +1,5 @@
+// ignore_for_file: omit_local_variable_types
+
 import 'dart:async';
 import 'dart:convert' as convert;
 import 'dart:convert';
@@ -7,7 +9,8 @@ import 'package:fstore/services/https.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart' show compute;
 import 'package:quiver/strings.dart';
-
+import 'dart:math';
+import 'dart:math';
 import '../../../common/config.dart';
 import '../../../common/constants.dart';
 import '../../../common/tools.dart';
@@ -40,6 +43,8 @@ import '../../../services/index.dart';
 import '../../../services/wordpress/blognews_api.dart';
 import '../../../services/wordpress/wordpress_api.dart';
 import 'woocommerce_api.dart';
+import 'dart:math';
+
 
 class WooCommerce extends BaseServices {
   Map<String, dynamic>? configCache;
@@ -150,6 +155,7 @@ class WooCommerce extends BaseServices {
       .replaceAll('[', '')
       .replaceAll(']', '')
       .replaceAll(' ', '');
+
   Future<List<Category>> getCategoriesByPage({lang, page}) async {
     try {
       var url =
@@ -265,8 +271,12 @@ class WooCommerce extends BaseServices {
         endPoint += '&orderby=$myOrderBy';
         endPoint += '&order=$myOrder';
         endPoint += "&category=${config["category"]}";
+          print('WEEEE0 ${config['category'].runtimeType}');
+        if (config['category'] == 2352){ // if filaments - remove SARAF שרף
+          endPoint += '&attribute=pa_%D7%A7%D7%95%D7%98%D7%A8-%D7%97%D7%95%D7%9E%D7%A8&attribute_term=5564';
+        }
 
-        endPoint += '&min_price=1';
+        // endPoint += '&min_price=1';
         endPoint += '&stock_status=instock';
       }
       if (config.containsKey('tag') && config['tag'] != null) {
@@ -375,7 +385,7 @@ class WooCommerce extends BaseServices {
       {categoryId,
       tagId,
       page = 1,
-      minPrice,
+      minPrice = 1,
       maxPrice,
       orderBy,
       lang,
@@ -410,14 +420,18 @@ class WooCommerce extends BaseServices {
       }
       if (categoryId != null && categoryId != '-1' && categoryId != '0') {
         endPoint += '&category=$categoryId';
+        print('WEEEE1 ${categoryId.runtimeType}');
+        if (categoryId == '2352'){ // if filaments - remove SARAF שרף
+          endPoint += '&attribute=pa_%D7%A7%D7%95%D7%98%D7%A8-%D7%97%D7%95%D7%9E%D7%A8&attribute_term=5564';
+        }
       }
       if (tagId != null) {
         endPoint += '&tag=$tagId';
       }
       if (minPrice != null) {
-        if (minPrice == '0' || minPrice == 0.0 || minPrice == 0) {
-          minPrice = 1.0;
-        } // my - To Remove 0₪ Products
+        // if (minPrice == '0' || minPrice == 0.0 || minPrice == 0) {
+        //   minPrice = 1.0;
+        // } // my - To Remove 0₪ Products
         endPoint += '&min_price=${(minPrice as double).toInt().toString()}';
       }
       if (maxPrice != null && maxPrice > 0) {
@@ -428,7 +442,7 @@ class WooCommerce extends BaseServices {
       // endPoint += '&orderby=popularity';
       endPoint += '&orderby=$myOrderBy';
 
-      endPoint += '&min_price=1';
+      // endPoint += '&min_price=1';
       endPoint += '&stock_status=instock';
       // }
 
@@ -458,6 +472,7 @@ class WooCommerce extends BaseServices {
       if (response is Map && isNotBlank(response['message'])) {
         throw Exception(response['message']);
       } else {
+        var highest_price = 0.0;
         for (var item in response) {
           var product = jsonParser(item);
 
@@ -471,7 +486,24 @@ class WooCommerce extends BaseServices {
             product.categoryId = categoryId;
           }
           list.add(product);
+          var product_price = double.tryParse(product.price ?? '0') ?? 0.0;
+          if(product_price > highest_price){
+            highest_price = double.parse(product.price ?? '0');
+          };
+          // print('highest_price = $highest_price');
+
+
+          // print('myFilterDivision = $myFilterDivision');
+          // print('myFilterDivision = ${myFilterDivision.runtimeType}');
         }
+
+        // myMaxPriceFilter = highest_price; // Not in use.
+        // print('myMaxPriceFilter = $myMaxPriceFilter');
+        // print('myMaxPriceFilter = ${myMaxPriceFilter.runtimeType}');
+
+        // print('productPrice_list (Max) ${productPrice_list}');
+        // print('productPrice_list (Max) ${productPrice_list?.reduce(max)}');
+
         return list;
       }
     } catch (e, trace) {
@@ -859,9 +891,9 @@ class WooCommerce extends BaseServices {
 
       var base64Str = EncodeUtils.encodeCookie(user.user!.cookie!);
 
-
       final response = await httpPost(
-          '$url/wp-json/api/flutter_order/create?token=$base64Str&BOOP=lol'.toUri()!,
+          '$url/wp-json/api/flutter_order/create?token=$base64Str&BOOP=lol'
+              .toUri()!,
           // '$url/wp-json/api/flutter_order/create'.toUri()!,
           body: convert.jsonEncode(params),
           headers: {
@@ -1114,6 +1146,10 @@ class WooCommerce extends BaseServices {
       var endPoint = 'products?per_page=$ApiPageSize';
       if (config.containsKey('category')) {
         endPoint += "&category=${config["category"]}";
+        print('WEEEE2 ${config['category'].runtimeType}');
+        if (config['category'] == 2352){ // if filaments - remove SARAF שרף
+          endPoint += '&attribute=pa_%D7%A7%D7%95%D7%98%D7%A8-%D7%97%D7%95%D7%9E%D7%A8&attribute_term=5564';
+        }
       }
       if (config.containsKey('tag')) {
         endPoint += "&tag=${config["tag"]}";
@@ -2019,7 +2055,8 @@ Future<String> iCreditGetUrl(
       'https://icredit.rivhit.co.il/API/PaymentPageRequest.svc/GetUrl'; // Url
 
   var req = {
-    'GroupPrivateToken': 'e7bc02ba-7551-4ec3-884a-3524ba958a41', // Token
+    'GroupPrivateToken': 'e7bc02ba-7551-4ec3-884a-3524ba958a41',
+    // Token
     // 'GroupPrivateToken': 'bb8a47ab-42e0-4b7f-ba08-72d55f2d9e41', // test Token
     'Items': [
       {
@@ -2040,8 +2077,8 @@ Future<String> iCreditGetUrl(
     'PhoneNumber': '$phone',
 
     'MaxPayments': 12,
-    'RedirectURL':
-        'https://www.spider3d.co.il/%D7%AA%D7%95%D7%93%D7%94/', // spider3d.co.il/תודה
+    'RedirectURL': 'https://www.spider3d.co.il/%D7%AA%D7%95%D7%93%D7%94/',
+    // spider3d.co.il/תודה
     // 'DisplayPayPalButton': 'true',
     'CreateToken': 'true'
   };

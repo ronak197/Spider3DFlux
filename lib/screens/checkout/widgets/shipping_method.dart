@@ -51,20 +51,10 @@ class _ShippingMethodsState extends State<ShippingMethods> {
               .indexWhere((element) => element.id == shippingMethod.id);
         }
 
-        /*else {
-          // my else add
-          printLog('(my else here to save)');
-          final cartModel = Provider.of<CartModel>(context, listen: false);
-          final userModel = Provider.of<UserModel>(context, listen: false);
-          // final token = Provider.of<UserModel>(context, listen: false).user != null
-          //.     ? Provider.of<UserModel>(context, listen: false).user!.cookie
-          //     : null;
-          await Provider.of<ShippingMethodModel>(context, listen: false)
-              .getShippingMethods(
-                  cartModel: cartModel,
-                  token:
-                      userModel.user != null ? userModel.user!.cookie : null);
-        }*/
+        Services().widget.loadShippingMethods(
+            context,
+            Provider.of<CartModel>(context, listen: false),
+            false);
       },
     );
   }
@@ -98,10 +88,13 @@ class _ShippingMethodsState extends State<ShippingMethods> {
 
               return Column(
                 children: <Widget>[
+                  const SizedBox(height: 10),
                   Text(
                     // S.of(context).shippingMethod,
                     'בחר מבין ${model.shippingMethods!.length.toString()} שיטות המשלוח ',
-                    style: const TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18)
+                    ,
+                    textAlign: TextAlign.right,
                   ),
                   const SizedBox(height: 10),
                   for (int i = 0; i < model.shippingMethods!.length; i++)

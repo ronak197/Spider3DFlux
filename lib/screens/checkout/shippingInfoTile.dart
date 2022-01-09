@@ -30,7 +30,6 @@ import '../base_screen.dart';
 import 'checkout_screen.dart';
 import 'dart:math' as math;
 
-var show_shipping_details = true;
 
 class ShippingInfoTile extends StatefulWidget {
   @override
@@ -274,17 +273,15 @@ class _ShippingInfoTileState extends State<ShippingInfoTile> {
                   primary: Theme.of(context).primaryColorLight,
                 ),
                 onPressed: () {
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //     builder: (_) => ShippingAddress(
-                  //           onNext: () {},
-                  //           isFullPage: true,
-                  //         )));
-                  setState(() {
-                    show_shipping_details = false;
-                  });
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => ShippingForm(
+                            onNext: () {},
+                            isFullPage: true,
+                          )));
+
                 },
                 child: Text(
-                  'הכנס כתובת משלוח',
+                  'ערוך כתובת משלוח',
                   style: TextStyle(
                     fontSize: 16,
                     color: Theme.of(context).accentColor,

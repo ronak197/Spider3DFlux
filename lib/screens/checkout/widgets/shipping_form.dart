@@ -654,7 +654,6 @@ class _ShippingFormState extends State<ShippingForm> {
 
                                       // Navigator.pop(context);
 
-                                      show_shipping_details = true;
 
                                       await Navigator.of(context)
                                           .pushReplacement(MaterialPageRoute(

@@ -116,6 +116,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     final shippingMethodModel = Provider.of<ShippingMethodModel>(context);
@@ -126,6 +127,9 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
     var cartModel = Provider.of<CartModel>(context);
     var dropdownValue = '1';
+
+  // is it the first time the FutureBuilder load? - Provider.of<CartModel>(context, listen: false).getAddress(),
+  // var firstDeliveryFuture = true;
 
     // final address = cartModel.address!;
     // var address = cartModel.address; // My
@@ -247,6 +251,14 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     final_title = fullFormData
                         ? 'כתובת: ' '${address.city}, ' '${address.street!}'
                         : 'הכנס כתובת משלוח';
+
+                  /*  fullFormData
+                        ? Services().widget.loadShippingMethods(
+                            context,
+                            Provider.of<CartModel>(context, listen: false),
+                            false)
+                        : null; // Do not load shipping methods if delivery data empty
+*/
                   } else {
                     // return const Text('Snapshot currntly have no data');
                     print('Snapshott currntly have no data..');
@@ -257,34 +269,46 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     final_title = 'הכנס כתובת משלוח';
                   }
 
+
                   print('full_address_data: $fullFormData');
 
-                  return Container(
-                    key: UniqueKey(),
-                    child: ExpansionInfo(
-                      iconWidget: Transform(
-                        transform: Matrix4.rotationY(math.pi),
-                        origin: const Offset(11, 0),
-                        child: Icon(
-                          Icons.local_shipping,
-                          color: Theme.of(context).accentColor,
-                          // color: Color(0xff263238), size: 20,
+                  return Column(
+                    children: [
+                      Container(
+                        key: UniqueKey(),
+                        child: ExpansionInfo(
+                          expand: !fullFormData,
+                          // if form data empty: open (and show form)
+                          // expand: true,
+                          iconWidget: Transform(
+                            transform: Matrix4.rotationY(math.pi),
+                            origin: const Offset(11, 0),
+                            child: Icon(
+                              Icons.local_shipping,
+                              color: Theme.of(context).accentColor,
+                              // color: Color(0xff263238), size: 20,
+                            ),
+                          ),
+                          // title: S.of(context).shippingAddress,
+                          // title: 'פרטי משלוח',
+                          // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
+                          title: final_title,
+                          // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
+                          children: <Widget>[
+                            fullFormData
+                                ? ShippingInfoTile()
+                                : ShippingForm(
+                                    onNext: () {},
+                                    isFullPage: false,
+                                  ),
+                          ],
                         ),
                       ),
-                      // title: S.of(context).shippingAddress,
-                      // title: 'פרטי משלוח',
-                      // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
-                      title: final_title,
-                      // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
-                      children: <Widget>[
-                        fullFormData
-                            ? ShippingInfoTile()
-                            : ShippingForm(
-                                onNext: () {},
-                                isFullPage: false,
-                              ),
-                      ],
-                    ),
+                /*      fullFormData
+                          ? Services().widget.renderShippingMethods(context,
+                              onBack: () {}, onNext: () {})
+                          : Container(),*/
+                    ],
                   );
                 },
               ),

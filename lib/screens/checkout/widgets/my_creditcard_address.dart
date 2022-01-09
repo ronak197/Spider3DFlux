@@ -146,7 +146,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
         if (local.city != _cityController.text) continue;
         if (local.street != _streetController.text) continue;
 
-        showDialog(
+/*        showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
@@ -164,7 +164,9 @@ class _CreditCardFormState extends State<CreditCardForm> {
               ],
             );
           },
-        );
+        );*/
+
+
         // print('checkToSave Bool is false');
         // return false;
         print('checkToSave Bool false is overwrite to true //My');

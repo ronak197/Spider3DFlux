@@ -715,7 +715,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "youMightAlsoLike":
             MessageLookupByLibrary.simpleMessage("ייתכן שתאהב גם"),
         "yourAddressExistYourLocal":
-            MessageLookupByLibrary.simpleMessage("הכתובת שלך כבר קיימת"),
+            MessageLookupByLibrary.simpleMessage("הכתובת נשמרה בהצלחה"),
         "yourBagIsEmpty":
             MessageLookupByLibrary.simpleMessage("העגלה שלך ריקה"),
         "yourBookingDetail":

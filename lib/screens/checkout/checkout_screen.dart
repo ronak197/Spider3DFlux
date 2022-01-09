@@ -308,39 +308,6 @@ class _CheckoutState extends BaseScreen<Checkout> {
     );
   }
 
-  Widget renderContent() {
-    switch (tabIndex) {
-      case 0:
-        return ShippingForm(onNext: () {
-          Future.delayed(Duration.zero, goToShippingTab);
-        });
-      case 1:
-        return Services().widget.renderShippingMethods(context, onBack: () {
-          goToAddressTab(true);
-        }, onNext: () {
-          goToReviewTab();
-        });
-      case 2:
-        return ReviewScreen(onBack: () {
-          goToShippingTab(true);
-        }, onNext: () {
-          goToPaymentTab();
-        });
-      case 3:
-      default:
-        return PaymentMethods(
-            onBack: () {
-              goToReviewTab(true);
-            },
-            onFinish: (order) {
-              setState(() {
-                newOrder = order;
-              });
-              Provider.of<CartModel>(context, listen: false).clearCart();
-            },
-            onLoading: setLoading);
-    }
-  }
 
   /// tabIndex: 0
   void goToAddressTab([bool isGoingBack = false]) {

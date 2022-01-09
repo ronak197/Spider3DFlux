@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:fstore/screens/checkout/shippingInfoTile.dart';
+import 'package:fstore/screens/checkout/widgets/checkout_button.dart';
 import 'package:fstore/screens/checkout/widgets/my_credit_card.dart';
 import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_form.dart';
@@ -31,7 +32,7 @@ import '../base_screen.dart';
 import 'checkout_screen.dart';
 import 'dart:math' as math;
 
-var showSubButton = false;
+var paymentFormOpen = false;
 
 class ReviewScreen extends StatefulWidget {
   final Function? onBack;
@@ -54,8 +55,23 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
   @override
   void initState() {
+    final ScrollController _controller = ScrollController();
+
+// This is what you're looking for!
+    void _scrollDown() {
+      _controller.animateTo(
+        _controller.position.maxScrollExtent,
+        duration: const Duration(seconds: 2),
+        curve: Curves.fastOutSlowIn,
+      );
+    }
+    paymentFormOpen ? _scrollDown : null;
+
     var notes = Provider.of<CartModel>(context, listen: false).notes;
     note.text = notes ?? '';
+
+    Services().widget.loadShippingMethods(
+        context, Provider.of<CartModel>(context, listen: false), false);
 
 /*    int? selectedIndex =
         0; // right for 26.9.21, 0 means the "29₪ 2-3 day delivery" is default
@@ -97,12 +113,18 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     super.initState();
   }
 
-  bool isLoading = false;
-  var is_payment_loading = true;
+  bool showRadioPayment = false;
+  bool isPaymentLoading = false;
 
-  void setLoading(bool loading) {
+  void setShowRadioPayment(bool loading) {
     setState(() {
-      isLoading = loading;
+      showRadioPayment = loading;
+    });
+  }
+
+  void setPaymentLoading(bool loading) {
+    setState(() {
+      isPaymentLoading = loading;
     });
   }
 
@@ -116,7 +138,6 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     final shippingMethodModel = Provider.of<ShippingMethodModel>(context);
@@ -124,12 +145,11 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final taxModel = Provider.of<TaxModel>(context);
-
     var cartModel = Provider.of<CartModel>(context);
     var dropdownValue = '1';
 
-  // is it the first time the FutureBuilder load? - Provider.of<CartModel>(context, listen: false).getAddress(),
-  // var firstDeliveryFuture = true;
+    // is it the first time the FutureBuilder load? - Provider.of<CartModel>(context, listen: false).getAddress(),
+    // var firstDeliveryFuture = true;
 
     // final address = cartModel.address!;
     // var address = cartModel.address; // My
@@ -251,14 +271,6 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     final_title = fullFormData
                         ? 'כתובת: ' '${address.city}, ' '${address.street!}'
                         : 'הכנס כתובת משלוח';
-
-                  /*  fullFormData
-                        ? Services().widget.loadShippingMethods(
-                            context,
-                            Provider.of<CartModel>(context, listen: false),
-                            false)
-                        : null; // Do not load shipping methods if delivery data empty
-*/
                   } else {
                     // return const Text('Snapshot currntly have no data');
                     print('Snapshott currntly have no data..');
@@ -269,16 +281,18 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     final_title = 'הכנס כתובת משלוח';
                   }
 
-
-                  print('full_address_data: $fullFormData');
+                  // print('full_address_data: $fullFormData');
 
                   return Column(
                     children: [
                       Container(
-                        key: UniqueKey(),
+                        // 1. Without key: ExpansionInfo can't rebuild again
+                        // 2. With UniqueKey(): ExpansionInfo rebuild to many
+                        // 3. with Key(final_title): the 2 situations (has/'nt data) get 2 keys
+                        key: Key(final_title),
                         child: ExpansionInfo(
-                          expand: !fullFormData,
                           // if form data empty: open (and show form)
+                          expand: !fullFormData,
                           // expand: true,
                           iconWidget: Transform(
                             transform: Matrix4.rotationY(math.pi),
@@ -304,46 +318,74 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                           ],
                         ),
                       ),
-                /*      fullFormData
+                      fullFormData
                           ? Services().widget.renderShippingMethods(context,
-                              onBack: () {}, onNext: () {})
-                          : Container(),*/
+                              onBack: () {}, onNext: () {
+                              setShowRadioPayment(true);
+                              setPaymentLoading(true);
+                            })
+                          : Container(),
                     ],
                   );
                 },
               ),
-              // ChangeNotifierProvider<CartModel>.value(
 
-              // ListenableProvider.value(
-              //   value: getAddress,
-              //   child: Consumer<CartModel>(
-              //     builder: (context, myModel, child) {
-              //       if (myModel.address != null) {
-              //         return
-              // ExpansionInfo()...
-              //       } else {
-              //         return const Text('myModel.address == null');
-              //       }
-              //     },
-              //   ),
-              // ),
+              Container(
+                  height: 1, decoration: const BoxDecoration(color: kGrey200)),
+              const SizedBox(
+                height: 15,
+              ),
+              showRadioPayment
+                  // ? Container()
+                  ? Consumer<ShippingMethodModel>(
+                      builder: (context, shipping_model, child) {
+                        // is_payment_loading = true;
 
-              model.shippingMethod != null
-                  //. ? Text(model.shippingMethod!.title ?? '')
-                  ? Services().widget.renderShippingMethodInfo(context)
-                  : Container(),
+                        if (shipping_model.shippingMethods == null) {
+                          return Container();
+                        }
 
-              showSubButton
-                  ? const ChooseDeliveryButton(
-                      isBold: false,
+                        if (shipping_model.isLoading) {
+                          setPaymentLoading(true);
+                        }
+
+/*                  Future.delayed(const Duration(seconds: 1), () {
+                        is_payment_loading = false;
+                        setState(() {
+                          is_payment_loading = false;
+                        });
+                      });*/
+
+                        // OverLay (Stack) Loading while PaymentMethods is set - could be better
+                        Future.delayed(const Duration(seconds: 4)).then((_) {
+                          try {
+                            setPaymentLoading(false);
+                          } catch (e, trace) {
+                            print('my trace: $trace');
+                          }
+                          // print(is_payment_loading);
+                        });
+                        return Stack(
+                          children: [
+                            PaymentMethodsRadio(),
+                            isPaymentLoading
+                                ? Padding(
+                                    padding: const EdgeInsets.only(top: 75.0),
+                                    child: Container(
+                                        height: 100,
+                                        child: kLoadingWidget(context)),
+                                  )
+                                : Container()
+                          ],
+                        );
+                      },
                     )
-                  : const SizedBox(
-                      height: 10,
-                    ),
+                  : Container(),
 
               Container(
                 key: UniqueKey(),
                 child: ExpansionInfo(
+                  expand: paymentFormOpen,
                   iconWidget: Transform(
                     transform: Matrix4.rotationY(math.pi),
                     origin: const Offset(11, 0),
@@ -524,73 +566,20 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               const SizedBox(
                 height: 10,
               ),
-              showSubButton
-                  ? Container()
-                  : const Center(
-                      child: ChooseDeliveryButton(
-                      isBold: true,
-                    )),
 
-              Consumer<ShippingMethodModel>(
-                builder: (context, shipping_model, child) {
-                  // is_payment_loading = true;
+              CheckoutButton(
+                onBack: () {},
 
-                  if (shipping_model.shippingMethods == null) {
-                    return Container();
-                  }
-
-                  if (shipping_model.isLoading) {
-                    return Container(
-                        height: 100, child: kLoadingWidget(context));
-                  }
-
-/*                  Future.delayed(const Duration(seconds: 1), () {
-                        is_payment_loading = false;
-                        setState(() {
-                          is_payment_loading = false;
-                        });
-                      });*/
-
-                  // OverLay (Stack) Loading while PaymentMethods is set - could be better
-                  Future.delayed(const Duration(seconds: 2)).then((_) {
-                    try {
-                      setState(() {
-                        is_payment_loading = false;
-                        // is_payment_loading != is_payment_loading;
-                      });
-                    } catch (e, trace) {
-                      print('my trace: $trace');
-                    }
-                    // print(is_payment_loading);
+                onFinish: (order) {
+                  setState(() {
+                    newOrder = order;
                   });
-                  return Stack(
-                    children: [
-                      PaymentMethods(
-                        // onBack: () {
-                        //   goToReviewTab(true);
-                        // },
-
-                        onFinish: (order) {
-                          setState(() {
-                            newOrder = order;
-                          });
-                          Provider.of<CartModel>(context, listen: false)
-                              .clearCart();
-                        },
-                        // onLoading: setLoading)
-                        onLoading: setLoading,
-                      ),
-                      is_payment_loading
-                          ? Padding(
-                              padding: const EdgeInsets.only(top: 75.0),
-                              child: Container(
-                                  height: 100, child: kLoadingWidget(context)),
-                            )
-                          : Container()
-                    ],
-                  );
+                  Provider.of<CartModel>(context, listen: false).clearCart();
                 },
-              )
+                // onLoading: setLoading)
+                onLoading: setPaymentLoading,
+              ),
+              // CheckoutButton()
 
 /*            if (kPaymentConfig['EnableShipping'] &&
                       kPaymentConfig['EnableAddress'])
@@ -628,110 +617,5 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
         );
       },
     ).toList();
-  }
-}
-
-class ChooseDeliveryButton extends StatefulWidget {
-  final isBold;
-
-  // const ChooseDeliveryButton({Key key}) : super(key: key);
-  const ChooseDeliveryButton({this.isBold}) : super();
-
-  @override
-  State<ChooseDeliveryButton> createState() => _ChooseDeliveryButtonState();
-}
-
-class _ChooseDeliveryButtonState extends State<ChooseDeliveryButton> {
-  @override
-  Widget build(BuildContext context) {
-    var cartModel = Provider.of<CartModel>(context);
-
-    return
-        // cartModel.address != null ?
-        Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: ButtonTheme(
-        height: 45,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            elevation: 0.0,
-            primary: Theme.of(context).primaryColorLight,
-            // primary: Theme.of(context).primaryColor,
-          ),
-          onPressed: () {
-            setState(() {
-              showSubButton = true;
-            });
-
-            // var cartModel = Provider.of<CartModel>(context);
-            var addressModel = cartModel.address;
-
-            // print('Checking Shipping details:');
-            if (addressModel?.firstName == null ||
-                    addressModel?.firstName == '' &&
-                        addressModel?.city == null ||
-                    addressModel?.city == '' && addressModel?.street == null ||
-                    addressModel?.street == ''
-                // &&
-                //     addressModel.phoneNumber == null ||
-                // addressModel.phoneNumber == '' &&
-                //     addressModel.email == null ||
-                // addressModel.email == ''
-                ) {
-              print('>> Some Shipping details are missing.. <<');
-              const snackBar = SnackBar(content: Text('יש להכניס כתובת משלוח'));
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            } else {
-              Services().widget.loadShippingMethods(context,
-                  Provider.of<CartModel>(context, listen: false), false);
-
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      scrollable: true,
-                      insetPadding: EdgeInsets.symmetric(
-                        horizontal: 2.0,
-                        // vertical: 48 * 3
-                        vertical: MediaQuery.of(context).size.height * 0.20,
-                      ),
-                      // insetPadding: EdgeInsets.zero,
-                      // contentPadding: EdgeInsets.zero,
-                      // title: Text('שיטת משלוח'),
-                      content: Services().widget.renderShippingMethods(context,
-                          onBack: () {}, onNext: () {}),
-
-                      // Actually the same as above
-                      // ShippingMethods(
-                      //     onBack: () {}, onNext: () {})
-
-                      // goToShippingTab(true);
-
-/*                            actions: <Widget>[
-                                TextButton(
-                                  child: const Text('CANCEL'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],*/
-                    );
-                  });
-            }
-          },
-          child: Text(
-            'בחר שיטת משלוח',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: widget.isBold ? FontWeight.bold : FontWeight.normal,
-              color: Theme.of(context).accentColor,
-              // color: Theme.of(context).backgroundColor,
-            ),
-          ),
-        ),
-      ),
-    )
-        // : Container()
-        ;
   }
 }

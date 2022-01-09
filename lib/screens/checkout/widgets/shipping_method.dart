@@ -89,12 +89,15 @@ class _ShippingMethodsState extends State<ShippingMethods> {
               return Column(
                 children: <Widget>[
                   const SizedBox(height: 10),
-                  Text(
-                    // S.of(context).shippingMethod,
-                    'בחר מבין ${model.shippingMethods!.length.toString()} שיטות המשלוח ',
-                    style: const TextStyle(fontSize: 18)
-                    ,
-                    textAlign: TextAlign.right,
+                  Align(
+                  alignment: Alignment.topRight,
+                    child: Text(
+                      // S.of(context).shippingMethod,
+                      'בחר מבין ${model.shippingMethods!.length.toString()} שיטות המשלוח ',
+                      style: const TextStyle(fontSize: 18)
+                      ,
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   for (int i = 0; i < model.shippingMethods!.length; i++)
@@ -172,7 +175,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                         }
                                       });
 
-                                      Navigator.of(context).pop();
+                                      // Navigator.of(context).pop();
 
                                       // final review_screen_scroll_controller =
                                       //     ScrollController();
@@ -182,7 +185,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
 
                                       // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
 
-                                      // widget.onNext!();
+                                      widget.onNext!();
                                     }
                                   },
                                 ),

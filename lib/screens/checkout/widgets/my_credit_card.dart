@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fstore/models/cart/cart_base.dart';
 import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
-import 'package:fstore/screens/checkout/widgets/shipping_address.dart';
+import 'package:fstore/screens/checkout/widgets/shipping_form.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_method.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_card/awesome_card.dart';

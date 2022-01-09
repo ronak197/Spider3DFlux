@@ -15,18 +15,19 @@ import '../../../widgets/common/place_picker.dart';
 import '../review_screen.dart';
 import '../checkout_screen.dart';
 import '../choose_address_screen.dart';
+import '../shippingInfoTile.dart';
 
-class ShippingAddress extends StatefulWidget {
+class ShippingForm extends StatefulWidget {
   final bool isFullPage;
   final Function onNext;
 
-  ShippingAddress({required this.onNext, this.isFullPage = true});
+  ShippingForm({required this.onNext, this.isFullPage = true});
 
   @override
-  _ShippingAddressState createState() => _ShippingAddressState();
+  _ShippingFormState createState() => _ShippingFormState();
 }
 
-class _ShippingAddressState extends State<ShippingAddress> {
+class _ShippingFormState extends State<ShippingForm> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _streetController = TextEditingController();
@@ -825,6 +826,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
 
 class MyFadePush<T> extends PageRoute<T> {
   MyFadePush(this.child);
+
   @override
   // TODO: implement barrierColor
   Color get barrierColor => Colors.white;
@@ -853,13 +855,12 @@ class MyFadePush<T> extends PageRoute<T> {
 InputDecoration greyTxtDeco(
     {hintText, /*icons, svgIcon,*/ helperText, labelText}) {
   return InputDecoration(
-    counter: const Offstage(
-        /*Counter Here*/), //וויג'ט שמסתיר ויזואלית את קיומו של הילד שלו
+    counter: const Offstage(/*Counter Here*/),
+    //וויג'ט שמסתיר ויזואלית את קיומו של הילד שלו
     filled: true,
     fillColor: Colors.black.withOpacity(0.05),
-    contentPadding: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 10), //.only(left: 10, right: 10, top: 10, bottom: 10),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+    //.only(left: 10, right: 10, top: 10, bottom: 10),
     // helperText: helperText,
     // helperMaxLines: 2,
     hintText: hintText,

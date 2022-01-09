@@ -9,7 +9,7 @@ import '../../widgets/product/product_bottom_sheet.dart';
 import '../base_screen.dart';
 import 'review_screen.dart';
 import 'widgets/payment_methods.dart';
-import 'widgets/shipping_address.dart';
+import 'widgets/shipping_form.dart';
 import 'widgets/success.dart';
 
 class Checkout extends StatefulWidget {
@@ -311,7 +311,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
   Widget renderContent() {
     switch (tabIndex) {
       case 0:
-        return ShippingAddress(onNext: () {
+        return ShippingForm(onNext: () {
           Future.delayed(Duration.zero, goToShippingTab);
         });
       case 1:

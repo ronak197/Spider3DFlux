@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/checkout/shippingInfoTile.dart';
 import 'package:fstore/screens/checkout/widgets/my_credit_card.dart';
 import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
-import 'package:fstore/screens/checkout/widgets/shipping_address.dart';
+import 'package:fstore/screens/checkout/widgets/shipping_form.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_method.dart';
 import 'package:fstore/widgets/product/product_variant.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +36,7 @@ var showSubButton = false;
 class ReviewScreen extends StatefulWidget {
   final Function? onBack;
   final Function? onNext;
+
   // final Address? addressDetails;
 
   ReviewScreen({
@@ -227,45 +229,62 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 builder: (context, snapshot) {
                   Address address;
                   String final_title;
+                  bool fullFormData;
+
                   if (snapshot.hasData) {
                     // print('Snapshott have data.');
                     address = snapshot.data as Address;
                     // print(address.city);
                     // print(address.street);
 
-                    final_title = address.street != null &&
-                            address.city != null &&
-                            address.street != '' &&
-                            address.city != ''
+                    fullFormData = address.street != null &&
+                        address.street != '' &&
+                        address.city != null &&
+                        address.phoneNumber != '' &&
+                        address.phoneNumber != null &&
+                        address.city != '';
+
+                    final_title = fullFormData
                         ? 'כתובת: ' '${address.city}, ' '${address.street!}'
                         : 'הכנס כתובת משלוח';
                   } else {
                     // return const Text('Snapshot currntly have no data');
                     print('Snapshott currntly have no data..');
+                    fullFormData = false;
                     // address = snapshot.data as Address;
                     // print(address);
 
                     final_title = 'הכנס כתובת משלוח';
                   }
 
-                  return ExpansionInfo(
-                    iconWidget: Transform(
-                      transform: Matrix4.rotationY(math.pi),
-                      origin: const Offset(11, 0),
-                      child: Icon(
-                        Icons.local_shipping,
-                        color: Theme.of(context).accentColor,
-                        // color: Color(0xff263238), size: 20,
+                  print('full_address_data: $fullFormData');
+
+                  return Container(
+                    key: UniqueKey(),
+                    child: ExpansionInfo(
+                      iconWidget: Transform(
+                        transform: Matrix4.rotationY(math.pi),
+                        origin: const Offset(11, 0),
+                        child: Icon(
+                          Icons.local_shipping,
+                          color: Theme.of(context).accentColor,
+                          // color: Color(0xff263238), size: 20,
+                        ),
                       ),
+                      // title: S.of(context).shippingAddress,
+                      // title: 'פרטי משלוח',
+                      // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
+                      title: final_title,
+                      // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
+                      children: <Widget>[
+                        fullFormData
+                            ? ShippingInfoTile()
+                            : ShippingForm(
+                                onNext: () {},
+                                isFullPage: false,
+                              ),
+                      ],
                     ),
-                    // title: S.of(context).shippingAddress,
-                    // title: 'פרטי משלוח',
-                    // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
-                    title: final_title,
-                    // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
-                    children: <Widget>[
-                      ShippingAddressInfo(),
-                    ],
                   );
                 },
               ),
@@ -298,25 +317,28 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                       height: 10,
                     ),
 
-              ExpansionInfo(
-                iconWidget: Transform(
-                  transform: Matrix4.rotationY(math.pi),
-                  origin: const Offset(11, 0),
-                  child: Icon(
-                    Icons.credit_card,
-                    color: Theme.of(context).accentColor,
-                    // color: Color(0xff263238), size: 20,
+              Container(
+                key: UniqueKey(),
+                child: ExpansionInfo(
+                  iconWidget: Transform(
+                    transform: Matrix4.rotationY(math.pi),
+                    origin: const Offset(11, 0),
+                    child: Icon(
+                      Icons.credit_card,
+                      color: Theme.of(context).accentColor,
+                      // color: Color(0xff263238), size: 20,
+                    ),
                   ),
+                  // title: S.of(context).shippingAddress,
+                  // title: 'פרטי משלוח',
+                  // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
+                  // title: 'פרטי כרטיס (2743 **** **** ****)',
+                  title: cartModel.address?.cardNumber != null
+                      ? 'פרטי כרטיס: ${cartModel.address?.cardNumber?.substring(12, 16)} **** **** ****'
+                      : 'הכנס פרטי אשראי',
+                  // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
+                  children: <Widget>[CreditCardInfo()],
                 ),
-                // title: S.of(context).shippingAddress,
-                // title: 'פרטי משלוח',
-                // title: 'כתובת: לאונדרניו השני, תל אביב יפו העתיקה',
-                // title: 'פרטי כרטיס (2743 **** **** ****)',
-                title: cartModel.address?.cardNumber != null
-                    ? 'פרטי כרטיס: ${cartModel.address?.cardNumber?.substring(12, 16)} **** **** ****'
-                    : 'הכנס פרטי אשראי',
-                // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
-                children: <Widget>[CreditCardInfo()],
               ),
 
               if (model.getCoupon() != '')
@@ -572,8 +594,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
         var productId = Product.cleanProductID(key);
 
         return ShoppingCartRow(
-          my_is_review_screen:
-              true, // My adjustments for review_screen.dart only
+          my_is_review_screen: true,
+          // My adjustments for review_screen.dart only
           addonsOptions: model.productAddonsOptionsInCart[key],
           product: model.getProductById(productId),
           variation: model.getProductVariationById(key),
@@ -582,307 +604,6 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
         );
       },
     ).toList();
-  }
-}
-
-var show_shipping_details = true;
-
-class ShippingAddressInfo extends StatefulWidget {
-  @override
-  State<ShippingAddressInfo> createState() => _ShippingAddressInfoState();
-}
-
-class _ShippingAddressInfoState extends State<ShippingAddressInfo> {
-  @override
-  Widget build(BuildContext context) {
-    final cartModel = Provider.of<CartModel>(context);
-    // final address = cartModel.address!;
-    var address = cartModel.address; // My
-
-    try {
-      // Check if theres adress
-      print(cartModel.address!.firstName);
-      print(cartModel.address!.city);
-    } catch (e) {
-      setState(() {
-        show_shipping_details = false;
-      });
-    }
-
-    /*if (address.firstName == null ||
-        address.city == null ||
-        address.street == null ||
-        address.phoneNumber == null ||
-        address.email == null) {
-      // print('ADDress is $address');
-      show_shipping_details = false;
-      // } else {
-      //   print('ADDress is $address ELSEE');
-    }*/
-
-    if (show_shipping_details) {
-      // print('show_details');
-      // print(show_shipping_details);
-      return Container(
-        color: Theme.of(context).cardColor,
-        padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 120,
-                    child: Text(
-                      // S.of(context).firstName + ' :',
-                      'שם לחשבונית :',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      address!.firstName!,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-/*
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 120,
-                  child: Text(
-                    S.of(context).lastName + ' :',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    address.lastName!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-*/
-
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 120,
-                    child: Text(
-                      S.of(context).city + ' :',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      address.city ?? '',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 120,
-                    child: Text(
-                      // S.of(context).streetName + ' :',
-                      'רחוב, מס׳ בית :',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      address.street ?? '',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-
-            /*   FutureBuilder(
-            future: Services().widget.getCountryName(context, address.country),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        width: 120,
-                        child: Text(
-                          S.of(context).country + ' :',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Theme.of(context).accentColor,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          snapshot.data as String,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Theme.of(context).accentColor,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                );
-              } else {
-                return Container();
-              }
-            },
-          ),*/
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 120,
-                    child: Text(
-                      // S.of(context).phoneNumber + ' :',
-                      'טלפון :',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      address.phoneNumber ?? '',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 120,
-                    child: Text(
-                      S.of(context).email + ' :',
-                      // 'אימייל :',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      address.email ?? '',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // const SizedBox(height: 20),
-            Container(
-              alignment: Alignment.centerRight,
-              padding: const EdgeInsets.only(right: 0, bottom: 5, top: 10),
-              child: ButtonTheme(
-                height: 45,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0.0,
-                    primary: Theme.of(context).primaryColorLight,
-                  ),
-                  onPressed: () {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //     builder: (_) => ShippingAddress(
-                    //           onNext: () {},
-                    //           isFullPage: true,
-                    //         )));
-                    setState(() {
-                      show_shipping_details = false;
-                    });
-                  },
-                  child: Text(
-                    'הכנס כתובת משלוח',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Theme.of(context).accentColor,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    } else {
-      // print('show_details');
-      // print(show_shipping_details);
-      return ShippingAddress(
-        onNext: () {},
-        isFullPage: false,
-      );
-    }
   }
 }
 

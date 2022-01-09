@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fstore/models/payment_method_model.dart';
 import 'package:fstore/models/tax_model.dart';
 import 'package:fstore/models/user_model.dart';
-import 'package:fstore/screens/checkout/widgets/shipping_address.dart';
+import 'package:fstore/screens/checkout/widgets/shipping_form.dart';
 import 'package:provider/provider.dart';
 import 'package:quiver/strings.dart';
 

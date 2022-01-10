@@ -29,8 +29,8 @@ class ShippingMethods extends StatefulWidget {
   _ShippingMethodsState createState() => _ShippingMethodsState();
 }
 
-int? selectedShippingIndex; // to set radio default
 
+int? selectedShippingIndex; // to set radio default
 class _ShippingMethodsState extends State<ShippingMethods> {
   // int? selectedIndex = 0; // right for 26.9.21, 0 means the "29₪ 2-3 day delivery" is default
 

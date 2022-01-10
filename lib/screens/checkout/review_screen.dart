@@ -33,6 +33,8 @@ import 'checkout_screen.dart';
 import 'dart:math' as math;
 
 var paymentFormOpen = false;
+bool firstTimeRadio = true;
+
 
 class ReviewScreen extends StatefulWidget {
   final Function? onBack;
@@ -108,7 +110,11 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
     // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
 
-    // widget.onNext!();
+    setState(() {
+      // Reset the radio buttons
+      selectedShippingIndex = null;
+      selectedPaymentId = null;
+    });
     super.initState();
   }
 
@@ -335,7 +341,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                         // 3. with Key(final_title): the 2 situations (has/'nt data) get 2 keys
                         key: Key(selectedPaymentId.toString()),
                         child: ExpansionInfo(
-                          expand: selectedPaymentId == null,
+                          expand: selectedPaymentId == null && firstTimeRadio,
                           // open if no data
                           // expand: true,
                           iconWidget: Transform(
@@ -369,6 +375,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                                 setPaymentLoading(true);
                                 setState(() {
                                   showSippingRadio = false;
+                                  firstTimeRadio = false;
                                 });
                               }),
                               secondChild: Padding(
@@ -415,7 +422,10 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               ),
 
               Container(
-                key: UniqueKey(),
+                // 1. Without key: ExpansionInfo can't rebuild again
+                // 2. With UniqueKey(): ExpansionInfo rebuild to many
+                // 3. with Key(final_title): the 2 situations (has/'nt data) get 2 keys
+                key: Key(selectedShippingIndex.toString()),
                 child: ExpansionInfo(
                   expand:
                       paymentFormOpen && cartModel.address?.cardNumber == null,
@@ -689,7 +699,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     });*/
 
         // OverLay (Stack) Loading while PaymentMethods is set - could be better
-        Future.delayed(const Duration(seconds: 4)).then((_) {
+        Future.delayed(const Duration(seconds: 3)).then((_) {
           try {
             setPaymentLoading(false);
           } catch (e, trace) {

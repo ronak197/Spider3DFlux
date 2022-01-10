@@ -298,6 +298,9 @@ PODS:
     - FirebaseAnalytics (~> 8.0.0)
   - Firebase/CoreOnly (8.0.0):
     - FirebaseCore (= 8.0.0)
+  - Firebase/Database (8.0.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (~> 8.0.0)
   - Firebase/DynamicLinks (8.0.0):
     - Firebase/CoreOnly
     - FirebaseDynamicLinks (~> 8.0.0)
@@ -320,6 +323,10 @@ PODS:
     - Flutter
   - firebase_core (1.2.0):
     - Firebase/CoreOnly (= 8.0.0)
+    - Flutter
+  - firebase_database (7.0.0):
+    - Firebase/Database (= 8.0.0)
+    - firebase_core
     - Flutter
   - firebase_dynamic_links (2.0.4):
     - Firebase/DynamicLinks (= 8.0.0)
@@ -376,6 +383,9 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
     - nanopb (~> 2.30908.0)
+  - FirebaseDatabase (8.0.0):
+    - FirebaseCore (~> 8.0)
+    - leveldb-library (~> 1.22)
   - FirebaseDynamicLinks (8.0.0):
     - FirebaseCore (~> 8.0)
   - FirebaseFirestore (8.0.0):
@@ -412,6 +422,8 @@ PODS:
   - flutter_facebook_auth (2.0.0):
     - FBSDKCoreKit (~> 11.1.0)
     - FBSDKLoginKit (~> 11.1.0)
+    - Flutter
+  - flutter_mailer (0.0.1):
     - Flutter
   - flutter_native_image (0.0.1):
     - Flutter
@@ -575,11 +587,13 @@ DEPENDENCIES:
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
+  - firebase_database (from `.symlinks/plugins/firebase_database/ios`)
   - firebase_dynamic_links (from `.symlinks/plugins/firebase_dynamic_links/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`)
   - Flutter (from `Flutter`)
   - flutter_facebook_auth (from `.symlinks/plugins/flutter_facebook_auth/ios`)
+  - flutter_mailer (from `.symlinks/plugins/flutter_mailer/ios`)
   - flutter_native_image (from `.symlinks/plugins/flutter_native_image/ios`)
   - flutter_statusbarcolor_ns (from `.symlinks/plugins/flutter_statusbarcolor_ns/ios`)
   - flutter_webview_plugin (from `.symlinks/plugins/flutter_webview_plugin/ios`)
@@ -626,6 +640,7 @@ SPEC REPOS:
     - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseDatabase
     - FirebaseDynamicLinks
     - FirebaseFirestore
     - FirebaseInstallations
@@ -668,6 +683,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
+  firebase_database:
+    :path: ".symlinks/plugins/firebase_database/ios"
   firebase_dynamic_links:
     :path: ".symlinks/plugins/firebase_dynamic_links/ios"
   firebase_messaging:
@@ -678,6 +695,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_facebook_auth:
     :path: ".symlinks/plugins/flutter_facebook_auth/ios"
+  flutter_mailer:
+    :path: ".symlinks/plugins/flutter_mailer/ios"
   flutter_native_image:
     :path: ".symlinks/plugins/flutter_native_image/ios"
   flutter_statusbarcolor_ns:
@@ -752,6 +771,7 @@ SPEC CHECKSUMS:
   firebase_analytics: 221d3bc4e8f1b5144a4bd4cc6b33790ee51bd543
   firebase_auth: f960df4ddd8cb415859dbc01a02d7859925ddef0
   firebase_core: e4d3efb030a2b2021819f8faa538bb23deb46695
+  firebase_database: 7410e0e0b6f3e64204e319d8136cdd4dd3b83328
   firebase_dynamic_links: 832d198922d1919858cca05a1b5ecd3bc1b4495a
   firebase_messaging: 3b6e0657b21261a57a1cd041fafa713f2aa6923f
   firebase_remote_config: 3a6e2db440f0e95baba3dfc3d4118b1a4bc792c4
@@ -760,6 +780,7 @@ SPEC CHECKSUMS:
   FirebaseAuth: b8cd992fca5b53dc6eec09e873a3f375f000c5a1
   FirebaseCore: 3f09591d51292843e2a46f18358d60bf4e996255
   FirebaseCoreDiagnostics: b63732f581a1c6a453ec7241f9ab60b3a5bd3450
+  FirebaseDatabase: 363961e25451425be8b14bb8801a592515ec58f2
   FirebaseDynamicLinks: 42858c22626d9c519b28e0421b2ea6bcc5a241ff
   FirebaseFirestore: 7f6576eaca9f821e864c3e917d68aa99f4e6b613
   FirebaseInstallations: ede6fb72bb6337914e5888b399271259d0c4910c
@@ -767,6 +788,7 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfig: 055f6b5ba1751547596ded5032c4d5c6054ca501
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   flutter_facebook_auth: 528d51ea1324741b366fa87fa5dfd41016422364
+  flutter_mailer: 2ef5a67087bc8c6c4cefd04a178bf1ae2c94cd83
   flutter_native_image: 9c0b7451838484458e5b0fae007b86a4c2d4bdfe
   flutter_statusbarcolor_ns: 68a360889d88d7915ae524e422aeab62e4063804
   flutter_webview_plugin: ed9e8a6a96baf0c867e90e1bce2673913eeac694
@@ -813,6 +835,6 @@ SPEC CHECKSUMS:
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
   webview_flutter: 9f491a9b5a66f2573946a389b2677987b0ff8c0b
 
-PODFILE CHECKSUM: 7e850de49f3a612cd11e4d3d83f05d8a2bf4dddb
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
 COCOAPODS: 1.11.2

@@ -1,0 +1,9 @@
+.fvm/
+build/
+.dart_tool/
+.idea/
+.pub/
+.packages/
+.pub-cache/
+.settings/
+.dart_tool/

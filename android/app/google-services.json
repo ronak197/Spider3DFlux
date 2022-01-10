@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "349562325339",
+    "firebase_url": "https://spider3d-flux-default-rtdb.firebaseio.com",
     "project_id": "spider3d-flux",
     "storage_bucket": "spider3d-flux.appspot.com"
   },
@@ -14,11 +15,35 @@
       },
       "oauth_client": [
         {
+          "client_id": "349562325339-4lasdd2uen8vio7rdr3vpe59vnee3ptj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.biton.spider3dflux",
+            "certificate_hash": "ca8719375cca5d68a69716459f250a3848095d5a"
+          }
+        },
+        {
+          "client_id": "349562325339-866u9sd101voi2dkt5tdoodm74t48rs1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.biton.spider3dflux",
+            "certificate_hash": "59bdf197119f09e204f574743c76a64aeb7b90e5"
+          }
+        },
+        {
           "client_id": "349562325339-j9bipe7012967f7bdmklmmp1ht84sq2i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.biton.spider3dflux",
             "certificate_hash": "d087f0616fb1139bc19edc18f549f3dd3a1c1eb1"
+          }
+        },
+        {
+          "client_id": "349562325339-n9of7vc1iq1tviehokqadsh5477evgss.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.biton.spider3dflux",
+            "certificate_hash": "27d6a46c22130dde50210ee67e60f93c2cd5e1ca"
           }
         },
         {

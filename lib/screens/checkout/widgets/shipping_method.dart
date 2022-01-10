@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:fstore/models/payment_method_model.dart';
 import 'package:fstore/models/tax_model.dart';
 import 'package:fstore/models/user_model.dart';
+import 'package:fstore/screens/checkout/checkout_screen.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_form.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:quiver/strings.dart';
 
@@ -181,9 +183,9 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                       //   () => review_screen_scroll_controller
                                       //       .jumpTo(review_screen_scroll_controller.position.maxScrollExtent),);
 
-                                      // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
-
                                       widget.onNext!();
+                                      // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Checkout()));
+
                                     }
                                   },
                                 ),

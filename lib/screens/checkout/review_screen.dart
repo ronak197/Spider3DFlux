@@ -113,6 +113,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
   }
 
   bool isPaymentLoading = false;
+  bool showSippingRadio = true;
 
   void setPaymentLoading(bool loading) {
     setState(() {
@@ -278,7 +279,9 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
                   // print('full_address_data: $fullFormData');
 
-                  var shipping_price = cartModel.shippingMethod?.cost.toString().replaceAll('.0', '₪');
+                  var shipping_price = cartModel.shippingMethod?.cost
+                      .toString()
+                      .replaceAll('.0', '₪');
                   var payment_option = cartModel.paymentMethod?.title
                       ?.replaceAll('תשלום מאובטח ב', '')
                       .replaceAll('-באיסוף עצמי', '');
@@ -353,15 +356,38 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                               : '$shipping_price $shipping_option, ב$payment_option',
                           // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
                           children: <Widget>[
-                            fullFormData && selectedShippingIndex == null
-                                // && !paymentFormOpen
-                                /// Deliver radio widget
+                            // fullFormData && selectedShippingIndex == null
+
+                            // && !paymentFormOpen
+
+                            AnimatedCrossFade(
+                              duration: const Duration(seconds: 1),
+                              firstChild: Services()
+                                  .widget
+                                  .renderShippingMethods(context, onBack: () {},
+                                      onNext: () {
+                                setPaymentLoading(true);
+                                setState(() {
+                                  showSippingRadio = false;
+                                });
+                              }),
+                              secondChild: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: radioPaymentConsumer(),
+                              ),
+                              crossFadeState: showSippingRadio
+                                  ? CrossFadeState.showFirst
+                                  : CrossFadeState.showSecond,
+                            ),
+
+                            /// Deliver radio widget
+                            /*                        showSippingRadio
                                 ? Services().widget.renderShippingMethods(
                                     context,
                                     onBack: () {}, onNext: () {
                                     setPaymentLoading(true);
                                   })
-                                : Container(),
+                                : radioPaymentConsumer(),*/
                             Container(
                                 height: 1,
                                 decoration:
@@ -370,60 +396,13 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                               height: 15,
                             ),
 
-                            /// Payment radio widget
+                            /*                    /// Payment radio widget
                             selectedShippingIndex != null
                                 // ? Container()
-                                ? Consumer<ShippingMethodModel>(
-                                    builder: (context, shipping_model, child) {
-                                      // is_payment_loading = true;
-
-                                      if (shipping_model.shippingMethods ==
-                                          null) {
-                                        return Container();
-                                      }
-
-                                      if (shipping_model.isLoading) {
-                                        // setPaymentLoading(true); // Set state no needed
-                                        isPaymentLoading = true;
-                                      }
-
-/*                  Future.delayed(const Duration(seconds: 1), () {
-                        is_payment_loading = false;
-                        setState(() {
-                          is_payment_loading = false;
-                        });
-                      });*/
-
-                                      // OverLay (Stack) Loading while PaymentMethods is set - could be better
-                                      Future.delayed(const Duration(seconds: 4))
-                                          .then((_) {
-                                        try {
-                                          setPaymentLoading(false);
-                                        } catch (e, trace) {
-                                          print('my trace: $e');
-                                        }
-                                        // print(is_payment_loading);
-                                      });
-                                      return Stack(
-                                        children: [
-                                          PaymentMethodsRadio(),
-                                          isPaymentLoading
-                                              ? Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 75.0),
-                                                  child: Container(
-                                                      height: 100,
-                                                      child: kLoadingWidget(
-                                                          context)),
-                                                )
-                                              : Container()
-                                        ],
-                                      );
-                                    },
-                                  )
+                                ?
+                            radioPaymentConsumer()
                                 // ,
-                                : Container(),
+                                : Container(),*/
                           ],
                         ),
                       ),
@@ -438,7 +417,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               Container(
                 key: UniqueKey(),
                 child: ExpansionInfo(
-                  expand: paymentFormOpen &&  cartModel.address?.cardNumber == null,
+                  expand:
+                      paymentFormOpen && cartModel.address?.cardNumber == null,
                   // open if requested (radio payment option chose) & no data
                   iconWidget: Transform(
                     transform: Matrix4.rotationY(math.pi),
@@ -465,27 +445,29 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     cartModel.address?.cardNumber != null
                         ? CreditCardInfo()
                         : Column(
-                          children: [
-                            // Text(S.of(context).paymentMethods, style: const TextStyle(fontSize: 18)),
-                            const SizedBox(height: 15),
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                // 'בחר את שיטת התשלום שלך',
-                                'בתשלום במזומן יש להכניס כרטיס אשראי כביטחון בלבד',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Theme.of(context).accentColor.withOpacity(0.6),
+                            children: [
+                              // Text(S.of(context).paymentMethods, style: const TextStyle(fontSize: 18)),
+                              const SizedBox(height: 15),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  // 'בחר את שיטת התשלום שלך',
+                                  'בתשלום במזומן יש להכניס כרטיס אשראי כביטחון בלבד',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Theme.of(context)
+                                        .accentColor
+                                        .withOpacity(0.6),
+                                  ),
                                 ),
                               ),
-                            ),
 
-                            MyCreditCardForm(
+                              MyCreditCardForm(
                                 onNext: () {},
                                 isFullPage: false,
                               ),
-                          ],
-                        ),
+                            ],
+                          ),
                   ],
                 ),
               ),
@@ -682,6 +664,58 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
           );
         },
       ),
+    );
+  }
+
+  Consumer<ShippingMethodModel> radioPaymentConsumer() {
+    return Consumer<ShippingMethodModel>(
+      builder: (context, shipping_model, child) {
+        // is_payment_loading = true;
+
+        if (shipping_model.shippingMethods == null) {
+          return Container();
+        }
+
+        if (shipping_model.isLoading) {
+          // setPaymentLoading(true); // Set state no needed
+          isPaymentLoading = true;
+        }
+
+/*                  Future.delayed(const Duration(seconds: 1), () {
+                      is_payment_loading = false;
+                      setState(() {
+                        is_payment_loading = false;
+                      });
+                    });*/
+
+        // OverLay (Stack) Loading while PaymentMethods is set - could be better
+        Future.delayed(const Duration(seconds: 4)).then((_) {
+          try {
+            setPaymentLoading(false);
+          } catch (e, trace) {
+            print('my trace: $e');
+          }
+          // print(is_payment_loading);
+        });
+        return Stack(
+          children: [
+            PaymentMethodsRadio(
+              onRadioChange: () {
+                setState(() {
+                  showSippingRadio = true;
+                });
+              },
+            ),
+            isPaymentLoading
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 75.0),
+                    child:
+                        Container(height: 100, child: kLoadingWidget(context)),
+                  )
+                : Container()
+          ],
+        );
+      },
     );
   }
 

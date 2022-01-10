@@ -4,6 +4,7 @@ import 'package:country_pickers/country_pickers.dart' as picker;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/config.dart';
@@ -166,7 +167,7 @@ class _ShippingFormState extends State<ShippingForm> {
         if (local.street != _streetController.text) continue;
         if (local.zipCode != _zipController.text) continue;
         if (local.state != _stateController.text) continue;
-        showDialog(
+/*        showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
@@ -184,7 +185,7 @@ class _ShippingFormState extends State<ShippingForm> {
               ],
             );
           },
-        );
+        );*/
         // print('checkToSave Bool is false');
         // return false;
         print('checkToSave Bool false is overwrite to true //My');
@@ -292,8 +293,9 @@ class _ShippingFormState extends State<ShippingForm> {
 
                       // Navigator.pop(context);
 
-                      await Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) => Checkout()));
+                      // await Navigator.of(context).push(MaterialPageRoute(builder: (_) => Checkout()));
+                      await Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Checkout()));
+
                     }
 
                     var myAddress =

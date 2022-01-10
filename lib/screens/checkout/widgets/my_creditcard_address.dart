@@ -19,20 +19,21 @@ import '../review_screen.dart';
 import 'my_credit_card.dart';
 import 'package:credit_card_validator/credit_card_validator.dart';
 
-class CreditCardForm extends StatefulWidget {
+class MyCreditCardForm extends StatefulWidget {
   final bool isFullPage;
   final Function onNext;
 
-  CreditCardForm({required this.onNext, this.isFullPage = true});
+  MyCreditCardForm({required this.onNext, this.isFullPage = true});
 
   @override
-  _CreditCardFormState createState() => _CreditCardFormState();
+  _MyCreditCardFormState createState() => _MyCreditCardFormState();
 }
 
-class _CreditCardFormState extends State<CreditCardForm> {
+class _MyCreditCardFormState extends State<MyCreditCardForm> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _streetController = TextEditingController();
+  final TextEditingController _creditDateController = TextEditingController();
   final CreditCardValidator _ccValidator = CreditCardValidator();
 
   final expireMmYy = FocusNode();
@@ -167,7 +168,6 @@ class _CreditCardFormState extends State<CreditCardForm> {
           },
         );*/
 
-
         // print('checkToSave Bool is false');
         // return false;
         print('checkToSave Bool false is overwrite to true //My');
@@ -235,6 +235,9 @@ class _CreditCardFormState extends State<CreditCardForm> {
     return 'הזן דוא״ל תקין';
   }
 
+  String? expire_mmyy;
+  String? expire_year;
+
   @override
   Widget build(BuildContext context) {
     var countryName = S.of(context).country;
@@ -287,7 +290,19 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
               ),
             ),
-            body: formWidget())
+            body: Center(
+              child: Container(
+                  decoration: BoxDecoration(
+                    color: kGrey200.withOpacity(0.10),
+                    border: Border.all(
+                      color: kGrey200.withOpacity(0.99),
+                      width: 1.5,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: const EdgeInsets.all(15.0),
+                  child: formWidget()),
+            ))
         : formWidget();
   }
 
@@ -348,68 +363,94 @@ class _CreditCardFormState extends State<CreditCardForm> {
                                 ),
                                 Flexible(
                                   flex: 10,
-                                  child: Stack(
-                                    children: [
-                                      TextFormField(
-                                          // initialValue:  address!.phoneNumber,
-                                          autofillHints: [
-                                            AutofillHints
-                                                .creditCardExpirationDate
-                                          ],
-                                          focusNode: expireMmYy,
-                                          // textAlign: TextAlign.center,
-                                          decoration: greyTxtDeco(
-                                            // labelText: S.of(context).phoneNumber
-                                            labelText: 'תוקף MM / YY',
-                                          ),
-                                          textInputAction: TextInputAction.next,
-                                          validator: (val) {
-                                            // var isValid = _ccValidator
-                                            //     .validateExpDate(val!)
-                                            //     .isValid;
+                                  child: TextFormField(
+                                      // style: const TextStyle(
+                                      //   letterSpacing: 1.5,
+                                      // ),
+                                      controller: _creditDateController,
+                                      textAlign: TextAlign.center,
+                                      // initialValue:  address!.phoneNumber,
+                                      autofillHints: [
+                                        AutofillHints.creditCardExpirationDate
+                                      ],
+                                      // keyboardType: TextInputType.number,
+                                      onChanged: (value) {
+                                        print(
+                                            _creditDateController.text.length);
+                                        if (value.length == 2) {
+                                          _creditDateController.text += '/';
+                                          expire_mmyy = value;
+                                          _creditDateController.selection =
+                                              TextSelection.fromPosition(
+                                                  TextPosition(
+                                                      offset:
+                                                          _creditDateController
+                                                              .text.length));
+                                        }
+                                      },
+                                      focusNode: expireMmYy,
+                                      // textAlign: TextAlign.center,
+                                      // style: TextStyle(fontSize: 22),
+                                      decoration: greyTxtDeco(
+                                        // labelText: S.of(context).phoneNumber
+                                        labelText: 'תוקף MM / YY',
+                                        // labelText: 'תוקף MM / YY',
+                                        // labelText: 'MM  YY',
+                                      ),
+                                      textInputAction: TextInputAction.next,
+                                      validator: (val) {
+                                        // var isValid = _ccValidator
+                                        //     .validateExpDate(val!)
+                                        //     .isValid;
 
-                                            // print(val!.length == 4 ? 'V' : 'X');
+                                        // print(val!.length == 4 ? 'V' : 'X');
 
-                                            var valid_month = int.parse(val
-                                                    .toString()
-                                                    .substring(0, 2)) <=
-                                                12;
+                                        // valid_month
+                                        try {
+                                          int.parse(val
+                                                  .toString()
+                                                  .substring(0, 2)) <=
+                                              12;
 
-                                            // var yy = int.parse(
-                                            //     val.toString().substring(2, 4));
+                                          // 22 < 27  < 50
 
-                                            // print('mm $mm');
-                                            // print(mm <= 12);
-                                            // print('yy $yy');
-                                            // print(yy < 31);
+/*                                          int.parse(val
+                                              .toString()
+                                              .substring(3, 5)) > 22;
 
-                                            return val!.length == 4 &&
-                                                    valid_month
-                                                ? null
-                                                : 'תאריך במבנה 1212';
-                                          },
-                                          keyboardType: TextInputType.number,
-                                          onFieldSubmitted: (_) =>
-                                              FocusScope.of(context)
-                                                  .requestFocus(_emailNode),
-                                          onSaved: (String? value) {
-                                            creditCard!.expiryDate = value;
-                                          }),
-                                      // Center(
-                                      //   child: RotationTransition(
-                                      //     turns: const AlwaysStoppedAnimation(
-                                      //         15 / 360),
-                                      //     child: Container(
-                                      //       margin: const EdgeInsets.symmetric(
-                                      //           vertical: 4.0),
-                                      //       color: Colors.grey,
-                                      //       height: 30,
-                                      //       width: 1.5,
-                                      //     ),
-                                      //   ),
-                                      // )
-                                    ],
-                                  ),
+                                          int.parse(val
+                                              .toString()
+                                              .substring(3, 5)) < 50;*/
+
+                                        } catch (e, s) {
+                                          // print(s);
+                                          return 'מבנה: 12/27';
+                                        }
+
+                                        // var yy = int.parse(
+                                        //     val.toString().substring(2, 4));
+
+                                        // print('mm $mm');
+                                        // print(mm <= 12);
+                                        // print('yy $yy');
+                                        // print(yy < 31);
+
+                                        // print('$val - ${val?.length}');
+                                        // val = val?.replaceAll('/', '');
+                                        // print('$val - ${val?.length}');
+                                        return val!.contains('/') && val.length == 5
+                                            ? null
+                                            : 'מבנה: 12/27';
+                                      },
+                                      onFieldSubmitted: (_) =>
+                                          FocusScope.of(context)
+                                              .requestFocus(_emailNode),
+                                      onSaved: (String? value) {
+                                        // print('$val - ${val?.length}');
+                                        value = value?.replaceAll('/', '');
+                                        // print('$val - ${val?.length}');
+                                        creditCard!.expiryDate = value;
+                                      }),
                                 ),
                               ],
                             ),
@@ -471,8 +512,13 @@ class _CreditCardFormState extends State<CreditCardForm> {
                                     ],
                                     focusNode: _cityNode,
                                     validator: (val) {
+                                      cardType = _ccValidator
+                                          .validateCCNum(val!)
+                                          .ccType;
+                                      print('cardTypeX is $cardType');
+
                                       var isCvvValid = _ccValidator
-                                          .validateCVV(val!, cardType)
+                                          .validateCVV(val, cardType)
                                           .isValid;
 
                                       // return val!.isEmpty
@@ -517,6 +563,12 @@ class _CreditCardFormState extends State<CreditCardForm> {
                                 Flexible(
                                   flex: 10,
                                   child: TextFormField(
+                                    validator: (val) {
+                                      return val!.isEmpty || val.length < 7
+                                          // ? S.of(context).firstNameIsRequired
+                                          ? 'תקן שדה זה'
+                                          : null;
+                                    },
                                     // initialValue:  address!.firstName,
                                     decoration: greyTxtDeco(
                                         labelText: 'מס׳ תעודת זהות'),
@@ -621,6 +673,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
 
 class MyFadePush<T> extends PageRoute<T> {
   MyFadePush(this.child);
+
   @override
   // TODO: implement barrierColor
   Color get barrierColor => Colors.white;
@@ -649,13 +702,12 @@ class MyFadePush<T> extends PageRoute<T> {
 InputDecoration greyTxtDeco(
     {hintText, /*icons, svgIcon,*/ helperText, labelText}) {
   return InputDecoration(
-    counter: const Offstage(
-        /*Counter Here*/), //וויג'ט שמסתיר ויזואלית את קיומו של הילד שלו
+    counter: const Offstage(/*Counter Here*/),
+    //וויג'ט שמסתיר ויזואלית את קיומו של הילד שלו
     filled: true,
     fillColor: Colors.black.withOpacity(0.05),
-    contentPadding: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 10), //.only(left: 10, right: 10, top: 10, bottom: 10),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+    //.only(left: 10, right: 10, top: 10, bottom: 10),
     // helperText: helperText,
     // helperMaxLines: 2,
     hintText: hintText,

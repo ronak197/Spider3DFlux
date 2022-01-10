@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:fstore/screens/checkout/shippingInfoTile.dart';
 import 'package:fstore/screens/checkout/widgets/checkout_button.dart';
 import 'package:fstore/screens/checkout/widgets/my_credit_card.dart';
+import 'package:fstore/screens/checkout/widgets/my_creditcard_address.dart';
 import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_form.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_method.dart';
@@ -180,7 +180,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
+/*              Padding(
                 padding: const EdgeInsets.symmetric(vertical: 0.0),
                 child: Text(S.of(context).orderDetail,
                     style: const TextStyle(fontSize: 18)),
@@ -193,6 +193,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               const SizedBox(
                 height: 15,
               ),
+                  */
               ExpansionInfo(
                 iconWidget: Icon(
                   Icons.widgets,
@@ -277,6 +278,16 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
                   // print('full_address_data: $fullFormData');
 
+                  var shipping_price = cartModel.shippingMethod?.cost.toString().replaceAll('.0', '₪');
+                  var payment_option = cartModel.paymentMethod?.title
+                      ?.replaceAll('תשלום מאובטח ב', '')
+                      .replaceAll('-באיסוף עצמי', '');
+                  var shipping_option = cartModel.shippingMethod?.title
+                              ?.contains('איסוף עצמי') ??
+                          true // does not matter (i just hate .! and prefer .?)
+                      ? 'איסוף עצמי'
+                      : 'משלוח מהיר';
+
                   return Column(
                     children: [
                       Container(
@@ -315,58 +326,66 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-
                       Container(
                         // 1. Without key: ExpansionInfo can't rebuild again
                         // 2. With UniqueKey(): ExpansionInfo rebuild to many
                         // 3. with Key(final_title): the 2 situations (has/'nt data) get 2 keys
                         key: Key(selectedPaymentId.toString()),
                         child: ExpansionInfo(
-                          expand: selectedPaymentId == null, // open if no data
+                          expand: selectedPaymentId == null,
+                          // open if no data
                           // expand: true,
                           iconWidget: Transform(
                             transform: Matrix4.rotationY(math.pi),
                             origin: const Offset(11, 0),
                             child: Icon(
-                              Icons.local_shipping,
+                              // Icons.local_shipping,
+                              shipping_option == 'איסוף עצמי'
+                                  ? Icons.shopping_bag
+                                  : Icons.local_shipping,
                               color: Theme.of(context).accentColor,
                               // color: Color(0xff263238), size: 20,
                             ),
                           ),
 
-                          title: selectedPaymentId ==  null ? 'בחר שיטת משלוח ותשלום' : '000',
+                          title: selectedPaymentId == null
+                              ? 'בחר שיטת משלוח ותשלום'
+                              : '$shipping_price $shipping_option, ב$payment_option',
                           // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
                           children: <Widget>[
-                            fullFormData
-                            // && !paymentFormOpen
-                            /// Deliver radio widget
-                                ? Services().widget.renderShippingMethods(context,
-                                onBack: () {}, onNext: () {
-                                  setPaymentLoading(true);
-                                })
+                            fullFormData && selectedShippingIndex == null
+                                // && !paymentFormOpen
+                                /// Deliver radio widget
+                                ? Services().widget.renderShippingMethods(
+                                    context,
+                                    onBack: () {}, onNext: () {
+                                    setPaymentLoading(true);
+                                  })
                                 : Container(),
                             Container(
                                 height: 1,
-                                decoration: const BoxDecoration(color: kGrey200)),
+                                decoration:
+                                    const BoxDecoration(color: kGrey200)),
                             const SizedBox(
                               height: 15,
                             ),
 
                             /// Payment radio widget
                             selectedShippingIndex != null
-                            // ? Container()
+                                // ? Container()
                                 ? Consumer<ShippingMethodModel>(
-                              builder: (context, shipping_model, child) {
-                                // is_payment_loading = true;
+                                    builder: (context, shipping_model, child) {
+                                      // is_payment_loading = true;
 
-                                if (shipping_model.shippingMethods == null) {
-                                  return Container();
-                                }
+                                      if (shipping_model.shippingMethods ==
+                                          null) {
+                                        return Container();
+                                      }
 
-                                if (shipping_model.isLoading) {
-                                  // setPaymentLoading(true); // Set state no needed
-                                  isPaymentLoading = true;
-                                }
+                                      if (shipping_model.isLoading) {
+                                        // setPaymentLoading(true); // Set state no needed
+                                        isPaymentLoading = true;
+                                      }
 
 /*                  Future.delayed(const Duration(seconds: 1), () {
                         is_payment_loading = false;
@@ -375,42 +394,42 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                         });
                       });*/
 
-                                // OverLay (Stack) Loading while PaymentMethods is set - could be better
-                                Future.delayed(const Duration(seconds: 4))
-                                    .then((_) {
-                                  try {
-                                    setPaymentLoading(false);
-                                  } catch (e, trace) {
-                                    print('my trace: $trace');
-                                  }
-                                  // print(is_payment_loading);
-                                });
-                                return Stack(
-                                  children: [
-                                    PaymentMethodsRadio(),
-                                    isPaymentLoading
-                                        ? Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 75.0),
-                                      child: Container(
-                                          height: 100,
-                                          child: kLoadingWidget(context)),
-                                    )
-                                        : Container()
-                                  ],
-                                );
-                              },
-                            )
-                            // ,
+                                      // OverLay (Stack) Loading while PaymentMethods is set - could be better
+                                      Future.delayed(const Duration(seconds: 4))
+                                          .then((_) {
+                                        try {
+                                          setPaymentLoading(false);
+                                        } catch (e, trace) {
+                                          print('my trace: $e');
+                                        }
+                                        // print(is_payment_loading);
+                                      });
+                                      return Stack(
+                                        children: [
+                                          PaymentMethodsRadio(),
+                                          isPaymentLoading
+                                              ? Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 75.0),
+                                                  child: Container(
+                                                      height: 100,
+                                                      child: kLoadingWidget(
+                                                          context)),
+                                                )
+                                              : Container()
+                                        ],
+                                      );
+                                    },
+                                  )
+                                // ,
                                 : Container(),
                           ],
                         ),
                       ),
-
                       const SizedBox(
                         height: 10,
                       ),
-
                     ],
                   );
                 },
@@ -419,7 +438,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               Container(
                 key: UniqueKey(),
                 child: ExpansionInfo(
-                  expand: paymentFormOpen,
+                  expand: paymentFormOpen &&  cartModel.address?.cardNumber == null,
+                  // open if requested (radio payment option chose) & no data
                   iconWidget: Transform(
                     transform: Matrix4.rotationY(math.pi),
                     origin: const Offset(11, 0),
@@ -437,7 +457,36 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                       ? 'פרטי כרטיס: ${cartModel.address?.cardNumber?.substring(12, 16)} **** **** ****'
                       : 'הכנס פרטי אשראי',
                   // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
-                  children: <Widget>[CreditCardInfo()],
+                  children: <Widget>[
+                    // show_creditCard_details &&
+                    //         cartModel.address?.cardNumber != null &&
+                    //         cartModel.address?.cardHolderName != null
+
+                    cartModel.address?.cardNumber != null
+                        ? CreditCardInfo()
+                        : Column(
+                          children: [
+                            // Text(S.of(context).paymentMethods, style: const TextStyle(fontSize: 18)),
+                            const SizedBox(height: 15),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                // 'בחר את שיטת התשלום שלך',
+                                'בתשלום במזומן יש להכניס כרטיס אשראי כביטחון בלבד',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Theme.of(context).accentColor.withOpacity(0.6),
+                                ),
+                              ),
+                            ),
+
+                            MyCreditCardForm(
+                                onNext: () {},
+                                isFullPage: false,
+                              ),
+                          ],
+                        ),
+                  ],
                 ),
               ),
 

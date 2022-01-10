@@ -25,7 +25,7 @@ import '../review_screen.dart';
 
 class PaymentMethodsRadio extends StatefulWidget {
   void onRadioChange;
-  // final Function(bool)? onLoading;
+  // final Function(bool)? onLoading;en
 
   PaymentMethodsRadio({this.onRadioChange});
 

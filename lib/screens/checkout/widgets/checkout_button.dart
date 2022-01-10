@@ -260,7 +260,8 @@ class _CheckoutButtonState extends State<CheckoutButton> {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
               behavior: SnackBarBehavior.floating,
               // padding: const EdgeInsets.only(bottom: 15),
-              backgroundColor: kColorSpiderRed.withOpacity(0.80),
+              // backgroundColor: kColorSpiderRed.withOpacity(0.80),
+              backgroundColor: Colors.red[500]?.withOpacity(0.85),
               padding: const EdgeInsets.all(10),
               // content: Text(S.of(context).warning(message)),
               content: Text(

@@ -309,7 +309,19 @@ class _ShippingFormState extends State<ShippingForm> {
                 ),
               ),
             ),
-            body: formWidget())
+            body:  Center(
+              child: Container(
+                  decoration: BoxDecoration(
+                    color: kGrey200.withOpacity(0.10),
+                    border: Border.all(
+                      color: kGrey200.withOpacity(0.99),
+                      width: 1.5,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: const EdgeInsets.all(15.0),
+                  child: formWidget()),
+            ))
         : formWidget();
   }
 

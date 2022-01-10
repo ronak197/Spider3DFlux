@@ -76,6 +76,7 @@ void main() async {
     // SharedPreferences.setMockInitialValues(values);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // prefs.clear();
+    // await storage.clear();
 
     String? pref_token = prefs.getString('user_token');
     pref_token == null

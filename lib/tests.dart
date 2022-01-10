@@ -13,6 +13,7 @@ import 'dart:convert';
 // import 'package:dart_random_choice/dart_random_choice.dart';
 import 'package:fstore/common/constants.dart';
 import 'package:fstore/screens/wishlist/thingi_api.dart';
+import 'package:fstore/screens/wishlist/thingi_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import 'dart_tests.dart';

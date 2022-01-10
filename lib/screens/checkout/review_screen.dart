@@ -357,7 +357,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                             ),
                           ),
 
-                          title: selectedPaymentId == null
+                          title: selectedPaymentId == null && firstTimeRadio
                               ? 'בחר שיטת משלוח ותשלום'
                               : '$shipping_price $shipping_option, ב$payment_option',
                           // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',

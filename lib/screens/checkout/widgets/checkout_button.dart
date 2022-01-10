@@ -1,5 +1,6 @@
 import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
 import 'package:provider/provider.dart';
 import 'package:quiver/strings.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -37,7 +38,6 @@ class CheckoutButton extends StatefulWidget {
 }
 
 class _CheckoutButtonState extends State<CheckoutButton> {
-  String? radioSelectionId;
   var order_status = '';
   bool isPaying = false;
   var showCheckoutLoading = false;
@@ -182,14 +182,14 @@ class _CheckoutButtonState extends State<CheckoutButton> {
           if (cartModel.paymentMethod == null ||
               cartModel.paymentMethod?.title == null ||
               cartModel.paymentMethod?.title == '' &&
-                  radioSelectionId != null ||
-              radioSelectionId != '') {
+                  selectedPaymentId != null ||
+              selectedPaymentId != '') {
             print(
-                'Bug Fix! radioSelectionId is $radioSelectionId But cartModel.paymentMethod is null!');
+                'Bug Fix! radioSelectionId is $selectedPaymentId But cartModel.paymentMethod is null!');
             if (paymentMethodModel.paymentMethods.isNotEmpty) {
               try {
                 final paymentMethod = paymentMethodModel.paymentMethods
-                    .firstWhere((item) => item.id == radioSelectionId);
+                    .firstWhere((item) => item.id == selectedPaymentId);
                 Provider.of<CartModel>(context, listen: false)
                     .setPaymentMethod(paymentMethod);
               } catch (e, s) {
@@ -205,9 +205,11 @@ class _CheckoutButtonState extends State<CheckoutButton> {
 
           if (cartModel.paymentMethod == null ||
               cartModel.paymentMethod!.title == null ||
-              cartModel.paymentMethod!.title == '' ||
-              radioSelectionId == null ||
-              radioSelectionId == '') {
+              cartModel.paymentMethod!.title == ''
+          ||
+              selectedPaymentId == null ||
+              selectedPaymentId == ''
+          ) {
             print('>> Select A Payment method. <<');
             setState(() {
               counter += 1;
@@ -218,7 +220,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
             print(cartModel.paymentMethod?.title);
 
             print('radioSelectionId');
-            print(radioSelectionId);
+            print(selectedPaymentId);
 
             print('order_status');
             print(order_status);
@@ -233,7 +235,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
           print(cartModel.notes);
 
           print('selectedId:');
-          print(radioSelectionId);
+          print(selectedPaymentId);
 
           print('isPaying:');
           print(isPaying);
@@ -302,7 +304,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
     isPaying = true;
     if (paymentMethodModel.paymentMethods.isNotEmpty) {
       final paymentMethod = paymentMethodModel.paymentMethods
-          .firstWhere((item) => item.id == radioSelectionId);
+          .firstWhere((item) => item.id == selectedPaymentId);
 
       Provider.of<CartModel>(context, listen: false)
           .setPaymentMethod(paymentMethod);

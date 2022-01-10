@@ -27,8 +27,9 @@ class ShippingMethods extends StatefulWidget {
   _ShippingMethodsState createState() => _ShippingMethodsState();
 }
 
+int? selectedShippingIndex; // to set radio default
+
 class _ShippingMethodsState extends State<ShippingMethods> {
-  int? selectedIndex; // to do not set default
   // int? selectedIndex = 0; // right for 26.9.21, 0 means the "29₪ 2-3 day delivery" is default
 
   @override
@@ -52,9 +53,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
         }
 
         Services().widget.loadShippingMethods(
-            context,
-            Provider.of<CartModel>(context, listen: false),
-            false);
+            context, Provider.of<CartModel>(context, listen: false), false);
       },
     );
   }
@@ -90,12 +89,11 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                 children: <Widget>[
                   const SizedBox(height: 10),
                   Align(
-                  alignment: Alignment.topRight,
+                    alignment: Alignment.topRight,
                     child: Text(
                       // S.of(context).shippingMethod,
                       'בחר מבין ${model.shippingMethods!.length.toString()} שיטות המשלוח ',
-                      style: const TextStyle(fontSize: 18)
-                      ,
+                      style: const TextStyle(fontSize: 18),
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -105,7 +103,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                       children: <Widget>[
                         Container(
                           decoration: BoxDecoration(
-                            color: i == selectedIndex
+                            color: i == selectedShippingIndex
                                 ? Theme.of(context).primaryColorLight
                                 : Colors.transparent,
                           ),
@@ -123,10 +121,10 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                   activeColor: kColorSpiderRed,
                                   focusColor: kColorSpiderRed,
                                   value: i,
-                                  groupValue: selectedIndex,
+                                  groupValue: selectedShippingIndex,
                                   onChanged: (dynamic i) {
                                     setState(() {
-                                      selectedIndex = i;
+                                      selectedShippingIndex = i;
                                     });
 
                                     if (shippingMethodModel
@@ -136,7 +134,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                               listen: false)
                                           .setShippingMethod(shippingMethodModel
                                                   .shippingMethods![
-                                              selectedIndex!]);
+                                              selectedShippingIndex!]);
 
                                       Future.delayed(Duration.zero, () {
                                         final cartModel =
@@ -297,7 +295,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                           false) {
                         Provider.of<CartModel>(context, listen: false)
                             .setShippingMethod(shippingMethodModel
-                                .shippingMethods![selectedIndex!]);
+                                .shippingMethods![selectedShippingIndex!]);
 
                         Future.delayed(Duration.zero, () {
                           final cartModel =

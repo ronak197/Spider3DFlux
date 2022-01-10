@@ -1,10 +1,9 @@
 import 'dart:convert' as convert;
-
+import 'checkout_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quiver/strings.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-
 import '../../../common/config.dart';
 import '../../../common/constants.dart';
 import '../../../common/tools.dart';
@@ -34,8 +33,9 @@ class PaymentMethodsRadio extends StatefulWidget {
   _PaymentMethodsRadioState createState() => _PaymentMethodsRadioState();
 }
 
+String? selectedPaymentId;
 class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDelegate {
-  String? radioSelectionId;
+  // String? radioSelectionId;
   var order_status = '';
   bool isPaying = false;
   var showCheckoutLoading = false;
@@ -175,7 +175,7 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
                                       InkWell(
                                         onTap: () {
                                           setState(() {
-                                            radioSelectionId =
+                                            selectedPaymentId =
                                                 model.paymentMethods[i].id;
                                           });
                                         },
@@ -183,7 +183,7 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
                                           decoration: BoxDecoration(
                                               color:
                                                   model.paymentMethods[i].id ==
-                                                          radioSelectionId
+                                                          selectedPaymentId
                                                       ? Theme.of(context)
                                                           .primaryColorLight
                                                       : Colors.transparent),
@@ -193,19 +193,16 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
                                             child: Row(
                                               children: <Widget>[
                                                 Radio(
-                                                    activeColor:
-                                                        kColorSpiderRed,
+                                                    activeColor: kColorSpiderRed,
                                                     focusColor: kColorSpiderRed,
                                                     value: model
                                                         .paymentMethods[i].id,
-                                                    groupValue: radioSelectionId,
+                                                    groupValue: selectedPaymentId,
                                                     onChanged: (dynamic i) {
                                                       // widget.onRadioChange;
 
-
-
                                                       setState(() {
-                                                        radioSelectionId = i;
+                                                        selectedPaymentId = i;
                                                       });
 
                                                       if (paymentMethodModel
@@ -216,7 +213,7 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
                                                                 .paymentMethods
                                                                 .firstWhere((item) =>
                                                                     item.id ==
-                                                                    radioSelectionId);
+                                                                    selectedPaymentId);
 
                                                         Provider.of<CartModel>(
                                                                 context,
@@ -234,7 +231,7 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
                                                       setState(() {
                                                         paymentFormOpen = true;
                                                       });
-                                                      Navigator.of(context).push(MaterialPageRoute(
+                                                      Navigator.of(context).pushReplacement(MaterialPageRoute(
                                                           builder: (context) => Checkout()));
                                                     }),
                                                 const SizedBox(width: 10),
@@ -317,73 +314,7 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
                     ),
                   // Services().widget.renderTaxes(taxModel, context),
                   // Services().widget.renderRewardInfo(context),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                    child: cartModel.shippingMethod != null
-                        ? Container()
-/*                    Text(cartModel.shippingMethod!.title.toString(),
-                        // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Theme.of(context).accentColor.withOpacity(0.8),
-                        ))*/
-                        : GestureDetector(
-                            onTap: () {
-                              Services().widget.loadShippingMethods(
-                                  context,
-                                  Provider.of<CartModel>(context,
-                                      listen: false),
-                                  false);
 
-                              showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      scrollable: true,
-                                      insetPadding: EdgeInsets.symmetric(
-                                        horizontal: 2.0,
-                                        // vertical: 48 * 3
-                                        vertical:
-                                            MediaQuery.of(context).size.height *
-                                                0.20,
-                                      ),
-                                      // insetPadding: EdgeInsets.zero,
-                                      // contentPadding: EdgeInsets.zero,
-                                      // title: Text('שיטת משלוח'),
-                                      content: Services()
-                                          .widget
-                                          .renderShippingMethods(context,
-                                              onBack: () {}, onNext: () {}),
-
-                                      // Actually the same as above
-                                      // ShippingMethods(
-                                      //     onBack: () {}, onNext: () {})
-
-                                      // goToShippingTab(true);
-
-/*                            actions: <Widget>[
-                                TextButton(
-                                  child: const Text('CANCEL'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],*/
-                                    );
-                                  });
-                            },
-                            child: const Text('בחר שיטת משלוח',
-
-                                // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  decoration: TextDecoration.underline,
-                                  // color: Theme.of(context).accentColor.withOpacity(0.8),
-                                  color: kColorSpiderRed,
-                                )),
-                          ),
-                  ),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: 8, horizontal: 20),

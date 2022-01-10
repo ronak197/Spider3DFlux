@@ -61,7 +61,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
   @override
   void initState() {
     super.initState();
-    print("Start CreditCardAddress init");
+    // print("Start CreditCardAddress init");
     Future.delayed(
       Duration.zero,
       () async {
@@ -72,11 +72,12 @@ class _CreditCardFormState extends State<CreditCardForm> {
         if (addressValue != null) {
           setState(() {
             creditCard = addressValue;
-            print('creditCard');
-            print(creditCard.toString());
-            print(creditCard);
-            print(creditCard!.cvv);
-            print(creditCard!.cvv.toString());
+            // print('creditCard');
+            // print(creditCard.toString());
+            // print(creditCard);
+            // print(creditCard!.cvv);
+            // print(creditCard!.cvv.toString());
+
             // _cityController.text = creditCard?.city ?? '';
             // _streetController.text = creditCard?.street ?? '';
           });

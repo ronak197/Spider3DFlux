@@ -15,7 +15,7 @@ description: LOLL
 version: 13.2.0
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -64,7 +64,7 @@ dependencies:
 
   # WEB TOOLS
   html_unescape: 2.0.0
-#  webview_flutter: 2.0.7
+  #  webview_flutter: 2.0.7
   webview_flutter: 2.0.4
   flutter_widget_from_html: 0.6.1
   flutter_webview_plugin:
@@ -78,7 +78,7 @@ dependencies:
 
   # AUTHENTICATION
   the_apple_sign_in: 1.1.1
-#  flutter_facebook_auth: 3.4.0
+  #  flutter_facebook_auth: 3.4.0
   flutter_facebook_auth: ^3.5.1
   google_sign_in: 5.0.3
   sms_autofill: 2.0.0
@@ -124,9 +124,9 @@ dependencies:
   timeago: 3.0.2
   universal_platform: 1.0.0-nullsafety
   uuid: 3.0.4
-#  vector_math: 2.1.0
+  #  vector_math: 2.1.0
   vector_math:
-#  async: 2.6.1
+  #  async: 2.6.1
   async:
   easy_debounce: 2.0.0
   devicelocale: 0.4.1
@@ -192,7 +192,6 @@ dependencies:
   # Save Api Requests- WP Rest Cache Plugin - YES (effective well)
   # Save Thumbnails - Regenerate Thumbnails Plugin - No
 
-
 dev_dependencies:
   flutter_driver:
     sdk: flutter
@@ -208,13 +207,11 @@ dev_dependencies:
 flutter_app_name:
   name: "Spider3D"
 
-
 ## Enable To run json serializer, run:
 ## flutter pub run build_runner build --build-filter="lib/models/serializers/*.dart" --delete-conflicting-outputs
 ## flutter pub run build_runner serve --build-filter="lib/models/serializers/*.dart"
 #  build_runner: 2.0.3
 #  json_serializable: 4.1.2
-
 
 # Run this script to generate the app icon: flutter pub run flutter_launcher_icons:main
 flutter_icons:
@@ -245,7 +242,6 @@ flutter:
     - family: Feather
       fonts:
         - asset: assets/fonts/Feather.ttf
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

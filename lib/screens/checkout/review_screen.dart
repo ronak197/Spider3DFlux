@@ -35,7 +35,6 @@ import 'dart:math' as math;
 var paymentFormOpen = false;
 bool firstTimeRadio = true;
 
-
 class ReviewScreen extends StatefulWidget {
   final Function? onBack;
   final Function? onNext;
@@ -52,20 +51,22 @@ class ReviewScreen extends StatefulWidget {
   _ReviewState createState() => _ReviewState();
 }
 
+var isKeyboardOpen = false;
+
 class _ReviewState extends BaseScreen<ReviewScreen> {
   TextEditingController note = TextEditingController();
 
   @override
   void initState() {
-    final ScrollController _controller = ScrollController();
+    // final ScrollController _controller = ScrollController();
 
-    void _scrollDown() {
+/*    void _scrollDown() {
       _controller.animateTo(
         _controller.position.maxScrollExtent,
         duration: const Duration(seconds: 2),
         curve: Curves.fastOutSlowIn,
       );
-    }
+    }*/
     // paymentFormOpen ? _scrollDown() : null;
 
     var notes = Provider.of<CartModel>(context, listen: false).notes;
@@ -121,6 +122,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
   bool showSippingRadio = true;
 
   bool isPaymentLoading = false;
+
   void setPaymentLoading(bool loading) {
     setState(() {
       isPaymentLoading = loading;
@@ -139,8 +141,20 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+/*    Timer(const Duration(seconds: 5), () {
+      setState(() {
+        // isKeyboardOpen = !isKeyboardOpen;
+        // isKeyboardOpen = MediaQuery.of(context).viewInsets==0.0;
+      });
+      // print('isKeyboardOpen review_screen $isKeyboardOpen');
+    });*/
+
     final shippingMethodModel = Provider.of<ShippingMethodModel>(context);
     // var myShippingTitle = Provider.of<CartModel>(context).shippingMethod!.title;
+
+    // isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0.0;
+    // print('isKeyboardOpen R');
+    // print(isKeyboardOpen);
 
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final taxModel = Provider.of<TaxModel>(context);
@@ -289,8 +303,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                       .toString()
                       .replaceAll('.0', '₪');
                   var payment_option = cartModel.paymentMethod?.title
-                      ?.replaceAll('תשלום מאובטח ב', '')
-                      .replaceAll('-באיסוף עצמי', '');
+                          ?.replaceAll('תשלום מאובטח ב', '') ??
+                      ''.replaceAll('-באיסוף עצמי', '');
                   var shipping_option = cartModel.shippingMethod?.title
                               ?.contains('איסוף עצמי') ??
                           true // does not matter (i just hate .! and prefer .?)
@@ -341,7 +355,10 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                         // 3. with Key(final_title): the 2 situations (has/'nt data) get 2 keys
                         key: Key(selectedPaymentId.toString()),
                         child: ExpansionInfo(
-                          expand: selectedPaymentId == null && firstTimeRadio,
+                          expand: selectedPaymentId == null &&
+                              firstTimeRadio &&
+                              cartModel.address?.street != null &&
+                              cartModel.address?.phoneNumber != null,
                           // open if no data
                           // expand: true,
                           iconWidget: Transform(
@@ -359,7 +376,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
                           title: selectedPaymentId == null && firstTimeRadio
                               ? 'בחר שיטת משלוח ותשלום'
-                              : '$shipping_price $shipping_option, ב$payment_option',
+                              : '$shipping_price $shipping_option, $payment_option',
                           // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
                           children: <Widget>[
                             // fullFormData && selectedShippingIndex == null
@@ -385,6 +402,29 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                               crossFadeState: showSippingRadio
                                   ? CrossFadeState.showFirst
                                   : CrossFadeState.showSecond,
+                            ),
+
+                            Center(
+                              child: TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Reset the radio buttons
+                                    selectedShippingIndex = null;
+                                    selectedPaymentId = null;
+
+                                    // Show the 1st Shipping radio
+                                    showSippingRadio = true;
+                                  });
+                                },
+                                style: ButtonStyle(
+                                    overlayColor: MaterialStateProperty.all(
+                                        Colors.blueGrey.withOpacity(0.1))),
+                                child: const Text(
+                                  'אפס',
+                                  style:
+                                      TextStyle(fontSize: 14, color: kGrey400),
+                                ),
+                              ),
                             ),
 
                             /// Deliver radio widget

@@ -99,16 +99,24 @@ class _CheckoutButtonState extends State<CheckoutButton> {
           isExtended: true,
           // backgroundColor: Theme.of(context).primaryColor,
           backgroundColor:
-          final_checkoutButton? Theme.of(context).primaryColor : Theme.of(context).primaryColorLight,
+          final_checkoutButton
+              ?
+          // Theme.of(context).primaryColor
+          Colors.green
+              :
+          Theme.of(context).primaryColorLight,
           // foregroundColor: Colors.white,
           foregroundColor: final_checkoutButton ? Colors.white : Theme.of(context).accentColor,
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          icon: final_checkoutButton ? const Icon(Icons.payment, size: 20) : null,
+          // icon: final_checkoutButton ? const Icon(Icons.payment, size: 20) : null,
+          icon: final_checkoutButton ? const Icon(Icons.done_all, size: 20) : null,
           label:
           Text(
             // 'הכנס כתובת משלוח',
             '${widget.text}',
             style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
               letterSpacing: 0.75,
             ),
           ),

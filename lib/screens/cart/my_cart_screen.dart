@@ -111,8 +111,8 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
               : () {
                   if (kAdvanceConfig['AlwaysShowTabBar'] ?? false) {
                     MainTabControlDelegate.getInstance().changeTab('cart');
+                    MainTabControlDelegate.getInstance().changeTab('cart');
                     // MainTabControlDelegate.getInstance().changeTab('checkout');
-
                     // return;
                   }
                   onCheckout(cartModel);

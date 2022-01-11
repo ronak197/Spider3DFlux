@@ -54,11 +54,13 @@ class BannerImageItem extends StatelessWidget {
             child: config.image.toString().contains('http')
                 ? ImageTools.image(
                     fit: boxFit ?? BoxFit.fitWidth,
+                    // fit: BoxFit.fill,
                     url: config.image,
                   )
                 : Image.asset(
                     config.image,
-                    fit: boxFit ?? BoxFit.fitWidth,
+              fit: boxFit ?? BoxFit.fitWidth,
+              // fit: BoxFit.fill,
                   ),
           ),
         ),

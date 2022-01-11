@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:fstore/common/constants.dart';
 import 'package:fstore/screens/checkout/widgets/checkout_button.dart';
@@ -48,6 +50,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
         // ignore: unnecessary_null_comparison
       },
     );*/
+
     super.initState();
   }
 
@@ -78,6 +81,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
   }
 
   bool isCheckoutLoading = false;
+
   void setCheckoutLoading(bool loading) {
     setState(() {
       isCheckoutLoading = loading;
@@ -89,33 +93,47 @@ class _CheckoutState extends BaseScreen<Checkout> {
     final cartModel = Provider.of<CartModel>(context);
 
     String? checkout_title;
-    if(cartModel.address?.phoneNumber == null || cartModel.address?.street == null) {
+    if (cartModel.address?.phoneNumber == null ||
+        cartModel.address?.street == null) {
       checkout_title = 'הכנס כתובת משלוח';
-    } else if (cartModel.paymentMethod == null || cartModel.shippingMethod == null ){
+    } else if (cartModel.paymentMethod == null ||
+        cartModel.shippingMethod == null) {
       checkout_title = 'בחר שיטת משלוח ותשלום';
-    } else if (cartModel.address?.cardNumber == null || cartModel.address?.cvv == null ) {
+    } else if (cartModel.address?.cardNumber == null ||
+        cartModel.address?.cvv == null) {
       checkout_title = 'הכנס פרטי אשראי';
     } else {
       checkout_title = 'סיים הזמנה';
     }
 
+/*    Timer(const Duration(seconds: 5), () {
+      setState(() {
+        // isKeyboardOpen = !isKeyboardOpen;
+        isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom==0.0;
+      });
+      // print('isKeyboardOpen checkout_screen $isKeyboardOpen');
+    });*/
+
     return Stack(
       children: <Widget>[
         Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
-          floatingActionButton:               CheckoutButton(
-            text: checkout_title,
-            onBack: () {},
-            onFinish: (order) {
-              setState(() {
-                newOrder = order;
-              });
-              Provider.of<CartModel>(context, listen: false).clearCart();
-            },
-            // onLoading: setLoading
-            onLoading: setCheckoutLoading,
-          ),
-
+          floatingActionButton: checkout_title == 'סיים הזמנה'
+              ? CheckoutButton(
+                  text: checkout_title,
+                  onBack: () {},
+                  onFinish: (order) {
+                    setState(() {
+                      newOrder = order;
+                    });
+                    Provider.of<CartModel>(context, listen: false).clearCart();
+                  },
+                  // onLoading: setLoading
+                  onLoading: setCheckoutLoading,
+                )
+              : Container(),
+          resizeToAvoidBottomInset: false,
+          // To do not float above the keyboard
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
           appBar: AppBar(

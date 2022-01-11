@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:fstore/screens/wishlist/thingi_screen.dart';
 import 'package:get_it/get_it.dart';
 import 'package:inspireui/utils/logs.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -30,6 +31,16 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  final prefs = await SharedPreferences.getInstance();
+  // final fstore_storage = LocalStorage('fstore');
+  // final address_storage = LocalStorage('address');
+  // final data_order_storage = LocalStorage('data_order');
+  //
+  // await prefs.clear();
+  // await fstore_storage.clear();
+  // await address_storage.clear();
+  // await data_order_storage.clear();
 
   Future<String?> save_user_token() async {
     Future<String?> getThingiToken() async {
@@ -74,9 +85,7 @@ void main() async {
     // Map<String, Object> values = <String, Object>{'user_token': 'Mock_XYZ'};
     // Map<String, Object> values = <String, Object>{};
     // SharedPreferences.setMockInitialValues(values);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    // prefs.clear();
-    // await storage.clear();
+
 
     String? pref_token = prefs.getString('user_token');
     pref_token == null
@@ -103,7 +112,7 @@ void main() async {
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
-  runZonedGuarded(() async {
+  await runZonedGuarded(() async {
     if (!foundation.kIsWeb) {
       /// Enable network traffic logging.
       HttpClient.enableTimelineLogging = !foundation.kReleaseMode;

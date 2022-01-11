@@ -132,7 +132,8 @@ class MainTabsState extends CustomOverlayState<MainTabs>
                   ),
                 ),
                 TextButton(
-                  onPressed: () => Navigator.of(context).pop(true),
+                  // onPressed: () => Navigator.of(context).pop(true),
+                  onPressed: () => SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop'),
                   child: Text(
                     S.of(context).yes,
                     style: const TextStyle(color: kColorSpiderRed),

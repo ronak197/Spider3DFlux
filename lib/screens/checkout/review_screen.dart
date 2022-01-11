@@ -33,6 +33,7 @@ import 'checkout_screen.dart';
 import 'dart:math' as math;
 
 var paymentFormOpen = false;
+bool firstTimeRadio = true;
 
 class ReviewScreen extends StatefulWidget {
   final Function? onBack;
@@ -50,20 +51,22 @@ class ReviewScreen extends StatefulWidget {
   _ReviewState createState() => _ReviewState();
 }
 
+var isKeyboardOpen = false;
+
 class _ReviewState extends BaseScreen<ReviewScreen> {
   TextEditingController note = TextEditingController();
 
   @override
   void initState() {
-    final ScrollController _controller = ScrollController();
+    // final ScrollController _controller = ScrollController();
 
-    void _scrollDown() {
+/*    void _scrollDown() {
       _controller.animateTo(
         _controller.position.maxScrollExtent,
         duration: const Duration(seconds: 2),
         curve: Curves.fastOutSlowIn,
       );
-    }
+    }*/
     // paymentFormOpen ? _scrollDown() : null;
 
     var notes = Provider.of<CartModel>(context, listen: false).notes;
@@ -108,9 +111,15 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
     // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
 
-    // widget.onNext!();
+    setState(() {
+      // Reset the radio buttons
+      selectedShippingIndex = null;
+      selectedPaymentId = null;
+    });
     super.initState();
   }
+
+  bool showSippingRadio = true;
 
   bool isPaymentLoading = false;
 
@@ -132,8 +141,20 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+/*    Timer(const Duration(seconds: 5), () {
+      setState(() {
+        // isKeyboardOpen = !isKeyboardOpen;
+        // isKeyboardOpen = MediaQuery.of(context).viewInsets==0.0;
+      });
+      // print('isKeyboardOpen review_screen $isKeyboardOpen');
+    });*/
+
     final shippingMethodModel = Provider.of<ShippingMethodModel>(context);
     // var myShippingTitle = Provider.of<CartModel>(context).shippingMethod!.title;
+
+    // isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0.0;
+    // print('isKeyboardOpen R');
+    // print(isKeyboardOpen);
 
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final taxModel = Provider.of<TaxModel>(context);
@@ -278,10 +299,12 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
                   // print('full_address_data: $fullFormData');
 
-                  var shipping_price = cartModel.shippingMethod?.cost.toString().replaceAll('.0', '₪');
+                  var shipping_price = cartModel.shippingMethod?.cost
+                      .toString()
+                      .replaceAll('.0', '₪');
                   var payment_option = cartModel.paymentMethod?.title
-                      ?.replaceAll('תשלום מאובטח ב', '')
-                      .replaceAll('-באיסוף עצמי', '');
+                          ?.replaceAll('תשלום מאובטח ב', '') ??
+                      ''.replaceAll('-באיסוף עצמי', '');
                   var shipping_option = cartModel.shippingMethod?.title
                               ?.contains('איסוף עצמי') ??
                           true // does not matter (i just hate .! and prefer .?)
@@ -332,7 +355,10 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                         // 3. with Key(final_title): the 2 situations (has/'nt data) get 2 keys
                         key: Key(selectedPaymentId.toString()),
                         child: ExpansionInfo(
-                          expand: selectedPaymentId == null,
+                          expand: selectedPaymentId == null &&
+                              firstTimeRadio &&
+                              cartModel.address?.street != null &&
+                              cartModel.address?.phoneNumber != null,
                           // open if no data
                           // expand: true,
                           iconWidget: Transform(
@@ -348,20 +374,67 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                             ),
                           ),
 
-                          title: selectedPaymentId == null
+                          title: selectedPaymentId == null && firstTimeRadio
                               ? 'בחר שיטת משלוח ותשלום'
-                              : '$shipping_price $shipping_option, ב$payment_option',
+                              : '$shipping_price $shipping_option, $payment_option',
                           // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
                           children: <Widget>[
-                            fullFormData && selectedShippingIndex == null
-                                // && !paymentFormOpen
-                                /// Deliver radio widget
+                            // fullFormData && selectedShippingIndex == null
+
+                            // && !paymentFormOpen
+
+                            AnimatedCrossFade(
+                              duration: const Duration(seconds: 1),
+                              firstChild: Services()
+                                  .widget
+                                  .renderShippingMethods(context, onBack: () {},
+                                      onNext: () {
+                                setPaymentLoading(true);
+                                setState(() {
+                                  showSippingRadio = false;
+                                  firstTimeRadio = false;
+                                });
+                              }),
+                              secondChild: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: radioPaymentConsumer(),
+                              ),
+                              crossFadeState: showSippingRadio
+                                  ? CrossFadeState.showFirst
+                                  : CrossFadeState.showSecond,
+                            ),
+
+                            Center(
+                              child: TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Reset the radio buttons
+                                    selectedShippingIndex = null;
+                                    selectedPaymentId = null;
+
+                                    // Show the 1st Shipping radio
+                                    showSippingRadio = true;
+                                  });
+                                },
+                                style: ButtonStyle(
+                                    overlayColor: MaterialStateProperty.all(
+                                        Colors.blueGrey.withOpacity(0.1))),
+                                child: const Text(
+                                  'אפס',
+                                  style:
+                                      TextStyle(fontSize: 14, color: kGrey400),
+                                ),
+                              ),
+                            ),
+
+                            /// Deliver radio widget
+                            /*                        showSippingRadio
                                 ? Services().widget.renderShippingMethods(
                                     context,
                                     onBack: () {}, onNext: () {
                                     setPaymentLoading(true);
                                   })
-                                : Container(),
+                                : radioPaymentConsumer(),*/
                             Container(
                                 height: 1,
                                 decoration:
@@ -370,60 +443,13 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                               height: 15,
                             ),
 
-                            /// Payment radio widget
+                            /*                    /// Payment radio widget
                             selectedShippingIndex != null
                                 // ? Container()
-                                ? Consumer<ShippingMethodModel>(
-                                    builder: (context, shipping_model, child) {
-                                      // is_payment_loading = true;
-
-                                      if (shipping_model.shippingMethods ==
-                                          null) {
-                                        return Container();
-                                      }
-
-                                      if (shipping_model.isLoading) {
-                                        // setPaymentLoading(true); // Set state no needed
-                                        isPaymentLoading = true;
-                                      }
-
-/*                  Future.delayed(const Duration(seconds: 1), () {
-                        is_payment_loading = false;
-                        setState(() {
-                          is_payment_loading = false;
-                        });
-                      });*/
-
-                                      // OverLay (Stack) Loading while PaymentMethods is set - could be better
-                                      Future.delayed(const Duration(seconds: 4))
-                                          .then((_) {
-                                        try {
-                                          setPaymentLoading(false);
-                                        } catch (e, trace) {
-                                          print('my trace: $e');
-                                        }
-                                        // print(is_payment_loading);
-                                      });
-                                      return Stack(
-                                        children: [
-                                          PaymentMethodsRadio(),
-                                          isPaymentLoading
-                                              ? Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 75.0),
-                                                  child: Container(
-                                                      height: 100,
-                                                      child: kLoadingWidget(
-                                                          context)),
-                                                )
-                                              : Container()
-                                        ],
-                                      );
-                                    },
-                                  )
+                                ?
+                            radioPaymentConsumer()
                                 // ,
-                                : Container(),
+                                : Container(),*/
                           ],
                         ),
                       ),
@@ -436,9 +462,13 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               ),
 
               Container(
-                key: UniqueKey(),
+                // 1. Without key: ExpansionInfo can't rebuild again
+                // 2. With UniqueKey(): ExpansionInfo rebuild to many
+                // 3. with Key(final_title): the 2 situations (has/'nt data) get 2 keys
+                key: Key(selectedShippingIndex.toString()),
                 child: ExpansionInfo(
-                  expand: paymentFormOpen &&  cartModel.address?.cardNumber == null,
+                  expand:
+                      paymentFormOpen && cartModel.address?.cardNumber == null,
                   // open if requested (radio payment option chose) & no data
                   iconWidget: Transform(
                     transform: Matrix4.rotationY(math.pi),
@@ -465,27 +495,29 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                     cartModel.address?.cardNumber != null
                         ? CreditCardInfo()
                         : Column(
-                          children: [
-                            // Text(S.of(context).paymentMethods, style: const TextStyle(fontSize: 18)),
-                            const SizedBox(height: 15),
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                // 'בחר את שיטת התשלום שלך',
-                                'בתשלום במזומן יש להכניס כרטיס אשראי כביטחון בלבד',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Theme.of(context).accentColor.withOpacity(0.6),
+                            children: [
+                              // Text(S.of(context).paymentMethods, style: const TextStyle(fontSize: 18)),
+                              const SizedBox(height: 15),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  // 'בחר את שיטת התשלום שלך',
+                                  'בתשלום במזומן יש להכניס כרטיס אשראי כביטחון בלבד',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Theme.of(context)
+                                        .accentColor
+                                        .withOpacity(0.6),
+                                  ),
                                 ),
                               ),
-                            ),
 
-                            MyCreditCardForm(
+                              MyCreditCardForm(
                                 onNext: () {},
                                 isFullPage: false,
                               ),
-                          ],
-                        ),
+                            ],
+                          ),
                   ],
                 ),
               ),
@@ -648,10 +680,10 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                         border: InputBorder.none),
                   )),
               const SizedBox(
-                height: 10,
+                height: 150,
               ),
 
-              CheckoutButton(
+/*              CheckoutButton(
                 onBack: () {},
 
                 onFinish: (order) {
@@ -662,7 +694,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 },
                 // onLoading: setLoading)
                 onLoading: setPaymentLoading,
-              ),
+              ),*/
               // CheckoutButton()
 
 /*            if (kPaymentConfig['EnableShipping'] &&
@@ -682,6 +714,58 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
           );
         },
       ),
+    );
+  }
+
+  Consumer<ShippingMethodModel> radioPaymentConsumer() {
+    return Consumer<ShippingMethodModel>(
+      builder: (context, shipping_model, child) {
+        // is_payment_loading = true;
+
+        if (shipping_model.shippingMethods == null) {
+          return Container();
+        }
+
+        if (shipping_model.isLoading) {
+          // setPaymentLoading(true); // Set state no needed
+          isPaymentLoading = true;
+        }
+
+/*                  Future.delayed(const Duration(seconds: 1), () {
+                      is_payment_loading = false;
+                      setState(() {
+                        is_payment_loading = false;
+                      });
+                    });*/
+
+        // OverLay (Stack) Loading while PaymentMethods is set - could be better
+        Future.delayed(const Duration(seconds: 3)).then((_) {
+          try {
+            setPaymentLoading(false);
+          } catch (e, trace) {
+            print('my trace: $e');
+          }
+          // print(is_payment_loading);
+        });
+        return Stack(
+          children: [
+            PaymentMethodsRadio(
+              onRadioChange: () {
+                setState(() {
+                  showSippingRadio = true;
+                });
+              },
+            ),
+            isPaymentLoading
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 75.0),
+                    child:
+                        Container(height: 100, child: kLoadingWidget(context)),
+                  )
+                : Container()
+          ],
+        );
+      },
     );
   }
 

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:fstore/models/payment_method_model.dart';
 import 'package:fstore/models/tax_model.dart';
 import 'package:fstore/models/user_model.dart';
+import 'package:fstore/screens/checkout/checkout_screen.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_form.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:quiver/strings.dart';
 
@@ -27,8 +29,8 @@ class ShippingMethods extends StatefulWidget {
   _ShippingMethodsState createState() => _ShippingMethodsState();
 }
 
-int? selectedShippingIndex; // to set radio default
 
+int? selectedShippingIndex; // to set radio default
 class _ShippingMethodsState extends State<ShippingMethods> {
   // int? selectedIndex = 0; // right for 26.9.21, 0 means the "29₪ 2-3 day delivery" is default
 
@@ -181,9 +183,9 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                       //   () => review_screen_scroll_controller
                                       //       .jumpTo(review_screen_scroll_controller.position.maxScrollExtent),);
 
-                                      // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: DetailScreen()));
-
                                       widget.onNext!();
+                                      // Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Checkout()));
+
                                     }
                                   },
                                 ),

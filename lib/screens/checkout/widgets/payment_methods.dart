@@ -1,4 +1,6 @@
 import 'dart:convert' as convert;
+import 'package:page_transition/page_transition.dart';
+
 import 'checkout_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +26,7 @@ import '../checkout_screen.dart';
 import '../review_screen.dart';
 
 class PaymentMethodsRadio extends StatefulWidget {
-  void onRadioChange;
+  Function? onRadioChange;
   // final Function(bool)? onLoading;en
 
   PaymentMethodsRadio({this.onRadioChange});
@@ -231,8 +233,10 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
                                                       setState(() {
                                                         paymentFormOpen = true;
                                                       });
-                                                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                                          builder: (context) => Checkout()));
+
+                                                      widget.onRadioChange;
+                                                      // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Checkout()));
+                                                      Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Checkout()));
                                                     }),
                                                 const SizedBox(width: 10),
                                                 Expanded(
@@ -315,36 +319,41 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
                   // Services().widget.renderTaxes(taxModel, context),
                   // Services().widget.renderRewardInfo(context),
 
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text(S.of(context).subtotal,
-                            // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Theme.of(context)
-                                  .accentColor
-                                  .withOpacity(0.8),
-                            )),
-                        Text(
-                            PriceTools.getCurrencyFormatted(
-                                cartModel.getTotal(), currencyRate,
-                                currency: cartModel.currency)!,
-                            // style: TextStyle(
-                            //   fontSize: 20,
-                            //   color: Theme.of(context).accentColor,
-                            //   fontWeight: FontWeight.w600,
-                            //   decoration: TextDecoration.underline,
-                            // ),
-                            style:
-                                const TextStyle(fontSize: 14, color: kGrey400))
-                      ],
+/*
+                  Visibility(
+                    visible: false,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Text(S.of(context).subtotal,
+                              // style: TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Theme.of(context)
+                                    .accentColor
+                                    .withOpacity(0.8),
+                              )),
+                          Text(
+                              PriceTools.getCurrencyFormatted(
+                                  cartModel.getTotal(), currencyRate,
+                                  currency: cartModel.currency)!,
+                              // style: TextStyle(
+                              //   fontSize: 20,
+                              //   color: Theme.of(context).accentColor,
+                              //   fontWeight: FontWeight.w600,
+                              //   decoration: TextDecoration.underline,
+                              // ),
+                              style:
+                                  const TextStyle(fontSize: 14, color: kGrey400))
+                        ],
+                      ),
                     ),
                   ),
+*/
                   const SizedBox(height: 15),
                   order_status == ''
                       ? Container()

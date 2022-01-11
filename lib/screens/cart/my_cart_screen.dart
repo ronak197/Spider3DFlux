@@ -104,15 +104,15 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       floatingActionButton: Container(
-        margin: const EdgeInsets.only(bottom: 14),
+        margin: const EdgeInsets.only(bottom: 20),
         child: FloatingActionButton.extended(
           onPressed: cartModel.calculatingDiscount
               ? null
               : () {
                   if (kAdvanceConfig['AlwaysShowTabBar'] ?? false) {
                     MainTabControlDelegate.getInstance().changeTab('cart');
+                    MainTabControlDelegate.getInstance().changeTab('cart');
                     // MainTabControlDelegate.getInstance().changeTab('checkout');
-
                     // return;
                   }
                   onCheckout(cartModel);

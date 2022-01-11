@@ -118,9 +118,9 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     super.initState();
   }
 
-  bool isPaymentLoading = false;
   bool showSippingRadio = true;
 
+  bool isPaymentLoading = false;
   void setPaymentLoading(bool loading) {
     setState(() {
       isPaymentLoading = loading;
@@ -640,10 +640,10 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                         border: InputBorder.none),
                   )),
               const SizedBox(
-                height: 10,
+                height: 150,
               ),
 
-              CheckoutButton(
+/*              CheckoutButton(
                 onBack: () {},
 
                 onFinish: (order) {
@@ -654,7 +654,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 },
                 // onLoading: setLoading)
                 onLoading: setPaymentLoading,
-              ),
+              ),*/
               // CheckoutButton()
 
 /*            if (kPaymentConfig['EnableShipping'] &&

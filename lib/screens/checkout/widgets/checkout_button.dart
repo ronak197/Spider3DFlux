@@ -25,11 +25,12 @@ import '../checkout_screen.dart';
 import '../review_screen.dart';
 
 class CheckoutButton extends StatefulWidget {
+  final String? text;
   final Function? onBack;
   final Function? onFinish;
   final Function(bool)? onLoading;
 
-  CheckoutButton({this.onBack, this.onFinish, this.onLoading});
+  CheckoutButton({this.onBack, this.onFinish, this.onLoading, this.text});
 
   // const CheckoutButton({Key? key}) : super(key: key);
 
@@ -85,8 +86,37 @@ class _CheckoutButtonState extends State<CheckoutButton> {
     final currencyRate = Provider.of<AppModel>(context).currencyRate;
     final paymentMethodModel = Provider.of<PaymentMethodModel>(context);
     final taxModel = Provider.of<TaxModel>(context);
+    var final_checkoutButton = widget.text == 'סיים הזמנה';
 
-    return ButtonTheme(
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20, top: 5),
+      child: IgnorePointer(
+        ignoring: false,
+        child: FloatingActionButton.extended(
+          // enableFeedback: false,
+          // splashColor: Theme.of(context).primaryColorLight,
+          onPressed: () => checkoutAction(cartModel, paymentMethodModel),
+          isExtended: true,
+          // backgroundColor: Theme.of(context).primaryColor,
+          backgroundColor:
+          final_checkoutButton? Theme.of(context).primaryColor : Theme.of(context).primaryColorLight,
+          // foregroundColor: Colors.white,
+          foregroundColor: final_checkoutButton ? Colors.white : Theme.of(context).accentColor,
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          icon: final_checkoutButton ? const Icon(Icons.payment, size: 20) : null,
+          label:
+          Text(
+            // 'הכנס כתובת משלוח',
+            '${widget.text}',
+            style: const TextStyle(
+              letterSpacing: 0.75,
+            ),
+          ),
+        ),
+      ),
+    );
+
+/*    return ButtonTheme(
       height: 45,
       // Processrocces order button
       child: ElevatedButton(
@@ -95,204 +125,212 @@ class _CheckoutButtonState extends State<CheckoutButton> {
           onPrimary: Colors.white,
           primary: Theme.of(context).primaryColor,
         ),
-        onPressed: () {
-          // String? note = Provider.of<CartModel>(context, listen: false).notes ?? '';
-          //   if (note.isNotEmpty && note != '') {Provider.of<CartModel>(context, listen: false).setOrderNotes(note);}
-
-          // var cartModel = Provider.of<CartModel>(context);
-          var addressModel = cartModel.address;
-          var shipping_details_ready = false;
-          var shipping_method_ready = false;
-          var payment_details_ready = false;
-          var payment_method_ready = false;
-
-          order_status = '';
-          var counter = 0;
-          // if(ca){
-
-          // print('Checking Shipping details:');
-          if (addressModel!.firstName == null ||
-          // region checkDetails
-              addressModel.firstName == '' && addressModel.city == null ||
-              addressModel.city == '' && addressModel.street == null ||
-              addressModel.street == '' && addressModel.phoneNumber == null ||
-              addressModel.phoneNumber == '' && addressModel.email == null ||
-              addressModel.email == '') {
-            print('>> Some Shipping details are missing.. <<');
-            setState(() {
-              counter += 1;
-              order_status += '${counter.toString()}. ';
-              order_status += 'הכנס פרטי משלוח \n';
-            });
-            print('order_status');
-            print(order_status);
-          } else {
-            print('Full addressModel.toJson()');
-            print(addressModel.toJson());
-            shipping_details_ready = true;
-          }
-
-          // print('Checking shipping Method:');
-          if (cartModel.shippingMethod == null ||
-              cartModel.shippingMethod!.title == null ||
-              cartModel.shippingMethod!.title == '') {
-            print('>> Select A shipping method. <<');
-            setState(() {
-              counter += 1;
-              order_status += '${counter.toString()}. ';
-              order_status += 'בחר שיטת משלוח \n';
-            });
-            print('order_status');
-            print(order_status);
-          } else {
-            print('cartModel.shippingMethod');
-            print(cartModel.shippingMethod.runtimeType);
-            print(cartModel.shippingMethod.runtimeType);
-            print(cartModel.shippingMethod!.title);
-            shipping_method_ready = true;
-          }
-
-          // print('Payment details:');
-          if (addressModel.cardHolderName == null ||
-              addressModel.cardHolderName == '' &&
-                  addressModel.cardHolderId == null ||
-              addressModel.cardHolderId == '' &&
-                  addressModel.expiryDate == null ||
-              addressModel.expiryDate == '' &&
-                  addressModel.cardNumber == null ||
-              addressModel.cardNumber == '' && addressModel.cvv == null ||
-              addressModel.cvv == '') {
-            print('>> Some Payment details are missing.. <<');
-            setState(() {
-              counter += 1;
-              order_status += '${counter.toString()}. ';
-              order_status += 'הכנס פרטי אשראי \n';
-            });
-            print('order_status');
-            print(order_status);
-          } else {
-            payment_details_ready = true;
-          }
-
-          // print(cartModel.paymentMethod);
-          // print('Payment Method:');
-          // print(cartModel.paymentMethod!.title);
-
-          // If Radio button Selected on screen but not on cartModel.paymentMethod
-          if (cartModel.paymentMethod == null ||
-              cartModel.paymentMethod?.title == null ||
-              cartModel.paymentMethod?.title == '' &&
-                  selectedPaymentId != null ||
-              selectedPaymentId != '') {
-            print(
-                'Bug Fix! radioSelectionId is $selectedPaymentId But cartModel.paymentMethod is null!');
-            if (paymentMethodModel.paymentMethods.isNotEmpty) {
-              try {
-                final paymentMethod = paymentMethodModel.paymentMethods
-                    .firstWhere((item) => item.id == selectedPaymentId);
-                Provider.of<CartModel>(context, listen: false)
-                    .setPaymentMethod(paymentMethod);
-              } catch (e, s) {
-                print('WoOho: $e');
-                // print(s);
-              }
-
-              print('Bug Fixed:');
-              print('cartModel.paymentMethod');
-              print(cartModel.paymentMethod?.title);
-            }
-          }
-
-          if (cartModel.paymentMethod == null ||
-              cartModel.paymentMethod!.title == null ||
-              cartModel.paymentMethod!.title == ''
-          ||
-              selectedPaymentId == null ||
-              selectedPaymentId == ''
-          ) {
-            print('>> Select A Payment method. <<');
-            setState(() {
-              counter += 1;
-              order_status += '${counter.toString()}. ';
-              order_status += 'בחר אמצעי תשלום \n';
-            });
-            print('cartModel.paymentMethod');
-            print(cartModel.paymentMethod?.title);
-
-            print('radioSelectionId');
-            print(selectedPaymentId);
-
-            print('order_status');
-            print(order_status);
-          } else {
-            print('cartModel.paymentMethod');
-            print(cartModel.paymentMethod?.title);
-
-            payment_method_ready = true;
-          }
-
-          print('Order Notes:');
-          print(cartModel.notes);
-
-          print('selectedId:');
-          print(selectedPaymentId);
-
-          print('isPaying:');
-          print(isPaying);
-          // endregion checkDetails
-
-          if (shipping_details_ready &&
-              shipping_method_ready &&
-              payment_details_ready &&
-              payment_method_ready) {
-            print('-------------\nEverything is ready!');
-
-            // ORIGINAL PAYMENT REDIRECT
-            setState(() {
-              showCheckoutLoading = true;
-            });
-
-            // isPaying || selectedId == null ? showSnackbar :
-            placeOrder(paymentMethodModel, cartModel);
-          } else {
-            print('-------------\nNot Everything is ready..');
-            final snackBar = SnackBar(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-              behavior: SnackBarBehavior.floating,
-              // padding: const EdgeInsets.only(bottom: 15),
-              // backgroundColor: kColorSpiderRed.withOpacity(0.80),
-              backgroundColor: Colors.red[500]?.withOpacity(0.85),
-              padding: const EdgeInsets.all(10),
-              // content: Text(S.of(context).warning(message)),
-              content: Text(
-                '$order_status',
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-
-              ),
-              duration: Duration(seconds: order_status.length < 35 ? 4 : 6),
-              action: SnackBarAction(
-                label: S.of(context).close,
-                onPressed: () {
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                },
-              ),
-            );
-            // ignore: deprecated_member_use
-            Scaffold.of(context).showSnackBar(snackBar);
-          }
-
-          // }
-
-          // isPaying || selectedId == null
-          //     ? showSnackbar
-          //     : placeOrder(paymentMethodModel, cartModel);
-        },
+        onPressed: checkoutAction,
         child: const Text(
           'עבור לתשלום מאובטח',
           // S.of(context).placeMyOrder.toUpperCase()
         ),
       ),
-    );
+    );*/
+  }
+
+  void checkoutAction(cartModel, paymentMethodModel){
+    // final cartModel = Provider.of<CartModel>(context);
+    // final currencyRate = Provider.of<AppModel>(context).currencyRate;
+    // final paymentMethodModel = Provider.of<PaymentMethodModel>(context);
+    // final taxModel = Provider.of<TaxModel>(context);
+
+    // String? note = Provider.of<CartModel>(context, listen: false).notes ?? '';
+    //   if (note.isNotEmpty && note != '') {Provider.of<CartModel>(context, listen: false).setOrderNotes(note);}
+
+    // var cartModel = Provider.of<CartModel>(context);
+    var addressModel = cartModel.address;
+    var shipping_details_ready = false;
+    var shipping_method_ready = false;
+    var payment_details_ready = false;
+    var payment_method_ready = false;
+
+    order_status = '';
+    var counter = 0;
+    // if(ca){
+
+    // print('Checking Shipping details:');
+    if (addressModel!.firstName == null ||
+        // region checkDetails
+        addressModel.firstName == '' && addressModel.city == null ||
+        addressModel.city == '' && addressModel.street == null ||
+        addressModel.street == '' && addressModel.phoneNumber == null ||
+        addressModel.phoneNumber == '' && addressModel.email == null ||
+        addressModel.email == '') {
+      print('>> Some Shipping details are missing.. <<');
+      setState(() {
+        counter += 1;
+        order_status += '${counter.toString()}. ';
+        order_status += 'הכנס פרטי משלוח \n';
+      });
+      print('order_status');
+      print(order_status);
+    } else {
+      print('Full addressModel.toJson()');
+      print(addressModel.toJson());
+      shipping_details_ready = true;
+    }
+
+    // print('Checking shipping Method:');
+    if (cartModel.shippingMethod == null ||
+        cartModel.shippingMethod!.title == null ||
+        cartModel.shippingMethod!.title == '') {
+      print('>> Select A shipping method. <<');
+      setState(() {
+        counter += 1;
+        order_status += '${counter.toString()}. ';
+        order_status += 'בחר שיטת משלוח \n';
+      });
+      print('order_status');
+      print(order_status);
+    } else {
+      print('cartModel.shippingMethod');
+      print(cartModel.shippingMethod.runtimeType);
+      print(cartModel.shippingMethod.runtimeType);
+      print(cartModel.shippingMethod!.title);
+      shipping_method_ready = true;
+    }
+
+    // print('Payment details:');
+    if (addressModel.cardHolderName == null ||
+        addressModel.cardHolderName == '' &&
+            addressModel.cardHolderId == null ||
+        addressModel.cardHolderId == '' &&
+            addressModel.expiryDate == null ||
+        addressModel.expiryDate == '' &&
+            addressModel.cardNumber == null ||
+        addressModel.cardNumber == '' && addressModel.cvv == null ||
+        addressModel.cvv == '') {
+      print('>> Some Payment details are missing.. <<');
+      setState(() {
+        counter += 1;
+        order_status += '${counter.toString()}. ';
+        order_status += 'הכנס פרטי אשראי \n';
+      });
+      print('order_status');
+      print(order_status);
+    } else {
+      payment_details_ready = true;
+    }
+
+    // print(cartModel.paymentMethod);
+    // print('Payment Method:');
+    // print(cartModel.paymentMethod!.title);
+
+    // If Radio button Selected on screen but not on cartModel.paymentMethod
+/*    if (cartModel.paymentMethod == null ||
+        cartModel.paymentMethod?.title == null ||
+        cartModel.paymentMethod?.title == '' &&
+            selectedPaymentId != null ||
+        selectedPaymentId != '') {
+      print(
+          'Bug Fix! radioSelectionId is $selectedPaymentId But cartModel.paymentMethod is null!');
+      if (paymentMethodModel.paymentMethods.isNotEmpty) {
+        try {
+          final paymentMethod = paymentMethodModel.paymentMethods
+              .firstWhere((item) => item.id == selectedPaymentId);
+          Provider.of<CartModel>(context, listen: false)
+              .setPaymentMethod(paymentMethod);
+        } catch (e, s) {
+          print('WoOho: $e');
+          // print(s);
+        }
+
+        print('Bug Fixed:');
+        print('cartModel.paymentMethod');
+        print(cartModel.paymentMethod?.title);
+      }
+    }*/
+
+    if (cartModel.paymentMethod == null ||
+        cartModel.paymentMethod!.title == null ||
+        cartModel.paymentMethod!.title == ''
+        // ||
+        // selectedPaymentId == null ||
+        // selectedPaymentId == ''
+    ) {
+      print('>> Select A Payment method. <<');
+      setState(() {
+        counter += 1;
+        order_status += '${counter.toString()}. ';
+        order_status += 'בחר אמצעי תשלום \n';
+      });
+      print('cartModel.paymentMethod');
+      print(cartModel.paymentMethod?.title);
+
+      print('radioSelectionId');
+      print(selectedPaymentId);
+
+      print('order_status');
+      print(order_status);
+    } else {
+      print('cartModel.paymentMethod');
+      print(cartModel.paymentMethod?.title);
+
+      payment_method_ready = true;
+    }
+
+    print('Order Notes:');
+    print(cartModel.notes);
+
+    print('selectedId:');
+    print(selectedPaymentId);
+
+    print('isPaying:');
+    print(isPaying);
+    // endregion checkDetails
+
+    if (shipping_details_ready &&
+        shipping_method_ready &&
+        payment_details_ready &&
+        payment_method_ready) {
+      print('-------------\nEverything is ready!');
+
+      // ORIGINAL PAYMENT REDIRECT
+      setState(() {
+        showCheckoutLoading = true;
+      });
+
+      // isPaying || selectedId == null ? showSnackbar :
+      placeOrder(paymentMethodModel, cartModel);
+    } else {
+      print('-------------\nNot Everything is ready..');
+      final snackBar = SnackBar(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        behavior: SnackBarBehavior.floating,
+        // padding: const EdgeInsets.only(bottom: 15),
+        // backgroundColor: kColorSpiderRed.withOpacity(0.80),
+        backgroundColor: Colors.red[500]?.withOpacity(0.85),
+        padding: const EdgeInsets.all(10),
+        // content: Text(S.of(context).warning(message)),
+        content: Text(
+          '$order_status',
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+
+        ),
+        duration: Duration(seconds: order_status.length < 35 ? 4 : 6),
+        action: SnackBarAction(
+          label: S.of(context).close,
+          onPressed: () {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          },
+        ),
+      );
+      // ignore: deprecated_member_use
+      Scaffold.of(context).showSnackBar(snackBar);
+    }
+
+    // }
+
+    // isPaying || selectedId == null
+    //     ? showSnackbar
+    //     : placeOrder(paymentMethodModel, cartModel);
+
   }
 
   void showSnackbar() {
@@ -305,7 +343,8 @@ class _CheckoutButtonState extends State<CheckoutButton> {
     isPaying = true;
     if (paymentMethodModel.paymentMethods.isNotEmpty) {
       final paymentMethod = paymentMethodModel.paymentMethods
-          .firstWhere((item) => item.id == selectedPaymentId);
+          // .firstWhere((item) => item.id == selectedPaymentId);
+          .firstWhere((item) => item.id == cartModel.paymentMethod?.id);
 
       Provider.of<CartModel>(context, listen: false)
           .setPaymentMethod(paymentMethod);

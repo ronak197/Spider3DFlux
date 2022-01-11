@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/common/constants.dart';
+import 'package:fstore/screens/checkout/widgets/checkout_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/config.dart';
@@ -28,6 +30,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
   int tabIndex = 0;
   bool isPayment = false;
   bool isLoading = false;
+
   // var getAddressDetails;
 
   @override
@@ -74,166 +77,47 @@ class _CheckoutState extends BaseScreen<Checkout> {
     }
   }
 
+  bool isCheckoutLoading = false;
+  void setCheckoutLoading(bool loading) {
+    setState(() {
+      isCheckoutLoading = loading;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final cartModel = Provider.of<CartModel>(context);
 
-    Widget progressBar = Row(
-      children: <Widget>[
-        kPaymentConfig['EnableAddress']
-            ? Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      tabIndex = 0;
-                    });
-                  },
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 13),
-                        child: Text(
-                          S.of(context).address.toUpperCase(),
-                          style: TextStyle(
-                              color: tabIndex == 0
-                                  ? Theme.of(context).primaryColor
-                                  : Theme.of(context).accentColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      tabIndex >= 0
-                          ? ClipRRect(
-                              borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(2.0),
-                                  bottomLeft: Radius.circular(2.0)),
-                              child: Container(
-                                  height: 3.0,
-                                  color: Theme.of(context).primaryColor),
-                            )
-                          : Divider(
-                              height: 2, color: Theme.of(context).accentColor)
-                    ],
-                  ),
-                ),
-              )
-            : Container(),
-        kPaymentConfig['EnableShipping']
-            ? Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    if (cartModel.address != null &&
-                        cartModel.address!.isValid()) {
-                      setState(() {
-                        tabIndex = 1;
-                      });
-                    }
-                  },
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 13),
-                        child: Text(
-                          S.of(context).shipping.toUpperCase(),
-                          style: TextStyle(
-                              color: tabIndex == 1
-                                  ? Theme.of(context).primaryColor
-                                  : Theme.of(context).accentColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      tabIndex >= 1
-                          ? Container(
-                              height: 3.0,
-                              color: Theme.of(context).primaryColor)
-                          : Divider(
-                              height: 2, color: Theme.of(context).accentColor)
-                    ],
-                  ),
-                ),
-              )
-            : Container(),
-        kPaymentConfig['EnableReview']
-            ? Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    if (cartModel.shippingMethod != null) {
-                      setState(() {
-                        tabIndex = 2;
-                      });
-                    }
-                  },
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 13),
-                        child: Text(
-                          S.of(context).review.toUpperCase(),
-                          style: TextStyle(
-                            color: tabIndex == 2
-                                ? Theme.of(context).primaryColor
-                                : Theme.of(context).accentColor,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      tabIndex >= 2
-                          ? Container(
-                              height: 3.0,
-                              color: Theme.of(context).primaryColor)
-                          : Divider(
-                              height: 2, color: Theme.of(context).accentColor)
-                    ],
-                  ),
-                ),
-              )
-            : Container(),
-        Expanded(
-          child: GestureDetector(
-            onTap: () {
-              if (cartModel.shippingMethod != null) {
-                setState(() {
-                  tabIndex = 3;
-                });
-              }
-            },
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 13),
-                  child: Text(
-                    S.of(context).payment.toUpperCase(),
-                    style: TextStyle(
-                      color: tabIndex == 3
-                          ? Theme.of(context).primaryColor
-                          : Theme.of(context).accentColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                tabIndex >= 3
-                    ? ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(2.0),
-                            bottomRight: Radius.circular(2.0)),
-                        child: Container(
-                            height: 3.0, color: Theme.of(context).primaryColor),
-                      )
-                    : Divider(height: 2, color: Theme.of(context).accentColor)
-              ],
-            ),
-          ),
-        )
-      ],
-    );
+    String? checkout_title;
+    if(cartModel.address?.phoneNumber == null || cartModel.address?.street == null) {
+      checkout_title = 'הכנס כתובת משלוח';
+    } else if (cartModel.paymentMethod == null || cartModel.shippingMethod == null ){
+      checkout_title = 'בחר שיטת משלוח ותשלום';
+    } else if (cartModel.address?.cardNumber == null || cartModel.address?.cvv == null ) {
+      checkout_title = 'הכנס פרטי אשראי';
+    } else {
+      checkout_title = 'סיים הזמנה';
+    }
 
     return Stack(
       children: <Widget>[
         Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
+          floatingActionButton:               CheckoutButton(
+            text: checkout_title,
+            onBack: () {},
+            onFinish: (order) {
+              setState(() {
+                newOrder = order;
+              });
+              Provider.of<CartModel>(context, listen: false).clearCart();
+            },
+            // onLoading: setLoading
+            onLoading: setCheckoutLoading,
+          ),
+
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
           appBar: AppBar(
             title: const Text('עמוד קופה'),
             leading: IconButton(
@@ -243,7 +127,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
                     // my comment: while newOrder is not null > set to null (otherwise do nothing)
                     newOrder != null ? newOrder = null : null;
                   });
-                  widget.controller!.animateToPage(
+                  widget.controller?.animateToPage(
                     0,
                     duration: const Duration(milliseconds: 150),
                     curve: Curves.easeInOut,
@@ -307,7 +191,6 @@ class _CheckoutState extends BaseScreen<Checkout> {
       ],
     );
   }
-
 
   /// tabIndex: 0
   void goToAddressTab([bool isGoingBack = false]) {

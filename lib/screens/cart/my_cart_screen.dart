@@ -104,7 +104,7 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       floatingActionButton: Container(
-        margin: const EdgeInsets.only(bottom: 14),
+        margin: const EdgeInsets.only(bottom: 20),
         child: FloatingActionButton.extended(
           onPressed: cartModel.calculatingDiscount
               ? null

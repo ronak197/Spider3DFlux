@@ -420,7 +420,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                                     overlayColor: MaterialStateProperty.all(
                                         Colors.blueGrey.withOpacity(0.1))),
                                 child: const Text(
-                                  'אפס',
+                                  'איפוס',
                                   style:
                                       TextStyle(fontSize: 14, color: kGrey400),
                                 ),

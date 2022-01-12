@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:fstore/screens/wishlist/thingi_screen.dart';
 import 'package:get_it/get_it.dart';
 import 'package:inspireui/utils/logs.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -41,7 +42,7 @@ void main() async {
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
-  runZonedGuarded(() async {
+  await runZonedGuarded(() async {
     if (!foundation.kIsWeb) {
       /// Enable network traffic logging.
       HttpClient.enableTimelineLogging = !foundation.kReleaseMode;

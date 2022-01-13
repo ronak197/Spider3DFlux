@@ -91,7 +91,7 @@ class _RelatedProductState extends State<RelatedProduct> {
                         ),
                       ),
                       Container(
-                          height: constraint.maxWidth * 0.7,
+                          height: constraint.maxWidth * 0.65,
                           child: ListView(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             // cacheExtent: MediaQuery.of(context).size.width,

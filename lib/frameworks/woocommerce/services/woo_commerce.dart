@@ -385,7 +385,7 @@ class WooCommerce extends BaseServices {
       {categoryId,
       tagId,
       page = 1,
-      minPrice = 1,
+      minPrice = 1.0,
       maxPrice,
       orderBy,
       lang,

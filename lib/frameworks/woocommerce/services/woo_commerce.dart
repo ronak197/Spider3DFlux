@@ -432,10 +432,12 @@ class WooCommerce extends BaseServices {
         // if (minPrice == '0' || minPrice == 0.0 || minPrice == 0) {
         //   minPrice = 1.0;
         // } // my - To Remove 0₪ Products
-        endPoint += '&min_price=${(minPrice as double).toInt().toString()}';
+        // endPoint += '&min_price=${(minPrice as double).toInt().toString()}';
+        endPoint += '&min_price=${minPrice.toString()}';
       }
       if (maxPrice != null && maxPrice > 0) {
-        endPoint += '&max_price=${(maxPrice as double).toInt().toString()}';
+        // endPoint += '&max_price=${(maxPrice as double).toInt().toString()}';
+        endPoint += '&max_price=${maxPrice.toString()}';
       }
       // if (orderBy != null) {
       // endPoint += '&orderby=$orderBy';

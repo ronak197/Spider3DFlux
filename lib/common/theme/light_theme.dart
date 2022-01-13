@@ -88,6 +88,13 @@ const ColorScheme kColorScheme = ColorScheme(
 
 ThemeData buildLightTheme(String? language, [String fontFamily = 'Roboto']) {
   final base = ThemeData.light().copyWith(
+    snackBarTheme: SnackBarThemeData(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.red[500]?.withOpacity(0.85),
+        contentTextStyle:
+            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: FadeThroughPageTransitionsBuilder(),

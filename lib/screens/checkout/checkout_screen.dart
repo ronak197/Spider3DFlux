@@ -141,15 +141,25 @@ class _CheckoutState extends BaseScreen<Checkout> {
             leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
+                  // print(newOrder);
                   setState(() {
                     // my comment: while newOrder is not null > set to null (otherwise do nothing)
                     newOrder != null ? newOrder = null : null;
                   });
+                  // print(newOrder);
+
+                  // Navigator.of(context)
+                  //     .push(MaterialPageRoute(builder: (_) => Checkout()));
+
+                  // goToShippingTab(true);
+                  print(widget.controller);
                   widget.controller?.animateToPage(
                     0,
                     duration: const Duration(milliseconds: 150),
                     curve: Curves.easeInOut,
                   );
+                  // print(newOrder);
+
                   // Navigator.of(context).pop();
                 }),
             backgroundColor: Theme.of(context).backgroundColor,

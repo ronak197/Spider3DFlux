@@ -45,7 +45,7 @@ import '../../../services/wordpress/wordpress_api.dart';
 import 'woocommerce_api.dart';
 import 'dart:math';
 
-
+// Lasted WooCommerce Version
 class WooCommerce extends BaseServices {
   Map<String, dynamic>? configCache;
   late WooCommerceAPI wcApi;
@@ -159,15 +159,15 @@ class WooCommerce extends BaseServices {
   Future<List<Category>> getCategoriesByPage({lang, page}) async {
     try {
       var url =
-          // EXCLUDE:
-          // Original: 'products/categories?exclude=$kExcludedCategory&per_page=100&page=$page&hide_empty=true';
-          // Example Array: 'products/categories?exclude=2354,5251&per_page=100&page=$page&hide_empty=true';
-          // Dynamic Array:
-          // 'products/categories?exclude=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
+      // EXCLUDE:
+      // Original: 'products/categories?exclude=$kExcludedCategory&per_page=100&page=$page&hide_empty=true';
+      // Example Array: 'products/categories?exclude=2354,5251&per_page=100&page=$page&hide_empty=true';
+      // Dynamic Array:
+      // 'products/categories?exclude=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
 
-          // INCLUDE:
-          // Example Array: 'products/categories?include=2341,2352,2343,5249,4939,2342&per_page=100&page=$page&hide_empty=true';
-          /* Dynamic Array: */ 'products/categories?include=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
+      // INCLUDE:
+      // Example Array: 'products/categories?include=2341,2352,2343,5249,4939,2342&per_page=100&page=$page&hide_empty=true';
+      /* Dynamic Array: */ 'products/categories?include=$kExcludedCategoryString&per_page=100&page=$page&hide_empty=true';
 
       // NoFilter:
       // 'products/categories?&per_page=100&page=$page&hide_empty=true';
@@ -231,10 +231,10 @@ class WooCommerce extends BaseServices {
         if (horizontalLayout != null) {
           print("part Completed: A-1.3A");
           obj = horizontalLayout.firstWhere(
-              (o) =>
-                  o['layout'] == config['layout'] &&
+                  (o) =>
+              o['layout'] == config['layout'] &&
                   ((o['category'] != null &&
-                          o['category'] == config['category']) ||
+                      o['category'] == config['category']) ||
                       (o['tag'] != null && o['tag'] == config['tag'])),
               orElse: () => null);
           if (obj != null && obj['data'].length > 0) {
@@ -254,7 +254,7 @@ class WooCommerce extends BaseServices {
         if (verticalLayout != null &&
             verticalLayout['layout'] == config['layout'] &&
             ((verticalLayout['category'] != null &&
-                    verticalLayout['category'] == config['category']) ||
+                verticalLayout['category'] == config['category']) ||
                 (verticalLayout['tag'] != null &&
                     verticalLayout['tag'] == config['tag']))) {
           return verticalLayout['data'];
@@ -271,7 +271,7 @@ class WooCommerce extends BaseServices {
         endPoint += '&orderby=$myOrderBy';
         endPoint += '&order=$myOrder';
         endPoint += "&category=${config["category"]}";
-          print('WEEEE0 ${config['category'].runtimeType}');
+        print('WEEEE0 ${config['category'].runtimeType}');
         if (config['category'] == 2352){ // if filaments - remove SARAF שרף
           endPoint += '&attribute=pa_%D7%A7%D7%95%D7%98%D7%A8-%D7%97%D7%95%D7%9E%D7%A8&attribute_term=5564';
         }
@@ -383,19 +383,19 @@ class WooCommerce extends BaseServices {
   @override
   Future<List<Product>?> fetchProductsByCategory(
       {categoryId,
-      tagId,
-      page = 1,
-      minPrice = 1.0,
-      maxPrice,
-      orderBy,
-      lang,
-      order,
-      attribute,
-      attributeTerm,
-      featured,
-      onSale,
-      listingLocation,
-      userId}) async {
+        tagId,
+        page = 1,
+        minPrice = 1.0,
+        maxPrice,
+        orderBy,
+        lang,
+        order,
+        attribute,
+        attributeTerm,
+        featured,
+        onSale,
+        listingLocation,
+        userId}) async {
     try {
       var list = <Product>[];
 
@@ -413,7 +413,7 @@ class WooCommerce extends BaseServices {
       }
 
       var endPoint =
-          // 'products?status=publish&per_page=$ApiPageSize&page=$page&skip_cache=0'; // Original. 0 is False
+      // 'products?status=publish&per_page=$ApiPageSize&page=$page&skip_cache=0'; // Original. 0 is False
           'products?status=publish&per_page=$ApiPageSize&page=$page&skip_cache=1';
       if (kAdvanceConfig['isMultiLanguages']) {
         endPoint += '&lang=$lang';
@@ -522,7 +522,7 @@ class WooCommerce extends BaseServices {
     try {
       var endPoint =
           '$url/wp-json/api/flutter_user/fb_connect/?second=$cookieLifeTime'
-          // ignore: prefer_single_quotes
+      // ignore: prefer_single_quotes
           "&access_token=$token$isSecure";
 
       var response = await httpCache(endPoint.toUri()!);
@@ -545,7 +545,7 @@ class WooCommerce extends BaseServices {
     try {
       //var endPoint = "$url/wp-json/api/flutter_user/sms_login/?access_token=$token$isSecure";
       var endPoint =
-          // ignore: prefer_single_quotes
+      // ignore: prefer_single_quotes
           "$url/wp-json/api/flutter_user/firebase_sms_login?phone=$token$isSecure";
 
       var response = await httpCache(endPoint.toUri()!);
@@ -589,7 +589,7 @@ class WooCommerce extends BaseServices {
   Future<List<Review>> getReviews(productId) async {
     try {
       var response =
-          await wcApi.getAsync('products/$productId/reviews', version: 2);
+      await wcApi.getAsync('products/$productId/reviews', version: 2);
       var list = <Review>[];
       if (response is Map && isNotBlank(response['message'])) {
         throw Exception(response['message']);
@@ -675,9 +675,9 @@ class WooCommerce extends BaseServices {
   @override
   Future<List<ShippingMethod>> getShippingMethods(
       {CartModel? cartModel,
-      String? token,
-      String? checkoutId,
-      Store? store}) async {
+        String? token,
+        String? checkoutId,
+        Store? store}) async {
     try {
       if (isBookingProduct(cartModel!)) {
         return getShippingMethodsByWooApi();
@@ -748,7 +748,7 @@ class WooCommerce extends BaseServices {
             'instance_id': item['instance_id'],
             'label': item['title'],
             'cost': item['settings']['cost'] != null &&
-                    item['settings']['cost']['value'] != null
+                item['settings']['cost']['value'] != null
                 ? item['settings']['cost']['value']
                 : 0,
             'shipping_tax': 0
@@ -769,8 +769,8 @@ class WooCommerce extends BaseServices {
   @override
   Future<List<PaymentMethod>> getPaymentMethods(
       {CartModel? cartModel,
-      ShippingMethod? shippingMethod,
-      String? token}) async {
+        ShippingMethod? shippingMethod,
+        String? token}) async {
     try {
       if (isBookingProduct(cartModel!)) {
         return getPaymentMethodsByWooApi();
@@ -877,9 +877,9 @@ class WooCommerce extends BaseServices {
   @override
   Future<Order> createOrder(
       {CartModel? cartModel,
-      UserModel? user,
-      bool? paid,
-      String? transactionId}) async {
+        UserModel? user,
+        bool? paid,
+        String? transactionId}) async {
     try {
       final params = Order()
           .toJson(cartModel!, user!.user != null ? user.user!.id : null, paid);
@@ -1311,9 +1311,9 @@ class WooCommerce extends BaseServices {
 
     try {
       var endPoint =
-          '$url/wp-json/api/flutter_user/google_login/?second=$cookieLifeTime'
-                  '&access_token=$token$isSecure'
-              .toUri()!;
+      '$url/wp-json/api/flutter_user/google_login/?second=$cookieLifeTime'
+          '&access_token=$token$isSecure'
+          .toUri()!;
 
       var response = await httpCache(endPoint);
 
@@ -1414,11 +1414,11 @@ class WooCommerce extends BaseServices {
       var base64Str = convert.base64.encode(bytes);
 
       final response =
-          await httpPost('$url/wp-json/api/flutter_user/checkout'.toUri()!,
-              body: convert.jsonEncode({
-                'order': base64Str,
-              }),
-              headers: {'Content-Type': 'application/json'});
+      await httpPost('$url/wp-json/api/flutter_user/checkout'.toUri()!,
+          body: convert.jsonEncode({
+            'order': base64Str,
+          }),
+          headers: {'Content-Type': 'application/json'});
       var body = convert.jsonDecode(response.body);
       if (response.statusCode == 200 && body is String) {
         print("flutter_user/checkout Body req:");
@@ -1433,7 +1433,7 @@ class WooCommerce extends BaseServices {
             params['token'] == null) {
           print("flutter_user/checkout Native / OnePage is enabled");
           Map<String, dynamic> checkoutPageSlug =
-              kPaymentConfig['CheckoutPageSlug'];
+          kPaymentConfig['CheckoutPageSlug'];
           String? slug = checkoutPageSlug[lang!];
           slug ??= checkoutPageSlug.values.toList().first;
           slug = slug!.contains('?') ? slug + '&' : slug + '?';
@@ -1571,9 +1571,9 @@ class WooCommerce extends BaseServices {
         final address = Address.fromJson(response);
         final billing = Address.fromJson(response['billing']);
         billing.firstName =
-            billing.firstName!.isEmpty ? address.firstName : billing.firstName;
+        billing.firstName!.isEmpty ? address.firstName : billing.firstName;
         billing.lastName =
-            billing.lastName!.isEmpty ? address.lastName : billing.lastName;
+        billing.lastName!.isEmpty ? address.lastName : billing.lastName;
         billing.email = billing.email!.isEmpty ? address.email : billing.email;
         if (billing.country!.isEmpty) {
           billing.country = kPaymentConfig['DefaultCountryISOCode'];
@@ -1833,7 +1833,7 @@ class WooCommerce extends BaseServices {
           for (var item in product.images) {
             if (!item.contains('http')) {
               var res =
-                  await httpCache('$url/wp-json/wp/v2/media/$item'.toUri()!);
+              await httpCache('$url/wp-json/wp/v2/media/$item'.toUri()!);
               _gallery.add(convert.jsonDecode(res.body)['source_url']);
             } else {
               _gallery.add(item);
@@ -1985,7 +1985,7 @@ class WooCommerce extends BaseServices {
       //   param += '&categories=$categories';
       // }
       final response =
-          await httpCache('$blogUrl/wp-json/wp/v2/posts?$param'.toUri()!);
+      await httpCache('$blogUrl/wp-json/wp/v2/posts?$param'.toUri()!);
 
       if (response.statusCode != 200) {
         return const PagingResponse();

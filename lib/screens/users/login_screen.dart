@@ -121,7 +121,7 @@ class _LoginPageState extends BaseScreen<LoginScreen>
     final snackBar = SnackBar(
       // content: Text(S.of(context).warning(message)), // Exception blah blah..
       content:
-          Text(S.of(context).warning('משהו השתבש, נסה שוב או התחבר ידנית')),
+          Text(S.of(context).warning('משהו השתבש. נסה שוב או התחבר ידנית')),
       duration: const Duration(seconds: 6),
       action: SnackBarAction(
         label: S.of(context).close,
@@ -351,8 +351,8 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                             !isAvailableApple) // Android Only
                                           InkWell(
                                             onTap: () =>
-                                            _loginGoogle(context),
-                                                // _failMessage('', context),
+                                            // _loginGoogle(context),
+                                                _failMessage('', context),
                                             child: Container(
                                               padding: const EdgeInsets.all(12),
                                               width: 220,

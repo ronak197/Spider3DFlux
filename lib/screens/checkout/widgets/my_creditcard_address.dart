@@ -271,8 +271,9 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
 
                       // Navigator.pop(context);
 
-                      await Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) => Checkout()));
+                      // await Navigator.of(context).push(MaterialPageRoute(builder: (_) => Checkout()));
+                      await widget.onNext;
+
                     }
 
                     var myAddress =

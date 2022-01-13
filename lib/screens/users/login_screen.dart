@@ -119,8 +119,10 @@ class _LoginPageState extends BaseScreen<LoginScreen>
     /// Showing Error messageSnackBarDemo
     /// Ability so close message
     final snackBar = SnackBar(
-      content: Text(S.of(context).warning(message)),
-      duration: const Duration(seconds: 30),
+      // content: Text(S.of(context).warning(message)), // Exception blah blah..
+      content:
+          Text(S.of(context).warning('משהו השתבש. אנא נסה שוב')),
+      duration: const Duration(seconds: 6),
       action: SnackBarAction(
         label: S.of(context).close,
         onPressed: () {
@@ -237,8 +239,8 @@ class _LoginPageState extends BaseScreen<LoginScreen>
           },
           fail: (message) {
             //hideLoading();
-            _stopAnimation();
             _failMessage(message, context);
+            _stopAnimation();
           },
           context: context);
     }
@@ -288,74 +290,143 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                       ],
                                     ),
                                     const SizedBox(height: 30.0),
-                                    Text(
-                                      // 'Its rec to login as the web for full sync',
-                                      // 'מומלץ להתחבר בהתאם לאתר לסנכרון מיטבי',
-                                      'התחברות מהירה',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 24,
-                                          // color: Colors.grey.shade400
-                                          color: Colors.grey.shade700),
-                                    ),
+/*                                    if (kLoginSetting['showAppleLogin'] &&
+                                        isAvailableApple)
+                                      Text(
+                                        // 'Its rec to login as the web for full sync',
+                                        // 'מומלץ להתחבר בהתאם לאתר לסנכרון מיטבי',
+                                        'התחברות מהירה',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            // color: Colors.grey.shade400
+                                            color: Colors.grey.shade700),
+                                      ),*/
                                     const SizedBox(height: 50.0),
-                                    Row(
+                                    Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
+                                          // MainAxisAlignment.spaceAround,
+                                          MainAxisAlignment.spaceBetween,
                                       children: <Widget>[
-                                        if (kLoginSetting['showAppleLogin'] &&
-                                            isAvailableApple)
-                                          InkWell(
-                                            onTap: () => _loginApple(context),
-                                            child: Container(
-                                              padding: const EdgeInsets.all(12),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(40),
-                                                color: Colors.black87,
-                                              ),
-                                              child: const Icon(
-                                                FontAwesomeIcons.apple,
-                                                color: Colors.white,
-                                                size: 26,
-                                              ),
-                                            ),
-                                          ),
                                         if (kLoginSetting['showFacebook'])
                                           InkWell(
                                             onTap: () =>
                                                 _loginFacebook(context),
                                             child: Container(
                                               padding: const EdgeInsets.all(12),
+                                              width: 220,
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(40),
                                                 color: const Color(0xFF1873EB),
                                               ),
-                                              child: const Icon(
-                                                FontAwesomeIcons.facebookF,
-                                                color: Colors.white,
-                                                size: 26,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  const Icon(
+                                                    FontAwesomeIcons.facebookF,
+                                                    color: Colors.white,
+                                                    size: 26,
+                                                  ),
+                                                  const Text(
+                                                    'התחבר עם פייסבוק',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        letterSpacing: 0.5,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 18,
+                                                        // color: Colors.grey.shade400
+                                                        // color: Colors.grey.shade700
+                                                        color: Colors.white),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
-                                        if (kLoginSetting['showGoogleLogin'])
+                                        const SizedBox(height: 5.0),
+                                        if (kLoginSetting['showGoogleLogin'] &&
+                                            !isAvailableApple) // Android Only
                                           InkWell(
-                                            onTap: () => _loginGoogle(context),
+                                            onTap: () =>
+                                            _loginGoogle(context),
+                                                // _failMessage('', context),
                                             child: Container(
                                               padding: const EdgeInsets.all(12),
+                                              width: 220,
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(40),
                                                 color: const Color(0xFFEA4336),
                                               ),
-                                              child: const Icon(
-                                                FontAwesomeIcons.google,
-                                                color: Colors.white,
-                                                size: 26.0,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  const Icon(
+                                                    FontAwesomeIcons.google,
+                                                    color: Colors.white,
+                                                    size: 22.0,
+                                                  ),
+                                                  const Text(
+                                                    'התחבר עם גוגל',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        letterSpacing: 0.5,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 18,
+                                                        // color: Colors.grey.shade400
+                                                        // color: Colors.grey.shade700
+                                                        color: Colors.white),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
+                                        const SizedBox(height: 10.0),
+                                        if (kLoginSetting['showAppleLogin'] &&
+                                            isAvailableApple)
+                                          InkWell(
+                                            onTap: () => _loginApple(context),
+                                            child: Container(
+                                              padding: const EdgeInsets.all(12),
+                                              width: 220,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(40),
+                                                color: Colors.black87,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  const Icon(
+                                                    FontAwesomeIcons.apple,
+                                                    color: Colors.white,
+                                                    size: 26,
+                                                  ),
+                                                  const Text(
+                                                    'התחברות עם אפל',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        letterSpacing: 0.5,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 18,
+                                                        // color: Colors.grey.shade400
+                                                        // color: Colors.grey.shade700
+                                                        color: Colors.white),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        const SizedBox(height: 5.0),
                                         if (kLoginSetting['showSMSLogin'])
                                           InkWell(
                                             onTap: () => _loginSMS(context),

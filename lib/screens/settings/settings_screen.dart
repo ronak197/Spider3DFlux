@@ -818,6 +818,8 @@ class _SettingScreenState extends State<SettingScreen>
                                   elevation: 0,
                                   child: ListTile(
                                     onTap: () async {
+
+
                                       await Provider.of<UserModel>(context,
                                               listen: false)
                                           .logout();
@@ -834,11 +836,19 @@ class _SettingScreenState extends State<SettingScreen>
 
                                       // My show / clear all SharedPreferences data
                                       var prefs =
-                                          await SharedPreferences.getInstance();
-                                      print(
-                                          'loadInitData - prefs.getKeys ${prefs.getKeys()}');
-                                      // await prefs.clear(); // remove all ces.getInstance() data
+                                      await SharedPreferences.getInstance();
+
+                                      print('loadInitData - prefs.getKeys ${prefs.getKeys()}');
                                       await prefs.remove('loggedIn');
+                                      await prefs.clear(); // remove all ces.getInstance() data
+
+                                      final fstore_storage = LocalStorage('fstore');
+                                      final address_storage = LocalStorage('address');
+                                      final data_order_storage = LocalStorage('data_order');
+
+                                      await fstore_storage.clear();
+                                      await address_storage.clear();
+                                      await data_order_storage.clear();
                                     },
                                     leading: Icon(
                                       Icons.logout,

@@ -20,7 +20,9 @@ import '../shippingInfoTile.dart';
 
 class ShippingForm extends StatefulWidget {
   final bool isFullPage;
-  final Function onNext;
+  final Function onNext; // should actually be future
+  // final Future<Function> onNext;
+  // final Future<void> onNext;
 
   ShippingForm({required this.onNext, this.isFullPage = true});
 
@@ -294,7 +296,7 @@ class _ShippingFormState extends State<ShippingForm> {
                       // Navigator.pop(context);
 
                       // await Navigator.of(context).push(MaterialPageRoute(builder: (_) => Checkout()));
-                      await Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Checkout()));
+                      await widget.onNext;
 
                     }
 

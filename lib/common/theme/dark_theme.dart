@@ -6,6 +6,14 @@ import 'light_theme.dart';
 ThemeData buildDarkTheme(String? language, [fontFamily]) {
   final base = ThemeData.dark();
   return base.copyWith(
+    snackBarTheme:
+    SnackBarThemeData(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.blueGrey.shade900 //.withOpacity(0.85)
+        ,
+        contentTextStyle:
+        const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
     textTheme: buildTextTheme(base.textTheme, language, fontFamily).apply(
       displayColor: kLightBG,
       bodyColor: kLightBG,

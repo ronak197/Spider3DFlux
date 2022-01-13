@@ -8,6 +8,7 @@ import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_form.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_method.dart';
 import 'package:fstore/widgets/product/product_variant.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_card/awesome_card.dart';
 
@@ -36,12 +37,14 @@ var paymentFormOpen = false;
 bool firstTimeRadio = true;
 
 class ReviewScreen extends StatefulWidget {
+  final PageController? checkoutController;
   final Function? onBack;
   final Function? onNext;
 
   // final Address? addressDetails;
 
   ReviewScreen({
+    this.checkoutController,
     this.onBack,
     this.onNext,
     // this.addressDetails
@@ -340,7 +343,13 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                             fullFormData
                                 ? ShippingInfoTile()
                                 : ShippingForm(
-                                    onNext: () {},
+                                    onNext: () async {
+                                      await Navigator.pushReplacement(
+                                          context,
+                                          PageTransition(
+                                              type: PageTransitionType.fade,
+                                              child: Checkout(controller: widget.checkoutController)));
+                                    },
                                     isFullPage: false,
                                   ),
                           ],
@@ -513,8 +522,13 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                               ),
 
                               MyCreditCardForm(
-                                onNext: () {},
-                                isFullPage: false,
+                                onNext: () async {
+                                  await Navigator.pushReplacement(
+                                      context,
+                                      PageTransition(
+                                          type: PageTransitionType.fade,
+                                          child: Checkout(controller: widget.checkoutController)));
+                                },                                isFullPage: false,
                               ),
                             ],
                           ),
@@ -750,10 +764,16 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
         return Stack(
           children: [
             PaymentMethodsRadio(
-              onRadioChange: () {
+              onRadioChange: () async{
                 setState(() {
                   showSippingRadio = true;
                 });
+
+                await Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.fade,
+                        child: Checkout(controller: widget.checkoutController)));
               },
             ),
             isPaymentLoading

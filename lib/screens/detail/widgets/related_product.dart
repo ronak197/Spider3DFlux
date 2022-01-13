@@ -8,6 +8,7 @@ import '../../../models/index.dart' show AppModel, Product;
 import '../../../services/index.dart';
 import '../../../widgets/product/product_card_view.dart';
 
+// Original RelatedProduct version
 class RelatedProduct extends StatefulWidget {
   final Product? product;
 
@@ -23,11 +24,11 @@ class _RelatedProductState extends State<RelatedProduct> {
   final services = Services();
 
   Future<List<Product>?> getRelativeProducts(context) => _memoizer.runOnce(() {
-        return services.api.fetchProductsByCategory(
-            page: 1,
-            categoryId: widget.product!.categoryId,
-            lang: Provider.of<AppModel>(context).langCode);
-      });
+    return services.api.fetchProductsByCategory(
+        page: 1,
+        categoryId: widget.product!.categoryId,
+        lang: Provider.of<AppModel>(context).langCode);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +71,7 @@ class _RelatedProductState extends State<RelatedProduct> {
                         child: Text(
                           S.of(context).youMightAlsoLike,
                           style: const TextStyle(
-                              // color: Colors.red,
+                            // color: Colors.red,
                               fontSize: 20,
                               fontWeight: FontWeight.w600),
                         ),

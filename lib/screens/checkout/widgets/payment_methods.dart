@@ -236,7 +236,7 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
 
                                                       widget.onRadioChange;
                                                       // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Checkout()));
-                                                      Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Checkout()));
+                                                      // Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: Checkout()));
                                                     }),
                                                 const SizedBox(width: 10),
                                                 Expanded(

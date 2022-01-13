@@ -121,7 +121,7 @@ class _LoginPageState extends BaseScreen<LoginScreen>
     final snackBar = SnackBar(
       // content: Text(S.of(context).warning(message)), // Exception blah blah..
       content:
-          Text(S.of(context).warning('משהו השתבש. נסה שוב או התחבר ידנית')),
+          Text(S.of(context).warning('משהו השתבש. אנא נסה שוב')),
       duration: const Duration(seconds: 6),
       action: SnackBarAction(
         label: S.of(context).close,

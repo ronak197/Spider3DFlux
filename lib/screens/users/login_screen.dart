@@ -400,6 +400,7 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                                     BorderRadius.circular(40),
                                                 color: Colors.black87,
                                               ),
+
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment

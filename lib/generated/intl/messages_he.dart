@@ -55,7 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m16(date) => "תקף עד ${date}";
 
-  static String m17(message) => "אזהרה: ${message}";
+  // static String m17(message) => "אזהרה: ${message}";
+  static String m17(message) => "${message}";
 
   static String m18(length) => "מצאנו ${length} מוצרים";
 

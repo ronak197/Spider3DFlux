@@ -351,8 +351,8 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                             !isAvailableApple) // Android Only
                                           InkWell(
                                             onTap: () =>
-                                            _loginGoogle(context),
-                                                // _failMessage('', context),
+                                            // _loginGoogle(context),
+                                                _failMessage('', context),
                                             child: Container(
                                               padding: const EdgeInsets.all(12),
                                               width: 220,

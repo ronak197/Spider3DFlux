@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/detail/themes/simple_type.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/config.dart';
@@ -8,6 +9,10 @@ import '../../models/entities/index.dart' show AddonsOption;
 import '../../models/index.dart' show AppModel, Product, ProductVariation;
 import '../../services/index.dart';
 import 'product_variant.dart';
+import 'package:flutter/material.dart';
+import 'package:fstore/screens/wishlist/thingi_screen.dart';
+import 'package:inspireui/inspireui.dart' show AutoHideKeyboard, StoryWidget;
+import 'package:provider/provider.dart';
 
 class ShoppingCartRow extends StatelessWidget {
   ShoppingCartRow({
@@ -64,72 +69,85 @@ class ShoppingCartRow extends StatelessWidget {
                     onPressed: onRemove,
                   ),
                 Expanded(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Container(
-                          // color: Colors.red,
-                          width: constraints.maxWidth * 0.25,
-                          height: constraints.maxWidth * 0.3,
-                          child: ImageTools.image(
-                              url: imageFeature, fit: BoxFit.cover),
-                        ),
-                      ),
-                      const SizedBox(width: 16.0),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: Text(
-                                  product!.name!,
-                                  style: TextStyle(
-                                    color: theme.accentColor,
-                                  ),
-                                  // maxLines: my_is_review_screen ? 1 : 4,
-                                  maxLines: 4,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              const SizedBox(height: 7),
-                              Text(
-                                price!,
-                                style: TextStyle(
-                                    color: theme.accentColor, fontSize: 14),
-                              ),
-                              const SizedBox(height: 10),
-                              if (product!.options != null && options != null)
-                                Services()
-                                    .widget
-                                    .renderOptionsCartItem(product!, options),
-                              if (variation != null)
-                                Services()
-                                    .widget
-                                    .renderVariantCartItem(variation!, options),
-                              if (addonsOptions?.isNotEmpty ?? false)
-                                Services().widget.renderAddonsOptionsCartItem(
-                                    context, addonsOptions),
-                              if (kProductDetail.showStockQuantity)
-                                QuantitySelection(
-                                  enabled: onChangeQuantity != null,
-                                  width: 60,
-                                  height: 32,
-                                  color: Theme.of(context).accentColor,
-                                  limitSelectQuantity: limitQuantity,
-                                  value: quantity,
-                                  onChanged: onChangeQuantity,
-                                  useNewDesign: false,
-                                ),
-                            ],
+                  child: GestureDetector(
+                    onTap: () {
+                      print('product do clicked');
+                      try {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => SimpleLayout(
+                                  product: product!,
+                                )));
+                      } on Exception catch (e, trace) {
+                        printLog(
+                            'Error on product click: $e trace: ${trace.toString()}');
+                      }
+                    },
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(
+                            // color: Colors.red,
+                            width: constraints.maxWidth * 0.25,
+                            height: constraints.maxWidth * 0.3,
+                            child: ImageTools.image(
+                                url: imageFeature, fit: BoxFit.cover),
                           ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(width: 16.0),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: Text(
+                                    product!.name!,
+                                    style: TextStyle(
+                                      color: theme.accentColor,
+                                    ),
+                                    // maxLines: my_is_review_screen ? 1 : 4,
+                                    maxLines: 4,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                const SizedBox(height: 7),
+                                Text(
+                                  price!,
+                                  style: TextStyle(
+                                      color: theme.accentColor, fontSize: 14),
+                                ),
+                                const SizedBox(height: 10),
+                                if (product!.options != null && options != null)
+                                  Services()
+                                      .widget
+                                      .renderOptionsCartItem(product!, options),
+                                if (variation != null)
+                                  Services().widget.renderVariantCartItem(
+                                      variation!, options),
+                                if (addonsOptions?.isNotEmpty ?? false)
+                                  Services().widget.renderAddonsOptionsCartItem(
+                                      context, addonsOptions),
+                                if (kProductDetail.showStockQuantity)
+                                  QuantitySelection(
+                                    enabled: onChangeQuantity != null,
+                                    width: 60,
+                                    height: 32,
+                                    color: Theme.of(context).accentColor,
+                                    limitSelectQuantity: limitQuantity,
+                                    value: quantity,
+                                    onChanged: onChangeQuantity,
+                                    useNewDesign: false,
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(width: 16.0),

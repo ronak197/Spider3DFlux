@@ -639,11 +639,12 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                               show_creditCard_details = true;
                                             });
 
-                                            await Navigator.of(context)
+                                            await widget.onNext;
+                         /*                   await Navigator.of(context)
                                                 .pushReplacement(
                                                     MaterialPageRoute(
                                                         builder: (_) =>
-                                                            Checkout()));
+                                                            Checkout()));*/
                                           }
                                         },
                                         child: const Text('המשך',

@@ -29,7 +29,7 @@ class Routes {
     RouteList.register: (context) => RegistrationScreen(),
     RouteList.products: (context) => ProductsScreen(),
     // RouteList.wishlist: (context) => WishListScreen(), // Original
-    RouteList.wishlist: (context) => ThingiPage(), // Original
+    RouteList.wishlist: (context) => const ThingiPage(), // Original
     RouteList.checkout: (context) => Checkout(),
     RouteList.notify: (context) => NotificationScreen(),
     RouteList.language: (context) => LanguageScreen(),

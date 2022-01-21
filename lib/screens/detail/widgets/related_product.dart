@@ -1,5 +1,4 @@
 import 'package:async/async.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,6 +8,7 @@ import '../../../models/index.dart' show AppModel, Product;
 import '../../../services/index.dart';
 import '../../../widgets/product/product_card_view.dart';
 
+// Original RelatedProduct version
 class RelatedProduct extends StatefulWidget {
   final Product? product;
 
@@ -23,17 +23,12 @@ class _RelatedProductState extends State<RelatedProduct> {
 
   final services = Services();
 
-  Future<List<Product>?> getRelativeProducts(context) =>
-      _memoizer.runOnce(() {
-        return services.api.fetchProductsByCategory(
-            page: 1,
-            categoryId: widget.product!.categoryId,
-            lang: Provider
-                .of<AppModel>(context)
-                .langCode).then((value) {
-          print('related_product.dart - fetchProductsByCategory() - $value');
-        });
-      });
+  Future<List<Product>?> getRelativeProducts(context) => _memoizer.runOnce(() {
+    return services.api.fetchProductsByCategory(
+        page: 1,
+        categoryId: widget.product!.categoryId,
+        lang: Provider.of<AppModel>(context).langCode);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -58,19 +53,12 @@ class _RelatedProductState extends State<RelatedProduct> {
                     child: Center(
                       child: Text(
                         S.of(context).error(snapshot.error!),
-                        style: TextStyle(color: Theme
-                            .of(context)
-                            .accentColor),
+                        style: TextStyle(color: Theme.of(context).accentColor),
                       ),
                     ),
                   );
-                } else if (snapshot.data?.isEmpty ?? true) {
-                  if(kDebugMode){
-                    print('Print only in debug mode');
-                    return const Center(child:  Text('Debug: related_product not fount'));
-                  }else{
-                    return const SizedBox(height: 10,);
-                  }
+                } else if (snapshot.data!.isEmpty) {
+                  return const SizedBox();
                 } else {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,9 +69,7 @@ class _RelatedProductState extends State<RelatedProduct> {
                           horizontal: 16.0,
                         ),
                         child: Text(
-                          S
-                              .of(context)
-                              .youMightAlsoLike,
+                          S.of(context).youMightAlsoLike,
                           style: const TextStyle(
                             // color: Colors.red,
                               fontSize: 20,

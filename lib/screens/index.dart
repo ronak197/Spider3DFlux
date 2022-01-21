@@ -42,4 +42,4 @@ export 'settings/notification_screen.dart';
 export 'settings/settings_screen.dart';
 export 'users/login_screen.dart';
 export 'users/registration_screen.dart';
-export 'wishlist/wishlist_screen.dart';
+export 'my_thingi/wishlist_screen.dart';

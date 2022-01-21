@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fstore/screens/my_thingi/set_thingitoken.dart';
 import 'package:provider/provider.dart';
 
 import 'app_init.dart';
@@ -40,14 +41,14 @@ class App extends StatefulWidget {
 class AppState extends State<App>
     with WidgetsBindingObserver
     implements NotificationDelegate, UserModelDelegate {
-  AppModel? _app;
-  final _product = ProductModel();
+  AppModel? _app; //
+  final _product = ProductModel(); //
   final _tagModel = TagModel();
   final _wishlist = WishListModel();
   final _shippingMethod = ShippingMethodModel();
   final _paymentMethod = PaymentMethodModel();
   final _recent = RecentModel();
-  final _user = UserModel();
+  final _user = UserModel(); //
   final _filterModel = FilterAttributeModel();
   final _filterTagModel = FilterTagModel();
   final _categoryModel = CategoryModel();
@@ -118,6 +119,7 @@ class AppState extends State<App>
       Services().firebase.getMessagingToken().then((token) {
         try {
           Services().api.updateUserInfo({'deviceToken': token}, user!.cookie);
+          print('app.dart - updateDeviceToken() - token $token');
         } catch (e) {
           printLog(e);
         }
@@ -159,6 +161,10 @@ class AppState extends State<App>
 
     /// Preload address.
     await cartModel.model.getAddress();
+
+    // user?.id != null
+    print('app.dart - onLoaded() - user?.id ${user?.id}');
+    await set_thingiToken();
   }
 
   @override

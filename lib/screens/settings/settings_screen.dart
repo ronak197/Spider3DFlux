@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
 import 'package:fstore/screens/users/spider_point_screen.dart';
-import 'package:fstore/screens/wishlist/thingi_screen.dart';
+import 'package:fstore/screens/my_thingi/thingi_screen.dart';
 import 'package:inspireui/widgets/flux_image.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
@@ -818,8 +818,6 @@ class _SettingScreenState extends State<SettingScreen>
                                   elevation: 0,
                                   child: ListTile(
                                     onTap: () async {
-
-
                                       await Provider.of<UserModel>(context,
                                               listen: false)
                                           .logout();
@@ -836,15 +834,20 @@ class _SettingScreenState extends State<SettingScreen>
 
                                       // My show / clear all SharedPreferences data
                                       var prefs =
-                                      await SharedPreferences.getInstance();
+                                          await SharedPreferences.getInstance();
 
-                                      print('loadInitData - prefs.getKeys ${prefs.getKeys()}');
+                                      print(
+                                          'loadInitData - prefs.getKeys ${prefs.getKeys()}');
                                       await prefs.remove('loggedIn');
-                                      await prefs.clear(); // remove all ces.getInstance() data
+                                      await prefs
+                                          .clear(); // remove all ces.getInstance() data
 
-                                      final fstore_storage = LocalStorage('fstore');
-                                      final address_storage = LocalStorage('address');
-                                      final data_order_storage = LocalStorage('data_order');
+                                      final fstore_storage =
+                                          LocalStorage('fstore');
+                                      final address_storage =
+                                          LocalStorage('address');
+                                      final data_order_storage =
+                                          LocalStorage('data_order');
 
                                       await fstore_storage.clear();
                                       await address_storage.clear();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fstore/screens/wishlist/thingi_screen.dart';
+import 'package:fstore/screens/my_thingi/thingi_screen.dart';
 import 'package:inspireui/inspireui.dart' show AutoHideKeyboard, StoryWidget;
 import 'package:provider/provider.dart';
 

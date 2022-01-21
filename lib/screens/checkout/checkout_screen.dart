@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:fstore/common/constants.dart';
-import 'package:fstore/menu/maintab_delegate.dart';
 import 'package:fstore/screens/checkout/widgets/checkout_button.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +27,6 @@ class Checkout extends StatefulWidget {
 }
 
 Order? newOrder;
-bool showCheckoutButton = false;
 
 class _CheckoutState extends BaseScreen<Checkout> {
   int tabIndex = 0;
@@ -94,18 +92,18 @@ class _CheckoutState extends BaseScreen<Checkout> {
   Widget build(BuildContext context) {
     final cartModel = Provider.of<CartModel>(context);
 
-    String? checkout_button_title;
+    String? checkout_title;
     if (cartModel.address?.phoneNumber == null ||
         cartModel.address?.street == null) {
-      checkout_button_title = 'הכנס כתובת משלוח';
+      checkout_title = 'הכנס כתובת משלוח';
     } else if (cartModel.paymentMethod == null ||
         cartModel.shippingMethod == null) {
-      checkout_button_title = 'בחר שיטת משלוח ותשלום';
+      checkout_title = 'בחר שיטת משלוח ותשלום';
     } else if (cartModel.address?.cardNumber == null ||
         cartModel.address?.cvv == null) {
-      checkout_button_title = 'הכנס פרטי אשראי';
+      checkout_title = 'הכנס פרטי אשראי';
     } else {
-      checkout_button_title = 'סיים הזמנה';
+      checkout_title = 'סיים הזמנה';
     }
 
 /*    Timer(const Duration(seconds: 5), () {
@@ -120,10 +118,9 @@ class _CheckoutState extends BaseScreen<Checkout> {
       children: <Widget>[
         Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
-          floatingActionButton: checkout_button_title == 'סיים הזמנה' ||
-                  showCheckoutButton
+          floatingActionButton: checkout_title == 'סיים הזמנה'
               ? CheckoutButton(
-                  text: checkout_button_title,
+                  text: checkout_title,
                   onBack: () {},
                   onFinish: (order) {
                     setState(() {
@@ -151,22 +148,16 @@ class _CheckoutState extends BaseScreen<Checkout> {
                   });
                   // print(newOrder);
 
-                  void pushNavigation(String name) {
-                    eventBus.fire(const EventCloseNativeDrawer());
-                    return MainTabControlDelegate.getInstance()
-                        .changeTab(name.replaceFirst('/', ''));
-                  }
+                  // Navigator.of(context)
+                  //     .push(MaterialPageRoute(builder: (_) => Checkout()));
 
                   // goToShippingTab(true);
                   print(widget.controller);
-                  // widget.controller != null ?
                   widget.controller?.animateToPage(
-                          0,
-                          duration: const Duration(milliseconds: 150),
-                          curve: Curves.easeInOut,
-                        );
-                      // : pushNavigation(RouteList.home);
-
+                    0,
+                    duration: const Duration(milliseconds: 150),
+                    curve: Curves.easeInOut,
+                  );
                   // print(newOrder);
 
                   // Navigator.of(context).pop();

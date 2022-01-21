@@ -389,7 +389,9 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                           // title: address != null ? 'כתובת: ''${address.city}, ''${address.street}' : 'עדכן כתובת משלוח',
                           children: <Widget>[
                             // fullFormData && selectedShippingIndex == null
+
                             // && !paymentFormOpen
+
                             AnimatedCrossFade(
                               duration: const Duration(seconds: 1),
                               firstChild: Services()
@@ -765,7 +767,6 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
               onRadioChange: () async{
                 setState(() {
                   showSippingRadio = true;
-                  showCheckoutButton = true;
                 });
 
                 await Navigator.pushReplacement(

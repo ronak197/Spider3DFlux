@@ -114,11 +114,13 @@ class AppState extends State<App>
     );
   }
 
-  void updateDeviceToken(User? user) {
+  Future<void> updateDeviceToken(User? user) async {
     if (GmsTools().isGmsAvailable) {
-      Services().firebase.getMessagingToken().then((token) {
+      await Services().firebase.getMessagingToken().then((token) async {
         try {
-          Services().api.updateUserInfo({'deviceToken': token}, user!.cookie);
+          await Services()
+              .api
+              .updateUserInfo({'deviceToken': token}, user!.cookie);
           print('app.dart - updateDeviceToken() - token $token');
         } catch (e) {
           printLog(e);
@@ -141,7 +143,11 @@ class AppState extends State<App>
 
   @override
   Future<void> onLoaded(User? user) async {
-    updateDeviceToken(user);
+    await updateDeviceToken(user);
+
+    // user?.id != null
+    print('app.dart - onLoaded() - user?.id ${user?.id}');
+    await set_thingiToken();
 
     /// init Cart Modal
     cartModel.model.changeCurrencyRates(_app?.currencyRate);
@@ -161,10 +167,6 @@ class AppState extends State<App>
 
     /// Preload address.
     await cartModel.model.getAddress();
-
-    // user?.id != null
-    print('app.dart - onLoaded() - user?.id ${user?.id}');
-    await set_thingiToken();
   }
 
   @override

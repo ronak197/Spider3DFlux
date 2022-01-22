@@ -31,13 +31,14 @@ Future<String?> set_thingiToken() async {
   // await storage.clear();
 
   String? pref_token = prefs.getString('user_token');
-  if(pref_token == null)
-      {
+  if (pref_token == null || pref_token == 'null') {
+    print('A X pref_token is null: ($pref_token)');
+    print('Start set user_token..');
     pref_token = await getThingiToken();
-    print('Start set user_token = pref_token... ($pref_token)');
+    print('B X pref_token after getThingiToken(): ($pref_token)');
     await prefs.setString('user_token', '$pref_token');
-  } else{
-       print('user_token Found on pref! - $pref_token');
+  } else {
+    print('user_token Found on pref_token! - $pref_token');
   }
 
   Constants.thingiToken = pref_token;
@@ -52,8 +53,7 @@ Future<String?> getThingiToken() async {
 // 2. Found: Notify and add + 1 to users (usage), return  selectedToken
 // 2. Not found: Notify, return  selectedToken as null
 
-  CollectionReference thingi =
-  FirebaseFirestore.instance.collection('thingi');
+  CollectionReference thingi = FirebaseFirestore.instance.collection('thingi');
   String? selectedToken;
 
   String? id;
@@ -85,8 +85,6 @@ Future<String?> getThingiToken() async {
   print('selectedToken = $selectedToken (Full)');
   return selectedToken;
 }
-
-
 
 // Constants.thingiToken = await set_thingiToken();
 // print('Constants.thingiToken ${Constants.thingiToken}');

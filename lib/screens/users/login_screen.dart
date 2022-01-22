@@ -120,8 +120,7 @@ class _LoginPageState extends BaseScreen<LoginScreen>
     /// Ability so close message
     final snackBar = SnackBar(
       // content: Text(S.of(context).warning(message)), // Exception blah blah..
-      content:
-          Text(S.of(context).warning('משהו השתבש. אנא נסה שוב')),
+      content: Text(S.of(context).warning('משהו השתבש. אנא נסה שוב')),
       duration: const Duration(seconds: 6),
       action: SnackBarAction(
         label: S.of(context).close,
@@ -350,9 +349,8 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                         if (kLoginSetting['showGoogleLogin'] &&
                                             !isAvailableApple) // Android Only
                                           InkWell(
-                                            onTap: () =>
-                                            // _loginGoogle(context),
-                                                _failMessage('', context),
+                                            onTap: () => _loginGoogle(context),
+                                            // _failMessage('', context),
                                             child: Container(
                                               padding: const EdgeInsets.all(12),
                                               width: 220,
@@ -400,7 +398,6 @@ class _LoginPageState extends BaseScreen<LoginScreen>
                                                     BorderRadius.circular(40),
                                                 color: Colors.black87,
                                               ),
-
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment

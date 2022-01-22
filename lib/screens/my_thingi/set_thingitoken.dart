@@ -37,7 +37,9 @@ Future<String?> set_thingiToken() async {
     pref_token = await getThingiToken();
     print('B X pref_token after getThingiToken(): ($pref_token)');
     await prefs.setString('user_token', '$pref_token');
+    // await prefs.setString('user_token', 'null');
   } else {
+    // await prefs.setString('user_token', 'null');
     print('user_token Found on pref_token! - $pref_token');
   }
 

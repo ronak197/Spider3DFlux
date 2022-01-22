@@ -17,6 +17,7 @@ import 'package:fstore/common/config.dart';
 import 'dart:convert';
 // import 'package:dart_random_choice/dart_random_choice.dart';
 import 'package:fstore/common/constants.dart';
+import 'package:fstore/screens/my_thingi/set_thingitoken.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -74,9 +75,17 @@ class Constants {
   }
 }
 
+Future<void> _check_thingiToken() async {
+  print('thingi_screen.dart - _check_thingiToken()');
+  print('thingiToken ${Constants.thingiToken}');
+  Constants.thingiToken == null || Constants.thingiToken == 'null'
+      ? await set_thingiToken() : null;
+  print('thingiToken ${Constants.thingiToken}');
+}
+
 Future<Map<String, dynamic>> _setFeedByPopular() async {
   print('_setFeedByPopular:');
-  print('thingiToken ${Constants.thingiToken}');
+  await _check_thingiToken();
   // showLoading = true;
 
   final response = await http.get(Uri.parse(Constants.defaultFeed));
@@ -96,7 +105,7 @@ Future<Map<String, dynamic>> _setFeedByPopular() async {
 Future<Map<String, dynamic>> _setFeedByKeyword(String keyword) async {
   showLoading = true;
   print('_setFeedByKeyword:');
-  print('thingiToken ${Constants.thingiToken}');
+  await _check_thingiToken();
 
   /// קטע זה מאפשר את יכולת החיפוש
   final response = await http.get(Uri.parse(Constants.feedByKeyword(keyword)));
@@ -114,7 +123,7 @@ Future<Map<String, dynamic>> _setFeedByCategory() async {
   randomCategory = categoriesList[Random().nextInt(categoriesList.length)];
 
   print('_setFeedByCategory:');
-  print('thingiToken ${Constants.thingiToken}');
+  await _check_thingiToken();
 
   final response = await http.get(Uri.parse(Constants.feedByCategory()));
   if (response.statusCode == 200) {

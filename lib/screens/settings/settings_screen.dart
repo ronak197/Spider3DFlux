@@ -661,7 +661,7 @@ class _SettingScreenState extends State<SettingScreen>
               SliverAppBar(
                 backgroundColor: Theme.of(context).primaryColor,
                 leading: IconButton(
-                  tooltip: 'thingiToken ${Constants.thingiToken}',
+                  tooltip: '${Constants.thingiToken_counter} | thingiToken ${Constants.thingiToken}',
                   icon: Icon(
                     // Icons.blur_on,
                     Icons.menu,

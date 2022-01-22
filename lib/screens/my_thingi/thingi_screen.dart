@@ -58,6 +58,7 @@ var randomCategory = categoriesList[Random().nextInt(categoriesList.length)];
 
 class Constants {
   static String? thingiToken;
+  static String? thingiToken_counter;
 
   //https://api.thingiverse.com/popular/?access_token=$thingiToken
   static String defaultFeed =
@@ -77,10 +78,11 @@ class Constants {
 
 Future<void> _check_thingiToken() async {
   print('thingi_screen.dart - _check_thingiToken()');
-  print('thingiToken ${Constants.thingiToken}');
-  Constants.thingiToken == null || Constants.thingiToken == 'null'
-      ? await set_thingiToken() : null;
-  print('thingiToken ${Constants.thingiToken}');
+  print('thingiToken ${Constants.thingiToken_counter} | ${Constants.thingiToken}');
+  await getThingiToken();
+  // Constants.thingiToken == null || Constants.thingiToken == 'null'
+  //     ? await set_thingiToken() : null;
+  print('thingiToken ${Constants.thingiToken_counter} | ${Constants.thingiToken}');
 }
 
 Future<Map<String, dynamic>> _setFeedByPopular() async {

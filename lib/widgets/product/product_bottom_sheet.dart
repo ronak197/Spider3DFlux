@@ -15,6 +15,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fstore/menu/maintab_delegate.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/tools.dart';
@@ -274,6 +275,7 @@ class _ExpandingBottomSheetState extends State<ExpandingBottomSheet>
   void open() {
     if (!_isOpen) {
       _controller.forward();
+      MainTabControlDelegate.getInstance().changeTab('cart');
     }
   }
 

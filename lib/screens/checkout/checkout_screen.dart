@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:fstore/common/constants.dart';
+import 'package:fstore/menu/maintab_delegate.dart';
 import 'package:fstore/screens/checkout/widgets/checkout_button.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +28,7 @@ class Checkout extends StatefulWidget {
 }
 
 Order? newOrder;
+bool showCheckoutButton = false;
 
 class _CheckoutState extends BaseScreen<Checkout> {
   int tabIndex = 0;
@@ -50,7 +52,6 @@ class _CheckoutState extends BaseScreen<Checkout> {
         // ignore: unnecessary_null_comparison
       },
     );*/
-
     super.initState();
   }
 
@@ -104,6 +105,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
       checkout_title = 'הכנס פרטי אשראי';
     } else {
       checkout_title = 'סיים הזמנה';
+      showCheckoutButton = true;
     }
 
 /*    Timer(const Duration(seconds: 5), () {
@@ -118,8 +120,9 @@ class _CheckoutState extends BaseScreen<Checkout> {
       children: <Widget>[
         Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
-          floatingActionButton: checkout_title == 'סיים הזמנה'
-              ? CheckoutButton(
+          floatingActionButton:
+          // showCheckoutButton ||  checkout_title == 'סיים הזמנה' ?
+          CheckoutButton(
                   text: checkout_title,
                   onBack: () {},
                   onFinish: (order) {
@@ -131,7 +134,8 @@ class _CheckoutState extends BaseScreen<Checkout> {
                   // onLoading: setLoading
                   onLoading: setCheckoutLoading,
                 )
-              : Container(),
+              // : Container()
+          ,
           resizeToAvoidBottomInset: false,
           // To do not float above the keyboard
           floatingActionButtonLocation:
@@ -152,12 +156,12 @@ class _CheckoutState extends BaseScreen<Checkout> {
                   //     .push(MaterialPageRoute(builder: (_) => Checkout()));
 
                   // goToShippingTab(true);
-                  print(widget.controller);
+                  widget.controller != null ?
                   widget.controller?.animateToPage(
                     0,
                     duration: const Duration(milliseconds: 150),
                     curve: Curves.easeInOut,
-                  );
+                  ) :  MainTabControlDelegate.getInstance().changeTab('home');
                   // print(newOrder);
 
                   // Navigator.of(context).pop();

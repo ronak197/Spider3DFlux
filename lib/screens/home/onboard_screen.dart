@@ -105,7 +105,8 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
 
     for (var i = 0; i < data.length; i++) {
       var slide = SlideWrapper(
-        title: '', //data[i]['title'],
+        title: '',
+        //data[i]['title'],
         description: data[i]['desc'],
         maxLineTitle: 2,
         marginTitle: const EdgeInsets.only(
@@ -276,7 +277,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                 ),
                 // const SizedBox(height: 35),
                 const Text(
-                  'משלוח חינם \nמתנת הצטרפות מאיתנו',
+                  'משלוח חינם! \nמתנת הצטרפות מאיתנו',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -291,7 +292,8 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                     padding:
                         EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
                     child: Text(
-                      'משלוח ראשון חינם ומבצעים בלעדיים נוספים לחברי האפליקציה',
+                      // 'משלוח ראשון חינם ומבצעים בלעדיים נוספים לחברי האפליקציה',
+                      '\n',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 15.0),
                     ),
@@ -352,6 +354,35 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                     ),
                   ),
                 ),
+                const Spacer(),
+                TextButton(
+                  style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(
+                          kColorSpiderRed.withOpacity(0.05)),
+                      foregroundColor:
+                          MaterialStateProperty.all(kColorSpiderRed),
+                      // MaterialStateProperty.all(Colors.grey[700]),
+                      // backgroundColor: MaterialStateProperty.all(Colors.white),
+                      backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
+                      // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
+                      // elevation: MaterialStateProperty.all(2)
+                  ),
+                  onPressed: () async {
+                    var prefs = await SharedPreferences.getInstance();
+                    await prefs.setBool('seen', true);
+                    await Navigator.pushReplacementNamed(
+                        context, RouteList.dashboard);
+                  },
+                  child: Text(
+                    'דלג על ההתחברות',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15.0,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10,)
               ],
             ));
       // return Scaffold(

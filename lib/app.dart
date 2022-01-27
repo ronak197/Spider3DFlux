@@ -279,6 +279,7 @@ class AppState extends State<App>
                   body: AppInit(),
                 ),
                 routes: Routes.getAll(),
+                debugShowCheckedModeBanner: false,
                 onGenerateRoute: Routes.getRouteGenerate,
                 theme: getTheme(context),
                 themeMode: value.themeMode,

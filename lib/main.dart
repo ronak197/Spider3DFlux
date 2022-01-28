@@ -25,6 +25,7 @@ import 'env.dart';
 import 'services/dependency_injection.dart';
 import 'services/locale_service.dart';
 import 'services/services.dart';
+import 'package:flutter/foundation.dart' as foundation;
 
 void main() async {
   printLog('[main] ===== START main.dart =======');
@@ -32,9 +33,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  var prefs = await SharedPreferences.getInstance();
-  // await prefs.setBool('seen', true);
-  await prefs.remove('seen');
+  if (foundation.kDebugMode) {
+    var prefs = await SharedPreferences.getInstance();
+    // await prefs.setBool('seen', true);
+    await prefs.remove('seen');
+  }
 //----------------------------------------------------------------------
   Configurations().setConfigurationValues(environment);
   Provider.debugCheckInvalidValueType = null;

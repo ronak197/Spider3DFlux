@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:fstore/common/config.dart';
 import 'package:fstore/screens/users/login_screen.dart';
 import 'package:inspireui/widgets/onboarding/intro_slider/intro_slider_wrapper.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
@@ -357,24 +358,40 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                 const Spacer(),
                 TextButton(
                   style: ButtonStyle(
-                      overlayColor: MaterialStateProperty.all(
-                          kColorSpiderRed.withOpacity(0.05)),
-                      foregroundColor:
-                          MaterialStateProperty.all(kColorSpiderRed),
-                      // MaterialStateProperty.all(Colors.grey[700]),
-                      // backgroundColor: MaterialStateProperty.all(Colors.white),
-                      backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
-                      // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
-                      // elevation: MaterialStateProperty.all(2)
+                    overlayColor: MaterialStateProperty.all(
+                        kColorSpiderRed.withOpacity(0.05)),
+                    foregroundColor: MaterialStateProperty.all(kColorSpiderRed),
+                    // MaterialStateProperty.all(Colors.grey[700]),
+                    // backgroundColor: MaterialStateProperty.all(Colors.white),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.grey[100]),
+                    // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
+                    // elevation: MaterialStateProperty.all(2)
                   ),
                   onPressed: () async {
                     var prefs = await SharedPreferences.getInstance();
                     await prefs.setBool('seen', true);
+                    void showLoading() {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context) {
+                          return Center(
+                              child: Container(
+                            padding: const EdgeInsets.all(50.0),
+                            child: kLoadingWidget(context),
+                          ));
+                        },
+                      );
+                    }
+
+                    showLoading();
                     await Navigator.pushReplacementNamed(
                         context, RouteList.dashboard);
                   },
                   child: Text(
-                    'דלג על ההתחברות',
+                    // 'דלג על ההתחברות',
+                    'דלג וותר על הקופון',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 15.0,
@@ -382,7 +399,9 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10,)
+                const SizedBox(
+                  height: 10,
+                )
               ],
             ));
       // return Scaffold(

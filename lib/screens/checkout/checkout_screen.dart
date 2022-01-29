@@ -81,13 +81,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
     }
   }
 
-  bool isCheckoutLoading = false;
 
-  void setCheckoutLoading(bool loading) {
-    setState(() {
-      isCheckoutLoading = loading;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +114,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
       children: <Widget>[
         Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
-          floatingActionButton:
+/*          floatingActionButton:
           // showCheckoutButton ||  checkout_title == 'סיים הזמנה' ?
           CheckoutButton(
                   text: checkout_title,
@@ -135,7 +129,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
                   onLoading: setCheckoutLoading,
                 )
               // : Container()
-          ,
+          ,*/
           resizeToAvoidBottomInset: false,
           // To do not float above the keyboard
           floatingActionButtonLocation:

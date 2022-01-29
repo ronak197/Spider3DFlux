@@ -385,7 +385,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                       );
                     }
 
-                    showLoading();
+                    // showLoading();
                     await Navigator.pushReplacementNamed(
                         context, RouteList.dashboard);
                   },

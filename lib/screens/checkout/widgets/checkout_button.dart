@@ -26,7 +26,7 @@ import '../review_screen.dart';
 
 class CheckoutButton extends StatefulWidget {
   final String? text;
-  final Function? onBack;
+  final void onBack;
   final Function? onFinish;
   final Function(bool)? onLoading;
 
@@ -95,7 +95,11 @@ class _CheckoutButtonState extends State<CheckoutButton> {
         child: FloatingActionButton.extended(
           // enableFeedback: false,
           // splashColor: Theme.of(context).primaryColorLight,
-          onPressed: () => checkoutAction(cartModel, paymentMethodModel),
+          onPressed:
+              () {
+            print(cartModel.user);
+                checkoutAction(cartModel, paymentMethodModel);
+          },
           isExtended: true,
           // backgroundColor: Theme.of(context).primaryColor,
           backgroundColor:

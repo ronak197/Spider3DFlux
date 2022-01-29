@@ -114,7 +114,10 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
                     // MainTabControlDelegate.getInstance().changeTab('checkout');
                     // return;
                   }
-                  onCheckout(cartModel);
+                  cartModel.user?.email == null ?
+                  // Navigator.of(context).pushReplacementNamed(rou)
+                  Navigator.of(context).pushReplacementNamed(RouteList.login)
+                  : onCheckout(cartModel);
                 },
           isExtended: true,
           backgroundColor: Theme.of(context).primaryColor,

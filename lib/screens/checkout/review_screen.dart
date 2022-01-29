@@ -142,6 +142,13 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     });
   }
 
+  bool isCheckoutLoading = false;
+  void setCheckoutLoading(bool loading) {
+    setState(() {
+      isCheckoutLoading = loading;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 /*    Timer(const Duration(seconds: 5), () {
@@ -693,9 +700,6 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                         hintStyle: TextStyle(fontSize: 14),
                         border: InputBorder.none),
                   )),
-              const SizedBox(
-                height: 150,
-              ),
 
 /*              CheckoutButton(
                 onBack: () {},
@@ -724,12 +728,35 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                                     decoration: TextDecoration.underline,
                                     fontSize: 15,
                                     color: kGrey400))))*/
+
+              const SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: CheckoutButton(
+                  text: 'סיים הזמנה',
+                  onBack: () {},
+                  onFinish: (order) {
+                    setState(() {
+                      newOrder = order;
+                    });
+                    Provider.of<CartModel>(context, listen: false).clearCart();
+                  },
+                  // onLoading: setLoading
+                  onLoading: setCheckoutLoading,
+                ),
+              ),
+              const SizedBox(
+                height: 150,
+              ),
             ],
           );
         },
       ),
     );
   }
+
+
 
   Consumer<ShippingMethodModel> radioPaymentConsumer() {
     return Consumer<ShippingMethodModel>(

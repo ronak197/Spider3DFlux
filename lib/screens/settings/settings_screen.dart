@@ -11,7 +11,7 @@ import '../../common/config.dart';
 import '../../common/constants.dart';
 import '../../common/tools.dart';
 import '../../generated/l10n.dart';
-import '../../models/index.dart' show AppModel, User, UserModel, WishListModel;
+import '../../models/index.dart' show Address, AppModel, CartModel, User, UserModel, WishListModel;
 import '../../models/notification_model.dart';
 import '../../routes/flux_navigate.dart';
 import '../../services/index.dart';
@@ -853,6 +853,9 @@ class _SettingScreenState extends State<SettingScreen>
                                       await fstore_storage.clear();
                                       await address_storage.clear();
                                       await data_order_storage.clear();
+
+                                      Provider.of<CartModel>(context).dispose();
+                                      // Provider.of<AppModel>(context).dispose();
                                     },
                                     leading: Icon(
                                       Icons.logout,

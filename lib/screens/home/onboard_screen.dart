@@ -15,6 +15,7 @@ import '../../generated/l10n.dart';
 import '../../models/index.dart' show AppModel;
 import 'change_language_mixin.dart';
 import 'package:flutter/services.dart';
+import 'dart:io' show Platform;
 
 class OnBoardScreen extends StatefulWidget {
   OnBoardScreen();
@@ -356,46 +357,49 @@ class _OnBoardScreenState extends State<OnBoardScreen> with ChangeLanguage {
                   ),
                 ),
                 const Spacer(),
-                TextButton(
-                  style: ButtonStyle(
-                    overlayColor: MaterialStateProperty.all(
-                        kColorSpiderRed.withOpacity(0.05)),
-                    foregroundColor: MaterialStateProperty.all(kColorSpiderRed),
-                    // MaterialStateProperty.all(Colors.grey[700]),
-                    // backgroundColor: MaterialStateProperty.all(Colors.white),
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.grey[100]),
-                    // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
-                    // elevation: MaterialStateProperty.all(2)
-                  ),
-                  onPressed: () async {
-                    var prefs = await SharedPreferences.getInstance();
-                    await prefs.setBool('seen', true);
-                    void showLoading() {
-                      showDialog(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (BuildContext context) {
-                          return Center(
-                              child: Container(
-                            padding: const EdgeInsets.all(50.0),
-                            child: kLoadingWidget(context),
-                          ));
-                        },
-                      );
-                    }
+                Visibility(
+                  visible: Platform.isIOS,
+                  child: TextButton(
+                    style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(
+                          kColorSpiderRed.withOpacity(0.05)),
+                      foregroundColor: MaterialStateProperty.all(kColorSpiderRed),
+                      // MaterialStateProperty.all(Colors.grey[700]),
+                      // backgroundColor: MaterialStateProperty.all(Colors.white),
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.grey[100]),
+                      // backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
+                      // elevation: MaterialStateProperty.all(2)
+                    ),
+                    onPressed: () async {
+                      var prefs = await SharedPreferences.getInstance();
+                      await prefs.setBool('seen', true);
+                      void showLoading() {
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (BuildContext context) {
+                            return Center(
+                                child: Container(
+                              padding: const EdgeInsets.all(50.0),
+                              child: kLoadingWidget(context),
+                            ));
+                          },
+                        );
+                      }
 
-                    // showLoading();
-                    await Navigator.pushReplacementNamed(
-                        context, RouteList.dashboard);
-                  },
-                  child: Text(
-                    // 'דלג על ההתחברות',
-                    'דלג וותר על הקופון',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15.0,
-                      color: Colors.grey[700],
+                      // showLoading();
+                      await Navigator.pushReplacementNamed(
+                          context, RouteList.dashboard);
+                    },
+                    child: Text(
+                      // 'דלג על ההתחברות',
+                      'דלג וותר על הקופון',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15.0,
+                        color: Colors.grey[700],
+                      ),
                     ),
                   ),
                 ),

@@ -36,10 +36,10 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
   final TextEditingController _creditDateController = TextEditingController();
   final CreditCardValidator _ccValidator = CreditCardValidator();
 
-  final expireMmYy = FocusNode();
-  final _emailNode = FocusNode();
-  final _cityNode = FocusNode();
-  final _streetNode = FocusNode();
+  final _expireMmYy = FocusNode();
+  final _cardNumberNode = FocusNode();
+  final _cvvNode = FocusNode();
+  final _buyerIdNode = FocusNode();
 
   Address? creditCard;
   List<Country>? countries = [];
@@ -51,10 +51,10 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
     _cityController.dispose();
     _streetController.dispose();
 
-    expireMmYy.dispose();
-    _emailNode.dispose();
-    _cityNode.dispose();
-    _streetNode.dispose();
+    _expireMmYy.dispose();
+    _cardNumberNode.dispose();
+    _cvvNode.dispose();
+    _buyerIdNode.dispose();
 
     super.dispose();
   }
@@ -273,7 +273,6 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
 
                       // await Navigator.of(context).push(MaterialPageRoute(builder: (_) => Checkout()));
                       await widget.onNext;
-
                     }
 
                     var myAddress =
@@ -331,6 +330,7 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                   flex: 10,
                                   child: TextFormField(
                                     // initialValue:  address!.firstName,
+                                    autofocus: true,
                                     autofillHints: [
                                       AutofillHints.creditCardName,
                                       // AutofillHints.creditCardFamilyName,
@@ -353,7 +353,7 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                     },
                                     onFieldSubmitted: (_) =>
                                         FocusScope.of(context)
-                                            .requestFocus(expireMmYy),
+                                            .requestFocus(_expireMmYy),
                                     onSaved: (String? value) {
                                       creditCard!.cardHolderName = value;
                                     },
@@ -389,7 +389,7 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                                               .text.length));
                                         }
                                       },
-                                      focusNode: expireMmYy,
+                                      focusNode: _expireMmYy,
                                       // textAlign: TextAlign.center,
                                       // style: TextStyle(fontSize: 22),
                                       decoration: greyTxtDeco(
@@ -439,13 +439,14 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                         // print('$val - ${val?.length}');
                                         // val = val?.replaceAll('/', '');
                                         // print('$val - ${val?.length}');
-                                        return val!.contains('/') && val.length == 5
+                                        return val!.contains('/') &&
+                                                val.length == 5
                                             ? null
                                             : 'מבנה: 12/27';
                                       },
                                       onFieldSubmitted: (_) =>
                                           FocusScope.of(context)
-                                              .requestFocus(_emailNode),
+                                              .requestFocus(_cardNumberNode),
                                       onSaved: (String? value) {
                                         // print('$val - ${val?.length}');
                                         value = value?.replaceAll('/', '');
@@ -460,6 +461,7 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                 Flexible(
                                   flex: 14,
                                   child: TextFormField(
+                                    focusNode: _cardNumberNode,
                                     // initialValue:  address!.firstName,
                                     autofillHints: [
                                       AutofillHints.creditCardNumber
@@ -496,7 +498,7 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                     },
                                     onFieldSubmitted: (_) =>
                                         FocusScope.of(context)
-                                            .requestFocus(expireMmYy),
+                                            .requestFocus(_cvvNode),
                                     onSaved: (String? value) {
                                       creditCard!.cardNumber = value;
                                     },
@@ -511,7 +513,7 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                     autofillHints: [
                                       AutofillHints.creditCardSecurityCode
                                     ],
-                                    focusNode: _cityNode,
+                                    focusNode: _cvvNode,
                                     validator: (val) {
                                       cardType = _ccValidator
                                           .validateCCNum(val!)
@@ -532,7 +534,9 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                     decoration:
                                         greyTxtDeco(labelText: '3 ספרות'),
                                     textInputAction: TextInputAction.next,
-                                    // onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(_apartmentNode),
+                                    onFieldSubmitted: (_) =>
+                                        FocusScope.of(context)
+                                            .requestFocus(_buyerIdNode),
                                     onSaved: (String? value) {
                                       creditCard!.cvv = value;
                                     },
@@ -564,6 +568,7 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                 Flexible(
                                   flex: 10,
                                   child: TextFormField(
+                                    focusNode: _buyerIdNode,
                                     validator: (val) {
                                       return val!.isEmpty || val.length < 7
                                           // ? S.of(context).firstNameIsRequired
@@ -589,7 +594,9 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                       return isValid ? null : 'הזן ת.ז תקין';
                                     },*/
 
-                                    // onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(expireMmYy),
+                                    onFieldSubmitted: (_) async {
+                                      await _handleDoneButton();
+                                    },
                                     onSaved: (String? value) {
                                       creditCard!.cardHolderId = value;
                                     },
@@ -614,37 +621,7 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                               Theme.of(context).primaryColor,
                                         ),
                                         onPressed: () async {
-                                          if (!checkToSave()) return;
-                                          if (_formKey.currentState!
-                                              .validate()) {
-                                            _formKey.currentState!.save();
-                                            Provider.of<CartModel>(context,
-                                                    listen: false)
-                                                .setAddress(creditCard);
-                                            await saveDataToLocal();
-
-                                            var myAddress =
-                                                await Provider.of<CartModel>(
-                                                        context,
-                                                        listen: false)
-                                                    .getAddress();
-                                            print("The CC Details:");
-                                            print(myAddress!.cardHolderName);
-                                            print(myAddress.cardHolderId);
-                                            print(myAddress.cardNumber);
-                                            print(myAddress.expiryDate);
-                                            print(myAddress.cvv);
-
-                                            setState(() {
-                                              show_creditCard_details = true;
-                                            });
-
-                                            await Navigator.of(context)
-                                                .pushReplacement(
-                                                    MaterialPageRoute(
-                                                        builder: (_) =>
-                                                            Checkout()));
-                                          }
+                                          await _handleDoneButton();
                                         },
                                         child: const Text('המשך',
                                             style: TextStyle(fontSize: 14)),
@@ -669,6 +646,31 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
         ),
       ),
     );
+  }
+
+  Future _handleDoneButton() async {
+    if (!checkToSave()) return;
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      Provider.of<CartModel>(context, listen: false).setAddress(creditCard);
+      await saveDataToLocal();
+
+      var myAddress =
+      await Provider.of<CartModel>(context, listen: false).getAddress();
+      print("The CC Details:");
+      print(myAddress!.cardHolderName);
+      print(myAddress.cardHolderId);
+      print(myAddress.cardNumber);
+      print(myAddress.expiryDate);
+      print(myAddress.cvv);
+
+      setState(() {
+        show_creditCard_details = true;
+      });
+
+      await Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (_) => Checkout()));
+    }
   }
 }
 

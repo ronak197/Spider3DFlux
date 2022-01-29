@@ -297,7 +297,6 @@ class _ShippingFormState extends State<ShippingForm> {
 
                       // await Navigator.of(context).push(MaterialPageRoute(builder: (_) => Checkout()));
                       await widget.onNext;
-
                     }
 
                     var myAddress =
@@ -313,7 +312,7 @@ class _ShippingFormState extends State<ShippingForm> {
                 ),
               ),
             ),
-            body:  Center(
+            body: Center(
               child: Container(
                   decoration: BoxDecoration(
                     color: kGrey200.withOpacity(0.10),
@@ -348,6 +347,7 @@ class _ShippingFormState extends State<ShippingForm> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             TextFormField(
+                              autofocus: true,
                               // initialValue:  address!.firstName,
                               autofillHints: [AutofillHints.givenName],
                               decoration: greyTxtDeco(labelText: 'שם לחשבונית'),
@@ -362,7 +362,7 @@ class _ShippingFormState extends State<ShippingForm> {
                                     : null;
                               },
                               onFieldSubmitted: (_) => FocusScope.of(context)
-                                  .requestFocus(_phoneNode),
+                                  .requestFocus(_cityNode),
                               onSaved: (String? value) {
                                 address!.firstName = value;
                               },
@@ -530,7 +530,7 @@ class _ShippingFormState extends State<ShippingForm> {
                                     textInputAction: TextInputAction.next,
                                     onFieldSubmitted: (_) =>
                                         FocusScope.of(context)
-                                            .requestFocus(_apartmentNode),
+                                            .requestFocus(_streetNode),
                                     onSaved: (String? value) {
                                       address!.city = value;
                                     },
@@ -559,7 +559,7 @@ class _ShippingFormState extends State<ShippingForm> {
                                       textInputAction: TextInputAction.next,
                                       onFieldSubmitted: (_) =>
                                           FocusScope.of(context)
-                                              .requestFocus(_zipNode),
+                                              .requestFocus(_phoneNode),
                                       onSaved: (String? value) {
                                         address!.street = value;
                                       }),
@@ -615,9 +615,9 @@ class _ShippingFormState extends State<ShippingForm> {
                                         }
                                         return validateEmail(val);
                                       },
-                                      onFieldSubmitted: (_) =>
-                                          FocusScope.of(context)
-                                              .requestFocus(_emailNode),
+                                      onFieldSubmitted: (_) async {
+                                        await _handleDoneButton();
+                                      },
                                       onSaved: (String? value) {
                                         address!.email = value;
                                       }),
@@ -652,30 +652,7 @@ class _ShippingFormState extends State<ShippingForm> {
                                     primary: Theme.of(context).primaryColor,
                                   ),
                                   onPressed: () async {
-                                    if (!checkToSave()) return;
-                                    if (_formKey.currentState!.validate()) {
-                                      _formKey.currentState!.save();
-                                      Provider.of<CartModel>(context,
-                                              listen: false)
-                                          .setAddress(address);
-                                      await saveDataToLocal();
-
-                                      var myAddress =
-                                          await Provider.of<CartModel>(context,
-                                                  listen: false)
-                                              .getAddress();
-                                      print('myAddress:');
-                                      print(myAddress!.firstName);
-                                      print(myAddress.city);
-
-                                      // Navigator.pop(context);
-
-
-                                      await Navigator.of(context)
-                                          .pushReplacement(MaterialPageRoute(
-                                              builder: (_) => Checkout()));
-                                      // MyFadePush(Checkout()));
-                                    }
+                                    await _handleDoneButton();
                                   },
                                   child: const Text('המשך',
                                       style: TextStyle(fontSize: 14)),
@@ -693,6 +670,27 @@ class _ShippingFormState extends State<ShippingForm> {
         ),
       ),
     );
+  }
+
+  Future _handleDoneButton() async {
+    if (!checkToSave()) return;
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      Provider.of<CartModel>(context, listen: false).setAddress(address);
+      await saveDataToLocal();
+
+      var myAddress =
+          await Provider.of<CartModel>(context, listen: false).getAddress();
+      print('myAddress:');
+      print(myAddress!.firstName);
+      print(myAddress.city);
+
+      // Navigator.pop(context);
+
+      await Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (_) => Checkout()));
+      // MyFadePush(Checkout()));
+    }
   }
 
   Widget renderStateInput() {

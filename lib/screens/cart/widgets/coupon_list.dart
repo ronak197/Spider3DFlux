@@ -231,6 +231,9 @@ class _CouponListState extends BaseScreen<CouponList> {
                     if (coupon.code == null) {
                       return const SizedBox();
                     }
+                    // if (coupons.isEmpty) {
+                    //   return const SizedBox();
+                    // }
                     return Container(
                       margin: const EdgeInsets.symmetric(
                         horizontal: 24.0,
@@ -261,6 +264,7 @@ class _CouponListState extends BaseScreen<CouponList> {
     );
   }
   Future<void> myCouponRefresher() async {
+    setState(() { isFetching = true; });
     final count = _couponsMap.length;
     currentPage++;
     await services.api
@@ -277,5 +281,6 @@ class _CouponListState extends BaseScreen<CouponList> {
       }
       _displayCoupons(context);
     });
+    setState(() { isFetching = false; });
   }
 }

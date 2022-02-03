@@ -311,7 +311,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
 
                   var shipping_price = cartModel.shippingMethod?.cost
                       .toString()
-                      .replaceAll('.0', '₪');
+                      .replaceAll('.0', '₪') ?? '';
                   var payment_option = cartModel.paymentMethod?.title
                           ?.replaceAll('תשלום מאובטח ב', '') ??
                       ''.replaceAll('-באיסוף עצמי', '');

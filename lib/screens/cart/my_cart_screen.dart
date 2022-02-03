@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -114,7 +115,9 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
                     // MainTabControlDelegate.getInstance().changeTab('checkout');
                     // return;
                   }
-                  cartModel.user?.email == null ?
+                  // cartModel.user?.email == null
+                  FirebaseAuth.instance.currentUser?.uid == null
+                  ?
                   // Navigator.of(context).pushReplacementNamed(rou)
                   Navigator.of(context).pushReplacementNamed(RouteList.login)
                   : onCheckout(cartModel);

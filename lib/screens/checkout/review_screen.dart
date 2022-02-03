@@ -7,11 +7,11 @@ import 'package:fstore/screens/checkout/widgets/my_creditcard_address.dart';
 import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_form.dart';
 import 'package:fstore/screens/checkout/widgets/shipping_method.dart';
+import 'package:fstore/screens/cart/my_cart_screen.dart';
 import 'package:fstore/widgets/product/product_variant.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_card/awesome_card.dart';
-
 import '../../common/config.dart';
 import '../../common/constants.dart';
 import '../../common/tools.dart';
@@ -32,6 +32,23 @@ import '../../widgets/product/cart_item.dart';
 import '../base_screen.dart';
 import 'checkout_screen.dart';
 import 'dart:math' as math;
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flash/flash.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:inspireui/inspireui.dart' show AutoHideKeyboard, printLog;
+import 'package:provider/provider.dart';
+
+import '../../common/config.dart';
+import '../../common/constants.dart';
+import '../../common/tools.dart';
+import '../../generated/l10n.dart';
+import '../../menu/index.dart' show MainTabControlDelegate;
+import '../../models/index.dart' show AppModel, CartModel, Product, UserModel;
+import '../../services/index.dart';
+import '../../widgets/product/cart_item.dart';
+import '../../widgets/product/product_bottom_sheet.dart';
+
 
 var paymentFormOpen = false;
 bool firstTimeRadio = true;
@@ -237,7 +254,8 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   const SizedBox(
                     height: 15,
                   ),
-                  ...getProducts(model, context),
+                  // ...getProducts(model, context),
+                  ...createShoppingCartRows(model, context),
                 ],
               ),
 
@@ -816,7 +834,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
     );
   }
 
-  List<Widget> getProducts(CartModel model, BuildContext context) {
+/*  List<Widget> getProducts(CartModel model, BuildContext context) {
     return model.productsInCart.keys.map(
       (key) {
         var productId = Product.cleanProductID(key);
@@ -829,8 +847,9 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
           variation: model.getProductVariationById(key),
           quantity: model.productsInCart[key],
           options: model.productsMetaDataInCart[key],
+          // onRemove: () {model.removeItemFromCart(key);}, // my
         );
       },
     ).toList();
-  }
+  }*/
 }

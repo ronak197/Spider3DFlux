@@ -29,45 +29,47 @@ class MyCart extends StatefulWidget {
   _MyCartState createState() => _MyCartState();
 }
 
+List<Widget> createShoppingCartRows(CartModel model, BuildContext context) {
+  return model.productsInCart.keys.map(
+        (key) {
+      var productId = Product.cleanProductID(key);
+      var product = model.getProductById(productId);
+
+      return ShoppingCartRow(
+        my_is_review_screen:
+        false, // My adjustments for review_screen.dart only
+        product: product!,
+        addonsOptions: model.productAddonsOptionsInCart[key],
+        variation: model.getProductVariationById(key),
+        quantity: model.productsInCart[key],
+        options: model.productsMetaDataInCart[key],
+        onRemove: () {
+          model.removeItemFromCart(key);
+        },
+        onChangeQuantity: (val) {
+          var message = Provider.of<CartModel>(context, listen: false)
+              .updateQuantity(product, key, val, context: context);
+          if (message.isNotEmpty) {
+            final snackBar = SnackBar(
+              content: Text(message),
+              duration: const Duration(seconds: 1),
+            );
+            Future.delayed(
+                const Duration(milliseconds: 300),
+                // ignore: deprecated_member_use
+                    () => Scaffold.of(context).showSnackBar(snackBar));
+          }
+        },
+      );
+    },
+  ).toList();
+}
+
+
 class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
   bool isLoading = false;
   String errMsg = '';
 
-  List<Widget> _createShoppingCartRows(CartModel model, BuildContext context) {
-    return model.productsInCart.keys.map(
-      (key) {
-        var productId = Product.cleanProductID(key);
-        var product = model.getProductById(productId);
-
-        return ShoppingCartRow(
-          my_is_review_screen:
-              false, // My adjustments for review_screen.dart only
-          product: product!,
-          addonsOptions: model.productAddonsOptionsInCart[key],
-          variation: model.getProductVariationById(key),
-          quantity: model.productsInCart[key],
-          options: model.productsMetaDataInCart[key],
-          onRemove: () {
-            model.removeItemFromCart(key);
-          },
-          onChangeQuantity: (val) {
-            var message = Provider.of<CartModel>(context, listen: false)
-                .updateQuantity(product, key, val, context: context);
-            if (message.isNotEmpty) {
-              final snackBar = SnackBar(
-                content: Text(message),
-                duration: const Duration(seconds: 1),
-              );
-              Future.delayed(
-                  const Duration(milliseconds: 300),
-                  // ignore: deprecated_member_use
-                  () => Scaffold.of(context).showSnackBar(snackBar));
-            }
-          },
-        );
-      },
-    ).toList();
-  }
 
   void _loginWithResult(BuildContext context) async {
     // final result = await Navigator.push(
@@ -307,7 +309,7 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
                                 if (model.totalCartQuantity > 0)
                                   Column(
                                     children:
-                                        _createShoppingCartRows(model, context),
+                                        createShoppingCartRows(model, context),
                                   ),
                                 // FlutterLogo(),
                                 if (model.totalCartQuantity > 0)

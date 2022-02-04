@@ -2053,13 +2053,12 @@ Future<String> iCreditGetUrl(
   // print(city);
 
   // var url = 'https://testicredit.rivhit.co.il/API/PaymentPageRequest.svc/GetUrl'; // Test Url
-  var url =
-      'https://icredit.rivhit.co.il/API/PaymentPageRequest.svc/GetUrl'; // Url
+  var url = 'https://icredit.rivhit.co.il/API/PaymentPageRequest.svc/GetUrl'; // Url
 
   var req = {
-    'GroupPrivateToken': 'e7bc02ba-7551-4ec3-884a-3524ba958a41',
-    // Token
-    // 'GroupPrivateToken': 'bb8a47ab-42e0-4b7f-ba08-72d55f2d9e41', // test Token
+    // 'GroupPrivateToken': 'e7bc02ba-7551-4ec3-884a-3524ba958a41', // OLD
+    'GroupPrivateToken': 'a46ff2a5-5456-4f45-8c9a-32dab1d2a9bd', // New
+    // 'GroupPrivateToken': 'bb8a47ab-42e0-4b7f-ba08-72d55f2d9e41', // Test
     'Items': [
       {
         // 'Id': 1,
@@ -2071,8 +2070,8 @@ Future<String> iCreditGetUrl(
     // 'FailRedirectURL': 'String content',
     // 'Order': 'Woo order number?',
 
-    'CustomerFirstName': 'עידן',
-    'CustomerLastName': 'ביטו',
+    'CustomerFirstName': '$buyer_name',
+    'CustomerLastName': '',
     'City': '$city',
     'Address': '$street',
     'EmailAddress': '$email',

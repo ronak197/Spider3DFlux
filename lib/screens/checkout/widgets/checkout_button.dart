@@ -1,4 +1,5 @@
 import 'dart:convert' as convert;
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:fstore/screens/checkout/widgets/payment_methods.dart';
 import 'package:provider/provider.dart';
@@ -97,6 +98,9 @@ class _CheckoutButtonState extends State<CheckoutButton> {
           // splashColor: Theme.of(context).primaryColorLight,
           onPressed:
               () {
+            // debugger();
+            // print(cartModel.user);
+            //     print('XXX');
             print(cartModel.user);
                 checkoutAction(cartModel, paymentMethodModel);
           },
@@ -357,6 +361,10 @@ class _CheckoutButtonState extends State<CheckoutButton> {
       final paymentMethod = paymentMethodModel.paymentMethods
           // .firstWhere((item) => item.id == selectedPaymentId);
           .firstWhere((item) => item.id == cartModel.paymentMethod?.id);
+      debugger();
+      print(paymentMethod.title);
+      print('X');
+      print('X');
 
       Provider.of<CartModel>(context, listen: false)
           .setPaymentMethod(paymentMethod);

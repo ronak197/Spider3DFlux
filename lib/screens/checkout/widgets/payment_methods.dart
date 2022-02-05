@@ -225,8 +225,8 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
 
                                                         print(
                                                             'paymentMethod.title');
-                                                        print(paymentMethod
-                                                            .title);
+                                                        print(paymentMethod.title);
+                                                        print(paymentMethod.id);
 
                                                       }
 

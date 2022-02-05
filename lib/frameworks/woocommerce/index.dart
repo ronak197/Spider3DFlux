@@ -207,12 +207,8 @@ class WooWidget extends BaseFrameworks
       Function? onLoading, Function? success, Function? error) async {
     try {
       onLoading!(true);
-
-      // var url = 'https://google.com';
-
       // Original
       // var url = await Services().api.getCheckoutUrl(params, Provider.of<AppModel>(context, listen: false).langCode)!;
-
       // My
       // final addressModel = Provider.of<CartModel>(context).address;
       final addressModel =
@@ -234,7 +230,9 @@ class WooWidget extends BaseFrameworks
         MaterialPageRoute(
             builder: (context) => PaymentWebview(
                 url: url,
-                onFinish: (number) {
+                onFinish: (number) async {
+                  await createOrder(context,
+                      cod: true, onLoading: onLoading, success: success, error: error);
                   success!(number != null ? Order(number: number) : null);
                 })),
       );

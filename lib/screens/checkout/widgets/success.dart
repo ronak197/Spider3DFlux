@@ -106,11 +106,14 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
                       setState(() {
                         newOrder = null;
                       });
-                      widget.controller!.animateToPage(
+                      widget.controller == null ?
+                      widget.controller?.animateToPage(
                         0,
                         duration: const Duration(milliseconds: 150),
                         curve: Curves.easeInOut,
-                      );
+                      )
+              :       Navigator.of(context).pushNamed(RouteList.orders);
+                      ;
 
                       final user =
                           Provider.of<UserModel>(context, listen: false).user;

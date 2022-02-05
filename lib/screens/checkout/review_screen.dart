@@ -254,7 +254,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                   const SizedBox(
                     height: 15,
                   ),
-                  // ...getProducts(model, context),
+               // ...getProducts(model, context),
                   ...createShoppingCartRows(model, context),
                 ],
               ),

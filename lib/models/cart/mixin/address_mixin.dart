@@ -128,6 +128,7 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
 
   Future<Address?> getAddress() async {
     address ??= await getShippingAddress();
+    notifyListeners(); // my
     return address;
   }
 

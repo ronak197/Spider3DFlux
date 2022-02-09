@@ -48,7 +48,7 @@ class DeliveryFormV3 extends StatelessWidget {
         Provider.of<CartModel>(context, listen: false).setAddress(address); // Save on local
 
         // var myAddress =
-        // await Provider.of<CartModel>(context, listen: false).getAddress();
+        await Provider.of<CartModel>(context, listen: false).getAddress();
         // print('myAddress:');
         // print(myAddress!.firstName);
         // print(myAddress.city);

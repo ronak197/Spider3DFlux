@@ -31,6 +31,7 @@ class RouteList {
 
   // Checkout
   static const String checkout = 'checkout';
+  static const String checkoutV3 = 'checkoutV3';
 
   // Orders
   static const String orders = 'orders';

@@ -1,20 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class RadioButtonV3 extends ChangeNotifier {
-
-  int paymentIndex = 0;
-  void changePaymentIndex(value) {
-    paymentIndex = value;
-    notifyListeners();
-  }
-
-  int shippingIndex = 0;
-  void changeShippingIndex(value) {
-    shippingIndex = value;
-    notifyListeners();
-  }
-}
+import 'checkoutV3_provider.dart';
 
 // Todo change the colors in this files to based Theme
 class CustomRadioButton extends StatelessWidget {
@@ -31,7 +18,7 @@ class CustomRadioButton extends StatelessWidget {
     Color? color = Theme.of(context).primaryColorLight.withOpacity(0.7);
     Color? selectedColor = Theme.of(context).accentColor;
 
-    return Consumer<RadioButtonV3>(builder: (context, customButton, child) {
+    return Consumer<CheckoutProviderV3>(builder: (context, customButton, child) {
       var selectedIndex = isPayment ? customButton.paymentIndex : customButton.shippingIndex;
       // print('$selectedIndex CustomRadioButton Rendered');
 

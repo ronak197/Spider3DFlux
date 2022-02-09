@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class CheckoutButtonV3 extends StatelessWidget {
   const CheckoutButtonV3({Key? key}) : super(key: key);
 

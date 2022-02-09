@@ -118,11 +118,9 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
                     // return;
                   }
                   // cartModel.user?.email == null
-                  FirebaseAuth.instance.currentUser?.uid == null
-                  ?
+                  // FirebaseAuth.instance.currentUser?.uid == null
                   // Navigator.of(context).pushReplacementNamed(rou)
-                  Navigator.of(context).pushReplacementNamed(RouteList.login)
-                  : onCheckout(cartModel);
+                  onCheckout(cartModel);
                 },
           isExtended: true,
           backgroundColor: Theme.of(context).primaryColor,
@@ -349,9 +347,9 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
         Provider.of<AppModel>(context, listen: false).currencyRate;
     final currency = Provider.of<AppModel>(context, listen: false).currency;
 
-    // if (isLoading) return; // Originak
+    // if (isLoading) return; // Original
     if (isLoading) {
-      const Center(child: Text('Loadinggg'));
+      const Center(child: Text('Loading'));
     }
     ;
 
@@ -416,10 +414,47 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
         MainTabControlDelegate.getInstance().tabAnimateTo(0);
       }
     } else if (isLoggedIn || kPaymentConfig['GuestCheckout'] == true) {
-      doCheckout();
+      doCheckoutV3();
     } else {
       _loginWithResult(context);
     }
+  }
+
+  Future<void> doCheckoutV3() async {
+    showLoading();
+
+    await Services().widget.doCheckout(
+      context,
+      success: () async {
+        hideLoading('');
+        await Navigator.of(context).pushNamed(RouteList.checkoutV3);
+      },
+      error: (message) async {
+        if (message ==
+            Exception('Token expired. Please logout then login again')
+                .toString()) {
+          setState(() {
+            isLoading = false;
+          });
+          //logout
+          final userModel = Provider.of<UserModel>(context, listen: false);
+          await userModel.logout();
+          Services().firebase.signOut();
+
+          _loginWithResult(context);
+        } else {
+          hideLoading(message);
+          Future.delayed(const Duration(seconds: 3), () {
+            setState(() => errMsg = '');
+          });
+        }
+      },
+      loading: (isLoading) {
+        setState(() {
+          this.isLoading = isLoading;
+        });
+      },
+    );
   }
 
   Future<void> doCheckout() async {

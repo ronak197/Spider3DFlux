@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/screens/checkout/checkoutV3/checkout_screenV3.dart';
 import 'package:fstore/screens/my_thingi/thingi_screen.dart';
 import 'package:inspireui/inspireui.dart' show AutoHideKeyboard, StoryWidget;
 import 'package:provider/provider.dart';
@@ -31,6 +32,7 @@ class Routes {
     // RouteList.wishlist: (context) => WishListScreen(), // Original
     RouteList.wishlist: (context) => const ThingiPage(), // Original
     RouteList.checkout: (context) => Checkout(),
+    RouteList.checkoutV3: (context) => const CheckoutScreenV3(), // My
     RouteList.notify: (context) => NotificationScreen(),
     RouteList.language: (context) => LanguageScreen(),
     RouteList.currencies: (context) => CurrenciesScreen(),

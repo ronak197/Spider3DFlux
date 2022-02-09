@@ -13,86 +13,55 @@ class DeliveryFormV3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    final TextEditingController _cityController = TextEditingController();
-    final TextEditingController _streetController = TextEditingController();
-    final TextEditingController _blockController = TextEditingController();
-    final TextEditingController _zipController = TextEditingController();
-    final TextEditingController _stateController = TextEditingController();
-    final TextEditingController _countryController = TextEditingController();
-    final TextEditingController _apartmentController = TextEditingController();
+    final _nameController = TextEditingController();
+    final _cityController = TextEditingController();
+    final _streetController = TextEditingController();
+    final _phoneController = TextEditingController();
+    final _emailController = TextEditingController();
 
-
-    final _phoneNode = FocusNode();
-    final _emailNode = FocusNode();
     final _cityNode = FocusNode();
     final _streetNode = FocusNode();
+    final _phoneNode = FocusNode();
+    final _emailNode = FocusNode();
 
-    Address? address;
+    // Address? address; // Does it necessary?
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(5),
       child: Container(
         // color: Color(0xfff1f1f1),
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
             Form(
               // key: _formKey, //   final _formKey = GlobalKey<FormState>();
-              child: AutofillGroup(
+              child: AutofillGroup( // Do we really need those?
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       TextFormField(
-                        autofocus: true,
-                        // initialValue:  address!.firstName,
-                        autofillHints: [AutofillHints.givenName],
                         decoration: greyTxtDeco(labelText: 'שם לחשבונית'),
-                        // const InputDecoration(
-                        // //     labelText: S.of(context).firstName
-                        // labelText: 'שם לחשבונית'),
-                        textCapitalization: TextCapitalization.words,
+                        controller: _nameController,
+                        autofillHints: [AutofillHints.givenName],
                         textInputAction: TextInputAction.next,
-                        validator: (val) {
-                          return val!.isEmpty
-                              ? S
-                              .of(context)
-                              .firstNameIsRequired
-                              : null;
-                        },
-                        onFieldSubmitted: (_) =>
-                            FocusScope.of(context)
-                                .requestFocus(_cityNode),
-                        onSaved: (String? value) {
-                          address!.firstName = value;
-                        },
+                        autofocus: true,
+                        onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(_cityNode),
+                        validator: (val) =>
+                            val!.isEmpty ? S.of(context).firstNameIsRequired : null,
                       ),
                       Row(
                         children: [
                           Flexible(
                             flex: 7,
                             child: TextFormField(
-                              // controller: _cityController,
-                              // initialValue:  address!.city,
+                              decoration: greyTxtDeco(labelText: 'עיר'),
+                              controller: _cityController,
                               autofillHints: [AutofillHints.addressCity],
                               focusNode: _cityNode,
-                              validator: (val) {
-                                return val!.isEmpty
-                                    ? S
-                                    .of(context)
-                                    .cityIsRequired
-                                    : null;
-                              },
-                              decoration: greyTxtDeco(
-                                  labelText: S
-                                      .of(context)
-                                      .city),
                               textInputAction: TextInputAction.next,
-                              onFieldSubmitted: (_) =>
-                                  FocusScope.of(context)
-                                      .requestFocus(_streetNode),
-                              onSaved: (String? value) {
-                                address!.city = value;
-                              },
+                              onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(_streetNode),
+                              validator: (val) =>
+                                 val!.isEmpty ? S.of(context).cityIsRequired : null,
                             ),
                           ),
                           const Spacer(
@@ -101,29 +70,17 @@ class DeliveryFormV3 extends StatelessWidget {
                           Flexible(
                             flex: 11,
                             child: TextFormField(
-                              // controller: _streetController,
-                              // initialValue:  address!.street,
+                                decoration: greyTxtDeco(labelText: 'רחוב, מס׳ בית'),
+                                controller: _streetController,
                                 autofillHints: [
                                   AutofillHints.fullStreetAddress
                                 ],
                                 focusNode: _streetNode,
-                                validator: (val) {
-                                  return val!.isEmpty
-                                      ? S
-                                      .of(context)
-                                      .streetIsRequired
-                                      : null;
-                                },
-                                decoration: greyTxtDeco(
-                                  // labelText: S.of(context).streetName
-                                    labelText: 'רחוב, מס׳ בית'),
                                 textInputAction: TextInputAction.next,
-                                onFieldSubmitted: (_) =>
-                                    FocusScope.of(context)
-                                        .requestFocus(_phoneNode),
-                                onSaved: (String? value) {
-                                  address!.street = value;
-                                }),
+                                onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(_phoneNode),
+                                validator: (val) =>
+                                   val!.isEmpty ? S.of(context).streetIsRequired : null,
+                            ),
                           ),
                         ],
                       ),
@@ -132,30 +89,19 @@ class DeliveryFormV3 extends StatelessWidget {
                           Flexible(
                             flex: 9,
                             child: TextFormField(
-                              // initialValue:  address!.phoneNumber,
-                                autofillHints: [
-                                  AutofillHints.telephoneNumber
-                                ],
+                                decoration: greyTxtDeco(labelText: 'טלפון'),
+                                controller: _phoneController,
+                                autofillHints: [AutofillHints.telephoneNumber],
                                 focusNode: _phoneNode,
-                                decoration: greyTxtDeco(
-                                  // labelText: S.of(context).phoneNumber
-                                  labelText: 'טלפון',
-                                ),
-                                textInputAction: TextInputAction.next,
-                                validator: (val) {
-                                  print('val.length');
-                                  print(val!.length);
-                                  return val.length != 10
-                                      ? 'הזן טלפון תקין'
-                                      : null;
-                                },
                                 keyboardType: TextInputType.number,
-                                onFieldSubmitted: (_) =>
-                                    FocusScope.of(context)
-                                        .requestFocus(_emailNode),
-                                onSaved: (String? value) {
-                                  address!.phoneNumber = value;
-                                }),
+                                textInputAction: TextInputAction.next,
+                                onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(_emailNode),
+                                validator: (val) {
+                                    // print('val.length');
+                                    // print(val!.length);
+                                    return val!.length != 10 ? 'הזן טלפון תקין' : null;
+                                    },
+                                ),
                           ),
                           const Spacer(
                             flex: 1,
@@ -163,29 +109,19 @@ class DeliveryFormV3 extends StatelessWidget {
                           Flexible(
                             flex: 9,
                             child: TextFormField(
-                              // initialValue:  address!.email,
+                                decoration: greyTxtDeco(labelText: 'אימייל'),
+                                controller: _emailController,
                                 autofillHints: [AutofillHints.email],
                                 focusNode: _emailNode,
                                 keyboardType: TextInputType.emailAddress,
-                                decoration: greyTxtDeco(
-                                    labelText: S
-                                        .of(context)
-                                        .email),
                                 textInputAction: TextInputAction.done,
                                 validator: (val) {
-                                  if (val!.isEmpty) {
-                                    return S
-                                        .of(context)
-                                        .emailIsRequired;
-                                  }
+                                  if (val!.isEmpty) return S.of(context).emailIsRequired;
                                   return validateEmail(val);
                                 },
                                 onFieldSubmitted: (_) async {
                                   await _handleDoneButton(context);
-                                },
-                                onSaved: (String? value) {
-                                  address!.email = value;
-                                }),
+                                },),
                           ),
                         ],
                       ),
@@ -203,7 +139,7 @@ class DeliveryFormV3 extends StatelessWidget {
                             onPressed: () async {
                               await _handleDoneButton(context);
                             },
-                            child: const Text('המשך',
+                            child: const Text('עדכן',
                                 style: TextStyle(fontSize: 14)),
                           ),
                         ),

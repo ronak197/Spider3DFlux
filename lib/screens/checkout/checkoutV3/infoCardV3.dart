@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fstore/common/constants.dart';
+import 'package:fstore/screens/cart/functions/handleDeliveryFormV3.dart';
 
 import 'delivery_screenV3.dart';
 
@@ -37,7 +38,9 @@ class InfoCardV3 extends StatelessWidget {
           // shadowColor: Colors.black38,
           child: ListTile(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => DeliveryScreenV3()));
+              // showBottomSheetFormDialogV3(context);
+              showDeliveryFormDialogV3(context);
+              // Navigator.push(context, MaterialPageRoute(builder: (_) => DeliveryScreenV3()));
             },
             title: Text('$title',
                 maxLines: 1,

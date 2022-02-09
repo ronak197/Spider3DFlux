@@ -28,8 +28,33 @@ class User {
   String? cardHolderId;
   String? expiryDate;
   String? cvv;
+  
+  // my Allow mannual edit
+  User({
+    this.id,
+    this.loggedIn,
+    this.name,
+    this.firstName,
+    this.lastName,
+    this.username,
+    this.email,
+    this.nicename,
+    this.userUrl,
+    this.picture,
+    this.cookie,
+    this.shipping,
+    this.billing,
+    this.jwtToken,
+    this.isVender = false,
+    this.isSocial = false,
 
-  User();
+    // My
+    this.cardNumber,
+    this.cardHolderName,
+    this.cardHolderId,
+    this.expiryDate,
+    this.cvv,
+  });
 
   String get fullName => [firstName ?? '', lastName ?? ''].join(' ');
 
@@ -279,6 +304,7 @@ class User {
 
   @override
   String toString() => 'User { username: $id $name $email}';
+  
 }
 
 class UserPoints {

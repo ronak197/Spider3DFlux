@@ -36,13 +36,15 @@ class CheckoutScreenV3 extends StatelessWidget {
             const SizedBox(height: 10),
             InfoCardV3(
               mainTitle: 'כתובת משלוח',
-              title: 'חבקוק 114 גדרה',
+              title: 'לחץ לעדכון כתובת משלוח',
               icon: Icons.home,
+              isPayment: false,
             ),
             InfoCardV3(
               mainTitle: 'פרטי תשלום',
-              title: '2743 **** **** ****',
+              title: 'לחץ לעדכון פרטי תשלום',
               icon: Icons.credit_card,
+              isPayment: true,
             ),
             buildMainTitle(context, 'שיטת תשלום'),
             SizedBox(

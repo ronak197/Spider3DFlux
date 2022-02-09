@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fstore/common/constants.dart';
+import 'package:fstore/models/cart/cart_base.dart';
 import 'package:fstore/screens/cart/functions/handleDeliveryFormV3.dart';
+import 'package:provider/provider.dart';
 
 import 'delivery_screenV3.dart';
 
@@ -9,10 +11,12 @@ class InfoCardV3 extends StatelessWidget {
   String mainTitle;
   String title;
   IconData icon;
+  bool isPayment;
   InfoCardV3({
     required this.mainTitle,
     required this.title,
     required this.icon,
+    required this.isPayment,
   });
 
   @override
@@ -22,12 +26,13 @@ class InfoCardV3 extends StatelessWidget {
         Container(
           alignment: Alignment.centerRight,
           margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          child: Text('$mainTitle',
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle2!
-                  .copyWith(fontWeight: FontWeight.w600)
-                  .copyWith(fontSize: 18)
+          child:
+          Text('$mainTitle',
+            style: Theme.of(context)
+                .textTheme
+                .subtitle2!
+                .copyWith(fontWeight: FontWeight.w600)
+                .copyWith(fontSize: 18)
           ),
         ),
         Card(
@@ -42,13 +47,23 @@ class InfoCardV3 extends StatelessWidget {
               showDeliveryFormDialogV3(context);
               // Navigator.push(context, MaterialPageRoute(builder: (_) => DeliveryScreenV3()));
             },
-            title: Text('$title',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2!
-                    .copyWith(fontWeight: FontWeight.w600)),
+            title:
+            Consumer<CartModel>(
+                builder: (context, model, child) {
+                  bool? editField = isPayment ?
+                        model.address?.cardNumber == null
+                      : model.address?.street == null;
+                  var street = model.address?.street;
+                  var city = model.address?.city;
+                  return Text(editField ? '$title' : '$street, $city',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2!
+                          .copyWith(fontWeight: FontWeight.w600));
+                }
+            ),
             leading: Icon(icon, color: Theme.of(context).accentColor,),
             // subtitle: Text('לחץ לעדכון כתובת המשלוח'),
             trailing: Icon(Icons.edit, color: Theme.of(context).accentColor,),

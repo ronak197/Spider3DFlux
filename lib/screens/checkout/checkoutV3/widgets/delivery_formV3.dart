@@ -1,12 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fstore/common/theme/colors.dart';
 import 'package:fstore/models/cart/cart_base.dart';
 import 'package:fstore/models/entities/address.dart';
-import 'package:fstore/models/user_model.dart';
+import 'package:fstore/models/entities/user.dart';
+// import 'package:fstore/models/serializers/index.dart';
 import 'package:fstore/screens/checkout/widgets/my_creditcard_address.dart';
 import 'package:provider/provider.dart';
 import '../../../../generated/l10n.dart';
+import '../../../index.dart';
+
 
 
 class DeliveryFormV3 extends StatelessWidget {
@@ -21,12 +23,41 @@ class DeliveryFormV3 extends StatelessWidget {
     var _phoneController = TextEditingController();
     var _emailController = TextEditingController();
 
+    // final _nameNode = FocusNode(); // no needed
     final _cityNode = FocusNode();
     final _streetNode = FocusNode();
     final _phoneNode = FocusNode();
     final _emailNode = FocusNode();
 
-    // Address? address; // Does it necessary?
+    Future _handleDoneButton(BuildContext context) async {
+      if (_formKey.currentState!.validate()) {
+        _formKey.currentState!.save();
+        Address? address = Address(
+          firstName: _nameController.text
+          city: _cityController.text,
+          street: _streetController.text,
+          phoneNumber: _phoneController.text,
+          email: _emailController.text,
+        );
+        User? user = User(
+            username: _nameController.text,
+            firstName: _nameController.text,
+            email: _emailController.text);
+
+        Provider.of<CartModel>(context, listen: false).setUser(user);
+        Provider.of<CartModel>(context, listen: false).setAddress(address); // Save on local
+
+        // var myAddress =
+        // await Provider.of<CartModel>(context, listen: false).getAddress();
+        // print('myAddress:');
+        // print(myAddress!.firstName);
+        // print(myAddress.city);
+
+        Navigator.pop(context);
+        // await Navigator.of(context)
+        //     .pushReplacement(MaterialPageRoute(builder: (_) => Checkout()));
+      }
+    }
 
     return Consumer<CartModel>(
       builder: (context, model, child) {
@@ -58,7 +89,7 @@ class DeliveryFormV3 extends StatelessWidget {
             child: Column(
               children: [
                 Form(
-                  // key: _formKey, //   final _formKey = GlobalKey<FormState>();
+                  key: _formKey, //   final _formKey = GlobalKey<FormState>();
                   child: AutofillGroup( // Do we really need those?
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,12 +224,5 @@ class DeliveryFormV3 extends StatelessWidget {
     return 'הזן דוא״ל תקין';
   }
 
-  Future _handleDoneButton(BuildContext context) async {
-      // Provider.of<CartModel>(context, listen: false).setAddress(address);
 
-      var myAddress =
-      await Provider.of<CartModel>(context, listen: false).getAddress();
-
-      // await Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => Checkout()));
-  }
 }

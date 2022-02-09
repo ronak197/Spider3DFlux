@@ -160,7 +160,8 @@ class ProductCard extends StatelessWidget {
         : Container(width: 30, height: 30);
 
     /// Product Pricing
-    Widget _productPricing = Row(
+    Widget _productPricing =
+    Row(
       // crossAxisAlignment: WrapCrossAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/common/constants.dart';
+
+import 'delivery_screenV3.dart';
 
 class InfoCardV3 extends StatelessWidget {
   // const InfoCardV3({Key? key}) : super(key: key);
@@ -33,7 +36,9 @@ class InfoCardV3 extends StatelessWidget {
           elevation: 0,
           // shadowColor: Colors.black38,
           child: ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) => DeliveryScreenV3()));
+            },
             title: Text('$title',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,

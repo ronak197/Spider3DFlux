@@ -13,8 +13,8 @@ import '../../../generated/l10n.dart';
 import '../../../models/index.dart' show Address, CartModel, Country, UserModel;
 import '../../../services/index.dart';
 import '../../../widgets/common/place_picker.dart';
-import '../review_screen.dart';
 import '../checkout_screen.dart';
+import '../review_screen.dart';
 import '../choose_address_screen.dart';
 import '../shippingInfoTile.dart';
 
@@ -77,6 +77,37 @@ class _ShippingFormState extends State<ShippingForm> {
     _apartmentNode.dispose();
 
     super.dispose();
+  }
+
+  String? validateEmail(String value) {
+    var valid = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(value);
+    if (valid) {
+      return null;
+    }
+    return 'הזן דוא״ל תקין';
+  }
+
+  Future _handleDoneButton() async {
+    if (!checkToSave()) return;
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      Provider.of<CartModel>(context, listen: false).setAddress(address);
+      await saveDataToLocal();
+
+      var myAddress =
+      await Provider.of<CartModel>(context, listen: false).getAddress();
+      print('myAddress:');
+      print(myAddress!.firstName);
+      print(myAddress.city);
+
+      // Navigator.pop(context);
+
+      await Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (_) => Checkout()));
+      // MyFadePush(Checkout()));
+    }
   }
 
   @override
@@ -243,16 +274,6 @@ class _ShippingFormState extends State<ShippingForm> {
     }
   }
 
-  String? validateEmail(String value) {
-    var valid = RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(value);
-    if (valid) {
-      return null;
-    }
-    return 'הזן דוא״ל תקין';
-  }
-
   @override
   Widget build(BuildContext context) {
     var countryName = S.of(context).country;
@@ -270,7 +291,8 @@ class _ShippingFormState extends State<ShippingForm> {
       return Container(height: 100, child: kLoadingWidget(context));
     }
     return widget.isFullPage
-        ? Scaffold(
+        ?
+    Scaffold(
             backgroundColor: Theme.of(context).backgroundColor,
             appBar: AppBar(
               // backgroundColor: Theme.of(context).backgroundColor,
@@ -670,27 +692,6 @@ class _ShippingFormState extends State<ShippingForm> {
         ),
       ),
     );
-  }
-
-  Future _handleDoneButton() async {
-    if (!checkToSave()) return;
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      Provider.of<CartModel>(context, listen: false).setAddress(address);
-      await saveDataToLocal();
-
-      var myAddress =
-          await Provider.of<CartModel>(context, listen: false).getAddress();
-      print('myAddress:');
-      print(myAddress!.firstName);
-      print(myAddress.city);
-
-      // Navigator.pop(context);
-
-      await Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => Checkout()));
-      // MyFadePush(Checkout()));
-    }
   }
 
   Widget renderStateInput() {

@@ -32,7 +32,7 @@ import '../../models/index.dart'
 import '../../routes/flux_navigate.dart';
 import '../../services/service_config.dart';
 
-enum kSize { small, medium, large }
+enum kSize { small, medium, large } // Lol enum just a class that let u made values. no more.
 
 BoxDecoration myShadowDecoration() {
   return BoxDecoration(
@@ -156,11 +156,11 @@ class ImageTools {
                     height: height ?? width! * ratioImage,
                     // height: height ?? width! * 0.3,
                     child: Container(
-                      decoration: myShadowDecoration(),
+                      // decoration: myShadowDecoration(),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(5),
                         child: Container(
-                            color: Colors.black.withOpacity(0.05),
+                            color: Colors.black.withOpacity(0.07),
                             child: const Center(child: Icon(Icons.image))),
                       ),
                     ),

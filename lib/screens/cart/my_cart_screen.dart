@@ -428,6 +428,7 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
       success: () async {
         hideLoading('');
         await Navigator.of(context).pushNamed(RouteList.checkoutV3);
+        // await widget.controller!.animateToPage(1, duration: const Duration(milliseconds: 250), curve: Curves.easeInOut);
       },
       error: (message) async {
         if (message ==
@@ -457,7 +458,7 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
     );
   }
 
-  Future<void> doCheckout() async {
+/*  Future<void> doCheckout() async {
     showLoading();
 
     await Services().widget.doCheckout(
@@ -494,7 +495,7 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
         });
       },
     );
-  }
+  }*/
 
   void showLoading() {
     setState(() {

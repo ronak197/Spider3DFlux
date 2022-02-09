@@ -4,6 +4,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fstore/screens/checkout/checkoutV3/RadioButtonV3.dart';
+import 'package:fstore/screens/checkout/checkoutV3/checkout_screenV3.dart';
 import 'package:fstore/screens/my_thingi/set_thingitoken.dart';
 import 'package:provider/provider.dart';
 
@@ -229,8 +231,9 @@ class AppState extends State<App>
                 Provider<PaymentMethodModel>.value(value: _paymentMethod),
                 Provider<RecentModel>.value(value: _recent),
                 Provider<UserModel>.value(value: _user),
-                ChangeNotifierProvider<ListBlogModel>(
-                    create: (_) => ListBlogModel()),
+                ChangeNotifierProvider<RadioButtonV3>(create: (_) => RadioButtonV3()), // my
+
+                ChangeNotifierProvider<ListBlogModel>(create: (_) => ListBlogModel()),
                 ChangeNotifierProvider<FilterAttributeModel>(
                     create: (_) => _filterModel),
                 ChangeNotifierProvider<FilterTagModel>(
@@ -275,9 +278,8 @@ class AppState extends State<App>
                   SubCupertinoLocalizations.delegate,
                 ],
                 supportedLocales: S.delegate.supportedLocales,
-                home: const Scaffold(
-                  body: AppInit(),
-                ),
+                // home: const Scaffold(body: AppInit()),
+                home: const CheckoutScreenV3(),
                 routes: Routes.getAll(),
                 debugShowCheckedModeBanner: false,
                 onGenerateRoute: Routes.getRouteGenerate,

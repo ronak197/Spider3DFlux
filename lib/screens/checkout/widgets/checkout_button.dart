@@ -89,7 +89,8 @@ class _CheckoutButtonState extends State<CheckoutButton> {
     final taxModel = Provider.of<TaxModel>(context);
     var final_checkoutButton = widget.text == 'סיים הזמנה';
 
-    return Container(
+    return
+      Container(
       margin: const EdgeInsets.only(bottom: 20, top: 5),
       child: IgnorePointer(
         ignoring: false,

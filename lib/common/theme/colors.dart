@@ -4,7 +4,8 @@ const kEmptyColor = 0x0D000000;
 
 /// basic colors
 const kTeal50 = Color(0xFFE0F2F1);
-const kTeal100 = Color(0xFF3FC1BE);
+// const kTeal100 = Color(0xFF3FC1BE);
+const kTeal100 = Color(0xFF6940C2);
 
 const kTeal400 = Color(0xFF26A69A);
 const kGrey900 = Color(0xFF263238);

@@ -33,8 +33,8 @@ class PriceTools {
     bool? onSale,
   }) {
     String? price = onSale == true
-        ? (isNotBlank(product.salePrice) ? product.salePrice : product.price)
-        : product.price;
+        ? (isNotBlank(product.salePrice) ? product.salePrice : product.subText)
+        : product.subText;
     return getCurrencyFormatted(price, rates, currency: currency);
   }
 

@@ -21,7 +21,7 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
 
   Future<void> saveShippingAddress(Address? address) async {
     final storage = LocalStorage('fstore');
-    try {
+        try {
       final ready = await storage.ready;
       if (ready) {
         await storage.setItem(kLocalKey['shippingAddress']!, address);
@@ -124,11 +124,12 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
   void setAddress(data) {
     address = data;
     saveShippingAddress(data);
+    notifyListeners();
   }
 
   Future<Address?> getAddress() async {
     address ??= await getShippingAddress();
-    notifyListeners(); // my
+    notifyListeners();
     return address;
   }
 

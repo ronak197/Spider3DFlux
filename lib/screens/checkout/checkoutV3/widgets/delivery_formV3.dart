@@ -2,9 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fstore/models/cart/cart_base.dart';
 import 'package:fstore/models/entities/address.dart';
-import 'package:fstore/models/entities/user.dart';
 // import 'package:fstore/models/serializers/index.dart';
 import 'package:fstore/screens/checkout/widgets/my_creditcard_address.dart';
+import 'package:fstore/models/entities/user.dart'; // user funcs
+import 'package:fstore/models/user_model.dart'; // user class
 import 'package:provider/provider.dart';
 import '../../../../generated/l10n.dart';
 import '../../../index.dart';
@@ -44,8 +45,9 @@ class DeliveryFormV3 extends StatelessWidget {
             firstName: _nameController.text,
             email: _emailController.text);
 
-        Provider.of<CartModel>(context, listen: false).setUser(user);
-        Provider.of<CartModel>(context, listen: false).setAddress(address); // Save on local
+        // await Provider.of<UserModel>(context, listen: false).saveUser(user); // To local
+        // Provider.of<UserModel>(context, listen: false).updateUser(user); // To Woo??
+        Provider.of<CartModel>(context, listen: false).setAddress(address); // To local
 
         // var myAddress =
         await Provider.of<CartModel>(context, listen: false).getAddress();
@@ -57,6 +59,16 @@ class DeliveryFormV3 extends StatelessWidget {
         // await Navigator.of(context)
         //     .pushReplacement(MaterialPageRoute(builder: (_) => Checkout()));
       }
+    }
+
+    String? validateEmail(String value) {
+      var valid = RegExp(
+          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+          .hasMatch(value);
+      if (valid) {
+        return null;
+      }
+      return 'הזן דוא״ל תקין';
     }
 
     return Consumer<CartModel>(
@@ -74,12 +86,24 @@ class DeliveryFormV3 extends StatelessWidget {
           print('cart checkout ${model.checkout}');
         }
 
-        if (model.user?.username != null) _nameController.text = '${model.user?.username}';
         if (model.address?.city != null) _cityController.text = '${model.address?.city}';
         if (model.address?.street != null) _streetController.text = '${model.address?.street}';
         if (model.address?.phoneNumber != null) {
           _phoneController.text = '${model.address?.phoneNumber}';}
-        if (model.address?.email != null) _emailController.text = '${model.address?.email}';
+
+        if (model.address?.firstName != null) {
+          _nameController.text = '${model.address?.firstName}';}
+        // When address firstName is null:
+        else if (model.user?.username != null){
+          _nameController.text = '${model.user?.username}';
+        }
+
+        if (model.address?.email != null) {
+          _emailController.text = '${model.address?.email}';}
+        // When address email is null:
+        else if (model.user?.email != null ){
+          _emailController.text = '${model.user?.email}';
+        }
 
         return ClipRRect(
           borderRadius: BorderRadius.circular(5),
@@ -213,15 +237,6 @@ class DeliveryFormV3 extends StatelessWidget {
         );
       }
     );
-  }
-  String? validateEmail(String value) {
-    var valid = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(value);
-    if (valid) {
-      return null;
-    }
-    return 'הזן דוא״ל תקין';
   }
 
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/models/cart/cart_base.dart';
 import 'package:fstore/screens/checkout/checkoutV3/widgets/delivery_formV3.dart';
 
 void showDeliveryFormDialogV3(BuildContext context) async {
@@ -11,7 +12,7 @@ void showDeliveryFormDialogV3(BuildContext context) async {
         // title: const Text('AlertDialog Title'),
         // actions: <Widget>[],
         contentPadding: EdgeInsets.all(0), // inside
-        insetPadding: EdgeInsets.all(0), // outside?
+        insetPadding: EdgeInsets.all(15), // outside
         content: SingleChildScrollView(child: DeliveryFormV3()),
       );
     },

@@ -105,6 +105,7 @@ ThemeData buildLightTheme(String? language, [String fontFamily = 'Roboto']) {
   );
 
   return base.copyWith(
+    cursorColor: kColorSpiderRed,
     brightness: Brightness.light,
     colorScheme: kColorScheme,
     buttonColor: kTeal400,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fstore/common/constants.dart';
 import 'package:fstore/models/cart/cart_base.dart';
-import 'package:fstore/screens/cart/functions/handleDeliveryFormV3.dart';
 import 'package:provider/provider.dart';
 
 import 'delivery_screenV3.dart';
+import 'functions/handleDeliveryFormV3.dart';
 
 class InfoCardV3 extends StatelessWidget {
   // const InfoCardV3({Key? key}) : super(key: key);

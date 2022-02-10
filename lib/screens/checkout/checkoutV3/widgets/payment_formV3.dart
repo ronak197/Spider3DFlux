@@ -169,7 +169,7 @@ class PaymentFormV3 extends StatelessWidget {
                                 Flexible(
                                   flex: 14,
                                   child: TextFormField(
-                                    decoration: greyTxtDeco(labelText: 'מס׳ כרטיס'),
+                                    decoration: greyTxtDeco(labelText: 'מס׳ כרטיס אשראי'),
                                     controller: _cardNumberController,
                                     focusNode: _cardNumberNode,
                                     autofillHints: [AutofillHints.creditCardNumber],

@@ -38,6 +38,7 @@ class _UserUpdateScreenState extends State<UserUpdateWooScreen> {
             style: ElevatedButton.styleFrom(
                 primary: Theme.of(context).primaryColor),
             onPressed: () {
+              // update user on woo
               model.updateProfile().then((value) {
                 if (value == null) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

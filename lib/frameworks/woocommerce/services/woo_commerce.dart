@@ -226,7 +226,7 @@ class WooCommerce extends BaseServices {
         var obj;
         final horizontalLayout = configCache!['HorizonLayout'] as List?;
         print("part Completed: A-1");
-        print(horizontalLayout);
+        // print(horizontalLayout);
         print("part Completed: A-1.2");
         if (horizontalLayout != null) {
           print("part Completed: A-1.3A");
@@ -239,12 +239,12 @@ class WooCommerce extends BaseServices {
               orElse: () => null);
           if (obj != null && obj['data'].length > 0) {
             print('Successfully Load first page from cache.');
-            print("My obj['data'] ${obj?['data']}");
+            // print("My obj['data'] ${obj?['data']}");
             return obj?['data'];
           } else {
             // when null
-            print(obj); // null
-            print("My obj['data'] ${obj?['data']} - My Not using cache..");
+            // print(obj); // null
+            // print("My obj['data'] ${obj?['data']} - My Not using cache..");
           }
           ;
           //

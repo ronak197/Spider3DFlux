@@ -47,19 +47,6 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
   var cardType; // My
 
   @override
-  void dispose() {
-    _cityController.dispose();
-    _streetController.dispose();
-
-    _expireMmYy.dispose();
-    _cardNumberNode.dispose();
-    _cvvNode.dispose();
-    _buyerIdNode.dispose();
-
-    super.dispose();
-  }
-
-  @override
   void initState() {
     super.initState();
     // print("Start CreditCardAddress init");
@@ -280,9 +267,9 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                             .getAddress();
                     print("myAddress:");
                     print(myAddress!.cardHolderName);
-                    print(myAddress.expiryDate);
+                    print(myAddress.cardExpiryDate);
                     print(myAddress.cardNumber);
-                    print(myAddress.cvv);
+                    print(myAddress.cardCvv);
                   },
                   icon: const Icon(Icons.arrow_back_ios),
                   color: Theme.of(context).accentColor,
@@ -307,10 +294,12 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
   }
 
   Widget formWidget() {
-    return SingleChildScrollView(
+    return
+      SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(5.0),
-        child: ClipRRect(
+        child:
+        ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: Container(
             // color: Color(0xfff1f1f1),
@@ -451,7 +440,7 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                         // print('$val - ${val?.length}');
                                         value = value?.replaceAll('/', '');
                                         // print('$val - ${val?.length}');
-                                        creditCard!.expiryDate = value;
+                                        creditCard!.cardExpiryDate = value;
                                       }),
                                 ),
                               ],
@@ -538,7 +527,7 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
                                         FocusScope.of(context)
                                             .requestFocus(_buyerIdNode),
                                     onSaved: (String? value) {
-                                      creditCard!.cvv = value;
+                                      creditCard!.cardCvv = value;
                                     },
                                   ),
                                 ),
@@ -661,8 +650,8 @@ class _MyCreditCardFormState extends State<MyCreditCardForm> {
       print(myAddress!.cardHolderName);
       print(myAddress.cardHolderId);
       print(myAddress.cardNumber);
-      print(myAddress.expiryDate);
-      print(myAddress.cvv);
+      print(myAddress.cardExpiryDate);
+      print(myAddress.cardCvv);
 
       setState(() {
         show_creditCard_details = true;

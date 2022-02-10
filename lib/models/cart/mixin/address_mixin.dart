@@ -96,7 +96,7 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
                   user.billing != null && user.billing!.cardNumber!.isNotEmpty
                       ? user.billing!.cardNumber
                       : user.cardNumber ?? '',
-              cvv: user.billing != null && user.billing!.cvv!.isNotEmpty
+              cardCvv: user.billing != null && user.billing!.cvv!.isNotEmpty
                   ? user.billing!.cvv
                   : user.cvv ?? '',
               cardHolderName: user.billing != null &&
@@ -107,7 +107,7 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
                   user.billing != null && user.billing!.cardHolderId!.isNotEmpty
                       ? user.billing!.cardHolderId
                       : user.cardHolderName ?? '',
-              expiryDate:
+              cardExpiryDate:
                   user.billing != null && user.billing!.expiryDate!.isNotEmpty
                       ? user.billing!.expiryDate
                       : user.expiryDate ?? '',

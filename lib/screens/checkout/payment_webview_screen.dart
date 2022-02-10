@@ -164,12 +164,12 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
                     // iframe_doc.getElementsByTagName('input').cvv2.value = '1'
                     "inputs = iframe_doc.getElementsByTagName('input');"
                     "inputs.cardNum.value = '${addressModel!.cardNumber}';" // '4580000000000000';"
-                    "inputs.cvv2.value = '${addressModel.cvv}';" // 319
+                    "inputs.cvv2.value = '${addressModel.cardCvv}';" // 319
                     "inputs.id.value = '${addressModel.cardHolderId}';" // 325245355
                     // document.getElementsByTagName('select').ddlYear.value = '21' // document is iframe_doc
                     "selects = iframe_doc.getElementsByTagName('select');"
-                    "selects.ddlMonth.value = '${int.parse(addressModel.expiryDate!.substring(0, 2))}';" // So 03 -> 3
-                    "selects.ddlYear.value = '20${addressModel.expiryDate!.substring(2, 4)}';" // 2021
+                    "selects.ddlMonth.value = '${int.parse(addressModel.cardExpiryDate!.substring(0, 2))}';" // So 03 -> 3
+                    "selects.ddlYear.value = '20${addressModel.cardExpiryDate!.substring(2, 4)}';" // 2021
                     // "selects.ddlPayments.value = '1';" // תשלומים
                     "payButton = document.getElementById('cardsubmitbtn');"
                     // "payButton.style.color = 'red';"

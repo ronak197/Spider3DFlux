@@ -30,7 +30,8 @@ class DeliveryFormV3 extends StatelessWidget {
     final _phoneNode = FocusNode();
     final _emailNode = FocusNode();
 
-    Future _handleDoneButton(BuildContext context) async {
+    // region _handleDoneButton()
+    Future _handleDoneButton(BuildContext context, CartModel model) async {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
         Address? address = Address(
@@ -39,6 +40,13 @@ class DeliveryFormV3 extends StatelessWidget {
           street: _streetController.text,
           phoneNumber: _phoneController.text,
           email: _emailController.text,
+
+          // To do not reset the current data
+          cardHolderName: model.address?.cardHolderName,
+          cardExpiryDate: model.address?.cardExpiryDate,
+          cardNumber: model.address?.cardNumber,
+          cardCvv: model.address?.cardCvv,
+          cardHolderId: model.address?.cardHolderId
         );
         User? user = User(
             username: _nameController.text,
@@ -60,6 +68,7 @@ class DeliveryFormV3 extends StatelessWidget {
         //     .pushReplacement(MaterialPageRoute(builder: (_) => Checkout()));
       }
     }
+    // endregion _handleDoneButton()
 
     String? validateEmail(String value) {
       var valid = RegExp(
@@ -67,18 +76,21 @@ class DeliveryFormV3 extends StatelessWidget {
           .hasMatch(value);
       if (valid) {
         return null;
-      }
+       }
       return 'הזן דוא״ל תקין';
     }
 
     return Consumer<CartModel>(
       builder: (context, model, child) {
-        // print('UserModel Details:');
-        // print('user loggedIn? ${model.user?.loggedIn}');
-        // print('user name: ${model.user?.name}');
-        // print('user email: ${model.user?.email}');
 
+        // region set controllers
         if (kDebugMode) {
+          print('UserModel Details:');
+          // print('user loggedIn? ${model.user?.loggedIn}');
+          print('user: ${model.user}');
+          print('user name: ${model.user?.name}');
+          print('user email: ${model.user?.email}');
+
           print('CartModel Details:');
           print('cart loggedIn? ${model.user?.loggedIn}');
           print('cart user ${model.user}');
@@ -104,6 +116,8 @@ class DeliveryFormV3 extends StatelessWidget {
         else if (model.user?.email != null ){
           _emailController.text = '${model.user?.email}';
         }
+
+        // endregion set controllers
 
         return ClipRRect(
           borderRadius: BorderRadius.circular(5),
@@ -179,6 +193,8 @@ class DeliveryFormV3 extends StatelessWidget {
                                     keyboardType: TextInputType.number,
                                     textInputAction: TextInputAction.next,
                                     onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(_emailNode),
+                                    onChanged: (value) => value.length == 10 && _emailController.text.isEmpty
+                                        ? FocusScope.of(context).requestFocus(_emailNode) : null,
                                     validator: (val) {
                                         // print('val.length');
                                         // print(val!.length);
@@ -203,7 +219,7 @@ class DeliveryFormV3 extends StatelessWidget {
                                       return validateEmail(val);
                                     },
                                     onFieldSubmitted: (_) async {
-                                      await _handleDoneButton(context);
+                                      await _handleDoneButton(context, model);
                                     },),
                               ),
                             ],
@@ -220,7 +236,7 @@ class DeliveryFormV3 extends StatelessWidget {
                                       .primaryColor,
                                 ),
                                 onPressed: () async {
-                                  await _handleDoneButton(context);
+                                  await _handleDoneButton(context, model);
                                 },
                                 child: const Text('עדכן',
                                     style: TextStyle(fontSize: 14)),

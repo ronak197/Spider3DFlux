@@ -44,18 +44,22 @@ class InfoCardV3 extends StatelessWidget {
           child: ListTile(
             onTap: () {
               // showBottomSheetFormDialogV3(context);
-              showDeliveryFormDialogV3(context);
+              showDeliveryFormDialogV3(context, isPayment);
               // Navigator.push(context, MaterialPageRoute(builder: (_) => DeliveryScreenV3()));
             },
             title:
             Consumer<CartModel>(
                 builder: (context, model, child) {
                   bool? editField = isPayment ?
-                        model.address?.cardNumber == null
-                      : model.address?.street == null;
+                        model.address?.cardNumber == null // Represent payment filled
+                      : model.address?.street == null ||  model.address?.city == null; // Represent delivery filled
                   var street = model.address?.street;
                   var city = model.address?.city;
-                  return Text(editField ? '$title' : '$street, $city',
+                  var cardNum = model.address?.cardNumber;
+                  return Text(editField ? '$title' :
+                  isPayment ?
+                     '${cardNum?.substring(12, 16)} **** **** ****'
+                   : '$street, $city',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)

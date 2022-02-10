@@ -21,8 +21,8 @@ class Address {
   String? cardNumber;
   String? cardHolderName;
   String? cardHolderId;
-  String? expiryDate;
-  String? cvv;
+  String? cardExpiryDate;
+  String? cardCvv;
 
   Address({
     this.firstName,
@@ -42,8 +42,8 @@ class Address {
     this.cardNumber,
     this.cardHolderName,
     this.cardHolderId,
-    this.expiryDate,
-    this.cvv,
+    this.cardExpiryDate,
+    this.cardCvv,
   });
 
   Address.fromJson(Map<String, dynamic> parsedJson) {
@@ -123,8 +123,8 @@ class Address {
       'cardNumber': cardNumber,
       'cardHolderName': cardHolderName,
       'cardHolderId': cardHolderId,
-      'expiryDate': expiryDate,
-      'cvv': cvv,
+      'expiryDate': cardExpiryDate,
+      'cvv': cardCvv,
     };
     if (email != null && email!.isNotEmpty) {
       address['email'] = email;
@@ -151,8 +151,8 @@ class Address {
       cardNumber = json['cardNumber'];
       cardHolderName = json['cardHolderName'];
       cardHolderId = json['cardHolderId'];
-      expiryDate = json['expiryDate'];
-      cvv = json['cvv'];
+      cardExpiryDate = json['expiryDate'];
+      cardCvv = json['cvv'];
     } catch (e) {
       printLog(e.toString());
     }

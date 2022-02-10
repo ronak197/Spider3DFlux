@@ -95,7 +95,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
         cartModel.shippingMethod == null) {
       checkout_title = 'בחר שיטת משלוח ותשלום';
     } else if (cartModel.address?.cardNumber == null ||
-        cartModel.address?.cvv == null) {
+        cartModel.address?.cardCvv == null) {
       checkout_title = 'הכנס פרטי אשראי';
     } else {
       checkout_title = 'סיים הזמנה';

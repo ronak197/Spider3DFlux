@@ -218,11 +218,11 @@ class _CheckoutButtonState extends State<CheckoutButton> {
         addressModel.cardHolderName == '' &&
             addressModel.cardHolderId == null ||
         addressModel.cardHolderId == '' &&
-            addressModel.expiryDate == null ||
-        addressModel.expiryDate == '' &&
+            addressModel.cardExpiryDate == null ||
+        addressModel.cardExpiryDate == '' &&
             addressModel.cardNumber == null ||
-        addressModel.cardNumber == '' && addressModel.cvv == null ||
-        addressModel.cvv == '') {
+        addressModel.cardNumber == '' && addressModel.cardCvv == null ||
+        addressModel.cardCvv == '') {
       print('>> Some Payment details are missing.. <<');
       setState(() {
         counter += 1;

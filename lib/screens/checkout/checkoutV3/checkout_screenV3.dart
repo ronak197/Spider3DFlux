@@ -93,14 +93,9 @@ class CheckoutScreenV3 extends StatelessWidget {
               buildRowPrices(context,'הנחת קופון', isCoupon: true) : const SizedBox(),
             buildRowPrices(context, 'סה"כ'),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const CheckoutButtonV3(),
-              ],
-            ),
+            const CheckoutButtonV3(),
             //// Checkout button
-            // const SizedBox(height: 50,),
+            const SizedBox(height: 15),
           ],
         ),
       ),);

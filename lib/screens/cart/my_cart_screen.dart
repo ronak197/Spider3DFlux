@@ -428,7 +428,9 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
       success: () async {
         hideLoading('');
         await Provider.of<CartModel>(context, listen: false).getAddress();
+        // New Checkout page V3
         await Navigator.of(context).pushNamed(RouteList.checkoutV3);
+        // Old Checkout page
         // await widget.controller!.animateToPage(1, duration: const Duration(milliseconds: 250), curve: Curves.easeInOut);
       },
       error: (message) async {

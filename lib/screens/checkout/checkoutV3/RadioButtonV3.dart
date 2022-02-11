@@ -66,7 +66,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
                       paymentMethod = PaymentMethod(
                           title: 'Credit card - iCredit',
                           description: 'תשלום מאובטח באשראי - iCredit',
-                          id: 'my_icredit',
+                          id: 'icredit_payment',
                           enabled: true);
                       break;
 

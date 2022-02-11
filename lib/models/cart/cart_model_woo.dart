@@ -174,7 +174,7 @@ class CartModelWoo
     paymentMethod = PaymentMethod( // My default
         title: 'Credit card - iCredit',
         description: 'תשלום מאובטח באשראי - iCredit',
-        id: 'my_icredit', // Change to cod (& the title)
+        id: 'icredit_payment', // Change to cod (& the title)
         enabled: true // For cash on delivery
     );
     resetCoupon();

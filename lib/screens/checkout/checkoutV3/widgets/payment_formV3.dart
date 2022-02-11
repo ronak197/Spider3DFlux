@@ -48,6 +48,9 @@ class PaymentFormV3 extends StatelessWidget {
 
           // To do not reset the current data
           firstName: model.address?.firstName,
+          lastName: '',
+          state: '',
+          country: '',
           city: model.address?.city,
           street: model.address?.street,
           phoneNumber: model.address?.phoneNumber,

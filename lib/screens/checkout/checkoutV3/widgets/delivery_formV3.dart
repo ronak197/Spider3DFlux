@@ -36,6 +36,9 @@ class DeliveryFormV3 extends StatelessWidget {
         _formKey.currentState!.save();
         Address? address = Address(
           firstName: _nameController.text
+          lastName: '',
+          state: '',
+          country: '',
           city: _cityController.text,
           street: _streetController.text,
           phoneNumber: _phoneController.text,
@@ -103,12 +106,13 @@ class DeliveryFormV3 extends StatelessWidget {
         if (model.address?.phoneNumber != null) {
           _phoneController.text = '${model.address?.phoneNumber}';}
 
-        if (model.address?.firstName != null) {
-          _nameController.text = '${model.address?.firstName}';}
+        // if (model.address?.firstName != null) {
+        //   _nameController.text = '${model.address?.firstName}';}
+
         // When address firstName is null:
-        else if (model.user?.username != null){
-          _nameController.text = '${model.user?.username}';
-        }
+        // else if (model.user?.username != null){
+        //   _nameController.text = '${model.user?.username}';
+        // }
 
         if (model.address?.email != null) {
           _emailController.text = '${model.address?.email}';}

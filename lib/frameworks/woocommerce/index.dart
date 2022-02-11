@@ -126,7 +126,7 @@ class WooWidget extends BaseFrameworks
 
   // Create a new order on woocomarce
   @override
-  Future<void> createOrder(BuildContext context,
+  Future<void> createOrder(BuildContext context, // # 2
       {Function? onLoading,
       Function? success,
       Function? error,
@@ -146,6 +146,7 @@ class WooWidget extends BaseFrameworks
           user: userModel,
           paid: paid,
           transactionId: transactionId)!;
+      print('index.dart- createOrder() - order $order');
 
       if (bacs) {
         await Services().api.updateOrder(order.id,

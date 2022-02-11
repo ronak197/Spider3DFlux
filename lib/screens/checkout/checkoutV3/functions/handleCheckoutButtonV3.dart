@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:fstore/common/config.dart';
+
+// package:fstore/frameworks/woocommerce/index.dart
 import 'package:fstore/models/booking/booking_model.dart';
 import 'package:fstore/models/cart/cart_base.dart';
 import 'package:fstore/models/entities/order.dart';
 import 'package:fstore/models/payment_method_model.dart';
 import 'package:fstore/modules/native_payment/credit_card/index.dart';
 import 'package:fstore/services/services.dart';
+
 // import 'package:fstore/frameworks/woocommerce/index.dart';
 import 'package:provider/provider.dart';
 
 String checkCheckoutButtonV3(CartModel cartModel) {
   // region A lot of prints.
-    // Products (price)
+  // Products (price)
   print('products price:        + ${cartModel.getSubTotal()}');
   // shipping price (price)
   print('shipping price:        + ${cartModel.getShippingCost()}');
@@ -46,14 +49,14 @@ String checkCheckoutButtonV3(CartModel cartModel) {
   bool _deliveryDetailsOk() {
     print('_deliveryDetailsOk()...');
     if (cartModel.address?.firstName == null ||
-        cartModel.address?.firstName == ''   ||
-        cartModel.address?.city == null      ||
-        cartModel.address?.city == ''        ||
-        cartModel.address?.street == null    ||
-        cartModel.address?.street == ''      ||
+        cartModel.address?.firstName == '' ||
+        cartModel.address?.city == null ||
+        cartModel.address?.city == '' ||
+        cartModel.address?.street == null ||
+        cartModel.address?.street == '' ||
         cartModel.address?.phoneNumber == null ||
-        cartModel.address?.phoneNumber == ''   ||
-        cartModel.address?.email == null       ||
+        cartModel.address?.phoneNumber == '' ||
+        cartModel.address?.email == null ||
         cartModel.address?.email == '') {
       print('Something Wrong with _deliveryDetails...');
       return false;
@@ -65,13 +68,13 @@ String checkCheckoutButtonV3(CartModel cartModel) {
   bool _paymentDetailsOk() {
     print('_paymentDetailsOk()...');
     if (cartModel.address?.cardHolderName == null ||
-        cartModel.address?.cardHolderName == ''   ||
+        cartModel.address?.cardHolderName == '' ||
         cartModel.address?.cardExpiryDate == null ||
         cartModel.address?.cardExpiryDate == '' ||
-        cartModel.address?.cardNumber == null   ||
-        cartModel.address?.cardNumber == ''     ||
-        cartModel.address?.cardCvv == null      ||
-        cartModel.address?.cardCvv == ''        ||
+        cartModel.address?.cardNumber == null ||
+        cartModel.address?.cardNumber == '' ||
+        cartModel.address?.cardCvv == null ||
+        cartModel.address?.cardCvv == '' ||
         cartModel.address?.cardHolderId == null ||
         cartModel.address?.cardHolderId == '') {
       print('Something Wrong with _paymentDetails...');
@@ -84,8 +87,8 @@ String checkCheckoutButtonV3(CartModel cartModel) {
   bool _paymentMethodOk() {
     print('_paymentMethodOk()...');
     if (cartModel.paymentMethod?.title == null ||
-        cartModel.paymentMethod?.title == ''   ||
-        cartModel.paymentMethod?.id == null    ||
+        cartModel.paymentMethod?.title == '' ||
+        cartModel.paymentMethod?.id == null ||
         cartModel.paymentMethod?.id == '') {
       print('Something Wrong with _paymentMethodOk...');
       return false;
@@ -97,8 +100,8 @@ String checkCheckoutButtonV3(CartModel cartModel) {
   bool _shippingMethodOk() {
     print('_paymentMethodOk()...');
     if (cartModel.shippingMethod?.title == null ||
-        cartModel.shippingMethod?.title == ''   ||
-        cartModel.shippingMethod?.id == null    ||
+        cartModel.shippingMethod?.title == '' ||
+        cartModel.shippingMethod?.id == null ||
         cartModel.shippingMethod?.id == '') {
       print('Something Wrong with _shippingMethodOk...');
       return false;
@@ -128,7 +131,7 @@ String checkCheckoutButtonV3(CartModel cartModel) {
   _paymentMethodOk() ? null : errorNotes += ' בחר שיטת תשלום \n';
   _shippingMethodOk() ? null : errorNotes += ' בחר שיטת משלוח \n';
 
-  _userLoggedOk()  ? null : errorNotes += 'נא התחבר בעמוד הפרופיל \n';
+  _userLoggedOk() ? null : errorNotes += 'נא התחבר בעמוד הפרופיל \n';
   return errorNotes;
 }
 
@@ -159,19 +162,27 @@ SnackBar errSnackBar(context, String errorNotes) {
 void handleCheckoutButton(context, CartModel cartModel) {
   var errorNotes = checkCheckoutButtonV3(cartModel);
   print('errorNotes: \n$errorNotes');
-   if (errorNotes.isNotEmpty) {
-     Scaffold.of(context).showSnackBar(errSnackBar(context, errorNotes));
-   } else {
+  if (errorNotes.isNotEmpty) {
+    Scaffold.of(context).showSnackBar(errSnackBar(context, errorNotes));
+  } else {
     print('Everything is ready for purchase!');
-    // placeOrder(paymentMethodModel, cartModel);
-/*    WooWidget().placeOrder(
+  }
+
+  Future<void> _createOrder( // # 3 B
+          {paid = false, bacs = false, cod = false, transactionId = ''}) async {
+    await Services().widget.createOrder(
       context,
-      cartModel: cartModel,
-      paymentMethod: cartModel.paymentMethod,
-      error: (){},
-      onLoading: (){},
-      success: () => Provider.of<CartModel>(context, listen: false)
-          .clearCart(),
-    );*/
-   }
+      paid: paid,
+      cod: cod,
+      bacs: bacs,
+      transactionId: transactionId,
+      onLoading:(){},
+      success: (Order order) async {
+      },
+      error: (message) {
+      },
+    );
+  }
+
+  _createOrder(paid: true, cod: true);
 }

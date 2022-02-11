@@ -7,7 +7,7 @@ import '../../common/constants.dart';
 import '../../generated/l10n.dart';
 import '../../services/dependency_injection.dart';
 import '../../services/index.dart';
-import '../entities/index.dart' show Product, ProductVariation;
+import '../entities/index.dart' show PaymentMethod, Product, ProductVariation;
 import 'cart_base.dart';
 import 'mixin/address_mixin.dart';
 import 'mixin/cart_mixin.dart';
@@ -171,7 +171,12 @@ class CartModelWoo
     productVariationInCart.clear();
     productAddonsOptionsInCart.clear();
     shippingMethod = null;
-    paymentMethod = null;
+    paymentMethod = PaymentMethod( // My default
+        title: 'Credit card - iCredit',
+        description: 'תשלום מאובטח באשראי - iCredit',
+        id: 'my_icredit', // Change to cod (& the title)
+        enabled: true // For cash on delivery
+    );
     resetCoupon();
     notes = null;
     rewardTotal = 0;

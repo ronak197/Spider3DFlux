@@ -45,19 +45,19 @@ class CustomRadioButtonV3 extends StatelessWidget {
               // color: (selectedIndex == index) ?  selectedColor : color,
               color: color,
               onPressed: () async {
+                // CREDIT CARD default sets on cart_model_woo.dart - paymentMethod = PaymentMethod(...
+                /// CREDIT CARD default sets on cart_model_woo.dart - paymentMethod = PaymentMethod(...
+                //// CREDIT CARD default sets on cart_model_woo.dart - paymentMethod = PaymentMethod(...
                 isPayment ?
                 checkoutModel.changePaymentIndex(index)
                     : checkoutModel.changeShippingIndex(index);
 
                 var cartModel = Provider.of<CartModel>(context, listen: false);
                 // var shippingMethodModel = Provider.of<ShippingMethodModel>(context, listen: false);
-
-                // print('Insider1 paymentMethod');
-                // print(paymentMethod.title);
-
-                /// Payment form:
                 PaymentMethod? paymentMethod;
                 ShippingMethod? shippingMethod;
+
+                /// Payment form:
                 if (isPayment) {
                   // print('Set paymentMethod...');
                   // region paymentMethod switch

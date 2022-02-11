@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fstore/models/cart/cart_base.dart';
 
 String checkCheckoutButtonV3(CartModel cartModel) {
-  // region A lot of prints (commented).
-  /*  // Products (price)
+  // region A lot of prints.
+    // Products (price)
   print('products price:        + ${cartModel.getSubTotal()}');
   // shipping price (price)
   print('shipping price:        + ${cartModel.getShippingCost()}');
@@ -30,8 +30,8 @@ String checkCheckoutButtonV3(CartModel cartModel) {
   print('address cardExpiryDate:   ${cartModel.address?.cardExpiryDate}');
   // user details (logged in, Make sure there is)
   print('----------');
-  print('user loggedIn:   ${cartModel.user?.loggedIn}');*/
-  // endregion A lot of prints (commented).
+  print('user loggedIn:   ${cartModel.user?.loggedIn}');
+  // endregion A lot of prints.
 
   var errorNotes = '';
 

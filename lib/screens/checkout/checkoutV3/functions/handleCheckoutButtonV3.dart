@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/common/config.dart';
+import 'package:fstore/models/booking/booking_model.dart';
 import 'package:fstore/models/cart/cart_base.dart';
+import 'package:fstore/models/entities/order.dart';
+import 'package:fstore/models/payment_method_model.dart';
+import 'package:fstore/modules/native_payment/credit_card/index.dart';
+import 'package:fstore/services/services.dart';
+// import 'package:fstore/frameworks/woocommerce/index.dart';
+import 'package:provider/provider.dart';
 
 String checkCheckoutButtonV3(CartModel cartModel) {
   // region A lot of prints.
@@ -151,5 +159,19 @@ SnackBar errSnackBar(context, String errorNotes) {
 void handleCheckoutButton(context, CartModel cartModel) {
   var errorNotes = checkCheckoutButtonV3(cartModel);
   print('errorNotes: \n$errorNotes');
-  Scaffold.of(context).showSnackBar(errSnackBar(context, errorNotes));
+   if (errorNotes.isNotEmpty) {
+     Scaffold.of(context).showSnackBar(errSnackBar(context, errorNotes));
+   } else {
+    print('Everything is ready for purchase!');
+    // placeOrder(paymentMethodModel, cartModel);
+/*    WooWidget().placeOrder(
+      context,
+      cartModel: cartModel,
+      paymentMethod: cartModel.paymentMethod,
+      error: (){},
+      onLoading: (){},
+      success: () => Provider.of<CartModel>(context, listen: false)
+          .clearCart(),
+    );*/
+   }
 }

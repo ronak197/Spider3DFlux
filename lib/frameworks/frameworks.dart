@@ -58,7 +58,7 @@ abstract class BaseFrameworks {
 
   Future<void>? removeCoupon(BuildContext context) => null;
 
-  Future<void> createWooOrder(BuildContext context,
+  Future<void> createOrder(BuildContext context,
       {Function? onLoading,
       Function? success,
       Function? error,

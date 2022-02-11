@@ -466,7 +466,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
   Future<void> createOrder(
       {paid = false, bacs = false, cod = false, transactionId = ''}) async {
     widget.onLoading!(true);
-    await Services().widget.createWooOrder(
+    await Services().widget.createOrder(
       context,
       paid: paid,
       cod: cod,

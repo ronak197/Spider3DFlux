@@ -126,7 +126,7 @@ class WooWidget extends BaseFrameworks
 
   // Create a new order on woocomarce
   @override
-  Future<void> createWooOrder(BuildContext context,
+  Future<void> createOrder(BuildContext context,
       {Function? onLoading,
       Function? success,
       Function? error,
@@ -176,7 +176,7 @@ class WooWidget extends BaseFrameworks
   }
 
   @override
-  void placeOrder(context,
+  void placeOrder(context, // placeOrder () -> (payment method) -> createOrder() on Woo
       {CartModel? cartModel,
       PaymentMethod? paymentMethod,
       Function? onLoading,
@@ -185,18 +185,19 @@ class WooWidget extends BaseFrameworks
 
     Provider.of<CartModel>(context, listen: false).setPaymentMethod(paymentMethod);
 
-    if (paymentMethod!.id == 'cod') { // Cash on delivery
-      createWooOrder(context,
+    if (paymentMethod!.id == 'cod') { /// Cash on delivery
+      createOrder(context,
           cod: true, onLoading: onLoading, success: success, error: error);
       return;
     }
 
     if (paymentMethod.id == 'bacs') { /// Direct bank transfer (BACS)
-      createWooOrder(context,
+      createOrder(context,
           bacs: true, onLoading: onLoading, success: success, error: error);
       return;
     }
 
+    /// iCredit (Any time paymentMethod.id != 'cod')
     final user = Provider.of<UserModel>(context, listen: false).user;
     var params = Order().toJson(cartModel!, user != null ? user.id : null, true);
     params['token'] = user != null ? user.cookie : null;
@@ -232,7 +233,7 @@ class WooWidget extends BaseFrameworks
             builder: (context) => PaymentWebview(
                 url: url,
                 onFinish: (number) async {
-                  await createWooOrder(context,
+                  await createOrder(context,
                       cod: true, onLoading: onLoading, success: success, error: error);
                   success!(number != null ? Order(number: number) : null);
                 })),

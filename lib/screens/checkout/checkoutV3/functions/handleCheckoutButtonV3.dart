@@ -168,7 +168,7 @@ void handleCheckoutButton(context, CartModel cartModel) {
     print('Everything is ready for purchase!');
   }
 
-  Future<void> _createOrder( // # 3 B
+  Future<void> _createOrder( // #3B
           {paid = false, bacs = false, cod = false, transactionId = ''}) async {
     await Services().widget.createOrder(
       context,
@@ -178,6 +178,7 @@ void handleCheckoutButton(context, CartModel cartModel) {
       transactionId: transactionId,
       onLoading:(){},
       success: (Order order) async {
+        Provider.of<CartModel>(context, listen: false).clearCart();
       },
       error: (message) {
       },

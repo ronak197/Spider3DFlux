@@ -139,8 +139,8 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
     }
     if (shippingMethod != null && isNotBlank(shippingMethod!.classCost)) {
       List items = shippingMethod!.classCost!.split('*');
-      String cost = items[0] != '[qty]' ? items[0] : items[1];
-      var shippingCost = double.parse(cost);
+      String? cost = items[0] != '[qty]' ? items[0] : items[1];
+      var shippingCost = cost != null ? double.parse(cost) : 0.0;
       var count = 0;
       productsInCart.keys.forEach((key) {
         count += productsInCart[key]!;

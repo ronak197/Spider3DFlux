@@ -59,7 +59,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
                 PaymentMethod? paymentMethod;
                 ShippingMethod? shippingMethod;
                 if (isPayment) {
-                  print('Set paymentMethod...');
+                  // print('Set paymentMethod...');
                   // region paymentMethod switch
                   switch (index) {
                     case 1:
@@ -84,13 +84,13 @@ class CustomRadioButtonV3 extends StatelessWidget {
 
                   cartModel.setPaymentMethod(paymentMethod);
                   var _paymentMethod = cartModel.paymentMethod?.title;
-                  print('_paymentMethod');
+                  // print('_paymentMethod');
                   print(_paymentMethod);
                 }
 
                 /// Shipping form:
                 else {
-                  print('Set shippingMethod...');
+                  // print('Set shippingMethod...');
                   // region shippingMethod switch
                   switch (index) {
                     case 1:
@@ -98,10 +98,10 @@ class CustomRadioButtonV3 extends StatelessWidget {
                         title: 'עד 3-4 ימי עסקים',
                         methodId: 'flat_rate',
                         cost: 29.0,
-                        description: 'null',
                         id: 'flat_rate:6',
-                        classCost: 'null',
                         methodTitle: 'עד 3-4 ימי עסקים',
+                        description: null,
+                        classCost: null,
                         min_amount: null,
                       );
                       break;
@@ -111,10 +111,10 @@ class CustomRadioButtonV3 extends StatelessWidget {
                         title: '🚀 מהיום להיום אשקלון-נתניה - (ללא ירושלים; ללא מושבים)',
                         methodId: 'flat_rate',
                         cost: 45.0,
-                        description: 'null',
                         id: 'flat_rate:11',
-                        classCost: 'null',
                         methodTitle: '🚀 מהיום להיום אשקלון-נתניה - (ללא ירושלים; ללא מושבים)',
+                        description: null,
+                        classCost: null,
                         min_amount: null,
                       );
                       break;
@@ -124,21 +124,21 @@ class CustomRadioButtonV3 extends StatelessWidget {
                         title: 'איסוף עצמי - לוקר ראשון לציון (קוד ופרטים ישלחו ב-SMS )',
                         methodId: 'local_pickup',
                         cost: 0.0,
-                        description: 'null',
                         id: 'local_pickup:15',
-                        classCost: 'null',
                         methodTitle: 'איסוף עצמי - לוקר ראשון לציון (קוד ופרטים ישלחו ב-SMS )',
+                        description: null,
+                        classCost: null,
                         min_amount: null,
                       );
                       break;
                   }
                   // endregion shippingMethod switch
-                  // print('shippingMethod');
-                  // print(shippingMethod?.title);
+                  print('shippingMethod');
+                  print(shippingMethod?.title);
 
                   cartModel.setShippingMethod(shippingMethod);
                   var _shippingMethod = cartModel.shippingMethod?.title;
-                  print('_shippingMethod');
+                  // print('_shippingMethod');
                   print(_shippingMethod);
 
 
@@ -186,7 +186,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
                 }
               },
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(8),
                 // side: BorderSide(color: color, width: 2, style: BorderStyle.solid),
                 side: BorderSide(
                     color: (selectedIndex == index) ? selectedColor : color,

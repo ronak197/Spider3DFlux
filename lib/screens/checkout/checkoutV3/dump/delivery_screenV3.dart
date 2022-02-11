@@ -4,8 +4,9 @@ import 'package:fstore/models/cart/cart_base.dart';
 import 'package:fstore/screens/checkout/checkoutV3/widgets/delivery_formV3.dart';
 import 'package:fstore/screens/checkout/widgets/my_creditcard_address.dart';
 import 'package:provider/provider.dart';
-import '../../../generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
+/// Not in use
 class DeliveryScreenV3 extends StatelessWidget {
 
   @override

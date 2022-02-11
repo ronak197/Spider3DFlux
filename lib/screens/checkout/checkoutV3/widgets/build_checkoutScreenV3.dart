@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/models/cart/cart_base.dart';
+import 'package:provider/provider.dart';
 
 /// A build methods widgets for checkout_screenV3.dart
-Widget buildRowPrices(BuildContext context, String price, String type) {
+Widget buildRowPrices(
+    BuildContext context,
+    String type,
+    {bool isCoupon = false }) {
+
   TextStyle _style(bool isBold){
     return Theme.of(context)
         .textTheme
@@ -11,14 +17,37 @@ Widget buildRowPrices(BuildContext context, String price, String type) {
         fontSize: 16);
   }
 
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text('$type', style: _style(false),),
-        Text('$price₪', style: _style(true),)],
-    ),
+  return Consumer<CartModel>(
+    builder: (context, cartModel, child) {
+      /*                 buildRowPrices(context, '249', 'עלות הזמנה'),
+                  buildRowPrices(context, '29', 'עלות משלוח'),
+                  buildRowPrices(context, '29', 'הנחת קופון'),
+                  buildRowPrices(context, '278', 'סה"כ'),*/
+      String? price;
+      switch (type){
+        case 'עלות הזמנה': price = '${cartModel.getSubTotal()}';
+          break;
+        case 'עלות משלוח': price = '${cartModel.getShippingCost()}';
+          break;
+        case 'הנחת קופון': price = '${cartModel.getCouponCost()}';
+          break;
+        case 'סה"כ': price = '${cartModel.getTotal()}';
+          break;
+      }
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(' $type', style: _style(false),),
+            Text( isCoupon ?
+                 '$price₪ -'
+                :'$price₪  ',
+              style: _style(true),)],
+            // Text('$price₪ -', style: _style(true),)],
+        ),
+      );
+    }
   );
 }
 

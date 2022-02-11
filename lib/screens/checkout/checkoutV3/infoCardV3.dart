@@ -3,7 +3,7 @@ import 'package:fstore/common/constants.dart';
 import 'package:fstore/models/cart/cart_base.dart';
 import 'package:provider/provider.dart';
 
-import 'delivery_screenV3.dart';
+import 'dump/delivery_screenV3.dart';
 import 'functions/handleFormV3.dart';
 
 class InfoCardV3 extends StatelessWidget {
@@ -38,7 +38,7 @@ class InfoCardV3 extends StatelessWidget {
         Card(
           color: Theme.of(context).primaryColorLight.withOpacity(0.7),
           margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0,
           // shadowColor: Colors.black38,
           child: ListTile(
@@ -69,7 +69,7 @@ class InfoCardV3 extends StatelessWidget {
                 }
             ),
             leading: Icon(icon, color: Theme.of(context).accentColor,),
-            // subtitle: Text('לחץ לעדכון כתובת המשלוח'),
+            // subtitle: Text('לחץ כדי להוסיף הערות'),
             trailing: Icon(Icons.edit, color: Theme.of(context).accentColor,),
           ),
         ),

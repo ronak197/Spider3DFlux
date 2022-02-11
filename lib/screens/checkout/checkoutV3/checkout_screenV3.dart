@@ -53,13 +53,11 @@ class CheckoutScreenV3 extends StatelessWidget {
                 shrinkWrap: true, // Set this
                 scrollDirection: Axis.horizontal,
                 children: [
-                  CustomRadioButton(
-                    'כרטיס אשראי',
-                    1,
+                  CustomRadioButtonV3(
+                    'כרטיס אשראי', 1,
                   ),
-                  CustomRadioButton(
-                    'מזומן באיסוף עצמי',
-                    2,
+                  CustomRadioButtonV3(
+                    'מזומן באיסוף עצמי', 2,
                   ),
                 ],
               ),
@@ -72,17 +70,15 @@ class CheckoutScreenV3 extends StatelessWidget {
                 child: Row(
                   // shrinkWrap: true, // Set this
                   children: [
-                    CustomRadioButton(
-                      'עד 3-4 ימי עסקים 29₪',
-                      1,
+                    CustomRadioButtonV3(
+                      'עד 3-4 ימי עסקים 29₪', 1,
                       isPayment: false,
                     ),
-                    CustomRadioButton('מהיום להיום 45₪', 2,
+                    CustomRadioButtonV3('מהיום להיום 45₪', 2,
                         isPayment: false,
                         subText: 'לאשקלון - נתניה, ללא ירושלים ומושבים'),
-                    CustomRadioButton(
-                      'מזומן באיסוף עצמי 0₪',
-                      3,
+                    CustomRadioButtonV3(
+                      'מזומן באיסוף עצמי 0₪', 3,
                       isPayment: false,
                       subText: 'פרטי איסוף ישלחו בSMS',
                     ),

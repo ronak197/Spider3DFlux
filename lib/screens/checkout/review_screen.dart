@@ -291,8 +291,7 @@ class _ReviewState extends BaseScreen<ReviewScreen> {
                 ),
               ),
               FutureBuilder(
-                future:
-                    Provider.of<CartModel>(context, listen: false).getAddress(),
+                future: Provider.of<CartModel>(context, listen: false).getAddress(),
                 // Provider.of<CartModel>(context),
                 builder: (context, snapshot) {
                   Address address;

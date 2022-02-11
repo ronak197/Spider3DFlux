@@ -129,7 +129,7 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
 
   Future<Address?> getAddress() async {
     address ??= await getShippingAddress();
-    notifyListeners();
+    // notifyListeners();
     return address;
   }
 
@@ -151,9 +151,9 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
   }
 
   void setShippingMethod(data) {
-    // printLog('setShippingMethod data: ${data.runtimeType}');
-    // printLog('setShippingMethod data: ${data}');
+    // print('X $shippingMethod');
     shippingMethod = data;
     notifyListeners();
+    // print('X2 $shippingMethod');
   }
 }

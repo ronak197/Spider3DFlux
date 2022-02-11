@@ -15,4 +15,13 @@ class CheckoutProviderV3 extends ChangeNotifier {
     print('shippingIndex $shippingIndex');
     notifyListeners();
   }
+
+  String? id;
+  String? title;
+  String? description;
+  bool? enabled;
+
+
+  // My to allow manually
+  // PaymentMethod({this.id, this.title, this.description, this.enabled});
 }

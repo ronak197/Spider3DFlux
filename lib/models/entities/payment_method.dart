@@ -3,11 +3,15 @@ import 'package:quiver/strings.dart';
 import '../../common/constants.dart';
 import '../serializers/payment.dart';
 
+
 class PaymentMethod {
   String? id;
   String? title;
   String? description;
   bool? enabled;
+
+  // My to allow manually
+  PaymentMethod({this.id, this.title, this.description, this.enabled});
 
   Map<String, dynamic> toJson() {
     return {

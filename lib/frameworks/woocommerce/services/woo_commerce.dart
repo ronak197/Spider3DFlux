@@ -716,6 +716,19 @@ class WooCommerce extends BaseServices {
         throw Exception(
             'Your selected address is not supported by any Shipping method, please update the billing address again!');
       }
+      print("list = <ShippingMethod>[]");
+      list.forEach((element) {
+        // title: 'Credit card - iCredit',
+        print('element');
+        print("description: '${element.description}',");
+        print("id: '${element.id}',");
+        print("title: '${element.title}',");
+        print("classCost: '${element.classCost}',");
+        print("cost: '${element.cost}',");
+        print("methodId: '${element.methodId}',");
+        print("methodTitle: '${element.methodTitle}',");
+        print("min_amount: '${element.min_amount}',");
+      });
       return list;
     } catch (err) {
       rethrow;

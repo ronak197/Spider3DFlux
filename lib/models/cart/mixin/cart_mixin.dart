@@ -10,8 +10,8 @@ import '../../index.dart';
 import 'package:flutter/foundation.dart';
 
 
-// mixin CartMixin on ChangeNotifier {
-mixin CartMixin { // original
+mixin CartMixin on ChangeNotifier {
+// mixin CartMixin { // original
   User? user;
   double taxesTotal = 0;
   List<Tax> taxes = [];
@@ -84,7 +84,10 @@ mixin CartMixin { // original
   }
 
   void setPaymentMethod(data) {
+    // print('X $paymentMethod');
     paymentMethod = data;
+    notifyListeners(); // my
+    // print('X2 $paymentMethod');
   }
 
   // Returns the Product instance matching the provided id.

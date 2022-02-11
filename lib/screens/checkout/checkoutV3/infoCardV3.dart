@@ -4,7 +4,7 @@ import 'package:fstore/models/cart/cart_base.dart';
 import 'package:provider/provider.dart';
 
 import 'delivery_screenV3.dart';
-import 'functions/handleDeliveryFormV3.dart';
+import 'functions/handleFormV3.dart';
 
 class InfoCardV3 extends StatelessWidget {
   // const InfoCardV3({Key? key}) : super(key: key);
@@ -44,7 +44,7 @@ class InfoCardV3 extends StatelessWidget {
           child: ListTile(
             onTap: () {
               // showBottomSheetFormDialogV3(context);
-              showDeliveryFormDialogV3(context, isPayment);
+              showFormDialogV3(context, isPayment);
               // Navigator.push(context, MaterialPageRoute(builder: (_) => DeliveryScreenV3()));
             },
             title:

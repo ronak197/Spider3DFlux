@@ -355,7 +355,9 @@ class _CheckoutButtonState extends State<CheckoutButton> {
         Scaffold.of(context), S.of(context).orderStatusProcessing);
   }
 
-  void placeOrder(PaymentMethodModel paymentMethodModel, CartModel cartModel) {
+  void placeOrder(
+      PaymentMethodModel paymentMethodModel,
+      CartModel cartModel) {
     widget.onLoading!(true);
     isPaying = true;
     if (paymentMethodModel.paymentMethods.isNotEmpty) {
@@ -367,8 +369,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
       print('X');
       print('X');
 
-      Provider.of<CartModel>(context, listen: false)
-          .setPaymentMethod(paymentMethod);
+      Provider.of<CartModel>(context, listen: false).setPaymentMethod(paymentMethod);
 
       /// Use Credit card. For Shopify only.
       if ((kPaymentConfig['EnableCreditCard'] ?? false) &&
@@ -396,99 +397,6 @@ class _CheckoutButtonState extends State<CheckoutButton> {
         return;
       }
 
-      /// Use Native payment
-
-      /// Direct bank transfer (BACS)
-
-      if (paymentMethod.id!.contains('bacs')) {
-        widget.onLoading!(false);
-        isPaying = false;
-
-        showModalBottomSheet(
-            context: context,
-            builder: (sContext) => Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          GestureDetector(
-                            onTap: () => Navigator.of(context).pop(),
-                            child: Text(
-                              S.of(context).cancel,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .caption!
-                                  .copyWith(color: Colors.red),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        paymentMethod.description!,
-                        style: Theme.of(context).textTheme.caption,
-                      ),
-                      const Expanded(child: SizedBox(height: 10)),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          widget.onLoading!(true);
-                          isPaying = true;
-                          Services().widget.placeOrder(
-                            context,
-                            cartModel: cartModel,
-                            onLoading: widget.onLoading,
-                            paymentMethod: paymentMethod,
-                            success: (Order order) async {
-                              for (var item in order.lineItems) {
-                                var product =
-                                    cartModel.getProductById(item.productId!);
-                                if (product?.bookingInfo != null) {
-                                  product!.bookingInfo!.idOrder = order.id;
-                                  var booking =
-                                      await createBooking(product.bookingInfo)!;
-
-                                  Tools.showSnackBar(
-                                      Scaffold.of(context),
-                                      booking
-                                          ? 'Booking success!'
-                                          : 'Booking error!');
-                                }
-                              }
-                              widget.onFinish!(order);
-                              widget.onLoading!(false);
-                              isPaying = false;
-                            },
-                            error: (message) {
-                              widget.onLoading!(false);
-                              if (message != null) {
-                                Tools.showSnackBar(
-                                    Scaffold.of(context), message);
-                              }
-                              isPaying = false;
-                            },
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          onPrimary: Colors.white,
-                          primary: Theme.of(context).primaryColor,
-                        ),
-                        child: Text(
-                          S.of(context).ok,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                    ],
-                  ),
-                ));
-
-        return;
-      }
 
       /// PayPal Payment
       if (isNotBlank(PaypalConfig['paymentMethodId']) &&
@@ -550,7 +458,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
       );
     }
   }
-
+  //  I think its history saver..
   Future<bool>? createBooking(BookingModel? bookingInfo) async {
     return Services().api.createBooking(bookingInfo)!;
   }
@@ -558,7 +466,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
   Future<void> createOrder(
       {paid = false, bacs = false, cod = false, transactionId = ''}) async {
     widget.onLoading!(true);
-    await Services().widget.createOrder(
+    await Services().widget.createWooOrder(
       context,
       paid: paid,
       cod: cod,
@@ -566,9 +474,6 @@ class _CheckoutButtonState extends State<CheckoutButton> {
       transactionId: transactionId,
       onLoading: widget.onLoading,
       success: (Order order) async {
-        await Services()
-            .api
-            .updateOrderIdForRazorpay(transactionId, order.number);
         widget.onFinish!(order);
       },
       error: (message) {

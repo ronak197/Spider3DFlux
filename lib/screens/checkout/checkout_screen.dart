@@ -114,7 +114,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
       children: <Widget>[
         Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
-/*          floatingActionButton:
+          /*          floatingActionButton:
           // showCheckoutButton ||  checkout_title == 'סיים הזמנה' ?
           CheckoutButton(
                   text: checkout_title,
@@ -132,8 +132,7 @@ class _CheckoutState extends BaseScreen<Checkout> {
           ,*/
           resizeToAvoidBottomInset: false,
           // To do not float above the keyboard
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           appBar: AppBar(
             title: const Text('עמוד קופה'),
             leading: IconButton(

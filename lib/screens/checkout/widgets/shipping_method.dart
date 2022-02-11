@@ -124,7 +124,7 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                   focusColor: kColorSpiderRed,
                                   value: i,
                                   groupValue: selectedShippingIndex,
-                                  onChanged: (dynamic i) {
+                                  onChanged: (dynamic i) async {
                                     setState(() {
                                       selectedShippingIndex = i;
                                     });
@@ -132,20 +132,16 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                     if (shippingMethodModel
                                             .shippingMethods?.isNotEmpty ??
                                         false) {
-                                      Provider.of<CartModel>(context,
-                                              listen: false)
-                                          .setShippingMethod(shippingMethodModel
-                                                  .shippingMethods![
-                                              selectedShippingIndex!]);
+                                      Provider.of<CartModel>(context, listen: false).setShippingMethod(shippingMethodModel.shippingMethods![selectedShippingIndex!]);
 
-                                      Future.delayed(Duration.zero, () {
+                                      await Future.delayed(Duration.zero, () async {
                                         final cartModel =
                                             Provider.of<CartModel>(context,
                                                 listen: false);
                                         final userModel =
                                             Provider.of<UserModel>(context,
                                                 listen: false);
-                                        Provider.of<PaymentMethodModel>(context,
+                                        await Provider.of<PaymentMethodModel>(context,
                                                 listen: false)
                                             .getPaymentMethods(
                                                 cartModel: cartModel,
@@ -154,25 +150,6 @@ class _ShippingMethodsState extends State<ShippingMethods> {
                                                 token: userModel.user != null
                                                     ? userModel.user!.cookie
                                                     : null);
-
-                                        if (kPaymentConfig['EnableReview'] !=
-                                            true) {
-                                          Provider.of<TaxModel>(context,
-                                                  listen: false)
-                                              .getTaxes(
-                                                  Provider.of<CartModel>(
-                                                      context,
-                                                      listen: false),
-                                                  (taxesTotal, taxes) {
-                                            Provider.of<CartModel>(context,
-                                                    listen: false)
-                                                .taxesTotal = taxesTotal;
-                                            Provider.of<CartModel>(context,
-                                                    listen: false)
-                                                .taxes = taxes;
-                                            setState(() {});
-                                          });
-                                        }
                                       });
 
                                       // Navigator.of(context).pop();

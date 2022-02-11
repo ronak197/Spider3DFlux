@@ -13,6 +13,17 @@ class ShippingMethod {
   String? methodId;
   String? methodTitle;
 
+  ShippingMethod({
+    this.id,
+    this.title,
+    this.description,
+    this.cost,
+    this.min_amount,
+    this.classCost,
+    this.methodId,
+    this.methodTitle,
+});
+
   Map<String, dynamic> toJson() {
     return {'id': id, 'title': title, 'description': description, 'cost': cost};
   }

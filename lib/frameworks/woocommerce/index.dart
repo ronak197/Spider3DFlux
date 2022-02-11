@@ -124,8 +124,9 @@ class WooWidget extends BaseFrameworks
     success!();
   }
 
+  // Create a new order on woocomarce
   @override
-  Future<void> createOrder(BuildContext context,
+  Future<void> createWooOrder(BuildContext context,
       {Function? onLoading,
       Function? success,
       Function? error,
@@ -181,29 +182,29 @@ class WooWidget extends BaseFrameworks
       Function? onLoading,
       Function? success,
       Function? error}) {
-    Provider.of<CartModel>(context, listen: false)
-        .setPaymentMethod(paymentMethod);
 
-    if (paymentMethod!.id == 'cod') {
-      createOrder(context,
+    Provider.of<CartModel>(context, listen: false).setPaymentMethod(paymentMethod);
+
+    if (paymentMethod!.id == 'cod') { // Cash on delivery
+      createWooOrder(context,
           cod: true, onLoading: onLoading, success: success, error: error);
       return;
     }
 
-    if (paymentMethod.id == 'bacs') {
-      createOrder(context,
+    if (paymentMethod.id == 'bacs') { /// Direct bank transfer (BACS)
+      createWooOrder(context,
           bacs: true, onLoading: onLoading, success: success, error: error);
       return;
     }
 
     final user = Provider.of<UserModel>(context, listen: false).user;
-    var params =
-        Order().toJson(cartModel!, user != null ? user.id : null, true);
+    var params = Order().toJson(cartModel!, user != null ? user.id : null, true);
     params['token'] = user != null ? user.cookie : null;
-    makePaymentWebview(context, params, onLoading, success, error);
-  }
+    makePaymentWebView(context, params, onLoading, success, error);
+}
 
-  Future<void> makePaymentWebview(context, Map<String, dynamic> params,
+// If not cod or bacs:
+  Future<void> makePaymentWebView(context, Map<String, dynamic> params,
       Function? onLoading, Function? success, Function? error) async {
     try {
       onLoading!(true);
@@ -231,7 +232,7 @@ class WooWidget extends BaseFrameworks
             builder: (context) => PaymentWebview(
                 url: url,
                 onFinish: (number) async {
-                  await createOrder(context,
+                  await createWooOrder(context,
                       cod: true, onLoading: onLoading, success: success, error: error);
                   success!(number != null ? Order(number: number) : null);
                 })),

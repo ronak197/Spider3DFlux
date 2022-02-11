@@ -219,8 +219,7 @@ class MainTabsState extends CustomOverlayState<MainTabs>
               navTitleTextStyle: Theme.of(context).textTheme.headline5,
               navLargeTitleTextStyle:
                   Theme.of(context).textTheme.headline4!.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+                        fontWeight: FontWeight.w700),
             ),
           ),
           child: WillPopScope(

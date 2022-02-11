@@ -26,7 +26,7 @@ import '../checkout_screen.dart';
 import '../review_screen.dart';
 
 class PaymentMethodsRadio extends StatefulWidget {
-  Function? onRadioChange;
+  final Function? onRadioChange;
   // final Function(bool)? onLoading;en
 
   PaymentMethodsRadio({this.onRadioChange});
@@ -223,8 +223,7 @@ class _PaymentMethodsRadioState extends State<PaymentMethodsRadio> with RazorDel
                                                             .setPaymentMethod(
                                                                 paymentMethod);
 
-                                                        print(
-                                                            'paymentMethod.title');
+                                                        print('paymentMethod.title');
                                                         print(paymentMethod.title);
                                                         print(paymentMethod.id);
 

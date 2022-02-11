@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../models/cart/cart_model.dart';
 import '../services/index.dart';
 import 'entities/payment_method.dart';

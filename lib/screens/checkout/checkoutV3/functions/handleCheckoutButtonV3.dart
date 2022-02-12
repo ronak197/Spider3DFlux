@@ -15,6 +15,7 @@ import 'package:fstore/services/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../webview_checkout_success_screen.dart';
+import '../checkoutV3_provider.dart';
 
 String checkCheckoutButtonV3(CartModel cartModel) {
   // region A lot of prints.
@@ -172,13 +173,15 @@ void handleCheckoutButton(context, CartModel cartModel) {
       context,
       cartModel: cartModel,
       onLoading: () {
-        return Center(child: kLoadingWidget(context));
+        print('XoXo');
       },
       paymentMethod: cartModel.paymentMethod,
       success: (Order? order) async {
         print('------');
         print(order);
         cartModel.clearCart();
+        // Clear ShippingIndex
+        Provider.of<CheckoutProviderV3>(context, listen: false).changeShippingIndex(0);
         await Navigator.push(
           context,
           MaterialPageRoute(

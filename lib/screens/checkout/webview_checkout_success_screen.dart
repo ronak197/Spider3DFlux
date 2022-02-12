@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/menu/maintab_delegate.dart';
 
 import '../../common/constants.dart';
 import '../../models/index.dart' show Order;
@@ -15,7 +16,11 @@ class SuccessScreen extends StatelessWidget {
         title: const Text('ההזמנה התקבלה!'),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context).pushNamed(RouteList.cart)),
+            onPressed: () {
+              MainTabControlDelegate.getInstance().changeTab('home');
+              Navigator.of(context).popAndPushNamed(RouteList.home);
+            }
+          ),
         backgroundColor: kGrey200,
         elevation: 0.0,
       ),

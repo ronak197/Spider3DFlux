@@ -25,7 +25,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
     // var selectedIndex = isPayment ? 1 : 0;
 
     return Consumer<CheckoutProviderV3>(
-        builder: (context, checkoutModel, child) {
+    builder: (context, checkoutModel, child) {
          // Remember last choice
          var selectedIndex = isPayment ? checkoutModel.paymentIndex : checkoutModel.shippingIndex;
 

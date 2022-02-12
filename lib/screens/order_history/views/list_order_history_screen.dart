@@ -27,10 +27,18 @@ class _ListOrderHistoryScreenState extends State<ListOrderHistoryScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        title: Text(
-          S.of(context).orderHistory,
-          style: TextStyle(
-            color: Theme.of(context).accentColor,
+        title: ListTile(
+          title: Text(
+            S.of(context).orderHistory,
+            style: TextStyle(
+              color: Theme.of(context).accentColor,
+            ).copyWith(fontSize: 18),
+          ),
+          subtitle: Text(
+            'לרענון יש להכנס לעמוד מחדש',
+            style: TextStyle(
+              color: Theme.of(context).accentColor,
+            ).copyWith(fontSize: 12),
           ),
         ),
         centerTitle: true,

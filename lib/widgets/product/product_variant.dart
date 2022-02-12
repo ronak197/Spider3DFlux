@@ -534,7 +534,8 @@ class _QuantitySelectionState extends State<QuantitySelection> {
                   onPressed: () => changeQuantity(currentQuantity - 1),
                   icon: const Center(
                       child: Icon(
-                    Icons.arrow_back_ios,
+                    // Icons.arrow_back_ios,
+                    Icons.remove,
                     size: 15,
                   )),
                 )
@@ -549,7 +550,8 @@ class _QuantitySelectionState extends State<QuantitySelection> {
                   padding: _iconPadding,
                   onPressed: () => changeQuantity(currentQuantity + 1),
                   icon: const Icon(
-                    Icons.arrow_forward_ios,
+                    // Icons.arrow_forward_ios,
+                    Icons.add,
                     size: 15,
                   ),
                 )

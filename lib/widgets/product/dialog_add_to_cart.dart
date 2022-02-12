@@ -27,7 +27,7 @@ class DialogAddToCart {
         child: Stack(
           children: [
             RubberAddToCart(product: product),
-            Align(
+/*            Align(
               alignment: Alignment.topRight,
               child: InkWell(
                 onTap: () => Navigator.pop(context),
@@ -39,7 +39,7 @@ class DialogAddToCart {
                   ),
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       ),

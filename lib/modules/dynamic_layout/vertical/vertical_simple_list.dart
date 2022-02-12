@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/widgets/product/dialog_add_to_cart.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/constants.dart';
 import '../../../common/tools.dart';
 import '../../../generated/l10n.dart';
-import '../../../models/index.dart' show AppModel, Product;
+import '../../../models/index.dart' show AppModel, CartModel, Product, ProductVariation;
 import '../../../routes/flux_navigate.dart';
 
 enum SimpleListType { BackgroundColor, PriceOnTheRight }
@@ -84,6 +85,37 @@ class SimpleListView extends StatelessWidget {
       ],
     );
 
+    void addToCart(BuildContext context) {
+      final String Function(
+          {dynamic context,
+          dynamic isSaveLocal,
+          Function notify,
+          Map<String, dynamic> options,
+          Product? product,
+          int quantity,
+          ProductVariation variation}) addProductToCart =
+          Provider.of<CartModel>(context, listen: false).addProductToCart;
+          DialogAddToCart.show(context, product: item!);
+    }
+
+    /// Show Cart button
+    /// width on product page = 120, on main page = 180 (180 / 9 = 120 | 120 / 9 = 13)
+    var myRadiusBasedWidth = 18.0;
+    Widget _showCart = CircleAvatar(
+      // backgroundColor: Colors.white.withOpacity(0.3),
+      backgroundColor: Colors.grey.withOpacity(0.07),
+      // radius: 20, // Original
+      radius: myRadiusBasedWidth,
+      child: IconButton(
+          color: Theme.of(context).accentColor.withOpacity(0.5),
+          // color: Colors.black,
+          // icon: Icon(Icons.add_shopping_cart, size: width! / 10 * 1.3),
+          icon: const Icon(Icons.add_shopping_cart, size: 18),
+          onPressed: () => addToCart(context)),
+
+    );
+
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
       child: GestureDetector(
@@ -102,7 +134,7 @@ class SimpleListView extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(10.0)),
@@ -147,6 +179,7 @@ class SimpleListView extends StatelessWidget {
                         child: _productPricing,
                       )
                     : Container(),
+                _showCart
               ],
             ),
           ),

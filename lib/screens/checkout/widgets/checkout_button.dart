@@ -432,7 +432,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
         paymentMethod: paymentMethod,
         success: (Order? order) async {
           if (order != null) {
-            widget.onLoading;
+            // widget.onLoading;
             for (var item in order.lineItems) {
               var product = cartModel.getProductById(item.productId!);
               if (product?.bookingInfo != null) {

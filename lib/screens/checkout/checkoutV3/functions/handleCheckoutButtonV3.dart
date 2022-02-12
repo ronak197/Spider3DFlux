@@ -172,8 +172,9 @@ void handleCheckoutButton(context, CartModel cartModel) {
     Services().widget.placeOrder(
       context,
       cartModel: cartModel,
-      onLoading: () {
-        print('XoXo');
+      onLoading: (status) {
+        print('status');
+        print(status);
       },
       paymentMethod: cartModel.paymentMethod,
       success: (Order? order) async {

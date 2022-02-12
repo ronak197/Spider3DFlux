@@ -164,7 +164,7 @@ SnackBar errSnackBar(context, String errorNotes) {
 }
 // ignore: deprecated_member_use
 
-void handleCheckoutButton(context, CartModel cartModel) {
+void handleCheckoutButton(context, CartModel cartModel, Function onFinish) {
   void _placeOrder() {
     var isPaying = true;
 
@@ -198,12 +198,18 @@ void handleCheckoutButton(context, CartModel cartModel) {
     );
   }
 
+  // 1. Make sure paymentMethod != null (cuz default is iCredit)
+
+  // 2. Check all values
   var errorNotes = checkCheckoutButtonV3(cartModel);
   print('errorNotes: \n$errorNotes');
   if (errorNotes.isNotEmpty) {
     Scaffold.of(context).showSnackBar(errSnackBar(context, errorNotes));
+    onFinish(status: 'Not Passed'); // A void that return value & set in the parent to use both values.
   } else {
+    // 3. Start payment and createOrder()
+    onFinish(status: 'Passed'); // A void that return value & set in the parent to use both values.
     print('Everything is ready for purchase!');
-    _placeOrder();
+    // _placeOrder();
   }
 }

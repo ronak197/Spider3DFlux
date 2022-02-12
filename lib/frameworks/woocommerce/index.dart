@@ -207,8 +207,7 @@ class WooWidget extends BaseFrameworks
         Order().toJson(cartModel!, user != null ? user.id : null, true);
     params['token'] = user != null ? user.cookie : null;
     makePaymentWebView(context, params, onLoading, success, error);
-    createOrder(context,
-        bacs: true, onLoading: onLoading, success: success, error: error);
+
   }
 
 // If not cod or bacs:
@@ -235,21 +234,18 @@ class WooWidget extends BaseFrameworks
               Provider.of<CartModel>(context, listen: false).getTotal());
 
       // onLoading(false);
-/*      await Navigator.push(
+      await Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => PaymentWebview(
                 url: url,
-                onFinish: (number) async {
+                onFinish: (String? status) async {
+                  status != null ?
                   await createOrder(context,
-                      cod: true,
-                      onLoading: onLoading,
-                      success: (orderi) => webView_success,
-                      error: error);
-                  // webView_success!(number != null ? Order(number: number) : null);
-                  webView_success;
+                      bacs: true, onLoading: onLoading, success: (){}, error: error)
+                      : null;
                 })),
-      );*/
+      );
     } catch (e, trace) {
       error!(e.toString());
       printLog(trace.toString());

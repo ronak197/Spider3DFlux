@@ -173,14 +173,16 @@ class CartModelWoo
     productVariationInCart.clear();
     productAddonsOptionsInCart.clear();
     shippingMethod = null;
-    paymentMethod?.id == 'cod' ?
-        // Set default and not clear it.
+  // Set default and not clear it.
+/*    paymentMethod?.id == 'cod' ?
           PaymentMethod(
               title: 'Cash on delivery',
               description: 'מזומן באיסוף עצמי',
               id: 'cod',
               enabled: true)
-          : paymentMethod = PaymentMethod(
+          : */
+  // Set default and not clear it.
+    paymentMethod = PaymentMethod(
               title: 'Credit card - iCredit',
               description: 'תשלום מאובטח באשראי - iCredit',
               id: 'icredit_payment', // Change to cod (& the title)

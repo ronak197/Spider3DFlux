@@ -23,6 +23,11 @@ mixin CartMixin on ChangeNotifier {
   String? currency;
   Map<String, dynamic>? currencyRates;
 
+  void changeBillingStatus(String value){
+    user?.billing?.status = value;
+    notifyListeners();
+  }
+
   final Map<String?, Product?> item = {};
 
   final Map<String, ProductVariation?> productVariationInCart = {};

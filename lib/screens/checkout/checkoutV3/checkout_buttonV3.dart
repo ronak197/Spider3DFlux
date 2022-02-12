@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fstore/common/constants.dart';
 import 'package:fstore/models/cart/cart_base.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,11 @@ class CheckoutButtonV3 extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 12),
               splashColor: Colors.white24,
               // color: (selectedIndex == index) ?  selectedColor : color,
-              color: (Colors.green[600])!,
+              color:
+              // (cartModel.user?.billing?.status == 'Loading') ?
+                    (Colors.green[600])!
+                  // : Theme.of(context).accentColor.withOpacity(0.85)
+              ,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
                 // side: BorderSide(color: color, width: 2, style: BorderStyle.solid),
@@ -31,18 +36,24 @@ class CheckoutButtonV3 extends StatelessWidget {
                             style: BorderStyle.solid),*/
               ),
               onPressed: () {
-                Function afterCheck = ({status}){
-                  status == 'Passed' ? print('Cool.') : print('Try Again.');
-                };
-                handleCheckoutButton(context, cartModel, afterCheck);
+                // Function afterCheck = ({status}){
+                //   status == 'Passed' ? print('Cool.') : print('Try Again.');
+                // };
+                handleCheckoutButton(context, cartModel /*afterCheck*/);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.done_all, size: 20, color: Colors.white),
-                  SizedBox(width: 5),
-                  Text('סיים הזמנה', textAlign: TextAlign.center,
-                    style: TextStyle(
+                children: [
+                  (cartModel.user?.billing?.status == 'Loading') ?
+                  const Icon(Icons.hourglass_bottom, size: 20, color: Colors.white):
+                  const Icon(Icons.done_all, size: 20, color: Colors.white),
+                  const SizedBox(width: 5),
+                  Text(
+                    (cartModel.user?.billing?.status == 'Loading')
+                        ? 'טוען...' : 'סיים הזמנה'
+                    ,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
                       color: (Colors.white),
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

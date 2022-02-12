@@ -76,8 +76,8 @@ mixin AddressMixin on CartMixin, ChangeNotifier {
               country: user.billing != null && isNotBlank(user.billing!.country)
                   ? user.billing!.country
                   : kPaymentConfig['DefaultCountryISOCode'],
-              state: user.billing != null && user.billing!.state!.isNotEmpty
-                  ? user.billing!.state
+              state: user.billing != null && user.billing!.status!.isNotEmpty
+                  ? user.billing!.status
                   : kPaymentConfig['DefaultStateISOCode'],
               phoneNumber:
                   user.billing != null && user.billing!.phone!.isNotEmpty

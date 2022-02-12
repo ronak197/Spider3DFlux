@@ -33,7 +33,7 @@ class Billing {
   String? city;
   String? postCode;
   String? country;
-  String? state;
+  String? status;
   String? email;
   String? phone;
 
@@ -54,7 +54,7 @@ class Billing {
       city = json['city'];
       postCode = json['postcode'];
       country = json['country'];
-      state = json['state'];
+      status = json['state'];
       email = json['email'];
       phone = json['phone'];
 

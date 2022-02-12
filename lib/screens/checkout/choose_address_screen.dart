@@ -199,7 +199,7 @@ class _StateChooseAddress extends BaseScreen<ChooseAddressScreen> {
                 : user!.email,
             street: user!.billing!.address1,
             country: user!.billing!.country,
-            state: user!.billing!.state,
+            state: user!.billing!.status,
             phoneNumber: user!.billing!.phone,
             city: user!.billing!.city,
             zipCode: user!.billing!.postCode);

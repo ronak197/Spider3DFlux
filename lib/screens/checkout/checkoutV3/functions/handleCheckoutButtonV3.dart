@@ -164,7 +164,7 @@ SnackBar errSnackBar(context, String errorNotes) {
 }
 // ignore: deprecated_member_use
 
-void handleCheckoutButton(context, CartModel cartModel, Function onFinish) {
+void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
   void _placeOrder() {
     var isPaying = true;
 
@@ -184,6 +184,7 @@ void handleCheckoutButton(context, CartModel cartModel, Function onFinish) {
         // Clear ShippingIndex & reset paymentIndex
         Provider.of<CheckoutProviderV3>(context, listen: false).changeShippingIndex(0);
         Provider.of<CheckoutProviderV3>(context, listen: false).changePaymentIndex(1);
+        cartModel.changeBillingStatus('Stop');
         await Navigator.push(
           context,
           MaterialPageRoute(
@@ -205,11 +206,12 @@ void handleCheckoutButton(context, CartModel cartModel, Function onFinish) {
   print('errorNotes: \n$errorNotes');
   if (errorNotes.isNotEmpty) {
     Scaffold.of(context).showSnackBar(errSnackBar(context, errorNotes));
-    onFinish(status: 'Not Passed'); // A void that return value & set in the parent to use both values.
+    // onFinish(status: 'Not Passed'); // A void that return value & set in the parent to use both values.
   } else {
     // 3. Start payment and createOrder()
-    onFinish(status: 'Passed'); // A void that return value & set in the parent to use both values.
+    // onFinish(status: 'Passed'); // A void that return value & set in the parent to use both values.
     print('Everything is ready for purchase!');
-    // _placeOrder();
+    cartModel.changeBillingStatus('Loading');
+    _placeOrder();
   }
 }

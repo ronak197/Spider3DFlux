@@ -21,6 +21,15 @@ class CheckoutScreenV3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Color? color = Theme.of(context).primaryColorLight.withOpacity(0.7);
+    TextStyle? radioStyle = Theme.of(context).textTheme.subtitle2!.copyWith(
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.1,
+        color: Theme.of(context).accentColor
+      // (selectedIndex == index) ? Colors.white : Colors.black,
+    );
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
@@ -50,23 +59,7 @@ class CheckoutScreenV3 extends StatelessWidget {
               icon: Icons.credit_card,
               isPayment: true,
             ),
-            buildMainTitle(context, 'שיטת תשלום'),
-            SizedBox(
-              height: 80,
-              child: ListView(
-                shrinkWrap: true, // Set this
-                scrollDirection: Axis.horizontal,
-                children: [
-                  CustomRadioButtonV3(
-                    'כרטיס אשראי', 1,
-                  ),
-                  CustomRadioButtonV3(
-                    'מזומן באיסוף עצמי', 2,
-                  ),
-                ],
-              ),
-            ),
-            buildMainTitle(context, 'שיטת משלוח (3)'),
+            buildMainTitle(context, 'שיטת משלוח'),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
@@ -90,12 +83,47 @@ class CheckoutScreenV3 extends StatelessWidget {
                 ),
               ),
             ),
+            buildMainTitle(context, 'שיטת תשלום'),
+            SizedBox(
+              height: 80,
+              child: Row(
+                // shrinkWrap: true, // Set this
+                // scrollDirection: Axis.horizontal,
+                children: [
+                  CustomRadioButtonV3(
+                    'כרטיס אשראי', 1,
+                  ),
+                  CustomRadioButtonV3(
+                    'מזומן באיסוף עצמי', 2,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 7.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  buildAddNoteButton(context),
 
-            buildRowPrices(context, 'עלות הזמנה'),
-            buildRowPrices(context, 'עלות משלוח'),
-            Provider.of<CartModel>(context, listen: false).getCoupon() != '' ?
-              buildRowPrices(context,'הנחת קופון', isCoupon: true) : const SizedBox(),
-            buildRowPrices(context, 'סה"כ'),
+                  SizedBox(
+                    width: 120,
+                    child: Column(
+                      children: [
+                        buildRowPrices(context, 'הזמנה:'),
+                        buildRowPrices(context, 'משלוח:'),
+                        Provider.of<CartModel>(context, listen: false).getCoupon() != '' ?
+                        buildRowPrices(context,'קופון:', isCoupon: true) : const SizedBox(),
+                        buildRowPrices(context, 'סה"כ:'),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+
+
 
             const CheckoutButtonV3(),
             //// Checkout button

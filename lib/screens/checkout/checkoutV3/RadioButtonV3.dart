@@ -37,12 +37,13 @@ class CustomRadioButtonV3 extends StatelessWidget {
           // (selectedIndex == index) ? Colors.white : Colors.black,
           );
 
-      return Container(
+      return
+        Container(
         height: 80,
         width: 130,
         // width: MediaQuery.of(context).size.width * 0.4,
         // height: MediaQuery.of(context).size.height * 0.0525,
-        margin: const EdgeInsets.all(5),
+        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
         child: FlatButton(
           splashColor: color.withOpacity(0.3),
           // color: (selectedIndex == index) ?  selectedColor : color,

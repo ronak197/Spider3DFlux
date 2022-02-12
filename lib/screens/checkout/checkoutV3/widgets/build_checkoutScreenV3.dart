@@ -14,7 +14,7 @@ Widget buildRowPrices(
         .subtitle2!
         .copyWith(
         fontWeight: isBold ? FontWeight.w600 : FontWeight.w500,
-        fontSize: 16);
+        fontSize: 15);
   }
 
   return Consumer<CartModel>(
@@ -25,24 +25,27 @@ Widget buildRowPrices(
                   buildRowPrices(context, '278', 'סה"כ'),*/
       String? price;
       switch (type){
-        case 'עלות הזמנה': price = '${cartModel.getSubTotal()}';
+        case 'הזמנה:': price = '${cartModel.getSubTotal()}';
           break;
-        case 'עלות משלוח': price = '${cartModel.getShippingCost()}';
+        case 'משלוח:': price = '${cartModel.getShippingCost()}';
           break;
-        case 'הנחת קופון': price = '${cartModel.getCouponCost()}';
+        case 'קופון:': price = '${cartModel.getCouponCost()}';
           break;
-        case 'סה"כ': price = '${cartModel.getTotal()}';
+        case 'סה"כ:': price = '${cartModel.getTotal()}';
           break;
       }
       return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(' $type', style: _style(false),),
+            // const SizedBox(width: 5),
+            const Spacer(),
             Text( isCoupon ?
-                 '$price₪ -'
-                :'$price₪  ',
+                 '$price - ₪'
+                :'₪$price',
               style: _style(true),)],
             // Text('$price₪ -', style: _style(true),)],
         ),
@@ -64,38 +67,40 @@ Container buildMainTitle(BuildContext context, String title) {
   );
 }
 
-Container buildNotesButton(BuildContext context) {
-
+Widget buildAddNoteButton(BuildContext context){
+  Color? color = Theme.of(context).primaryColorLight.withOpacity(0.7);
   TextStyle? radioStyle = Theme.of(context).textTheme.subtitle2!.copyWith(
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w600,
       letterSpacing: 0.1,
       color: Theme.of(context).accentColor
     // (selectedIndex == index) ? Colors.white : Colors.black,
   );
 
-  Color? color = Theme.of(context).primaryColorLight.withOpacity(0.7);
-
-  return Container(
-    height: 50,
-    width: 100,
-    // width: MediaQuery.of(context).size.width * 0.4,
-    // height: MediaQuery.of(context).size.height * 0.0525,
-    margin: const EdgeInsets.all(5),
-    child: FlatButton(
-      splashColor: color.withOpacity(0.3),
-      // color: (selectedIndex == index) ?  selectedColor : color,
-      color: color,
-      onPressed: () async {},
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-        // side: BorderSide(color: color, width: 2, style: BorderStyle.solid),
-        side: BorderSide(
-            color: color,
-            width: 2,
-            style: BorderStyle.solid),
-      ),
-      child: Text('הוסף הערה', textAlign: TextAlign.center, style: radioStyle),
-      // borderSide: BorderSide(color: (value == index) ? Colors.green : Colors.black),
+  return FlatButton(
+    splashColor: color.withOpacity(0.3),
+    // color: (selectedIndex == index) ?  selectedColor : color,
+    color: color,
+    onPressed: () async {},
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(8),
+      // side: BorderSide(color: color, width: 2, style: BorderStyle.solid),
+      side: BorderSide(
+          color: color,
+          width: 2,
+          style: BorderStyle.solid),
     ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          Icons.edit,
+          color: Theme.of(context).accentColor,
+          size: 15,
+        ),
+        const SizedBox(width: 5),
+        Text('הוסף הערה', textAlign: TextAlign.center, style: radioStyle),
+      ],
+    ),
+    // borderSide: BorderSide(color: (value == index) ? Colors.green : Colors.black),
   );
 }

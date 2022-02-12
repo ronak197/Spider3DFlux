@@ -177,22 +177,25 @@ class WooWidget extends BaseFrameworks
   }
 
   @override
-  void placeOrder(context, // placeOrder () -> (payment method) -> createOrder() on Woo
+  void placeOrder(context,
+      // placeOrder () -> (payment method) -> createOrder() on Woo
       {CartModel? cartModel,
       PaymentMethod? paymentMethod,
       Function? onLoading,
       Function? success,
       Function? error}) {
+    Provider.of<CartModel>(context, listen: false)
+        .setPaymentMethod(paymentMethod);
 
-    Provider.of<CartModel>(context, listen: false).setPaymentMethod(paymentMethod);
-
-    if (paymentMethod!.id == 'cod') { /// Cash on delivery
+    if (paymentMethod!.id == 'cod') {
+      /// Cash on delivery
       createOrder(context,
           cod: true, onLoading: onLoading, success: success, error: error);
       return;
     }
 
-    if (paymentMethod.id == 'bacs') { /// Direct bank transfer (BACS)
+    if (paymentMethod.id == 'bacs') {
+      /// Direct bank transfer (BACS)
       createOrder(context,
           bacs: true, onLoading: onLoading, success: success, error: error);
       return;
@@ -200,14 +203,17 @@ class WooWidget extends BaseFrameworks
 
     /// iCredit (Any time paymentMethod.id != 'cod')
     final user = Provider.of<UserModel>(context, listen: false).user;
-    var params = Order().toJson(cartModel!, user != null ? user.id : null, true);
+    var params =
+        Order().toJson(cartModel!, user != null ? user.id : null, true);
     params['token'] = user != null ? user.cookie : null;
     makePaymentWebView(context, params, onLoading, success, error);
-}
+    createOrder(context,
+        bacs: true, onLoading: onLoading, success: success, error: error);
+  }
 
 // If not cod or bacs:
   Future<void> makePaymentWebView(context, Map<String, dynamic> params,
-      Function? onLoading, Function? success, Function? error) async {
+      Function? onLoading, Function? webView_success, Function? error) async {
     try {
       // onLoading(true);
 
@@ -229,17 +235,21 @@ class WooWidget extends BaseFrameworks
               Provider.of<CartModel>(context, listen: false).getTotal());
 
       // onLoading(false);
-      await Navigator.push(
+/*      await Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => PaymentWebview(
                 url: url,
                 onFinish: (number) async {
                   await createOrder(context,
-                      cod: true, onLoading: onLoading, success: success, error: error);
-                  success!(number != null ? Order(number: number) : null);
+                      cod: true,
+                      onLoading: onLoading,
+                      success: (orderi) => webView_success,
+                      error: error);
+                  // webView_success!(number != null ? Order(number: number) : null);
+                  webView_success;
                 })),
-      );
+      );*/
     } catch (e, trace) {
       error!(e.toString());
       printLog(trace.toString());

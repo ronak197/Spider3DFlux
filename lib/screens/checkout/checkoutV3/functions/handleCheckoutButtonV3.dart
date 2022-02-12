@@ -181,8 +181,9 @@ void handleCheckoutButton(context, CartModel cartModel) {
         print('------');
         print(order);
         cartModel.clearCart();
-        // Clear ShippingIndex
+        // Clear ShippingIndex & reset paymentIndex
         Provider.of<CheckoutProviderV3>(context, listen: false).changeShippingIndex(0);
+        Provider.of<CheckoutProviderV3>(context, listen: false).changePaymentIndex(1);
         await Navigator.push(
           context,
           MaterialPageRoute(

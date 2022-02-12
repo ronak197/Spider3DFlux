@@ -314,7 +314,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
       });
 
       // isPaying || selectedId == null ? showSnackbar :
-      placeOrder(paymentMethodModel, cartModel);
+      // placeOrder(paymentMethodModel, cartModel);
     } else {
       print('-------------\nNot Everything is ready..');
       final snackBar = SnackBar(
@@ -354,7 +354,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
     Tools.showSnackBar(
         Scaffold.of(context), S.of(context).orderStatusProcessing);
   }
-
+/*
   void placeOrder(
       PaymentMethodModel paymentMethodModel,
       CartModel cartModel) {
@@ -482,5 +482,5 @@ class _CheckoutButtonState extends State<CheckoutButton> {
       },
     );
     widget.onLoading!(false);
-  }
+  }*/
 }

@@ -172,7 +172,7 @@ void handleCheckoutButton(context, CartModel cartModel) {
       context,
       cartModel: cartModel,
       onLoading: () {
-        return const Center(child: Text('loading..'));
+        return Center(child: kLoadingWidget(context));
       },
       paymentMethod: cartModel.paymentMethod,
       success: (Order? order) async {

@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../common/config.dart';
@@ -165,18 +166,26 @@ class CartModelWoo
 // Removes everything from the cart.
   @override
   void clearCart() {
+
     clearCartLocal();
     productsInCart.clear();
     item.clear();
     productVariationInCart.clear();
     productAddonsOptionsInCart.clear();
     shippingMethod = null;
-    paymentMethod = PaymentMethod( // My default
-        title: 'Credit card - iCredit',
-        description: 'תשלום מאובטח באשראי - iCredit',
-        id: 'icredit_payment', // Change to cod (& the title)
-        enabled: true // For cash on delivery
-    );
+    paymentMethod?.id == 'cod' ?
+        // Set default and not clear it.
+          PaymentMethod(
+              title: 'Cash on delivery',
+              description: 'מזומן באיסוף עצמי',
+              id: 'cod',
+              enabled: true)
+          : paymentMethod = PaymentMethod(
+              title: 'Credit card - iCredit',
+              description: 'תשלום מאובטח באשראי - iCredit',
+              id: 'icredit_payment', // Change to cod (& the title)
+              enabled: true // For cash on delivery
+          );
     resetCoupon();
     notes = null;
     rewardTotal = 0;

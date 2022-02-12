@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fstore/models/cart/cart_base.dart';
 import 'package:provider/provider.dart';
 import 'RadioButtonV3.dart';
+import 'checkoutV3_provider.dart';
 import 'checkout_buttonV3.dart';
 import 'infoCardV3.dart';
 import 'widgets/build_checkoutScreenV3.dart';
@@ -26,7 +27,10 @@ class CheckoutScreenV3 extends StatelessWidget {
         title: const Text('עמוד קופה'),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context).pop()),
+            onPressed: () {
+              // Provider.of<CheckoutProviderV3>(context, listen: false).dispose();
+              Navigator.of(context).pop();
+            }),
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 3.0,
       ),

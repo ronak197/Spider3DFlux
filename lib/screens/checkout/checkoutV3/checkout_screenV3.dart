@@ -62,7 +62,7 @@ class CheckoutScreenV3 extends StatelessWidget {
                   ),
                   CustomRadioButtonV3(
                     'מזומן באיסוף עצמי', 2,
-                  ),h
+                  ),
                 ],
               ),
             ),

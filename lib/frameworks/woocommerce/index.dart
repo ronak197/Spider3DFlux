@@ -31,7 +31,7 @@ import '../../models/index.dart'
         User,
         UserModel;
 import '../../screens/index.dart'
-    show Checkout, MyCart, PaymentWebview, WebviewCheckoutSuccessScreen;
+    show Checkout, MyCart, PaymentWebview, SuccessScreen;
 import '../../services/index.dart';
 import '../frameworks.dart';
 import '../product_variant_mixin.dart';
@@ -96,24 +96,24 @@ class WooWidget extends BaseFrameworks
       loading(false);
 
       /// Navigate to Webview payment
-      String? orderNum;
+      String? orderSuccess;
       await Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => PaymentWebview(
                   url: url,
-                  onFinish: (number) async {
-                    orderNum = number;
+                  onFinish: (status) async {
+                    orderSuccess = status;
                   },
                 )),
       );
-      if (orderNum != null) {
+      if (orderSuccess != null) {
         cartModel.clearCart();
         await Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => WebviewCheckoutSuccessScreen(
-                    order: Order(number: orderNum),
+              builder: (context) => SuccessScreen(
+                    order: Order(number: orderSuccess),
                   )),
         );
       }
@@ -209,7 +209,8 @@ class WooWidget extends BaseFrameworks
   Future<void> makePaymentWebView(context, Map<String, dynamic> params,
       Function? onLoading, Function? success, Function? error) async {
     try {
-      onLoading!(true);
+      // onLoading(true);
+
       // Original
       // var url = await Services().api.getCheckoutUrl(params, Provider.of<AppModel>(context, listen: false).langCode)!;
       // My
@@ -227,7 +228,7 @@ class WooWidget extends BaseFrameworks
           total_price:
               Provider.of<CartModel>(context, listen: false).getTotal());
 
-      onLoading(false);
+      // onLoading(false);
       await Navigator.push(
         context,
         MaterialPageRoute(

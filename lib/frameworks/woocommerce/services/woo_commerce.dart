@@ -2083,7 +2083,8 @@ Future<String> iCreditGetUrl(
     // 'FailRedirectURL': 'String content',
     // 'Order': 'Woo order number?',
 
-    'CustomerFirstName': '$buyer_name',
+    // 'CustomerFirstName': 'עידן ביטון',
+    'CustomerFirstName': ' $buyer_name',
     'CustomerLastName': '',
     'City': '$city',
     'Address': '$street',

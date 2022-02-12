@@ -4,19 +4,18 @@ import '../../common/constants.dart';
 import '../../models/index.dart' show Order;
 import 'widgets/success.dart';
 
-class WebviewCheckoutSuccessScreen extends StatelessWidget {
+class SuccessScreen extends StatelessWidget {
   final Order? order;
-  WebviewCheckoutSuccessScreen({this.order});
+  SuccessScreen({this.order});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text('ההזמנה התקבלה!'),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }),
+            onPressed: () => Navigator.of(context).pushNamed(RouteList.cart)),
         backgroundColor: kGrey200,
         elevation: 0.0,
       ),

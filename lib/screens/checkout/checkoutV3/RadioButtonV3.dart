@@ -22,8 +22,9 @@ class CustomRadioButtonV3 extends StatelessWidget {
     Color? selectedColor = Theme.of(context).accentColor;
 
         return Consumer<CheckoutProviderV3>(builder: (context, checkoutModel, child) {
-          var selectedIndex = isPayment ? checkoutModel.paymentIndex : checkoutModel.shippingIndex;
-          // print('$selectedIndex CustomRadioButton Rendered');
+          // Remember last choice
+          // var selectedIndex = isPayment ? checkoutModel.paymentIndex : checkoutModel.shippingIndex;
+          var selectedIndex = isPayment ? 1 : 0;
 
           TextStyle? radioStyle = Theme.of(context).textTheme.subtitle2!.copyWith(
               fontWeight:

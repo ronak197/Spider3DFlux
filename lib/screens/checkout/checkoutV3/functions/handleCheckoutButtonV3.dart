@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:fstore/common/config.dart';
 
@@ -11,6 +13,8 @@ import 'package:fstore/services/services.dart';
 
 // import 'package:fstore/frameworks/woocommerce/index.dart';
 import 'package:provider/provider.dart';
+
+import '../../webview_checkout_success_screen.dart';
 
 String checkCheckoutButtonV3(CartModel cartModel) {
   // region A lot of prints.
@@ -160,30 +164,41 @@ SnackBar errSnackBar(context, String errorNotes) {
 // ignore: deprecated_member_use
 
 void handleCheckoutButton(context, CartModel cartModel) {
+  void _placeOrder() {
+    var isPaying = true;
+
+    /// Use WebView Payment per frameworks
+    Services().widget.placeOrder(
+      context,
+      cartModel: cartModel,
+      onLoading: () {
+        return const Center(child: Text('loading..'));
+      },
+      paymentMethod: cartModel.paymentMethod,
+      success: (Order? order) async {
+        print('------');
+        print(order);
+        cartModel.clearCart();
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SuccessScreen(
+                order: Order(number: order?.number),
+              )),
+        );
+      },
+      error: (message) {
+        isPaying = false;
+      },
+    );
+  }
+
   var errorNotes = checkCheckoutButtonV3(cartModel);
   print('errorNotes: \n$errorNotes');
   if (errorNotes.isNotEmpty) {
     Scaffold.of(context).showSnackBar(errSnackBar(context, errorNotes));
   } else {
     print('Everything is ready for purchase!');
+    _placeOrder();
   }
-
-  Future<void> _createOrder( // #3B
-          {paid = false, bacs = false, cod = false, transactionId = ''}) async {
-    await Services().widget.createOrder(
-      context,
-      paid: paid,
-      cod: cod,
-      bacs: bacs,
-      transactionId: transactionId,
-      onLoading:(){},
-      success: (Order order) async {
-        Provider.of<CartModel>(context, listen: false).clearCart();
-      },
-      error: (message) {
-      },
-    );
-  }
-
-  _createOrder(paid: true, cod: true);
 }

@@ -44,48 +44,34 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
         Container(
           margin: const EdgeInsets.only(top: 20),
           decoration: BoxDecoration(color: Theme.of(context).primaryColorLight),
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  S.of(context).itsOrdered,
-                  style: TextStyle(
-                      fontSize: 16, color: Theme.of(context).accentColor),
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      S.of(context).orderNo,
-                      style: TextStyle(
-                          fontSize: 14, color: Theme.of(context).accentColor),
-                    ),
-                    const SizedBox(width: 5),
-                    Expanded(
-                      child: Text(
-                        '#${widget.order!.number}',
-                        style: TextStyle(
-                            fontSize: 14, color: Theme.of(context).accentColor),
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
         ),
         const SizedBox(height: 30),
         Text(
           S.of(context).orderSuccessTitle1,
           style: TextStyle(fontSize: 18, color: Theme.of(context).accentColor),
         ),
+        const SizedBox(height: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              S.of(context).orderNo,
+              style:
+                  TextStyle(fontSize: 14, color: Theme.of(context).accentColor),
+            ),
+            const SizedBox(width: 5),
+            Expanded(
+              child: Text(
+                '#${widget.order!.number}',
+                style: TextStyle(
+                    fontSize: 14, color: Theme.of(context).accentColor),
+              ),
+            )
+          ],
+        ),
         const SizedBox(height: 15),
         Text(
-          'למעקב אחר ההזמנה הכנס ל״היסטוריית הזמנות״ בעמוד הפרופיל',
+          'למעקב הכנס אל היסטוריית ההזמנות בעמוד הפרופיל',
           style: TextStyle(
               color: Theme.of(context).accentColor, height: 1.4, fontSize: 14),
         ),
@@ -106,13 +92,13 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
                       setState(() {
                         newOrder = null;
                       });
-                      widget.controller == null ?
-                      widget.controller?.animateToPage(
-                        0,
-                        duration: const Duration(milliseconds: 150),
-                        curve: Curves.easeInOut,
-                      )
-              :       Navigator.of(context).pushNamed(RouteList.orders);
+                      widget.controller == null
+                          ? widget.controller?.animateToPage(
+                              0,
+                              duration: const Duration(milliseconds: 150),
+                              curve: Curves.easeInOut,
+                            )
+                          : Navigator.of(context).pushNamed(RouteList.orders);
                       ;
 
                       final user =
@@ -143,8 +129,7 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
                   height: 45,
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(),
-                    ),
+                      shape: const RoundedRectangleBorder()),
                     onPressed: () {
                       setState(() {
                         newOrder = null;
@@ -162,9 +147,6 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
                         MainTabControlDelegate.getInstance()
                             .changeTab(RouteList.home.replaceFirst('/', ''));
                       }
-
-
-
                     },
                     child: Text(
                       S.of(context).backToShop.toUpperCase(),
@@ -177,7 +159,6 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
           ),
         ),
         const SizedBox(height: 15),
-
       ],
     );
   }

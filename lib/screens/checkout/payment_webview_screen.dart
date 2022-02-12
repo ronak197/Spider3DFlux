@@ -95,6 +95,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
   @override
   Widget build(BuildContext context) {
     final addressModel = Provider.of<CartModel>(context).address;
+    print('URL is ${widget.url}');
 
     var checkoutMap = <dynamic, dynamic>{
       'url': '',
@@ -185,7 +186,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
                   // url.contains('icredit') && kDebugMode || // For Tests ONLY! (AutoRedirect)
                   url.contains('תודה')) {
                 print('Payment done succefully! Redirect..');
-                widget.onFinish!('0');
+                widget.onFinish!('Success');
                 Navigator.of(context).pop();
               }
             },

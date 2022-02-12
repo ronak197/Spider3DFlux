@@ -78,7 +78,7 @@ class CheckoutScreenV3 extends StatelessWidget {
                         isPayment: false,
                         subText: 'לאשקלון - נתניה, ללא ירושלים ומושבים'),
                     CustomRadioButtonV3(
-                      'מזומן באיסוף עצמי 0₪', 3,
+                      'איסוף עצמי 0₪', 3,
                       isPayment: false,
                       subText: 'פרטי איסוף ישלחו בSMS',
                     ),

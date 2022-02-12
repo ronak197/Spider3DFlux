@@ -112,11 +112,12 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
           onPressed: cartModel.calculatingDiscount
               ? null
               : () {
-                  if (kAdvanceConfig['AlwaysShowTabBar'] ?? false) {
-                    MainTabControlDelegate.getInstance().changeTab('cart');
+                  cartModel.totalCartQuantity > 0 ?
+                    MainTabControlDelegate.getInstance().changeTab('cart')
+                  : MainTabControlDelegate.getInstance().changeTab('home');
                     // MainTabControlDelegate.getInstance().changeTab('checkout');
                     // return;
-                  }
+
                   // cartModel.user?.email == null
                   // FirebaseAuth.instance.currentUser?.uid == null
                   // Navigator.of(context).pushReplacementNamed(rou)

@@ -16,6 +16,7 @@ import 'package:provider/provider.dart';
 
 import '../../webview_checkout_success_screen.dart';
 import '../checkoutV3_provider.dart';
+import 'handleNotesDialogV3.dart';
 
 String checkCheckoutButtonV3(CartModel cartModel) {
   // region A lot of prints.
@@ -169,6 +170,7 @@ SnackBar errSnackBar(context, String errorNotes) {
 // ignore: deprecated_member_use
 
 void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
+
   void _placeOrder() {
     var isPaying = true;
 
@@ -203,7 +205,10 @@ void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
     );
   }
 
-  // 1. Make sure paymentMethod != null (cuz default is iCredit)
+  // 1. save notes
+  Provider.of<CartModel>(context, listen: false)
+      .setOrderNotes('$noteController\n'
+                     '* הוזמן באפליקציית ספיידר 3D');
 
   // 2. Check all values
   var errorNotes = checkCheckoutButtonV3(cartModel);

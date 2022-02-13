@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fstore/frameworks/woocommerce/services/woo_commerce.dart';
+import 'package:fstore/screens/checkout/checkoutV3/checkoutV3_provider.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 
@@ -249,11 +250,36 @@ class WooWidget extends BaseFrameworks
             builder: (context) => PaymentWebview(
                 url: url,
                 onFinish: (String? status) async {
-                  status != null ?
-                  await createOrder(context,
+                  print('makePaymentWebView() - onFinish');
+                  print('statuss:$status');
+                  if(status != null){
+                    await createOrder(context,
+                    paid: true,
+                    bacs: false, onLoading: onLoading, success: webView_success, error: error);
+                        return;
+                  }
+
+
+                  /*await createOrder(context,
                       paid: true,
-                      bacs: false, onLoading: onLoading, success: (){}, error: error)
-                      : null;
+                      bacs: false, onLoading: onLoading, success: (){}, error: error)*/
+/*
+                  var cartModel = Provider.of<CartModel>(context, listen: false);
+                  print('------');
+                  // print(order);
+                  cartModel.clearCart();
+                  // Clear ShippingIndex & reset paymentIndex
+                  Provider.of<CheckoutProviderV3>(context, listen: false).changeShippingIndex(0);
+                  Provider.of<CheckoutProviderV3>(context, listen: false).changePaymentIndex(1);
+                  cartModel.changeBillingStatus('Stop');
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SuccessScreen(
+                          order: Order(number: 'XYZ'),
+                        )),
+                  );
+                  */
                 })),
       );
     } catch (e, trace) {

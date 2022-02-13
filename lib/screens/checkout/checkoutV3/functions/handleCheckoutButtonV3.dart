@@ -185,6 +185,7 @@ void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
       paymentMethod: cartModel.paymentMethod,
       success: (Order? order) async {
         print('------');
+        print('placeOrder Success:');
         print(order);
         cartModel.clearCart();
         // Clear ShippingIndex & reset paymentIndex

@@ -26,8 +26,13 @@ class CustomRadioButtonV3 extends StatelessWidget {
 
     return Consumer<CheckoutProviderV3>(
     builder: (context, checkoutModel, child) {
-         // Remember last choice
-         var selectedIndex = isPayment ? checkoutModel.paymentIndex : checkoutModel.shippingIndex;
+      var cartModel = Provider.of<CartModel>(context, listen: false);
+      // var shippingMethodModel = Provider.of<ShippingMethodModel>(context, listen: false);
+      PaymentMethod? paymentMethod;
+      ShippingMethod? shippingMethod;
+
+       // Remember last choice
+       var selectedIndex = isPayment ? checkoutModel.paymentIndex : checkoutModel.shippingIndex;
 
       TextStyle? radioStyle = Theme.of(context).textTheme.subtitle2!.copyWith(
           fontWeight:
@@ -36,6 +41,13 @@ class CustomRadioButtonV3 extends StatelessWidget {
           color: Theme.of(context).accentColor
           // (selectedIndex == index) ? Colors.white : Colors.black,
           );
+
+      // On The cash will appear only if local pickup selected
+      if (text == 'מזומן באיסוף עצמי'
+          // isPayment && index == 2 // AKA if Cash Button
+          && checkoutModel.shippingIndex != 3 ){
+        return Container();
+      }
 
       return
         Container(
@@ -60,11 +72,6 @@ class CustomRadioButtonV3 extends StatelessWidget {
             } else {
               checkoutModel.changeShippingIndex(index);
             }
-
-            var cartModel = Provider.of<CartModel>(context, listen: false);
-            // var shippingMethodModel = Provider.of<ShippingMethodModel>(context, listen: false);
-            PaymentMethod? paymentMethod;
-            ShippingMethod? shippingMethod;
 
             /// Payment form:
             if (isPayment) {
@@ -92,9 +99,10 @@ class CustomRadioButtonV3 extends StatelessWidget {
               // print(paymentMethod?.title);
 
               cartModel.setPaymentMethod(paymentMethod);
-              var _paymentMethod = cartModel.paymentMethod?.title;
+              var _paymentMethod = cartModel.paymentMethod;
               // print('_paymentMethod');
-              print(_paymentMethod);
+              print(_paymentMethod?.title);
+              print(_paymentMethod?.id);
             }
 
             /// Shipping form:
@@ -147,6 +155,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
               }
               // endregion shippingMethod switch
               print('shippingMethod');
+              print(shippingMethod?.id);
               print(shippingMethod?.title);
 
               cartModel.setShippingMethod(shippingMethod);

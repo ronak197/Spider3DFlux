@@ -94,7 +94,11 @@ String checkCheckoutButtonV3(CartModel cartModel) {
     if (cartModel.paymentMethod?.title == null ||
         cartModel.paymentMethod?.title == '' ||
         cartModel.paymentMethod?.id == null ||
-        cartModel.paymentMethod?.id == '') {
+        cartModel.paymentMethod?.id == '' ||
+
+        cartModel.paymentMethod?.id == 'cod' // if cash but not local pickup
+            && !cartModel.shippingMethod!.title!.contains('איסוף עצמי')
+    ) {
       print('Something Wrong with _paymentMethodOk...');
       return false;
     }

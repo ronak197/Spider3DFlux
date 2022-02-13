@@ -41,7 +41,7 @@ void showNotesDialogV3(BuildContext context) async {
                     controller: noteController,
                     autofillHints: [AutofillHints.addressCity],
                     textInputAction: TextInputAction.newline,
-                    maxLines: 3,
+                    maxLines: 5,
                     keyboardType: TextInputType.multiline,
                     autofocus: true,
                   ),

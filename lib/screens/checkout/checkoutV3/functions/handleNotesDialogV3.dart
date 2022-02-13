@@ -33,15 +33,14 @@ void showNotesDialogV3(BuildContext context) async {
             Column(
               children: [
                 /// TextField
-                Container(
-                  height: 75,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextFormField(
                     decoration: greyTxtDeco(labelText: 'ההערה שלך...'),
                     controller: noteController,
                     autofillHints: [AutofillHints.addressCity],
                     textInputAction: TextInputAction.newline,
-                    maxLines: 5,
+                    maxLines: 3,
                     keyboardType: TextInputType.multiline,
                     autofocus: true,
                   ),

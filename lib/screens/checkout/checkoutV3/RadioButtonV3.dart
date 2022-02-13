@@ -80,7 +80,8 @@ class CustomRadioButtonV3 extends StatelessWidget {
               switch (index) {
                 case 1:
                   paymentMethod = PaymentMethod(
-                      title: 'Credit card - iCredit',
+                      title: 'מאובטח באשראי Spider3D App - iCredit',
+                      // title: 'Credit card - iCredit',
                       description: 'תשלום מאובטח באשראי - iCredit',
                       id: 'icredit_payment',
                       enabled: true);
@@ -88,7 +89,8 @@ class CustomRadioButtonV3 extends StatelessWidget {
 
                 case 2:
                   paymentMethod = PaymentMethod(
-                      title: 'Cash on delivery',
+                      title: 'מזומן באיסוף עצמי - Spider3D App',
+                      // title: 'Cash on delivery',
                       description: 'מזומן באיסוף עצמי',
                       id: 'cod',
                       enabled: true);

@@ -148,14 +148,23 @@ class WooWidget extends BaseFrameworks
           transactionId: transactionId)!;
       print('index.dart- createOrder() - order $order');
 
+      //                 "any",
+      //                 "pending",
+      //                 "processing",
+      //                 "on-hold",
+      //                 "completed",
+      //                 "cancelled",
+      //                 "refunded",
+      //                 "failed"
+
       if (bacs) {
         await Services().api.updateOrder(order.id,
-            status: 'on-hold',
+            status: 'pending', // AKA ממתין לתשלום
             token: userModel.user != null ? userModel.user!.cookie : null);
       }
       if (cod && kPaymentConfig['UpdateOrderStatus']) {
         await Services().api.updateOrder(order.id,
-            status: 'processing',
+            status: 'on-hold',
             token: userModel.user != null ? userModel.user!.cookie : null);
       }
       if (!isLoggedIn) {
@@ -242,7 +251,8 @@ class WooWidget extends BaseFrameworks
                 onFinish: (String? status) async {
                   status != null ?
                   await createOrder(context,
-                      bacs: true, onLoading: onLoading, success: (){}, error: error)
+                      paid: true,
+                      bacs: false, onLoading: onLoading, success: (){}, error: error)
                       : null;
                 })),
       );

@@ -183,7 +183,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
 
               if (url.contains('%D7%AA%D7%95%D7%93%D7%94') ||
                   url.contains('spider3d') ||
-                  // url.contains('icredit') && kDebugMode || // For Tests ONLY! (AutoRedirect)
+                  url.contains('icredit') && kDebugMode || // For Tests ONLY! (AutoRedirect)
                   url.contains('תודה')) {
                 print('Payment done succefully! Redirect..');
                 widget.onFinish!('Success');

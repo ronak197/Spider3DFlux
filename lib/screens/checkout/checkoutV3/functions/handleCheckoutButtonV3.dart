@@ -207,7 +207,7 @@ void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
 
   // 1. save notes
   Provider.of<CartModel>(context, listen: false)
-      .setOrderNotes('$noteController\n'
+      .setOrderNotes('${noteController.text}\n'
                      '* הוזמן באפליקציית ספיידר 3D');
 
   // 2. Check all values

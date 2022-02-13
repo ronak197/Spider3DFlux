@@ -161,9 +161,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
                   'console.log(mainArray);');*/
             },
             onPageFinished: (url) async {
-              setState(() {
-                isLoading = false;
-              });
+              setState(() => isLoading = false);
               print('Current url $url');
 
               if (url.contains('icredit')) {

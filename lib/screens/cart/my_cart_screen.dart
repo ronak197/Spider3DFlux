@@ -101,8 +101,12 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
     final screenSize = MediaQuery.of(context).size;
     var layoutType = Provider.of<AppModel>(context).productDetailLayout;
     var cartModel = Provider.of<CartModel>(context);
+    var userModel = Provider.of<UserModel>(context);
     final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
     final canPop = parentRoute?.canPop ?? false;
+
+    print('userModel.loggedIn');
+    print(userModel.loggedIn);
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
@@ -112,16 +116,23 @@ class _MyCartState extends State<MyCart> with SingleTickerProviderStateMixin {
           onPressed: cartModel.calculatingDiscount
               ? null
               : () {
-                  cartModel.totalCartQuantity > 0 ?
-                    MainTabControlDelegate.getInstance().changeTab('cart')
-                  : MainTabControlDelegate.getInstance().changeTab('home');
-                    // MainTabControlDelegate.getInstance().changeTab('checkout');
+                  if(cartModel.totalCartQuantity > 0) {
+                      if (userModel.loggedIn) {
+                        MainTabControlDelegate.getInstance().changeTab('cart');
+                        onCheckout(cartModel);
+                     } else {
+                        Navigator.of(context).pushNamed(RouteList.login); }
+                  } else {
+                  MainTabControlDelegate.getInstance().changeTab('home');
+                 }
+
+                /*                // MainTabControlDelegate.getInstance().changeTab('checkout');
                     // return;
 
                   // cartModel.user?.email == null
                   // FirebaseAuth.instance.currentUser?.uid == null
-                  // Navigator.of(context).pushReplacementNamed(rou)
-                  onCheckout(cartModel);
+                  // Navigator.of(context).pushReplacementNamed(rou)*/
+
                 },
           isExtended: true,
           backgroundColor: Theme.of(context).primaryColor,

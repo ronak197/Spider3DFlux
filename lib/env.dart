@@ -372,7 +372,7 @@ Map<String, dynamic> environment = {
     "EnableAlphanumericZipCode": false,
     "EnableReview": true,
     "allowSearchingAddress": true,
-    "GuestCheckout": true,
+    "GuestCheckout": false,
     "EnableOnePageCheckout": false,
     "NativeOnePageCheckout": true,
     "CheckoutPageSlug": {"il": "checkout", "en": "checkout"},

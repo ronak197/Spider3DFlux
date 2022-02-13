@@ -135,10 +135,20 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
             javascriptMode: JavascriptMode.unrestricted,
             initialUrl: checkoutMap['url'],
             onWebViewCreated: (controller) async {
+              setState(() {
+                isLoading = true;
+              });
               _controller = controller;
 
               await controller
                   .evaluateJavascript('console.log("Print TEST by JS")');
+
+              print('onWebViewCreated');
+              await controller.getTitle();
+              await controller.currentUrl();
+              print('${addressModel?.cardExpiryDate}');
+              print('${addressModel?.cardExpiryDate?.substring(0, 2)}');
+              print('${addressModel?.cardExpiryDate?.substring(3, 5)}');
 
               /*        await _controller.evaluateJavascript(
                   'var mainNodeList = document.getElementsByName("cardNum");'
@@ -165,17 +175,16 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
                     // iframe_doc.getElementsByTagName('input').cvv2.value = '1'
                     "inputs = iframe_doc.getElementsByTagName('input');"
                     "inputs.cardNum.value = '${addressModel!.cardNumber}';" // '4580000000000000';"
-                    "inputs.cvv2.value = '${addressModel.cardCvv}';" // 319
                     "inputs.id.value = '${addressModel.cardHolderId}';" // 325245355
-                    // document.getElementsByTagName('select').ddlYear.value = '21' // document is iframe_doc
+                    // "inputs.cvv2.value = '${addressModel.cardCvv}';" // 319
                     "selects = iframe_doc.getElementsByTagName('select');"
                     "selects.ddlMonth.value = '${int.parse(addressModel.cardExpiryDate!.substring(0, 2))}';" // So 03 -> 3
-                    "selects.ddlYear.value = '20${addressModel.cardExpiryDate!.substring(2, 4)}';" // 2021
-                    // "selects.ddlPayments.value = '1';" // תשלומים
+                    "selects.ddlYear.value  = '20${addressModel.cardExpiryDate?.substring(3, 5)}';" // 2021
+                    // "selects.ddlPayments.value = '2';" // תשלומים
                     "payButton = document.getElementById('cardsubmitbtn');"
                     // "payButton.style.color = 'red';"
                     'payButton.click();'
-                    //
+                    // //
                     );
               }
 
@@ -183,7 +192,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
 
               if (url.contains('%D7%AA%D7%95%D7%93%D7%94') ||
                   url.contains('spider3d') ||
-                  url.contains('icredit') && kDebugMode || // For Tests ONLY! (AutoRedirect)
+                  // url.contains('icredit') && kDebugMode || // For Tests ONLY! (AutoRedirect)
                   url.contains('תודה')) {
                 print('Payment done succefully! Redirect..');
                 widget.onFinish!('Success');

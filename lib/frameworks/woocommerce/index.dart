@@ -164,7 +164,7 @@ class WooWidget extends BaseFrameworks
       }
       if (cod && kPaymentConfig['UpdateOrderStatus']) {
         await Services().api.updateOrder(order.id,
-            status: 'on-hold',
+            status: 'pending',
             token: userModel.user != null ? userModel.user!.cookie : null);
       }
       if (!isLoggedIn) {

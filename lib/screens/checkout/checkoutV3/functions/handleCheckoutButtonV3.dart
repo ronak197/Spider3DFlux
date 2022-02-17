@@ -16,9 +16,10 @@ import 'package:provider/provider.dart';
 
 import '../../webview_checkout_success_screen.dart';
 import '../checkoutV3_provider.dart';
+import 'handleFormV3.dart';
 import 'handleNotesDialogV3.dart';
 
-String checkCheckoutButtonV3(CartModel cartModel) {
+String checkCheckoutButtonV3(context, CartModel cartModel) {
   // region A lot of prints.
   // Products (price)
   print('products price:        + ${cartModel.getSubTotal()}');
@@ -135,9 +136,20 @@ String checkCheckoutButtonV3(CartModel cartModel) {
   //         order_status += 'הכנס פרטי אשראי \n';
   //         order_status += 'בחר אמצעי תשלום \n';
 
-  _deliveryDetailsOk() ? null : errorNotes += ' הכנס כתובת משלוח \n';
-  if (cartModel.shippingMethod?.id != 3) // Don't check paymentDetails on Local pickup
-        { paymentDetailsOk() ? null : errorNotes += ' הכנס פרטי תשלום \n'; }
+  if (! _deliveryDetailsOk()) {
+    showFormDialogV3(context, /*isPayment:*/ false);
+    errorNotes += ' הכנס כתובת משלוח \n';
+    return errorNotes;
+  }
+
+  // Don't check paymentDetails on Local pickup
+  if (cartModel.shippingMethod?.id != 'local_pickup:15')
+      { if(! paymentDetailsOk()) {
+          errorNotes += ' הכנס פרטי תשלום \n';
+          showFormDialogV3(context, /*isPayment:*/ true);
+          return errorNotes;
+        }
+    }
 
   _paymentMethodOk() ? null : errorNotes += ' בחר שיטת תשלום \n';
   _shippingMethodOk() ? null : errorNotes += ' בחר שיטת משלוח \n';
@@ -191,7 +203,7 @@ void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
         cartModel.clearCart();
         // Clear ShippingIndex & reset paymentIndex
         Provider.of<CheckoutProviderV3>(context, listen: false).changeShippingIndex(0);
-        Provider.of<CheckoutProviderV3>(context, listen: false).changePaymentIndex(1);
+        Provider.of<CheckoutProviderV3>(context, listen: false).changePaymentIndex(0);
         cartModel.changeBillingStatus('Stop');
         await Navigator.push(
           context,
@@ -213,7 +225,7 @@ void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
                      '* הוזמן באפליקציית ספיידר 3D');
 
   // 2. Check all values
-  var errorNotes = checkCheckoutButtonV3(cartModel);
+  var errorNotes = checkCheckoutButtonV3(context, cartModel);
   print('errorNotes: \n$errorNotes');
   if (errorNotes.isNotEmpty) {
     Scaffold.of(context).showSnackBar(errSnackBar(context, errorNotes));

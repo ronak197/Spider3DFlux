@@ -22,7 +22,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
     Color? color = Theme.of(context).primaryColorLight.withOpacity(0.7);
     Color? selectedColor = Theme.of(context).accentColor;
     print('Widget render!');
-    // var selectedIndex = isPayment ? 1 : 0;
+
 
     return Consumer<CheckoutProviderV3>(
     builder: (context, checkoutModel, child) {
@@ -31,7 +31,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
       PaymentMethod? paymentMethod;
       ShippingMethod? shippingMethod;
 
-       // Remember last choice
+       // Remember last choice:
        var selectedIndex = isPayment ? checkoutModel.paymentIndex : checkoutModel.shippingIndex;
 
       TextStyle? radioStyle = Theme.of(context).textTheme.subtitle2!.copyWith(
@@ -75,6 +75,18 @@ class CustomRadioButtonV3 extends StatelessWidget {
                 checkoutModel.changePaymentIndex(index);
               } else {
                 checkoutModel.changeShippingIndex(index);
+              }
+
+              // When delivery method is not local pickup,
+              // Set credit card payment option
+              if(!isPayment && index != 3){
+                checkoutModel.changePaymentIndex(1);
+                cartModel.setPaymentMethod( PaymentMethod(
+                    title: 'מאובטח באשראי Spider3D App - iCredit',
+                    // title: 'Credit card - iCredit',
+                    description: 'תשלום מאובטח באשראי - iCredit',
+                    id: 'icredit_payment',
+                    enabled: true));
               }
 
               /// Payment form:

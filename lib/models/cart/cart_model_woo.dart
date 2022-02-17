@@ -173,6 +173,7 @@ class CartModelWoo
     productVariationInCart.clear();
     productAddonsOptionsInCart.clear();
     shippingMethod = null;
+    paymentMethod = null;
   // Set default and not clear it.
 /*    paymentMethod?.id == 'cod' ?
           PaymentMethod(
@@ -182,13 +183,13 @@ class CartModelWoo
               enabled: true)
           : */
   // Set default and not clear it.
-    paymentMethod = PaymentMethod(
+/*    paymentMethod = PaymentMethod(
               title: 'מאובטח באשראי Spider3D App - iCredit',
               // title: 'Credit card - iCredit',
               description: 'תשלום מאובטח באשראי - iCredit',
               id: 'icredit_payment', // Change to cod (& the title)
               enabled: true // For cash on delivery
-          );
+          );*/
     resetCoupon();
     notes = null;
     rewardTotal = 0;

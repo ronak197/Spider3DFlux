@@ -103,11 +103,9 @@ class DeliveryFormV3 extends StatelessWidget {
 
         if (model.address?.city != null) _cityController.text = '${model.address?.city}';
         if (model.address?.street != null) _streetController.text = '${model.address?.street}';
-        if (model.address?.phoneNumber != null) {
-          _phoneController.text = '${model.address?.phoneNumber}';}
+        if (model.address?.phoneNumber != null) _phoneController.text = '${model.address?.phoneNumber}';
+        if (model.address?.firstName != null) _nameController.text = '${model.address?.firstName}';
 
-        // if (model.address?.firstName != null) {
-        //   _nameController.text = '${model.address?.firstName}';}
 
         // When address firstName is null:
         // else if (model.user?.username != null){

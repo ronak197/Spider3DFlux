@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 class CheckoutProviderV3 extends ChangeNotifier {
 
-  int paymentIndex = 1;
+  int paymentIndex = 0; // 1 is credit card by default
   void changePaymentIndex(value) {
     paymentIndex = value;
     print('paymentIndex $paymentIndex');

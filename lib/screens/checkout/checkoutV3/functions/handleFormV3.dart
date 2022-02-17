@@ -22,7 +22,7 @@ void showFormDialogV3(BuildContext context, bool isPayment) async {
                 letterSpacing: 0.1,
               ),
             ),
-            Text( isPayment ? 'בתשלום במזומן יש להכניס אשראי כביטחון בלבד.' : '',
+/*            Text( isPayment ? 'בתשלום במזומן יש להכניס אשראי כביטחון בלבד.' : '',
               style: const TextStyle(
                 // color: Colors.white,
                 // color: Theme.of(context).primaryColor,
@@ -30,7 +30,7 @@ void showFormDialogV3(BuildContext context, bool isPayment) async {
                 fontWeight: FontWeight.w500,
                 letterSpacing: 0.0,
               ),
-            ),
+            ),*/
           ],
         ),
         // actions: <Widget>[],

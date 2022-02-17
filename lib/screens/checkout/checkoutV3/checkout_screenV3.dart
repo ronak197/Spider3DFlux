@@ -66,16 +66,17 @@ class CheckoutScreenV3 extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 6.0),
                 child: Row(
                   // shrinkWrap: true, // Set this
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomRadioButtonV3(
-                      'עד 3-4 ימי עסקים 29₪', 1,
+                      'עד 3-4 ימי עסקים ₪29', 1,
                       isPayment: false,
                     ),
-                    CustomRadioButtonV3('מהיום להיום 45₪', 2,
+                    CustomRadioButtonV3('מהיום להיום ₪45', 2,
                         isPayment: false,
                         subText: 'לאשקלון - נתניה, ללא ירושלים ומושבים'),
                     CustomRadioButtonV3(
-                      'איסוף עצמי 0₪', 3,
+                      'איסוף עצמי ₪0', 3,
                       isPayment: false,
                       subText: 'פרטי איסוף ישלחו בSMS',
                     ),

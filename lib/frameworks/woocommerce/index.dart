@@ -1,10 +1,29 @@
+import '../../models/index.dart'
+    show
+    AddonsOption,
+    AppModel,
+    CartModel,
+    Country,
+    CountryState,
+    Coupons,
+    Discount,
+    ListCountry,
+    Order,
+    PaymentMethod,
+    PaymentMethodModel,
+    Product,
+    ProductVariation,
+    ShippingMethodModel,
+    TaxModel,
+    User,
+    UserModel;
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fstore/frameworks/woocommerce/services/woo_commerce.dart';
 import 'package:fstore/screens/checkout/checkoutV3/checkoutV3_provider.dart';
-import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/config.dart';
@@ -12,26 +31,8 @@ import '../../common/constants.dart';
 import '../../common/tools.dart';
 import '../../generated/l10n.dart';
 import '../../models/entities/order.dart';
-import '../../models/index.dart'
-    show
-        AddonsOption,
-        AppModel,
-        CartModel,
-        Country,
-        CountryState,
-        Coupons,
-        Discount,
-        ListCountry,
-        Order,
-        PaymentMethod,
-        PaymentMethodModel,
-        Product,
-        ProductVariation,
-        ShippingMethodModel,
-        TaxModel,
-        User,
-        UserModel;
 import '../../screens/index.dart'
+
     show Checkout, MyCart, PaymentWebview, SuccessScreen;
 import '../../services/index.dart';
 import '../frameworks.dart';
@@ -39,10 +40,30 @@ import '../product_variant_mixin.dart';
 import 'product_addons_mixin.dart';
 import 'woo_variant_mixin.dart';
 
+import 'package:localstorage/localstorage.dart';
+
 class WooWidget extends BaseFrameworks
     with ProductVariantMixin, WooVariantMixin, ProductAddonsMixin {
   @override
   bool get enableProductReview => true;
+
+  void getListCountries() {
+    /// Get List Countries
+    Services().api.getCountries()?.then(
+          (countries) async {
+        final storage = LocalStorage('fstore');
+        try {
+          // save the user Info as local storage
+          final ready = await storage.ready;
+          if (ready) {
+            await storage.setItem(kLocalKey['countries']!, countries);
+          }
+        } catch (err) {
+          printLog(err);
+        }
+      },
+    );
+  }
 
   Future<Discount?> checkValidCoupon(
       BuildContext context, String couponCode) async {
@@ -235,11 +256,11 @@ class WooWidget extends BaseFrameworks
       // final paymentMethodModel = Provider.of<PaymentMethodModel>(context);
       // final order_details = provider.of<
       var url = await iCreditGetUrl(
-          buyer_name: addressModel!.firstName,
-          city: addressModel.city,
-          street: addressModel.street,
-          email: addressModel.email,
-          phone: addressModel.phoneNumber,
+          city: '${addressModel?.city}',
+          street: '${addressModel?.street}',
+          phone: '${addressModel?.phoneNumber}',
+          email: '${addressModel?.email}',
+          buyer_name: '${addressModel?.firstName}',
           total_price:
               Provider.of<CartModel>(context, listen: false).getTotal());
 
@@ -348,24 +369,6 @@ class WooWidget extends BaseFrameworks
     }).catchError((e) {
       onError(e.toString());
     });
-  }
-
-  void getListCountries() {
-    /// Get List Countries
-    Services().api.getCountries()?.then(
-      (countries) async {
-        final storage = LocalStorage('fstore');
-        try {
-          // save the user Info as local storage
-          final ready = await storage.ready;
-          if (ready) {
-            await storage.setItem(kLocalKey['countries']!, countries);
-          }
-        } catch (err) {
-          printLog(err);
-        }
-      },
-    );
   }
 
   @override

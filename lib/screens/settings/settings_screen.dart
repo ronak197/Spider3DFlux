@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
 import 'package:fstore/screens/users/spider_point_screen.dart';
 import 'package:fstore/screens/my_thingi/thingi_screen.dart';
+import 'package:fstore/screens/checkout/checkoutV3/widgets/payment_formV3.dart';
 import 'package:inspireui/widgets/flux_image.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
@@ -820,8 +821,7 @@ class _SettingScreenState extends State<SettingScreen>
                                   child: ListTile(
                                     onTap: () async {
                                       await Provider.of<UserModel>(context,
-                                              listen: false)
-                                          .logout();
+                                              listen: false).logout();
                                       if (kLoginSetting['IsRequiredLogin'] ??
                                           false) {
                                         await Navigator.of(App
@@ -840,8 +840,8 @@ class _SettingScreenState extends State<SettingScreen>
                                       print(
                                           'loadInitData - prefs.getKeys ${prefs.getKeys()}');
                                       await prefs.remove('loggedIn');
-                                      await prefs
-                                          .clear(); // remove all ces.getInstance() data
+                                      await prefs.clear(); // remove all ces.getInstance() data
+                                      await prefs.setBool('seen', true);
 
                                       final fstore_storage =
                                           LocalStorage('fstore');
@@ -856,6 +856,8 @@ class _SettingScreenState extends State<SettingScreen>
 
                                       Provider.of<CartModel>(context).dispose();
                                       // Provider.of<AppModel>(context).dispose();
+
+
                                     },
                                     leading: Icon(
                                       Icons.logout,

@@ -50,184 +50,194 @@ class CustomRadioButtonV3 extends StatelessWidget {
       }
 
       return
+        ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 90.0),
+            child:
         Container(
-        height: 80,
-        width: 130,
-        // width: MediaQuery.of(context).size.width * 0.4,
-        // height: MediaQuery.of(context).size.height * 0.0525,
-        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-        child: FlatButton(
-          splashColor: color.withOpacity(0.3),
-          // color: (selectedIndex == index) ?  selectedColor : color,
-          color: color,
-          onPressed: () async {
-            // CREDIT CARD default sets on cart_model_woo.dart - paymentMethod = PaymentMethod(...
-            /// CREDIT CARD default sets on cart_model_woo.dart - paymentMethod = PaymentMethod(...
-            //// CREDIT CARD default sets on cart_model_woo.dart - paymentMethod = PaymentMethod(...
-            selectedIndex = index;
-            print('selectedIndex = index?');
-            print('$selectedIndex = $index');
-            if (isPayment) {
-              checkoutModel.changePaymentIndex(index);
-            } else {
-              checkoutModel.changeShippingIndex(index);
-            }
-
-            /// Payment form:
-            if (isPayment) {
-              // print('Set paymentMethod...');
-              // region paymentMethod switch
-              switch (index) {
-                case 1:
-                  paymentMethod = PaymentMethod(
-                      title: 'מאובטח באשראי Spider3D App - iCredit',
-                      // title: 'Credit card - iCredit',
-                      description: 'תשלום מאובטח באשראי - iCredit',
-                      id: 'icredit_payment',
-                      enabled: true);
-                  break;
-
-                case 2:
-                  paymentMethod = PaymentMethod(
-                      title: 'מזומן באיסוף עצמי - Spider3D App',
-                      // title: 'Cash on delivery',
-                      description: 'מזומן באיסוף עצמי',
-                      id: 'cod',
-                      enabled: true);
-                  break;
+          // height: 80,
+          width: 120,
+          // width: MediaQuery.of(context).size.width * 0.4,
+          // height: MediaQuery.of(context).size.height * 0.0525,
+          margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+          child:
+            FlatButton(
+            splashColor: color.withOpacity(0.3),
+            // color: (selectedIndex == index) ?  selectedColor : color,
+            color: color,
+            onPressed: () async {
+              // CREDIT CARD default sets on cart_model_woo.dart - paymentMethod = PaymentMethod(...
+              /// CREDIT CARD default sets on cart_model_woo.dart - paymentMethod = PaymentMethod(...
+              //// CREDIT CARD default sets on cart_model_woo.dart - paymentMethod = PaymentMethod(...
+              selectedIndex = index;
+              print('selectedIndex = index?');
+              print('$selectedIndex = $index');
+              if (isPayment) {
+                checkoutModel.changePaymentIndex(index);
+              } else {
+                checkoutModel.changeShippingIndex(index);
               }
-              // endregion paymentMethod switch
-              // print('paymentMethod');
-              // print(paymentMethod?.title);
 
-              cartModel.setPaymentMethod(paymentMethod);
-              var _paymentMethod = cartModel.paymentMethod;
-              // print('_paymentMethod');
-              print(_paymentMethod?.title);
-              print(_paymentMethod?.id);
-            }
+              /// Payment form:
+              if (isPayment) {
+                // print('Set paymentMethod...');
+                // region paymentMethod switch
+                switch (index) {
+                  case 1:
+                    paymentMethod = PaymentMethod(
+                        title: 'מאובטח באשראי Spider3D App - iCredit',
+                        // title: 'Credit card - iCredit',
+                        description: 'תשלום מאובטח באשראי - iCredit',
+                        id: 'icredit_payment',
+                        enabled: true);
+                    break;
 
-            /// Shipping form:
-            else {
-              // print('Set shippingMethod...');
-              // region shippingMethod switch
-              switch (index) {
-                case 1:
-                  shippingMethod = ShippingMethod(
-                    title: 'עד 3-4 ימי עסקים',
-                    methodId: 'flat_rate',
-                    cost: 29.0,
-                    id: 'flat_rate:6',
-                    methodTitle: 'עד 3-4 ימי עסקים',
-                    description: null,
-                    classCost: null,
-                    min_amount: null,
-                  );
-                  break;
+                  case 2:
+                    paymentMethod = PaymentMethod(
+                        title: 'מזומן באיסוף עצמי - Spider3D App',
+                        // title: 'Cash on delivery',
+                        description: 'מזומן באיסוף עצמי',
+                        id: 'cod',
+                        enabled: true);
+                    break;
+                }
+                // endregion paymentMethod switch
+                // print('paymentMethod');
+                // print(paymentMethod?.title);
 
-                case 2:
-                  shippingMethod = ShippingMethod(
-                    title:
-                        '🚀 מהיום להיום אשקלון-נתניה - (ללא ירושלים; ללא מושבים)',
-                    methodId: 'flat_rate',
-                    cost: 45.0,
-                    id: 'flat_rate:11',
-                    methodTitle:
-                        '🚀 מהיום להיום אשקלון-נתניה - (ללא ירושלים; ללא מושבים)',
-                    description: null,
-                    classCost: null,
-                    min_amount: null,
-                  );
-                  break;
-
-                case 3:
-                  shippingMethod = ShippingMethod(
-                    title:
-                        'איסוף עצמי - לוקר ראשון לציון (קוד ופרטים ישלחו ב-SMS )',
-                    methodId: 'local_pickup',
-                    cost: 0.0,
-                    id: 'local_pickup:15',
-                    methodTitle:
-                        'איסוף עצמי - לוקר ראשון לציון (קוד ופרטים ישלחו ב-SMS )',
-                    description: null,
-                    classCost: null,
-                    min_amount: null,
-                  );
-                  break;
+                cartModel.setPaymentMethod(paymentMethod);
+                var _paymentMethod = cartModel.paymentMethod;
+                // print('_paymentMethod');
+                print(_paymentMethod?.title);
+                print(_paymentMethod?.id);
               }
-              // endregion shippingMethod switch
-              print('shippingMethod');
-              print(shippingMethod?.id);
-              print(shippingMethod?.title);
 
-              cartModel.setShippingMethod(shippingMethod);
-              var _shippingMethod = cartModel.shippingMethod?.title;
-              // print('_shippingMethod');
-              print(_shippingMethod);
+              /// Shipping form:
+              else {
+                // print('Set shippingMethod...');
+                // region shippingMethod switch
+                switch (index) {
+                  case 1:
+                    shippingMethod = ShippingMethod(
+                      title: 'עד 3-4 ימי עסקים',
+                      methodId: 'flat_rate',
+                      cost: 29.0,
+                      id: 'flat_rate:6',
+                      methodTitle: 'עד 3-4 ימי עסקים',
+                      description: null,
+                      classCost: null,
+                      min_amount: null,
+                    );
+                    break;
 
-              // region ShippingMethod Json resp
+                  case 2:
+                    shippingMethod = ShippingMethod(
+                      title:
+                      '🚀 מהיום להיום אשקלון-נתניה - (ללא ירושלים; ללא מושבים)',
+                      methodId: 'flat_rate',
+                      cost: 45.0,
+                      id: 'flat_rate:11',
+                      methodTitle:
+                      '🚀 מהיום להיום אשקלון-נתניה - (ללא ירושלים; ללא מושבים)',
+                      description: null,
+                      classCost: null,
+                      min_amount: null,
+                    );
+                    break;
 
-              /*
-                [
-  {
-        id: flat_rate: 6,
-        method_id: flat_rate,
-        instance_id: 6,
-        label: עד3-4ימיעסקים,
-        cost: 29.00,
-        taxes: [
+                  case 3:
+                    shippingMethod = ShippingMethod(
+                      title:
+                      'איסוף עצמי - לוקר ראשון לציון (קוד ופרטים ישלחו ב-SMS )',
+                      methodId: 'local_pickup',
+                      cost: 0.0,
+                      id: 'local_pickup:15',
+                      methodTitle:
+                      'איסוף עצמי - לוקר ראשון לציון (קוד ופרטים ישלחו ב-SMS )',
+                      description: null,
+                      classCost: null,
+                      min_amount: null,
+                    );
+                    break;
+                }
+                // endregion shippingMethod switch
+                print('shippingMethod');
+                print(shippingMethod?.id);
+                print(shippingMethod?.title);
 
-        ],
-        shipping_tax: 0
-  },
-  {
-        id: flat_rate: 11,
-        method_id: flat_rate,
-        instance_id: 11,
-        label: 🚀מהיוםלהיוםאשקלון-נתניה-(ללאירושלים;ללאמושבים),
-        cost: 45.00,
-        taxes: [
+                cartModel.setShippingMethod(shippingMethod);
+                var _shippingMethod = cartModel.shippingMethod?.title;
+                // print('_shippingMethod');
+                print(_shippingMethod);
 
-        ],
-        shipping_tax: 0
-  },
-  {
-        id: local_pickup: 15,
-        method_id: local_pickup,
-        instance_id: 15,
-        label: איסוףעצמי-לוקרראשוןלציון(קודופרטיםישלחוב-SMS),
-        cost: 0.00,
-        taxes: [
+                // region ShippingMethod Json resp
 
-        ],
-        shipping_tax: 0
-  }
-]
-*/ /*
-                // endregion ShippingMethod Json resp
-                }*/
-            }
-          },
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-            // side: BorderSide(color: color, width: 2, style: BorderStyle.solid),
-            side: BorderSide(
-                color: (selectedIndex == index) ? selectedColor : color,
-                width: 2,
-                style: BorderStyle.solid),
+                /*
+                  [
+    {
+          id: flat_rate: 6,
+          method_id: flat_rate,
+          instance_id: 6,
+          label: עד3-4ימיעסקים,
+          cost: 29.00,
+          taxes: [
+
+          ],
+          shipping_tax: 0
+    },
+    {
+          id: flat_rate: 11,
+          method_id: flat_rate,
+          instance_id: 11,
+          label: 🚀מהיוםלהיוםאשקלון-נתניה-(ללאירושלים;ללאמושבים),
+          cost: 45.00,
+          taxes: [
+
+          ],
+          shipping_tax: 0
+    },
+    {
+          id: local_pickup: 15,
+          method_id: local_pickup,
+          instance_id: 15,
+          label: איסוףעצמי-לוקרראשוןלציון(קודופרטיםישלחוב-SMS),
+          cost: 0.00,
+          taxes: [
+
+          ],
+          shipping_tax: 0
+    }
+  ]
+  */ /*
+                  // endregion ShippingMethod Json resp
+                  }*/
+              }
+            },
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              // side: BorderSide(color: color, width: 2, style: BorderStyle.solid),
+              side: BorderSide(
+                  color: (selectedIndex == index) ? selectedColor : color,
+                  width: 2,
+                  style: BorderStyle.solid),
+            ),
+            child:
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  child:
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(text, textAlign: TextAlign.center, style: radioStyle),
+                      subText != null
+                          ? Text('$subText',
+                          textAlign: TextAlign.center,
+                          style: radioStyle.copyWith(fontSize: 10))
+                          : Container(),
+                    ],
+                  ),
+                )
+            // borderSide: BorderSide(color: (value == index) ? Colors.green : Colors.black),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(text, textAlign: TextAlign.center, style: radioStyle),
-              subText != null
-                  ? Text('$subText',
-                      textAlign: TextAlign.center,
-                      style: radioStyle.copyWith(fontSize: 10))
-                  : Container(),
-            ],
-          ),
-          // borderSide: BorderSide(color: (value == index) ? Colors.green : Colors.black),
         ),
       );
     });

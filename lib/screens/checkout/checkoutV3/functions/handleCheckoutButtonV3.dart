@@ -35,7 +35,7 @@ String checkCheckoutButtonV3(CartModel cartModel) {
   print('paymentMethod title: ${cartModel.paymentMethod?.title}');
   print('paymentMethod id:    ${cartModel.paymentMethod?.id}');
   print('----------');
-  // delivery address details
+  // delivery address detailsshippingIndex
   print('address firstName:   ${cartModel.address?.firstName}');
   print('address email:       ${cartModel.address?.email}');
   print('address city:        ${cartModel.address?.city}');
@@ -71,7 +71,7 @@ String checkCheckoutButtonV3(CartModel cartModel) {
     return true;
   }
 
-  bool _paymentDetailsOk() {
+  bool paymentDetailsOk() {
     print('_paymentDetailsOk()...');
     if (cartModel.address?.cardHolderName == null ||
         cartModel.address?.cardHolderName == '' ||
@@ -136,7 +136,8 @@ String checkCheckoutButtonV3(CartModel cartModel) {
   //         order_status += 'בחר אמצעי תשלום \n';
 
   _deliveryDetailsOk() ? null : errorNotes += ' הכנס כתובת משלוח \n';
-  _paymentDetailsOk() ? null : errorNotes += ' הכנס פרטי תשלום \n';
+  if (cartModel.shippingMethod?.id != 3) // Don't check paymentDetails on Local pickup
+        { paymentDetailsOk() ? null : errorNotes += ' הכנס פרטי תשלום \n'; }
 
   _paymentMethodOk() ? null : errorNotes += ' בחר שיטת תשלום \n';
   _shippingMethodOk() ? null : errorNotes += ' בחר שיטת משלוח \n';

@@ -2084,7 +2084,7 @@ Future<String> iCreditGetUrl(
     // 'Order': 'Woo order number?',
 
     // 'CustomerFirstName': 'עידן ביטון',
-    'CustomerFirstName': ' $buyer_name',
+    'CustomerFirstName': '$buyer_name',
     'CustomerLastName': '',
     'City': '$city',
     'Address': '$street',
@@ -2103,6 +2103,10 @@ Future<String> iCreditGetUrl(
 
   // print(resp.data);
   // print(resp.data['PrivateSaleToken']);
+
+  print('resp.requestOptions.data');
+  print(resp.requestOptions.data);
+
   print('resp.data');
   print(resp.data);
   print('resp.data');

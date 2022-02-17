@@ -3,6 +3,7 @@ import 'package:fstore/common/constants.dart';
 import 'package:fstore/models/cart/cart_base.dart';
 import 'package:provider/provider.dart';
 
+import 'checkoutV3_provider.dart';
 import 'dump/delivery_screenV3.dart';
 import 'functions/handleFormV3.dart';
 
@@ -21,19 +22,32 @@ class InfoCardV3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    var titleStyle = Theme.of(context)
+        .textTheme
+        .subtitle2!
+        .copyWith(fontWeight: FontWeight.w600)
+        .copyWith(fontSize: 18);
+
     return Column(
       children: [
         Container(
           alignment: Alignment.centerRight,
           margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           child:
-          Text('$mainTitle',
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2!
-                .copyWith(fontWeight: FontWeight.w600)
-                .copyWith(fontSize: 18)
-          ),
+          isPayment ?
+          Text('$mainTitle', style: titleStyle)
+          : Consumer<CartModel>(
+              builder: (context, cartModel, child) {
+                var toName ='עבור ${cartModel.address?.firstName}';
+                return
+                  Text(cartModel.address?.firstName != null ?
+                  '$mainTitle $toName' : mainTitle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: titleStyle);
+        }
+          )
         ),
         Card(
           color: Theme.of(context).primaryColorLight.withOpacity(0.7),
@@ -52,7 +66,9 @@ class InfoCardV3 extends StatelessWidget {
                 builder: (context, model, child) {
                   bool? editField = isPayment ?
                         model.address?.cardNumber == null // Represent payment filled
-                      : model.address?.street == null ||  model.address?.city == null; // Represent delivery filled
+                      : model.address?.street == null ||  model.address?.city == null
+                      || model.address?.street == '' ||  model.address?.city == ''
+                  ; // Represent delivery filled
                   var street = model.address?.street;
                   var city = model.address?.city;
                   var cardNum = model.address?.cardNumber;

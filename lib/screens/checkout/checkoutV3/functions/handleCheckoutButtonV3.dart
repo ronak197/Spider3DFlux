@@ -142,8 +142,8 @@ String checkCheckoutButtonV3(context, CartModel cartModel) {
     return errorNotes;
   }
 
-  // Don't check paymentDetails on Local pickup
-  if (cartModel.shippingMethod?.id != 'local_pickup:15')
+  // Don't check paymentDetails on Cash on delivery
+  if (cartModel.paymentMethod?.id != 'cod')
       { if(! paymentDetailsOk()) {
           errorNotes += ' הכנס פרטי תשלום \n';
           showFormDialogV3(context, /*isPayment:*/ true);

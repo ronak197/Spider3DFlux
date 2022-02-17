@@ -131,7 +131,9 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
                     style: OutlinedButton.styleFrom(
                       shape: const RoundedRectangleBorder()),
                     onPressed: () {
-                      setState(() {
+                      Navigator.of(context).pushNamed(RouteList.cart);
+
+/*                      setState(() {
                         newOrder = null;
                       });
                       widget.controller!.animateToPage(
@@ -146,10 +148,11 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
                       } else {
                         MainTabControlDelegate.getInstance()
                             .changeTab(RouteList.home.replaceFirst('/', ''));
-                      }
+                      }*/
                     },
                     child: Text(
-                      S.of(context).backToShop.toUpperCase(),
+                      // S.of(context).backToShop.toUpperCase(),
+                      'חזור לעגלה',
                       style: TextStyle(color: Theme.of(context).accentColor),
                     ),
                   ),
@@ -161,5 +164,14 @@ class _OrderedSuccessState extends BaseScreen<OrderedSuccess> {
         const SizedBox(height: 15),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    print('Widget SuccessScreen disposed!');
+    // MainTabControlDelegate.getInstance().changeTab('cart');
+    Navigator.of(context).pushNamed(RouteList.cart);
+    // TODO: implement dispose
+    super.dispose();
   }
 }

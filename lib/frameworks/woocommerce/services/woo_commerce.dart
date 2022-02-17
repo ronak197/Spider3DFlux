@@ -2085,7 +2085,7 @@ Future<String> iCreditGetUrl(
 
     // 'CustomerFirstName': 'עידן ביטון',
     'CustomerFirstName': '$buyer_name',
-    'CustomerLastName': '',
+    'CustomerLastName': 'לקוח', // CAN'T be empty or only white space
     'City': '$city',
     'Address': '$street',
     'EmailAddress': '$email',

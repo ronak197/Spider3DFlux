@@ -28,12 +28,12 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '28020'
+    flutterVersionCode = '30000'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '28.02.0 - Checkout Bug fix'
+    flutterVersionName = '30.00.0 - Report with shake'
 }
 
 apply plugin: 'com.android.application'

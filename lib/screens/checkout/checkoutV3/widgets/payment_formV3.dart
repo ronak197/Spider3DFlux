@@ -146,7 +146,7 @@ class PaymentFormV3 extends StatelessWidget {
                                       onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(_cardNumberNode),
                                       onChanged: (value) {
                                         print(_cardExpiryDateController.text.length);
-                                        if (value.length == 2) {
+                                        if (value.length == 2 && !value.contains('/')) {
                                           _cardExpiryDateController.text += '/';
                                           _cardExpiryDateController.selection =
                                               TextSelection.fromPosition(TextPosition(offset: _cardExpiryDateController.text.length));

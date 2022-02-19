@@ -17,14 +17,18 @@ mixin CartMixin on ChangeNotifier {
   List<Tax> taxes = [];
   double rewardTotal = 0;
 
+
   PaymentMethod? paymentMethod;
 
   String? notes;
   String? currency;
   Map<String, dynamic>? currencyRates;
 
+  String? myBillingStatus;
   void changeBillingStatus(String value){
-    user?.billing?.status = value;
+    // print(myBillingStatus);
+    myBillingStatus = 'Loading';
+    // print(myBillingStatus);
     notifyListeners();
   }
 
@@ -89,10 +93,11 @@ mixin CartMixin on ChangeNotifier {
   }
 
   void setPaymentMethod(data) {
-    // print('X $paymentMethod');
+    // print('X ${paymentMethod?.id}');
     paymentMethod = data;
+    // print('2X ${paymentMethod?.id}');
     notifyListeners(); // my
-    // print('X2 $paymentMethod');
+    // print('3X ${paymentMethod?.id}');
   }
 
   // Returns the Product instance matching the provided id.

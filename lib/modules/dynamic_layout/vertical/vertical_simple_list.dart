@@ -107,10 +107,13 @@ class SimpleListView extends StatelessWidget {
       // radius: 20, // Original
       radius: myRadiusBasedWidth,
       child: IconButton(
-          color: Theme.of(context).accentColor.withOpacity(0.5),
+          // color: Theme.of(context).accentColor.withOpacity(0.5),
+          color: kColorSpiderRed,
           // color: Colors.black,
           // icon: Icon(Icons.add_shopping_cart, size: width! / 10 * 1.3),
-          icon: const Icon(Icons.add_shopping_cart, size: 18),
+          icon: const Icon(Icons.add_shopping_cart, size: 18
+
+          ),
           onPressed: () => addToCart(context)),
 
     );

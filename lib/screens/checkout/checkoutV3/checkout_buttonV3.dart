@@ -12,6 +12,7 @@ class CheckoutButtonV3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CartModel>(
         builder: (context, cartModel, child) {
+          print('Checkout button V3 rendered');
           return Container(
             // height: 80,
             padding: const EdgeInsets.all(12),
@@ -23,7 +24,7 @@ class CheckoutButtonV3 extends StatelessWidget {
               splashColor: Colors.white24,
               // color: (selectedIndex == index) ?  selectedColor : color,
               color:
-              // (cartModel.user?.billing?.status == 'Loading') ?
+              // (cartModel.myBillingStatus == 'Loading') ?
                     (Colors.green[600])!
                   // : Theme.of(context).accentColor.withOpacity(0.85)
               ,
@@ -39,19 +40,18 @@ class CheckoutButtonV3 extends StatelessWidget {
                 // Function afterCheck = ({status}){
                 //   status == 'Passed' ? print('Cool.') : print('Try Again.');
                 // };
-                handleCheckoutButton(context, cartModel /*afterCheck*/);
+                handleCheckoutButton(context, cartModel, /*afterCheck*/);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  (cartModel.user?.billing?.status == 'Loading') ?
+                  (cartModel.myBillingStatus == 'Loading') ?
                   const Icon(Icons.hourglass_bottom, size: 20, color: Colors.white):
                   const Icon(Icons.done_all, size: 20, color: Colors.white),
                   const SizedBox(width: 5),
                   Text(
-                    (cartModel.user?.billing?.status == 'Loading')
-                        ? 'טוען...' : 'סיים הזמנה'
-                    ,
+                    (cartModel.myBillingStatus == 'Loading')
+                        ? 'טוען...' : 'סיים הזמנה',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: (Colors.white),

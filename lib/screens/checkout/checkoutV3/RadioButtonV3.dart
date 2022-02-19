@@ -36,7 +36,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
 
       TextStyle? radioStyle = Theme.of(context).textTheme.subtitle2!.copyWith(
           fontWeight:
-              (selectedIndex == index) ? FontWeight.w600 : FontWeight.w500,
+              (selectedIndex == index) ? FontWeight.w700 : FontWeight.w500,
           letterSpacing: 0.1,
           color: Theme.of(context).accentColor
           // (selectedIndex == index) ? Colors.white : Colors.black,
@@ -229,7 +229,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
               // side: BorderSide(color: color, width: 2, style: BorderStyle.solid),
               side: BorderSide(
                   color: (selectedIndex == index) ? selectedColor : color,
-                  width: 2,
+                  width: 3,
                   style: BorderStyle.solid),
             ),
             child:

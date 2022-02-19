@@ -222,10 +222,10 @@ void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
   // 1. save notes
   Provider.of<CartModel>(context, listen: false)
       .setOrderNotes('${noteController.text}\n'
-                     '* הוזמן באפליקציית ספיידר 3D');
+                     '<<< הוזמן באפליקצייה >>>');
 
   // 2. Check all values
-  var errorNotes = checkCheckoutButtonV3(context, cartModel);
+  var errorNotes = checkCheckoutButtonV3(context, cartModel, /*Function onFinish*/);
   print('errorNotes: \n$errorNotes');
   if (errorNotes.isNotEmpty) {
     Scaffold.of(context).showSnackBar(errSnackBar(context, errorNotes));

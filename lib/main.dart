@@ -26,19 +26,12 @@ import 'services/dependency_injection.dart';
 import 'services/locale_service.dart';
 import 'services/services.dart';
 import 'package:flutter/foundation.dart' as foundation;
-import 'package:shake_flutter/shake_flutter.dart';
 
 void main() async {
   printLog('[main] ===== START main.dart =======');
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  Shake.setShowFloatingReportButton(false);
-  Shake.setInvokeShakeOnShakeDeviceEvent(true);
-  Shake.setInvokeShakeOnScreenshot(true);
-  Shake.start('8df6hgUcear9IsLer9vJInUuJMhPdWSpstPU8rdw',
-              '3tHMq0rrZWkeRNOTYGhjdnwBEFVyZBHwe2Tig30HM589hasmmAT84dH');
 
 /*  if (foundation.kDebugMode) {
     var prefs = await SharedPreferences.getInstance();

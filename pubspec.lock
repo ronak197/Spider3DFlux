@@ -1416,13 +1416,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.26.0"
-  shake_flutter:
-    dependency: "direct main"
-    description:
-      name: shake_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "15.1.0"
   share:
     dependency: "direct main"
     description:

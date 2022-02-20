@@ -79,7 +79,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
 
               // When delivery method is not local pickup,
               // Set credit card payment option
-              if(!isPayment && index != 3){
+              // if(!isPayment && index != 3){
                 checkoutModel.changePaymentIndex(1);
                 cartModel.setPaymentMethod( PaymentMethod(
                     title: 'מאובטח באשראי Spider3D App - iCredit',
@@ -87,7 +87,7 @@ class CustomRadioButtonV3 extends StatelessWidget {
                     description: 'תשלום מאובטח באשראי - iCredit',
                     id: 'icredit_payment',
                     enabled: true));
-              }
+              // }
 
               /// Payment form:
               if (isPayment) {

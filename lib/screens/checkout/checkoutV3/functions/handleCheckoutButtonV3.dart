@@ -151,7 +151,7 @@ String checkCheckoutButtonV3(context, CartModel cartModel) {
         }
     }
 
-  _paymentMethodOk() ? null : errorNotes += ' בחר שיטת תשלום \n';
+  // _paymentMethodOk() ? null : errorNotes += ' בחר שיטת תשלום \n';
   _shippingMethodOk() ? null : errorNotes += ' בחר שיטת משלוח \n';
 
   _userLoggedOk() ? null : errorNotes += 'נא התחבר בעמוד הפרופיל \n';

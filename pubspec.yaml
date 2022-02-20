@@ -178,7 +178,6 @@ dependencies:
   web_scraper: ^0.1.4
   chaleno: ^0.0.5
   puppeteer: ^2.5.0
-  shake_flutter: ^15.1.0
 
   # Cache Type - Location - in use? (effective)
   # ================================

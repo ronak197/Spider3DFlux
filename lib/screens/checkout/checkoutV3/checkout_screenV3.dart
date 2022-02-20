@@ -67,7 +67,6 @@ class CheckoutScreenV3 extends StatelessWidget {
                 child: Row(
                   // shrinkWrap: true, // Set this
                   crossAxisAlignment: CrossAxisAlignment.start,
-
                   children: [
                     CustomRadioButtonV3(
                       'עד 3-4 ימי עסקים ₪29', 1,
@@ -85,7 +84,8 @@ class CheckoutScreenV3 extends StatelessWidget {
                 ),
               ),
             ),
-            buildMainTitle(context, 'שיטת תשלום'),
+            // region payment option - commented
+/*            buildMainTitle(context, 'שיטת תשלום'),
             SizedBox(
               height: 80,
               child: Row(
@@ -100,7 +100,9 @@ class CheckoutScreenV3 extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+            ),*/
+            // endregion payment option - commented
+            const SizedBox(height: 5),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 7.0),
               child: Row(
@@ -127,9 +129,8 @@ class CheckoutScreenV3 extends StatelessWidget {
 
 
 
+            const SizedBox(height: 10),
             const CheckoutButtonV3(),
-            //// Checkout button
-            const SizedBox(height: 15),
           ],
         ),
       ),);

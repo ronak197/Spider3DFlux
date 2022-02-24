@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:fstore/common/config.dart';
 import 'package:fstore/frameworks/woocommerce/services/woo_commerce.dart';
 import 'package:fstore/models/cart/cart_base.dart';
+import 'package:fstore/screens/checkout/webview_checkout_success_screen.dart';
 import 'package:provider/provider.dart';
+
 //import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../services/index.dart';
 import '../base_screen.dart';
+
 
 // void main() async {
 //   var url = await iCreditGetUrl(
@@ -90,12 +93,20 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
    */
 
   bool isLoading = true;
+  bool firstSucceedRedirect = true;
   var _controller;
+  var click_checkoutButton = true;
 
   @override
   Widget build(BuildContext context) {
-    final addressModel = Provider.of<CartModel>(context).address;
+    final addressModel = Provider
+        .of<CartModel>(context)
+        .address;
+
+    final cartModel = Provider.of<CartModel>(context);
     print('URL is ${widget.url}');
+    if (cartModel.getTotal()!.toDouble() > 1000.0) click_checkoutButton = false;
+    print('click_checkoutButton is $click_checkoutButton');
 
     var checkoutMap = <dynamic, dynamic>{
       'url': '',
@@ -109,13 +120,13 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
       checkoutMap['url'] = paymentInfo['url'];
       if (paymentInfo['headers'] != null) {
         checkoutMap['headers'] =
-            Map<String, String>.from(paymentInfo['headers']);
+        Map<String, String>.from(paymentInfo['headers']);
       }
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('עמוד תשלום'),
+        title: const Text('עמוד תשלום - אנא המתן...'),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -126,7 +137,9 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
                 widget.onClose!();
               }
             }),
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme
+            .of(context)
+            .backgroundColor,
         elevation: 3.0,
       ),
       body: Stack(
@@ -134,21 +147,31 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
           WebView(
             javascriptMode: JavascriptMode.unrestricted,
             initialUrl: checkoutMap['url'],
+            onPageStarted: (url) => succeedRedirect(url),
+            onProgress: (progress) async {
+              // var url = await _controller.currentUrl() ?? '';
+              // succeedRedirect(url);
+            },
             onWebViewCreated: (controller) async {
+              // Redirect when success = https://www.spider3d.co.il/תודה/ - https://www.spider3d.co.il/%D7%AA%D7%95%D7%93%D7%94/
+              var url = await controller.currentUrl() ?? '';
+              print('url $url');
+              succeedRedirect(url);
+
               setState(() {
                 isLoading = true;
               });
-              _controller = controller;
+              _controller = controller;;
 
               await controller
                   .evaluateJavascript('console.log("Print TEST by JS")');
 
               print('onWebViewCreated');
               await controller.getTitle();
-              await controller.currentUrl();
               print('${addressModel?.cardExpiryDate}');
               print('${addressModel?.cardExpiryDate?.substring(0, 2)}');
               print('${addressModel?.cardExpiryDate?.substring(3, 5)}');
+
 
               /*        await _controller.evaluateJavascript(
                   'var mainNodeList = document.getElementsByName("cardNum");'
@@ -167,34 +190,32 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
               if (url.contains('icredit')) {
                 await _controller.evaluateJavascript(
                     'console.log("Scrolling page to bottom..");'
-                    'window.scrollTo(0,document.body.scrollHeight);'
+                        'window.scrollTo(0,document.body.scrollHeight);'
                     //
-                    "iframe_doc = document.getElementById('frame').contentDocument;"
+                        "iframe_doc = document.getElementById('frame').contentDocument;"
                     // iframe_doc.getElementsByTagName('input').cvv2.value = '1'
-                    "inputs = iframe_doc.getElementsByTagName('input');"
-                    "inputs.cardNum.value = '${addressModel!.cardNumber}';" // '4580000000000000';"
-                    "inputs.id.value = '${addressModel.cardHolderId}';" // 325245355
+                        "inputs = iframe_doc.getElementsByTagName('input');"
+                        "inputs.cardNum.value = '${addressModel!
+                        .cardNumber}';" // '4580000000000000';"
+                        "inputs.id.value = '${addressModel
+                        .cardHolderId}';" // 325245355
                     // "inputs.cvv2.value = '${addressModel.cardCvv}';" // 319
-                    "selects = iframe_doc.getElementsByTagName('select');"
-                    "selects.ddlMonth.value = '${int.parse(addressModel.cardExpiryDate!.substring(0, 2))}';" // So 03 -> 3
-                    "selects.ddlYear.value  = '20${addressModel.cardExpiryDate?.substring(3, 5)}';" // 2021
-                    // "selects.ddlPayments.value = '2';" // תשלומים
-                    "payButton = document.getElementById('cardsubmitbtn');"
-                    // "payButton.style.color = 'red';"
-                    'payButton.click();'
-                    // //
-                    );
+                        "selects = iframe_doc.getElementsByTagName('select');"
+                        "selects.ddlMonth.value = '${int.parse(
+                        addressModel.cardExpiryDate!.substring(
+                            0, 2))}';" // So 03 -> 3
+                        "selects.ddlYear.value  = '20${addressModel
+                        .cardExpiryDate?.substring(3, 5)}';" // 2021
+                  // "selects.ddlPayments.value = '2';" // תשלומים
+                );
               }
 
-              // Redirect when success = https://www.spider3d.co.il/תודה/ - https://www.spider3d.co.il/%D7%AA%D7%95%D7%93%D7%94/
-
-              if (url.contains('%D7%AA%D7%95%D7%93%D7%94') ||
-                  url.contains('spider3d') ||
-                  // url.contains('icredit') && kDebugMode || // For Tests ONLY! (AutoRedirect)
-                  url.contains('תודה')) {
-                print('Payment done succefully! Redirect..');
-                widget.onFinish!('Success');
-                Navigator.of(context).pop();
+              if (url.contains('icredit') && click_checkoutButton) {
+                await _controller.evaluateJavascript(
+                    "iframe_doc = document.getElementById('frame').contentDocument;"
+                        "payButton = document.getElementById('cardsubmitbtn');"
+                        'payButton.click();'
+                );
               }
             },
           ),
@@ -233,5 +254,26 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
     );
 
      */
+  }
+
+  void succeedRedirect(url) {
+      print('Checking if url is succeed url: $url');
+      print('firstSucceedRedirect $firstSucceedRedirect');
+    if(firstSucceedRedirect) {
+      print('Started');
+      setState(() => firstSucceedRedirect = false);
+      if (url.contains('%D7%AA%D7%95%D7%93%D7%94') ||
+          url.contains('spider3d') ||
+          url.contains('icredit') && kDebugMode || // For Tests ONLY! (AutoRedirect)
+          url.contains('תודה')) {
+        print('Payment done succefully! Redirect..');
+        widget.onFinish!('Success');
+        // Navigator.of(context).pop();
+/*      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(
+              builder: (_) => SuccessScreen()));*/
+        return;
+      }
+    }
   }
 }

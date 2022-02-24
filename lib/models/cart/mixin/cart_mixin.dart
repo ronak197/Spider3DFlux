@@ -27,7 +27,7 @@ mixin CartMixin on ChangeNotifier {
   String? myBillingStatus;
   void changeBillingStatus(String value){
     // print(myBillingStatus);
-    myBillingStatus = 'Loading';
+    myBillingStatus = '$value';
     // print(myBillingStatus);
     notifyListeners();
   }

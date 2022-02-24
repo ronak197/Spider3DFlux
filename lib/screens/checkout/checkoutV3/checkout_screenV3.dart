@@ -3,10 +3,9 @@ import 'package:fstore/models/cart/cart_base.dart';
 import 'package:provider/provider.dart';
 import 'RadioButtonV3.dart';
 import 'checkoutV3_provider.dart';
-import 'checkout_buttonV3.dart';
+import 'widgets/checkout_buttonV3.dart';
 import 'infoCardV3.dart';
 import 'widgets/build_checkoutScreenV3.dart';
-
 
 // Todo Get products on cart         (From provider)
 // Todo Get coupon in use            (From provider)
@@ -15,21 +14,10 @@ import 'widgets/build_checkoutScreenV3.dart';
 // Todo Redirect to payment gate and validate (Based /success url)
 // Todo Create order on Woo
 // Todo Reset order in App
-
 class CheckoutScreenV3 extends StatelessWidget {
   const CheckoutScreenV3({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-
-    Color? color = Theme.of(context).primaryColorLight.withOpacity(0.7);
-    TextStyle? radioStyle = Theme.of(context).textTheme.subtitle2!.copyWith(
-        fontWeight: FontWeight.w600,
-        letterSpacing: 0.1,
-        color: Theme.of(context).accentColor
-      // (selectedIndex == index) ? Colors.white : Colors.black,
-    );
-
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
@@ -78,7 +66,7 @@ class CheckoutScreenV3 extends StatelessWidget {
                     CustomRadioButtonV3(
                       'איסוף עצמי ₪0', 3,
                       isPayment: false,
-                      subText: 'פרטי איסוף ישלחו בSMS',
+                      subText: 'פרטי איסוף ישלחו ב SMS',
                     ),
                   ],
                 ),
@@ -108,10 +96,7 @@ class CheckoutScreenV3 extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  buildAddNoteButton(context),
-
-                  SizedBox(
+                children: [ buildAddNoteButton(context), SizedBox(
                     width: 120,
                     child: Column(
                       children: [
@@ -122,17 +107,12 @@ class CheckoutScreenV3 extends StatelessWidget {
                         buildRowPrices(context, 'סה"כ:'),
                       ],
                     ),
-                  )
-                ],
-              ),
-            ),
-
-
-
+                  ) ]
+              )),
             const SizedBox(height: 10),
             const CheckoutButtonV3(),
-          ],
-        ),
-      ),);
+          ]
+        ))
+    );
   }
 }

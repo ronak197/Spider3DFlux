@@ -3,7 +3,7 @@ import 'package:fstore/common/constants.dart';
 import 'package:fstore/models/cart/cart_base.dart';
 import 'package:provider/provider.dart';
 
-import 'functions/handleCheckoutButtonV3.dart';
+import '../functions/handleCheckoutButtonV3.dart';
 
 class CheckoutButtonV3 extends StatelessWidget {
   const CheckoutButtonV3({Key? key}) : super(key: key);
@@ -24,9 +24,9 @@ class CheckoutButtonV3 extends StatelessWidget {
               splashColor: Colors.white24,
               // color: (selectedIndex == index) ?  selectedColor : color,
               color:
-              // (cartModel.myBillingStatus == 'Loading') ?
-                    (Colors.green[600])!
-                  // : Theme.of(context).accentColor.withOpacity(0.85)
+              (cartModel.myBillingStatus == 'Loading') ?
+                  Theme.of(context).accentColor.withOpacity(0.85)
+                  : (Colors.green[600])!
               ,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),

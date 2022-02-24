@@ -182,7 +182,7 @@ SnackBar errSnackBar(context, String errorNotes) {
 }
 // ignore: deprecated_member_use
 
-void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
+void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) async {
 
   void _placeOrder() {
     var isPaying = true;
@@ -204,7 +204,6 @@ void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
         // Clear ShippingIndex & reset paymentIndex
         Provider.of<CheckoutProviderV3>(context, listen: false).changeShippingIndex(0);
         Provider.of<CheckoutProviderV3>(context, listen: false).changePaymentIndex(0);
-        cartModel.changeBillingStatus('Stop');
         await Navigator.push(
           context,
           MaterialPageRoute(
@@ -236,5 +235,7 @@ void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) {
     print('Everything is ready for purchase!');
     cartModel.changeBillingStatus('Loading');
     _placeOrder();
+    await Future.delayed(const Duration(seconds: 1)).then((value) =>
+        cartModel.changeBillingStatus('Stop'));
   }
 }

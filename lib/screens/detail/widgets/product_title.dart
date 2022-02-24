@@ -156,15 +156,22 @@ class _ProductTitleState extends BaseScreen<ProductTitle> {
         const SizedBox(height: 10),
         Row(
           children: <Widget>[
-            Text(
-              widget.product!.type != 'grouped'
-                  ? PriceTools.getCurrencyFormatted(
-                      price ?? '0.0', currencyRate,
-                      currency: currency)!
-                  : Provider.of<ProductModel>(context).detailPriceRange,
-              style: Theme.of(context).textTheme.headline5!.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+            Consumer<ProductModel>(
+              builder: (context, productModel, child) {
+                print('productModel');
+                print(productModel.detailPriceRange);
+                print(productModel.cardPriceRange);
+                return Text(
+                  widget.product!.type != 'grouped'
+                      ? PriceTools.getCurrencyFormatted(
+                          price ?? '0.0', currencyRate,
+                          currency: currency)!
+                      : productModel.detailPriceRange,
+                  style: Theme.of(context).textTheme.headline5!.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                );
+              }
             ),
 
             /// For variable product, hide regular price when loading product variation.

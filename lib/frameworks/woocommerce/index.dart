@@ -148,7 +148,7 @@ class WooWidget extends BaseFrameworks
 
   // Create a new order on woocomarce
   @override
-  Future<void> createOrder(BuildContext context, // # 2
+  Future<Order?> createOrder(BuildContext context, // # 2
       {Function? onLoading,
       Function? success,
       Function? error,
@@ -198,6 +198,7 @@ class WooWidget extends BaseFrameworks
         await storage.setItem('orders', listOrder);
       }
       success!(order);
+      return order;
     } catch (e, trace) {
       printLog(e.toString());
       printLog(trace.toString());
@@ -205,6 +206,16 @@ class WooWidget extends BaseFrameworks
         error(e.toString());
       }
     }
+  }
+
+  // A function return sample
+  void whatever({Function? success}){
+    success!('lol');
+  }
+  void callWhatever(){
+    whatever(
+      success: (status) => print('status $status')
+    );
   }
 
   @override
@@ -237,6 +248,8 @@ class WooWidget extends BaseFrameworks
     var params =
         Order().toJson(cartModel!, user != null ? user.id : null, true);
     params['token'] = user != null ? user.cookie : null;
+
+    // 2. Start iCredit payment, change status to Completed on Success
     makePaymentWebView(context, params, onLoading, success, error);
 
   }
@@ -245,16 +258,11 @@ class WooWidget extends BaseFrameworks
   Future<void> makePaymentWebView(context, Map<String, dynamic> params,
       Function? onLoading, Function? webView_success, Function? error) async {
     try {
-      // onLoading(true);
-
-      // Original
-      // var url = await Services().api.getCheckoutUrl(params, Provider.of<AppModel>(context, listen: false).langCode)!;
-      // My
-      // final addressModel = Provider.of<CartModel>(context).address;
       final addressModel =
           Provider.of<CartModel>(context, listen: false).address;
       // final paymentMethodModel = Provider.of<PaymentMethodModel>(context);
       // final order_details = provider.of<
+
       var url = await iCreditGetUrl(
           city: '${addressModel?.city}',
           street: '${addressModel?.street}',
@@ -262,7 +270,19 @@ class WooWidget extends BaseFrameworks
           email: '${addressModel?.email}',
           buyer_name: '${addressModel?.firstName}',
           total_price:
-              Provider.of<CartModel>(context, listen: false).getTotal());
+          Provider.of<CartModel>(context, listen: false).getTotal());
+
+      // onLoading(true);
+      // 1. Create order with status Pending AKA ממתין לתשלום
+      Order? order;
+      await createOrder(context,
+          bacs: true, onLoading: onLoading, success:
+              (Order _order){
+            // webView_success;
+            print('createOrder $_order');
+              order = _order;
+              },
+          error: error);
 
       // onLoading(false);
       await Navigator.push(
@@ -274,33 +294,34 @@ class WooWidget extends BaseFrameworks
                   print('makePaymentWebView() - onFinish');
                   print('statuss:$status');
                   if(status != null){
-                    await createOrder(context,
-                    paid: true,
-                    bacs: false, onLoading: onLoading, success: webView_success, error: error);
-                        return;
+
+                    // await createOrder(context,
+                    // paid: true,
+                    // bacs: false, onLoading: onLoading, success: webView_success, error: error);
+
+                    // webView_success;
+                    final userModel = Provider.of<UserModel>(context, listen: false);
+                    print('order?.id ${order?.id}');
+                    await Services().api.updateOrder('40342',
+                        status: 'processing',
+                        token: userModel.user != null ? userModel.user!.cookie : null);
+                        // return;
+
+                    print('------');
+                    print('placeOrder Success:');
+                    print(order);
+                    Provider.of<CartModel>(context, listen: false).clearCart();
+                    Provider.of<CartModel>(context, listen: false).changeBillingStatus('Stop');
+                    // Clear ShippingIndex & reset paymentIndex
+                    Provider.of<CheckoutProviderV3>(context, listen: false).changeShippingIndex(0);
+                    Provider.of<CheckoutProviderV3>(context, listen: false).changePaymentIndex(0);
+                    await Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) => SuccessScreen(
+                            order: Order(number: order?.number),
+                          )),
+                    );
                   }
-
-
-                  /*await createOrder(context,
-                      paid: true,
-                      bacs: false, onLoading: onLoading, success: (){}, error: error)*/
-/*
-                  var cartModel = Provider.of<CartModel>(context, listen: false);
-                  print('------');
-                  // print(order);
-                  cartModel.clearCart();
-                  // Clear ShippingIndex & reset paymentIndex
-                  Provider.of<CheckoutProviderV3>(context, listen: false).changeShippingIndex(0);
-                  Provider.of<CheckoutProviderV3>(context, listen: false).changePaymentIndex(1);
-                  cartModel.changeBillingStatus('Stop');
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SuccessScreen(
-                          order: Order(number: 'XYZ'),
-                        )),
-                  );
-                  */
                 })),
       );
     } catch (e, trace) {

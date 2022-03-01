@@ -28,12 +28,12 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '32000'
+    flutterVersionCode = '33000'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '32.00.0 - 1000ILS+ Payments'
+    flutterVersionName = '33.00.0 - Fix Pay but no Woo order'
 }
 
 apply plugin: 'com.android.application'

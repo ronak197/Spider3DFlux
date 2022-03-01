@@ -196,22 +196,7 @@ void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) a
         print(status);
       },
       paymentMethod: cartModel.paymentMethod,
-      success: (Order? order) async {
-        print('------');
-        print('placeOrder Success:');
-        print(order);
-        cartModel.clearCart();
-        // Clear ShippingIndex & reset paymentIndex
-        Provider.of<CheckoutProviderV3>(context, listen: false).changeShippingIndex(0);
-        Provider.of<CheckoutProviderV3>(context, listen: false).changePaymentIndex(0);
-        await Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => SuccessScreen(
-                order: Order(number: order?.number),
-              )),
-        );
-      },
+      success: (Order? order) async {},
       error: (message) {
         isPaying = false;
       },
@@ -235,7 +220,5 @@ void handleCheckoutButton(context, CartModel cartModel, /*Function onFinish*/) a
     print('Everything is ready for purchase!');
     cartModel.changeBillingStatus('Loading');
     _placeOrder();
-    await Future.delayed(const Duration(seconds: 1)).then((value) =>
-        cartModel.changeBillingStatus('Stop'));
   }
 }

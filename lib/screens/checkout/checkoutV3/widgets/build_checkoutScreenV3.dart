@@ -109,7 +109,8 @@ Widget buildAddNoteButton(BuildContext context) {
         builder: (context, value, child) => Container(
           // color: Colors.green,
           margin: const EdgeInsets.only(right: 3),
-          width: 200,
+          // width: 200,
+          width: MediaQuery.of(context).size.width * 0.5,
           child: Text(
             noteController.text,
             overflow: TextOverflow.ellipsis,

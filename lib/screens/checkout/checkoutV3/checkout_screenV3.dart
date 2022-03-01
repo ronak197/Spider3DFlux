@@ -94,10 +94,13 @@ class CheckoutScreenV3 extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 7.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: [ buildAddNoteButton(context), SizedBox(
-                    width: 120,
+                children: [
+                  Container(
+                      // width: 140,
+                      child: buildAddNoteButton(context)),
+                  Flexible(
                     child: Column(
                       children: [
                         buildRowPrices(context, 'הזמנה:'),

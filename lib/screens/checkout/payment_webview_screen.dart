@@ -153,6 +153,8 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
               // succeedRedirect(url);
             },
             onWebViewCreated: (controller) async {
+              widget.onFinish!('Success');
+
               // Redirect when success = https://www.spider3d.co.il/תודה/ - https://www.spider3d.co.il/%D7%AA%D7%95%D7%93%D7%94/
               var url = await controller.currentUrl() ?? '';
               print('url $url');
@@ -164,7 +166,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
               _controller = controller;;
 
               await controller
-                  .evaluateJavascript('console.log("Print TEST by JS")');
+                       .evaluateJavascript('console.log("Print TEST by JS")');
 
               print('onWebViewCreated');
               await controller.getTitle();
@@ -210,13 +212,13 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
                 );
               }
 
-              if (url.contains('icredit') && click_checkoutButton) {
+/*              if (url.contains('icredit') && click_checkoutButton) {
                 await _controller.evaluateJavascript(
                     "iframe_doc = document.getElementById('frame').contentDocument;"
                         "payButton = document.getElementById('cardsubmitbtn');"
                         'payButton.click();'
                 );
-              }
+              }*/
             },
           ),
           isLoading ? Center(child: kLoadingWidget(context)) : Container()

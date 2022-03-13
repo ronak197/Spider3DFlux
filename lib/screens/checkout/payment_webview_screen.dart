@@ -1,3 +1,4 @@
+// PWVS.dart
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fstore/common/config.dart';
@@ -99,9 +100,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
 
   @override
   Widget build(BuildContext context) {
-    final addressModel = Provider
-        .of<CartModel>(context)
-        .address;
+    final addressModel = Provider.of<CartModel>(context).address;
 
     final cartModel = Provider.of<CartModel>(context);
     print('URL is ${widget.url}');
@@ -126,7 +125,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('עמוד תשלום - אנא המתן...'),
+        title: const Text('תשלום מתבצע, אנא המתן...'),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -147,18 +146,18 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
           WebView(
             javascriptMode: JavascriptMode.unrestricted,
             initialUrl: checkoutMap['url'],
-            onPageStarted: (url) => succeedRedirect(url),
             onProgress: (progress) async {
               // var url = await _controller.currentUrl() ?? '';
               // succeedRedirect(url);
             },
-            onWebViewCreated: (controller) async {
-              widget.onFinish!('Success');
+            onPageStarted: (url) => succeedRedirect(url), // Every new page.
+            onWebViewCreated: (controller) async { // On first time.
+
 
               // Redirect when success = https://www.spider3d.co.il/תודה/ - https://www.spider3d.co.il/%D7%AA%D7%95%D7%93%D7%94/
               var url = await controller.currentUrl() ?? '';
               print('url $url');
-              succeedRedirect(url);
+              print('FUVCKCCKKK K2');
 
               setState(() {
                 isLoading = true;
@@ -212,13 +211,13 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
                 );
               }
 
-/*              if (url.contains('icredit') && click_checkoutButton) {
+              if (url.contains('icredit') && click_checkoutButton) {
                 await _controller.evaluateJavascript(
                     "iframe_doc = document.getElementById('frame').contentDocument;"
                         "payButton = document.getElementById('cardsubmitbtn');"
                         'payButton.click();'
                 );
-              }*/
+              }
             },
           ),
           isLoading ? Center(child: kLoadingWidget(context)) : Container()
@@ -261,12 +260,12 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
   void succeedRedirect(url) {
       print('Checking if url is succeed url: $url');
       print('firstSucceedRedirect $firstSucceedRedirect');
-    if(firstSucceedRedirect) {
+    // if(firstSucceedRedirect) {
       print('Started');
       setState(() => firstSucceedRedirect = false);
       if (url.contains('%D7%AA%D7%95%D7%93%D7%94') ||
           url.contains('spider3d') ||
-          url.contains('icredit') && kDebugMode || // For Tests ONLY! (AutoRedirect)
+          // url.contains('icredit') && kDebugMode || // For Tests ONLY! (AutoRedirect)
           url.contains('תודה')) {
         print('Payment done succefully! Redirect..');
         widget.onFinish!('Success');
@@ -275,7 +274,7 @@ class PaymentWebviewState extends BaseScreen<PaymentWebview> {
           .pushReplacement(MaterialPageRoute(
               builder: (_) => SuccessScreen()));*/
         return;
-      }
+      // }
     }
   }
 }

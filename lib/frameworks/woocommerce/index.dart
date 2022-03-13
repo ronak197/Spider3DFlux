@@ -18,6 +18,7 @@ import '../../models/index.dart'
     User,
     UserModel;
 
+// index.dart
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -119,7 +120,7 @@ class WooWidget extends BaseFrameworks
 
       /// Navigate to Webview payment
       String? orderSuccess;
-      await Navigator.push(
+/*      await Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => PaymentWebview(
@@ -128,7 +129,7 @@ class WooWidget extends BaseFrameworks
                     orderSuccess = status;
                   },
                 )),
-      );
+      );*/
       if (orderSuccess != null) {
         cartModel.clearCart();
         await Navigator.push(
@@ -302,7 +303,7 @@ class WooWidget extends BaseFrameworks
                     // webView_success;
                     final userModel = Provider.of<UserModel>(context, listen: false);
                     print('order?.id ${order?.id}');
-                    await Services().api.updateOrder('40342',
+                    await Services().api.updateOrder('${order?.id}',
                         status: 'processing',
                         token: userModel.user != null ? userModel.user!.cookie : null);
                         // return;

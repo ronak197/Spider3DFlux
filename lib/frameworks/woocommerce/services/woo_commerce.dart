@@ -52,6 +52,7 @@ class WooCommerce extends BaseServices {
 
   String? isSecure;
   String? url;
+  String? myApiAuth;
   String? blogUrl;
   List<Category> categories = [];
   Map<String, Tag> tags = {};
@@ -62,6 +63,8 @@ class WooCommerce extends BaseServices {
   BlogNewsApi? blogApi;
   WordPressApi? wordPressAPI;
 
+
+  // var myApiAuth = 'Basic Y2tfN2EzZDVlNjBmOTdmOWYyM2I0OTZjNWRmNzZkZmVmOTNkYzBiYjZkYTpjc180NmM0OTBlYmYwM2JkMDNiZTQ1Nzc0NzVlNzc3Y2E3NTQwOGRkOGMz';
   void appConfig(appConfig) {
     blogApi = BlogNewsApi(appConfig['blog'] ?? appConfig['url']);
     wordPressAPI = WordPressApi(appConfig['url']);
@@ -69,6 +72,7 @@ class WooCommerce extends BaseServices {
         appConfig['consumerSecret']);
     isSecure = appConfig['url'].indexOf('https') != -1 ? '' : '&insecure=cool';
     url = appConfig['url'];
+    myApiAuth = appConfig['myApiAuth'];
     blogUrl = appConfig['blog'] ?? url;
     configCache = null;
     categories = [];
@@ -570,7 +574,8 @@ class WooCommerce extends BaseServices {
 
       var response = await httpPost(endPoint.toUri()!,
           body: convert.jsonEncode({'token': token}),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth',
+        'Content-Type': 'application/json'});
 
       var jsonDecode = convert.jsonDecode(response.body);
 
@@ -613,7 +618,7 @@ class WooCommerce extends BaseServices {
       final response = await httpPost(
           '$url/wp-json/api/flutter_woo/products/reviews'.toUri()!,
           body: convert.jsonEncode(data),
-          headers: {'User-Cookie': token!, 'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','User-Cookie': token!, 'Content-Type': 'application/json'});
       var body = convert.jsonDecode(response.body);
       if (body['message'] == null) {
         return;
@@ -699,7 +704,7 @@ class WooCommerce extends BaseServices {
       final response = await httpPost(
           '$url/wp-json/api/flutter_woo/shipping_methods'.toUri()!,
           body: convert.jsonEncode(params),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','Content-Type': 'application/json'});
       final body = convert.jsonDecode(response.body);
       if (response.statusCode == 200) {
         for (var item in body) {
@@ -795,7 +800,7 @@ class WooCommerce extends BaseServices {
       final response = await httpPost(
           '$url/wp-json/api/flutter_woo/payment_methods'.toUri()!,
           body: convert.jsonEncode(params),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','Content-Type': 'application/json'});
       final body = convert.jsonDecode(response.body);
 
       if (response.statusCode == 200) {
@@ -911,7 +916,7 @@ class WooCommerce extends BaseServices {
               .toUri()!,
           // '$url/wp-json/api/flutter_order/create'.toUri()!,
           body: convert.jsonEncode(params),
-          headers: {
+          headers: {'Authorization': '$myApiAuth',
             'User-Cookie': user.user != null ? user.user!.cookie! : '',
             // 'User-Cookie': 'token=c3hhfDE2MzYxMDgxMTd8bG02cWtvMWY5WnhneEhMUmJhWEpMNE9RWERJVUZNZUlJWVJIMjEzS1BhQXwwYjhjZGVkZjU2MWZlOTljYmRlMGNmMjMxZGVjY2Y4NmI0OTA4OTA4ZTRlNzA2OTA4ZjIyMTAxNTBiNmI5NmNk',
             'Content-Type': 'application/json'
@@ -1075,7 +1080,7 @@ class WooCommerce extends BaseServices {
       final response = await httpPost(
           '$url/wp-json/api/flutter_user/update_user_profile'.toUri()!,
           body: body,
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','Content-Type': 'application/json'});
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         data['cookie'] = token;
@@ -1115,7 +1120,7 @@ class WooCommerce extends BaseServices {
             'first_name': firstName,
             'last_name': lastName,
           }),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','Content-Type': 'application/json'});
       var body = convert.jsonDecode(response.body);
       if (response.statusCode == 200 && body['message'] == null) {
         var cookie = body['cookie'];
@@ -1139,7 +1144,7 @@ class WooCommerce extends BaseServices {
           '$url/wp-json/api/flutter_user/generate_auth_cookie/?insecure=cool&$isSecure'
               .toUri()!,
           body: convert.jsonEncode({'seconds': cookieLifeTime.toString(), 'username': username, 'password': password}),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','Content-Type': 'application/json'});
 
       final body = convert.jsonDecode(response.body);
       if (response.statusCode == 200 && isNotBlank(body['cookie'])) {
@@ -1214,7 +1219,7 @@ class WooCommerce extends BaseServices {
   Future<AfterShip> getAllTracking() async {
     final data = await httpCache(
         'https://api.aftership.com/v4/trackings'.toUri()!,
-        headers: {'aftership-api-key': afterShip['api']});
+        headers: {'Authorization': '$myApiAuth','aftership-api-key': afterShip['api']});
     return AfterShip.fromJson(json.decode(data.body));
   }
 
@@ -1431,7 +1436,7 @@ class WooCommerce extends BaseServices {
           body: convert.jsonEncode({
             'order': base64Str,
           }),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','Content-Type': 'application/json'});
       var body = convert.jsonDecode(response.body);
       if (response.statusCode == 200 && body is String) {
         print("flutter_user/checkout Body req:");
@@ -1472,7 +1477,7 @@ class WooCommerce extends BaseServices {
       var endpoint = '$url/wp-json/api/flutter_user/reset-password'.toUri()!;
       var response = await httpPost(endpoint,
           body: convert.jsonEncode(data),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','Content-Type': 'application/json'});
       var result = convert.jsonDecode(response.body);
       if (response.statusCode == 200) {
         return '';
@@ -1560,7 +1565,7 @@ class WooCommerce extends BaseServices {
       final response = await httpPost(
           '$url/wp-json/api/flutter_woo/cart'.toUri()!,
           body: convert.jsonEncode(params),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','Content-Type': 'application/json'});
       final body = convert.jsonDecode(response.body);
       if (response.statusCode == 200) {
         return body;
@@ -1612,7 +1617,7 @@ class WooCommerce extends BaseServices {
       final response = await httpPost(
           '$url/wp-json/api/flutter_woo/taxes'.toUri()!,
           body: convert.jsonEncode(params),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','Content-Type': 'application/json'});
       final body = convert.jsonDecode(response.body);
       if (response.statusCode == 200) {
         var taxes = <Tax>[];
@@ -1729,7 +1734,7 @@ class WooCommerce extends BaseServices {
       final response = await httpPost(
           '$url/wp-json/api/flutter_multi_vendor/product'.toUri()!,
           body: convert.jsonEncode(data),
-          headers: {
+          headers: {'Authorization': '$myApiAuth',
             'User-Cookie': cookie!,
             'Content-Type': 'application/json'
           });
@@ -1751,7 +1756,7 @@ class WooCommerce extends BaseServices {
       final response = await httpPost(
           '$url/wp-json/api/flutter_multi_vendor/products/owner'.toUri()!,
           body: convert.jsonEncode({'cookie': cookie, 'page': page}),
-          headers: {
+          headers: {'Authorization': '$myApiAuth',
             'User-Cookie': cookie!,
             'Content-Type': 'application/json'
           });
@@ -1776,7 +1781,7 @@ class WooCommerce extends BaseServices {
       final response = await httpPost(
           '$url/wp-json/api/flutter_multi_vendor/media'.toUri()!,
           body: convert.jsonEncode(data),
-          headers: {'User-Cookie': token!, 'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','User-Cookie': token!, 'Content-Type': 'application/json'});
       var body = convert.jsonDecode(response.body);
       if (body['message'] == null) {
         return body;
@@ -1875,7 +1880,7 @@ class WooCommerce extends BaseServices {
       final response = await httpPost(
           '$url/wp-json/api/flutter_booking/checkout'.toUri()!,
           body: convert.jsonEncode(booking.toJsonAPI()),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Authorization': '$myApiAuth','Content-Type': 'application/json'});
 
       var body = convert.jsonDecode(response.body);
       if (response.statusCode == 200 && body['appointment'] != null) {

@@ -6,9 +6,12 @@ Map<String, dynamic> environment = {
 
   "serverConfig": {
     "url": "https://spider3d.co.il",
-    "consumerSecret": "cs_828fd108ff909e5aff0be3be11d3df07503a3a87",
+    "consumerSecret": "cs_46c490ebf03bd03be4577475e777ca75408dd8c3",
     "type": "woo",
-    "consumerKey": "ck_41073388529656e637ba4c497237a3f0f34bd2a9"
+    // myApiAuth String is needed for some Get/Post requests because "miniOrange API Authentication" Wordpress plugin.
+    // Token generated from Post man - Auth - "Basic auth" & consumerKey, consumerSecret
+    "myApiAuth" : 'Basic Y2tfN2EzZDVlNjBmOTdmOWYyM2I0OTZjNWRmNzZkZmVmOTNkYzBiYjZkYTpjc180NmM0OTBlYmYwM2JkMDNiZTQ1Nzc0NzVlNzc3Y2E3NTQwOGRkOGMz',
+    "consumerKey": "ck_7a3d5e60f97f9f23b496c5df76dfef93dc0bb6da"
   },
   "defaultDarkTheme": false,
   "loginSMSConstants": {

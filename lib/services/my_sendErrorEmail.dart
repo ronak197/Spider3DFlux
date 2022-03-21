@@ -19,7 +19,7 @@ void sendErrorMail(
     'theblackhero2@gmail.com'
   ];
   var title =
-      'פרטי שגיאה מיישמון Spider3D 🕷📱️ + מדריך תיקון למוצר ווריאציה'; //subject of the email
+      'אפליקציית ספיידר פרטי שגיאה מיישמון Spider3D 🕷📱️ + מדריך תיקון למוצר ווריאציה'; //subject of the email
 
   var content = '''
     היי , זוהי הודעה שהוגדרה להשלח אוטומטית במידה ולקוח נתקל בתקלה בעת בחירת ווריאצייה או הוספה לסל.
@@ -39,6 +39,12 @@ void sendErrorMail(
     תיאור התקלה שהתקבל - $err_details
     ----------------------------------
     רצף השגיאות שהתקבל - $err_trace
+    
+   =========== This mail bug fix ===============
+   אם מייל זה לא נשלח לך יותר:
+   Google - החל מ-30 במאי 2022 ההגדרה הזו לא תהיה זמינה יותר - https://prnt.sc/B9wB3V-MCWdi
+   https://prnt.sc/KIzQksl6210z
+   
     ''';
 
   // Create our email message.

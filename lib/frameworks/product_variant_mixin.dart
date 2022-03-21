@@ -458,6 +458,21 @@ mixin ProductVariantMixin {
           if (isAvailable && inStock && !isExternal)
             Expanded(
               child: GestureDetector(
+                onLongPress: () {
+                  print('addToCart() Error caught, Sending Email with full details..');
+                  const snackBar = SnackBar(
+                      duration: Duration(seconds: 6),
+                      content: Text(
+                          'תודה! זיהינו את ההתראה שלך... השגיאה התקבלה אצלנו ותטופל. אנא נסה שוב מחר!'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  sendErrorMail(
+                      product_name: product.name,
+                      product_id: product.id,
+                      product_link: product.permalink,
+                      err_details: 'This mail has been sent because user click LongPress on Add to card button',
+                      err_trace: 'PlaceHolder');
+
+                },
                 onTap: () {
                   try {
                     addToCart(false, inStock);

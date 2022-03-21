@@ -34,7 +34,6 @@ class ProductVariant extends StatefulWidget {
 
 class _StateProductVariant extends State<ProductVariant> {
   Product product;
-
   ProductVariation? productVariation;
 
   Map<String, Map<String, AddonsOption>> selectedOptions = {};

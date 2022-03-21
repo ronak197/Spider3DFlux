@@ -333,10 +333,16 @@ class Routes {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Error'),
+          backgroundColor: kColorSpiderRed,
+          title: const Text('משהו השתבש...'),
         ),
         body: Center(
-          child: Text(message),
+          child: Column(
+            children: [
+              const Text('אנא חזור למסך הראשי'),
+              Text(message),
+            ],
+          ),
         ),
       );
     });

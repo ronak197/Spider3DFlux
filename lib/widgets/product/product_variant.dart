@@ -14,7 +14,7 @@ enum VariantLayout { inline, dropdown }
 class BasicSelection extends StatelessWidget {
   final Map<String?, String?>? imageUrls;
   final List<String?> options;
-  final String? value;
+  final String? sValue;
   final String? title;
   final String? type;
   final Function? onChanged;
@@ -23,7 +23,7 @@ class BasicSelection extends StatelessWidget {
   BasicSelection(
       {required this.options,
       required this.title,
-      required this.value,
+      required this.sValue,
       this.type,
       this.layout,
       this.onChanged,
@@ -36,7 +36,7 @@ class BasicSelection extends StatelessWidget {
     if (type == 'option') {
       return OptionSelection(
         options: options,
-        value: value,
+        value: sValue,
         title: title,
         onChanged: onChanged,
       );
@@ -46,7 +46,7 @@ class BasicSelection extends StatelessWidget {
       return ImageSelection(
         imageUrls: imageUrls,
         options: options,
-        value: value,
+        value: sValue,
         title: title,
         onChanged: onChanged,
       );
@@ -92,7 +92,7 @@ class BasicSelection extends StatelessWidget {
                     ),
                     decoration: type == 'color'
                         ? BoxDecoration(
-                            color: item!.toUpperCase() == value!.toUpperCase()
+                            color: item!.toUpperCase() == sValue!.toUpperCase()
                                 ? HexColor(kNameToHex[item
                                         .toString()
                                         .replaceAll(' ', '_')
@@ -113,7 +113,7 @@ class BasicSelection extends StatelessWidget {
                             ),
                           )
                         : BoxDecoration(
-                            color: item!.toUpperCase() == value!.toUpperCase()
+                            color: item!.toUpperCase() == sValue!.toUpperCase()
                                 ? primaryColor
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(5.0),
@@ -127,7 +127,7 @@ class BasicSelection extends StatelessWidget {
                         ? SizedBox(
                             height: 25,
                             width: 25,
-                            child: item == value
+                            child: item == sValue
                                 ? const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -143,10 +143,10 @@ class BasicSelection extends StatelessWidget {
                               padding:
                                   const EdgeInsets.only(top: 10, bottom: 10),
                               child: Text(
-                                '$item',
+                                '($sValue) $item',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  color: item == value
+                                  color: item == sValue
                                       ? Colors.white
                                       : Theme.of(context).accentColor,
                                   fontSize: 14,
@@ -196,7 +196,7 @@ class OptionSelection extends StatelessWidget {
                       onChanged!(option);
                       Navigator.pop(context);
                     },
-                    title: Text(option!, textAlign: TextAlign.center)),
+                    title: Text('X$option', textAlign: TextAlign.center)),
               Container(
                 height: 1,
                 decoration: const BoxDecoration(color: kGrey200),

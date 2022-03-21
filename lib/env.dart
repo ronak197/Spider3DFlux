@@ -453,7 +453,7 @@ Map<String, dynamic> environment = {
     "showStockQuantity": true,
     "showProductCategories": true,
     "showProductTags": false,
-    "hideInvalidAttributes": true
+    "hideInvalidAttributes": false
   },
   "productVariantLayout": {
     "color": "color",

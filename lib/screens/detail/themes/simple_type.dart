@@ -231,7 +231,12 @@ class _SimpleLayoutState extends State<SimpleLayout>
                               children: <Widget>[
                                 product.type == 'grouped'
                                     ? Container()
-                                    : ProductTitle(product),
+                                    : Builder(
+                                      builder: (context) {
+
+                                        return ProductTitle(product);
+                                      }
+                                    ),
                               ],
                             ),
                           ),

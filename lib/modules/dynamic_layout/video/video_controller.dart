@@ -29,26 +29,26 @@ class _VideoControllerState extends State<VideoController> {
     //widget.controller.addListener(_listener);
     Timer.periodic(const Duration(seconds: 1), (callback) {
       if (widget.controller.position != null &&
-          widget.controller.value.duration != null) {
+          widget.controller.sValue.duration != null) {
         _listener();
       }
     });
-    _pause = !widget.controller.value.isPlaying;
+    _pause = !widget.controller.sValue.isPlaying;
     super.initState();
   }
 
   void _listener() {
     setState(() {
-      _duration = widget.controller.value.duration;
-      _loading = widget.controller.value.position.inSeconds /
-          widget.controller.value.duration.inSeconds;
-      _pause = !widget.controller.value.isPlaying;
+      _duration = widget.controller.sValue.duration;
+      _loading = widget.controller.sValue.position.inSeconds /
+          widget.controller.sValue.duration.inSeconds;
+      _pause = !widget.controller.sValue.isPlaying;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    var _position = widget.controller.value.position;
+    var _position = widget.controller.sValue.position;
     var _durationString = _position != null && _duration != null
         ? '${_position.inMinutes % 60}:${_position.inSeconds % 60} / ${_duration.inMinutes % 60}:${_duration.inSeconds % 60}'
         : '';

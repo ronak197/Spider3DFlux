@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:inspireui/utils/logs.dart';
 import 'package:provider/provider.dart';
@@ -166,7 +168,6 @@ mixin WooVariantMixin on ProductVariantMixin {
   }) {
     if (kProductDetail.hideInvalidAttributes) {
       final previousVal = mapAttribute![attr!.name];
-
       /// Unselect if option is selected.
       if (val.toString() == previousVal) {
         mapAttribute[attr.name] = null;
@@ -186,6 +187,13 @@ mixin WooVariantMixin on ProductVariantMixin {
     }
 
     final productVariation = updateVariation(variations, mapAttribute);
+    log('onSelectProductVariant() : 162 - variations:');
+    variations.forEach((item) {
+      print(item.toJson());
+      print('-----------');
+    });
+    log('onSelectProductVariant() : 162 - mapAttribute: $mapAttribute');
+    log('onSelectProductVariant() : 162 - productVariation Json: ${productVariation?.toJson()}');
     onFinish!(mapAttribute, productVariation);
   }
 
@@ -193,10 +201,14 @@ mixin WooVariantMixin on ProductVariantMixin {
     String lang,
     Product product,
     Map<String?, String?>? mapAttribute,
-    Function onSelectProductVariant,
+    Function _onSelectProductVariant,
     List<ProductVariation> variations,
   ) {
     var listWidget = <Widget>[];
+    print('--- mapAttribute');
+    print(mapAttribute);
+    print('--- variations');
+    print(variations);
 
     final checkProductAttribute = product.attributes?.isNotEmpty ?? false;
     if (checkProductAttribute) {
@@ -211,7 +223,7 @@ mixin WooVariantMixin on ProductVariantMixin {
             options = _getValidAttributeOptions(attr, mapAttribute, variations);
           }
 
-          var selectedValue = mapAttribute[attr.name] ?? '';
+          var selectedValue = mapAttribute[attr.name] ?? 'myNone';
 
           final attrType = ProductVariantLayout[attr.cleanSlug ?? attr.name] ??
               ProductVariantLayout[attr.name!.toLowerCase()] ??
@@ -239,12 +251,12 @@ mixin WooVariantMixin on ProductVariantMixin {
                       attr.name!.toLowerCase()
                   : attr.name!.toLowerCase(),
               type: attrType,
-              value: selectedValue,
-              onChanged: (val) => onSelectProductVariant(
+              sValue: selectedValue,
+              onChanged: (val) => _onSelectProductVariant(
                   attr: attr,
                   val: val,
                   mapAttribute: mapAttribute,
-                  variations: variations),
+                  variations: variations,),
             ),
           );
           listWidget.add(

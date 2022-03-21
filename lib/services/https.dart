@@ -12,7 +12,7 @@ const isBuilder = false;
 Future<http.Response> httpCache(
   Uri url, {
   Map<String, String>? headers,
-  bool refreshCache = false,
+  bool refreshCache = true,
 }) async {
   final startTime = DateTime.now();
 

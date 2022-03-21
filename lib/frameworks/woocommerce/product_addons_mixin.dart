@@ -158,7 +158,7 @@ mixin ProductAddonsMixin {
           }
 
           return ExpansionTile(
-            tilePadding: const EdgeInsets.only(right: 8.0),
+            tilePadding: const EdgeInsets.only(right: 8.0, bottom: 00),
             title: ListTile(
               visualDensity: VisualDensity.compact,
               title: Row(
@@ -168,6 +168,7 @@ mixin ProductAddonsMixin {
                   Expanded(
                     child: Text(
                       item.name!,
+                      style: const TextStyle(color: kGrey600)
                     ),
                   ),
                   (item.isRadioButtonType && item.required!)
@@ -201,6 +202,7 @@ mixin ProductAddonsMixin {
                   final option = item.options![index];
                   final isSelected = selected[option.label] != null;
                   final onTap = () {
+                      print('XX ${item.toJson()}');
                     if (item.isRadioButtonType) {
                       selected.clear();
                       selected[option.label!] = option;

@@ -5,7 +5,9 @@ import 'dart:convert' as convert;
 import 'dart:convert';
 import 'dart:core';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:fstore/services/https.dart';
+import 'package:fstore/services/my_sendErrorEmail.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart' show compute;
 import 'package:quiver/strings.dart';
@@ -2018,7 +2020,7 @@ class WooCommerce extends BaseServices {
   }
 
   @override
-  Future<Product?> getProductByPermalink(String productPermalink) async {
+  Future<Product?> getProductByPermalink(BuildContext context, String productPermalink) async {
     try {
       final response = await httpCache(
           '$url/wp-json/api/flutter_woo/products/dynamic?url=$productPermalink'
@@ -2031,9 +2033,21 @@ class WooCommerce extends BaseServices {
         throw Exception(body['message']);
       }
       return null;
-    } catch (e) {
-      //This error exception is about your Rest API is not config correctly so that not return the correct JSON format, please double check the document from this link https://docs.inspireui.com/fluxstore/woocommerce-setup/
-      rethrow;
+    } catch (e, trace) {
+      print('addToCart() Error caught, Sending Email with full details..');
+      const snackBar = SnackBar(
+          duration: Duration(seconds: 6),
+          content: Text(
+              'אופס! לא ניתן להגיע למוצר זה... השגיאה התקבלה אצלנו ותטופל. אנא חזור לדף הראשי!'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      sendErrorMail(
+          product_name: 'שגיאת לינק דינאמי',
+          product_id: 'Spider link: $productPermalink',
+          product_link: 'SpiderApp Full link: $url/wp-json/api/flutter_woo/products/dynamic?url=$productPermalink',
+          err_details: e.toString(),
+          err_trace: trace.toString());
+
+      print('addToCart() Error caught: e: $e \n trace: $trace');
     }
   }
 }

@@ -13,6 +13,7 @@ import '../models/vendor/store_model.dart';
 import 'wordpress/blognews_api.dart';
 
 export '../models/entities/paging_response.dart';
+import 'package:flutter/material.dart';
 
 abstract class BaseServices {
   BlogNewsApi? blogApi;
@@ -257,7 +258,9 @@ abstract class BaseServices {
 
   Future<List<Store>>? getNearbyStores(Prediction prediction) => null;
 
-  Future<Product?> getProductByPermalink(String productPermalink) async {}
+  Future<Product?> getProductByPermalink(
+      BuildContext context,
+      String productPermalink) async {}
 
   ///----FLUXSTORE LISTING----///
   Future<dynamic>? bookService({userId, value, message}) => null;

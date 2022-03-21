@@ -183,7 +183,7 @@ dependencies:
 
   # Cache Type - Location - in use? (effective)
   # ================================
-  # Save Api Requests - https.dart - YES (very effective)
+  # Save Api Requests - 'refreshCache' https.dart - YES (very effective)
   # Flutter package - cached_network_image: 3.0.0 - Yes (Unknown efficiency)
   # Flutter package -  extended_image: 4.1.0 - YES (Unknown efficiency)
   # appConfig (Json/Web) - 'isCaching' env.dart - YES (effective well)

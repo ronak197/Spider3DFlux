@@ -250,6 +250,7 @@ class FirebaseServices extends BaseFirebaseServices {
   void shareDynamicLinkProduct({context, productUrl, productId}) {
     DynamicLinkService().shareProductLink(
       productUrl: productUrl,
+      productId: productId,
     );
   }
 

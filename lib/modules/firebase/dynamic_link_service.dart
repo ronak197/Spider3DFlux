@@ -8,10 +8,16 @@ import '../../common/constants.dart' show RouteList, printLog;
 import '../../services/index.dart';
 
 class DynamicLinkService {
-  DynamicLinkParameters productParameters({required String productUrl}) {
+  DynamicLinkParameters productParameters({
+    required String productUrl,
+    required String productId,
+  }) {
+    print('https://www.spider3d.co.il/?p=$productId');
+
     return DynamicLinkParameters(
       uriPrefix: firebaseDynamicLinkConfig['uriPrefix'],
-      link: Uri.parse(productUrl),
+      // link: Uri.parse(productUrl), // Original
+      link: Uri.parse('https://www.spider3d.co.il/?p=$productId'),
       androidParameters: AndroidParameters(
         packageName: firebaseDynamicLinkConfig['androidPackageName'],
         minimumVersion: firebaseDynamicLinkConfig['androidAppMinimumVersion'],
@@ -33,6 +39,7 @@ class DynamicLinkService {
     FirebaseDynamicLinks.instance.onLink(
         onSuccess: (PendingDynamicLinkData? dynamicLink) async {
       final deepLink = dynamicLink?.link;
+      print('deepLink - ');
 
       if (deepLink != null) {
         printLog('[firebase-dynamic-link] onLink: $deepLink');
@@ -58,7 +65,7 @@ class DynamicLinkService {
       String productUrl, BuildContext context) async {
     try {
       /// Note: the deepLink URL will look like: https://mstore.io/product/stitch-detail-tunic-dress/
-      final product = await Services().api.getProductByPermalink(productUrl);
+      final product = await Services().api.getProductByPermalink(context, productUrl);
       await Navigator.of(context).pushNamed(
         RouteList.productDetail,
         arguments: product,
@@ -72,8 +79,12 @@ class DynamicLinkService {
   /// share product link that contains Dynamic link
   void shareProductLink({
     required String productUrl,
+    required String productId,
   }) async {
-    var productParams = productParameters(productUrl: productUrl);
+    var productParams = productParameters(
+        productUrl: productUrl,
+        productId: productId
+    );
     var firebaseDynamicLink = await generateFirebaseDynamicLink(productParams);
     await Share.share(
       firebaseDynamicLink.toString(),

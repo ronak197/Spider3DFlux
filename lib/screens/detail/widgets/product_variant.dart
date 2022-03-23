@@ -192,6 +192,7 @@ class _StateProductVariant extends State<ProductVariant> {
     Map<String?, String?>? mapAttribute,
     Function? onFinish,
   }) {
+    print('XXXXXXXX');
     services.widget.onSelectProductVariant(
       attr: attr!,
       val: val,
@@ -203,6 +204,8 @@ class _StateProductVariant extends State<ProductVariant> {
           this.mapAttribute = mapAttribute;
         });
         productVariation = variation;
+        print('variation?.toJson()');
+        print('${variation?.toJson()}');
         Provider.of<ProductModel>(context, listen: false)
             .changeProductVariation(variation);
 

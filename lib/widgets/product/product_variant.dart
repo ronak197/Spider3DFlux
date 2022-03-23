@@ -143,7 +143,8 @@ class BasicSelection extends StatelessWidget {
                               padding:
                                   const EdgeInsets.only(top: 10, bottom: 10),
                               child: Text(
-                                '($sValue) $item',
+                                // '($sValue) $item',
+                                '$item',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: item == sValue

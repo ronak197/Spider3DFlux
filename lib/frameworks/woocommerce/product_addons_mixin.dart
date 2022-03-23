@@ -200,24 +200,29 @@ mixin ProductAddonsMixin {
               Wrap(
                 children: List.generate(item.options!.length, (index) {
                   final option = item.options![index];
-                  final isSelected = selected[option.label] != null;
+                  var isSelected = selected[option.label] != null;
                   final onTap = () {
                       print('XX ${item.toJson()}');
-                    if (item.isRadioButtonType) {
+/*                    if (item.isRadioButtonType) {
                       selected.clear();
                       selected[option.label!] = option;
                       onSelectProductAddons!(selectedOptions: selectedOptions);
                       return;
-                    }
-                    if (item.isCheckboxType) {
+                    }*/
+
+                    // if (item.isCheckboxType) {
                       if (isSelected) {
                         selected.remove(option.label);
+                        isSelected = false; // my
                       } else {
                         selected[option.label!] = option;
+                        isSelected = true; // my
                       }
+                        print('isSelected');
+                        print(isSelected);
                       onSelectProductAddons!(selectedOptions: selectedOptions);
                       return;
-                    }
+                    // }
                   };
                   return Container(
                     constraints: BoxConstraints(
@@ -226,9 +231,10 @@ mixin ProductAddonsMixin {
                     child: item.isFileUploadType
                         ? Padding(
                             padding: const EdgeInsets.only(
+                              top: 2.0,
                               left: 8.0,
                               right: 8.0,
-                              bottom: 8.0,
+                              bottom: 2.0,
                             ),
                             child: Row(
                               children: [
@@ -294,15 +300,16 @@ mixin ProductAddonsMixin {
                             onTap: onTap,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
+                              mainAxisSize: MainAxisSize.max,
                               children: [
                                 if (item.isRadioButtonType)
-                                  Radio(
+                                  // Radio(
+                                    Checkbox(
                                     visualDensity: VisualDensity.compact,
-                                    groupValue: selected.keys.isNotEmpty
-                                        ? selected.keys.first
-                                        : '',
-                                    value: option.label,
+                                    // groupValue: selected.keys.isNotEmpty
+                                    //     ? selected.keys.first : '',
+                                    // value: option.label,
+                                    value: isSelected,
                                     onChanged: (dynamic _) => onTap(),
                                     activeColor: Theme.of(context).primaryColor,
                                   ),
@@ -321,7 +328,9 @@ mixin ProductAddonsMixin {
                                           const EdgeInsets.only(bottom: 8.0),
                                       child: TextField(
                                         onChanged: (text) {
+                                          print('XXXX 23/03/22');
                                           if (text.isEmpty) {
+                                            print('YYYY 23/03/22');
                                             selected.remove(item.name);
                                             onSelectProductAddons!(
                                                 selectedOptions:
@@ -330,8 +339,10 @@ mixin ProductAddonsMixin {
                                           }
 
                                           if (selected[item.name] != null) {
+                                            print('ZZZZ 23/03/22');
                                             selected[item.name]!.label = text;
                                           } else {
+                                            print('RRRRR 23/03/22');
                                             selected[item.name!] = AddonsOption(
                                               parent: item.name,
                                               type: item.type,

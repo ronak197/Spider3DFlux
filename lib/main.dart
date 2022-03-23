@@ -33,12 +33,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-/*  if (foundation.kDebugMode) {
-    var prefs = await SharedPreferences.getInstance();
-    // await prefs.setBool('seen', true);
-    await prefs.remove('seen');
-  }*/
-//----------------------------------------------------------------------
+//----------------------------------------------------------------------|
+/*  if (foundation.kDebugMode) {                                        |
+    var prefs = await SharedPreferences.getInstance();                  |
+    // await prefs.setBool('seen', true);                               |
+    await prefs.remove('seen');                                         |
+  }*/ //                                                                |
+//----------------------------------------------------------------------|
   Configurations().setConfigurationValues(environment);
   Provider.debugCheckInvalidValueType = null;
   var languageCode =

@@ -187,28 +187,59 @@ mixin WooVariantMixin on ProductVariantMixin {
     }
 
     final productVariation = updateVariation(variations, mapAttribute);
-    log('onSelectProductVariant() : 162 - variations:');
-    variations.forEach((item) {
-      print(item.toJson());
-      print('-----------');
-    });
-    log('onSelectProductVariant() : 162 - mapAttribute: $mapAttribute');
-    log('onSelectProductVariant() : 162 - productVariation Json: ${productVariation?.toJson()}');
-    onFinish!(mapAttribute, productVariation);
+    log('onSelectProductVariant() : 162 - val: $val \n');
+    // log('onSelectProductVariant() : 162 - mapAttribute: $mapAttribute \n');
+    // log('onSelectProductVariant() : 162 - variations:');
+    // variations.forEach((item) {
+    //   print(item.toJson());
+    //   print('-----------');
+    // });
+    // log('onSelectProductVariant() : 162 - mapAttribute: $mapAttribute');
+//     log('onSelectProductVariant() : 162 - productVariation Json: ${productVariation?.toJson()}');
+
+    onFinish!(mapAttribute, productVariation); /// My this line matters Variation bug!
+    // onFinish!(mapAttribute, variations[0]);
   }
 
   List<Widget> getProductAttributeWidget(
     String lang,
     Product product,
     Map<String?, String?>? mapAttribute,
-    Function _onSelectProductVariant,
+    Function basicSelectionAction, // This func actually sets above ^
     List<ProductVariation> variations,
   ) {
     var listWidget = <Widget>[];
-    print('--- mapAttribute');
-    print(mapAttribute);
-    print('--- variations');
-    print(variations);
+    // print('--- mapAttribute');
+    // print(mapAttribute);
+    // print('--- variations');
+    // variations.forEach((item) => print(item.toJson()));
+    print('Full variations data is on Woo_variant_mixin - getProductAttributeWidget()');
+    // region item Json
+
+/*          {
+        id: 23856,
+        sku: null,
+        price: 28,
+        regularPrice: 28,
+        sale_price: ,
+        date_on_sale_from: null,
+        date_on_sale_to: null,
+        on_sale: false,
+        in_stock: false,
+        stock_quantity: 0,
+        image: {
+          src: https: //i0.wp.com/www.spider3d.co.il/wp-content/uploads/2020/11/SmartSelect_20210417-081352_AliExpress.jpg?fit=1026%2C1057&ssl=1
+        },
+        attributes: [
+          {
+            id: 137,
+            name: מידת-חור,
+            option: 0-2%d7%9e%d7%9e
+          }
+        ]
+      }*/
+
+    // endregion item Json
 
     final checkProductAttribute = product.attributes?.isNotEmpty ?? false;
     if (checkProductAttribute) {
@@ -252,7 +283,7 @@ mixin WooVariantMixin on ProductVariantMixin {
                   : attr.name!.toLowerCase(),
               type: attrType,
               sValue: selectedValue,
-              onChanged: (val) => _onSelectProductVariant(
+              onChanged: (val) => basicSelectionAction(
                   attr: attr,
                   val: val,
                   mapAttribute: mapAttribute,

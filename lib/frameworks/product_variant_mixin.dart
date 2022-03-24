@@ -34,6 +34,8 @@ import '../../widgets/common/webview.dart';
 import 'dart:convert' as convert;
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
+
 
 // Product_varinat_mixing.dart - fluxStore-spider3d
 
@@ -68,15 +70,40 @@ mixin ProductVariantMixin {
 
     /// Find ProductVariation contain attribute selected
     /// Compare address because use reference
+
+
+    // print('${validAttribute.first.toJson()}');
+    // print('${variations[0].attributeMap.values.first.toJson()}');
     productVariation =
         variations.lastWhere((element) => element.attributes == validAttribute);
 
-    productVariation.attributes.forEach((element) {
+    //// Set productVariation - TBH My way. ////
+    // ------------------------------------- //
+
+    // print('mapAttribute ${mapAttribute.keys}'); // selected
+    // print('variations ${variations.first.attributeMap.keys}');
+    for (var variation in variations){
+      // .first because Theres always only 1 (?!?)
+      if (validAttribute.first == variation.attributeMap.values.first){
+        // print('.first');
+        // print('validAttribute.length \n${validAttribute.length}');
+        // print('variation.attributeMap.values.length \n${variation.attributeMap.values.length}');
+
+        print('.first 2');
+        print(productVariation.toJson());
+        productVariation = variation;
+        print(productVariation.toJson());
+        break;
+      }
+    }
+
+/*    productVariation.attributes.forEach((element) {
       if (!mapAttribute.containsKey(element.name)) {
         mapAttribute[element.name!] = element.option!;
       }
-    });
+    });*/
     return productVariation;
+    // return variations[1];
   }
 
   bool isPurchased(

@@ -234,7 +234,7 @@ class _StateProductVariant extends State<ProductVariant> {
     });
   }
 
-  List<Widget> getProductAttributeWidget() {
+  List<Widget> productAttributeWidgets() {
     final lang = Provider.of<AppModel>(context, listen: false).langCode ?? 'en';
     return services.widget.getProductAttributeWidget(
         lang, product, mapAttribute!, onSelectProductVariant, variations!);
@@ -278,7 +278,7 @@ class _StateProductVariant extends State<ProductVariant> {
       children: <Widget>[
         ...getProductTitleWidget(),
         if (isVariationLoading && product.type == 'variable') kLoadingWidget(context),
-        if (!isVariationLoading) ...getProductAttributeWidget(),
+        if (!isVariationLoading) ...productAttributeWidgets(),
         ...getProductAddonsWidget(),
         ...getBuyButtonWidget(),
       ],

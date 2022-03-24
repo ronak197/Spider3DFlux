@@ -65,6 +65,7 @@ class BasicSelection extends StatelessWidget {
                 child: Text(
                   // ignore: prefer_single_quotes
                   "${title![0].toUpperCase()}${title!.substring(1)}",
+
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),

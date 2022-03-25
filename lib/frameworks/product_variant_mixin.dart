@@ -1,11 +1,17 @@
+import 'dart:developer';
+
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart' as html;
-import 'package:fstore/screens/users/spider_point_screen.dart';
 import 'package:fstore/services/my_sendErrorEmail.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
+
+import '../../common/config.dart';
+import '../../common/constants.dart';
+import '../../generated/l10n.dart';
+import '../../widgets/common/webview.dart';
 import '../common/config.dart';
 import '../common/constants.dart';
 import '../generated/l10n.dart';
@@ -14,96 +20,89 @@ import '../models/index.dart'
 import '../screens/cart/cart_screen.dart';
 import '../widgets/common/webview.dart';
 import '../widgets/product/product_variant.dart';
-import 'package:flutter/cupertino.dart' show CupertinoIcons;
-import 'package:flutter/material.dart';
-import 'package:fstore/screens/users/spider_point_screen.dart';
-import 'package:inspireui/widgets/flux_image.dart';
-import 'package:localstorage/localstorage.dart';
-import 'package:provider/provider.dart';
-import 'package:rate_my_app/rate_my_app.dart';
-import '../../app.dart';
-import '../../common/config.dart';
-import '../../common/constants.dart';
-import '../../common/tools.dart';
-import '../../generated/l10n.dart';
-import '../../models/index.dart' show AppModel, User, UserModel, WishListModel;
-import '../../models/notification_model.dart';
-import '../../routes/flux_navigate.dart';
-import '../../services/index.dart';
-import '../../widgets/common/webview.dart';
-import 'dart:convert' as convert;
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'dart:convert';
-
 
 // Product_varinat_mixing.dart - fluxStore-spider3d
 
 mixin ProductVariantMixin {
+
+  String replaceFix(String? s){
+    return s == null ? '' : s.replaceAll(" ", "").replaceAll(RegExp(r'[-.]'), '');
+  }
+
   ProductVariation? updateVariation(
     List<ProductVariation> variations,
     Map<String?, String?> mapAttribute,
   ) {
-    final templateVariation =
-        variations.isNotEmpty ? variations.first.attributes : null;
+    log("variations length ${variations.length}");
+    final templateAttributes =
+        variations.isNotEmpty ? variations[1].attributes : null;
     final listAttributes = variations.map((e) => e.attributes);
 
     ProductVariation productVariation;
     var attributeString = '';
 
+    log("template length ${templateAttributes?.length}");
+
+    var tempMap = mapAttribute.map((key, value) { return MapEntry(key!.contains('-') ? key : replaceFix(key), replaceFix(value)); } );
+
     /// Flat attribute
     /// Example attribute = { "color": "RED", "SIZE" : "S", "Height": "Short" }
     /// => "colorRedsizeSHeightShort"
-    templateVariation?.forEach((element) {
-      final key = element.name;
-      final value = mapAttribute[key];
+    templateAttributes?.forEach((element) {
+      final key = replaceFix(element.name);
+      log("key to be matched $key");
+      final value = replaceFix(tempMap[key]);
+      log("got value $value");
       attributeString += value != null ? '$key$value' : '';
     });
 
+    log('debug point C prior : $attributeString');
+
+    attributeString = attributeString.replaceAll("\"", "");
+
     /// Find attributeS contain attribute selected
     final validAttribute = listAttributes.lastWhereOrNull(
-      (attributes) =>
-          attributes.map((e) => e.toString()).join().contains(attributeString),
+      (attributes){
+          return "${attributes.map((e){
+            var s = "";
+            try{
+              s= '${replaceFix(e.name) ?? ""}${replaceFix(
+                  Uri.decodeComponent(e.option ?? ""))}';
+              // print("debug point E1 ${attributes.map((e) => '${replaceFix((e.option??""))}').join("")}");
+              // print("debug point E1 ${attributes.map((e) => '${(e.name)??""}${(Uri.decodeComponent(e.option??""))}').join("")}");
+            } catch(error){
+              log("got error for decoding");
+              s = '${replaceFix(e.name) ?? ""}${replaceFix(e.option ?? "")}';
+            }
+            return s;
+            // if(e.option != null && RegExp('(%[a-fA-F0-9]{2})+').hasMatch(e.option!)) {
+            //   return '${replaceFix(e.name) ?? ""}${replaceFix(
+            //       Uri.decodeComponent(e.option ?? ""))}';
+            // } else {
+            //   return '${replaceFix(e.name) ?? ""}${replaceFix(e.option ?? "")}';
+            // }
+          }).join("")}".contains(attributeString);},
     );
+
+    log("debug point C ${validAttribute?[0].option ?? ""}");
 
     if (validAttribute == null) return null;
 
+    log('debug point D passed');
+
     /// Find ProductVariation contain attribute selected
     /// Compare address because use reference
-
-
-    // print('${validAttribute.first.toJson()}');
-    // print('${variations[0].attributeMap.values.first.toJson()}');
     productVariation =
         variations.lastWhere((element) => element.attributes == validAttribute);
 
-    //// Set productVariation - TBH My way. ////
-    // ------------------------------------- //
-
-    // print('mapAttribute ${mapAttribute.keys}'); // selected
-    // print('variations ${variations.first.attributeMap.keys}');
-    for (var variation in variations){
-      // .first because Theres always only 1 (?!?)
-      if (validAttribute.first == variation.attributeMap.values.first){
-        // print('.first');
-        // print('validAttribute.length \n${validAttribute.length}');
-        // print('variation.attributeMap.values.length \n${variation.attributeMap.values.length}');
-
-        print('.first 2');
-        print(productVariation.toJson());
-        productVariation = variation;
-        print(productVariation.toJson());
-        break;
-      }
-    }
-
-/*    productVariation.attributes.forEach((element) {
+    productVariation.attributes.forEach((element) {
       if (!mapAttribute.containsKey(element.name)) {
         mapAttribute[element.name!] = element.option!;
       }
-    });*/
+    });
+
+    log("product variation ${productVariation.toJson()}");
     return productVariation;
-    // return variations[1];
   }
 
   bool isPurchased(

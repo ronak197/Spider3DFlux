@@ -11,7 +11,7 @@ class ProductAttribute {
   String? get cleanSlug => slug?.replaceAll('pa_', '');
 
   ProductAttribute.fromJson(Map<String, dynamic> parsedJson) {
-    // print('product_attribute.dart - fromJson() - parsedJson $parsedJson');
+    print('product_attribute.dart - fromJson() - parsedJson $parsedJson');
 
     id = parsedJson['id'].toString();
     name =

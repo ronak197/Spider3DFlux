@@ -66,13 +66,13 @@ mixin ProductVariantMixin {
           return "${attributes.map((e){
             var s = "";
             try{
-              s= '${replaceFix(e.name) ?? ""}${replaceFix(
+              s= '${replaceFix(e.name)}${replaceFix(
                   Uri.decodeComponent(e.option ?? ""))}';
               // print("debug point E1 ${attributes.map((e) => '${replaceFix((e.option??""))}').join("")}");
               // print("debug point E1 ${attributes.map((e) => '${(e.name)??""}${(Uri.decodeComponent(e.option??""))}').join("")}");
             } catch(error){
               log("got error for decoding");
-              s = '${replaceFix(e.name) ?? ""}${replaceFix(e.option ?? "")}';
+              s = '${replaceFix(e.name)}${replaceFix(e.option ?? "")}';
             }
             return s;
             // if(e.option != null && RegExp('(%[a-fA-F0-9]{2})+').hasMatch(e.option!)) {

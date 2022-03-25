@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fstore/modules/dynamic_layout/config/product_config.dart';
 import 'package:fstore/modules/dynamic_layout/dynamic_layout.dart';
@@ -183,14 +184,21 @@ class _SimpleLayoutState extends State<SimpleLayout>
                             backgroundColor:
                                 Colors.grey[100]!.withOpacity(0.75),
                             child: IconButton(
-                              icon: const Icon(Icons.more_vert, size: 19),
+                              icon: const Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child:  Icon(Icons.reply, size: 19)),
                               // color: kGrey400,
-                              color: Theme.of(context)
-                                  .accentColor
-                                  .withOpacity(0.75),
-                              onPressed: () => ProductDetailScreen.showMenu(
-                                  context, widget.product,
-                                  isLoading: widget.isLoading),
+                              color: kColorSpiderRed, // Theme.of(context).accentColor.withOpacity(0.75),
+                              onPressed: () =>
+                              // open menu
+                              //     ProductDetailScreen.showMenu(
+                              //     context, widget.product,
+                              //     isLoading: widget.isLoading),
+                              Services().firebase.shareDynamicLinkProduct(
+                                context: context,
+                                productUrl: product.permalink,
+                                productId: product.id,
+                              )
                             ),
                           ),
                         ),

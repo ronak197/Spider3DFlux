@@ -153,7 +153,7 @@ class ProductCard extends StatelessWidget {
                 color: Theme.of(context).accentColor.withOpacity(0.5),
                 // color: Colors.black,
                 // icon: Icon(Icons.add_shopping_cart, size: width! / 10 * 1.3),
-                icon: const Icon(Icons.add_shopping_cart, size: 18),
+                icon: const Icon(Icons.add_shopping_cart, size: 18, color: kColorSpiderRed),
                 onPressed: () => addToCart(context)),
 
           )
